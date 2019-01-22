@@ -1,4 +1,5 @@
 ---
+Layout: post
 title: "My test article"
 date: 2019-01-21
 ---
