@@ -6,4 +6,4 @@ date: 2019-01-21
 
 My test article.
 
-[back](./)
+[home](/)
