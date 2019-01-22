@@ -11,6 +11,7 @@ Longer writing:
 * [Swift Playground](./articles/SwiftPlayground.md)
 
 <ul>
+  <li>testing</li>
   {% for article in site.articles %}
     <li><span>{{ article.date | date_to_string }}</span> » <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a></li>
   {% endfor %}
