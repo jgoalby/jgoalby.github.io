@@ -13,6 +13,9 @@ Longer writing:
 <ul>
   {% for article in site.articles %}
     <li><span>{{ article.date | date_to_string }}</span> » <a href="{{ article.url }}" title="{{ article.title }}">{{ article.title }}</a></li>
-    <li>* [{{ article.title }}]({{ article.url }})</li>
   {% endfor %}
 </ul>
+
+{% for article in site.articles %}
+* [{{ article.title }}]({{ article.url }})
+{% endfor %}
