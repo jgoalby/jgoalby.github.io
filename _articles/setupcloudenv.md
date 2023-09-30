@@ -6,9 +6,9 @@ date: 2023-09-29
 
 # Setting up your cloud development environment
 
-How to set up an opinionated and specific development environment. This is a useful guide if you want to setup these exact things to work together as a single solution. Streamlit Community Cloud requires a github repository to deploy from, so that's why we start with setting up your github account. The other services are optional (but helpful) to getting Streamlit running.
+How to set up an opinionated and specific development environment. This is a useful guide if you want to setup these exact things to work together as a single solution. Streamlit Community Cloud requires a github repository to deploy from, so that's why we start with setting up your github account. The other services are optional (but helpful) to getting Streamlit running. my use case is using an iPad exclusively so local instalation is not an option.
 
-## setup your GitHub account
+## Setup your GitHub account
 
 You will need a GitHub account for deploying to Streamlit.
 
@@ -18,6 +18,21 @@ This is the homepage for GitHub:
 - <https://www.github.com/>
 
 Private repos.
+
+## GitHub basics
+
+commit, then push
+
+## GitHub on iPad
+
+### GitHub app
+
+### working copy app
+
+need to have a personal access token
+settings -> developer settings
+use the personal access token in place of password
+
 
 ## GitHub.dev editor
 
