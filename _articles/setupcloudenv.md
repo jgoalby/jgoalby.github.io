@@ -34,7 +34,7 @@ Learn markdown.
 
 Advantages are:
 - version controlled
-- can use codespaces to edit
+- can use codespaces or github.dev or other github app to edit
 - can use copilot for genai help
 
 <https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll>
