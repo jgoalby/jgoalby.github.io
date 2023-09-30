@@ -1,5 +1,5 @@
 title: John's Site
-remote_theme: pages-themes/leap-day@v0.2.0
+remote_theme: rundocs/jekyll-rtd-theme
 plugins:
   - jekyll-relative-links
   - jekyll-remote-theme
