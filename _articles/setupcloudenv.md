@@ -43,6 +43,8 @@ https://github.com/search?q%253D%2523github-pages%252B%2523jekyll-theme%2526type
 
 https://github.com/pages-themes
 
+https://github.com/pages-themes/leap-day
+
 ## Streamlit community
 
 [home](/)
