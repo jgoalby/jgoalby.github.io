@@ -6,30 +6,43 @@ date: 2023-09-29
 
 # Setting up your cloud development environment
 
-How to set up an opinionated and specific development environment. This is a useful guide if you want to setup these exact things to work together as a single solution.
+How to set up an opinionated and specific development environment. This is a useful guide if you want to setup these exact things to work together as a single solution. Streamlit Community Cloud requires a github repository to deploy from, so that's why we start with setting up your github account. The other services are optional (but helpful) to getting Streamlit running.
 
-## github
+## setup your GitHub account
 
-Setting up github should be first.
+You will need a GitHub account for deploying to Streamlit.
+
+If you already have a GitHub setup, then you can move on to the next step.
+
+This is the homepage for GitHub:
+- <https://www.github.com/>
+
 Private repos.
 
-## github.dev editor
+## GitHub.dev editor
 
+This is an optional setp.
 This is a free alternative to codespaces.
 
-## codespaces
+## GitHub Codespaces
 
-Second.
+This is an optional setp.
+An instant development environment.
 
-## copilot
+More information on GitHub Codespaces can be found here:
+- <https://github.com/codespaces>
 
+## GitHub copilot
+
+This is an optional setp.
 This is a paid service and is useful for generating code.
 
-More information on copilot can be found here:
+More information on GitHub Copilot can be found here:
 - <https://docs.github.com/en/copilot>
 
-## github pages
+## GitHub pages
 
+This is an optional setp.
 This is a website you can host through github.
 
 Learn markdown.
@@ -41,7 +54,7 @@ Advantages are:
 
 <https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll>
 
-## github pages themes
+### GitHub pages themes
 
 Search for the tags #github-pages and #jekyll-theme
 
@@ -51,5 +64,6 @@ Search for the tags #github-pages and #jekyll-theme
 
 Cayman theme used on this page: <https://github.com/pages-themes/cayman/>
 
-## Streamlit community
+## Streamlit Community Cloud
 
+This is required if you want to deploy your application code hosted in a GitHub repository on Streamlit Community Cloud.
