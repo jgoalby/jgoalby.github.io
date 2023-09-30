@@ -10,4 +10,6 @@ Cloud environment
 - iPad GitHub apps
 - iPad vs local install
 - testing code on iPad vs streamlit
-- 
+- editors for ipad
+- article for creating calendar entries
+- captcha article
