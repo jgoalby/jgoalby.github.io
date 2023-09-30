@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "My test article"
+title: "My test thought"
 date: 2023-09-29
 ---
 
