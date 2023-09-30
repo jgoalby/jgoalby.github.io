@@ -1,12 +1,10 @@
 ## Welcome
 
-The beginning...
-
-The humble start to a new chapter of web publishing.
-
-you never know what you are capable of when you are doing yesterday over again – will.i.am
+You never know what you are capable of when you are doing yesterday over again – will.i.am
 
 ## Thoughts
+
+Shorter writing:
 
 {% for thought in site.thoughts %}
 * [{{ thought.title }}]({{ thought.url }})
