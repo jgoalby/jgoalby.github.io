@@ -41,6 +41,8 @@ Search for the tags #github-pages and #jekyll-theme
 
 https://github.com/search?q%253D%2523github-pages%252B%2523jekyll-theme%2526type%253Drepositories
 
+https://github.com/pages-themes
+
 ## Streamlit community
 
 [home](/)
