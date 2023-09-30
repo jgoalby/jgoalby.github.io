@@ -16,6 +16,15 @@ Second.
 
 ## copilot
 
-This is a paid service and is useful.
+This is a paid service and is useful for generating code.
+
+## github pages
+
+This is a website you can host through github.
+
+Advantages are:
+version controlled
+can use codespaces to edit
+can use copilot for genai help
 
 [home](/)
