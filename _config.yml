@@ -9,6 +9,9 @@ relative_links:
   collections: true
 collections:
   - articles
+  - thoughts
 collections:
   articles:
+    output: true
+  thoughts:
     output: true
