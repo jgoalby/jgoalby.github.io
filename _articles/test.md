@@ -1,9 +1,21 @@
 ---
 layout: default
-title: "My test article"
+title: "Setting up a cloud environment"
 date: 2023-09-29
 ---
 
-My test article with a quick update.
+# Setting up a cloud development environment
+
+## github
+
+Setting up github should be first.
+
+## codespaces
+
+Second.
+
+## copilot
+
+This is a paid service and is useful.
 
 [home](/)
