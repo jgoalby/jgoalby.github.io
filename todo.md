@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "things todo"
-permalink: /about
+permalink: /todo
 date: 2023-09-30
 ---
 
