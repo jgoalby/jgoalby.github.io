@@ -30,6 +30,8 @@ More information on copilot can be found here:
 
 This is a website you can host through github.
 
+Learn markdown.
+
 Advantages are:
 - version controlled
 - can use codespaces to edit
@@ -45,7 +47,7 @@ https://github.com/search?q%253D%2523github-pages%252B%2523jekyll-theme%2526type
 
 https://github.com/pages-themes
 
-https://github.com/pages-themes/leap-day
+TODO: Put a link to the theme here
 
 ## Streamlit community
 
