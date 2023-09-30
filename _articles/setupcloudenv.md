@@ -23,14 +23,17 @@ Second.
 
 This is a paid service and is useful for generating code.
 
+More information on copilot can be found here:
+- https://docs.github.com/en/copilot
+
 ## github pages
 
 This is a website you can host through github.
 
 Advantages are:
-version controlled
-can use codespaces to edit
-can use copilot for genai help
+- version controlled
+- can use codespaces to edit
+- can use copilot for genai help
 
 ## github pages themes
 
