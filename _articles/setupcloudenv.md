@@ -47,7 +47,7 @@ https://github.com/search?q%253D%2523github-pages%252B%2523jekyll-theme%2526type
 
 (https://github.com/pages-themes)
 
-TODO: Put a link to the theme here
+[Cayman theme used on this page](https://github.com/pages-themes/cayman/)
 
 ## Streamlit community
 
