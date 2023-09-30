@@ -4,7 +4,9 @@ title: "Setting up a cloud environment"
 date: 2023-09-29
 ---
 
-# Setting up a cloud development environment
+# Setting up your cloud development environment
+
+How to set up an opinionated and specific development environment. This is a useful guide if you want to setup these exact things to work together as a single solution.
 
 ## github
 
