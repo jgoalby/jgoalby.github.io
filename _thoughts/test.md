@@ -5,5 +5,3 @@ date: 2023-09-29
 ---
 
 My test thought.
-
-[home](/)

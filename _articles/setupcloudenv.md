@@ -47,4 +47,3 @@ https://github.com/pages-themes/leap-day
 
 ## Streamlit community
 
-[home](/)
