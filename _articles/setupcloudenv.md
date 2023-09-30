@@ -24,7 +24,7 @@ Second.
 This is a paid service and is useful for generating code.
 
 More information on copilot can be found here:
-- https://docs.github.com/en/copilot
+- <https://docs.github.com/en/copilot>
 
 ## github pages
 
@@ -37,17 +37,17 @@ Advantages are:
 - can use codespaces to edit
 - can use copilot for genai help
 
-(https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll)
+<https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll>
 
 ## github pages themes
 
 Search for the tags #github-pages and #jekyll-theme
 
-https://github.com/search?q%253D%2523github-pages%252B%2523jekyll-theme%2526type%253Drepositories
+<https://github.com/search?q%253D%2523github-pages%252B%2523jekyll-theme%2526type%253Drepositories>
 
 <https://github.com/pages-themes>
 
-[Cayman theme used on this page](https://github.com/pages-themes/cayman/)
+Cayman theme used on this page: <https://github.com/pages-themes/cayman/>
 
 ## Streamlit community
 
