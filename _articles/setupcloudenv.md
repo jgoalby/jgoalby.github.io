@@ -9,6 +9,11 @@ date: 2023-09-29
 ## github
 
 Setting up github should be first.
+Private repos.
+
+## github.dev editor
+
+This is a free alternative to codespaces.
 
 ## codespaces
 
@@ -26,5 +31,7 @@ Advantages are:
 version controlled
 can use codespaces to edit
 can use copilot for genai help
+
+## Streamlit community
 
 [home](/)
