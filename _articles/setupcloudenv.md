@@ -35,6 +35,8 @@ Advantages are:
 - can use codespaces to edit
 - can use copilot for genai help
 
+https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll
+
 ## github pages themes
 
 Search for the tags #github-pages and #jekyll-theme
