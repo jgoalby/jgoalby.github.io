@@ -5,12 +5,15 @@ permalink: /todo
 date: 2023-09-30
 ---
 
-Cloud environment
+Cloud environment:
 - iPad Python apps
 - iPad GitHub apps
 - iPad vs local install
 - testing code on iPad vs streamlit
 - editors for ipad
+- add markdown section
+
+Articles:
 - article for creating calendar entries
 - captcha article
 - why journal article
