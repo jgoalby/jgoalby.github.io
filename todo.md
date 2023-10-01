@@ -14,6 +14,8 @@ Cloud environment:
 - add markdown section
 
 Articles:
-- article for creating calendar entries
-- captcha article
-- why journal article
+- creating calendar entries
+
+Thoughts:
+- captcha
+- why to journal
