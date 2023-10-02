@@ -23,6 +23,10 @@ Private repos.
 
 commit, then push
 
+To create a folder in the web interface you specify the folder when you add a file. Add a file using the add file button, and then rather than giving a filename, specify the folder using a trailing slash, followed by the filename.
+
+To rename a file in the web interface, edit the file and then specify a new name for it in the textbox above the edit area.
+
 ## GitHub on iPad
 
 ### GitHub app
