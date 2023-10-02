@@ -83,6 +83,12 @@ Search for the tags #github-pages and #jekyll-theme
 
 Cayman theme used on this page: <https://github.com/pages-themes/cayman/>
 
+## Streamlit
+
+<https://streamlit.io/>
+<https://docs.streamlit.io/library/api-reference>
+<https://github.com/streamlit>
+
 ## Streamlit Community Cloud
 
 This is required if you want to deploy your application code hosted in a GitHub repository on Streamlit Community Cloud.
