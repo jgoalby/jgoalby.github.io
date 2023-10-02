@@ -10,7 +10,7 @@ How to set up an opinionated and specific development environment. This is a use
 
 ## Setup your GitHub account
 
-You will need a GitHub account for deploying to Streamlit.
+You will need a GitHub account for deploying to Streamlit. It is also a good idea to have a github account if you deal with text you care about. It is a way to keep text centralized and safe. You also can see previous versions of files which can be very handy with code.
 
 If you already have a GitHub setup, then you can move on to the next step.
 
