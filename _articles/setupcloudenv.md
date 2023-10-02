@@ -86,3 +86,5 @@ Cayman theme used on this page: <https://github.com/pages-themes/cayman/>
 ## Streamlit Community Cloud
 
 This is required if you want to deploy your application code hosted in a GitHub repository on Streamlit Community Cloud.
+
+Streamlit deployment guide: <https://docs.streamlit.io/streamlit-community-cloud/deploy-your-app>
