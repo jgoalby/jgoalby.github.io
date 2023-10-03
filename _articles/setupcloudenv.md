@@ -51,6 +51,25 @@ An instant development environment.
 More information on GitHub Codespaces can be found here:
 - <https://github.com/codespaces>
 
+## Making VSCode in a browser useful on iPad
+
+## Keyboard shortcuts
+
+If you use VSCode in a real browser with GitHub.dev or Codespaces, you may notice that not many keyboard shortcuts work. To remedy this you can add VSCode to the home screen. To do this, open the site you want to put on your homescreen with Safari. Once you have it open in Safari, click the Share icon and pick 'Add to Homescreen'.
+
+You can open your own repos in VScode from your homescreen. Bring up the command palette and search for 'Open Remote Repository'. Picking this will give you the ability to select from the repos in your account.
+
+### The Esc key
+
+iPadOS allows you to remap physical hardware keys to have the same functionality as an ESC key would. Here’s how to make this change:
+1. Open the Settings app
+1. Tap General
+1. Tap Keyboard
+1. Choose Hardware Keyboard
+1. Look for the Modifier Keys option
+
+You will have the ability to customize five different keys: Caps Lock, Control, Option, Command, and Globe. The most common recommendation is to remap the Caps Lock key to act like an Escape key.  To do this, tap the “Caps Lock Key” option and pick the “Escape” option. Now, every time you hit the Caps Lock key, it will perform just like an Escape key would. Of course, this also means you lose Caps Lock functionality unless you remap it to another key.
+
 ## GitHub copilot
 
 This is an optional setp.
