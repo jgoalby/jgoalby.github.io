@@ -84,6 +84,7 @@ This is an optional setp.
 This is a website you can host through github.
 
 Learn markdown.
+- <https://www.markdownguide.org/cheat-sheet/>
 
 Advantages are:
 - version controlled
