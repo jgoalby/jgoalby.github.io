@@ -12,6 +12,7 @@ Cloud environment:
 - testing code on iPad vs streamlit
 - editors for ipad
 - add markdown section
+- ngrok and how to setup a static site
 
 Articles:
 - creating calendar entries
@@ -19,3 +20,10 @@ Articles:
 Thoughts:
 - captcha
 - why to journal
+- why MVP is not a good thing
+  - sweeping all of the difficult stuff under the rug
+- tyranny of metrics
+
+Meta:
+- What is the difference between thoughts and articles?
+  - Are articles more thought out?
