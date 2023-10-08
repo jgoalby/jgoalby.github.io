@@ -58,3 +58,9 @@ Meta:
   - Issues
     - Often CMD-UP and CMD-DOWN stop working
   - What about vim mode? Does this give page up and down?
+    - CTRL-u page up
+    - CTRL-d page down
+    - SHIFT-G and gg
+    - Set CMD-OPT-v to toggle vim mode on and off
+      - CMD-K CMD-S and search for toggle vim
+
