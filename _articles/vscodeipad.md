@@ -6,10 +6,12 @@ date: 2023-10-09
 
 # VSCode Keyboard Shortcuts on iPad
 
+Note: The keyboard functionality on the iPad is limited compared to the full VSCode experience.
+
 ## Most useful ones to learn first
 
-- CMD-SHIFT-P
-- CMD-P file selection, and can keep pressing to go through list
+- CMD-SHIFT-P command palette (can also get to file selection if you backspace to remove >)
+- CMD-P file selection, and can keep pressing to go through list (can type > to get to command palette)
 - CMD-K-S lists all keyboard shortcuts
 
 ## Sidebar
@@ -21,11 +23,10 @@ date: 2023-10-09
     - why not make it CMD-SHIFT-G?
 - CMD-SHIFT-D debug / run (not usable in the web-based editor)
 - CMD-SHIFT-X extensions
-- CMD-b toggle sidebar
+- CMD-B toggle sidebar
 
 ## Others
 
-- Seems like functionality is limited
 - Remote repository changing
 - Already specified ESC key change
 - How to change tabs simply
