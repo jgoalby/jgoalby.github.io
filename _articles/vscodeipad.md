@@ -4,7 +4,15 @@ title: "Using VSCode on an iPad"
 date: 2023-10-09
 ---
 
-# Keyboard Shortcuts
+# Key Reference
+
+- Command (or Cmd) ⌘
+- Shift ⇧
+- Option (or Alt) ⌥
+- Control (or Ctrl) ⌃
+- Caps Lock ⇪
+
+# VSCode Keyboard Shortcuts on iPad
 
 - Seems like functionality is limited
 - Remote repository changing
