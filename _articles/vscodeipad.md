@@ -4,6 +4,21 @@ title: "Using VSCode on an iPad"
 date: 2023-10-09
 ---
 
+# GitHub.dev vs Codespaces
+
+VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub.dev is limited but free. Codespaces is more capable as it runs in a VM and costs money for compute and storage.
+
+## Codespaces features not available in GitHub.dev
+
+- Debug and run code
+- Terminal
+- Copilot extension can be used
+
+# Adding VSCode to your iPad homescreen
+
+- Better keyboard support
+- Easier to run
+
 # VSCode Keyboard Shortcuts on iPad
 
 Note: The keyboard functionality on the iPad is limited compared to the full VSCode experience.
@@ -19,8 +34,8 @@ Note: The keyboard functionality on the iPad is limited compared to the full VSC
 - CMD-SHIFT-E explorer
 - CMD-SHIFT-F search / find
 - CTRL-SHIFT-G goes to the github section
-    - but does not seem to put focus in messsage?
-    - why not make it CMD-SHIFT-G?
+    - but does not seem to put focus in messsage, but you can use tab to cycle through files as well as cursor keys
+    - CMD-SHIFT-G would be the natural choice, but it is assigned to another function
 - CMD-SHIFT-D debug / run (not usable in the web-based editor)
 - CMD-SHIFT-X extensions
 - CMD-B toggle sidebar
