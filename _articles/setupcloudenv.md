@@ -34,19 +34,17 @@ To rename a file in the web interface, edit the file and then specify a new name
 ### working copy app
 
 need to have a personal access token
-settings -> developer settings
+- settings -> developer settings
 use the personal access token in place of password
 
 
 ## GitHub.dev editor
 
-This is an optional setp.
-This is a free alternative to codespaces.
+This is an optional step. This is a free alternative to codespaces.
 
 ## GitHub Codespaces
 
-This is an optional setp.
-An instant development environment.
+This is an optional step. An instant development environment.
 
 More information on GitHub Codespaces can be found here:
 - <https://github.com/codespaces>
