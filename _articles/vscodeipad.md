@@ -81,3 +81,18 @@ Note: The keyboard functionality on the iPad is limited compared to the full VSC
 - Control (or Ctrl) ⌃
 - Caps Lock ⇪
 
+# User Settings
+
+PyLint warnings you might want to disable:
+- W0311 - Bad Indentation
+- C0301 - Line too long
+
+```
+{
+    "editor.minimap.enabled": false,
+    "pylint.args": [
+        "--disable=W0311",
+        "--disable=C0301"
+    ],
+}
+```
