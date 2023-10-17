@@ -59,14 +59,14 @@ You can open your own repos in VScode from your homescreen. Bring up the command
 
 ### The Esc key
 
-iPadOS allows you to remap physical hardware keys to have the same functionality as an ESC key would. Here’s how to make this change:
+iPadOS allows you to remap physical hardware keys to have the same functionality as an ESC key would. Here's how to make this change:
 1. Open the Settings app
 1. Tap General
 1. Tap Keyboard
 1. Choose Hardware Keyboard
 1. Look for the Modifier Keys option
 
-You will have the ability to customize five different keys: Caps Lock, Control, Option, Command, and Globe. The most common recommendation is to remap the Caps Lock key to act like an Escape key.  To do this, tap the “Caps Lock Key” option and pick the “Escape” option. Now, every time you hit the Caps Lock key, it will perform just like an Escape key would. Of course, this also means you lose Caps Lock functionality unless you remap it to another key.
+You will have the ability to customize five different keys: Caps Lock, Control, Option, Command, and Globe. The most common recommendation is to remap the Caps Lock key to act like an Escape key.  To do this, tap the "Caps Lock Key" option and pick the "Escape" option. Now, every time you hit the Caps Lock key, it will perform just like an Escape key would. Of course, this also means you lose Caps Lock functionality unless you remap it to another key.
 
 ## GitHub copilot
 
