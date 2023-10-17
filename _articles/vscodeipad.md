@@ -38,7 +38,33 @@ Note: The keyboard functionality on the iPad is limited compared to the full VSC
     - CMD-SHIFT-G would be the natural choice, but it is assigned to another function
 - CMD-SHIFT-D debug / run (not usable in the web-based editor)
 - CMD-SHIFT-X extensions
+- CMD-CTRL-I GitHub copilot
 - CMD-B toggle sidebar
+
+## Copilot
+
+- CMD-SHIFT-I ask Copilot
+    - type / to get a list of commands
+    - type /help for help
+
+Slash Commands
+
+Slash commands tailor the conversation to common tasks. Pick from the available commands by typing /:
+
+/help - Learn how to use Copilot Chat
+/workspace - Ask a question about the files in your current workspace
+/tests - Generate unit tests for the selected code
+/simplify - Simplify the selected code
+/fix - Propose a fix for the problems in the selected code
+/explain - Explain how the selected code works
+/extApi - Ask about VS Code extension development
+/vscode - Ask questions about VS Code
+/createNotebook - Create a new Jupyter Notebook
+/createWorkspace - Scaffold code for a new workspace
+/search - Generate query parameters for workspace search
+
+- Shortcuts I have made
+    - CMD-CTRL-D /doc for Copilot to add a docstring to a function
 
 ## Others
 
@@ -53,7 +79,7 @@ Note: The keyboard functionality on the iPad is limited compared to the full VSC
     - CMD-OPT-UP/DOWN adds a cursor up or down from current position
     - SHIFT-OPT-i after making a selection will add a cursor to the end of lines
     - CMD-SHIFT-L causes all occurrences under cursor to be selected with multiple cursors
-- List useful shortcuts and how they are helpful
+- List of useful shortcuts and how they are helpful
     - CMD-S
     - CMD-/ for commenting and uncommenting
     - CMD-L selects current line, and then further presses selects next lines one by one

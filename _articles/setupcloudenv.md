@@ -70,7 +70,7 @@ You will have the ability to customize five different keys: Caps Lock, Control, 
 
 ## GitHub copilot
 
-This is an optional setp.
+This is an optional step.
 This is a paid service and is useful for generating code.
 
 More information on GitHub Copilot can be found here:
@@ -78,7 +78,7 @@ More information on GitHub Copilot can be found here:
 
 ## GitHub pages
 
-This is an optional setp.
+This is an optional step.
 This is a website you can host through github.
 
 Learn markdown.
