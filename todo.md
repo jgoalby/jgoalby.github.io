@@ -16,6 +16,7 @@ Cloud environment:
 
 Articles:
 - creating calendar entries
+- setting up mongodb to work with streamlit?
 
 Thoughts:
 - captcha
@@ -32,3 +33,4 @@ Meta:
     - github
     - linkedin
   - Add a thoughts are my own disclaimer somewhere
+- Need to add more detail to the about page
