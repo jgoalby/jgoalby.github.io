@@ -6,13 +6,14 @@ date: 2023-10-09
 
 # GitHub.dev vs Codespaces
 
-VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub.dev is lightweight and free and therefore somewhat limited in features. Codespaces is more capable as it runs in a VM and costs money for compute and storage.
+VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub.dev is lightweight and free and somewhat limited in features. Codespaces is more capable as it runs in a VM and costs money for compute and storage.
 
 ## Codespaces features not available in GitHub.dev
 
 - Debug and run code
 - Terminal
 - Copilot extension can be used
+- Full intellisense
 - Can use linting based on install packages
 
 # Adding VSCode to your iPad homescreen

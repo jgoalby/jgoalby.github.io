@@ -36,6 +36,3 @@ Meta:
   - Add some text to the about page and maybe some links to
     - github
     - linkedin
-  - Add a thoughts are my own disclaimer somewhere
-- Need to add more detail to the about page
-  - Maybe use chatgpt to come up with something interesting
