@@ -13,11 +13,13 @@ VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub
 - Debug and run code
 - Terminal
 - Copilot extension can be used
+- Can use linting based on install packages
 
 # Adding VSCode to your iPad homescreen
 
 - Better keyboard support
 - Easier to run
+- Easier to navigate to in the list of running apps
 
 # VSCode Keyboard Shortcuts on iPad
 

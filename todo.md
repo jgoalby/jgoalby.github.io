@@ -14,6 +14,10 @@ Cloud environment:
 - add markdown section
 - ngrok and how to setup a static site
 
+VSCode iPad Article:
+- Update user settings with other warnings to disable
+- Organize the keyboard shortcuts better
+
 Articles:
 - creating calendar entries
 - setting up mongodb to work with streamlit?
