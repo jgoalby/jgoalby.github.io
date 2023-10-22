@@ -13,6 +13,7 @@ Cloud environment:
 - editors for ipad
 - add markdown section
 - ngrok and how to setup a static site
+- Maybe also add HuggingFave spaces
 
 VSCode iPad Article:
 - Update user settings with other warnings to disable
@@ -23,8 +24,8 @@ Articles:
 - setting up mongodb to work with streamlit?
 
 Thoughts:
-- captcha
-- why to journal
-- why MVP is not a good thing
+- Captcha and AI
+- Why to journal
+- Why MVP is not a good thing
   - sweeping all of the difficult stuff under the rug
 - The Tyranny of Metrics
