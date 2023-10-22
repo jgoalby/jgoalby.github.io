@@ -10,6 +10,8 @@ Arguments against:
 - I understand that many people think it is ridiculous to use the iPad for development
 - The iPad is limited, mainly because of iPadOS as the hardware is very capable
 - There is a limited selection of applications that can be run on iPadOS
+- A lack of first-class IDEs
+- Keyboard shortcuts are often limited
 
 Arguments for:
 - All day battery life
@@ -23,3 +25,5 @@ Arguments for:
 - My iPad is typically available wherever I am
 - With cloudb-based applications you don't need to install applications locallly
     - Cloud applications can be limited
+- I suppose I should mention the Apple Pencil although I don't really use that for development, but the touch screen can be really useful at times
+- Testing on an iPad while developing on the iPad can be useful if that is one of the platforms you plan to run on
