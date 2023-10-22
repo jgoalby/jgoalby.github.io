@@ -27,3 +27,4 @@ Arguments for:
     - Cloud applications can be limited
 - I suppose I should mention the Apple Pencil although I don't really use that for development, but the touch screen can be really useful at times
 - Testing on an iPad while developing on the iPad can be useful if that is one of the platforms you plan to run on
+- Being forced to develop in the cloud can mean you are less likely to lose your work from a system crash
