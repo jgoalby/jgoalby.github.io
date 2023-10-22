@@ -23,7 +23,7 @@ Arguments for:
     - The iPad is not as heavy as most laptops
 - Compatibility with iPhone including easy copy and paste of information
 - My iPad is typically available wherever I am
-- With cloudb-based applications you don't need to install applications locallly
+- With cloud-based applications you don't need to install applications locallly
     - Cloud applications can be limited
 - I suppose I should mention the Apple Pencil although I don't really use that for development, but the touch screen can be really useful at times
 - Testing on an iPad while developing on the iPad can be useful if that is one of the platforms you plan to run on
