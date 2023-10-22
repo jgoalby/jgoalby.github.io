@@ -27,12 +27,4 @@ Thoughts:
 - why to journal
 - why MVP is not a good thing
   - sweeping all of the difficult stuff under the rug
-- tyranny of metrics
-
-Meta:
-- What is the difference between thoughts and articles?
-  - Are articles more thought out?
-  - Add this somewhere on the homepage perhaps
-  - Add some text to the about page and maybe some links to
-    - github
-    - linkedin
+- The Tyranny of Metrics
