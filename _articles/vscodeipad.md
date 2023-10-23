@@ -22,6 +22,18 @@ VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub
 - Easier to run
 - Easier to navigate to in the list of running apps
 
+# Stage Manager and Display Zoom
+
+When using an iPad for development, you will likely want to multitask a lot and be able to see multiple apps at the same time. These settings will enhance that experience.
+
+## Stage Manager for multitasking
+
+Multitasking & Gestures -> Stage Manager
+
+## Display Zoom for more space
+
+Display & Brightness -> Display Zoom -> More Space
+
 # VSCode Keyboard Shortcuts on iPad
 
 Note: The keyboard functionality on the iPad is limited compared to the full VSCode experience.
