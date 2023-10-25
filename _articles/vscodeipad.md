@@ -41,7 +41,8 @@ Note: The keyboard functionality on the iPad is limited compared to the full VSC
 ## Most useful ones to learn first
 
 - CMD-SHIFT-P command palette (can also get to file selection if you backspace to remove >)
-- CMD-P file selection, and can keep pressing to go through list (can type > to get to command palette)
+- CMD-P file selection, and can keep pressing to go through list (can type > to get to command palette, : to get to go to line)
+- CTRL-G go to line in file
 - CMD-K-S lists all keyboard shortcuts
 
 ## Sidebar
@@ -82,7 +83,9 @@ Slash commands tailor the conversation to common tasks. Pick from the available 
     - CMD-CTRL-D /doc for Copilot to add a docstring to a function
 
 ## Others
-
+- Move code up and down using cursor keys
+    - OPT-UP/DOWN
+    - Works on selected text as well as current line
 - Remote repository changing
 - Already specified ESC key change
 - How to change tabs simply
@@ -94,6 +97,8 @@ Slash commands tailor the conversation to common tasks. Pick from the available 
     - CMD-OPT-UP/DOWN adds a cursor up or down from current position
     - SHIFT-OPT-i after making a selection will add a cursor to the end of lines
     - CMD-SHIFT-L causes all occurrences under cursor to be selected with multiple cursors
+    - OPT-CLICK puts a cursor where you click
+    - CMD-D press multiple times to add a cursor on the word under current position
 - List of useful shortcuts and how they are helpful
     - CMD-S
     - CMD-/ for commenting and uncommenting
@@ -102,11 +107,13 @@ Slash commands tailor the conversation to common tasks. Pick from the available 
     - CTRL-G go to line
     - CMD-[ CMD-] indent or unindent
     - CMD-K-X remove whitespace at the end of the line
+    - CMD J shows the terminal
 - Shortcuts that I don't yet understand fully
     - CMD-G highlight search results and allows you to cycle through them
     - CMD-F searches within the current file, but not sure how to get rid of the find dialog as ESC does not work
 - Issues
     - Often CMD-UP and CMD-DOWN stop working
+    - CTRL-TAB does not change tabs
 - What about vim mode? Does this give page up and down?
     - CTRL-U page up
     - CTRL-D page down
