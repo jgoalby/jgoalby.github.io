@@ -29,3 +29,6 @@ Thoughts:
 - Why MVP is not a good thing
   - sweeping all of the difficult stuff under the rug
 - The Tyranny of Metrics
+
+Misc:
+- Add a contact form to the about page
