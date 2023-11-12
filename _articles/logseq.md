@@ -11,6 +11,16 @@ date: 2023-11-12
 # Useful plugins
 
 - copycode
+    - adds button to the right of code blocks to copy the code
+- bulletthreading
+    - adds a visual indication of threading in bullets
+- git plugin
+- chatgpt
+- mindmap (markmap?)
+
+# Themes
+
+- Bonofix
 
 # Videos on LogSeq
 
