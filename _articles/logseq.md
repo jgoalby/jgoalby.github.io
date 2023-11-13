@@ -6,7 +6,7 @@ date: 2023-11-12
 
 # What is Logseq?
 
-- Second brain
+- Second brain: https://www.buildingasecondbrain.com/
 - Available on Windows, Mac, Linux, iOS, and Android
 - Offline use is major feature for security and privacy
 - Free and open-source so not controlled by 3rd party company
@@ -90,6 +90,21 @@ Please note that you will have to do these steps for each iOS device you want to
 
 - Bonofix
 
-# Videos on LogSeq
+# Programming LogSeq
 
+- Clojure
+- Javascript
+- Python
+- R
+
+# Resources
+
+- https://logseq.com/
+- https://hub.logseq.com/
+- https://discuss.logseq.com/
+- https://discord.gg/KpN4eHY
+- https://github.com/logseq/
+- https://github.com/logseq/awesome-logseq
+- https://www.youtube.com/c/Logseq
+- https://xyhp915.github.io/logseq-marketplace-table/
 - https://youtu.be/khNI-4r2wW0?si%253DhkTlmqCYFObE84R1
