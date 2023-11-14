@@ -50,37 +50,37 @@ Please note that you will have to do these steps for each iOS device you want to
 ## Step 3a, Add automation for opening LogSeq to pull changes
 - Open ShortCuts > Automation Tab > Tap Plus to Create Personal Automation
 - Scroll down to App, and tap it
-- We define which app by tapping choose, and select LogSeq
-- Tap Is Opened
-- Tap Run immediately
-- Tap Next
+    - We define which app by tapping choose, and select LogSeq
+    - Tap Is Opened
+    - Tap Run immediately
+    - Tap Next
 - Tap New Blank Automation
-- Tap Add Action
-- Search for action Pull Repository
-    - Specify for Repository your Logseq repo
-- Tap Done
+    - Tap Add Action
+        - Search for action Pull Repository
+            - Specify for Repository your Logseq repo
+        - Tap Done
 
 ## Step 3b, Add automation for opening LogSeq to pull changes
 - Open ShortCuts > Automation Tab > Tap Plus to Create Personal Automation
 - Scroll down to App, and tap it
-- We define which app by tapping choose, and select LogSeq
-- Tap Is Closed, and make sure Is Opened is not selected
-- Tap Run immediately
-- Tap Next
+    - We define which app by tapping choose, and select LogSeq
+    - Tap Is Closed, and make sure Is Opened is not selected
+    - Tap Run immediately
+    - Tap Next
 - Tap New Blank Automation
-- Tap Add Action
-- Search for action Stage for Commit
-    - For path specify *
-    - For repository use your Logseq repo
-- Create an action for If condition below the stage action
-- Select Magic Variable - choose Filenames below the first action
-- Condition: has any value
-    - Add Commit Repository action under if action
-        - Repository your Logseq repo
-        - For message specify Auto-commit from LogSeq
-        - You can toggle off Fail when nothing to Commit to prevent failure notification
-    - Add Push Repository action as second action under if action
-        - Specify your repository as the Logseq repo
+    - Tap Add Action
+        - Search for action Stage for Commit
+            - For path specify *
+            - For repository use your Logseq repo
+        - Create an action for If condition below the stage action
+            - Select Magic Variable - choose Filenames below the first action
+            - Condition: has any value
+        - Add Commit Repository action under if action
+            - Repository your Logseq repo
+            - For message specify Auto-commit from LogSeq
+            - You can toggle off Fail when nothing to Commit to prevent failure notification
+        - Add Push Repository action as second action under if action
+            - Specify your repository as the Logseq repo
 
 ## Step 4, Make sure it works
 - Open LogSeq and type something
