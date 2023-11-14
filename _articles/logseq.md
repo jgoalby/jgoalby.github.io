@@ -6,11 +6,21 @@ date: 2023-11-12
 
 # What is Logseq?
 
-- Second brain: https://www.buildingasecondbrain.com/
+- Second brain
+    - <https://www.buildingasecondbrain.com/>
 - Available on Windows, Mac, Linux, iOS, and Android
-- Offline use is major feature for security and privacy
-- Free and open-source so not controlled by 3rd party company
+    - Usable in most places you need
+- Offline use first
+    - Security and privacy
+- Plain text files using markdown format
+    - Future proof
+    - Easy to export to other systems
+    - Easy to version control
+- Free and open-source
+    - No annoying subscriptions required
+    - Not controlled by 3rd party company
 - Supports plugins, and is programmable
+    - Extensibility
 
 # Syncing using GitHub on iOS using WorkingCopy
 
@@ -99,12 +109,12 @@ Please note that you will have to do these steps for each iOS device you want to
 
 # Resources
 
-- https://logseq.com/
-- https://hub.logseq.com/
-- https://discuss.logseq.com/
-- https://discord.gg/KpN4eHY
-- https://github.com/logseq/
-- https://github.com/logseq/awesome-logseq
-- https://www.youtube.com/c/Logseq
-- https://xyhp915.github.io/logseq-marketplace-table/
-- https://youtu.be/khNI-4r2wW0?si%253DhkTlmqCYFObE84R1
+- <https://logseq.com/>
+- <https://hub.logseq.com/>
+- <https://discuss.logseq.com/>
+- <https://discord.gg/KpN4eHY>
+- <https://github.com/logseq/>
+- <https://github.com/logseq/awesome-logseq>
+- <https://www.youtube.com/c/Logseq>
+- <https://xyhp915.github.io/logseq-marketplace-table/>
+- <https://youtu.be/khNI-4r2wW0?si%253DhkTlmqCYFObE84R1>
