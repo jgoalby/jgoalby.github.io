@@ -23,7 +23,8 @@ date: 2023-11-12
 
 # Limitations on iOS
 - Unfortunately right now plugins are not supported
-    - There is a feature request that has 99 votes
+    - There is a feature request that has 99 votes as of Nov 13th 2023
+        - <https://discuss.logseq.com/t/plugin-support-for-ios-android-apps/10109>
 
 # Syncing using GitHub on iOS using WorkingCopy
 
