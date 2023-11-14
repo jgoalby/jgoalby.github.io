@@ -88,6 +88,7 @@ Please note that you will have to do these steps for each iOS device you want to
 - Open LogSeq and type something
 - Close LogSeq
 - See if your changes have been commited to GitHub
+- You need to make sure you lose focus on LogSeq after edits for shortcuts to run
 
 # Useful plugins
 - copycode
