@@ -26,6 +26,22 @@ date: 2023-11-12
     - There is a feature request that has 99 votes as of Nov 13th 2023
         - <https://discuss.logseq.com/t/plugin-support-for-ios-android-apps/10109>
 
+# Keyboard Shortcuts
+If you click the 3 dots in the top right of the application, click settings, and then click keymap, you can see the keyboard shortcuts. You can also use the keyboard shortcut `g s` to see the shortcuts.
+
+## Useful Shortcuts
+- `Enter` - Enter edit mode
+- `Esc` - Leave edit mode
+- `g s` - Show shortcuts
+- `g j` - Show journals
+- `g n` - Next journal
+- `g p` - Previous journal
+- `g a` - All pages
+- `g f` - Flashcards
+- `g g` - Graph view
+- `CMD-SHIFT-P` - Command palette
+- `CMD-SHIFT-J` - Open journal in sidebar
+
 # Syncing using GitHub on iOS using WorkingCopy
 
 You could sync with iCloud, but there are numerous reports of issues with it being slow on the forums. There is also a native LogSeq sync although it is still in beta.
@@ -127,3 +143,4 @@ Please note that you will have to do these steps for each iOS device you want to
 - <https://www.youtube.com/c/Logseq>
 - <https://xyhp915.github.io/logseq-marketplace-table/>
 - <https://youtu.be/khNI-4r2wW0?si%253DhkTlmqCYFObE84R1>
+- <https://cheatography.com/bgrolleman/cheat-sheets/logseq/>
