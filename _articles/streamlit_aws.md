@@ -64,5 +64,5 @@ Go to the EC2 page, and go to instances. Select launch an instance.
 ## Tmux attaching and killing
 
 - tmux attach -t StreamlitSession
-- ps aux | grep streamlit
+- ps aux \| grep streamlit
 - Kill -9 nnn

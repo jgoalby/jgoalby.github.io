@@ -107,6 +107,11 @@ Please note that you will have to do these steps for each iOS device you want to
 - Bonofix
 
 # Programming LogSeq
+
+- Instructions and a video on a graph that shows Javascript and Python execution
+    - <https://github.com/adxsoft/logseq-code-execution-demo-graph>
+
+## Languages supported:
 - Clojure
 - Javascript
 - Python
