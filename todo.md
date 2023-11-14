@@ -25,7 +25,6 @@ Articles:
 
 Thoughts:
 - Captcha and AI
-- Why to journal
 - Why MVP is not a good thing
   - sweeping all of the difficult stuff under the rug
 - The Tyranny of Metrics
