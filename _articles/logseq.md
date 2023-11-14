@@ -24,6 +24,8 @@ date: 2023-11-12
 
 # Syncing using GitHub on iOS using WorkingCopy
 
+You could sync with iCloud, but there are numerous reports of issues with it being slow on the forums. There is also a native LogSeq sync although it is still in beta.
+
 Please note that you will have to do these steps for each iOS device you want to use LogSeq on. Also note that you will need to pay for the pro features of WorkingCopy to link folders.
 
 ## Step 1, Set up the folder to sync
