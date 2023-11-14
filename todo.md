@@ -29,7 +29,8 @@ Thoughts:
 - Why MVP is not a good thing
   - sweeping all of the difficult stuff under the rug
 - The Tyranny of Metrics
-- https://www.theverge.com/2023/11/4/23946353/generative-ai-copyright-training-data-openai-microsoft-google-meta-stabilityai
+- <https://www.theverge.com/2023/11/4/23946353/generative-ai-copyright-training-data-openai-microsoft-google-meta-stabilityai>
+- <https://seths.blog/2023/11/the-reluctant-spammer/>
 
 Misc:
 - Add a contact form to the about page
