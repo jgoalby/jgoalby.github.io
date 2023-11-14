@@ -5,7 +5,6 @@ date: 2023-11-12
 ---
 
 # What is Logseq?
-
 - Second brain
     - <https://www.buildingasecondbrain.com/>
 - Available on Windows, Mac, Linux, iOS, and Android
@@ -21,6 +20,10 @@ date: 2023-11-12
     - Not controlled by 3rd party company
 - Supports plugins, and is programmable
     - Extensibility
+
+# Limitations on iOS
+- Unfortunately right now plugins are not supported
+    - There is a feature request that has 99 votes
 
 # Syncing using GitHub on iOS using WorkingCopy
 
@@ -100,18 +103,15 @@ Please note that you will have to do these steps for each iOS device you want to
 - mindmap (markmap?)
 
 # Themes
-
 - Bonofix
 
 # Programming LogSeq
-
 - Clojure
 - Javascript
 - Python
 - R
 
 # Resources
-
 - <https://logseq.com/>
 - <https://hub.logseq.com/>
 - <https://discuss.logseq.com/>
