@@ -22,6 +22,19 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .left, .right {
+    flex: 1 0 auto;
+  }
+  .thoughts, .articles {
+    flex-grow: 2;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .left, .right {
     float: none;
