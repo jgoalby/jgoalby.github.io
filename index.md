@@ -14,7 +14,7 @@ You never know what you are capable of when you are doing yesterday over again â
         {% endfor %}
     </div>
 
-    <img class="right" src="/assets/articles.png" alt="Brain" width="350">
+    <img class="right" src="/assets/articles.png" alt="Articles" width="350">
 
     <div class="articles" markdown="1">
         ## Articles
