@@ -11,7 +11,7 @@
   padding: 1rem 1rem;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 468px) {
   .left {
     float: left;
     padding: 15px 15px 0px 0px;
@@ -22,21 +22,20 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 468px) {
   .content {
     display: flex;
     flex-wrap: wrap;
   }
   .left, .right {
     flex: 1 0 auto;
-    max-width: 350px;
   }
   .thoughts, .articles {
     flex-grow: 2;
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 467px) {
   .left, .right {
     float: none;
     padding: 0px;
