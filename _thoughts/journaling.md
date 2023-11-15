@@ -1,6 +1,6 @@
 ---
 layout: default
-title: "Why to journal"
+title: "Why journal?"
 date: 2023-11-14
 ---
 
