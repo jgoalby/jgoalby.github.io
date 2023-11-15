@@ -5,6 +5,8 @@ permalink: /todo
 date: 2023-09-30
 ---
 
+<img src="/assets/todo.png" alt="Brain" width="350">
+
 Cloud environment:
 - iPad Python apps
 - iPad GitHub apps
