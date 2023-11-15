@@ -14,6 +14,8 @@ Shorter writing:
 
 <br><br><br>
 
+<img align="right" src="/assets/articles.png" alt="Brain" width="250" style="padding: 0px 0px 15px 15px;">
+
 ## Articles
 
 Longer writing:
