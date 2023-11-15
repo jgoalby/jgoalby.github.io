@@ -2,11 +2,11 @@
 
 You never know what you are capable of when you are doing yesterday over again – will.i.am
 
-<img align="left" src="/assets/brain.png" alt="Brain" width="350" style="padding: 15px 15px 0px 0px;">
+<img class="left" src="/assets/brain.png" alt="Brain" width="350">
 
 ## Thoughts
 
-Thoughts an opinions about pretty much anything that takes my fancy:
+Thoughts and opinions about pretty much anything that takes my fancy:
 
 {% for thought in site.thoughts %}
 * [{{ thought.title }}]({{ thought.url }})
@@ -14,7 +14,7 @@ Thoughts an opinions about pretty much anything that takes my fancy:
 
 <br><br><br><br><br><br>
 
-<img align="right" src="/assets/articles.png" alt="Brain" width="350" style="padding: 0px 0px 15px 15px;">
+<img class="right" src="/assets/articles.png" alt="Brain" width="350">
 
 ## Articles
 
@@ -23,4 +23,3 @@ Fact-based longer writing usually technology related:
 {% for article in site.articles %}
 * [{{ article.title }}]({{ article.url }})
 {% endfor %}
-
