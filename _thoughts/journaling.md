@@ -6,7 +6,7 @@ date: 2023-11-14
 
 # Using Journaling for Generative AI: A Path to Self-Improvement and Personalized Writing
 
-<img align="left" src="/assets/IMG_7594.jpeg" alt="Pen" width="250">
+<img align="left" src="/assets/IMG_7594.jpeg" alt="Pen" width="150">
 
 ### Introduction
 
