@@ -12,7 +12,7 @@ Shorter writing:
 * [{{ thought.title }}]({{ thought.url }})
 {% endfor %}
 
-<br>
+<br><br>
 
 ## Articles
 
