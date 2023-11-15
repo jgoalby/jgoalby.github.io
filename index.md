@@ -6,7 +6,7 @@ You never know what you are capable of when you are doing yesterday over again â
 
 ## Thoughts
 
-Shorter writing:
+Thoughts an opinions about pretty much anything that takes my fancy:
 
 {% for thought in site.thoughts %}
 * [{{ thought.title }}]({{ thought.url }})
@@ -18,7 +18,7 @@ Shorter writing:
 
 ## Articles
 
-Longer writing:
+Fact-based longer writing usually technology related:
 
 {% for article in site.articles %}
 * [{{ article.title }}]({{ article.url }})
