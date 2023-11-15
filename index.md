@@ -2,6 +2,8 @@
 
 You never know what you are capable of when you are doing yesterday over again – will.i.am
 
+<img align="left" src="/assets/brain.png" alt="Pen" width="250" style="padding: 15px 15px 0px 0px;">
+
 ## Thoughts
 
 Shorter writing:
