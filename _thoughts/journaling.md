@@ -34,6 +34,8 @@ Finally, Generative AI can use the data from your journal entries to make person
 
 In essence, by analyzing and learning from your journal data, Generative AI can provide personalized insights, suggestions, and content that align with your unique experiences and writing style.
 
+<img align="left" src="/assets/bridge.png" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">
+
 ## Bridging the Gap: Journaling and Generative AI
 
 The intersection of journaling and Generative AI is a fascinating space where personal introspection meets cutting-edge technology. By combining the rich, personal data from journaling with the analytical power of Generative AI, we can create a tool that not only understands us but also helps us understand ourselves better.
