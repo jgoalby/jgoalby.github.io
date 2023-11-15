@@ -12,7 +12,7 @@ Shorter writing:
 * [{{ thought.title }}]({{ thought.url }})
 {% endfor %}
 
-<br><br><br><br><br>
+<br><br><br><br><br><br>
 
 <img align="right" src="/assets/articles.png" alt="Brain" width="350" style="padding: 0px 0px 15px 15px;">
 
