@@ -4,8 +4,7 @@ You never know what you are capable of when you are doing yesterday over again â
 
 <div class="content">
     <img class="left" src="/assets/brain.png" alt="Brain" width="350">
-
-    <div class="thoughts">
+    <div class="thoughts" markdown="1">
         ## Thoughts
 
         Thoughts and opinions about pretty much anything that takes my fancy:
@@ -17,7 +16,7 @@ You never know what you are capable of when you are doing yesterday over again â
 
     <img class="right" src="/assets/articles.png" alt="Brain" width="350">
 
-    <div class="articles">
+    <div class="articles" markdown="1">
         ## Articles
 
         Fact-based longer writing usually technology related:
