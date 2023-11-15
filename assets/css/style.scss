@@ -11,7 +11,7 @@
   padding: 1rem 1rem;
 }
 
-@media screen and (min-width: 468px) {
+@media screen and (min-width: 768px) {
   .left {
     float: left;
     padding: 15px 15px 0px 0px;
@@ -22,7 +22,7 @@
   }
 }
 
-@media screen and (min-width: 468px) {
+@media screen and (min-width: 768px) {
   .content {
     display: flex;
     flex-wrap: wrap;
@@ -35,7 +35,7 @@
   }
 }
 
-@media screen and (max-width: 467px) {
+@media screen and (max-width: 767px) {
   .left, .right {
     float: none;
     padding: 0px;
