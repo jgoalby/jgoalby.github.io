@@ -58,9 +58,9 @@ If you're intrigued by the potential of combining journaling with Generative AI,
 
 Remember, the goal is not to create a perfect AI, but to explore a new way of understanding yourself and improving your life. So don't be discouraged if things don't go perfectly at first. Keep experimenting, keep learning, and most importantly, keep journaling.
 
-<img align="right" src="/assets/journal.PNG" alt="Journal" width="200" style="padding: 0px 0px 15px 15px;">
-
 ## Conclusion
+
+<img align="right" src="/assets/journal.PNG" alt="Journal" width="200" style="padding: 0px 0px 15px 15px;">
 
 In the intersection of journaling and Generative AI, we find a unique opportunity for self-improvement and personalization. By harnessing the power of our personal journal entries and the analytical capabilities of AI, we can gain deeper insights into our lives and create personalized content in our unique writing style.
 
