@@ -3,7 +3,7 @@
 You never know what you are capable of when you are doing yesterday over again – will.i.am
 
 <div class="content">
-<img class="left" src="/assets/brain.png" alt="Brain" width="350" max-width="350">
+<img class="left" src="/assets/brain.png" alt="Brain" width="350">
 <div class="thoughts" markdown="1">
 ## Thoughts
 

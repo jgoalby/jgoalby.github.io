@@ -29,6 +29,7 @@
   }
   .left, .right {
     flex: 1 0 auto;
+    max-width: 350px;
   }
   .thoughts, .articles {
     flex-grow: 2;
