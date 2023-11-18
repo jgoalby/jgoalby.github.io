@@ -34,8 +34,6 @@ Finally, Generative AI can use the data from your journal entries to make person
 
 In essence, by analyzing and learning from your journal data, Generative AI can provide personalized insights, suggestions, and content that align with your unique experiences and writing style.
 
-<img align="left" src="/assets/bridge.png" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">
-
 ## Preserving History through Generative AI: The Holocaust Survivor Holograms Case Study
 
 Beyond the realm of self-improvement and personal journaling, generative AI is making strides in preserving vital pieces of our collective history. A remarkable example of this is the initiative to create interactive holograms of Holocaust survivors. Spearheaded by the University of Southern California and supported by the foundation established by filmmaker Steven Spielberg, this project employs AI and machine learning to immortalize the narratives of those who experienced one of history's gravest atrocities.
@@ -49,6 +47,8 @@ The project's use of generative AI parallels the personal use of AI in journalin
 The project serves as a stark reminder of the versatility and societal value of generative AI. It shows that AI can play a significant role not just in personal development but also in preserving collective memories and educating future generations. This case study exemplifies how AI can be a tool for both personal introspection and historical preservation, bridging the gap between individual narratives and collective human experiences.
 
 As we explore the intersections of journaling and generative AI in our personal lives, let us also recognize the broader implications of these technologies. The hologram project is a testament to the potential of AI in shaping our understanding of history and aiding in the preservation of human experiences. It inspires us to think about how the technology we use for self-improvement can also contribute to the greater good, preserving important stories and lessons for years to come.
+
+<img align="left" src="/assets/bridge.png" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">
 
 ## Bridging the Gap: Journaling and Generative AI
 
