@@ -11,6 +11,8 @@ In the beginning, John Goalby was not a blogger. And then, against all odds and 
 
 John Goalby, a software engineer by day, a python whisperer by night, and a cosmic adventurer in the unseen hours, finds himself in the uncharted territory of the blogosphere. With a keyboard as his spaceship and a cup of coffee as his trusted fuel, he journeys through the cosmic web, leaving a trail of code and witty remarks in his wake.
 
+<img align="right" src="/assets/skull_coffee.png" alt="Skull Coffee" width="300" style="padding: 0px 0px 15px 15px;">
+
 Mr. Goalby hails from a world filled with semicolons, curly braces, and the endless search for the perfect algorithm. He's fluent in Python, has a budding romance with C#, a courteous nodding acquaintance with Julia, and a handshaking relationship with R. His days are spent wrestling with code, and his nights are dedicated to penning down the whimsical observations of his digital odyssey on this blog.
 
 In the unseen hours, when the world folds into the silence of the night, he partakes in clandestine conversations with his coffee machine about the existential crisis of left-over coffee beans and the unfulfilled dreams of a teaspoon.
