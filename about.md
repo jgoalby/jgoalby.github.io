@@ -25,7 +25,7 @@ In the vast, interconnected cosmos of digital networking, there exists a quaint 
 
 # A Quite Unnecessary Disclaimer
 
-<img align="right" src="/assets/disclaimer.png" alt="Disclaimer" width="200" style="padding: 0px 0px 15px 15px;">
+<img align="right" src="/assets/disclaimer.png" alt="Disclaimer" width="300" style="padding: 0px 0px 15px 15px;">
 
 As you hover in the digital realms of this blog, you may encounter various musings, code snippets, and possibly a cosmic pun or two. Be forewarned, all the content here is the sole creation of the Earth dweller known as John Goalby. Yes, every word, code line, and existential query emerged from the neural pathways of this singular homo sapien.
 
