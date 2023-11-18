@@ -23,7 +23,7 @@ So, dear reader, as you traverse through the whimsical wonderland of John's digi
 
 # LinkedIn
 
-<img align="left" src="/assets/linkedin_machine.png" alt="LinkedIn Machine" width="300" style="padding: 0px 0px 15px 15px;">
+<img align="left" src="/assets/linkedin_machine.png" alt="LinkedIn Machine" width="300" style="padding: 15px 15px 0px 0px;">
 
 In the vast, interconnected cosmos of digital networking, there exists a quaint little node, a speck if you will, that represents the professional persona of our earth-bound adventurer. This node, residing in the bustling hub of LinkedIn, is a portal to a world where professionalism meets whimsy, where code takes on a life of its own, and where connections are made with a handshake of bits and bytes. As you navigate the digital stars, you may find yourself drawn to this peculiar node. Fear not, for it's merely a click away, residing at [https://www.linkedin.com/in/jgoalby](https://www.linkedin.com/in/jgoalby). Here, amidst a tapestry of endorsements and a parade of skill badges, you'll discover the professional chronicles of a software engineer with a knack for turning the mundane into the amusing, the code into poetry, and the professional network into a canvas of curiosity. Venture forth, but be warned, you might just find yourself entangled in a web of witty prose and algorithmic adventures.
 
