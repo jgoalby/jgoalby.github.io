@@ -42,6 +42,9 @@ If you click the 3 dots in the top right of the application, click settings, and
 - `g g` - Graph view
 - `CMD-SHIFT-P` - Command palette
 - `CMD-SHIFT-J` - Open journal in sidebar
+- `t w` - Make screen wider
+- `t l` - Toggle left sidebar
+- `t r` - Toggle right sidebar
 
 # Properties
 
