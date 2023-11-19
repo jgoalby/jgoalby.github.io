@@ -32,6 +32,7 @@ If you click the 3 dots in the top right of the application, click settings, and
 ## Useful Shortcuts
 - `Enter` - Enter edit mode
 - `Esc` - Leave edit mode
+- `CMD-K` - Search or create page
 - `g s` - Show shortcuts
 - `g j` - Show journals
 - `g n` - Next journal
