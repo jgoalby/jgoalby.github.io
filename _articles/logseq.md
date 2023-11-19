@@ -43,6 +43,18 @@ If you click the 3 dots in the top right of the application, click settings, and
 - `CMD-SHIFT-P` - Command palette
 - `CMD-SHIFT-J` - Open journal in sidebar
 
+# Properties
+
+TODO
+
+# Queries
+
+TODO
+
+# Task Management
+
+TODO
+
 # Syncing using GitHub on iOS using WorkingCopy
 
 You could sync with iCloud, but there are numerous reports of issues with it being slow on the forums. There is also a native LogSeq sync although it is still in beta.
@@ -128,7 +140,7 @@ Please note that you will have to do these steps for each iOS device you want to
 - Instructions and a video on a graph that shows Javascript and Python execution
     - <https://github.com/adxsoft/logseq-code-execution-demo-graph>
 
-## Languages supported:
+## Languages supported (not on iOS):
 - Clojure
 - Javascript
 - Python
