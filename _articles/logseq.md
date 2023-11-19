@@ -52,7 +52,8 @@ TODO
 
 # Queries
 
-TODO
+### Give me all blocks that have the tag daily, but not the tag page itself or my templates page
+`{{query (and #daily (not (page "templates")) (not (page "daily"))) }}`
 
 # Task Management
 
