@@ -52,7 +52,7 @@ TODO
 
 # Queries
 
-### Give me all blocks that have the tag daily, but not the tag page itself or my templates page
+#### Give me all blocks that have the tag daily, but not the tag page itself or my templates page
 {% raw %}
 {{query (and #daily (not (page "templates")) (not (page "daily"))) }}
 {% endraw %}
