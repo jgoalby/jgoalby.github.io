@@ -31,6 +31,10 @@ If you click the 3 dots in the top right of the application, click settings, and
 
 ## Include Shortcuts
 
+{% include logseq_shortcuts.md %}
+
+## Include Relative Shortcuts
+
 {% include_relative logseq_shortcuts.md %}
 
 ## Useful Shortcuts
