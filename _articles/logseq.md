@@ -31,7 +31,7 @@ If you click the 3 dots in the top right of the application, click settings, and
 
 ## Include Shortcuts
 
-{% include_relative 'logseq shortcuts.md' %}
+{% include_relative logseq_shortcuts.md %}
 
 ## Useful Shortcuts
 - `Enter` - Enter edit mode
