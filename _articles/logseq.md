@@ -29,6 +29,8 @@ date: 2023-11-12
 # Keyboard Shortcuts
 If you click the 3 dots in the top right of the application, click settings, and then click keymap, you can see the keyboard shortcuts. You can also use the keyboard shortcut `g s` to see the shortcuts.
 
+{% include_relative logseq_shortcuts.md %}
+
 ## Useful Shortcuts
 - `Enter` - Enter edit mode
 - `Esc` - Leave edit mode
