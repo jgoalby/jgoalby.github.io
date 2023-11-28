@@ -10,8 +10,6 @@ TODO
 
 # Copyright and Generative AI
 
-<img align="left" src="/assets/pen.PNG" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">
-
 - **Introduction**
 	- Generative AI has ushered in a new era in artificial intelligence. With the technological advances, we have created a dilemma of ownership. Generative AI is now capable of producing artworks, literature, music, and more. The created works are often at the level of humans and for a fraction of the effort.
 	- Copyright law was designed to protect the works of creators. But who is the creator of an AI-generated work? Is it the creator of the AI program, the user who inputs data into the AI, or the AI itself? Is AI-generated work original or just a remix of existing work? Courts are left to interpret traditional laws in new contexts.
