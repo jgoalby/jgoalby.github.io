@@ -58,4 +58,4 @@ date: 2023-11-27
 	- We need to find a balance where AI is a tool for enhancing human creativity, not a replacement.
 	- Creators need to be compensated for their work or we may dissuade future creators from ever creating.
 - ## References
-	- <https://www.theverge.com/2023/11/4/23946353/generative-ai-copyright-training-data-openai-microsoft-google-meta-stabilityai>
+	- [The Verge Article](https://www.theverge.com/2023/11/4/23946353/generative-ai-copyright-training-data-openai-microsoft-google-meta-stabilityai)
