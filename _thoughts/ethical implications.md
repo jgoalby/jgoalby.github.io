@@ -32,16 +32,16 @@ date: 2023-11-27
 	- ### Respect for Human Rights
 		- AI should respect freedom of expression and information.
 		- Balance the removal of harmful content with the preservation of these rights.
-	- ## Ethical Design and Development
-		- Involve diverse teams in the development process to ensure a wide range of perspectives.
+- ## Ethical Design and Development
+	- Involve diverse teams in the development process to ensure a wide range of perspectives.
 	- ### Collaboration and Engagement
 		- Ensure well rounded approach for disparate groups such as:
 			- Technologists
 			- Legal experts
 			- Ethicists
 			- User representatives
-	- ## Adaptability and Responsiveness
-		- Societal views on acceptable content can evolve quickly.
+- ## Adaptability and Responsiveness
+	- Societal views on acceptable content can evolve quickly.
 	- Incorporating these principles helps ensure that AI systems used for content moderation are ethical, fair, and respectful of user rights and societal norms.
 - ## Challenges of AI in Moderating Content
 	- AI systems, while powerful, face significant hurdles in effectively moderating online content due to issues related to context interpretation, algorithmic bias, and the dynamic nature of online content.
