@@ -4,10 +4,6 @@ title: "Copyright and Generative AI"
 date: 2023-11-27
 ---
 
-# TL;DR:
-
-TODO
-
 # Copyright and Generative AI
 
 - **Introduction**

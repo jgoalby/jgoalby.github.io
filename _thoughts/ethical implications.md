@@ -4,10 +4,6 @@ title: "Exploring the Ethical Implications of AI in Content Moderation"
 date: 2023-11-27
 ---
 
-# TL;DR:
-
-TODO
-
 # Exploring the Ethical Implications of AI in Content Moderation
 
 - Exploring the complexities and challenges of using artificial intelligence for moderating content on digital platforms.
@@ -99,14 +95,14 @@ TODO
 	- AI systems must be dynamic and adaptable, constantly learning from new data to stay relevant and effective across diverse cultural contexts.
 - **Future Trends and Developments**:
 	- Developments in natural language processing (NLP) and computer vision are expected to enable AI systems to interpret content with a level of sophistication nearing human understanding. This includes better recognition of sarcasm, regional dialects, and cultural context in text, as well as more accurate interpretation of images and videos.
-	- Future AI systems are likely to be more adaptive and self-learning, capable of updating their algorithms in real-time based on new data.
+	- Future AI systems are likely to be more adaptive and self-learning, capable of updating their algorithon new data.
 	- Future trends will likely include a greater emphasis on transparency, accountability, and ethical considerations in AI moderation systems.
 	- We may see an increase in international cooperation to create standardized guidelines for AI content moderation that respect cultural diversity while upholding universal human rights.
 	- AI systems may offer user-driven content moderation giving greater control over what they see.
 - **Ethical Frameworks and Guidelines**:
-	- **The IEEE Global Initiative on Ethics of Autonomous and Intelligent Systems** offers comprehensive guidelines that include ensuring user data privacy and promoting transparency in AI algorithms.
-	- **The European Commission's Ethics Guidelines for Trustworthy AI** focuses on human agency and oversight, technical robustness, privacy, and transparency, among other key areas.
-	- **The AI Now Institute** at New York University proposes a framework that includes rigorous testing for biases, ensuring the right to contestation, and promoting workforce diversity.
+	- [The IEEE Global Initiative on Ethics of Autonomous and Intelligent Systems](https://standards.ieee.org/industry-connections/ec/autonomous-systems/) offers comprehensive guidelines that include ensuring user data privacy and promoting transparency in AI algorithms.
+	- [The European Commission's Ethics Guidelines for Trustworthy AI](https://digital-strategy.ec.europa.eu/en/library/ethics-guidelines-trustworthy-ai) focuses on human agency and oversight, technical robustness, privacy, and transparency, among other key areas.
+	- [The AI Now Institute](https://ainowinstitute.org/) proposes a framework that includes rigorous testing for biases, ensuring the right to contestation, and promoting workforce diversity.
 - **Role of Public Policy and Regulation**:
 	- Regulations like the EU’s GDPR set standards for how personal data can be used in AI systems.
 	- Governments can mandate transparency in AI algorithms and decision-making processes.
