@@ -53,13 +53,15 @@ ul ul {
 
 ul ul li {
 	padding-bottom: 30px;
-  padding-left: 10px;
+  padding-left: 30px;
 }
 
 ul ul ul li {
 	padding-bottom: 10px;
+  padding-left: 0px;
 }
 
 ul ul ul li:last-child {
 	padding-bottom: 0px;
+  padding-left: 0px;
 }
