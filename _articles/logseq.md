@@ -42,6 +42,7 @@ TODO
 {{query (and #daily (not (page "templates")) (not (page "daily"))) }}
 {% endraw %}
 
+#### How can I order the columns in the query results?
 The order of the columns within the table generated from the query is based on when the column was created. The simplest way to change the order of columns in the table is to unselect all properties and then reselect in the order you want them.
 
 # Task Management
