@@ -22,9 +22,10 @@ date: 2023-11-12
     - Extensibility
 
 # Limitations on iOS
-- Unfortunately right now plugins are not supported
+- Plugins are not supported on mobile, which is a shame as a lot of functionality is provided in plugins
     - There is a feature request that has 99 votes as of Nov 13th 2023
         - <https://discuss.logseq.com/t/plugin-support-for-ios-android-apps/10109>
+    - Check out Obsidian if you want to try a similar solution that supports plugins on mobile
 
 # Keyboard Shortcuts
 If you click the 3 dots in the top right of the application, click settings, and then click keymap, you can see the keyboard shortcuts. You can also use the keyboard shortcut `g s` to see the shortcuts.
