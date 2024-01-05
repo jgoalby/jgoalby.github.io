@@ -19,3 +19,7 @@
 
 - Making your first Phaser game
   - https://phaser.io/tutorials/making-your-first-phaser-3-game/part1
+- Monster Tamer
+  - https://github.com/devshareacademy/monster-tamer
+  - https://youtube.com/playlist?list=PLmcXe0-sfoSgq-pyXrFx0GZjHbvoVUW8t&si=eaRuleSe0Xnd_TW8
+
