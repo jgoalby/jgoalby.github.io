@@ -9,6 +9,8 @@
 
 - Phaser
   - https://phaser.io/
+- Kenney Assets
+  - https://www.kenney.nl
 
 ### Completed Games
 
