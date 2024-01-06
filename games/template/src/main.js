@@ -3,9 +3,9 @@ import Phaser from './lib/phaser.js';
 console.log('hello from main.js');
 import config from './config/config.js';
 console.log('hello from main.js');
-/*import BootScene from './scenes/BootScene.js';
+import BootScene from './scenes/BootScene.js';
 console.log('hello from main.js');
-import PreloaderScene from './scenes/PreloaderScene.js';
+/*import PreloaderScene from './scenes/PreloaderScene.js';
 console.log('hello from main.js');
 import InputScene from './scenes/GetInputScene.js';
 console.log('hello from main.js');
@@ -23,6 +23,7 @@ import GameScene from './scenes/GameScene.js';
 console.log('hello from main.js');
 import GameOverScene from './scenes/GameOverScene.js';
 console.log('hello from main.js');
+*/
 import AudioModel from './utils/audio-status.js';
 console.log('hello from main.js');
 
@@ -37,7 +38,7 @@ export default class Game extends Phaser.Game {
       score: 0,
     };
     this.scene.add('Boot', BootScene);
-    this.scene.add('Preloader', PreloaderScene);
+/*    this.scene.add('Preloader', PreloaderScene);
     this.scene.add('Input', InputScene);
     this.scene.add('Menu', MenuScene);
     this.scene.add('Options', OptionsScene);
@@ -45,10 +46,9 @@ export default class Game extends Phaser.Game {
     this.scene.add('Leaderboard', LeaderboardScene);
     this.scene.add('Intro', IntroScene);
     this.scene.add('Game', GameScene);
-    this.scene.add('GameOver', GameOverScene);
+    this.scene.add('GameOver', GameOverScene);*/
     this.scene.start('Boot');
   }
 }
 
 window.game = new Game();
-*/
