@@ -1,5 +1,5 @@
-import Phaser from 'phaser';
-import Button from '../Components/button';
+import Phaser from './lib/phaser.js';
+import Button from '../components/Button';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
