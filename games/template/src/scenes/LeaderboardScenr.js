@@ -1,6 +1,6 @@
-import Phaser from 'phaser';
+import Phaser from './lib/phaser.js';
 import Api from '../utils/api';
-import Button from '../Components/button';
+import Button from '../components/Button';
 
 export default class LeaderboardScene extends Phaser.Scene {
   constructor() {
