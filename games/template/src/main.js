@@ -9,7 +9,7 @@ import InputScene from './scenes/GetInputScene';
 import MenuScene from './scenes/MenuScene';
 import OptionsScene from './scenes/OptionsScene';
 import CreditsScene from './scenes/CreditsScene';
-import LeaderboardScene from './scenes/Leaderboard';
+import LeaderboardScene from './scenes/LeaderboardScene';
 import IntroScene from './scenes/IntroScene';
 import GameScene from './scenes/GameScene';
 import GameOverScene from './scenes/GameOverScene';
