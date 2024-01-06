@@ -1,4 +1,4 @@
-import Phaser from './lib/phaser.js';
+import Phaser from '../lib/phaser.js';
 import citypng from '../Assets/tile/city.png';
 import bpng from '../Assets/tile/_Example.png';
 import cityjson from '../Assets/tile/city.json';
