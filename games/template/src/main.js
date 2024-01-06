@@ -1,22 +1,18 @@
-import Phaser from './lib/phaser.js';
-
-const game = new Phaser.Game({
-  parent: 'game-container',
-});
+//import Phaser from './lib/phaser.js';
 
 import Phaser from 'phaser';
 import './SCSS/main.scss';
-import config from './Config/config';
-import BootScene from './Scenes/BootScene';
-import PreloaderScene from './Scenes/PreloaderScene';
-import InputScene from './Scenes/GetInputScene';
-import MenuScene from './Scenes/MenuScene';
-import OptionsScene from './Scenes/OptionsScene';
-import CreditsScene from './Scenes/CreditsScene';
-import LeaderboardScene from './Scenes/Leaderboard';
-import IntroScene from './Scenes/IntroScene';
-import GameScene from './Scenes/GameScene';
-import GameOverScene from './Scenes/GameOverScene';
+import config from './config/config';
+import BootScene from './scenes/BootScene';
+import PreloaderScene from './scenes/PreloaderScene';
+import InputScene from './scenes/GetInputScene';
+import MenuScene from './scenes/MenuScene';
+import OptionsScene from './scenes/OptionsScene';
+import CreditsScene from './scenes/CreditsScene';
+import LeaderboardScene from './scenes/Leaderboard';
+import IntroScene from './scenes/IntroScene';
+import GameScene from './scenes/GameScene';
+import GameOverScene from './scenes/GameOverScene';
 import AudioModel from './utils/audio-status';
 
 export default class Game extends Phaser.Game {
