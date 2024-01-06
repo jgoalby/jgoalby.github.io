@@ -44,4 +44,5 @@ export default class Api {
   }
 }
 */
-console.log('hello from api.js');
+export default class Api {
+}
