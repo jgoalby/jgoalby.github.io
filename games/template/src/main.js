@@ -1,7 +1,7 @@
 console.log('hello from main.js');
 import Phaser from './lib/phaser.js';
 console.log('hello from main.js');
-/*import './SCSS/main.scss';
+import './SCSS/main.scss';
 console.log('hello from main.js');
 import config from './config/config.js';
 console.log('hello from main.js');
@@ -15,7 +15,7 @@ import LeaderboardScene from './scenes/LeaderboardScene.js';
 import IntroScene from './scenes/IntroScene.js';
 import GameScene from './scenes/GameScene.js';
 import GameOverScene from './scenes/GameOverScene.js';
-import AudioModel from './utils/audio-status.js';
+/*import AudioModel from './utils/audio-status.js';
 
 export default class Game extends Phaser.Game {
   constructor() {
