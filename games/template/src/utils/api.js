@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime';
+/*import 'regenerator-runtime/runtime';
 
 export default class Api {
   static basePostUrl() {
@@ -43,3 +43,5 @@ export default class Api {
     }
   }
 }
+*/
+console.log('hello from api.js');
