@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import Phaser from './lib/phaser.js';
 
 export default class TankTools extends Phaser.Physics.Arcade.Sprite {
   constructor(mainScene, x, y, texture) {
