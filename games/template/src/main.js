@@ -1,13 +1,10 @@
-console.log('hello from main.js');
 import Phaser from './lib/phaser.js';
-console.log('hello from main.js');
 import config from './config/config.js';
-console.log('hello from main.js');
 import BootScene from './scenes/BootScene.js';
 console.log('hello from main.js');
-/*import PreloaderScene from './scenes/PreloaderScene.js';
+import PreloaderScene from './scenes/PreloaderScene.js';
 console.log('hello from main.js');
-import InputScene from './scenes/GetInputScene.js';
+/*import InputScene from './scenes/GetInputScene.js';
 console.log('hello from main.js');
 import MenuScene from './scenes/MenuScene.js';
 console.log('hello from main.js');
@@ -38,8 +35,8 @@ export default class Game extends Phaser.Game {
       score: 0,
     };
     this.scene.add('Boot', BootScene);
-/*    this.scene.add('Preloader', PreloaderScene);
-    this.scene.add('Input', InputScene);
+    this.scene.add('Preloader', PreloaderScene);
+/*    this.scene.add('Input', InputScene);
     this.scene.add('Menu', MenuScene);
     this.scene.add('Options', OptionsScene);
     this.scene.add('Credits', CreditsScene);
