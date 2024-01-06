@@ -1,8 +1,6 @@
 console.log('hello from main.js');
 import Phaser from './lib/phaser.js';
 console.log('hello from main.js');
-//import './SCSS/main.scss';
-console.log('hello from main.js');
 import config from './config/config.js';
 console.log('hello from main.js');
 import BootScene from './scenes/BootScene.js';
