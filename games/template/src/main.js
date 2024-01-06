@@ -1,6 +1,4 @@
-//import Phaser from './lib/phaser.js';
-
-import Phaser from 'phaser';
+import Phaser from './lib/phaser.js';
 import './SCSS/main.scss';
 import config from './config/config';
 import BootScene from './scenes/BootScene';
