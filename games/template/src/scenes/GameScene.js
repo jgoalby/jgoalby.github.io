@@ -1,6 +1,6 @@
-import Phaser from 'phaser';
-import Enemy from '../Components/Enemy';
-import Path from '../Components/paths';
+import Phaser from './lib/phaser.js';
+import Enemy from '../components/Enemy';
+import Path from '../components/Paths';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
