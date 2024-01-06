@@ -1,4 +1,4 @@
-import Phaser from './lib/phaser.js';
+import Phaser from '../lib/phaser.js';
 import madeBy from '../Assets/misc/me-min.png';
 import gameLogo from '../Assets/misc/taklogo.png';
 
