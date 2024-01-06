@@ -1,5 +1,5 @@
-import Phaser from './lib/phaser.js';
-import TankTools from './TankTools';
+import Phaser from '../lib/phaser.js';
+import TankTools from './TankTools.js';
 
 export default class Enemy extends Phaser.GameObjects.PathFollower {
   constructor(world, mainScene, path) {

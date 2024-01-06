@@ -1,4 +1,4 @@
-import Phaser from './lib/phaser.js';
+import Phaser from '../lib/phaser.js';
 
 export default class Button extends Phaser.GameObjects.Container {
   constructor(scene, x, y, normal, hover, text, targetScene, scaleButton = false) {
