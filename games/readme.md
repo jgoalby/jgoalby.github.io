@@ -9,8 +9,23 @@
 
 - Phaser
   - https://phaser.io/
+  - https://phaser.io/download/stable
+  - https://github.com/photonstorm/phaser/tree/master/types
+- Pathfinding
+  - https://github.com/qiao/PathFinding.js
 - Kenney Assets
   - https://www.kenney.nl
+- CraftPix Assets
+  - https://craftpix.net/
+  - https://craftpix.net/freebies
+- Tiled Map Editor
+  - https://www.mapeditor.org/
+- Texture Packer
+  - https://www.codeandweb.com/texturepacker
+- Audacity
+  - https://www.audacityteam.org/
+- Bfxr
+  - https://www.bfxr.net/
 
 ### Completed Games
 
@@ -24,4 +39,5 @@
 - Monster Tamer
   - https://github.com/devshareacademy/monster-tamer
   - https://youtube.com/playlist?list=PLmcXe0-sfoSgq-pyXrFx0GZjHbvoVUW8t&si=eaRuleSe0Xnd_TW8
-
+- Roguelike with Phaser book code
+  - https://github.com/Apress/roguelike-development-javascript

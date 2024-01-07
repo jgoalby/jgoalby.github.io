@@ -1,26 +1,3 @@
-//import Phaser from '../lib/phaser.js';
-//import citypng from '../Assets/tile/city.png';
-//import bpng from '../Assets/tile/_Example.png';
-//import cityjson from '../Assets/tile/city.json';
-//import bgmusic from '../Assets/audio/bgmusic.ogg';
-//import normalButton from '../Assets/ui/buttonNormal.png';
-//import hoverButton from '../Assets/ui/buttonHighLight.png';
-//import grey from '../Assets/ui/grey_box.png';
-//import blue from '../Assets/ui/blue_boxCheckmark.png';
-//import introVoiceMp3 from '../Assets/audio/intro.mp3';
-//import introVoiceOgg from '../Assets/audio/intro.ogg';
-//import fireMp3 from '../Assets/audio/fire.mp3';
-//import fireOgg from '../Assets/audio/fire.ogg';
-//import enemyFireMp3 from '../Assets/audio/enemyFire.mp3';
-//import enemyFireOgg from '../Assets/audio/enemyFire.ogg';
-//import player from '../Assets/tank/player.png';
-//import playerTankBarrel from '../Assets/tank/playerTankBarrel.png';
-//import bulletShell from '../Assets/tank/HeavyShell.png';
-//import explosion from '../Assets/tank/explosion.png';
-//import enemy from '../Assets/tank/enemy.png';
-//import enemyTankBarrel from '../Assets/tank/enemyTankBarrel.png';
-//import tombstone from '../Assets/misc/tombstone.png';
-
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');

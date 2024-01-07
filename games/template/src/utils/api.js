@@ -29,6 +29,7 @@ export default class Api {
     } catch (error) {
       return error.message;
     }*/
+    return {};
   }
 
   static async get() {
@@ -43,5 +44,6 @@ export default class Api {
     } catch (error) {
       return error.message;
     }*/
+    return {};
   }
 }

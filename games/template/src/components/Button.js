@@ -1,5 +1,5 @@
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, normal, hover, text, targetScene, scaleButton = false) {
+  constructor(scene, x, y, normal, hover, text, targetScene, scaleButton = null) {
     super(scene);
     this.scene = scene;
     this.x = x;

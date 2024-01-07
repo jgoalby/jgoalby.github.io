@@ -1,4 +1,3 @@
-//import Phaser from './lib/phaser.js';
 import config from './config/config.js';
 import BootScene from './scenes/BootScene.js';
 import PreloaderScene from './scenes/PreloaderScene.js';
@@ -36,4 +35,5 @@ export default class Game extends Phaser.Game {
   }
 }
 
+// @ts-ignore
 window.game = new Game();
