@@ -1,5 +1,10 @@
 import Constants from '../utils/constants';
 
+console.log("Hello world");
+console.log(Constants.GAME_WIDTH);
+console.log(Constants.GAME_HEIGHT);
+console.log(Constants.ASSETS_PATH);
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
