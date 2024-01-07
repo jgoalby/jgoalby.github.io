@@ -115,7 +115,7 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.image('tile1', './src/Assets/tile/city.png');
-    this.load.image('build', './src/Assets/tile/_Example.png');
+    this.load.image('build', './src/Assets/tile/Example.png');
     this.load.tilemapTiledJSON('map1', './src/Assets/tile/city.json');
 
     this.load.image('normalButton', './src/Assets/ui/buttonNormal.png');
