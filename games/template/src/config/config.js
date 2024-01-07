@@ -1,7 +1,7 @@
 import Constants from '../utils/constants';
 
 export default {
-  type: Constants.GAME_TYPE,
+  type: Phaser.AUTO,
   width: 1200,
   height: 650,
   backgroundColor: 'black',
