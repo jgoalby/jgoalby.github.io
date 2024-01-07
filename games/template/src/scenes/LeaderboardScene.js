@@ -19,7 +19,7 @@ export default class LeaderboardScene extends Phaser.Scene {
 
     const loading = this.add.text(400, 180, 'loading . . . ', {
       font: '36px',
-      fill: '#ffffff',
+      color: '#ffffff',
     });
 
     Api.get()

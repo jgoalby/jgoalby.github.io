@@ -15,7 +15,7 @@ export default class GameOverScene extends Phaser.Scene {
 
     const ripText = this.add.text(570, 140, '', {
       font: '36px',
-      fill: '#000000',
+      color: '#000000',
     });
     ripText.setStroke('#000', 4);
     ripText.setShadow(2, 2, '#333333', 2, true, true);
@@ -23,7 +23,7 @@ export default class GameOverScene extends Phaser.Scene {
 
     const text = this.add.text(455, 185, '', {
       font: '22px',
-      fill: '#000000',
+      color: '#000000',
     });
     text.setStroke('#000', 2);
     text.setShadow(1, 1, '#333333', 1, true, true);
@@ -40,13 +40,13 @@ export default class GameOverScene extends Phaser.Scene {
       .then(result => {
         this.add.text(20, 20, `${result.statusText}- Status: ${result.status}`, {
           font: '24px',
-          fill: '#ffffff',
+          color: '#ffffff',
         });
       })
       .catch(error => {
         this.add.text(20, 20, `Score not uploaded, ${error}`, {
           font: '24px',
-          fill: '#ffffff',
+          color: '#ffffff',
         });
       });
   }

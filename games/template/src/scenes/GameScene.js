@@ -171,7 +171,7 @@ export default class GameScene extends Phaser.Scene {
   createText(x, y, newtext) {
     const text = this.add.text(x, y, newtext, {
       font: '40px gothic',
-      fill: '#ffffff',
+      color: '#ffffff',
     });
     text.setStroke('#000', 4);
     text.setShadow(2, 2, '#333333', 2, true, true);

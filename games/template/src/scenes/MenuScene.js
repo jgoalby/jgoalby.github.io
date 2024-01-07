@@ -46,7 +46,7 @@ export default class MenuScene extends Phaser.Scene {
 
     const info = this.add.text(750, 30, '', {
       font: '16px',
-      fill: '#ffffff',
+      color: '#ffffff',
     });
 
     info.setText([

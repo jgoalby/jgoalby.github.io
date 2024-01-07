@@ -21,7 +21,7 @@ export default class IntroScene extends Phaser.Scene {
   create() {
     const text = this.add.text(10, 10, '', {
       font: '32px',
-      fill: '#ffffff',
+      color: '#ffffff',
     });
 
     text.setText([
@@ -54,7 +54,7 @@ export default class IntroScene extends Phaser.Scene {
       const skipButton = this.add.sprite(980, 580, 'normalButton').setScale(0.7, 0.7).setInteractive();
       this.menuText = this.add.text(0, 0, 'Skip >>>', {
         fontSize: '32px',
-        fill: '#fff',
+        color: '#fff',
       });
       Phaser.Display.Align.In.Center(this.menuText, skipButton);
 

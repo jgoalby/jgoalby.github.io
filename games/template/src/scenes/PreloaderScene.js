@@ -16,10 +16,10 @@ export default class PreloaderScene extends Phaser.Scene {
     const name = this.make.text({
       x: 10,
       y: 150,
-      text: 'Code by Bereket',
+      text: 'Code by John',
       style: {
         font: '15px monospace',
-        fill: '#ffffff',
+        color: '#ffffff',
       },
     });
 
@@ -46,7 +46,7 @@ export default class PreloaderScene extends Phaser.Scene {
       text: 'Loading...',
       style: {
         font: '20px monospace',
-        fill: '#ffffff',
+        color: '#ffffff',
       },
     });
     loadingText.setOrigin(0.5, 0.5);
@@ -57,7 +57,7 @@ export default class PreloaderScene extends Phaser.Scene {
       text: '0%',
       style: {
         font: '18px monospace',
-        fill: '#ffffff',
+        color: '#ffffff',
       },
     });
     percentText.setOrigin(0.5, 0.5);
@@ -68,7 +68,7 @@ export default class PreloaderScene extends Phaser.Scene {
       text: '',
       style: {
         font: '20px monospace',
-        fill: '#ffffff',
+        color: '#ffffff',
       },
     });
     assetText.setOrigin(0.5, 0.5);
