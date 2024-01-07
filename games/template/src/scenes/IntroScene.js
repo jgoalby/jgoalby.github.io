@@ -1,4 +1,3 @@
-import Phaser from '../lib/phaser.js';
 import Button from '../components/Button.js';
 
 export default class IntroScene extends Phaser.Scene {

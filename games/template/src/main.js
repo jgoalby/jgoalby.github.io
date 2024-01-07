@@ -1,4 +1,4 @@
-import Phaser from './lib/phaser.js';
+//import Phaser from './lib/phaser.js';
 import config from './config/config.js';
 import BootScene from './scenes/BootScene.js';
 import PreloaderScene from './scenes/PreloaderScene.js';

@@ -1,4 +1,3 @@
-import Phaser from '../lib/phaser.js';
 import Api from '../utils/api.js';
 import Button from '../components/Button.js';
 

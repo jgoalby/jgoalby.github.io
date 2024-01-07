@@ -1,5 +1,3 @@
-import Phaser from '../lib/phaser.js';
-
 export default class InputScene extends Phaser.Scene {
   constructor() {
     super('Input');

@@ -1,4 +1,3 @@
-import Phaser from '../lib/phaser.js';
 import Enemy from '../components/Enemy.js';
 import Path from '../components/Paths.js';
 

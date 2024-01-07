@@ -1,16 +1,17 @@
-/*import 'regenerator-runtime/runtime';
+//import 'regenerator-runtime/runtime';
 
 export default class Api {
-  static basePostUrl() {
+  /*static basePostUrl() {
     return 'https://cors-anywhere.herokuapp.com/https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/nLw10P9I0j6eCcGMXLVN/scores/';
-  }
+  }*/
 
-  static baseGetUrl() {
+  /*static baseGetUrl() {
     return 'https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/nLw10P9I0j6eCcGMXLVN/scores/';
-  }
+  }*/
 
   static async post(name, score) {
-    const data = {
+    console.log("Doing post in API");
+    /*const data = {
       user: name,
       score,
     };
@@ -27,11 +28,12 @@ export default class Api {
       return response;
     } catch (error) {
       return error.message;
-    }
+    }*/
   }
 
   static async get() {
-    try {
+    console.log("Doing get in API");
+    /*try {
       const response = await fetch(Api.baseGetUrl(), {
         method: 'GET',
         headers: { 'Content-type': 'application/json;charset=UTF-8' },
@@ -40,9 +42,6 @@ export default class Api {
       return filter;
     } catch (error) {
       return error.message;
-    }
+    }*/
   }
-}
-*/
-export default class Api {
 }

@@ -1,5 +1,3 @@
-import Phaser from '../lib/phaser.js';
-
 export default class Path {
   constructor(graphics) {
     this._graphics = graphics;
