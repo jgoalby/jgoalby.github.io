@@ -1,3 +1,5 @@
+import Constants from '../utils/constants';
+
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
@@ -91,48 +93,48 @@ export default class PreloaderScene extends Phaser.Scene {
       });
     });
 
-    this.load.image('tile1', './src/Assets/tile/city.png');
-    this.load.image('build', './src/Assets/tile/Example.png');
-    this.load.tilemapTiledJSON('map1', './src/Assets/tile/city.json');
+    this.load.image('tile1', Constants.ASSETS_PATH + 'tile/city.png');
+    this.load.image('build', Constants.ASSETS_PATH + 'tile/Example.png');
+    this.load.tilemapTiledJSON('map1', Constants.ASSETS_PATH + 'tile/city.json');
 
-    this.load.image('normalButton', './src/Assets/ui/buttonNormal.png');
-    this.load.image('hoverButton', './src/Assets/ui/buttonHighLight.png');
-    this.load.image('box', './src/Assets/ui/grey_box.png');
-    this.load.image('checkedBox', './src/Assets/ui/blue_boxCheckmark.png');
-    //this.load.audio('bgMusic', ['./src/Assets/audio/bgmusic.ogg']);
-    this.load.audio('bgMusic', ['./src/Assets/audio/intro.mp3']);
-    this.load.audio('introVoice', ['./src/Assets/audio/intro.mp3', './src/Assets/audio/intro.ogg']);
-    this.load.audio('fire', ['./src/Assets/audio/fire.mp3', './src/Assets/audio/fire.ogg']);
-    this.load.audio('enemyFire', ['./src/Assets/audio/enemyFire.mp3', './src/Assets/audio/enemyFire.ogg']);
-    this.load.spritesheet('player', './src/Assets/tank/player.png', {
+    this.load.image('normalButton', Constants.ASSETS_PATH + 'ui/buttonNormal.png');
+    this.load.image('hoverButton', Constants.ASSETS_PATH + 'ui/buttonHighLight.png');
+    this.load.image('box', Constants.ASSETS_PATH + 'ui/grey_box.png');
+    this.load.image('checkedBox', Constants.ASSETS_PATH + 'ui/blue_boxCheckmark.png');
+    //this.load.audio('bgMusic', [Constants.ASSETS_PATH + 'audio/bgmusic.ogg']);
+    this.load.audio('bgMusic', [Constants.ASSETS_PATH + 'audio/intro.mp3']);
+    this.load.audio('introVoice', [Constants.ASSETS_PATH + 'audio/intro.mp3', Constants.ASSETS_PATH + 'audio/intro.ogg']);
+    this.load.audio('fire', [Constants.ASSETS_PATH + 'audio/fire.mp3', Constants.ASSETS_PATH + 'audio/fire.ogg']);
+    this.load.audio('enemyFire', [Constants.ASSETS_PATH + 'audio/enemyFire.mp3', Constants.ASSETS_PATH + 'audio/enemyFire.ogg']);
+    this.load.spritesheet('player', Constants.ASSETS_PATH + 'tank/player.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
-    this.load.spritesheet('playerTankBarrel', './src/Assets/tank/playerTankBarrel.png', {
-      frameWidth: 256,
-      frameHeight: 256,
-    });
-
-    this.load.spritesheet('bullet', './src/Assets/tank/HeavyShell.png', {
+    this.load.spritesheet('playerTankBarrel', Constants.ASSETS_PATH + 'tank/playerTankBarrel.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
 
-    this.load.spritesheet('explosion', './src/Assets/tank/explosion.png', {
+    this.load.spritesheet('bullet', Constants.ASSETS_PATH + 'tank/HeavyShell.png', {
+      frameWidth: 256,
+      frameHeight: 256,
+    });
+
+    this.load.spritesheet('explosion', Constants.ASSETS_PATH + 'tank/explosion.png', {
       frameWidth: 60,
       frameHeight: 60,
     });
 
-    this.load.spritesheet('enemy', './src/Assets/tank/enemy.png', {
+    this.load.spritesheet('enemy', Constants.ASSETS_PATH + 'tank/enemy.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
-    this.load.spritesheet('enemyTankBarrel', './src/Assets/tank/enemyTankBarrel.png', {
+    this.load.spritesheet('enemyTankBarrel', Constants.ASSETS_PATH + 'tank/enemyTankBarrel.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
 
-    this.load.image('tombstone', './src/Assets/misc/tombstone.png');
+    this.load.image('tombstone', Constants.ASSETS_PATH + 'misc/tombstone.png');
   }
 
   startTitleScene() {
