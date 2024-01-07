@@ -1,9 +1,9 @@
-//import Constants from '../utils/constants';
+import Constants from '../utils/constants.js';
 
 export default {
-  type: Phaser.AUTO,
-  width: 1200,
-  height: 650,
+  type: Constants.GAME_TYPE,
+  width: Constants.GAME_WIDTH,
+  height: Constants.GAME_HEIGHT,
   backgroundColor: 'black',
   physics: {
     default: 'arcade',
@@ -16,7 +16,7 @@ export default {
     zoom: 1,
   },
 
-  parent: 'main',
+  parent: Constants.GAME_PARENT,
   dom: {
     createContainer: true,
   },

@@ -1,10 +1,10 @@
 export default class Constants {
   static get GAME_WIDTH() {
-    return 800;
+    return 1200;
   }
 
   static get GAME_HEIGHT() {
-    return 600;
+    return 650;
   }
 
   static get GAME_BACKGROUND_COLOR() {
@@ -16,7 +16,7 @@ export default class Constants {
   }
 
   static get GAME_PARENT() {
-    return 'game';
+    return 'main';
   }
 
   static get GAME_TITLE() {

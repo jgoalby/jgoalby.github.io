@@ -1,11 +1,13 @@
+import Constants from '../utils/constants.js';
+
 export default class BootScene extends Phaser.Scene {
   constructor() {
     super('Boot');
   }
 
   preload() {
-    this.load.image('madeBy', './src/Assets/misc/me-min.png');
-    this.load.image('gameLogo', './src/Assets/misc/tanklogo.png');
+    this.load.image('madeBy', Constants.ASSETS_PATH + 'misc/me-min.png');
+    this.load.image('gameLogo', Constants.ASSETS_PATH + 'misc/tanklogo.png');
   }
 
   create() {
