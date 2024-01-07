@@ -1,6 +1,4 @@
-import Phaser from '../lib/phaser.js';
-//import madeBy from '../Assets/misc/me-min.png';
-//import gameLogo from '../Assets/misc/taklogo.png';
+//import Phaser from '../lib/phaser.js';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {
@@ -8,8 +6,8 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('madeBy', '../Assets/misc/me-min.png');
-    this.load.image('gameLogo', './src/Assets/misc/taklogo.png');
+    this.load.image('madeBy', './src/Assets/misc/me-min.png');
+    this.load.image('gameLogo', './src/Assets/misc/tanklogo.png');
   }
 
   create() {
