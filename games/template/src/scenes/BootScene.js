@@ -9,7 +9,7 @@ export default class BootScene extends Phaser.Scene {
 
   preload() {
     this.load.image('madeBy', '../Assets/misc/me-min.png');
-    this.load.image('gameLogo', '../Assets/misc/taklogo.png');
+    this.load.image('gameLogo', './Assets/misc/taklogo.png');
   }
 
   create() {
