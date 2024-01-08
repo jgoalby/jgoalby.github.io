@@ -27,6 +27,17 @@
 - Bfxr
   - https://www.bfxr.net/
 
+### Javascript libraries to check out
+
+Possibly ways to create a backend without a backend?
+- https://pocketbase.io/
+- https://hypermedia.systems/
+- https://www.pixijs.com/
+- https://www.babylonjs.com/
+- https://htmx.org/
+- https://htmx.org/examples/
+- https://unpoly.com/
+
 ### Completed Games
 
 - Rogue Tanks Game made with Phaser and Javascript
