@@ -1,12 +1,11 @@
 # TODOs
 
-- Remove all of the OGG files
 - Fix errors in the javascript
+  - this.sys.game.globals
 - Should I need the .js in the imports?
 - Convert to use typescript and github actions to compile?
   - https://putridparrot.com/blog/building-and-testing-typescript-code-using-github-actions/
   - https://github.com/marketplace/actions/typescript-build
-- Change Assets to lowercase folder name
 - Extract colors as a constant especially the text colors
 - Can the typescript types file be moved to lib?
   - Make sure that the types work when I move them
@@ -14,3 +13,5 @@
 - Does jsconfig.json need to be in the root?
 - Find something to replace bgmusic.ogg for bgMusic
 - See if I need all of the CSS entries or not?
+- Can I replace paths with pathfinder?
+- Search for boilerplate for Phaser projects
