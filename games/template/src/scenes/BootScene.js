@@ -1,4 +1,4 @@
-import Constants from '../utils/constants.js';
+import Constants from '../constants.js';
 
 export default class BootScene extends Phaser.Scene {
   constructor() {

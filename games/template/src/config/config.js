@@ -1,4 +1,4 @@
-import Constants from '../utils/constants.js';
+import Constants from '../constants.js';
 
 export default {
   type: Constants.GAME_TYPE,

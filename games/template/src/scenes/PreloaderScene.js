@@ -1,4 +1,4 @@
-import Constants from '../utils/constants.js';
+import Constants from '../constants.js';
 
 console.log(Constants.GAME_WIDTH);
 console.log(Constants.GAME_HEIGHT);
