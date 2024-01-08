@@ -8,3 +8,9 @@
   - https://github.com/marketplace/actions/typescript-build
 - Change Assets to lowercase folder name
 - Extract colors as a constant especially the text colors
+- Can the typescript types file be moved to lib?
+  - Make sure that the types work when I move them
+- Add a favicon
+- Does jsconfig.json need to be in the root?
+- Find something to replace bgmusic.ogg for bgMusic
+- See if I need all of the CSS entries or not?

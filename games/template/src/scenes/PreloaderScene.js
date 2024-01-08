@@ -105,11 +105,12 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('hoverButton', Constants.ASSETS_PATH + 'ui/buttonHighLight.png');
     this.load.image('box', Constants.ASSETS_PATH + 'ui/grey_box.png');
     this.load.image('checkedBox', Constants.ASSETS_PATH + 'ui/blue_boxCheckmark.png');
-    //this.load.audio('bgMusic', [Constants.ASSETS_PATH + 'audio/bgmusic.ogg']);
+
     this.load.audio('bgMusic', [Constants.ASSETS_PATH + 'audio/intro.mp3']);
-    this.load.audio('introVoice', [Constants.ASSETS_PATH + 'audio/intro.mp3', Constants.ASSETS_PATH + 'audio/intro.ogg']);
-    this.load.audio('fire', [Constants.ASSETS_PATH + 'audio/fire.mp3', Constants.ASSETS_PATH + 'audio/fire.ogg']);
-    this.load.audio('enemyFire', [Constants.ASSETS_PATH + 'audio/enemyFire.mp3', Constants.ASSETS_PATH + 'audio/enemyFire.ogg']);
+    this.load.audio('introVoice', [Constants.ASSETS_PATH + 'audio/intro.mp3']);
+    this.load.audio('fire', [Constants.ASSETS_PATH + 'audio/fire.mp3']);
+    this.load.audio('enemyFire', [Constants.ASSETS_PATH + 'audio/enemyFire.mp3']);
+
     this.load.spritesheet('player', Constants.ASSETS_PATH + 'tank/player.png', {
       frameWidth: 256,
       frameHeight: 256,

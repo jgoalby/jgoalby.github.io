@@ -24,6 +24,6 @@ export default class Constants {
   }
 
   static get ASSETS_PATH() {
-    return './src/Assets/';
+    return './src/assets/';
   }
 }
