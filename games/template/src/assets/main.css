@@ -1,7 +1,10 @@
-html,
-body,
-.container {
+html, body {
+  height: 100%;
   margin: 0;
   padding: 0;
   background: #00F;
+}
+
+#main {
+  min-height: 100%; 
 }
