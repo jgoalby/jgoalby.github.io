@@ -9,14 +9,24 @@ const SIZE_HEIGHT_SCREEN = 1080
 
 export default {
   type: Constants.GAME_TYPE,
-  //width: Constants.GAME_WIDTH,
-  //height: Constants.GAME_HEIGHT,
+  width: SIZE_WIDTH_SCREEN,
+  height: SIZE_HEIGHT_SCREEN,
   backgroundColor: 'black',
   scale: {
-    mode: Phaser.Scale.ENVELOP,
+    mode: Phaser.Scale.FIT,
     autocenter: Phaser.Scale.CENTER_BOTH,
-    width: SIZE_WIDTH_SCREEN,
-    height: SIZE_HEIGHT_SCREEN,
+    parent: Constants.GAME_PARENT,
+    //width: SIZE_WIDTH_SCREEN,
+    //height: SIZE_HEIGHT_SCREEN,
+    min: {
+      width: MIN_SIZE_WIDTH_SCREEN,
+      height: MIN_SIZE_HEIGHT_SCREEN
+    },
+    max: {
+      width: MAX_SIZE_WIDTH_SCREEN,
+      height: MAX_SIZE_HEIGHT_SCREEN
+    },
+    zoom: 1,
   },
   physics: {
     default: 'arcade',
@@ -25,9 +35,6 @@ export default {
       debug: false,
     },
   },
-  /*scale: {
-    zoom: 1,
-  },*/
   parent: Constants.GAME_PARENT,
   dom: {
     createContainer: true,
