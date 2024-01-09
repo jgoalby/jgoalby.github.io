@@ -15,8 +15,8 @@ export default {
   scale: {
     //width: 1200,
     //height: 650,
-    mode: Phaser.Scale.ENVELOP,
-    autocenter: Phaser.Scale.CENTER_BOTH,
+    mode: Phaser.Scale.FIT,
+    //autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
     min: {
       width: 1200,
