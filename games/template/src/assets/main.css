@@ -22,29 +22,3 @@ body {
   height: 650px;
   width: 1200px;
 }
-
-input {
-  font-size: 32px;
-}
-
-table {
-  width: 100%;
-  padding-left: 30%;
-  color: white;
-  font-size: 32px;
-
-  tr {
-    padding-left: 40px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #575555;
-  }
-
-  th,
-  td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 3px 8px;
-  }
-}
