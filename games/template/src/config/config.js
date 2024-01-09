@@ -15,8 +15,8 @@ export default {
   scale: {
     width: window.innerWidth,
     height: window.innerHeight,
-    mode: Phaser.Scale.ENVELOP,
-    autocenter: Phaser.Scale.CENTER_BOTH,
+    //mode: Phaser.Scale.ENVELOP,
+    //autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
     /*min: {
       width: 1200,

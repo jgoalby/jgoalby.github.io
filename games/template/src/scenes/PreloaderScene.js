@@ -1,9 +1,5 @@
 import Constants from '../constants.js';
 
-console.log(Constants.GAME_WIDTH);
-console.log(Constants.GAME_HEIGHT);
-console.log(Constants.ASSETS_PATH);
-
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
     super('Preloader');
@@ -12,7 +8,6 @@ export default class PreloaderScene extends Phaser.Scene {
   preload() {
     const { width, height } = this.cameras.main;
 
-    const avatar = this.add.image(10, 10, 'madeBy').setOrigin(0, 0).setScale(0.3, 0.3);
     const name = this.make.text({
       x: 10,
       y: 150,
@@ -91,7 +86,6 @@ export default class PreloaderScene extends Phaser.Scene {
       percentText.destroy();
       assetText.destroy();
       this.time.delayedCall(1000, () => {
-        avatar.destroy();
         name.destroy();
         this.startTitleScene();
       });
