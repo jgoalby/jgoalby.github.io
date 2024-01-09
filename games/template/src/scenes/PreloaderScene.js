@@ -10,7 +10,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   preload() {
-    const { width } = this.cameras.main;
+    const { width, height } = this.cameras.main;
 
     const avatar = this.add.image(10, 10, 'madeBy').setOrigin(0, 0).setScale(0.3, 0.3);
     const name = this.make.text({
@@ -30,7 +30,7 @@ export default class PreloaderScene extends Phaser.Scene {
         duration: 300,
         ease: 'Power2',
         onComplete: () => {
-          this.gameLogo = this.add.image(width / 1.9, 300, 'gameLogo').setOrigin(0.5, 0.5).setScale(1, 1);
+          this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(1, 1);
         },
       }, this);
     });
