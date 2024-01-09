@@ -18,11 +18,11 @@ export default {
     parent: Constants.GAME_PARENT,
     //width: SIZE_WIDTH_SCREEN,
     //height: SIZE_HEIGHT_SCREEN,
-    /*min: {
-      width: MIN_SIZE_WIDTH_SCREEN,
-      height: MIN_SIZE_HEIGHT_SCREEN
+    min: {
+      width: 1200,
+      height: 650
     },
-    max: {
+    /*max: {
       width: MAX_SIZE_WIDTH_SCREEN,
       height: MAX_SIZE_HEIGHT_SCREEN
     },*/
