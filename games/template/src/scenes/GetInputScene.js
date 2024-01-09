@@ -4,7 +4,8 @@ export default class InputScene extends Phaser.Scene {
   }
 
   create() {
-    const text = this.add.text(450, 200, 'Please enter your name!', {
+    const { width, height } = this.cameras.main;
+    const text = this.add.text(width / 2, height / 2, 'Please enter your name!', {
       color: 'white',
       fontSize: '20px ',
     });
