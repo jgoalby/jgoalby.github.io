@@ -18,14 +18,14 @@ export default {
     parent: Constants.GAME_PARENT,
     //width: SIZE_WIDTH_SCREEN,
     //height: SIZE_HEIGHT_SCREEN,
-    min: {
+    /*min: {
       width: MIN_SIZE_WIDTH_SCREEN,
       height: MIN_SIZE_HEIGHT_SCREEN
     },
     max: {
       width: MAX_SIZE_WIDTH_SCREEN,
       height: MAX_SIZE_HEIGHT_SCREEN
-    },
+    },*/
     zoom: 1,
   },
   physics: {
