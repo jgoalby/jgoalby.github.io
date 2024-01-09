@@ -16,10 +16,10 @@ export default {
     mode: Phaser.Scale.ENVELOP,
     autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
-    min: {
+    /*min: {
       width: 800,
       height: 600
-    },
+    },*/
     /*max: {
       width: MAX_SIZE_WIDTH_SCREEN,
       height: MAX_SIZE_HEIGHT_SCREEN
