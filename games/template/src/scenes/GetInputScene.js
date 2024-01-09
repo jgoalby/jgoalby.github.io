@@ -3,13 +3,12 @@ export default class InputScene extends Phaser.Scene {
     super('Input');
   }
 
-  preload() {
+  /*preload() {
     this.canvas = this.sys.game.canvas;
-  }
+  }*/
 
   create() {
-    const { width, height } = this.canvas;
-    const text = this.add.text(width / 2, height / 2, 'Please enter your name!', {
+    const text = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Please enter your name!', {
       color: 'white',
       fontSize: '20px ',
     });
