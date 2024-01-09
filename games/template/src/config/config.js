@@ -9,8 +9,8 @@ const SIZE_HEIGHT_SCREEN = 1080
 
 export default {
   type: Constants.GAME_TYPE,
-  width: window.innerWidth,
-  height: window.innerHeight,
+  width: 1280,
+  height: 1024,
   backgroundColor: 'black',
   scale: {
     mode: Phaser.Scale.FIT,
