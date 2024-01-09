@@ -30,7 +30,7 @@ export default class PreloaderScene extends Phaser.Scene {
         duration: 300,
         ease: 'Power2',
         onComplete: () => {
-          this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(10, 10);
+          this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
         },
       }, this);
     });
