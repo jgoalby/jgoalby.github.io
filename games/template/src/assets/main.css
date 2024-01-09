@@ -1,8 +1,10 @@
-* {
+html,
+body,
+.container {
   margin: 0;
   padding: 0;
   width: 100vw;
-  height: auto;
+  height: auto;  
   overflow: hidden;
   background: #F00;
 }
