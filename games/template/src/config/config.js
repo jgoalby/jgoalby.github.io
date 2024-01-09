@@ -18,14 +18,14 @@ export default {
     mode: Phaser.Scale.FIT,
     //autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
-    min: {
+    /*min: {
       width: 1200,
       height: 650
     },
     max: {
       width: 1600,
       height: 1200
-    },
+    },*/
     zoom: 1,
   },
   physics: {
