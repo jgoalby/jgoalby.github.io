@@ -1,24 +1,8 @@
-html,
-body,
-.container {
-  margin: 0px;
+* {
+  margin: 0;
   padding: 0;
   width: 100vw;
-  height: 100vh;  
-  overflow: hidden;
-  background: #47a747;
-}
-
-notbody {
-  margin: 0;
-  width: 100%;
   height: auto;
-  background-color: #000;
-}
-
-#notmain {
-  margin: 0 auto;
-  padding: 0;
-  height: 650px;
-  width: 1200px;
+  overflow: hidden;
+  background: #F00;
 }
