@@ -5,23 +5,14 @@ export default class InputScene extends Phaser.Scene {
 
   preload() {
     this.canvas = this.sys.game.canvas;
-    this.log = true;
-  }
-
-  update() {
-    if (this.log) {
-      console.log(window.innerWidth, window.innerHeight);
-      console.log(this.canvas.width, this.canvas.height);
-      console.log(this.cameras.main.centerX, this.cameras.main.centerY);
-      this.log = false;
-    }
-    const text = this.add.text(window.innerWidth / 2, window.innerHeight / 2, 'Please enter your name!', {
-      color: 'white',
-      fontSize: '20px ',
-    });
   }
 
   create() {
+    const text = this.add.text(this.cameras.main.centerX, this.cameras.main.centerY, 'Please enter your name!', {
+      color: 'white',
+      fontSize: '20px ',
+    });
+
     const dom = document.createElement('div');
     const input = document.createElement('input');
     input.name = 'nameField';
@@ -38,7 +29,6 @@ export default class InputScene extends Phaser.Scene {
     element.addListener('click');
 
     element.on('click', (event) => {
-      this.log = true;
       if (event.target.name === 'playButton') {
         const inputText = element.getChildByName('nameField');
         this.sys.game.globals.player = inputText.value;

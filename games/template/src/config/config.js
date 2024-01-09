@@ -13,20 +13,20 @@ export default {
   //height: 650,
   backgroundColor: 'black',
   scale: {
-    // width: 1200,
-    // height: 650,
+    width: 1200,
+    height: 650,
     mode: Phaser.Scale.ENVELOP,
     autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
-    /*min: {
+    min: {
       width: 1200,
       height: 650
     },
     max: {
       width: 1600,
       height: 1200
-    },*/
-    //zoom: 1,
+    },
+    zoom: 1,
   },
   physics: {
     default: 'arcade',
