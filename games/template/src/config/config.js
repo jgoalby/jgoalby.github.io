@@ -12,7 +12,7 @@ export default {
   width: 1200,
   height: 650,
   backgroundColor: 'black',
-  scale: {
+  /*scale: {
     //width: 1200,
     //height: 650,
     mode: Phaser.Scale.FIT,
@@ -25,9 +25,9 @@ export default {
     max: {
       width: 1600,
       height: 1200
-    },*/
+    },
     //zoom: 1,
-  },
+  },*/
   physics: {
     default: 'arcade',
     arcade: {
@@ -36,7 +36,7 @@ export default {
     },
   },
   parent: Constants.GAME_PARENT,
-  /*dom: {
+  dom: {
     createContainer: true,
-  },*/
+  },
 };
