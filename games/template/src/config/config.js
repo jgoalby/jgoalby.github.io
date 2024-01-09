@@ -36,7 +36,7 @@ export default {
     },
   },
   parent: Constants.GAME_PARENT,
-  dom: {
+  /*dom: {
     createContainer: true,
-  },
+  },*/
 };
