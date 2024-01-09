@@ -17,7 +17,7 @@ export default {
     //height: 650,
     mode: Phaser.Scale.FIT,
     //autocenter: Phaser.Scale.CENTER_BOTH,
-    parent: Constants.GAME_PARENT,
+    //parent: Constants.GAME_PARENT,
     /*min: {
       width: 1200,
       height: 650
@@ -26,7 +26,7 @@ export default {
       width: 1600,
       height: 1200
     },*/
-    zoom: 1,
+    //zoom: 1,
   },
   physics: {
     default: 'arcade',
