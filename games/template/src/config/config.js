@@ -9,12 +9,12 @@ const SIZE_HEIGHT_SCREEN = 1080
 
 export default {
   type: Constants.GAME_TYPE,
-  //width: 1200,
-  //height: 650,
+  width: 1200,
+  height: 650,
   backgroundColor: 'black',
   scale: {
-    width: 1200,
-    height: 650,
+    //width: 1200,
+    //height: 650,
     mode: Phaser.Scale.ENVELOP,
     autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
