@@ -9,22 +9,24 @@ const SIZE_HEIGHT_SCREEN = 1080
 
 export default {
   type: Constants.GAME_TYPE,
-  width: 1200,
-  height: 650,
+  //width: 1200,
+  //height: 650,
   backgroundColor: 'black',
   scale: {
+    width: 1200,
+    height: 650,
     mode: Phaser.Scale.ENVELOP,
     autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
-    /*min: {
-      width: 800,
-      height: 600
-    },*/
-    /*max: {
-      width: MAX_SIZE_WIDTH_SCREEN,
-      height: MAX_SIZE_HEIGHT_SCREEN
-    },*/
-    zoom: 1,
+    min: {
+      width: 1200,
+      height: 650
+    },
+    max: {
+      width: 1600,
+      height: 1200
+    },
+    //zoom: 1,
   },
   physics: {
     default: 'arcade',
