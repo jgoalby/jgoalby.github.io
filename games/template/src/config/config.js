@@ -13,7 +13,7 @@ export default {
   height: window.innerHeight,
   backgroundColor: 'black',
   scale: {
-    mode: Phaser.Scale.ENVELOP,
+    mode: Phaser.Scale.FIT,
     autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
     /*min: {
