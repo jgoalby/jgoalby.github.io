@@ -1,10 +1,31 @@
 import Constants from '../constants.js';
 
+const MAX_SIZE_WIDTH_SCREEN = 1920
+const MAX_SIZE_HEIGHT_SCREEN = 1080
+const MIN_SIZE_WIDTH_SCREEN = 270
+const MIN_SIZE_HEIGHT_SCREEN = 480
+const SIZE_WIDTH_SCREEN = 540
+const SIZE_HEIGHT_SCREEN = 960
+
 export default {
   type: Constants.GAME_TYPE,
-  width: Constants.GAME_WIDTH,
-  height: Constants.GAME_HEIGHT,
+  //width: Constants.GAME_WIDTH,
+  //height: Constants.GAME_HEIGHT,
   backgroundColor: 'black',
+  scale: {
+    mode: Phaser.Scale.RESIZE,
+    parent: 'game',
+    width: SIZE_WIDTH_SCREEN,
+    height: SIZE_HEIGHT_SCREEN,
+    min: {
+        width: MIN_SIZE_WIDTH_SCREEN,
+        height: MIN_SIZE_HEIGHT_SCREEN
+    },
+    max: {
+        width: MAX_SIZE_WIDTH_SCREEN,
+        height: MAX_SIZE_HEIGHT_SCREEN
+    }
+  },
   physics: {
     default: 'arcade',
     arcade: {
@@ -12,10 +33,9 @@ export default {
       debug: false,
     },
   },
-  scale: {
+  /*scale: {
     zoom: 1,
-  },
-
+  },*/
   parent: Constants.GAME_PARENT,
   dom: {
     createContainer: true,

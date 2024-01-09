@@ -1,10 +1,10 @@
 export default class Constants {
   static get GAME_WIDTH() {
-    return 1280;
+    return window.innerWidth;
   }
 
   static get GAME_HEIGHT() {
-    return 650;
+    return window.innerHeight;
   }
 
   static get GAME_BACKGROUND_COLOR() {
