@@ -15,3 +15,6 @@
 - See if I need all of the CSS entries or not?
 - Can I replace paths with pathfinder?
 - Search for boilerplate for Phaser projects
+- See if I can get full screen to work using F11
+  - Saw it here:
+    - https://github.com/shimozurdo/mobile-game-base-phaser3
