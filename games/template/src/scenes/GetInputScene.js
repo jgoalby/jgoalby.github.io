@@ -10,6 +10,7 @@ export default class InputScene extends Phaser.Scene {
 
   update() {
     if (this.log) {
+      console.log(window.innerWidth, window.innerHeight);
       console.log(this.canvas.width, this.canvas.height);
       console.log(this.cameras.main.centerX, this.cameras.main.centerY);
       this.log = false;
