@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable import/no-unresolved */
 
-import Phaser from 'phaser';
-import Button from '../Components/button';
+//import Phaser from 'phaser';
+import Button from '../Components/button.js';
 
 export default class MenuScene extends Phaser.Scene {
   constructor() {
