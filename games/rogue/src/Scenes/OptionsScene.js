@@ -1,8 +1,8 @@
 /* eslint-disable no-new */
 /* eslint-disable import/no-unresolved */
 
-import Phaser from 'phaser';
-import Button from '../Components/button';
+//import Phaser from 'phaser';
+import Button from '../Components/button.js';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
