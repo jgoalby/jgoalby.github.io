@@ -4,6 +4,7 @@ export default class BootScene extends Phaser.Scene {
   constructor(deps) {
     super('Boot');
     this.deps = deps;
+    console.log(this.deps);
   }
 
   preload() {
