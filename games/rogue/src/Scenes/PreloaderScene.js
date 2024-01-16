@@ -116,47 +116,47 @@ export default class PreloaderScene extends Phaser.Scene {
       });
     });
 
-    this.load.image('tile1', '../Assets/tile/city.png');
-    this.load.image('build', '../Assets/tile/_Example.png');
-    this.load.tilemapTiledJSON('map1', '../Assets/tile/city.json');
+    this.load.image('tile1', 'Assets/tile/city.png');
+    this.load.image('build', 'Assets/tile/_Example.png');
+    this.load.tilemapTiledJSON('map1', 'Assets/tile/city.json');
 
-    this.load.image('normalButton', '../Assets/ui/buttonNormal.png');
-    this.load.image('hoverButton', '../Assets/ui/buttonHighLight.png');
-    this.load.image('box', '../Assets/ui/grey_box.png');
-    this.load.image('checkedBox', '../Assets/ui/blue_boxCheckmark.png');
-    this.load.audio('bgMusic', ['../Assets/audio/bgmusic.ogg']);
-    this.load.audio('introVoice', ['../Assets/audio/intro.mp3', '../Assets/audio/intro.ogg']);
-    this.load.audio('fire', ['../Assets/audio/fire.mp3', '../Assets/audio/fire.ogg']);
-    this.load.audio('enemyFire', ['../Assets/audio/enemyFire.mp3', '../Assets/audio/enemyFire.ogg']);
-    this.load.spritesheet('player', '../Assets/tank/player.png', {
+    this.load.image('normalButton', 'Assets/ui/buttonNormal.png');
+    this.load.image('hoverButton', 'Assets/ui/buttonHighLight.png');
+    this.load.image('box', 'Assets/ui/grey_box.png');
+    this.load.image('checkedBox', 'Assets/ui/blue_boxCheckmark.png');
+    this.load.audio('bgMusic', ['Assets/audio/bgmusic.ogg']);
+    this.load.audio('introVoice', ['Assets/audio/intro.mp3', 'Assets/audio/intro.ogg']);
+    this.load.audio('fire', ['Assets/audio/fire.mp3', 'Assets/audio/fire.ogg']);
+    this.load.audio('enemyFire', ['Assets/audio/enemyFire.mp3', 'Assets/audio/enemyFire.ogg']);
+    this.load.spritesheet('player', 'Assets/tank/player.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
-    this.load.spritesheet('playerTankBarrel', '../Assets/tank/playerTankBarrel.png', {
-      frameWidth: 256,
-      frameHeight: 256,
-    });
-
-    this.load.spritesheet('bullet', '../Assets/tank/HeavyShell.png', {
+    this.load.spritesheet('playerTankBarrel', 'Assets/tank/playerTankBarrel.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
 
-    this.load.spritesheet('explosion', '../Assets/tank/explosion.png', {
+    this.load.spritesheet('bullet', 'Assets/tank/HeavyShell.png', {
+      frameWidth: 256,
+      frameHeight: 256,
+    });
+
+    this.load.spritesheet('explosion', 'Assets/tank/explosion.png', {
       frameWidth: 60,
       frameHeight: 60,
     });
 
-    this.load.spritesheet('enemy', '../Assets/tank/enemy.png', {
+    this.load.spritesheet('enemy', 'Assets/tank/enemy.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
-    this.load.spritesheet('enemyTankBarrel', '../Assets/tank/enemyTankBarrel.png', {
+    this.load.spritesheet('enemyTankBarrel', 'Assets/tank/enemyTankBarrel.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
 
-    this.load.image('tombstone', '../Assets/misc/tombstone.png');
+    this.load.image('tombstone', 'Assets/misc/tombstone.png');
   }
 
   startTitleScene() {
