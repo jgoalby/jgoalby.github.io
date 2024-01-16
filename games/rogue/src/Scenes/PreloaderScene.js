@@ -1,27 +1,27 @@
 /* eslint-disable import/no-unresolved */
 
 //import Phaser from 'phaser';
-import citypng from '../Assets/tile/city.png';
-import bpng from '../Assets/tile/_Example.png';
-import cityjson from '../Assets/tile/city.json';
-import bgmusic from '../Assets/audio/bgmusic.ogg';
-import normalButton from '../Assets/ui/buttonNormal.png';
-import hoverButton from '../Assets/ui/buttonHighLight.png';
-import grey from '../Assets/ui/grey_box.png';
-import blue from '../Assets/ui/blue_boxCheckmark.png';
-import introVoiceMp3 from '../Assets/audio/intro.mp3';
-import introVoiceOgg from '../Assets/audio/intro.ogg';
-import fireMp3 from '../Assets/audio/fire.mp3';
-import fireOgg from '../Assets/audio/fire.ogg';
-import enemyFireMp3 from '../Assets/audio/enemyFire.mp3';
-import enemyFireOgg from '../Assets/audio/enemyFire.ogg';
-import player from '../Assets/tank/player.png';
-import playerTankBarrel from '../Assets/tank/playerTankBarrel.png';
-import bulletShell from '../Assets/tank/HeavyShell.png';
-import explosion from '../Assets/tank/explosion.png';
-import enemy from '../Assets/tank/enemy.png';
-import enemyTankBarrel from '../Assets/tank/enemyTankBarrel.png';
-import tombstone from '../Assets/misc/tombstone.png';
+//import citypng from '../Assets/tile/city.png';
+//import bpng from '../Assets/tile/_Example.png';
+//import cityjson from '../Assets/tile/city.json';
+//import bgmusic from '../Assets/audio/bgmusic.ogg';
+//import normalButton from '../Assets/ui/buttonNormal.png';
+//import hoverButton from '../Assets/ui/buttonHighLight.png';
+//import grey from '../Assets/ui/grey_box.png';
+//import blue from '../Assets/ui/blue_boxCheckmark.png';
+//import introVoiceMp3 from '../Assets/audio/intro.mp3';
+//import introVoiceOgg from '../Assets/audio/intro.ogg';
+//import fireMp3 from '../Assets/audio/fire.mp3';
+//import fireOgg from '../Assets/audio/fire.ogg';
+//import enemyFireMp3 from '../Assets/audio/enemyFire.mp3';
+//import enemyFireOgg from '../Assets/audio/enemyFire.ogg';
+//import player from '../Assets/tank/player.png';
+//import playerTankBarrel from '../Assets/tank/playerTankBarrel.png';
+//import bulletShell from '../Assets/tank/HeavyShell.png';
+//import explosion from '../Assets/tank/explosion.png';
+//import enemy from '../Assets/tank/enemy.png';
+//import enemyTankBarrel from '../Assets/tank/enemyTankBarrel.png';
+//import tombstone from '../Assets/misc/tombstone.png';
 
 export default class PreloaderScene extends Phaser.Scene {
   constructor() {
@@ -116,47 +116,47 @@ export default class PreloaderScene extends Phaser.Scene {
       });
     });
 
-    this.load.image('tile1', citypng);
-    this.load.image('build', bpng);
-    this.load.tilemapTiledJSON('map1', cityjson);
+    this.load.image('tile1', '../Assets/tile/city.png');
+    this.load.image('build', '../Assets/tile/_Example.png');
+    this.load.tilemapTiledJSON('map1', '../Assets/tile/city.json');
 
-    this.load.image('normalButton', normalButton);
-    this.load.image('hoverButton', hoverButton);
-    this.load.image('box', grey);
-    this.load.image('checkedBox', blue);
-    this.load.audio('bgMusic', [bgmusic]);
-    this.load.audio('introVoice', [introVoiceMp3, introVoiceOgg]);
-    this.load.audio('fire', [fireMp3, fireOgg]);
-    this.load.audio('enemyFire', [enemyFireMp3, enemyFireOgg]);
-    this.load.spritesheet('player', player, {
+    this.load.image('normalButton', '../Assets/ui/buttonNormal.png');
+    this.load.image('hoverButton', '../Assets/ui/buttonHighLight.png');
+    this.load.image('box', '../Assets/ui/grey_box.png');
+    this.load.image('checkedBox', '../Assets/ui/blue_boxCheckmark.png');
+    this.load.audio('bgMusic', ['../Assets/audio/bgmusic.ogg']);
+    this.load.audio('introVoice', ['../Assets/audio/intro.mp3', '../Assets/audio/intro.ogg']);
+    this.load.audio('fire', ['../Assets/audio/fire.mp3', '../Assets/audio/fire.ogg']);
+    this.load.audio('enemyFire', ['../Assets/audio/enemyFire.mp3', '../Assets/audio/enemyFire.ogg']);
+    this.load.spritesheet('player', '../Assets/tank/player.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
-    this.load.spritesheet('playerTankBarrel', playerTankBarrel, {
-      frameWidth: 256,
-      frameHeight: 256,
-    });
-
-    this.load.spritesheet('bullet', bulletShell, {
+    this.load.spritesheet('playerTankBarrel', '../Assets/tank/playerTankBarrel.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
 
-    this.load.spritesheet('explosion', explosion, {
+    this.load.spritesheet('bullet', '../Assets/tank/HeavyShell.png', {
+      frameWidth: 256,
+      frameHeight: 256,
+    });
+
+    this.load.spritesheet('explosion', '../Assets/tank/explosion.png', {
       frameWidth: 60,
       frameHeight: 60,
     });
 
-    this.load.spritesheet('enemy', enemy, {
+    this.load.spritesheet('enemy', '../Assets/tank/enemy.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
-    this.load.spritesheet('enemyTankBarrel', enemyTankBarrel, {
+    this.load.spritesheet('enemyTankBarrel', '../Assets/tank/enemyTankBarrel.png', {
       frameWidth: 256,
       frameHeight: 256,
     });
 
-    this.load.image('tombstone', tombstone);
+    this.load.image('tombstone', '../Assets/misc/tombstone.png');
   }
 
   startTitleScene() {
