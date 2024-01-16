@@ -1,7 +1,7 @@
 /* eslint-disable import/no-unresolved */
 
 //import Phaser from 'phaser';
-import './SCSS/main.scss';
+//import './SCSS/main.scss';
 import config from './Config/config.js';
 import BootScene from './Scenes/BootScene.js';
 import PreloaderScene from './Scenes/PreloaderScene.js';
