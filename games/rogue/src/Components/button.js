@@ -1,5 +1,5 @@
 /* eslint-disable import/no-unresolved */
-import Phaser from 'phaser';
+//import Phaser from 'phaser';
 
 export default class Button extends Phaser.GameObjects.Container {
   constructor(scene, x, y, normal, hover, text, targetScene, scaleButton = false) {
