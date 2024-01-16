@@ -116,11 +116,11 @@ export default class PreloaderScene extends Phaser.Scene {
     });
     //this.load.image('playerTankBarrel', Constants.ASSETS_PATH + 'tank/playerTankBarrel.png');
 
-    /*this.load.spritesheet('bullet', Constants.ASSETS_PATH + 'tank/HeavyShell.png', {
+    this.load.spritesheet('bullet', Constants.ASSETS_PATH + 'tank/HeavyShell.png', {
       frameWidth: 256,
       frameHeight: 256,
-    });*/
-    this.load.image('bullet', Constants.ASSETS_PATH + 'tank/HeavyShell.png');
+    });
+    //this.load.image('bullet', Constants.ASSETS_PATH + 'tank/HeavyShell.png');
 
     this.load.spritesheet('explosion', Constants.ASSETS_PATH + 'tank/explosion.png', {
       frameWidth: 60,
