@@ -1,6 +1,7 @@
 export default class InputScene extends Phaser.Scene {
-  constructor() {
+  constructor(deps) {
     super('Input');
+    this.deps = deps;
   }
 
   preload() {

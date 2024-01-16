@@ -2,8 +2,9 @@ import Button from '../components/Button.js';
 import Api from '../utils/api.js';
 
 export default class GameOverScene extends Phaser.Scene {
-  constructor() {
+  constructor(deps) {
     super('GameOver');
+    this.deps = deps;
   }
 
   create() {

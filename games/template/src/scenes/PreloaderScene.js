@@ -1,8 +1,9 @@
 import Constants from '../constants.js';
 
 export default class PreloaderScene extends Phaser.Scene {
-  constructor() {
+  constructor(deps) {
     super('Preloader');
+    this.deps = deps;
   }
 
   preload() {

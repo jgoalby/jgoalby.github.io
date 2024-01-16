@@ -1,8 +1,9 @@
 import Button from '../components/Button.js';
 
 export default class CreditsScene extends Phaser.Scene {
-  constructor() {
+  constructor(deps) {
     super('Credits');
+    this.deps = deps;
   }
 
   create() {

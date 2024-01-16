@@ -2,8 +2,9 @@ import Api from '../utils/api.js';
 import Button from '../components/Button.js';
 
 export default class LeaderboardScene extends Phaser.Scene {
-  constructor() {
+  constructor(deps) {
     super('Leaderboard');
+    this.deps = deps;
   }
 
   create() {

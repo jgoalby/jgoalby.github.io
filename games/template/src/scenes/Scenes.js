@@ -11,16 +11,22 @@ import GameOverScene from './GameOverScene.js';
 
 export default class Scenes {
   static create(game) {
-    game.scene.add('Boot', BootScene);
-    game.scene.add('Preloader', PreloaderScene);
-    game.scene.add('Input', InputScene);
-    game.scene.add('Menu', MenuScene);
-    game.scene.add('Options', OptionsScene);
-    game.scene.add('Credits', CreditsScene);
-    game.scene.add('Leaderboard', LeaderboardScene);
-    game.scene.add('Intro', IntroScene);
-    game.scene.add('Game', GameScene);
-    game.scene.add('GameOver', GameOverScene);
+    const customEmitter = new Phaser.Events.EventEmitter();
+
+    const deps = {
+      emitter: customEmitter,
+    }
+
+    game.scene.add('Boot', new BootScene(deps));
+    game.scene.add('Preloader', new PreloaderScene(deps));
+    game.scene.add('Input', new InputScene(deps));
+    game.scene.add('Menu', new MenuScene(deps));
+    game.scene.add('Options', new OptionsScene(deps));
+    game.scene.add('Credits', new CreditsScene(deps));
+    game.scene.add('Leaderboard', new LeaderboardScene(deps));
+    game.scene.add('Intro', new IntroScene(deps));
+    game.scene.add('Game', new GameScene(deps));
+    game.scene.add('GameOver', new GameOverScene(deps));
     game.scene.start('Boot');
   }
 }
