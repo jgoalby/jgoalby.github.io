@@ -194,8 +194,12 @@ export default class GameScene extends Phaser.Scene {
     });
   }
 
-  rotarteBarrel() {
-    const rotate = Phaser.Math.Angle.Between(this.playerTankBarrel.body.x, this.playerTankBarrel.body.y, this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY);
+  rotateBarrel() {
+    // We need to convert the barrel position to screen coordinates
+    var barrelScreenX = (this.playerTankBarrel.body.x - this.camera.worldView.x) * this.camera.zoom;
+    var barrelScreenY = (this.playerTankBarrel.body.y - this.camera.worldView.y) * this.camera.zoom;
+
+    const rotate = Phaser.Math.Angle.Between(barrelScreenX, barrelScreenY, this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY);
     this.playerTankBarrel.rotation = rotate + Math.PI / 2;
   }
 
@@ -290,7 +294,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.playerTankBarrel.x = this.playerTankContainer.x;
     this.playerTankBarrel.y = this.playerTankContainer.y;
-    this.rotarteBarrel();
+    this.rotateBarrel();
 
     const speed = 200;
     const velocityX = Math.cos(this.playerTankContainer.rotation) * speed;
