@@ -297,7 +297,7 @@ export default class GameScene extends Phaser.Scene {
     const velocityY = Math.sin(this.playerTankContainer.rotation) * speed;
 
     if (this.arrows.left.isDown) {
-      this.playerTankBarrel.angularVelocity = -200;
+      this.playerTankBarrel.body.angularVelocity = -200;
     } else if (this.arrows.right.isDown) {
       this.playerTankBarrel.body.angularVelocity = 200;
     }
