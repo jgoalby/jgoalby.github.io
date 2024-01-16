@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
 
-import Phaser from 'phaser';
+//import Phaser from 'phaser';
 
 export default class TankTools extends Phaser.Physics.Arcade.Sprite {
   constructor(mainScene, x, y, texture) {
