@@ -1,7 +1,8 @@
 {
     "name": "GameTemplate",
     "short_name": "GameTemplate",
-    "start_url": ".",
+    "start_url": "./",
+    "scope": ".",
     "display": "fullscreen",
     "orientation": "landscape",
     "background_color": "#fff",
