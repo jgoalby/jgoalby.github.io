@@ -17,10 +17,12 @@ self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
       if (response) {
+        console.log('Found ', event.request.url, ' in cache');
         return response;
       } else {
         return fetch(event.request).then(function(res) {
           return caches.open('dynamic').then(function(cache) {
+            console.log('Adding ', event.request.url, ' to cache');
             cache.put(event.request.url, res.clone());
             return res;
           });
