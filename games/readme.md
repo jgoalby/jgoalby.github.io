@@ -64,8 +64,12 @@ Code playgrounds:
 - <https://livecodes.io/docs/>
 - <https://antonz.org/in-browser-code-playgrounds/>
 
-What PWA can do that might be useful in a game?
+PWA Resources
 - <https://whatpwacando.today/>
+- <https://gamedevacademy.org/phaser-progressive-web-apps-tutorial/>
+- <https://gist.github.com/hal0gen/5852bd9db240c477f20c>
+- <https://www.pwabuilder.com/imageGenerator>
+- <https://cthedot.de/icongen/>
 
 ### Completed Games
 
