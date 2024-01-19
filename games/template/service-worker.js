@@ -13,23 +13,19 @@ self.addEventListener('activate', function(event) {
   console.log('[Service Worker] Activating Service Worker ....', event);
 });
 
-self.addEventListener('fetch', (event) => {
-  const version = 'version1';
-  
+self.addEventListener('fetch', function(event) {
   event.respondWith(
-    caches.open(version).then((cache) => {
-      console.log("2");
-      return cache.match(event.request).then((response) => {
-        console.log("3");
-        let fetchPromise = fetch(event.request).then((networkResponse) => {
-          console.log("4");
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        });
-        console.log("5");
-        event.waitUntil(fetchPromise);
+    caches.match(event.request).then(function(response) {
+      if (response) {
         return response;
-      })
+      } else {
+        return fetch(event.request).then(function(res) {
+          return caches.open('dynamic').then(function(cache) {
+            cache.put(event.request.url, res.clone());
+            return res;
+          });
+        });
+      }
     })
   );
 });
