@@ -19,5 +19,6 @@ body {
 #main {
   height: 100%;
   width: 100%;
-  background-color: lightskyblue;
+  old-background-color: lightskyblue;
+  background-color: peachpuff;
 }
