@@ -16,7 +16,7 @@ window.game = new Game();
 (() => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-    navigator.serviceWorker.register('src/service-worker.js').then((registration) => {
+    navigator.serviceWorker.register('service-worker.js').then((registration) => {
       console.log('Service worker registration successful');
       console.log(registration);
     }, function(err) {
