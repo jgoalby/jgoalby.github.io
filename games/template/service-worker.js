@@ -27,7 +27,7 @@ self.addEventListener('fetch', function(event) {
           return res;
         });
       }).catch(function(error) {
-        console.log('Error fetching ', event.request.url, ': ', error);
+        //console.log('Error fetching ', event.request.url, ': ', error);
       });
       event.waitUntil(fetchPromise);
       return response;
