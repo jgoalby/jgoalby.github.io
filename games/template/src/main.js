@@ -18,10 +18,8 @@ window.game = new Game();
     window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js').then((registration) => {
       console.log('Service worker registration successful!');
-      console.log(registration);
     }, function(err) {
-        console.log('Service worker registration failed!');
-        console.log(err);
+        console.log('Service worker registration failed!', err);
       });
     });
   } else {
