@@ -4,7 +4,6 @@ self.addEventListener('fetch', (event) => {
   const version = 'version1';
   
   event.respondWith(
-    console.log("1");
     caches.open(version).then((cache) => {
       console.log("2");
       return cache.match(event.request).then((response) => {
