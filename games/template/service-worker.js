@@ -22,12 +22,11 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request).then(function(response) {
       let fetchPromise = fetch(event.request).then(function(res) {
         return caches.open('dynamic').then(function(cache) {
-          console.log('Adding ', event.request.url, ' to cache');
           cache.put(event.request.url, res.clone());
           return res;
         });
       }).catch(function(error) {
-        //console.log('Error fetching ', event.request.url, ': ', error);
+        // Do nothing as likely not connected to the internet
       });
       event.waitUntil(fetchPromise);
       return response;
