@@ -20,13 +20,15 @@ self.addEventListener('fetch', function(event) {
         console.log('Found ', event.request.url, ' in cache');
         return response;
       } else {
-        return fetch(event.request).then(function(res) {
-          return caches.open('dynamic').then(function(cache) {
-            console.log('Adding ', event.request.url, ' to cache');
-            cache.put(event.request.url, res.clone());
-            return res;
+        if (event.request.url.startsWith('http')) {
+          return fetch(event.request).then(function(res) {
+            return caches.open('dynamic').then(function(cache) {
+              console.log('Adding ', event.request.url, ' to cache');
+              cache.put(event.request.url, res.clone());
+              return res;
+            });
           });
-        });
+        }
       }
     })
   );
