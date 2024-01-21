@@ -17,11 +17,22 @@ function resize() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
-  console.log("Resize called: ", w, h);
+  console.log("Resize instant called: ", w, h);
   
   // @ts-ignore
   window.game.scale.resize(w, h);
+  window.setTimeout(onResizeTimeout, 5);
 }
+
+// Called after 5ms timeout
+// Will yield accurate values
+function onResizeTimeout() {
+  var w = window.innerWidth;   
+  var h = window.innerHeight;
+
+  console.log("Resize timeout called: ", w, h);
+}
+
 
 (() => {
   if ('serviceWorker' in navigator) {
