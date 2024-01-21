@@ -13,13 +13,13 @@ export default class Game extends Phaser.Game {
 // @ts-ignore
 window.game = new Game();
 
-/*function resize() {
+function resize() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
   
   // @ts-ignore
   window.game.scale.resize(w, h);
-}*/
+}
 
 (() => {
   if ('serviceWorker' in navigator) {
