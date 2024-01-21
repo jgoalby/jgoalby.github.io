@@ -1,5 +1,9 @@
 # TODOs
 
+- Do I need the scale for the camera?
+- Maybe don't have a launch screen as I am using caching and have a splash screen in the game.
+- Clean up manifest if possible. What fields and icons etc are really needed.
+
 - Fix errors in the javascript
   - this.sys.game.globals
 - Should I need the .js in the imports?
