@@ -9,25 +9,25 @@ const SIZE_HEIGHT_SCREEN = 1080
 
 export default {
   type: Constants.GAME_TYPE,
-  //width: window.innerWidth,
-  //height: window.innerHeight,
+  width: window.innerWidth,
+  height: window.innerHeight,
   backgroundColor: 'black',
-  scale: {
+  /*scale: {
     width: 1600,
     height: 1200,
     mode: Phaser.Scale.FIT,
     //autocenter: Phaser.Scale.CENTER_BOTH,
     parent: Constants.GAME_PARENT,
-    /*min: {
+    min: {
       width: 1200,
       height: 650
     },
     max: {
       width: 1600,
       height: 1200
-    },*/
+    },
     zoom: 1,
-  },
+  },*/
   physics: {
     default: 'arcade',
     arcade: {
@@ -40,3 +40,13 @@ export default {
     createContainer: true,
   },
 };
+
+// TODO: How do I achieve this bit? Or is it even needed?
+
+/*
+function create() {
+  // Create game objects  
+  
+  resize();
+}
+*/

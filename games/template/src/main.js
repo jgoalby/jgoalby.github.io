@@ -13,6 +13,14 @@ export default class Game extends Phaser.Game {
 // @ts-ignore
 window.game = new Game();
 
+function resize() {
+  var w = window.innerWidth;   
+  var h = window.innerHeight;
+  
+  // @ts-ignore
+  window.game.scale.resize(w, h);
+}
+
 (() => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -25,4 +33,6 @@ window.game = new Game();
   } else {
     console.log('No service worker support in this browser!');
   }
+
+  window.addEventListener('resize', resize); 
 })();
