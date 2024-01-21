@@ -34,5 +34,5 @@ function resize() {
     console.log('No service worker support in this browser!');
   }
 
-  //window.addEventListener('resize', resize); 
+  window.addEventListener('resize', resize); 
 })();
