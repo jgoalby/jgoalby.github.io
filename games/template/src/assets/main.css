@@ -25,6 +25,7 @@ body {
 body {
   margin: 0;
   padding: 0;
+  background: #00F;
   display: flex;
   flex-direction: column; 
 }
