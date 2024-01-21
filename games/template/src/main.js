@@ -16,6 +16,8 @@ window.game = new Game();
 function resize() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
+
+  console.log("Resize called: ", w, h);
   
   // @ts-ignore
   window.game.scale.resize(w, h);
