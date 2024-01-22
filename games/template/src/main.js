@@ -13,24 +13,40 @@ export default class Game extends Phaser.Game {
 // @ts-ignore
 window.game = new Game();
 
+// Called on every resize event.
 function resize() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
-  console.log("Resize instant called: ", w, h);
+  // @ts-ignore
+  window.innerWidthPrevious = w;
+  // @ts-ignore
+  window.innerHeightPrevious = h;
   
   // @ts-ignore
   window.game.scale.resize(w, h);
   window.setTimeout(onResizeTimeout, 5);
 }
 
-// Called after 5ms timeout
-// Will yield accurate values
+// Called after a short timeout for the case of iPad strange behavior.
 function onResizeTimeout() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
-  console.log("Resize timeout called: ", w, h);
+  // @ts-ignore
+  var wPrev = window.innerWidthPrevious;
+  // @ts-ignore
+  var hPrev = window.innerHeightPrevious;
+
+  // If the values are the same then do nothing. If they are not the
+  // same that means they were changed during the short timeout.
+  // This happens occasionally on iPads.
+  if (wPrev === w && hPrev === h) {
+    return;
+  }
+
+  // @ts-ignore
+  window.game.scale.resize(w, h);
 }
 
 
