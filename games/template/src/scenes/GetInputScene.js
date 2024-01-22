@@ -9,6 +9,7 @@ export default class InputScene extends Phaser.Scene {
   }
 
   create() {
+    console.log("In create of GetInputScene");
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
     const text = this.add.text(centerX, centerY, 'Please enter your name!', {
