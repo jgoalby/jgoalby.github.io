@@ -13,6 +13,7 @@ export default class InputScene extends Phaser.Scene {
       color: 'white',
       fontSize: '20px ',
     });
+    text.setOrigin(0.5, 0.5);
 
     const dom = document.createElement('div');
     const input = document.createElement('input');
