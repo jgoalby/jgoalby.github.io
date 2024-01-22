@@ -2,21 +2,19 @@ export default class InputScene extends Phaser.Scene {
   constructor(deps) {
     super('Input');
     this.deps = deps;
+    this.text;
   }
 
   preload() {
-    this.canvas = this.sys.game.canvas;
   }
 
   create() {
     console.log("In create of GetInputScene");
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    const text = this.add.text(centerX, centerY, 'Please enter your name!', {
+    this.text = this.add.text(0, 0, 'Please enter your name!', {
       color: 'white',
       fontSize: '20px ',
     });
-    text.setOrigin(0.5, 0.5);
+    this.text.setOrigin(0.5, 0.5);
 
     const dom = document.createElement('div');
     const input = document.createElement('input');
@@ -59,5 +57,14 @@ export default class InputScene extends Phaser.Scene {
       duration: 3000,
       ease: 'Power3',
     });
+
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+  }
+
+  resize() {
+    console.log("In resize of GetInputScene");
+
+    this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
   }
 }

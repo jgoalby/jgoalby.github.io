@@ -10,7 +10,6 @@ export default class Game extends Phaser.Game {
   }
 }
 
-// @ts-ignore
 window.game = new Game();
 
 // Called on every resize event.
@@ -18,12 +17,9 @@ function resize() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
-  // @ts-ignore
   window.innerWidthPrevious = w;
-  // @ts-ignore
   window.innerHeightPrevious = h;
-  
-  // @ts-ignore
+
   window.game.scale.resize(w, h);
   window.setTimeout(onResizeTimeout, 5);
 }
@@ -33,9 +29,7 @@ function onResizeTimeout() {
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
-  // @ts-ignore
   var wPrev = window.innerWidthPrevious;
-  // @ts-ignore
   var hPrev = window.innerHeightPrevious;
 
   // If the values are the same then do nothing. If they are not the
@@ -45,7 +39,6 @@ function onResizeTimeout() {
     return;
   }
 
-  // @ts-ignore
   window.game.scale.resize(w, h);
 }
 
