@@ -3,6 +3,7 @@ export default class InputScene extends Phaser.Scene {
     super('Input');
     this.deps = deps;
     this.text;
+    this.nameInputElement;
   }
 
   preload() {
@@ -27,20 +28,20 @@ export default class InputScene extends Phaser.Scene {
 
     dom.append(input, button);
 
-    const element = this.add.dom(600, 0, dom);
+    this.nameInputElement = this.add.dom(0, 0, dom);
 
-    element.addListener('click');
+    this.nameInputElement.addListener('click');
 
-    element.on('click', (event) => {
+    this.nameInputElement.on('click', (event) => {
       if (event.target.name === 'playButton') {
-        const inputText = element.getChildByName('nameField');
+        const inputText = this.nameInputElement.getChildByName('nameField');
         this.sys.game.globals.player = inputText.value;
         if (inputText.value !== '') {
-          element.removeListener('click');
-          element.setVisible(false);
+          this.nameInputElement.removeListener('click');
+          this.nameInputElement.setVisible(false);
           this.scene.start('Menu');
         } else {
-          element.scene.tweens.add({
+          this.nameInputElement.scene.tweens.add({
             targets: this.text,
             alpha: 0.2,
             duration: 250,
@@ -51,12 +52,12 @@ export default class InputScene extends Phaser.Scene {
       }
     });
 
-    this.tweens.add({
-      targets: element,
+    /*this.tweens.add({
+      targets: this.nameInputElement,
       y: 300,
       duration: 3000,
       ease: 'Power3',
-    });
+    });*/
 
     this.scale.on('resize', this.resize, this);
     this.resize();
@@ -66,5 +67,6 @@ export default class InputScene extends Phaser.Scene {
     console.log("In resize of GetInputScene");
 
     this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + 100);
   }
 }
