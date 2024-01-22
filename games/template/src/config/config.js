@@ -1,33 +1,10 @@
 import Constants from '../constants.js';
 
-const MAX_SIZE_WIDTH_SCREEN = 1200
-const MAX_SIZE_HEIGHT_SCREEN = 650
-const MIN_SIZE_WIDTH_SCREEN = 600
-const MIN_SIZE_HEIGHT_SCREEN = 325
-const SIZE_WIDTH_SCREEN = 1920
-const SIZE_HEIGHT_SCREEN = 1080
-
 export default {
   type: Constants.GAME_TYPE,
   width: window.innerWidth,
   height: window.innerHeight,
   backgroundColor: 'black',
-  /*scale: {
-    width: 1600,
-    height: 1200,
-    mode: Phaser.Scale.FIT,
-    //autocenter: Phaser.Scale.CENTER_BOTH,
-    parent: Constants.GAME_PARENT,
-    min: {
-      width: 1200,
-      height: 650
-    },
-    max: {
-      width: 1600,
-      height: 1200
-    },
-    zoom: 1,
-  },*/
   physics: {
     default: 'arcade',
     arcade: {
@@ -38,15 +15,5 @@ export default {
   parent: Constants.GAME_PARENT,
   dom: {
     createContainer: true,
-  },
+  }
 };
-
-// TODO: How do I achieve this bit? Or is it even needed?
-
-/*
-function create() {
-  // Create game objects  
-  
-  resize();
-}
-*/
