@@ -3,6 +3,7 @@ export default class InputScene extends Phaser.Scene {
     super('Input');
     this.deps = deps;
     this.text;
+    this.textBounds;
     this.nameInputElement;
   }
 
@@ -16,6 +17,8 @@ export default class InputScene extends Phaser.Scene {
       fontSize: '20px ',
     });
     this.text.setOrigin(0.5, 0.5);
+
+    this.textBounds = this.text.getBounds();
 
     const dom = document.createElement('div');
     const input = document.createElement('input');
@@ -67,6 +70,6 @@ export default class InputScene extends Phaser.Scene {
     console.log("In resize of GetInputScene");
 
     this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-    this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + 100);
+    this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + this.textBounds.height + 5);
   }
 }
