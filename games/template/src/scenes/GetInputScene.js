@@ -11,13 +11,11 @@ export default class InputScene extends Phaser.Scene {
   }
 
   create() {
-    console.log("In create of GetInputScene");
     this.text = this.add.text(0, 0, 'Please enter your name!', {
       color: 'white',
       fontSize: '20px ',
     });
     this.text.setOrigin(0.5, 0.5);
-
     this.textBounds = this.text.getBounds();
 
     const dom = document.createElement('div');
@@ -55,20 +53,11 @@ export default class InputScene extends Phaser.Scene {
       }
     });
 
-    /*this.tweens.add({
-      targets: this.nameInputElement,
-      y: 300,
-      duration: 3000,
-      ease: 'Power3',
-    });*/
-
     this.scale.on('resize', this.resize, this);
     this.resize();
   }
 
   resize() {
-    console.log("In resize of GetInputScene");
-
     this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
     this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + this.textBounds.height + 5);
   }
