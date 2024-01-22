@@ -41,7 +41,7 @@ export default class InputScene extends Phaser.Scene {
           this.scene.start('Menu');
         } else {
           element.scene.tweens.add({
-            targets: text,
+            targets: this.text,
             alpha: 0.2,
             duration: 250,
             ease: 'Power3',
