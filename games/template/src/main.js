@@ -49,7 +49,6 @@ function onResizeTimeout() {
   window.game.scale.resize(w, h);
 }
 
-
 (() => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

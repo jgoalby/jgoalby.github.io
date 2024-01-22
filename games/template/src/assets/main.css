@@ -1,31 +1,7 @@
-/*html,
 body {
   margin: 0;
   padding: 0;
-  background: #00F;
-}*/
-
-/* use viewport-relative units to cover page fully */
-/*body {
-  height: 100vh;
-  width: 100vw;
-}*/
-
-/* include border and padding in element width and height */
-/** {
-  box-sizing: border-box;
-}*/
-
-/*#main {
-  height: 100%;
-  width: 100%;
-  background-color: lightskyblue;
-}*/
-
-body {
-  margin: 0;
-  padding: 0;
-  background: #00F;
+  background: #000;
   display: flex;
   flex-direction: column; 
 }
