@@ -40,6 +40,7 @@ export default class InputScene extends Phaser.Scene {
         if (inputText.value !== '') {
           this.nameInputElement.removeListener('click');
           this.nameInputElement.setVisible(false);
+          this.scale.off('resize', this.resize, this);
           this.scene.start('Menu');
         } else {
           this.nameInputElement.scene.tweens.add({
