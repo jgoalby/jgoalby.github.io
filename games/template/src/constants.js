@@ -1,4 +1,10 @@
+const AUTHOR = 'John Goalby';
+
 export default class Constants {
+  static get GAME_CREDITS() {
+    return `Created By: ${AUTHOR} \nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
+  }
+
   static get GAME_WIDTH() {
     return window.innerWidth;
   }

@@ -1,34 +1,32 @@
+import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor(deps) {
     super('Credits');
     this.deps = deps;
+    this.creditsHeading = null;
     this.creditsText = null;
-    this.madeByText = null;
   }
 
   create() {
-    this.creditsText = this.add.text(0, 0, 'Credits', {
+    this.creditsHeading = this.add.text(0, 0, 'Credits', {
       fontSize: '32px',
+      color: '#fff',
+    });
+    this.creditsHeading.setOrigin(0.5);
+
+    this.creditsText = this.add.text(0, 0, Constants.GAME_CREDITS, {
+      fontSize: '26px',
       color: '#fff',
     });
     this.creditsText.setOrigin(0.5);
 
-    // TODO: Put values in constants file
-    const author = 'John Goalby';
-    const madeByString = `Created By: ${author} \nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
-    this.madeByText = this.add.text(0, 0, madeByString, {
-      fontSize: '26px',
-      color: '#fff',
-    });
-    this.madeByText.setOrigin(0.5);
-
-    this.creditsText.setY(this.cameras.main.height / 2 - 50);
-    this.madeByText.setY(this.cameras.main.height / 2 + 50);
+    this.creditsHeading.setY(this.cameras.main.height / 2 - 50);
+    this.creditsText.setY(this.cameras.main.height / 2 + 50);
 
     this.tweens.add({
-      targets: this.creditsText,
+      targets: this.creditsHeading,
       y: -100,
       ease: 'Power1',
       duration: 5000,
@@ -42,10 +40,10 @@ export default class CreditsScene extends Phaser.Scene {
   
   
     this.tweens.add({
-      targets: this.madeByText,
+      targets: this.creditsText,
       y: -200,
       ease: 'Power1',
-      duration: 15000,
+      duration: 10000,
       delay: 1000,
       onComplete: gotoMainMenu,
     });
@@ -60,7 +58,7 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   resize() {
+    this.creditsHeading.setX(this.cameras.main.width / 2);
     this.creditsText.setX(this.cameras.main.width / 2);
-    this.madeByText.setX(this.cameras.main.width / 2);
   }
 }
