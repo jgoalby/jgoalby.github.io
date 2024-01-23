@@ -4,8 +4,8 @@ export default class CreditsScene extends Phaser.Scene {
   constructor(deps) {
     super('Credits');
     this.deps = deps;
-    this.creditsText;
-    this.madeByText;
+    this.creditsText = null;
+    this.madeByText = null;
   }
 
   create() {
@@ -20,19 +20,8 @@ export default class CreditsScene extends Phaser.Scene {
     });
     this.madeByText.setOrigin(0.5);
 
-    /*const zone = this.add.zone(this.cameras.main.width / 2, this.cameras.main.height / 2, this.cameras.main.width, this.cameras.main.height);
-    Phaser.Display.Align.In.Center(
-      this.creditsText,
-      zone,
-    );
-
-    Phaser.Display.Align.In.Center(
-      madeByText,
-      zone,
-    );*/
-
     this.creditsText.setY(this.cameras.main.height / 2 - 50);
-    this.madeByText.setY(1000);
+    this.madeByText.setY(this.cameras.main.height);
 
     this.tweens.add({
       targets: this.creditsText,
@@ -42,7 +31,7 @@ export default class CreditsScene extends Phaser.Scene {
       delay: 1000,
     });
 
-    const mainMenu = function() {
+    const gotoMainMenu = function() {
       this.scale.off('resize', this.resize, this);
       this.scene.start('Menu');
     }.bind(this);
@@ -54,14 +43,10 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 15000,
       delay: 1000,
-      onComplete: mainMenu,
-      /*onComplete: function () {
-        this.scale.off('resize', this.resize, this);
-        this.scene.start('Menu');
-      }.bind(this),*/
+      onComplete: gotoMainMenu,
     });
 
-    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', mainMenu, {
+    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu, {
       x: 0.7,
       y: 0.7,
     });

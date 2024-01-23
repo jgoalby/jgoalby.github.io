@@ -2,9 +2,9 @@ export default class InputScene extends Phaser.Scene {
   constructor(deps) {
     super('Input');
     this.deps = deps;
-    this.text;
-    this.textBounds;
-    this.nameInputElement;
+    this.text = null;
+    this.textBounds = null;
+    this.nameInputElement = null;
   }
 
   preload() {
