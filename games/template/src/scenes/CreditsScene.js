@@ -5,6 +5,7 @@ export default class CreditsScene extends Phaser.Scene {
     super('Credits');
     this.deps = deps;
     this.creditsText;
+    this.madeByText;
   }
 
   create() {
@@ -12,12 +13,12 @@ export default class CreditsScene extends Phaser.Scene {
       fontSize: '32px',
       color: '#fff',
     });
-    const madeByText = this.add.text(0, 0, 'Created By: John Goalby \nMade With: Phaser 3.70, Javascript ES6', {
+    this.madeByText = this.add.text(0, 0, 'Created By: John Goalby \nMade With: Phaser 3.70, Javascript ES6', {
       fontSize: '26px',
       color: '#fff',
     });
 
-    const zone = this.add.zone(this.cameras.main.width / 2, this.cameras.main.height / 2, this.cameras.main.width, this.cameras.main.height);
+    /*const zone = this.add.zone(this.cameras.main.width / 2, this.cameras.main.height / 2, this.cameras.main.width, this.cameras.main.height);
     Phaser.Display.Align.In.Center(
       this.creditsText,
       zone,
@@ -26,9 +27,9 @@ export default class CreditsScene extends Phaser.Scene {
     Phaser.Display.Align.In.Center(
       madeByText,
       zone,
-    );
+    );*/
 
-    madeByText.setY(1000);
+    this.madeByText.setY(1000);
 
     this.tweens.add({
       targets: this.creditsText,
@@ -39,7 +40,7 @@ export default class CreditsScene extends Phaser.Scene {
     });
 
     this.tweens.add({
-      targets: madeByText,
+      targets: this.madeByText,
       y: -200,
       ease: 'Power1',
       duration: 15000,
@@ -60,5 +61,6 @@ export default class CreditsScene extends Phaser.Scene {
 
   resize() {
     this.creditsText.setX(this.cameras.main.width / 2);
+    this.madeByText.setX(this.cameras.main.width / 2);
   }
 }
