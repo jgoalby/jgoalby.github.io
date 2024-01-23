@@ -13,10 +13,12 @@ export default class CreditsScene extends Phaser.Scene {
       fontSize: '32px',
       color: '#fff',
     });
+    this.creditsText.setOrigin(0.5);
     this.madeByText = this.add.text(0, 0, 'Created By: John Goalby \nMade With: Phaser 3.70, Javascript ES6', {
       fontSize: '26px',
       color: '#fff',
     });
+    this.madeByText.setOrigin(0.5);
 
     /*const zone = this.add.zone(this.cameras.main.width / 2, this.cameras.main.height / 2, this.cameras.main.width, this.cameras.main.height);
     Phaser.Display.Align.In.Center(
