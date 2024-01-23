@@ -14,14 +14,14 @@ export default class CreditsScene extends Phaser.Scene {
       color: '#fff',
     });
     this.creditsText.setOrigin(0.5);
-    this.madeByText = this.add.text(0, 0, 'Created By: John Goalby \nMade With: Phaser 3.70, Javascript ES6', {
+    this.madeByText = this.add.text(0, 0, 'Created By: John Goalby \nMade With: Phaser 3.70, Javascript ES6\n\n\nLibraries Used...', {
       fontSize: '26px',
       color: '#fff',
     });
     this.madeByText.setOrigin(0.5);
 
     this.creditsText.setY(this.cameras.main.height / 2 - 50);
-    this.madeByText.setY(this.cameras.main.height);
+    this.madeByText.setY(this.cameras.main.height / 2 + 50);
 
     this.tweens.add({
       targets: this.creditsText,
