@@ -19,19 +19,24 @@ export default class PreloaderScene extends Phaser.Scene {
       },
     });
 
-    /*this.time.delayedCall(10, () => {
-      this.tweens.add({
-        targets: this.gameLogo,
-        alpha: 0,
-        duration: 3000,
-        ease: 'Power2',
-        onComplete: () => {
-          this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
-        },
-      });
-    });*/
+    // TODO: Figure out what to do with this. Maybe chatgpt can figure it out?
+    // This appears to add the logo on top of the progress bar. Not sure targets is correct.
 
     this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
+    this.gameLogo.alpha = 0; // make the logo fully transparent initially
+    
+    // What is the following code doing when you know that this.gameLogo is not yet defined?
+    this.time.delayedCall(10, () => {
+      this.tweens.add({
+        targets: this.gameLogo,
+        alpha: 1,
+        duration: 3000,
+        ease: 'Power2',
+        /*onComplete: () => {
+          this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
+        },*/
+      });
+    });
 
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
