@@ -1,5 +1,5 @@
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, normal, hover, text, targetScene, scaleButton = null) {
+  constructor(scene, x, y, normal, hover, text, callback, scaleButton = null) {
     super(scene);
     this.scene = scene;
     this.x = x;
@@ -17,9 +17,7 @@ export default class Button extends Phaser.GameObjects.Container {
     this.add(this.button);
     this.add(this.text);
 
-    this.button.on('pointerdown', () => {
-      this.scene.scene.start(targetScene);
-    });
+    this.button.on('pointerdown', callback);
 
     this.button.on('pointerover', () => {
       this.button.setTexture(hover);

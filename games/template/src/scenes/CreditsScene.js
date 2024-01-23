@@ -1,4 +1,4 @@
-import Button from '../components/Button.js';
+import Button from '../components/ButtonCallback.js';
 
 export default class CreditsScene extends Phaser.Scene {
   constructor(deps) {
@@ -6,6 +6,11 @@ export default class CreditsScene extends Phaser.Scene {
     this.deps = deps;
     this.creditsText;
     this.madeByText;
+  }
+
+  mainMenu() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start('Menu');
   }
 
   create() {
@@ -48,13 +53,14 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 15000,
       delay: 1000,
-      onComplete: function () {
+      onComplete: this.mainMenu,
+      /*onComplete: function () {
         this.scale.off('resize', this.resize, this);
         this.scene.start('Menu');
-      }.bind(this),
+      }.bind(this),*/
     });
 
-    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu', {
+    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', this.mainMenu, {
       x: 0.7,
       y: 0.7,
     });
