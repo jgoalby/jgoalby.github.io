@@ -14,7 +14,11 @@ export default class CreditsScene extends Phaser.Scene {
       color: '#fff',
     });
     this.creditsText.setOrigin(0.5);
-    this.madeByText = this.add.text(0, 0, 'Created By: John Goalby \nMade With: Phaser ' + Phaser.VERSION + ', Javascript ES6\n\n\nLibraries Used...', {
+
+    // TODO: Put values in constants file
+    const author = 'John Goalby';
+    const madeByString = `Created By: ${author} \nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
+    this.madeByText = this.add.text(0, 0, madeByString, {
       fontSize: '26px',
       color: '#fff',
     });
@@ -27,7 +31,7 @@ export default class CreditsScene extends Phaser.Scene {
       targets: this.creditsText,
       y: -100,
       ease: 'Power1',
-      duration: 3000,
+      duration: 5000,
       delay: 1000,
     });
 
