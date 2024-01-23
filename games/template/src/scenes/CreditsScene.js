@@ -48,6 +48,7 @@ export default class CreditsScene extends Phaser.Scene {
       duration: 15000,
       delay: 1000,
       onComplete: function () {
+        this.scale.off('resize', this.resize, this);
         this.scene.start('Menu');
       }.bind(this),
     });
