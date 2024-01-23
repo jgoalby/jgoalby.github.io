@@ -1,3 +1,10 @@
+import { Types, defineComponent } from 'bitecs';
+//import {  } from '../lib/bitECS/index.mjs';
+
+export const GetInputScene = defineComponent({
+  something: Types.ui8,
+});
+
 export default class InputScene extends Phaser.Scene {
   constructor(deps) {
     super('Input');
