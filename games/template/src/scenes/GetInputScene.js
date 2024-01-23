@@ -1,5 +1,4 @@
-import { Types, defineComponent } from 'bitecs';
-//import {  } from '../lib/bitECS/index.mjs';
+import { Types, defineComponent } from '../lib/bitECS/index.mjs';
 
 export const GetInputScene = defineComponent({
   something: Types.ui8,
