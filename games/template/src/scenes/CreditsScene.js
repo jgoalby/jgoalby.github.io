@@ -31,6 +31,7 @@ export default class CreditsScene extends Phaser.Scene {
       zone,
     );*/
 
+    this.creditsText.setY(this.cameras.main.height / 2 - 50);
     this.madeByText.setY(1000);
 
     this.tweens.add({
