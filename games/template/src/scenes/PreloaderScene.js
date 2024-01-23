@@ -19,18 +19,16 @@ export default class PreloaderScene extends Phaser.Scene {
       },
     });
 
-    console.log("LOGO: ", this.phaserLogo);
-
     this.time.delayedCall(10, () => {
       this.tweens.add({
-        targets: this.phaserLogo,
+        targets: this.gameLogo,
         alpha: 0,
-        duration: 300,
+        duration: 3000,
         ease: 'Power2',
         onComplete: () => {
           this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
         },
-      }, this);
+      });
     });
 
     const progressBar = this.add.graphics();
