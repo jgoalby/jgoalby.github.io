@@ -6,6 +6,7 @@ interface Window {
 
 interface Globals {
     player: any;
+    bgMusic: any;
 }
 
 namespace Phaser {

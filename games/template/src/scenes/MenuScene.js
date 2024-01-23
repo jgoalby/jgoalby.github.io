@@ -14,6 +14,7 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   create() {
+    console.log("model1", this.sys.game.globals.model);
     this.model = this.sys.game.globals.model;
     this.bgMusic = this.sys.game.globals.bgMusic;
     if (this.model.musicOn === true && !this.model.bgMusicPlaying) {
