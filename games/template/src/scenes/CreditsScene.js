@@ -8,11 +8,6 @@ export default class CreditsScene extends Phaser.Scene {
     this.madeByText;
   }
 
-  mainMenu() {
-    this.scale.off('resize', this.resize, this);
-    this.scene.start('Menu');
-  }
-
   create() {
     this.creditsText = this.add.text(0, 0, 'Credits', {
       fontSize: '32px',
@@ -47,20 +42,26 @@ export default class CreditsScene extends Phaser.Scene {
       delay: 1000,
     });
 
+    const mainMenu = function() {
+      this.scale.off('resize', this.resize, this);
+      this.scene.start('Menu');
+    }.bind(this);
+  
+  
     this.tweens.add({
       targets: this.madeByText,
       y: -200,
       ease: 'Power1',
       duration: 15000,
       delay: 1000,
-      onComplete: this.mainMenu,
+      onComplete: mainMenu,
       /*onComplete: function () {
         this.scale.off('resize', this.resize, this);
         this.scene.start('Menu');
       }.bind(this),*/
     });
 
-    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', this.mainMenu, {
+    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', mainMenu, {
       x: 0.7,
       y: 0.7,
     });
