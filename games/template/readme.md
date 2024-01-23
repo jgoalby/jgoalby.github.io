@@ -1,12 +1,14 @@
 # TODOs
 
-- Add ECS feature to the game
-- Do I need to look into state machines
+- Make all uses of the button use the callback version and then delete non-callback version
+- Make a radio button from the code in the options scene
 
 - Do I need the scale for the camera?
 - Maybe don't have a launch screen as I am using caching and have a splash screen in the game.
 - Clean up manifest if possible. What fields and icons etc are really needed.
 
+- Add ECS feature to the game
+- Do I need to look into state machines?
 - What is the best way to get user input in Phaser 3?
 - Currently do the dom stuff, but I wonder if that is optimal.
 - Also I wonder if I can create more game looking assets for the input screen

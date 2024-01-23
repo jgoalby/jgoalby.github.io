@@ -1,5 +1,4 @@
 import Button from '../components/Button.js';
-import Api from '../utils/api.js';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor(deps) {
@@ -34,21 +33,6 @@ export default class GameOverScene extends Phaser.Scene {
     ]);
 
     new Button(this, 300, 510, 'normalButton', 'hoverButton', 'Restart', 'Game');
-
     new Button(this, 900, 510, 'normalButton', 'hoverButton', 'Rest In Peace', 'Menu');
-
-    Api.post(player, parseInt(score, 10))
-      .then(result => {
-        this.add.text(20, 20, `${result.statusText}- Status: ${result.status}`, {
-          font: '24px',
-          color: '#ffffff',
-        });
-      })
-      .catch(error => {
-        this.add.text(20, 20, `Score not uploaded, ${error}`, {
-          font: '24px',
-          color: '#ffffff',
-        });
-      });
   }
 }

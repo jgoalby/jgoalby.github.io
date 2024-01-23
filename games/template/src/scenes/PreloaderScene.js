@@ -19,6 +19,8 @@ export default class PreloaderScene extends Phaser.Scene {
       },
     });
 
+    console.log("LOGO: ", this.phaserLogo);
+
     this.time.delayedCall(10, () => {
       this.tweens.add({
         targets: this.phaserLogo,
@@ -70,7 +72,7 @@ export default class PreloaderScene extends Phaser.Scene {
     assetText.setOrigin(0.5, 0.5);
 
     this.load.on('progress', (value) => {
-      percentText.setText(`${parseInt(value * 100, 10)}%`);
+      percentText.setText(`${value * 100}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRoundedRect(450, 450, 300 * value, 18, 6);

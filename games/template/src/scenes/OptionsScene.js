@@ -21,9 +21,6 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
-    console.log("model2", this.sys.game.globals.model);
-    this.model = this.sys.game.globals.model;
-
     this.add.text(500, 100, 'Options', {
       fontSize: 40,
     });
@@ -37,7 +34,6 @@ export default class OptionsScene extends Phaser.Scene {
     this.musicButton.setInteractive();
 
     this.bgMusic = this.sys.game.globals.bgMusic;
-    console.log("model3", this.sys.game.globals.model);
     this.model = this.sys.game.globals.model;
 
     this.musicButton.on('pointerdown', () => {
