@@ -1,5 +1,12 @@
 # TODOs
 
+- Work on preloader
+- Slow the page down so that the preloader can be seen
+- Move the progress bar to the bottom of the screen
+- Make it work while resizing the page
+- Press space to start the game and leave the logo on the screen
+- What about having the logo scale depending on the size of the screen?
+
 - Make all uses of the button use the callback version and then delete non-callback version
 - Make a radio button from the code in the options scene
 
@@ -24,7 +31,7 @@
 - Does jsconfig.json need to be in the root?
 - Find something to replace bgmusic.ogg for bgMusic
 - Can I replace paths with pathfinder?
-- See if I can get full screen to work using F11
+- See if I can get full screen to work using F11 (theres some code in the game for this already)
   - Saw it here:
     - https://github.com/shimozurdo/mobile-game-base-phaser3
 
@@ -33,6 +40,7 @@
 ## General
 - Favicon
 - Full screen
+- Slow connection so we can see preloader working
 
 ## PWAs
 - Offline
