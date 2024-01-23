@@ -4,19 +4,6 @@
 - <https://jgoalby.github.io/games/test/>
 - <https://jgoalby.github.io/games/template/>
 
-## Todos
-- Add some native like features to the game for iOS And Android
-  - <https://blog.ourcade.co/posts/2020/native-like-web-app-for-your-html5-game/>
-- Check out the debug plugin to see what it offers
-  - <https://github.com/englercj/phaser-debug>
-- Screen rotation
-  - <https://phaser.discourse.group/t/change-the-canvas-dimension-on-screen-rotation/2124>
-  - <https://stackoverflow.com/questions/77401454/phaser3-how-to-force-screen-to-open-in-landscape-mode>
-- Text centering
-  - <https://gamedev.stackexchange.com/questions/143341/how-to-align-text-dynamically-inside-a-rectangle-with-phaser-js>
-  - <https://github.com/phaserjs/examples/blob/master/public/src/game%2520objects/text/align%2520text.js>
-  - <https://phaser.discourse.group/t/center-text/10804>
-
 ## Resources
 
 ### Tools
@@ -71,6 +58,9 @@ PWA Resources
 - <https://www.pwabuilder.com/imageGenerator>
 - <https://cthedot.de/icongen/>
 
+Entity Component Systems
+- bitECS : <https://github.com/NateTheGreatt/bitECS>
+
 ### Completed Games
 
 - Rogue Tanks Game made with Phaser and Javascript
@@ -80,6 +70,8 @@ PWA Resources
 
 - Making your first Phaser game
   - <https://phaser.io/tutorials/making-your-first-phaser-3-game/part1>
+- Ourcade YouTube channel
+  - <https://www.youtube.com/%2540ourcadetv>
 - Monster Tamer
   - <https://github.com/devshareacademy/monster-tamer>
   - <https://youtube.com/playlist?list=PLmcXe0-sfoSgq-pyXrFx0GZjHbvoVUW8t&si=eaRuleSe0Xnd_TW8>
