@@ -9,32 +9,17 @@ export default class PreloaderScene extends Phaser.Scene {
   preload() {
     const { width, height } = this.cameras.main;
 
-    const name = this.make.text({
-      x: 10,
-      y: 150,
-      text: 'Code by John',
-      style: {
-        font: '15px monospace',
-        color: '#ffffff',
-      },
-    });
-
-    // TODO: Figure out what to do with this. Maybe chatgpt can figure it out?
-    // This appears to add the logo on top of the progress bar. Not sure targets is correct.
-
+    // Make the game logo fully transparent initially so we can fade it in.
     this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
-    this.gameLogo.alpha = 0; // make the logo fully transparent initially
+    this.gameLogo.alpha = 0; 
     
-    // What is the following code doing when you know that this.gameLogo is not yet defined?
+    // Fade the logo in over a period of time.
     this.time.delayedCall(10, () => {
       this.tweens.add({
         targets: this.gameLogo,
         alpha: 1,
-        duration: 3000,
-        ease: 'Power2',
-        /*onComplete: () => {
-          this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
-        },*/
+        duration: 5000,
+        ease: 'Power2'
       });
     });
 
@@ -94,7 +79,6 @@ export default class PreloaderScene extends Phaser.Scene {
       percentText.destroy();
       assetText.destroy();
       this.time.delayedCall(1000, () => {
-        name.destroy();
         this.startTitleScene();
       });
     });
