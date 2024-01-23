@@ -19,7 +19,7 @@ export default class PreloaderScene extends Phaser.Scene {
       },
     });
 
-    this.time.delayedCall(10, () => {
+    /*this.time.delayedCall(10, () => {
       this.tweens.add({
         targets: this.gameLogo,
         alpha: 0,
@@ -29,7 +29,7 @@ export default class PreloaderScene extends Phaser.Scene {
           this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
         },
       });
-    });
+    });*/
 
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
