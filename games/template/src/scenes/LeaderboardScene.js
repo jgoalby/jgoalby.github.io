@@ -35,7 +35,6 @@ export default class LeaderboardScene extends Phaser.Scene {
       dom.append(row);
     }
     this.add.dom(600, 200, dom);
-    console.log(dom);
 
     // TODO: Do I have to destroy the dom stuff after we leave here?
 

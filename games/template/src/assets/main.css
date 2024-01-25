@@ -17,20 +17,19 @@ canvas {
 
 table {
   width: 100%;
-  padding-left: 30%;
+  padding: 0;
   color: white;
   font-size: 32px;
 
   tr {
-    padding-left: 40px;
+    padding: 0;
   }
 
   tr:nth-child(even) {
     background-color: #575555;
   }
 
-  th,
-  td {
+  th,td {
     border: 1px solid #ddd;
     text-align: left;
     padding: 3px 8px;
