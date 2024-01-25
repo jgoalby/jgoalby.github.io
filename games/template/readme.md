@@ -13,9 +13,21 @@
 - I feel I really should look at other components before I go too far with this one.
 - Make a radio button from the code in the options scene
 
+- Need to work on the leaderboard scene I suppose
+- Scale it to the screen size?
+- Does that mean I need to scale the button as well?
+- Make the table a component perhaps?
+- Could potentially make it not a DOM element and just use graphics?
+- Is making a table that hard? Most likely it is. What about Rex?
+- Make the leaderboard table scrollable perhaps?
+- Leaderboard should also manage actual score data from local storage
+- So need a way to get the local storage and maybe use ECS to manage the data?
+
 - Do I need the scale for the camera?
 - Maybe don't have a launch screen as I am using caching and have a splash screen in the game.
 - Clean up manifest if possible. What fields and icons etc are really needed.
+
+- Start using _ for private variables
 
 - Add ECS feature to the game
 - Do I need to look into state machines?

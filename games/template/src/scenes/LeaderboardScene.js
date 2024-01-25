@@ -19,9 +19,9 @@ export default class LeaderboardScene extends Phaser.Scene {
     const tableElement = document.createElement('table');
     const headercontainer = document.createElement('tr');
     const header1 = document.createElement('th');
-    header1.innerText = 'Player Name';
+    header1.innerText = 'Name';
     const header2 = document.createElement('th');
-    header2.innerText = 'Player Score';
+    header2.innerText = 'Score';
     headercontainer.append(header1, header2);
 
     tableElement.append(headercontainer);
