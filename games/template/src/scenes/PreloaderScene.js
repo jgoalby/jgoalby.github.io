@@ -81,7 +81,7 @@ export default class PreloaderScene extends Phaser.Scene {
     assetText.setOrigin(0.5, 0.5);
 
     this.load.on('progress', (value) => {
-      percentText.setText(`${Math.floor(value) * 100}%`);
+      percentText.setText(`${Math.floor(value * 100)}%`);
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
       progressBar.fillRoundedRect(450, 450, 300 * value, 18, 6);
@@ -97,9 +97,13 @@ export default class PreloaderScene extends Phaser.Scene {
       loadingText.destroy();
       percentText.destroy();
       assetText.destroy();
-      this.time.delayedCall(1000, () => {
+      this.input.keyboard.once('keydown', () => {
         this.startTitleScene();
       });
+      //this.time.delayedCall(1000, () => {
+        //this.startTitleScene();
+        // Wait for a keypress or screen tap before starting the Title scene.
+      //});
     });
 
     this.load.image('tile1', Constants.ASSETS_PATH + 'tile/city.png');
