@@ -29,6 +29,14 @@ export default class LeaderboardScene extends Phaser.Scene {
     const arrayOfusers = [];
     arrayOfusers.push({ user: 'Player One', score: 12000 });
     arrayOfusers.push({ user: 'Player Two', score: 50000 });
+    arrayOfusers.push({ user: 'Player Three', score: 12300 });
+    arrayOfusers.push({ user: 'Player Four', score: 43000 });
+    arrayOfusers.push({ user: 'Player Five', score: 5000 });
+    arrayOfusers.push({ user: 'Player Six', score: 14500 });
+    arrayOfusers.push({ user: 'Player Seven', score: 33500 });
+    arrayOfusers.push({ user: 'Player Eight', score: 2150000 });
+    arrayOfusers.push({ user: 'Player Nine', score: 53000 });
+    arrayOfusers.push({ user: 'Player Ten', score: 72000 });
     const sorted = arrayOfusers.sort((a, b) => b.score - a.score);
 
     for (let i = 0; i < sorted.length; i += 1) {
