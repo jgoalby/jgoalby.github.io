@@ -15,5 +15,7 @@ export default {
   parent: Constants.PARENT,
   dom: {
     createContainer: true,
-  }
+  },
+  title: Constants.TITLE,
+  version: Constants.VERSION
 };

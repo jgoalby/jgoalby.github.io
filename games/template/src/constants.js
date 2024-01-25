@@ -1,4 +1,5 @@
 const AUTHOR = 'John Goalby';
+const VERSION = '0.1'
 
 export default class Constants {
   static get CREDITS() {
@@ -27,6 +28,10 @@ export default class Constants {
 
   static get TITLE() {
     return 'Template';
+  }
+
+  static get VERSION() {
+    return VERSION;
   }
 
   static get ASSETS_PATH() {
