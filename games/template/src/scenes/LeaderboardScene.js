@@ -1,4 +1,4 @@
-import Button from '../components/Button.js';
+import Button from '../components/ButtonCallback.js';
 
 export default class LeaderboardScene extends Phaser.Scene {
   constructor(deps) {
@@ -39,7 +39,12 @@ export default class LeaderboardScene extends Phaser.Scene {
     this.dom = this.add.dom(0, 0, tableElement);
     this.dom.setOrigin(0.5);
 
-    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', 'Menu');
+    const gotoMainMenu = function() {
+      this.scale.off('resize', this.resize, this);
+      this.scene.start('Menu');
+    }.bind(this);
+
+    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu);
 
     this.scale.on('resize', this.resize, this);
     this.resize();

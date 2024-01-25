@@ -48,10 +48,7 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: gotoMainMenu,
     });
 
-    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu, {
-      x: 0.7,
-      y: 0.7,
-    });
+    this.button = new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu);
 
     this.scale.on('resize', this.resize, this);
     this.resize();
@@ -60,5 +57,6 @@ export default class CreditsScene extends Phaser.Scene {
   resize() {
     this.creditsHeading.setX(this.cameras.main.width / 2);
     this.creditsText.setX(this.cameras.main.width / 2);
+    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }
