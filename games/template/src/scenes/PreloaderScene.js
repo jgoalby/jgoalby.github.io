@@ -28,6 +28,25 @@ export default class PreloaderScene extends Phaser.Scene {
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRoundedRect(450, 450, 350, 18, 7);
 
+    var continueMessage = '';
+    if (this.sys.game.device.os.desktop){
+      continueMessage = 'Press any key to continue';
+    }
+    else{
+      continueMessage = 'Tap to continue';
+    }
+
+    const continueText = this.make.text({
+      x: 50,
+      y: 50,
+      text: continueMessage,
+      style: {
+        font: '30px monospace',
+        color: '#ffffff',
+      },
+    });
+    continueText.setOrigin(0.5, 0.5);
+
     const loadingText = this.make.text({
       x: width / 1.9,
       y: 420,
