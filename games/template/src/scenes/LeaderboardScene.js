@@ -40,7 +40,6 @@ export default class LeaderboardScene extends Phaser.Scene {
     this.dom.setOrigin(0.5);
 
     this.button = new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu');
-    //this.button.setOrigin(0.5);
 
     this.scale.on('resize', this.resize, this);
     this.resize();
@@ -48,6 +47,6 @@ export default class LeaderboardScene extends Phaser.Scene {
 
   resize() {
     this.dom.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - this.button.height - 10);
+    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - (this.button.height + 10));
   }
 }
