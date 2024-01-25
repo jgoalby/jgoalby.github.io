@@ -39,7 +39,8 @@ export default class LeaderboardScene extends Phaser.Scene {
     this.dom = this.add.dom(0, 0, tableElement);
     this.dom.setOrigin(0.5);
 
-    this.button = new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu');
+    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', 'Menu');
+    console.log(this.button.height, this.button.width);
 
     this.scale.on('resize', this.resize, this);
     this.resize();
