@@ -1,9 +1,10 @@
-const AUTHOR = 'John Goalby';
+const TITLE = 'Template';
 const VERSION = '0.1'
+const AUTHOR = 'John Goalby';
 
 export default class Constants {
   static get CREDITS() {
-    return `Created By: ${AUTHOR} \nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
+    return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
   }
 
   static get WIDTH() {
@@ -27,7 +28,7 @@ export default class Constants {
   }
 
   static get TITLE() {
-    return 'Template';
+    return TITLE;
   }
 
   static get VERSION() {
