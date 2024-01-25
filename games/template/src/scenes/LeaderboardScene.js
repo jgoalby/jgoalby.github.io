@@ -18,7 +18,8 @@ export default class LeaderboardScene extends Phaser.Scene {
     dom.append(headercontainer);
 
     const arrayOfusers = [];
-    arrayOfusers.push({ user: 'Player One', score: 1000 });
+    arrayOfusers.push({ user: 'Player One', score: 12000 });
+    arrayOfusers.push({ user: 'Player Two', score: 50000 });
     const sorted = arrayOfusers.sort((a, b) => b.score - a.score);
 
     for (let i = 0; i < sorted.length; i += 1) {
@@ -33,7 +34,7 @@ export default class LeaderboardScene extends Phaser.Scene {
       row.append(data1, data2);
       dom.append(row);
     }
-    this.add.dom(600, 100, dom);
+    this.add.dom(200, 100, dom);
 
     new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu', {
       x: 0.7,
