@@ -46,13 +46,13 @@ function onResizeTimeout() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js').then((registration) => {
-      console.log('Service worker registration successful!');
+      console.info('Service worker registration successful.');
     }, function(err) {
-        console.log('Service worker registration failed!', err);
+        console.error('Service worker registration failed!', err);
       });
     });
   } else {
-    console.log('No service worker support in this browser!');
+    console.info('No service worker support in this browser.');
   }
 
   window.addEventListener('resize', resize); 
