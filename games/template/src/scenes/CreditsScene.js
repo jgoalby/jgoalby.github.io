@@ -5,28 +5,27 @@ export default class CreditsScene extends Phaser.Scene {
   constructor(deps) {
     super('Credits');
     this.deps = deps;
-    this.creditsHeading = null;
+    this.heading = null;
     this.creditsText = null;
   }
 
   create() {
-    this.creditsHeading = this.add.text(0, 0, 'Credits', {
+    this.heading = this.add.text(0, 0, 'Credits', {
       fontSize: '32px',
       color: '#fff',
     });
-    this.creditsHeading.setOrigin(0.5);
+    this.heading.setOrigin(0.5);
+    this.heading.setY(this.cameras.main.height / 2 - 50);
 
     this.creditsText = this.add.text(0, 0, Constants.CREDITS, {
       fontSize: '26px',
       color: '#fff',
     });
     this.creditsText.setOrigin(0.5);
-
-    this.creditsHeading.setY(this.cameras.main.height / 2 - 50);
     this.creditsText.setY(this.cameras.main.height / 2 + 50);
 
     this.tweens.add({
-      targets: this.creditsHeading,
+      targets: this.heading,
       y: -100,
       ease: 'Power1',
       duration: 5000,
@@ -48,14 +47,14 @@ export default class CreditsScene extends Phaser.Scene {
       onComplete: gotoMainMenu,
     });
 
-    this.button = new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu);
+    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu);
 
     this.scale.on('resize', this.resize, this);
     this.resize();
   }
 
   resize() {
-    this.creditsHeading.setX(this.cameras.main.width / 2);
+    this.heading.setX(this.cameras.main.width / 2);
     this.creditsText.setX(this.cameras.main.width / 2);
     this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }

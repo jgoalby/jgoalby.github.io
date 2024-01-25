@@ -9,6 +9,13 @@ export default class LeaderboardScene extends Phaser.Scene {
   }
 
   create() {
+    this.heading = this.add.text(0, 0, 'Leaderboard', {
+      fontSize: '32px',
+      color: '#fff',
+    });
+    this.heading.setOrigin(0.5);
+    this.heading.setY(50);
+
     const tableElement = document.createElement('table');
     const headercontainer = document.createElement('tr');
     const header1 = document.createElement('th');
@@ -51,8 +58,8 @@ export default class LeaderboardScene extends Phaser.Scene {
   }
 
   resize() {
-    console.log(this.dom.width, this.dom.height, this.dom.x, this.dom.y);
-    this.dom.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.heading.setX(this.cameras.main.width / 2);
+    this.dom.setPosition(this.cameras.main.width / 2, this.heading.y + 50);
     this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }
