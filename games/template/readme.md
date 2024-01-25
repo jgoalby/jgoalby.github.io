@@ -1,6 +1,12 @@
 # TODOs
 
-- Work on preloader
+- Work on preloader scene next
+- Put the text in the middle of the scene
+- Figure out resizing with the scene
+- Make the logo scale of 1
+
+- Still trying to get rid of "game" and replace perhaps with "main"
+
 - Slow the page down so that the preloader can be seen
 - Move the progress bar to the bottom of the screen
 - Make it work while resizing the page
