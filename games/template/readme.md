@@ -28,6 +28,8 @@
 - Clean up manifest if possible. What fields and icons etc are really needed.
 
 - Start using _ for private variables
+- Need a version for the application. Can Github provide a version somehow?
+- Perhaps github can deploy or create a file that can be read in by the code?
 
 - Add ECS feature to the game
 - Do I need to look into state machines?
