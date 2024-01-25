@@ -6,6 +6,8 @@ export default class Button extends Phaser.GameObjects.Container {
     this.y = y;
 
     this.button = this.scene.add.sprite(0, 0, normal).setInteractive();
+    this.height = this.button.height;
+    this.width = this.button.width;
 
     if (scaleButton) {
       this.button.setScale(scaleButton.x, scaleButton.y);
