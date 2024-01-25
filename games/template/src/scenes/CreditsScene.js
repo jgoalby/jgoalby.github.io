@@ -37,7 +37,6 @@ export default class CreditsScene extends Phaser.Scene {
       this.scene.start('Menu');
     }.bind(this);
   
-  
     this.tweens.add({
       targets: this.creditsText,
       y: -200,

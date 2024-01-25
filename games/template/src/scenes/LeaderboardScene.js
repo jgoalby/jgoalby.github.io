@@ -44,7 +44,8 @@ export default class LeaderboardScene extends Phaser.Scene {
       tableElement.append(row);
     }
     this.dom = this.add.dom(0, 0, tableElement);
-    this.dom.setOrigin(0.5);
+    this.dom.setOrigin(0.5, 0);
+    this.dom.setY(this.heading.y + this.heading.height + 20);
 
     const gotoMainMenu = function() {
       this.scale.off('resize', this.resize, this);
@@ -59,7 +60,7 @@ export default class LeaderboardScene extends Phaser.Scene {
 
   resize() {
     this.heading.setX(this.cameras.main.width / 2);
-    this.dom.setPosition(this.cameras.main.width / 2, this.heading.y + 50);
+    this.dom.setX(this.cameras.main.width / 2);
     this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }
