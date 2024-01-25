@@ -37,7 +37,7 @@ export default class PreloaderScene extends Phaser.Scene {
     }
 
     const continueText = this.make.text({
-      x: 50,
+      x: 350,
       y: 50,
       text: continueMessage,
       style: {
