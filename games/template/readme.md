@@ -8,6 +8,7 @@
 - What about having the logo scale depending on the size of the screen?
 
 - Make all uses of the button use the callback version and then delete non-callback version
+- Can I set the origin of the button somehow? I tried on container but it doesn't have setOrigin
 - Make a radio button from the code in the options scene
 
 - Do I need the scale for the camera?
