@@ -100,10 +100,9 @@ export default class PreloaderScene extends Phaser.Scene {
       this.input.keyboard.once('keydown', () => {
         this.startTitleScene();
       });
-      //this.time.delayedCall(1000, () => {
-        //this.startTitleScene();
-        // Wait for a keypress or screen tap before starting the Title scene.
-      //});
+      this.input.once('pointerdown', () => {
+        this.startTitleScene();
+      });
     });
 
     this.load.image('tile1', Constants.ASSETS_PATH + 'tile/city.png');
