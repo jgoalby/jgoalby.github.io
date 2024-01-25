@@ -1,32 +1,32 @@
 const AUTHOR = 'John Goalby';
 
 export default class Constants {
-  static get GAME_CREDITS() {
+  static get CREDITS() {
     return `Created By: ${AUTHOR} \nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
   }
 
-  static get GAME_WIDTH() {
+  static get WIDTH() {
     return window.innerWidth;
   }
 
-  static get GAME_HEIGHT() {
+  static get HEIGHT() {
     return window.innerHeight;
   }
 
-  static get GAME_BACKGROUND_COLOR() {
+  static get BACKGROUND_COLOR() {
     return '#000';
   }
 
-  static get GAME_TYPE() {
+  static get TYPE() {
     return Phaser.AUTO;
   }
 
-  static get GAME_PARENT() {
+  static get PARENT() {
     return 'main';
   }
 
-  static get GAME_TITLE() {
-    return 'Game';
+  static get TITLE() {
+    return 'Template';
   }
 
   static get ASSETS_PATH() {

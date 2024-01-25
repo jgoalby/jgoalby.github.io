@@ -1,12 +1,12 @@
 {
-    "name": "GameTemplate",
-    "short_name": "GameTemplate",
+    "name": "Template",
+    "short_name": "Template",
     "start_url": "../",
     "scope": "../",
     "display": "fullscreen",
     "orientation": "landscape",
     "background_color": "#fff",
-    "description": "A Game Template.",
+    "description": "A Template.",
     "icons": [
         {
           "src": "assets/site/android-chrome-192x192.png",

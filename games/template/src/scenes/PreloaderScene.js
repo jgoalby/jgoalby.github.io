@@ -9,14 +9,14 @@ export default class PreloaderScene extends Phaser.Scene {
   preload() {
     const { width, height } = this.cameras.main;
 
-    // Make the game logo fully transparent initially so we can fade it in.
-    this.gameLogo = this.add.image(width / 2, height / 2, 'gameLogo').setOrigin(0.5, 0.5).setScale(2, 2);
-    this.gameLogo.alpha = 0; 
+    // Make the logo fully transparent initially so we can fade it in.
+    this.logo = this.add.image(width / 2, height / 2, 'logo').setOrigin(0.5).setScale(2);
+    this.logo.alpha = 0; 
     
     // Fade the logo in over a period of time.
     this.time.delayedCall(10, () => {
       this.tweens.add({
-        targets: this.gameLogo,
+        targets: this.logo,
         alpha: 1,
         duration: 5000,
         ease: 'Power2'

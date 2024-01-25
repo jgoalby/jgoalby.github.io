@@ -1,7 +1,7 @@
 import Constants from '../constants.js';
 
 export default {
-  type: Constants.GAME_TYPE,
+  type: Constants.TYPE,
   width: window.innerWidth,
   height: window.innerHeight,
   backgroundColor: 'black',
@@ -12,7 +12,7 @@ export default {
       debug: false,
     },
   },
-  parent: Constants.GAME_PARENT,
+  parent: Constants.PARENT,
   dom: {
     createContainer: true,
   }
