@@ -9,6 +9,7 @@
 
 - Make all uses of the button use the callback version and then delete non-callback version
 - Can I set the origin of the button somehow? I tried on container but it doesn't have setOrigin
+- Should the button instead derive from Phaser.GameObjects.GameObject?
 - Make a radio button from the code in the options scene
 
 - Do I need the scale for the camera?

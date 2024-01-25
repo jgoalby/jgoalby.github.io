@@ -48,8 +48,6 @@ export default class LeaderboardScene extends Phaser.Scene {
 
   resize() {
     this.dom.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + 300);
-    //this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-    //this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + this.textBounds.height + 5);
+    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - this.button.height - 10);
   }
 }
