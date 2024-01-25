@@ -34,8 +34,10 @@ export default class LeaderboardScene extends Phaser.Scene {
       row.append(data1, data2);
       dom.append(row);
     }
-    this.add.dom(200, 100, dom);
+    this.add.dom(0, 0, dom);
     console.log(dom);
+
+    // TODO: Do I have to destroy the dom stuff after we leave here?
 
     new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu', {
       x: 0.7,

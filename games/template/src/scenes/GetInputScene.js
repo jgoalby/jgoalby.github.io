@@ -60,6 +60,8 @@ export default class InputScene extends Phaser.Scene {
       }
     });
 
+    // TODO: Do I have to destroy the dom stuff after we leave here?
+
     this.scale.on('resize', this.resize, this);
     this.resize();
   }
