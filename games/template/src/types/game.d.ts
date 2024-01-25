@@ -11,9 +11,9 @@ interface AudioModel {
 }
 
 interface Globals {
-    player: any;
-    bgMusic: any;
     model: AudioModel;
+    bgMusic: any;
+    player: any;
     score: number;
 }
 

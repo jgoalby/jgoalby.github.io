@@ -17,6 +17,21 @@ export default class LeaderboardScene extends Phaser.Scene {
 
     dom.append(headercontainer);
 
+
+    const input = document.createElement('input');
+    input.name = 'nameField';
+    input.placeholder = 'Enter your name';
+    const button = document.createElement('input');
+    button.type = 'button';
+    button.name = 'playButton';
+    button.value = "Let's Play";
+
+    dom.append(input, button);
+
+
+
+
+
     const arrayOfusers = [];
     arrayOfusers.push({ user: 'Player One', score: 12000 });
     arrayOfusers.push({ user: 'Player Two', score: 50000 });
