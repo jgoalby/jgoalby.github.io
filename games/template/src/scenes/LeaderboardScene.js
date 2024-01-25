@@ -35,6 +35,7 @@ export default class LeaderboardScene extends Phaser.Scene {
       dom.append(row);
     }
     this.add.dom(200, 100, dom);
+    console.log(dom);
 
     new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu', {
       x: 0.7,
