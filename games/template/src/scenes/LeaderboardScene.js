@@ -4,10 +4,12 @@ export default class LeaderboardScene extends Phaser.Scene {
   constructor(deps) {
     super('Leaderboard');
     this.deps = deps;
+    this.dom = null;
+    this.button = null;
   }
 
   create() {
-    const dom = document.createElement('table');
+    const tableElement = document.createElement('table');
     const headercontainer = document.createElement('tr');
     const header1 = document.createElement('th');
     header1.innerText = 'Player Name';
@@ -15,7 +17,7 @@ export default class LeaderboardScene extends Phaser.Scene {
     header2.innerText = 'Player Score';
     headercontainer.append(header1, header2);
 
-    dom.append(headercontainer);
+    tableElement.append(headercontainer);
 
     const arrayOfusers = [];
     arrayOfusers.push({ user: 'Player One', score: 12000 });
@@ -32,13 +34,20 @@ export default class LeaderboardScene extends Phaser.Scene {
       const data2 = document.createElement('td');
       data2.innerText = String(arrayOfusers[i].score);
       row.append(data1, data2);
-      dom.append(row);
+      tableElement.append(row);
     }
-    this.add.dom(600, 200, dom);
+    this.dom = this.add.dom(600, 200, tableElement);
 
-    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu', {
-      x: 0.2,
-      y: 0.2,
-    });
+    this.button = new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu');
+
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+  }
+
+  resize() {
+    this.dom.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + 300);
+    //this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    //this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + this.textBounds.height + 5);
   }
 }
