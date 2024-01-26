@@ -16,8 +16,11 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
         console.log("In firebase plugin constructor");
 
         const app = initializeApp(firebaseConfig);
+
+        console.log(app);
+
         //const db = app.firestore();
-        const auth = app.auth();
+        const auth = app.auth;
 
         console.log("After initializeApp");
 
