@@ -28,6 +28,8 @@ export default class InputScene extends Phaser.Scene {
     const input = document.createElement('input');
     input.name = 'nameField';
     input.placeholder = 'Enter your name';
+    input.autofocus = true;
+
     const button = document.createElement('input');
     button.type = 'button';
     button.name = 'playButton';
