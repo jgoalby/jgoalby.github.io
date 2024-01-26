@@ -43,10 +43,10 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 10000,
       delay: 1000,
-      onComplete: this.gotoMainMenu,
+      onComplete: () => { this.gotoMainMenu },
     });
 
-    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', this.gotoMainMenu);
+    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu });
 
     this.scale.on('resize', this.resize, this);
     this.resize();
