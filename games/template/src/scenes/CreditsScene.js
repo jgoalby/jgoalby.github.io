@@ -32,10 +32,10 @@ export default class CreditsScene extends Phaser.Scene {
       delay: 1000,
     });
 
-    const gotoMainMenu = function() {
+    /*const gotoMainMenu = function() {
       this.scale.off('resize', this.resize, this);
       this.scene.start('Menu');
-    }.bind(this);
+    }.bind(this);*/
   
     this.tweens.add({
       targets: this.creditsText,
@@ -43,13 +43,18 @@ export default class CreditsScene extends Phaser.Scene {
       ease: 'Power1',
       duration: 10000,
       delay: 1000,
-      onComplete: gotoMainMenu,
+      onComplete: this.gotoMainMenu,
     });
 
-    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', gotoMainMenu);
+    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', this.gotoMainMenu);
 
     this.scale.on('resize', this.resize, this);
     this.resize();
+  }
+
+  gotoMainMenu() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start('Menu');
   }
 
   resize() {

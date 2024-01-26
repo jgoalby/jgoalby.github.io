@@ -4,6 +4,9 @@ export default class PreloaderScene extends Phaser.Scene {
   constructor(deps) {
     super('Preloader');
     this.deps = deps;
+    this.logo_landscape = null;
+    this.logo_portrait = null;
+    this.continueText = null;
   }
 
   isLandscape() {
@@ -156,10 +159,14 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.image('tombstone', Constants.ASSETS_PATH + 'misc/tombstone.png');
+
+    this.scale.on('resize', this.resize, this);
+    this.resize();
   }
 
   startTitleScene() {
     this.scene.start('Input');
+    this.scale.off('resize', this.resize, this);
   }
 
   create() {
@@ -167,5 +174,11 @@ export default class PreloaderScene extends Phaser.Scene {
       volume: 0.5,
       loop: true,
     });
+  }
+
+  resize() {
+    this.logo_landscape.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.logo_portrait.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.continueText.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.continueText.height / 2) + 10));
   }
 }
