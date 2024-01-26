@@ -9,18 +9,29 @@ import IntroScene from './IntroScene.js';
 import GameScene from './GameScene.js';
 import GameOverScene from './GameOverScene.js';
 
-export default class Scenes {
-  static BOOT_SCENE = 'Boot';
-  static PRELOADER_SCENE = 'Preloader';
-  static INPUT_SCENE = 'Input';
-  static MENU_SCENE = 'Menu';
-  static OPTIONS_SCENE = 'Options';
-  static CREDITS_SCENE = 'Credits';
-  static LEADERBOARD_SCENE = 'Leaderboard';
-  static INTRO_SCENE = 'Intro';
-  static GAME_SCENE = 'Game';
-  static GAMEOVER_SCENE = 'GameOver';
+const BOOT_SCENE        = 'Boot';
+const PRELOADER_SCENE   = 'Preloader';
+const INPUT_SCENE       = 'Input';
+const MENU_SCENE        = 'Menu';
+const OPTIONS_SCENE     = 'Options';
+const CREDITS_SCENE     = 'Credits';
+const LEADERBOARD_SCENE = 'Leaderboard';
+const INTRO_SCENE       = 'Intro';
+const GAME_SCENE        = 'Game';
+const GAMEOVER_SCENE    = 'GameOver';
 
+export default class Scenes {
+  static get BOOT_SCENE()        { return BOOT_SCENE; }
+  static get PRELOADER_SCENE()   { return PRELOADER_SCENE; }
+  static get INPUT_SCENE()       { return INPUT_SCENE; }
+  static get MENU_SCENE()        { return MENU_SCENE; }
+  static get OPTIONS_SCENE()     { return OPTIONS_SCENE; }
+  static get CREDITS_SCENE()     { return CREDITS_SCENE; }
+  static get LEADERBOARD_SCENE() { return LEADERBOARD_SCENE; }
+  static get INTRO_SCENE()       { return INTRO_SCENE; }
+  static get GAME_SCENE()        { return GAME_SCENE; }
+  static get GAMEOVER_SCENE()    { return GAMEOVER_SCENE; }
+  
   static create(game) {
     const customEmitter = new Phaser.Events.EventEmitter();
 
@@ -28,6 +39,7 @@ export default class Scenes {
       emitter: customEmitter,
     }
 
+    // Add all of the scenes here
     game.scene.add(this.BOOT_SCENE, new BootScene(deps));
     game.scene.add(this.PRELOADER_SCENE, new PreloaderScene(deps));
     game.scene.add(this.INPUT_SCENE, new InputScene(deps));
@@ -38,6 +50,8 @@ export default class Scenes {
     game.scene.add(this.INTRO_SCENE, new IntroScene(deps));
     game.scene.add(this.GAME_SCENE, new GameScene(deps));
     game.scene.add(this.GAMEOVER_SCENE, new GameOverScene(deps));
+
+    // Start the first scene
     game.scene.start(this.BOOT_SCENE);
   }
 }

@@ -33,11 +33,6 @@ export default class CreditsScene extends Phaser.Scene {
       delay: 1000,
     });
 
-    /*const gotoMainMenu = function() {
-      this.scale.off('resize', this.resize, this);
-      this.scene.start('Menu');
-    }.bind(this);*/
-  
     this.tweens.add({
       targets: this.creditsText,
       y: -200,
@@ -54,8 +49,6 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   gotoMainMenu() {
-    console.log("Scenes.MENU_SCENE");
-    console.log(Scenes.MENU_SCENE);
     this.scale.off('resize', this.resize, this);
     this.scene.start(Scenes.MENU_SCENE);
   }
