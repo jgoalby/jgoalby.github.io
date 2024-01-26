@@ -19,9 +19,12 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
         console.log(app);
 
-        const auth = getAuth(app);
+        // delay for 3 seconds
+        setTimeout(() => {
+            const auth = getAuth(app);
+            console.log(auth);
+        } , 3000);
 
-        console.log(auth);
 
         //const db = app.firestore();
         //const auth = app.auth;
@@ -37,13 +40,13 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
             }
         })*/
 
-        signInAnonymously(auth).then(() => {
+        /*signInAnonymously(auth).then(() => {
             console.log("Signed in");
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
             console.log(errorCode, errorMessage);
-        });
+        });*/
     }
 }
