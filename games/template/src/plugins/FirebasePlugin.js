@@ -1,4 +1,5 @@
 import { initializeApp } from '..//lib/firebase/firebase-app.js';
+import { signInAnonymously, onAuthStateChanged } from '..//lib/firebase/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDCnBfOg8aHhwLQIFWxde-gwLbTefyHzrU",
@@ -15,7 +16,8 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
         console.log("In firebase plugin constructor");
 
         const firebase = initializeApp(firebaseConfig);
-        firebase.auth().onAuthStateChanged((user) => {
+
+        onAuthStateChanged((user) => {
             console.log(user)
             if (user) {
                 //You're logged in!
@@ -24,7 +26,7 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
             }
         })
         
-        firebase.auth().signInAnonymously().catch((error) => {
+        signInAnonymously().catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
