@@ -45,16 +45,16 @@ export default class PreloaderScene extends Phaser.Scene {
       continueMessage = 'Tap to continue';
     }
 
-    const continueText = this.make.text({
-      x: 350,
-      y: 50,
+    this.continueText = this.make.text({
+      x: 0,
+      y: 0,
       text: continueMessage,
       style: {
         font: '30px monospace',
         color: '#ffffff',
       },
     });
-    continueText.setOrigin(0.5, 0.5);
+    this.continueText.setOrigin(0.5, 0.5);
 
     const loadingText = this.make.text({
       x: width / 1.9,
