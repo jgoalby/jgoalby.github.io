@@ -29,6 +29,9 @@
 - Leaderboard should also manage actual score data from local storage
 - So need a way to get the local storage and maybe use ECS to manage the data?
 
+- With the credits screen, it does not take into account the amount of text in the credits
+- So I should check the amount and adjust the scene based on that
+
 - Do I need the scale for the camera?
 - Maybe don't have a launch screen as I am using caching and have a splash screen in the game.
 - Clean up manifest if possible. What fields and icons etc are really needed.
