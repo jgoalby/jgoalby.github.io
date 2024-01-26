@@ -20,6 +20,7 @@ interface Globals {
 namespace Phaser {
     interface Game {
         globals: Globals;
+        firebase: import('../plugins/FirebasePlugin').default;
     }
 }
 

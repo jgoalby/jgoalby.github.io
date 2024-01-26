@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import FirebasePlugin from '../plugins/FirebasePlugin.js';
 
 export default {
   type: Constants.TYPE,
@@ -11,6 +12,16 @@ export default {
       gravity: { x: 0, y: 0 },
       debug: false,
     },
+  },
+  plugins: {
+    global: [
+      { 
+        key: 'FirebasePlugin', 
+        plugin: FirebasePlugin, 
+        start: true,
+        mapping: 'firebase',
+      },
+    ],
   },
   parent: Constants.PARENT,
   dom: {

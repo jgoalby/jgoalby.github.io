@@ -55,20 +55,4 @@ function onResizeTimeout() {
   }
 
   window.addEventListener('resize', resize);
-
-  firebase.auth().onAuthStateChanged((user) => {
-    console.log(user)
-    if (user) {
-      //You're logged in!
-    } else {
-      //You're logged out.
-    }
-  })
-
-  firebase.auth().signInAnonymously().catch((error) => {
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // ...
-    console.log(errorCode, errorMessage);
-  });
 })();
