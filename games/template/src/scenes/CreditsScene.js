@@ -54,6 +54,7 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   gotoMainMenu() {
+    console.log(Scenes.MENU_SCENE);
     this.scale.off('resize', this.resize, this);
     this.scene.start(Scenes.MENU_SCENE);
   }
