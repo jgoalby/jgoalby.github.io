@@ -17,14 +17,14 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
         const firebase = initializeApp(firebaseConfig);
 
-        onAuthStateChanged((user) => {
+        /*onAuthStateChanged((user) => {
             console.log(user)
             if (user) {
                 //You're logged in!
             } else {
                 //You're logged out.
             }
-        })
+        })*/
         
         signInAnonymously().catch((error) => {
             var errorCode = error.code;
