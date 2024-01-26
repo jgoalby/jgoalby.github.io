@@ -26,8 +26,8 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
         //const auth = app.auth();
         //console.log(auth);
 
-        const db = getDatabase(app);
-        console.log(db);
+        //const db = getDatabase(app);
+        //console.log(db);
 
         const auth = getAuth(app);
         console.log(auth);
@@ -45,13 +45,13 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
             }
         })*/
 
-        auth.signInAnonymously().then(() => {
+        /*auth.signInAnonymously().then(() => {
             console.log("Signed in");
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
             console.log(errorCode, errorMessage);
-        });
+        });*/
     }
 }
