@@ -30,6 +30,13 @@ export default class InputScene extends Phaser.Scene {
     input.placeholder = 'Enter your name';
     input.autofocus = true;
 
+    input.addEventListener('keyup', (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        document.getElementsByName('playButton')[0].click();
+      }
+    });
+
     const button = document.createElement('input');
     button.type = 'button';
     button.name = 'playButton';
