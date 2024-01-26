@@ -37,13 +37,13 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
             }
         })*/
 
-        /*signInAnonymously(auth).then(() => {
+        auth.signInAnonymously().then(() => {
             console.log("Signed in");
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
             console.log(errorCode, errorMessage);
-        });*/
+        });
     }
 }
