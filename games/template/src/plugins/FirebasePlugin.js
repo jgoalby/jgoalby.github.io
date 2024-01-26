@@ -54,4 +54,9 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
             console.log(errorCode, errorMessage);
         });
     }
+
+    getVersion() {
+        console.log("Inside firebase plugin get version");
+        return window.firebase.default.SDK_VERSION;
+    }
 }

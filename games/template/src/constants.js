@@ -3,7 +3,8 @@ const VERSION = '0.1'
 const AUTHOR = 'John Goalby';
 
 export default class Constants {
-  static get CREDITS() {
+  static getCredits(game) {
+    console.log(game.firebase.getVersion());
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
   }
 
