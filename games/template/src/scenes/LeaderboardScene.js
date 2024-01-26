@@ -1,4 +1,5 @@
 import Button from '../components/ButtonCallback.js';
+import Scenes from './Scenes.js';
 
 export default class LeaderboardScene extends Phaser.Scene {
   constructor(deps) {
@@ -68,7 +69,7 @@ export default class LeaderboardScene extends Phaser.Scene {
 
   gotoMainMenu() {
     this.scale.off('resize', this.resize, this);
-    this.scene.start('Menu');
+    this.scene.start(Scenes.MENU_SCENE);
   }
 
   resize() {
