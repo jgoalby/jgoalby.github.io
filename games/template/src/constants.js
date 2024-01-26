@@ -4,7 +4,13 @@ const AUTHOR = 'John Goalby';
 
 export default class Constants {
   static getCredits(game) {
-    console.log(game.firebase.getVersion());
+    const firebasePlugin = game.plugins.get('firebase');
+    if (firebasePlugin) {
+      const firebaseVersion = game.plugins.get('firebase').getVersion();
+      console.log(firebaseVersion);
+    } else {
+      console.log("No firebase plugin");
+    }
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
   }
 
