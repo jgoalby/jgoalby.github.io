@@ -10,6 +10,17 @@ import GameScene from './GameScene.js';
 import GameOverScene from './GameOverScene.js';
 
 export default class Scenes {
+  static BOOT_SCENE = 'Boot';
+  static PRELOADER_SCENE = 'Preloader';
+  static INPUT_SCENE = 'Input';
+  static MENU_SCENE = 'Menu';
+  static OPTIONS_SCENE = 'Options';
+  static CREDITS_SCENE = 'Credits';
+  static LEADERBOARD_SCENE = 'Leaderboard';
+  static INTRO_SCENE = 'Intro';
+  static GAME_SCENE = 'Game';
+  static GAMEOVER_SCENE = 'GameOver';
+
   static create(game) {
     const customEmitter = new Phaser.Events.EventEmitter();
 
@@ -17,16 +28,16 @@ export default class Scenes {
       emitter: customEmitter,
     }
 
-    game.scene.add('Boot', new BootScene(deps));
-    game.scene.add('Preloader', new PreloaderScene(deps));
-    game.scene.add('Input', new InputScene(deps));
-    game.scene.add('Menu', new MenuScene(deps));
-    game.scene.add('Options', new OptionsScene(deps));
-    game.scene.add('Credits', new CreditsScene(deps));
-    game.scene.add('Leaderboard', new LeaderboardScene(deps));
-    game.scene.add('Intro', new IntroScene(deps));
-    game.scene.add('Game', new GameScene(deps));
-    game.scene.add('GameOver', new GameOverScene(deps));
-    game.scene.start('Boot');
+    game.scene.add(this.BOOT_SCENE, new BootScene(deps));
+    game.scene.add(this.PRELOADER_SCENE, new PreloaderScene(deps));
+    game.scene.add(this.INPUT_SCENE, new InputScene(deps));
+    game.scene.add(this.MENU_SCENE, new MenuScene(deps));
+    game.scene.add(this.OPTIONS_SCENE, new OptionsScene(deps));
+    game.scene.add(this.CREDITS_SCENE, new CreditsScene(deps));
+    game.scene.add(this.LEADERBOARD_SCENE, new LeaderboardScene(deps));
+    game.scene.add(this.INTRO_SCENE, new IntroScene(deps));
+    game.scene.add(this.GAME_SCENE, new GameScene(deps));
+    game.scene.add(this.GAMEOVER_SCENE, new GameOverScene(deps));
+    game.scene.start(this.BOOT_SCENE);
   }
 }
