@@ -1,4 +1,4 @@
-import config from './config/config.js';
+import { config } from './config/config.js';
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
 

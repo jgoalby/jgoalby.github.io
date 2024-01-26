@@ -4,14 +4,7 @@
 //import { getDatabase } from '../lib/firebase/firebase-database.js';
 //import { signInAnonymously } from '../lib/firebase/firebase-auth-compat.js'
 
-const firebaseConfig = {
-    apiKey: "AIzaSyDCnBfOg8aHhwLQIFWxde-gwLbTefyHzrU",
-    authDomain: "phaser-template.firebaseapp.com",
-    projectId: "phaser-template",
-    storageBucket: "phaser-template.appspot.com",
-    messagingSenderId: "907415004904",
-    appId: "1:907415004904:web:3f1181f9a62c51ac6acb5d"
-};
+import { firebaseConfig } from '../config/config.js';
 
 export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
     constructor(pluginManager) {
