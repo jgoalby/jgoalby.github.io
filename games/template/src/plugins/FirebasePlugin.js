@@ -1,5 +1,5 @@
 //import { firebase } from '../lib/firebase/firebase-app.js';
-import { initializeApp } from '../lib/firebase/firebase-app-compat.js';
+import { initializeApp } from '../lib/firebase/firebase-app.js';
 //import { getAuth, signInAnonymously, onAuthStateChanged } from '../lib/firebase/firebase-auth-compat.js';
 //import { signInAnonymously } from '../lib/firebase/firebase-auth-compat.js'
 
