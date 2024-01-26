@@ -4,8 +4,8 @@ export default class PreloaderScene extends Phaser.Scene {
   constructor(deps) {
     super('Preloader');
     this.deps = deps;
-    this.logo_landscape = null;
-    this.logo_portrait = null;
+    this.splash_landscape = null;
+    this.splash_portrait = null;
     this.continueText = null;
   }
 
@@ -17,15 +17,15 @@ export default class PreloaderScene extends Phaser.Scene {
     const { width, height } = this.cameras.main;
 
     // Make the logo fully transparent initially so we can fade it in.
-    this.logo_landscape = this.add.image(width / 2, height / 2, 'logo_landscape').setOrigin(0.5).setScale(2);
-    this.logo_landscape.alpha = 0; 
-    this.logo_portrait = this.add.image(width / 2, height / 2, 'logo_portrait').setOrigin(0.5).setScale(1);
-    this.logo_portrait.alpha = 0; 
+    this.splash_landscape = this.add.image(width / 2, height / 2, 'splash_landscape').setOrigin(0.5).setScale(2);
+    this.splash_landscape.alpha = 0; 
+    this.splash_portrait = this.add.image(width / 2, height / 2, 'splash_portrait').setOrigin(0.5).setScale(1);
+    this.splash_portrait.alpha = 0; 
 
     // Fade the logo in over a period of time.
     this.time.delayedCall(10, () => {
       this.tweens.add({
-        targets: this.isLandscape() ? this.logo_landscape : this.logo_portrait,
+        targets: this.isLandscape() ? this.splash_landscape : this.splash_portrait,
         alpha: 1,
         duration: 5000,
         ease: 'Power2'
@@ -177,8 +177,8 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   resize() {
-    this.logo_landscape.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-    this.logo_portrait.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.splash_landscape.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
+    this.splash_portrait.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
     this.continueText.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.continueText.height / 2) + 10));
   }
 }
