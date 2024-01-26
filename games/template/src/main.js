@@ -32,9 +32,8 @@ function onResizeTimeout() {
   var wPrev = window.innerWidthPrevious;
   var hPrev = window.innerHeightPrevious;
 
-  // If the values are the same then do nothing. If they are not the
-  // same that means they were changed during the short timeout.
-  // This happens occasionally on iPads.
+  // If the values are the same then do nothing. If they are not the same that means they were changed
+  // during the short timeout. This happens occasionally on iPads.
   if (wPrev === w && hPrev === h) {
     return;
   }
@@ -55,5 +54,21 @@ function onResizeTimeout() {
     console.info('No service worker support in this browser.');
   }
 
-  window.addEventListener('resize', resize); 
+  window.addEventListener('resize', resize);
+
+  firebase.auth().onAuthStateChanged((user) => {
+    console.log(user)
+    if (user) {
+      //You're logged in!
+    } else {
+      //You're logged out.
+    }
+  })
+
+  firebase.auth().signInAnonymously().catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ...
+    console.log(errorCode, errorMessage);
+  });
 })();
