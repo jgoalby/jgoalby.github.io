@@ -26,22 +26,17 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
         const auth = app.auth();
         console.log(auth);
 
-        //const db = getDatabase(app);
-        //console.log(db);
-
-        //const auth = getAuth(app);
-        //console.log(auth);
-
-        //const auth = app.auth;
+        const db = app.database();
+        console.log(db);
 
         console.log("After initializeApp");
 
         auth.onAuthStateChanged((user) => {
             console.log("User state changed: ", user)
             if (user) {
-                //You're logged in!
+                console.log("You're logged in");
             } else {
-                //You're logged out.
+                console.log("You're logged out");
             }
         })
 
@@ -50,13 +45,12 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
-            // ...
+
             console.log(errorCode, errorMessage);
         });
     }
 
     getVersion() {
-        console.log("Inside firebase plugin get version");
         return window.firebase.default.SDK_VERSION;
     }
 }

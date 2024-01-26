@@ -11,6 +11,20 @@ export default class Constants {
     } else {
       console.log("No firebase plugin");
     }
+
+    const plugins = game.plugins.plugins;
+    console.log("There are " + plugins.length + " plugins");
+
+    for (let i = 0; i < plugins.length; i++) {
+      console.log(plugins[i]);
+      if (plugins[i].getVersion) {
+        console.log("Key is:");
+        console.log(plugins[i].key);
+        console.log("Version is:");
+        console.log(plugins[i].getVersion());
+      }
+    }
+
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
   }
 

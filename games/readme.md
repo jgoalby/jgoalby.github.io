@@ -29,7 +29,8 @@
   - <https://www.bfxr.net/>
 - Plugins
   - <https://phaserplugins.com/>
-- RexUI buttons
+- RexUI
+  - <https://github.com/rexrainbow/phaser3-rex-notes>
   - <https://www.youtube.com/watch?v%253DjYyUpFN89dg>
 - Phaser 3 notes from Rex
   - <https://github.com/rexrainbow/phaser3-rex-notes/tree/master>
