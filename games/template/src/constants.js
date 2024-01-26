@@ -5,6 +5,7 @@ const AUTHOR = 'John Goalby';
 export default class Constants {
   static getCredits(game) {
     const firebasePlugin = game.plugins.get('FirebasePlugin');
+    console.log(firebasePlugin);
     if (firebasePlugin) {
       const firebaseVersion = firebasePlugin.getVersion();
       console.log(firebaseVersion);
