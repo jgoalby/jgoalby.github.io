@@ -17,12 +17,13 @@ export default class Constants {
     console.log("There are " + plugins.length + " plugins");
 
     for (let i = 0; i < plugins.length; i++) {
-      console.log(plugins[i]);
-      if (plugins[i].getVersion) {
+      const curPlugin = plugins[i].plugin;
+      console.log(curPlugin);
+      if (curPlugin.getVersion) {
         console.log("Key is:");
-        console.log(plugins[i].key);
+        console.log(curPlugin.key);
         console.log("Version is:");
-        console.log(plugins[i].getVersion());
+        console.log(curPlugin.getVersion());
       }
     }
 
