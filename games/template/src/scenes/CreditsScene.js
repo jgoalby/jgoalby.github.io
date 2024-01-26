@@ -27,7 +27,7 @@ export default class CreditsScene extends Phaser.Scene {
 
     this.tweens.add({
       targets: this.heading,
-      y: -100,
+      y: -500,
       ease: 'Power1',
       duration: 5000,
       delay: 1000,
@@ -35,7 +35,7 @@ export default class CreditsScene extends Phaser.Scene {
 
     this.tweens.add({
       targets: this.creditsText,
-      y: -200,
+      y: -500,
       ease: 'Power1',
       duration: 10000,
       delay: 1000,
