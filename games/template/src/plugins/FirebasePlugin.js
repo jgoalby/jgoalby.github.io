@@ -1,5 +1,6 @@
-import { initializeApp } from '..//lib/firebase/firebase-app.js';
-import { getAuth, signInAnonymously, onAuthStateChanged } from '..//lib/firebase/firebase-auth.js';
+import { initializeApp } from '../lib/firebase/firebase-app-compat.js';
+//import { getAuth, signInAnonymously, onAuthStateChanged } from '../lib/firebase/firebase-auth-compat.js';
+//import { signInAnonymously } from '../lib/firebase/firebase-auth-compat.js'
 
 const firebaseConfig = {
     apiKey: "AIzaSyDCnBfOg8aHhwLQIFWxde-gwLbTefyHzrU",
@@ -19,7 +20,7 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
         console.log(app);
 
-        const auth = getAuth(app);
+        const auth = app.auth();
         console.log(auth);
 
         //const db = app.firestore();
