@@ -1,7 +1,7 @@
 //import { firebase } from '../lib/firebase/firebase-app.js';
-import { initializeApp } from '../lib/firebase/firebase-app.js';
+//import { initializeApp } from '../lib/firebase/firebase-app.js';
 //import { getAuth, signInAnonymously, onAuthStateChanged } from '../lib/firebase/firebase-auth.js';
-import { getDatabase } from '../lib/firebase/firebase-database.js';
+//import { getDatabase } from '../lib/firebase/firebase-database.js';
 //import { signInAnonymously } from '../lib/firebase/firebase-auth-compat.js'
 
 const firebaseConfig = {
@@ -36,22 +36,22 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
         console.log("After initializeApp");
 
-        /*auth.onAuthStateChanged((user) => {
+        auth.onAuthStateChanged((user) => {
             console.log(user)
             if (user) {
                 //You're logged in!
             } else {
                 //You're logged out.
             }
-        })*/
+        })
 
-        /*auth.signInAnonymously().then(() => {
+        auth.signInAnonymously().then(() => {
             console.log("Signed in");
         }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
             console.log(errorCode, errorMessage);
-        });*/
+        });
     }
 }
