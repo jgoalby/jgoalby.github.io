@@ -18,10 +18,12 @@ export default class Constants {
 
     for (let i = 0; i < plugins.length; i++) {
       const curPlugin = plugins[i].plugin;
+      const pluginKey = plugins[i].key;
       console.log(curPlugin);
+
       if (curPlugin.getVersion) {
         console.log("Key is:");
-        console.log(curPlugin.key);
+        console.log(pluginKey);
         console.log("Version is:");
         console.log(curPlugin.getVersion());
       }
@@ -30,35 +32,17 @@ export default class Constants {
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nLibraries Used...`;
   }
 
-  static get WIDTH() {
-    return window.innerWidth;
-  }
+  static get WIDTH() {              return window.innerWidth; }
+  static get HEIGHT() {             return window.innerHeight; }
 
-  static get HEIGHT() {
-    return window.innerHeight;
-  }
+  static get BACKGROUND_COLOR() {   return '#000'; }
 
-  static get BACKGROUND_COLOR() {
-    return '#000';
-  }
+  static get TYPE() {               return Phaser.AUTO; }
 
-  static get TYPE() {
-    return Phaser.AUTO;
-  }
+  static get PARENT() {             return 'main'; }
 
-  static get PARENT() {
-    return 'main';
-  }
+  static get TITLE() {              return TITLE; }
+  static get VERSION() {            return VERSION; }
 
-  static get TITLE() {
-    return TITLE;
-  }
-
-  static get VERSION() {
-    return VERSION;
-  }
-
-  static get ASSETS_PATH() {
-    return './src/assets/';
-  }
+  static get ASSETS_PATH() {        return './src/assets/'; }
 }
