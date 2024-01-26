@@ -1,5 +1,6 @@
 import { Types, defineComponent } from '../lib/bitECS/index.mjs';
 
+// TODO: Need to implement bitECS in the scene at some point.
 export const GetInputScene = defineComponent({
   something: Types.ui8,
 });
@@ -28,8 +29,11 @@ export default class InputScene extends Phaser.Scene {
     const input = document.createElement('input');
     input.name = 'nameField';
     input.placeholder = 'Enter your name';
+
+    // Have the text field have focus on showing the scene.
     input.autofocus = true;
 
+    // Have the enter key trigger the button click.
     input.addEventListener('keyup', (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
