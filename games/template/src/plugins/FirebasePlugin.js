@@ -19,12 +19,8 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
         console.log(app);
 
-        // delay for 3 seconds
-        setTimeout(() => {
-            const auth = getAuth(app);
-            console.log(auth);
-        } , 3000);
-
+        const auth = getAuth(app);
+        console.log(auth);
 
         //const db = app.firestore();
         //const auth = app.auth;
