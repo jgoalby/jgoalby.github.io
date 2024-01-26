@@ -1,5 +1,5 @@
 import { initializeApp } from '..//lib/firebase/firebase-app.js';
-import { signInAnonymously, onAuthStateChanged } from '..//lib/firebase/firebase-auth.js';
+import { getAuth, signInAnonymously, onAuthStateChanged } from '..//lib/firebase/firebase-auth.js';
 
 const firebaseConfig = {
     apiKey: "AIzaSyDCnBfOg8aHhwLQIFWxde-gwLbTefyHzrU",
@@ -19,25 +19,31 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
         console.log(app);
 
+        const auth = getAuth();
+
+        console.log(auth);
+
         //const db = app.firestore();
-        const auth = app.auth;
+        //const auth = app.auth;
 
         console.log("After initializeApp");
 
-        auth.onAuthStateChanged((user) => {
+        /*auth.onAuthStateChanged((user) => {
             console.log(user)
             if (user) {
                 //You're logged in!
             } else {
                 //You're logged out.
             }
-        })
+        })*/
 
-        auth.signInAnonymously().catch((error) => {
+        signInAnonymously(auth).then(() => {
+            console.log("Signed in");
+        }).catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
             // ...
             console.log(errorCode, errorMessage);
-        });    
+        });
     }
 }
