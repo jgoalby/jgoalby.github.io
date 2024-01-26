@@ -37,7 +37,7 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
         console.log("After initializeApp");
 
         auth.onAuthStateChanged((user) => {
-            console.log(user)
+            console.log("User state changed: ", user)
             if (user) {
                 //You're logged in!
             } else {
