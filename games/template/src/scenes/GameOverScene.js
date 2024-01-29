@@ -15,7 +15,7 @@ export default class GameOverScene extends Phaser.Scene {
   create() {
     const { score, player } = this.sys.game.globals;
 
-    this.tombstone = this.add.image(0, 0, 'tombstone').setOrigin(0, 0);
+    this.tombstone = this.add.image(0, 0, 'tombstone').setOrigin(0.5, 0);
 
     this.ripText = this.add.text(0, 0, '', {
       font: '36px',
@@ -24,6 +24,7 @@ export default class GameOverScene extends Phaser.Scene {
     this.ripText.setStroke('#000', 4);
     this.ripText.setShadow(2, 2, '#333333', 2, true, true);
     this.ripText.setText(['RIP']);
+    this.ripText.setOrigin(0.5, 0);
 
     this.endText = this.add.text(0, 0, '', {
       font: '22px',
@@ -31,9 +32,10 @@ export default class GameOverScene extends Phaser.Scene {
     });
     this.endText.setStroke('#000', 2);
     this.endText.setShadow(1, 1, '#333333', 1, true, true);
+    this.endText.setOrigin(0.5, 0);
 
     this.endText.setText([
-      `Here lies our great \nsoldier ${player} who died \nfighting the enemy.\n${player}  Got ${score} points.`,
+      `\nHere lies our great \nsoldier ${player} who died \nfighting the enemy.\n\n${player} got ${score} points.`,
     ]);
 
     this.restartButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Restart', () => { this.restartGame() });
@@ -54,11 +56,11 @@ export default class GameOverScene extends Phaser.Scene {
   }
 
   resize() {
-    this.tombstone.setPosition(350, 60);
-    this.ripText.setPosition(570, 140);
-    this.endText.setPosition(455, 185);
-    this.restartButton.setPosition(300, 510);
-    this.mainMenuButton.setPosition(900, 510);
+    this.tombstone.setPosition(this.cameras.main.width / 2, 60);
+    this.ripText.setPosition(this.cameras.main.width / 2, 140);
+    this.endText.setPosition(this.cameras.main.width / 2, 185);
+    this.restartButton.setPosition(this.cameras.main.width / 3, 510);
+    this.mainMenuButton.setPosition((this.cameras.main.width / 3) * 2, 510);
 
     //this.heading.setX(this.cameras.main.width / 2);
     //this.creditsText.setX(this.cameras.main.width / 2);
