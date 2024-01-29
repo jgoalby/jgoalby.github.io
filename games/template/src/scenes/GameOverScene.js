@@ -1,38 +1,67 @@
-import Button from '../components/Button.js';
+import Button from '../components/ButtonCallback.js';
+import Scenes from './Scenes.js';
 
 export default class GameOverScene extends Phaser.Scene {
   constructor(deps) {
     super('GameOver');
     this.deps = deps;
+    this.restartButton = null;
+    this.mainMenuButton = null;
+    this.ripText = null;
+    this.endText = null;
+    this.tombstone = null;
   }
 
   create() {
-    this.add.image(350, 60, 'tombstone').setOrigin(0, 0);
-    const score = this.sys.game.globals.score + 10;
-    const {
-      player,
-    } = this.sys.game.globals;
+    const { score, player } = this.sys.game.globals;
 
-    const ripText = this.add.text(570, 140, '', {
+    this.tombstone = this.add.image(0, 0, 'tombstone').setOrigin(0, 0);
+
+    this.ripText = this.add.text(0, 0, '', {
       font: '36px',
       color: '#000000',
     });
-    ripText.setStroke('#000', 4);
-    ripText.setShadow(2, 2, '#333333', 2, true, true);
-    ripText.setText(['RIP']);
+    this.ripText.setStroke('#000', 4);
+    this.ripText.setShadow(2, 2, '#333333', 2, true, true);
+    this.ripText.setText(['RIP']);
 
-    const text = this.add.text(455, 185, '', {
+    this.endText = this.add.text(0, 0, '', {
       font: '22px',
       color: '#000000',
     });
-    text.setStroke('#000', 2);
-    text.setShadow(1, 1, '#333333', 1, true, true);
+    this.endText.setStroke('#000', 2);
+    this.endText.setShadow(1, 1, '#333333', 1, true, true);
 
-    text.setText([
-      `Here lies our great \nsoldier ${player} who died \nfighting the enemy.\n${player}  Got ${score} points\n, including 10 bonus \npoints for playing.`,
+    this.endText.setText([
+      `Here lies our great \nsoldier ${player} who died \nfighting the enemy.\n${player}  Got ${score} points.`,
     ]);
 
-    new Button(this, 300, 510, 'normalButton', 'hoverButton', 'Restart', 'Game');
-    new Button(this, 900, 510, 'normalButton', 'hoverButton', 'Rest In Peace', 'Menu');
+    this.restartButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Restart', () => { this.restartGame() });
+    this.mainMenuButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Rest In Peace', () => { this.gotoMainMenu() });
+
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+  }
+
+  restartGame() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start(Scenes.GAME_SCENE);
+  }
+
+  gotoMainMenu() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start(Scenes.MENU_SCENE);
+  }
+
+  resize() {
+    this.tombstone.setPosition(350, 60);
+    this.ripText.setPosition(570, 140);
+    this.endText.setPosition(455, 185);
+    this.restartButton.setPosition(300, 510);
+    this.mainMenuButton.setPosition(900, 510);
+
+    //this.heading.setX(this.cameras.main.width / 2);
+    //this.creditsText.setX(this.cameras.main.width / 2);
+    //this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }

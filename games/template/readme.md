@@ -50,6 +50,10 @@
   - this.sys.game.globals
 - Should I need the .js in the imports?
 
+- Think about using service worker with firebase and messaging
+- Not entirely sure of the use case. There's a PWA book from Packt I should look at.
+- I want to also make sure that when the site is offline, that the firebase functionality still works.
+
 - Extract colors as a constant especially the text colors
 - Can the typescript types file be moved to lib?
   - Make sure that the types work when I move them
@@ -91,3 +95,8 @@
 - Convert to use typescript and github actions to compile?
   - https://putridparrot.com/blog/building-and-testing-typescript-code-using-github-actions/
   - https://github.com/marketplace/actions/typescript-build
+
+# Libraries and PLugins Used
+- Phaser
+- bitECS
+- Firebase
