@@ -14,11 +14,15 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   create() {
-    this.model = this.sys.game.globals.model;
+    this.audioStatus = this.sys.game.globals.audioStatus;
     this.bgMusic = this.sys.game.globals.bgMusic;
-    if (this.model.musicOn === true && !this.model.bgMusicPlaying) {
-      if (this.model.musicPaused) { this.bgMusic.resume(); } else { this.bgMusic.play(); }
-      this.model.bgMusicPlaying = true;
+    if (this.audioStatus.musicOn === true && !this.audioStatus.bgMusicPlaying) {
+      if (this.audioStatus.musicPaused) {
+        this.bgMusic.resume();
+      } else {
+        this.bgMusic.play();
+      }
+      this.audioStatus.bgMusicPlaying = true;
     }
 
     this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Intro', {
@@ -44,14 +48,5 @@ export default class MenuScene extends Phaser.Scene {
       y: 0.7,
     });
     this.centerButton(this.leaderboardButton, -2.4);
-
-    const info = this.add.text(750, 30, '', {
-      font: '16px',
-      color: '#ffffff',
-    });
-
-    info.setText([
-      'Info: If you experience lag,\nPlease enable hardware acceleration on\nyour Browser. On Chrome For Example:\nChrome Menu > Settings > Advanced. \nUnder System, enable \'Use hardware\nacceleration when available\'',
-    ]);
   }
 }

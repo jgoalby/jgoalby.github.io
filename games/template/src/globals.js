@@ -1,10 +1,10 @@
-import AudioModel from './utils/audio-status.js';
+import AudioStatus from './utils/AudioStatus.js';
 
 export default class Globals {
   static create() {
-    const model = new AudioModel();
+    const audioStatus = new AudioStatus();
     let globals = {
-      model,
+      audioStatus,
       bgMusic: null,
       player: '',
       score: 0,

@@ -1,4 +1,4 @@
-export default class AudioModel {
+export default class AudioStatus {
   constructor() {
     this._musicOn = true;
     this._bgMusicPlaying = false;

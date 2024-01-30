@@ -4,14 +4,14 @@ interface Window {
     innerHeightPrevious: number;
 }
 
-interface AudioModel {
+interface AudioStatus {
     musicOn: boolean;
     bgMusicPlaying: boolean;
     musicPaused: boolean;
 }
 
 interface Globals {
-    model: AudioModel;
+    audioStatus: AudioStatus;
     bgMusic: any;
     player: any;
     score: number;
