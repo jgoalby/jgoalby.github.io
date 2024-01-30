@@ -170,7 +170,7 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   create() {
-    this.sys.game.globals.bgMusic = this.sound.add('bgMusic', {
+    this.sys.game.globals.audio.bgMusic = this.sound.add('bgMusic', {
       volume: 0.5,
       loop: true,
     });

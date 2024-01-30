@@ -39,13 +39,12 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addSound() {
-    const { model } = this.sys.game.globals;
-    const { bgMusic } = this.sys.game.globals;
-    bgMusic.volume = 0.2;
-    if (model.musicOn && !model.bgMusicPlaying) {
-      if (model.musicPaused) { bgMusic.resume(); } else { bgMusic.play(); }
-      model.bgMusicPlaying = true;
+    const { audio } = this.sys.game.globals;
+
+    if (audio.musicOn && !audio.bgMusicPlaying) {
+      audio.toggleMusic();
     }
+
     this.fire = this.sound.add('fire', {
       volume: 0.5,
     });

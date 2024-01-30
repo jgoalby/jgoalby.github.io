@@ -4,15 +4,8 @@ interface Window {
     innerHeightPrevious: number;
 }
 
-interface AudioStatus {
-    musicOn: boolean;
-    bgMusicPlaying: boolean;
-    musicPaused: boolean;
-}
-
 interface Globals {
-    audioStatus: AudioStatus;
-    bgMusic: any;
+    audio: import('../utils/Audio').default;
     player: any;
     score: number;
 }

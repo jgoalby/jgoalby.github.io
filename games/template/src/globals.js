@@ -1,4 +1,4 @@
-import AudioStatus from './utils/AudioStatus.js';
+import AudioStatus from './utils/Audio.js';
 
 export default class Globals {
   static create() {

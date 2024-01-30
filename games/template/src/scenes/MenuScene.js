@@ -14,15 +14,10 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   create() {
-    this.audioStatus = this.sys.game.globals.audioStatus;
-    this.bgMusic = this.sys.game.globals.bgMusic;
-    if (this.audioStatus.musicOn === true && !this.audioStatus.bgMusicPlaying) {
-      if (this.audioStatus.musicPaused) {
-        this.bgMusic.resume();
-      } else {
-        this.bgMusic.play();
-      }
-      this.audioStatus.bgMusicPlaying = true;
+    const { audio } = this.sys.game.globals;
+
+    if (audio.musicOn === true && !audio.bgMusicPlaying) {
+      audio.toggleMusic();
     }
 
     this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Intro', {
