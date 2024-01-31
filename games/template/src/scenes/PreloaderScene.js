@@ -165,12 +165,12 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   startTitleScene() {
-    this.scene.start('Input');
     this.scale.off('resize', this.resize, this);
+    this.scene.start('Input');
   }
 
   create() {
-    this.sys.game.globals.audio.bgMusic = this.sound.add('bgMusic', {
+    this.sys.game.globals.audio.music = this.sound.add('bgMusic', {
       volume: 0.5,
       loop: true,
     });

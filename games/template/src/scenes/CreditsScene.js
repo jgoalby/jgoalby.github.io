@@ -8,6 +8,7 @@ export default class CreditsScene extends Phaser.Scene {
     this.deps = deps;
     this.heading = null;
     this.creditsText = null;
+    this.button = null;
   }
 
   create() {

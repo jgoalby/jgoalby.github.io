@@ -39,11 +39,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addSound() {
-    const { audio } = this.sys.game.globals;
-
-    if (audio.musicOn && !audio.bgMusicPlaying) {
-      audio.toggleMusic();
-    }
+    this.sys.game.globals.audio.resumeMusic();
 
     this.fire = this.sound.add('fire', {
       volume: 0.5,
@@ -72,11 +68,9 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addPlayerTank() {
-    this.player = this.physics.add.sprite(0, 0, 'player')
-      .setScale(0.3, 0.3);
+    this.player = this.physics.add.sprite(0, 0, 'player').setScale(0.3, 0.3);
     this.player.setMass(100);
-    this.playerTankContainer = this.add.container(1700, 2200, [this.player])
-      .setSize(64, 64);
+    this.playerTankContainer = this.add.container(1700, 2200, [this.player]).setSize(64, 64);
     this.playerTankContainer.depth = 2;
     this.playerTankContainer.health = 500;
     this.physics.world.enable(this.playerTankContainer);

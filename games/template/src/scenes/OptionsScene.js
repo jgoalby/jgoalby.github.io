@@ -1,46 +1,51 @@
-import Button from '../components/Button.js';
+import Button from '../components/ButtonCallback.js';
+import CheckBoxButton from '../components/CheckBoxButton.js';
+import Scenes from './Scenes.js';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor(deps) {
     super('Options');
     this.deps = deps;
-  }
-
-  updateAudio() {
-    const { audio } = this.sys.game.globals;
-
-    if (audio.musicOn === false) {
-      this.musicButton.setTexture('box');
-      audio.pauseMusic();
-    } else {
-      this.musicButton.setTexture('checkedBox');
-      audio.resumeMusic();
-    }
+    this.heading = null;
+    this.button = null;
+    this.musicCheckBox = null;
   }
 
   create() {
-    this.add.text(500, 100, 'Options', {
-      fontSize: 40,
+    this.heading = this.add.text(0, 0, 'Options', {
+      fontSize: '32px',
+      color: '#fff',
     });
-    this.musicButton = this.add.image(500, 200, 'checkedBox');
-    this.musicText = this.add.text(550, 190, 'Music Enabled', {
-      fontSize: 24,
-    });
+    this.heading.setOrigin(0.5, 0);
+    this.heading.setY(50);
 
-    this.musicButton.setInteractive();
+    this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled', this.sys.game.globals.audio.musicOptionOn, (checked) => { this.musicButtonClicked(checked) });
 
+    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
+
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+  }
+
+  musicButtonClicked(checked) {
     const { audio } = this.sys.game.globals;
+    audio.toggleMusicOption();
 
-    this.musicButton.on('pointerdown', () => {
-      audio.musicOn = !audio.musicOn;
-      this.updateAudio();
-    });
+    if (checked) {
+      audio.resumeMusic();
+    } else {
+      audio.pauseMusic();
+    }
+  }
 
-    new Button(this, 180, 510, 'normalButton', 'hoverButton', 'Menu', 'Menu', {
-      x: 0.7,
-      y: 0.7,
-    });
+  gotoMainMenu() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start(Scenes.MENU_SCENE);
+  }
 
-    this.updateAudio();
+  resize() {
+    this.heading.setX(this.cameras.main.width / 2);
+    this.musicCheckBox.setPosition(this.cameras.main.width / 2, this.heading.y + 50);
+    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }
