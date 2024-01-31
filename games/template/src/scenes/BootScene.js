@@ -7,8 +7,8 @@ export default class BootScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('splash_landscape', Constants.ASSETS_PATH + 'misc/splash_landscape.png');
-    this.load.image('splash_portrait', Constants.ASSETS_PATH + 'misc/splash_portrait.png');
+    this.load.image('splash_landscape', Constants.GENERAL.ASSETS_PATH + 'misc/splash_landscape.png');
+    this.load.image('splash_portrait', Constants.GENERAL.ASSETS_PATH + 'misc/splash_portrait.png');
   }
 
   create() {

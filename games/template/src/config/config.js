@@ -2,15 +2,15 @@ import Constants from '../constants.js';
 import FirebasePlugin from '../plugins/FirebasePlugin.js';
 
 var config = {
-  type: Constants.TYPE,
-  width: window.innerWidth,
-  height: window.innerHeight,
-  backgroundColor: 'black',
+  type: Constants.GENERAL.TYPE,
+  width: Constants.GENERAL.WIDTH,
+  height: Constants.GENERAL.HEIGHT,
+  backgroundColor: Constants.STYLES.BACKGROUND_COLOR,
   physics: {
-    default: 'arcade',
+    default: Constants.PHYSICS.PHYSICS,
     arcade: {
-      gravity: { x: 0, y: 0 },
-      debug: false,
+      gravity: { x: Constants.PHYSICS.X, y: Constants.PHYSICS.Y },
+      debug: Constants.PHYSICS.DEBUG,
     },
   },
   plugins: {
@@ -23,12 +23,10 @@ var config = {
       },
     ],
   },
-  parent: Constants.PARENT,
-  dom: {
-    createContainer: true,
-  },
-  title: Constants.TITLE,
-  version: Constants.VERSION
+  parent: Constants.GENERAL.PARENT,
+  dom: { createContainer: Constants.GENERAL.CREATE_CONTAINER },
+  title: Constants.GENERAL.TITLE,
+  version: Constants.GENERAL.VERSION
 };
 
 var firebaseConfig = {

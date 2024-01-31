@@ -5,7 +5,7 @@
     "scope": "../",
     "display": "fullscreen",
     "orientation": "landscape",
-    "background_color": "#fff",
+    "background_color": "#000",
     "description": "A Template.",
     "icons": [
         {
