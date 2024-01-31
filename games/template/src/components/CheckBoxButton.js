@@ -29,6 +29,7 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
 
     this.add(this.button);
     this.add(this.text);
+    this.add(this.hitZone);
 
     //this.button.on('pointerdown', () => { this.checkboxClicked(); });
     //this.text.on('pointerdown',   () => { this.checkboxClicked(); });
