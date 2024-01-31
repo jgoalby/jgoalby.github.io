@@ -35,6 +35,8 @@ export default class Audio {
   }
 
   pauseMusic() {
+    console.log("pause music");
+
     if (this.musicPlaying) {
       // Mmake sure the variable contains an object.
       if (this.music) {
