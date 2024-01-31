@@ -6,6 +6,7 @@ interface Window {
 
 interface Globals {
     audio: import('../utils/Audio').default;
+    settings: import('../utils/Settings').default;
     player: any;
     score: number;
 }

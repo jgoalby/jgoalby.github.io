@@ -1,8 +1,5 @@
 export default class Audio {
   constructor() {
-    // The music option is on or off defined by the user.
-    this._musicOptionOn = true;
-
     // Whether the music is currently playing.
     this._musicPlaying = false;
 
@@ -10,11 +7,12 @@ export default class Audio {
     this._music = null;
   }
 
-  // TODO: Have a way to set the music volumne
+  // TODO: Have a way to set the music volume
+  // TODO: Fix globals somehow.
 
-  set musicOptionOn(value)  { this._musicOptionOn = value; }
-  get musicOptionOn()       { return this._musicOptionOn; }
-  toggleMusicOption()       { this.musicOptionOn = !this.musicOptionOn; }
+  set musicOption(value)    { window.game.globals.settings.musicOption = value; }
+  get musicOption()         { return window.game.globals.settings.musicOption; }
+  toggleMusicOption()       { this.musicOption = !this.musicOption; }
 
   set musicPlaying(value)   { this._musicPlaying = value; }
   get musicPlaying()        { return this._musicPlaying; }
@@ -46,7 +44,7 @@ export default class Audio {
   }
 
   playMusic() {
-    if ((this.musicOptionOn) && (!this.musicPlaying)) {
+    if ((this.musicOption) && (!this.musicPlaying)) {
       // We can only resume the music if there is a valid music object.
       if (this.music) {
         if (this.music.isPaused) {
