@@ -48,10 +48,13 @@ export default class Audio {
   resumeMusic() {
     console.log("resumeMusic(): this.musicOptionOn = " + this.musicOptionOn + ", this.musicPlaying = " + this.musicPlaying + ", this.music = " + this.music);
     if ((this.musicOptionOn) && (!this.musicPlaying)) {
+      console.log("here 1");
       // We can only resume the music if there is a valid music object.
       if (this.music) {
+        console.log("here 2");
         this.music.resume();
 
+        console.log("here 3");
         // Music is only playing if we could resume the music.
         this.musicPlaying = true;
       }
