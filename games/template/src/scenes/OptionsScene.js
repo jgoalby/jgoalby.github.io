@@ -20,7 +20,7 @@ export default class OptionsScene extends Phaser.Scene {
     this.heading.setY(50);
 
     this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled',
-                                            () => { this.getMusicState() },
+                                            () => { return this.getMusicState() },
                                             (checked) => { this.setMusicState(checked) });
 
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
