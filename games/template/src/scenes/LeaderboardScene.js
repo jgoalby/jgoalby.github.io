@@ -1,3 +1,4 @@
+import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
 import Scenes from './Scenes.js';
 
@@ -10,10 +11,7 @@ export default class LeaderboardScene extends Phaser.Scene {
   }
 
   create() {
-    this.heading = this.add.text(0, 0, 'Leaderboard', {
-      fontSize: '32px',
-      color: '#fff',
-    });
+    this.heading = this.add.text(0, 0, 'Leaderboard', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(0.5);
     this.heading.setY(50);
 

@@ -24,7 +24,7 @@ class Styles {
   static get BACKGROUND_COLOR()      { return '#000'; }
   static get BODY_TEXT_COLOR()       { return '#fff' }
   static get BODY_TEXT_SIZE()        { return 24 }
-  static get HEADING_TEXT_COLOR()    { return '#f00' } //{ return '#fff' }
+  static get HEADING_TEXT_COLOR()    { return '#f00' }
   static get HEADING_TEXT_SIZE()     { return 32 }
   static get HEADING_TEXT()          { return { fontSize: Styles.HEADING_TEXT_SIZE, color: Styles.HEADING_TEXT_COLOR, } }
   static get CHECKBOX_LABEL()        { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR, } }

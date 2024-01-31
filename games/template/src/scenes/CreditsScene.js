@@ -12,10 +12,7 @@ export default class CreditsScene extends Phaser.Scene {
   }
 
   create() {
-    this.heading = this.add.text(0, 0, 'Credits', {
-      fontSize: '32px',
-      color: '#fff',
-    });
+    this.heading = this.add.text(0, 0, 'Credits', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(0.5, 0);
     this.heading.setY(50);
 

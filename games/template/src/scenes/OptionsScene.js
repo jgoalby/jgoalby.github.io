@@ -1,7 +1,7 @@
+import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
 import Scenes from './Scenes.js';
-import Constants from '../constants.js';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor(deps) {
