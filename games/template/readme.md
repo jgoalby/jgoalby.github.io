@@ -47,8 +47,13 @@
 - Also I wonder if I can create more game looking assets for the input screen
 
 - Fix errors in the javascript
-  - this.sys.game.globals
+  - health is an option
 - Should I need the .js in the imports?
+
+- Have an issue when I update code and it is cached. Need to fix the inscrutible service worker.
+- I think I want to have it always get the content from the network and only from cache if failed.
+- But does that cause the interaction to be very slow when offline? I presume so.
+- So, how to update content properly when it is updated on the server?
 
 - Think about using service worker with firebase and messaging
 - Not entirely sure of the use case. There's a PWA book from Packt I should look at.
