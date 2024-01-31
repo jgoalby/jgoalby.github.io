@@ -38,7 +38,7 @@ export default class OptionsScene extends Phaser.Scene {
     audio.musicOptionOn = checked;
 
     if (checked) {
-      audio.resumeMusic();
+      audio.playMusic();
     } else {
       audio.pauseMusic();
     }

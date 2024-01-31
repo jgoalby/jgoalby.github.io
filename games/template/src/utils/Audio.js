@@ -23,41 +23,39 @@ export default class Audio {
   get music()               { return this._music; }
 
   toggleMusic() {
-    // We don't care if the music options is on or off. We still will pause if playing.
     if (this.musicPlaying) {
+      // We don't care if the music options is on or off. We still will pause if playing.
       this.pauseMusic();
     } else {
-      // Only resume if the music option is on.
-      if (this.musicOptionOn) {
-        this.resumeMusic();
-      }
+      // This only plays/resumes msuic if the music option is on.
+      this.playMusic();
     }
   }
 
   pauseMusic() {
-    console.log("pause music");
-
     if (this.musicPlaying) {
       // Mmake sure the variable contains an object.
       if (this.music) {
-        this.music.pause();
+        if (this.music.isPlaying) {
+          this.music.pause();
+        }
       }
       // Make sure the music is not playing even if no music specified.
       this.musicPlaying = false;
     }
   }
 
-  resumeMusic() {
-    console.log("resumeMusic(): this.musicOptionOn = " + this.musicOptionOn + ", this.musicPlaying = " + this.musicPlaying + ", this.music = " + this.music);
+  playMusic() {
     if ((this.musicOptionOn) && (!this.musicPlaying)) {
-      console.log("here 1");
       // We can only resume the music if there is a valid music object.
       if (this.music) {
-        console.log("here 2");
-        this.music.resume();
+        if (this.music.isPaused) {
+          this.music.resume();
+        } else {
+          this.music.play();
+        }
 
-        console.log("here 3");
-        // Music is only playing if we could resume the music.
+        // Music is only playing if we could play/resume the music.
         this.musicPlaying = true;
       }
     }
