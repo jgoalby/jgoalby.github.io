@@ -22,8 +22,6 @@ export default class OptionsScene extends Phaser.Scene {
     this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled',
                                             () => { this.getMusicState() },
                                             (checked) => { this.setMusicState(checked) });
-    this.musicCheckBox.setOrigin(0.5, 0.5);
-
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
     this.scale.on('resize', this.resize, this);
@@ -52,7 +50,7 @@ export default class OptionsScene extends Phaser.Scene {
 
   resize() {
     this.heading.setX(this.cameras.main.width / 2);
-    this.musicCheckBox.setPosition(this.cameras.main.width / 2, this.heading.y + 50);
+    this.musicCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 50);
     this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }
