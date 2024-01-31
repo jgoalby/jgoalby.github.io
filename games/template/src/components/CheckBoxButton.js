@@ -5,9 +5,6 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     this.x = x;
     this.y = y;
 
-    console.log("getState: ", getState());
-    console.log("getState: ", getState() ? checked : unchecked);
-
     this.button = this.scene.add.image(0, 0, getState() ? checked : unchecked);
     this.button.setOrigin(0, 0);
     this.button.setInteractive();
