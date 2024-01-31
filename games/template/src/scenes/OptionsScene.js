@@ -22,6 +22,7 @@ export default class OptionsScene extends Phaser.Scene {
     this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled',
                                             () => { this.getMusicState() },
                                             (checked) => { this.setMusicState(checked) });
+
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
     this.scale.on('resize', this.resize, this);
@@ -33,6 +34,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   setMusicState(checked) {
+    console.log("setting music state", checked);
     const { audio } = this.sys.game.globals;
     audio.musicOptionOn = checked;
 

@@ -5,7 +5,6 @@ export default class Globals {
     const audio = new Audio();
     let globals = {
       audio,
-      bgMusic: null,
       player: '',
       score: 0,
     };
