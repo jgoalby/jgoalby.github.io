@@ -1,16 +1,19 @@
 export default class CheckBoxButton extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, checked, unchecked, text, initialValue, callback) {
+  constructor(scene, x, y, checked, unchecked, text, getState, setState) {
     super(scene);
     this.scene = scene;
     this.x = x;
     this.y = y;
-    this.currentValue = initialValue;
 
-    this.button = this.scene.add.image(0, 0, this.currentValue ? checked : unchecked);
-    this.text = this.scene.add.text(this.button.x + 50, this.button.y, text, {
+    this.button = this.scene.add.image(0, 0, getState() ? checked : unchecked);
+    this.button.setOrigin(0.5, 0.5);
+    this.button.setInteractive();
+
+    this.text = this.scene.add.text(0, 0, text, {
       fontSize: 24,
     });
-    this.button.setInteractive();
+    this.text.setOrigin(0.5, 0.5);
+    this.text.setPosition(this.button.x + this.button.width + 10, this.button.y + (this.button.height / 2));
 
     this.height = (this.text.y + this.text.height) - this.button.y;
     this.width = Math.max(this.button.width, this.text.width);
@@ -19,9 +22,11 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     this.add(this.text);
 
     this.button.on('pointerdown', () => {
-      this.currentValue = !this.currentValue;
-      this.button.setTexture(this.currentValue ? checked : unchecked);
-      callback(this.currentValue);
+      // New state is the opposite of the current state
+      setState(!getState());
+
+      // Update the button texture to reflect the new state.      
+      this.button.setTexture(getState() ? checked : unchecked);
     });
 
     this.scene.add.existing(this);
