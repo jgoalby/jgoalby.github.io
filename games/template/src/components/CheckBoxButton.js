@@ -21,8 +21,8 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     this.text.setPosition(this.button.x + this.button.width + 10, this.button.y + (this.button.height / 2));
     //this.text.setInteractive();
 
-    this.height = (this.text.y + this.text.height) - this.button.y;
-    this.width = Math.max(this.button.width, this.text.width);
+    this.width = this.button.width + 10 + this.text.width;
+    this.height = Math.max(this.button.height, this.text.height);
 
     this.hitZone = this.scene.add.zone(this.x, this.y, this.width, this.height);
     this.hitZone.setInteractive();
