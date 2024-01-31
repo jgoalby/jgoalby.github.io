@@ -1,4 +1,4 @@
-export default class AudioStatus {
+export default class Audio {
   constructor() {
     // The music option is on or off defined by the user.
     this._musicOptionOn = true;
@@ -9,6 +9,8 @@ export default class AudioStatus {
     // The background music object.
     this._music = null;
   }
+
+  // TODO: Have a way to set the music volumne
 
   set musicOptionOn(value)  { this._musicOptionOn = value; }
   get musicOptionOn()       { return this._musicOptionOn; }

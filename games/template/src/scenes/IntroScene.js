@@ -41,8 +41,6 @@ export default class IntroScene extends Phaser.Scene {
       '\n\nGood Luck!',
     ]);
 
-    this.bgMusic = this.sys.game.globals.bgMusic;
-    this.bgMusic.volume = 0.12;
     const intro = this.sound.add('introVoice', {
       volume: 0.5,
     });
