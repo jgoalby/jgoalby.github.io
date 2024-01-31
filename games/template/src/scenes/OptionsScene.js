@@ -1,6 +1,7 @@
 import Button from '../components/ButtonCallback.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
 import Scenes from './Scenes.js';
+import Constants from '../constants.js';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor(deps) {
@@ -12,10 +13,7 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   create() {
-    this.heading = this.add.text(0, 0, 'Options', {
-      fontSize: '32px',
-      color: '#fff',
-    });
+    this.heading = this.add.text(0, 0, 'Options', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(0.5, 0);
     this.heading.setY(50);
 
