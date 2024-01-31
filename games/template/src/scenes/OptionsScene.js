@@ -30,13 +30,16 @@ export default class OptionsScene extends Phaser.Scene {
   }
 
   getMusicState() {
+    console.log("Current state: ", this.sys.game.globals.audio.musicOptionOn);
     return this.sys.game.globals.audio.musicOptionOn;
   }
 
   setMusicState(checked) {
-    console.log("setting music state", checked);
+    console.log("setting music state: ", checked);
     const { audio } = this.sys.game.globals;
     audio.musicOptionOn = checked;
+
+    console.log("music state now: ", audio.musicOptionOn);
 
     if (checked) {
       audio.resumeMusic();
