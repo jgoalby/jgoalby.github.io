@@ -5,8 +5,11 @@ class EventDispatcher extends Phaser.Events.EventEmitter {
     super();       
   }
 
+  // Single instance of the event dispatcher.
   static get instance() {
+    // CHeck if we already have one made.
     if (_instance == null) {
+      // Create a new instance.
       _instance = new EventDispatcher();
     }
     return _instance;

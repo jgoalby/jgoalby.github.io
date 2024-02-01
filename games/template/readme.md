@@ -10,6 +10,7 @@
   - this.sys.game.globals.settings.getValue
   - window.game isn't much better. Is that how I should reference it though? Look it up.
 - Make some kind of custom console instance
+- If score is on global, why is health not? They should be in the same place I think.
 
 - Work on preloader scene next
 - Put the text in the middle of the scene
