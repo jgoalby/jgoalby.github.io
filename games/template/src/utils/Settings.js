@@ -5,9 +5,11 @@ const SETTINGS = {
   SOUND_OPTION: 'soundOption',
 };
 
+// TODO: is this the issue?
+
 const DEFAULTS = {
-  MUSIC_OPTION: true,
-  SOUND_OPTION: true,
+  'musicOption': true,
+  'soundOption': true,
 };
 
 class Settings {
