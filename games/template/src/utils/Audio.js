@@ -15,8 +15,8 @@ export default class Audio {
   // TODO: Have a way to set the music volume
   // TODO: Fix globals somehow.
 
-  set musicOption(value)    { window.game.globals.settings.musicOption = value; }
-  get musicOption()         { return window.game.globals.settings.musicOption; }
+  set musicOption(value)    { window.game.globals.settings.setValue(SETTINGS.MUSIC_OPTION, value); }
+  get musicOption()         { return window.game.globals.settings.getValue(SETTINGS.MUSIC_OPTION); }
 
   set musicPlaying(value)   { this._musicPlaying = value; }
   get musicPlaying()        { return this._musicPlaying; }
@@ -25,8 +25,6 @@ export default class Audio {
   get music()               { return this._music; }
 
   onSettingChanged(setting) {
-    console.log("Audio.onSettingChanged", setting.name, setting.value);
-
     if (setting.name === SETTINGS.MUSIC_OPTION) {
       if (setting.value) {
         this.playMusic();
