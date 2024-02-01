@@ -2,6 +2,7 @@ import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
 import Scenes from './Scenes.js';
+import { SETTINGS } from '../utils/Settings.js';
 
 export default class OptionsScene extends Phaser.Scene {
   constructor(deps) {
@@ -19,12 +20,12 @@ export default class OptionsScene extends Phaser.Scene {
     this.heading.setY(50);
 
     this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled',
-                                            () => { return this.getMusicState() },
-                                            (checked) => { this.setMusicState(checked) });
+                                            () => { return this.getState(SETTINGS.MUSIC_OPTION) },
+                                            (checked) => { this.setState(SETTINGS.MUSIC_OPTION, checked) });
 
     this.soundCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Sound Enabled',
-      () => { return this.getSoundState() },
-      (checked) => { this.setSoundState(checked) });
+      () => { return this.getState(SETTINGS.SOUND_OPTION) },
+      (checked) => { this.setState(SETTINGS.SOUND_OPTION, checked) });
 
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
@@ -32,27 +33,21 @@ export default class OptionsScene extends Phaser.Scene {
     this.resize();
   }
 
-  getMusicState() {
-    return this.sys.game.globals.settings.musicOption;
+  getState(name) {
+    return this.sys.game.globals.settings.getValue(name);
   }
 
-  setMusicState(checked) {
-    const { audio, settings } = this.sys.game.globals;
-    settings.musicOption = checked;
+  setState(name, checked) {
+    this.sys.game.globals.settings.setValue(name, checked);
 
-    if (settings.musicOption) {
+    //const { audio, settings } = this.sys.game.globals;
+    //settings.musicOption = checked;
+
+    /*if (settings.musicOption) {
       audio.playMusic();
     } else {
       audio.pauseMusic();
-    }
-  }
-
-  getSoundState() {
-    return this.sys.game.globals.settings.soundOption;
-  }
-
-  setSoundState(checked) {
-    this.sys.game.globals.settings.soundOption = checked;
+    }*/
   }
 
   gotoMainMenu() {

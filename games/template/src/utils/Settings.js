@@ -1,14 +1,26 @@
-export default class Settings {
+import { EVENTS, EventDispatcher } from '../components/Events.js';
+
+const SETTINGS = {
+  MUSIC_OPTION: 'musicOption',
+  SOUND_OPTION: 'soundOption',
+};
+
+class Settings {
   constructor() {
-    this._musicOption = true;
-    this._soundOption = true;
+    this._values = {};
   }
 
-  set musicOption(value)  { this._musicOption = value; }
-  get musicOption()       { return this._musicOption; }
-  toggleMusicOption()     { this.musicOption = !this.musicOption; }
+  setValue(name, value) {
+    this._values[name] = value;
+    EventDispatcher.instance.emit(EVENTS.SETTING_CHANGED, { name: name, value: value});
+  }
 
-  set soundOption(value)  { this._soundOption = value; }
-  get soundOption()       { return this._soundOption; }
-  toggleSoundOption()     { this.soundOption = !this.soundOption; }
+  getValue(name) {
+    return this._values[name];
+  }
 }
+
+export {
+  SETTINGS,
+  Settings
+};

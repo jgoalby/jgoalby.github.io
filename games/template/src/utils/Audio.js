@@ -1,3 +1,6 @@
+import { EVENTS, EventDispatcher } from '../components/Events.js';
+import { SETTINGS } from '../utils/Settings.js';
+
 export default class Audio {
   constructor() {
     // Whether the music is currently playing.
@@ -5,6 +8,8 @@ export default class Audio {
 
     // The background music object.
     this._music = null;
+
+    EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
   }
 
   // TODO: Have a way to set the music volume
@@ -12,7 +17,6 @@ export default class Audio {
 
   set musicOption(value)    { window.game.globals.settings.musicOption = value; }
   get musicOption()         { return window.game.globals.settings.musicOption; }
-  toggleMusicOption()       { this.musicOption = !this.musicOption; }
 
   set musicPlaying(value)   { this._musicPlaying = value; }
   get musicPlaying()        { return this._musicPlaying; }
@@ -20,13 +24,13 @@ export default class Audio {
   set music(value)          { this._music = value; }
   get music()               { return this._music; }
 
-  toggleMusic() {
-    if (this.musicPlaying) {
-      // We don't care if the music options is on or off. We still will pause if playing.
-      this.pauseMusic();
-    } else {
-      // This only plays/resumes msuic if the music option is on.
-      this.playMusic();
+  onSettingChanged(setting) {
+    if (setting.name === SETTINGS.MUSIC_OPTION) {
+      if (setting.value) {
+        this.playMusic();
+      } else {
+        this.pauseMusic();
+      }
     }
   }
 
