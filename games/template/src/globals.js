@@ -1,5 +1,5 @@
 import Audio from './utils/Audio.js';
-import Settings from './utils/Settings.js';
+import { Settings } from './utils/Settings.js';
 
 export default class Globals {
   static create() {
