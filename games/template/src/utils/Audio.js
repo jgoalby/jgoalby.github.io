@@ -48,6 +48,7 @@ export default class Audio {
   }
 
   playMusic() {
+    console.log("play music: ", this.musicOption, this.musicPlaying, this.music);
     if ((this.musicOption) && (!this.musicPlaying)) {
       // We can only resume the music if there is a valid music object.
       if (this.music) {
