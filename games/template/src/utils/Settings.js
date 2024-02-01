@@ -23,8 +23,10 @@ class Settings {
   getValue(name) {
     console.log("getValue: ", name, this._values[name]);
     if (this._values[name] === undefined) {
+      console.log("HERE!!!!!!");
       return DEFAULTS[name];
     }
+    console.log("NOT HERE!!!!!!");
     return this._values[name];
   }
 }
