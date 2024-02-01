@@ -40,6 +40,10 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     // When the hit zone is clicked, call the checkboxClicked method.
     this.hitZone.on('pointerdown', () => { this.checkboxClicked(); });
 
+    // Show when the user hovers over the hit zone.
+    this.hitZone.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
+    this.hitZone.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
+
     // Add the container to the scene.
     this.scene.add.existing(this);
   }
