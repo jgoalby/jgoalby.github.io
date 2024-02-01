@@ -1,15 +1,15 @@
 import { EVENTS, EventDispatcher } from '../components/Events.js';
 
 const SETTINGS = {
-  MUSIC_OPTION: 'musicOption',
-  SOUND_OPTION: 'soundOption',
+  musicOption: 'musicOption',
+  soundOption: 'soundOption',
 };
 
 // TODO: is this the issue?
 
 const DEFAULTS = {
-  'musicOption': true,
-  'soundOption': true,
+  musicOption: true,
+  soundOption: true,
 };
 
 class Settings {
@@ -23,13 +23,9 @@ class Settings {
   }
 
   getValue(name) {
-    console.log("getValue: ", name, this._values[name]);
     if (this._values[name] === undefined) {
-      console.log("HERE!!!!!!");
-      console.log("And the value is: ", DEFAULTS[name]);
       return DEFAULTS[name];
     }
-    console.log("NOT HERE!!!!!!");
     return this._values[name];
   }
 }
