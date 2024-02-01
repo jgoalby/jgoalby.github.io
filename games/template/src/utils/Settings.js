@@ -24,6 +24,7 @@ class Settings {
     console.log("getValue: ", name, this._values[name]);
     if (this._values[name] === undefined) {
       console.log("HERE!!!!!!");
+      console.log("And the value is: ", DEFAULTS[name]);
       return DEFAULTS[name];
     }
     console.log("NOT HERE!!!!!!");
