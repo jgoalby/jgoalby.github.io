@@ -1,7 +1,5 @@
 let _instance = null;
 
-// this.emitter.on('ATTACK',this.doAttack.bind(this));
-
 class EventDispatcher extends Phaser.Events.EventEmitter {
   constructor() {
     super();       

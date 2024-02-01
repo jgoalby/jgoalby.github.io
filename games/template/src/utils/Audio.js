@@ -25,6 +25,8 @@ export default class Audio {
   get music()               { return this._music; }
 
   onSettingChanged(setting) {
+    console.log("Audio.onSettingChanged", setting.name, setting.value);
+
     if (setting.name === SETTINGS.MUSIC_OPTION) {
       if (setting.value) {
         this.playMusic();
