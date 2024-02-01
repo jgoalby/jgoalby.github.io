@@ -5,6 +5,11 @@ const SETTINGS = {
   SOUND_OPTION: 'soundOption',
 };
 
+const DEFAULTS = {
+  MUSIC_OPTION: true,
+  SOUND_OPTION: true,
+};
+
 class Settings {
   constructor() {
     this._values = {};
@@ -16,6 +21,9 @@ class Settings {
   }
 
   getValue(name) {
+    if (this._values[name] === undefined) {
+      return DEFAULTS[name];
+    }
     return this._values[name];
   }
 }
