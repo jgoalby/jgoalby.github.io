@@ -9,11 +9,9 @@ export default class Audio {
     // The background music object.
     this._music = null;
 
+    // We would like to know when the settings have changed so we can do stuff.
     EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
   }
-
-  // TODO: Have a way to set the music volume
-  // TODO: Fix globals somehow.
 
   set musicOption(value)    { window.game.globals.settings.setValue(SETTINGS.musicOption, value); }
   get musicOption()         { return window.game.globals.settings.getValue(SETTINGS.musicOption); }

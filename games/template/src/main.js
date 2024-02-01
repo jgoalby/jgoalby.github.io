@@ -14,30 +14,34 @@ window.game = new Game();
 
 // Called on every resize event.
 function resize() {
+  // The current width and height.
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
+  // Save the current width and height for the next event.
   window.innerWidthPrevious = w;
   window.innerHeightPrevious = h;
 
+  // Resize, and set a timer to check again very soon.
   window.game.scale.resize(w, h);
   window.setTimeout(onResizeTimeout, 5);
 }
 
 // Called after a short timeout for the case of iPad strange behavior.
 function onResizeTimeout() {
+  // The current width and height.
   var w = window.innerWidth;   
   var h = window.innerHeight;
 
+  // The previous width and height.
   var wPrev = window.innerWidthPrevious;
   var hPrev = window.innerHeightPrevious;
 
   // If the values are the same then do nothing. If they are not the same that means they were changed
   // during the short timeout. This happens occasionally on iPads.
-  if (wPrev === w && hPrev === h) {
-    return;
-  }
+  if (wPrev === w && hPrev === h) { return; }
 
+  // We need to do a resize because the values are different.
   window.game.scale.resize(w, h);
 }
 

@@ -15,12 +15,7 @@ var config = {
   },
   plugins: {
     global: [
-      { 
-        key: 'FirebasePlugin', 
-        plugin: FirebasePlugin, 
-        start: true,
-        mapping: 'firebase',
-      },
+      FirebasePlugin.options,
     ],
   },
   parent: Constants.GENERAL.PARENT,

@@ -1,5 +1,16 @@
 # TODOs
 
+- I suppose I could change the color of the checkbox button text on hover.
+- Settings from and to local storage.
+- Add list of settings so that they can be put onto the settings screen easier.
+- Need to have the sound option be observed. Put the make sound in the audio file?
+- Do I play music from the audio file? How could I do that? 
+- Have a way to set the music volume
+- Fix globals somehow for settings.
+  - this.sys.game.globals.settings.getValue
+  - window.game isn't much better. Is that how I should reference it though? Look it up.
+- Make some kind of custom console instance
+
 - Work on preloader scene next
 - Put the text in the middle of the scene
 - Figure out resizing with the scene

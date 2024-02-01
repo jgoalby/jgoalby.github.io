@@ -7,43 +7,52 @@
 import { firebaseConfig } from '../config/config.js';
 
 export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
-    constructor(pluginManager) {
-        super(pluginManager);
-        console.log("In firebase plugin constructor");
+  constructor(pluginManager) {
+    super(pluginManager);
+    console.log("In firebase plugin constructor");
 
-        const app = window.firebase.default.initializeApp(firebaseConfig);
-        //const app = initializeApp(firebaseConfig);
+    const app = window.firebase.default.initializeApp(firebaseConfig);
+    //const app = initializeApp(firebaseConfig);
 
-        console.log(app);
+    console.log(app);
 
-        const auth = app.auth();
-        console.log(auth);
+    const auth = app.auth();
+    console.log(auth);
 
-        const db = app.database();
-        console.log(db);
+    const db = app.database();
+    console.log(db);
 
-        console.log("After initializeApp");
+    console.log("After initializeApp");
 
-        auth.onAuthStateChanged((user) => {
-            console.log("User state changed: ", user)
-            if (user) {
-                console.log("You're logged in");
-            } else {
-                console.log("You're logged out");
-            }
-        })
+    auth.onAuthStateChanged((user) => {
+      console.log("User state changed: ", user)
+      if (user) {
+        console.log("You're logged in");
+      } else {
+        console.log("You're logged out");
+      }
+    })
 
-        auth.signInAnonymously().then(() => {
-            console.log("Signed in");
-        }).catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
+    auth.signInAnonymously().then(() => {
+      console.log("Signed in");
+    }).catch((error) => {
+      var errorCode = error.code;
+      var errorMessage = error.message;
 
-            console.log(errorCode, errorMessage);
-        });
+      console.log(errorCode, errorMessage);
+    });
+  }
+
+  getVersion() {
+    return window.firebase.default.SDK_VERSION;
+  }
+
+  static get options() {
+    return { 
+      key: 'FirebasePlugin', 
+      plugin: FirebasePlugin, 
+      start: true,
+      mapping: 'firebase',
     }
-
-    getVersion() {
-        return window.firebase.default.SDK_VERSION;
-    }
+  }
 }
