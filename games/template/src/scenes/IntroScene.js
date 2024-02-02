@@ -3,19 +3,6 @@ import Button from '../components/Button.js';
 export default class IntroScene extends Phaser.Scene {
   constructor() {
     super('Intro');
-    this.skipped = false;
-  }
-
-  setPlayButtonActive() {
-    new Button(this, 580, 580, 'normalButton', 'hoverButton', 'Chicken Out', 'Menu', {
-      x: 0.7,
-      y: 0.7,
-    });
-
-    new Button(this, 980, 580, 'normalButton', 'hoverButton', 'Lets Go!', 'Game', {
-      x: 0.7,
-      y: 0.7,
-    });
   }
 
   create() {
@@ -40,36 +27,14 @@ export default class IntroScene extends Phaser.Scene {
       '\n\nGood Luck!',
     ]);
 
-    const intro = this.sound.add('introVoice', {
-      volume: 0.5,
-    });
-    intro.on('complete', () => {
-      if (!this.skipped) { this.setPlayButtonActive(); }
+    new Button(this, 580, 580, 'normalButton', 'hoverButton', 'Chicken Out', 'Menu', {
+      x: 0.7,
+      y: 0.7,
     });
 
-    setTimeout(() => {
-      intro.play();
-      const skipButton = this.add.sprite(980, 580, 'normalButton').setScale(0.7, 0.7).setInteractive();
-      this.menuText = this.add.text(0, 0, 'Skip >>>', {
-        fontSize: '32px',
-        color: '#fff',
-      });
-      Phaser.Display.Align.In.Center(this.menuText, skipButton);
-
-      skipButton.on('pointerdown', () => {
-        intro.stop();
-        this.setPlayButtonActive();
-        this.skipped = true;
-        skipButton.destroy();
-        skipButton.setActive(false);
-        skipButton.setVisible(false);
-      });
-      skipButton.on('pointerover', () => {
-        skipButton.setTexture('hoverButton');
-      });
-      skipButton.on('pointerout', () => {
-        skipButton.setTexture('normalButton');
-      });
-    }, 1000);
+    new Button(this, 980, 580, 'normalButton', 'hoverButton', 'Lets Go!', 'Game', {
+      x: 0.7,
+      y: 0.7,
+    });
   }
 }
