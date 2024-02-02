@@ -1,18 +1,22 @@
 import { EVENTS, EventDispatcher } from '../components/Events.js';
-import { SETTINGS } from '../utils/Settings.js';
+import { SettingsPlugin } from '../plugins/SettingsPlugin.js';
+import { SETTINGS, Settings } from '../utils/Settings.js';
 
 export default class Audio {
   constructor() {
     // The background music object.
     this._music = null;
 
+    // Get the settings plugin.
+    this.settings = window.game.plugins.get('SettingsPlugin');
+
     // We would like to know when the settings have changed so we can do stuff.
     EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
   }
 
   // Expose the music option to the outside world.
-  set musicOption(value)    { window.game.globals.settings.setValue(SETTINGS.musicOption, value); }
-  get musicOption()         { return window.game.globals.settings.getValue(SETTINGS.musicOption); }
+  set musicOption(value)    { this.settings.setValue(SETTINGS.musicOption, value); }
+  get musicOption()         { return this.settings.getValue(SETTINGS.musicOption); }
 
   // We get the music object from the scene.
   set music(value)          { this._music = value; }

@@ -1,7 +1,9 @@
+// Master constants.
 const TITLE = 'Template';
 const VERSION = '0.1'
 const AUTHOR = 'John Goalby';
 
+// General constants.
 class General {
   static get WIDTH()                     { return window.innerWidth; }
   static get HEIGHT()                    { return window.innerHeight; }
@@ -13,6 +15,7 @@ class General {
   static get CREATE_CONTAINER()          { return true; }
 }
 
+// Physics constants.
 class Physics {
   static get PHYSICS()                   { return 'arcade'; }
   static get X()                         { return 0; }
@@ -20,6 +23,7 @@ class Physics {
   static get DEBUG()                     { return false; }
 }
 
+// Styles constants for how various elements look.
 class Styles {
   static get BACKGROUND_COLOR()          { return '#000'; }
   static get BODY_TEXT_COLOR()           { return '#fff' }
@@ -33,22 +37,31 @@ class Styles {
   static get CHECKBOX_INSIDE_SPACE()     { return 10 }
 }
 
+// The exported class that contains all of the constants.
 export default class Constants {
   static getCredits(game) {
-    var pluginsList = "";
+    // Get the list of plugins.
     const plugins = game.plugins.plugins;
 
+    // The list of plugins we have found as a string.
+    var pluginsList = "";
+
     if (plugins) {
+      // Go through all of the plugins.
       for (let i = 0; i < plugins.length; i++) {
+        // Get the key and the plugin itself so we can get its version.
         const pluginKey = plugins[i].key;
         const curPlugin = plugins[i].plugin;
   
+        // If there is no version defined it could be an internal plugin that we do not want listed.
         if (curPlugin.getVersion) {
+          // Add the current plugin information to the string list of plugins.
           pluginsList += `${pluginKey} : ${curPlugin.getVersion()}\n`;
         }
       }
     }
 
+    // Fully compiled credits string.
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nPlugins:\n\n\n${pluginsList}\n\nLibraries:\n\n\n`;
   }
 

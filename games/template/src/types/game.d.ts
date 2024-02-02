@@ -4,6 +4,11 @@ interface Window {
     innerHeightPrevious: number;
 }
 
+interface Audio {
+    _music: Phaser.Sound.BaseSound;
+    settings: import('../plugins/SettingsPlugin').SettingsPlugin;
+}
+
 interface Globals {
     audio: import('../utils/Audio').default;
     settings: import('../utils/Settings').default;
@@ -14,7 +19,10 @@ interface Globals {
 namespace Phaser {
     interface Game {
         globals: Globals;
+    }
+    interface Scene {
         firebase: import('../plugins/FirebasePlugin').default;
+        settings: import('../plugins/SettingsPlugin').SettingsPlugin;
     }
 }
 

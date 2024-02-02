@@ -1,6 +1,5 @@
 # TODOs
 
-- I suppose I could change the color of the checkbox button text on hover.
 - Settings from and to local storage.
 - Add list of settings so that they can be put onto the settings screen easier.
 - Need to have the sound option be observed. Put the make sound in the audio file?

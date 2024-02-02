@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import { SettingsPlugin } from '../plugins/SettingsPlugin.js';
 import FirebasePlugin from '../plugins/FirebasePlugin.js';
 
 var config = {
@@ -15,6 +16,7 @@ var config = {
   },
   plugins: {
     global: [
+      SettingsPlugin.options,
       FirebasePlugin.options,
     ],
   },
