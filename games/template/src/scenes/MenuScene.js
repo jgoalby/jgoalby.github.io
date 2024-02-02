@@ -1,9 +1,8 @@
 import Button from '../components/Button.js';
 
 export default class MenuScene extends Phaser.Scene {
-  constructor(deps) {
+  constructor() {
     super('Menu');
-    this.deps = deps;
   }
 
   centerButton(gameObject, offset = 0) {

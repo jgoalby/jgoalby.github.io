@@ -3,9 +3,8 @@ import Button from '../components/ButtonCallback.js';
 import Scenes from './Scenes.js';
 
 export default class CreditsScene extends Phaser.Scene {
-  constructor(deps) {
+  constructor() {
     super('Credits');
-    this.deps = deps;
     this.heading = null;
     this.creditsText = null;
     this.button = null;

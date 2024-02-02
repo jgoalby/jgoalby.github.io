@@ -2,9 +2,8 @@ import Button from '../components/ButtonCallback.js';
 import Scenes from './Scenes.js';
 
 export default class GameOverScene extends Phaser.Scene {
-  constructor(deps) {
+  constructor() {
     super('GameOver');
-    this.deps = deps;
     this.restartButton = null;
     this.mainMenuButton = null;
     this.ripText = null;

@@ -6,9 +6,8 @@ export const GetInputScene = defineComponent({
 });
 
 export default class InputScene extends Phaser.Scene {
-  constructor(deps) {
+  constructor() {
     super('Input');
-    this.deps = deps;
     this.text = null;
     this.textBounds = null;
     this.nameInputElement = null;

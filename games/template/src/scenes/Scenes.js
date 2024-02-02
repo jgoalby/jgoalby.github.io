@@ -33,23 +33,17 @@ export default class Scenes {
   static get GAMEOVER_SCENE()    { return GAMEOVER_SCENE; }
   
   static create(game) {
-    const customEmitter = new Phaser.Events.EventEmitter();
-
-    const deps = {
-      emitter: customEmitter,
-    }
-
     // Add all of the scenes here
-    game.scene.add(this.BOOT_SCENE, new BootScene(deps));
-    game.scene.add(this.PRELOADER_SCENE, new PreloaderScene(deps));
-    game.scene.add(this.INPUT_SCENE, new InputScene(deps));
-    game.scene.add(this.MENU_SCENE, new MenuScene(deps));
-    game.scene.add(this.OPTIONS_SCENE, new OptionsScene(deps));
-    game.scene.add(this.CREDITS_SCENE, new CreditsScene(deps));
-    game.scene.add(this.LEADERBOARD_SCENE, new LeaderboardScene(deps));
-    game.scene.add(this.INTRO_SCENE, new IntroScene(deps));
-    game.scene.add(this.GAME_SCENE, new GameScene(deps));
-    game.scene.add(this.GAMEOVER_SCENE, new GameOverScene(deps));
+    game.scene.add(this.BOOT_SCENE, new BootScene());
+    game.scene.add(this.PRELOADER_SCENE, new PreloaderScene());
+    game.scene.add(this.INPUT_SCENE, new InputScene());
+    game.scene.add(this.MENU_SCENE, new MenuScene());
+    game.scene.add(this.OPTIONS_SCENE, new OptionsScene());
+    game.scene.add(this.CREDITS_SCENE, new CreditsScene());
+    game.scene.add(this.LEADERBOARD_SCENE, new LeaderboardScene());
+    game.scene.add(this.INTRO_SCENE, new IntroScene());
+    game.scene.add(this.GAME_SCENE, new GameScene());
+    game.scene.add(this.GAMEOVER_SCENE, new GameOverScene());
 
     // Start the first scene
     game.scene.start(this.BOOT_SCENE);

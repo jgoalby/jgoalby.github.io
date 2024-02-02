@@ -1,5 +1,6 @@
 import Constants from '../constants.js';
 import { SettingsPlugin } from '../plugins/SettingsPlugin.js';
+import AudioPlugin from '../plugins/AudioPlugin.js';
 import FirebasePlugin from '../plugins/FirebasePlugin.js';
 
 var config = {
@@ -17,6 +18,7 @@ var config = {
   plugins: {
     global: [
       SettingsPlugin.options,
+      AudioPlugin.options,
       FirebasePlugin.options,
     ],
   },

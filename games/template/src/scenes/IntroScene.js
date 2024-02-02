@@ -1,9 +1,8 @@
 import Button from '../components/Button.js';
 
 export default class IntroScene extends Phaser.Scene {
-  constructor(deps) {
+  constructor() {
     super('Intro');
-    this.deps = deps;
     this.skipped = false;
   }
 

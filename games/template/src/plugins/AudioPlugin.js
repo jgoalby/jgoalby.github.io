@@ -1,17 +1,23 @@
 import { EVENTS, EventDispatcher } from '../components/Events.js';
-import { SettingsPlugin } from '../plugins/SettingsPlugin.js';
-import { SETTINGS, Settings } from '../utils/Settings.js';
+import { SETTINGS } from '../plugins/SettingsPlugin.js';
 
-export default class Audio {
-  constructor() {
+export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
+  constructor(pluginManager) {
+    super(pluginManager);
+    console.log("In Audio plugin constructor");
+
     // The background music object.
     this._music = null;
-
+    
     // Get the settings plugin.
-    this.settings = window.game.plugins.get('SettingsPlugin');
+    this.settings = pluginManager.plugins.get('SettingsPlugin');
 
     // We would like to know when the settings have changed so we can do stuff.
     EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+  }
+
+  getVersion() {
+    return undefined;
   }
 
   // Expose the music option to the outside world.
@@ -52,6 +58,15 @@ export default class Audio {
       } else if (!this.music.isPlaying) {
         this.music.play();
       }
+    }
+  }
+
+  static get options() {
+    return { 
+      key: 'AudioPlugin', 
+      plugin: AudioPlugin, 
+      start: true,
+      mapping: 'audio',
     }
   }
 }

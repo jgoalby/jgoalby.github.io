@@ -3,9 +3,8 @@ import Button from '../components/ButtonCallback.js';
 import Scenes from './Scenes.js';
 
 export default class LeaderboardScene extends Phaser.Scene {
-  constructor(deps) {
+  constructor() {
     super('Leaderboard');
-    this.deps = deps;
     this.dom = null;
     this.button = null;
   }
