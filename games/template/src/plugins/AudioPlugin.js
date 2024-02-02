@@ -10,7 +10,7 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this._music = null;
     
     // Get the settings plugin.
-    this.settings = pluginManager.plugins.get('SettingsPlugin');
+    this.settings = pluginManager.get('SettingsPlugin');
 
     // We would like to know when the settings have changed so we can do stuff.
     EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
