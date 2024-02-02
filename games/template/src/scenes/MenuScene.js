@@ -1,5 +1,15 @@
 import Button from '../components/Button.js';
 
+var controls = new function() {
+  this.rotationSpeed = 0.02;
+  this.bouncingSpeed = 0.03;
+}
+
+// Maybe this should be a plugin?
+const gui = new window.dat.GUI();
+gui.add(controls, 'rotationSpeed', 0, 0.5);
+gui.add(controls, 'bouncingSpeed', 0, 0.5);
+
 export default class MenuScene extends Phaser.Scene {
   constructor() {
     super('Menu');
