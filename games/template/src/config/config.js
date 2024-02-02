@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import IntrospectPlugin from '../plugins/IntrospectPlugin.js';
 import { SettingsPlugin } from '../plugins/SettingsPlugin.js';
 import AudioPlugin from '../plugins/AudioPlugin.js';
 import FirebasePlugin from '../plugins/FirebasePlugin.js';
@@ -17,6 +18,7 @@ var config = {
   },
   plugins: {
     global: [
+      IntrospectPlugin.options,
       SettingsPlugin.options,
       AudioPlugin.options,
       FirebasePlugin.options,

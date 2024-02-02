@@ -9,8 +9,10 @@ export default class OptionsScene extends Phaser.Scene {
     super('Options');
     this.heading = null;
     this.button = null;
+
     this.musicCheckBox = null;
     this.soundCheckBox = null;
+    this.introspectCheckBox = null;
   }
 
   create() {
@@ -26,6 +28,10 @@ export default class OptionsScene extends Phaser.Scene {
       () => { return this.settings.getValue(SETTINGS.soundOption) },
       (checked) => { this.settings.setValue(SETTINGS.soundOption, checked) });
 
+    this.introspectCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Introspect Enabled',
+      () => { return this.settings.getValue(SETTINGS.introspectOption) },
+      (checked) => { this.settings.setValue(SETTINGS.introspectOption, checked) });
+
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
     this.scale.on('resize', this.resize, this);
@@ -40,7 +46,8 @@ export default class OptionsScene extends Phaser.Scene {
   resize() {
     this.heading.setX(this.cameras.main.width / 2);
     this.musicCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 50);
-    this.soundCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 150);
+    this.soundCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 130);
+    this.introspectCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 210);
     this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }

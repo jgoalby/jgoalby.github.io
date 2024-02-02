@@ -4,12 +4,14 @@ import { EVENTS, EventDispatcher } from '../components/Events.js';
 const SETTINGS = {
   musicOption: 'musicOption',
   soundOption: 'soundOption',
+  introspectOption: 'introspectOption',
 };
 
 // Default values for the settings. Make sure names match above.
 const DEFAULTS = {
   musicOption: true,
   soundOption: true,
+  introspectOption: false,
 };
 
 class SettingsPlugin extends Phaser.Plugins.BasePlugin {

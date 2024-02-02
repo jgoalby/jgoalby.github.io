@@ -18,11 +18,6 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   create() {
-    // Maybe this should be a plugin?
-    const gui = new window.dat.GUI();
-    gui.add(controls, 'rotationSpeed', 0, 0.5);
-    gui.add(controls, 'bouncingSpeed', 0, 0.5);
-
     this.audio.playMusic();
 
     this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Intro', {
