@@ -5,6 +5,7 @@
 - Assign keys to the other buttons as well, and use escape to go backwards perhaps, and enter to continue?
 - How to define the keys for buttons?
 
+- Make player info a plugin? Does that make sense? And then remove globals from main.
 - Make events a plugin next?
 - Need to have real background music instead of what I have now
 - Need to fix enemy fire sound to be in the audio plugin
@@ -19,6 +20,7 @@
 - Make some kind of custom console instance
 - If score is on global, why is health not? They should be in the same place I think.
 
+- Fix the stupid jsconfig.json error
 - Work on preloader scene next
 - Put the text in the middle of the scene
 - Figure out resizing with the scene
