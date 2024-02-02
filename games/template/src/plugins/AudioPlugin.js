@@ -20,10 +20,6 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     return undefined;
   }
 
-  // Expose the music option to the outside world.
-  set musicOption(value)    { this.settings.setValue(SETTINGS.musicOption, value); }
-  get musicOption()         { return this.settings.getValue(SETTINGS.musicOption); }
-
   // We get the music object from the scene.
   set music(value)          { this._music = value; }
   get music()               { return this._music; }
@@ -51,13 +47,20 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   playMusic() {
     // We can only play/resume the music if the user wants it and there is a valid music object.
-    if ((this.musicOption) && (this.music)) {
+    if ((this.settings.getValue(SETTINGS.musicOption)) && (this.music)) {
       // You can only play music if it is not already playing.
       if (this.music.isPaused) {
         this.music.resume();
       } else if (!this.music.isPlaying) {
         this.music.play();
       }
+    }
+  }
+
+  playSound(sound) {
+    // We can only play the sound if the user wants it, and we have a sound passed in.
+    if ((this.settings.getValue(SETTINGS.soundOption)) && (sound)) {
+      sound.play();
     }
   }
 

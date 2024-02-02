@@ -243,7 +243,7 @@ export default class GameScene extends Phaser.Scene {
       }, null, this);
     });
 
-    this.fire.play();
+    this.audio.playSound(this.fire);
     this.physics.moveTo(newBullet, this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY, 500);
   }
 
