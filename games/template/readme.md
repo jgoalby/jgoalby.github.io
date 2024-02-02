@@ -5,6 +5,7 @@
 - Assign keys to the other buttons as well, and use escape to go backwards perhaps, and enter to continue?
 - How to define the keys for buttons?
 
+- Make events a plugin next?
 - Need to have real background music instead of what I have now
 - Need to fix enemy fire sound to be in the audio plugin
 - Settings from and to local storage.
