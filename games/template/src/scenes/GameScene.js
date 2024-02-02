@@ -38,7 +38,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addSound() {
-    this.sys.game.globals.audio.playMusic();
+    this.audio.playMusic();
 
     this.fire = this.sound.add('fire', {
       volume: 0.5,

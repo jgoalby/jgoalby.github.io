@@ -16,8 +16,9 @@ namespace Phaser {
         globals: Globals;
     }
     interface Scene {
-        firebase: import('../plugins/FirebasePlugin').default;
         settings: import('../plugins/SettingsPlugin').SettingsPlugin;
+        audio: import('../plugins/AudioPlugin').default;
+        firebase: import('../plugins/FirebasePlugin').default;
     }
 }
 
