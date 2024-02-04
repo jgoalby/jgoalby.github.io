@@ -15,6 +15,8 @@ namespace Phaser {
     }
     interface Scene {
         settings: import('../plugins/SettingsPlugin').SettingsPlugin;
+        customevent: import('../plugins/EventPlugin').default;
+        introspect: import('../plugins/IntrospectPlugin').default;
         audio: import('../plugins/AudioPlugin').default;
         firebase: import('../plugins/FirebasePlugin').default;
     }

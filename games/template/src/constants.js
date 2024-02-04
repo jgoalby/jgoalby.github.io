@@ -37,6 +37,11 @@ class Styles {
   static get CHECKBOX_INSIDE_SPACE()     { return 10 }
 }
 
+// Events constants.
+class Events {
+  static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
+};
+
 // The exported class that contains all of the constants.
 export default class Constants {
   static getCredits(game) {
@@ -68,4 +73,5 @@ export default class Constants {
   static get GENERAL() { return General; }
   static get PHYSICS() { return Physics; }
   static get STYLES() { return Styles; }
+  static get EVENTS() { return Events; }
 }

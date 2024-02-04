@@ -1,29 +1,33 @@
-import { EVENTS, EventDispatcher } from '../components/Events.js';
-import { SETTINGS } from '../plugins/SettingsPlugin.js';
+import Constants from '../constants.js';
 
 export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
-    console.log("In Introspect plugin constructor");
 
     // Lazy create the GUI.
     this._gui = undefined;
 
     // Get the settings plugin.
     this.settings = pluginManager.get('SettingsPlugin');
+    this.customevent = pluginManager.get('EventPlugin');
 
     // We would like to know when the settings have changed so we can do stuff.
-    EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+    this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
   }
 
-  getVersion() {
-    return undefined;
+  destroy() {
+    console.log("In Introspect plugin destructor");
+    this.reset();
+    this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
   }
+
+  // Local plugin so we do not provide a version.
+  getVersion() { return undefined; }
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
-    if (setting.name === SETTINGS.introspectOption) {
-      // True means setting is set and we want to play music, otherwise silence.
+    if (setting.name === this.settings.SETTINGS.introspectOption) {
+      // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         this.show();
       } else {

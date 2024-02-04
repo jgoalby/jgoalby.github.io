@@ -1,24 +1,22 @@
-import { EVENTS, EventDispatcher } from '../components/Events.js';
-import { SETTINGS } from '../plugins/SettingsPlugin.js';
+import Constants from '../constants.js';
 
 export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
-    console.log("In Audio plugin constructor");
 
     // The background music object.
     this._music = null;
     
-    // Get the settings plugin.
+    // Get the dependent plugins.
     this.settings = pluginManager.get('SettingsPlugin');
+    this.customevent = pluginManager.get('EventPlugin');
 
     // We would like to know when the settings have changed so we can do stuff.
-    EventDispatcher.instance.on(EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+    this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
   }
 
-  getVersion() {
-    return undefined;
-  }
+  // Local plugin so we do not provide a version.
+  getVersion() { return undefined; }
 
   // We get the music object from the scene.
   set music(value)          { this._music = value; }
@@ -26,7 +24,7 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the music setting changes.
-    if (setting.name === SETTINGS.musicOption) {
+    if (setting.name === this.settings.SETTINGS.musicOption) {
       // True means setting is set and we want to play music, otherwise silence.
       if (setting.value) {
         this.playMusic();
@@ -47,7 +45,7 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   playMusic() {
     // We can only play/resume the music if the user wants it and there is a valid music object.
-    if ((this.settings.getValue(SETTINGS.musicOption)) && (this.music)) {
+    if ((this.settings.getValue(this.settings.SETTINGS.musicOption)) && (this.music)) {
       // You can only play music if it is not already playing.
       if (this.music.isPaused) {
         this.music.resume();
@@ -59,7 +57,7 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   playSound(sound) {
     // We can only play the sound if the user wants it, and we have a sound passed in.
-    if ((this.settings.getValue(SETTINGS.soundOption)) && (sound)) {
+    if ((this.settings.getValue(this.settings.SETTINGS.soundOption)) && (sound)) {
       sound.play();
     }
   }

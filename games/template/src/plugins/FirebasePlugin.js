@@ -9,7 +9,6 @@ import { firebaseConfig } from '../config/config.js';
 export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
-    console.log("In firebase plugin constructor");
 
     const app = window.firebase.default.initializeApp(firebaseConfig);
     //const app = initializeApp(firebaseConfig);
@@ -43,9 +42,8 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
     });
   }
 
-  getVersion() {
-    return window.firebase.default.SDK_VERSION;
-  }
+  // External service plugin, so provide the version of firebase.
+  getVersion() { return window.firebase.default.SDK_VERSION; }
 
   static get options() {
     return { 

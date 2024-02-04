@@ -1,5 +1,8 @@
 # TODOs
 
+# Next
+Include the settings enum in the settings plugin itself and then access simpler and remove import.
+
 # Keyboard stuff
 - Have a quit button in the game
 - Assign keys to the other buttons as well, and use escape to go backwards perhaps, and enter to continue?
