@@ -42,6 +42,8 @@ class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
 };
 
+// The following SETTINGS constants need to be strings, so they can be used as keys in an object.
+
 // Settings we support. Make sure the names match the values.
 const SETTINGS = {
   musicOption: 'musicOption',
@@ -51,7 +53,7 @@ const SETTINGS = {
 
 // Default values for the settings. Make sure names match above.
 const DEFAULT_SETTINGS = {
-  musicOption: true,
+  musicOption: false,
   soundOption: true,
   introspectOption: false,
 };

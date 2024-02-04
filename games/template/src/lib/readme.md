@@ -22,12 +22,13 @@
 
 ## TweakPane
 - https://www.github.com/cocopon/tweakpane
-- Version: 
+- Version: 4.0.3
+- Released: Dec 22, 2023
 
 ## Javascript State Machine
 - https://www.github.com/jakesgordon/javascript-state-machine
-- Version: 
-
+- Version: 3.1.0
+- Released: Jun 10, 2017
 
 # Deprecated Libraries
 
