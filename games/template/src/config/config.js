@@ -19,9 +19,9 @@ var config = {
   },
   plugins: {
     global: [
+      EventPlugin.options,
       IntrospectPlugin.options,
       SettingsPlugin.options,
-      EventPlugin.options,
       AudioPlugin.options,
       FirebasePlugin.options,
     ],

@@ -2,11 +2,13 @@
 
 ## Phaser 3
 - https://www.github.com/photonstorm/phaser
-- Version: 
+- Version: v3.70.0
+- Released: Nov 10, 2023
 
 ## Pathfinding Browser
 - https://www.github.com/qiao/PathFinding.js
-- Version: 
+- Version: 0.4.17
+- Released: Jul 20, 2015
 
 ## bitECS
 - https://www.github.com/NateTheGreatt/bitECS
