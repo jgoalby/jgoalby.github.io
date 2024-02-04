@@ -2,6 +2,14 @@
 
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
+Download TweakPane and state machine to the libs folder
+Test tweakpane and when it works remove datgui from libs and from readme
+Settings
+  Move the constants to the appropriate places, audio and introspect
+  Change settings plugin to have a register function
+  Update settings to be able to store settings objects
+  Have a category for each setting, audio for example
+  Have a way to get the settings from the settings plugin
 
 # Keyboard stuff
 - Have a quit button in the game
