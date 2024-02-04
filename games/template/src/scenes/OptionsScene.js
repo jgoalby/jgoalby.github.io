@@ -20,16 +20,16 @@ export default class OptionsScene extends Phaser.Scene {
     this.heading.setY(50);
 
     this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled',
-      () => { return this.settings.getValue(this.settings.SETTINGS.musicOption) },
-      (checked) => { this.settings.setValue(this.settings.SETTINGS.musicOption, checked) });
+      () => { return this.settings.getValue(Constants.SETTINGS.musicOption) },
+      (checked) => { this.settings.setValue(Constants.SETTINGS.musicOption, checked) });
 
     this.soundCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Sound Effects Enabled',
-      () => { return this.settings.getValue(this.settings.SETTINGS.soundOption) },
-      (checked) => { this.settings.setValue(this.settings.SETTINGS.soundOption, checked) });
+      () => { return this.settings.getValue(Constants.SETTINGS.soundOption) },
+      (checked) => { this.settings.setValue(Constants.SETTINGS.soundOption, checked) });
 
     this.introspectCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Introspect Enabled',
-      () => { return this.settings.getValue(this.settings.SETTINGS.introspectOption) },
-      (checked) => { this.settings.setValue(this.settings.SETTINGS.introspectOption, checked) });
+      () => { return this.settings.getValue(Constants.SETTINGS.introspectOption) },
+      (checked) => { this.settings.setValue(Constants.SETTINGS.introspectOption, checked) });
 
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 

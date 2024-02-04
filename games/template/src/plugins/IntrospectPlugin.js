@@ -7,8 +7,7 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     // Lazy create the GUI.
     this._gui = undefined;
 
-    // Get the settings plugin.
-    this.settings = pluginManager.get('SettingsPlugin');
+    // Get the event plugin.
     this.customevent = pluginManager.get('EventPlugin');
 
     // We would like to know when the settings have changed so we can do stuff.
@@ -26,7 +25,7 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
-    if (setting.name === this.settings.SETTINGS.introspectOption) {
+    if (setting.name === Constants.SETTINGS.introspectOption) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         this.show();

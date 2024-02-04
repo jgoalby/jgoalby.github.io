@@ -12,7 +12,9 @@
 
 ## bitECS
 - https://www.github.com/NateTheGreatt/bitECS
-- Version: 
+- Version: v0.3.40
+- Released: August 07, 2023
+- Details in the changelog and package.json
 
 ## Firebase
 - https://www.github.com/firebase/firebase-js-sdk
