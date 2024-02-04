@@ -1,5 +1,3 @@
-import { off } from "../lib/firebase/firebase-database";
-
 export default class EventPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
