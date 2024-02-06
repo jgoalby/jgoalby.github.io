@@ -1,16 +1,16 @@
 # TODOs
 
 # Next console
-- Fix the width of the content
-- Can I make the background semi transparent
-- What happens when the number of entries grows too large?
+- Can I make the background semi transparent?
 - What if I repeat a message? Should I just update the count?
 - Copy the console to the clipboard
 - Have a way to clear the console
 - Have a way to stop the console from adding more content
 - Test the table function and clean up that code as needed and comment.
 - What is the thead css doing for me?
-- Pass params to the function for config. Pass an options object.
+- Pass in a setting for which keypress to listen to
+  - Need to add the listener code if I do that
+- Have a show and hide function? and/or toggle function
 
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
