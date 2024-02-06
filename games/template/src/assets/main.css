@@ -50,6 +50,7 @@ transform: scale(70%) */
 
 
 #console-log-div {
+  position: absolute;
   min-height: 55px;
   width: calc(100% - 20px);
   margin: 10px;
