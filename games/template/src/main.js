@@ -1,6 +1,9 @@
+// Initialize the console log div first.
+import initConsoleLogDiv from './lib/console-log-div.js'
+(() => { initConsoleLogDiv(); })();
+
 import { config } from './config/config.js';
 import Globals from './globals.js';
-import initConsoleLogDiv from './lib/console-log-div.js'
 import Scenes from './scenes/Scenes.js';
 
 export default class Game extends Phaser.Game {
@@ -48,9 +51,6 @@ function onResizeTimeout() {
 }
 
 (() => {
-  // Initialize the console log div first.
-  initConsoleLogDiv();
-
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js').then((registration) => {
