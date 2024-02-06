@@ -1,5 +1,15 @@
 # TODOs
 
+# Next console
+- Fix the width of the content
+- See if I can color the text depending on the method used. Maybe include the text in a DIV and give a class?
+- Can I make the background semi transparent
+- What happens when the number of entries grows too large?
+- What if I repeat a message? Should I just update the count?
+- Copy the console to the clipboard
+- Have a way to clear the console
+- Have a way to stop the console from adding more content
+
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
 Download TweakPane and state machine to the libs folder
