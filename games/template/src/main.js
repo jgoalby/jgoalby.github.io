@@ -59,4 +59,17 @@ function onResizeTimeout() {
   }
 
   window.addEventListener('resize', resize);
+
+  window.addEventListener("keydown", (event) => {
+      if (event.code == "KeyD") {
+        var elem = document.getElementById("console-log-div");
+        if (elem.style.display === "block") {
+          elem.style.display = "none";
+        } else {
+          elem.style.display = "block";
+        }
+      }
+    },
+    true,
+  );
 })();
