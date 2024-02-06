@@ -49,7 +49,7 @@ export default function initConsoleLogDiv(options) {
     // If there isn't an existing element with the id, create one.
     if (!outer) {
       // Create the element, give it an id, and append it to the body.
-      outer = document.createElement('fieldset');
+      outer = document.createElement('div');
       outer.id = id;
       document.body.appendChild(outer);
     }
