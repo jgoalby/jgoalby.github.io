@@ -34,6 +34,11 @@
 - Version: 3.1.0
 - Released: Jun 10, 2017
 
+# Console Log Div
+- https://github.com/bahmutov/console-log-div
+- Version: 0.6.3
+- Released: Apr 19, 2016
+
 # Deprecated Libraries
 
 ## datGUI
