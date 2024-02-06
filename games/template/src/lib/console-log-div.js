@@ -51,11 +51,15 @@ export default function initConsoleLogDiv() {
     item.textContent = msg;
     item.classList.add('log-row');
 
-    // Add class based on the log type.
-    if (arguments[0] === 'ERROR:') {
-      item.classList.add('error');
-    } else if (arguments[0] === 'WARNING:') {
-      item.classList.add('warning');
+    if (arguments.length >= 1) {
+      // Add CSS class based on the log type.
+      if (arguments[0] === 'ERROR:') {
+        item.classList.add('error');
+      } else if (arguments[0] === 'WARNING:') {
+        item.classList.add('warning');
+      } else if (arguments[0] === 'EXCEPTION:') {
+        item.classList.add('exception');
+      }
     }
 
     logTo.appendChild(item);
@@ -119,7 +123,6 @@ export default function initConsoleLogDiv() {
     }
     var div = document.getElementById('console-log-text');
     div.appendChild($table);
-    
   }
 
   console.table = function logTable() {
@@ -137,14 +140,14 @@ export default function initConsoleLogDiv() {
   };
 
   window.addEventListener('error', function (err) {
-    printToDiv( 'EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
+    printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
   });
   
   //   Detect dark or light colors.
 
   function setDarkLight(element) {
     var color = window.getComputedStyle(element, null).backgroundColor;
-    if(isDark(color)) {
+    if(!isDark(color)) {
       element.style.color = "rgba(255,255,255,1)";
     } else {
       element.style.color = "rgba(0,0,0,.61)";
