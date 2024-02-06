@@ -1,5 +1,10 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
+const INFO_PREFIX = 'INFO:';
+const WARN_PREFIX = 'WARNING:';
+const ERROR_PREFIX = 'ERROR:';
+const EXCEPTION_PREFIX = 'EXCEPTION:';
+
 export default function initConsoleLogDiv(options) {
   'use strict';
 
@@ -91,17 +96,18 @@ export default function initConsoleLogDiv(options) {
     let item = document.createElement('div');
     item.textContent = msg;
     item.classList.add('log-row');
+    item.classList.add('wordwrap');
 
     // Should always be true, but just in case.
     if (arguments.length >= 1) {
       // Add CSS class based on the log type.
-      if (arguments[0] === 'ERROR:') {
+      if (arguments[0] === ERROR_PREFIX) {
         item.classList.add('error');
-      } else if (arguments[0] === 'WARNING:') {
+      } else if (arguments[0] === WARN_PREFIX) {
         item.classList.add('warning');
-      } else if (arguments[0] === 'EXCEPTION:') {
+      } else if (arguments[0] === EXCEPTION_PREFIX) {
         item.classList.add('exception');
-      } else if (arguments[0] === 'INFO:') {
+      } else if (arguments[0] === INFO_PREFIX) {
         item.classList.add('info');
       }
     }
@@ -119,7 +125,7 @@ export default function initConsoleLogDiv(options) {
     if (logInfo) {
       // Get the arguments so we can prepend to them and then log the message.
       let args = Array.prototype.slice.call(arguments, 0);
-      args.unshift('INFO:');
+      args.unshift(INFO_PREFIX);
       printToDiv.apply(null, args);
     }
   };
@@ -133,7 +139,7 @@ export default function initConsoleLogDiv(options) {
     if (logWarn) {
       // Get the arguments so we can prepend to them and then log the message.
       let args = Array.prototype.slice.call(arguments, 0);
-      args.unshift('WARNING:');
+      args.unshift(WARN_PREFIX);
       printToDiv.apply(null, args);
     }
   };
@@ -147,7 +153,7 @@ export default function initConsoleLogDiv(options) {
     if (logError) {
       // Get the arguments so we can prepend to them and then log the message.
       let args = Array.prototype.slice.call(arguments, 0);
-      args.unshift('ERROR:');
+      args.unshift(ERROR_PREFIX);
       printToDiv.apply(null, args);
     }
   };
@@ -212,7 +218,7 @@ export default function initConsoleLogDiv(options) {
     // If we didn't do this then exceptions would go to the regular console and we would not see them
     // inside our console. At least with this we have a fighting chance of seeing them.
     window.addEventListener('error', function (err) {
-      printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
+      printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
     });
   }
 };
