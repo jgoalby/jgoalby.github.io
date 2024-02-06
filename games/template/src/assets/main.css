@@ -35,6 +35,7 @@ table {
   }
 }
 
+/*
 .console-log-div {
   border: 1px solid gray;
   padding: 5px 10px;
@@ -42,11 +43,12 @@ table {
   width: 95% !important;
   background-color: #efefef;
 }
+*/
 
 /* Make the whole thing smaller with 
 transform: scale(70%) */
 
-/*
+
 #console-log-div {
   min-height: 55px;
   width: calc(100% - 20px);
@@ -81,4 +83,3 @@ transform: scale(70%) */
     background: rgba(0,0,0,.2);
   }
 }
-*/
