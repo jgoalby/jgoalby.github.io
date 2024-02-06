@@ -46,12 +46,18 @@ export default function initConsoleLogDiv() {
   }());
 
   function printToDiv() {
-    var msg = Array.prototype.slice.call(arguments, 0)
-      .map(toString)
-      .join(' ');
+    var msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
     var item = document.createElement('div');
-    item.classList.add('log-row');
     item.textContent = msg;
+    item.classList.add('log-row');
+
+    // Add class based on the log type.
+    if (arguments[0] === 'ERROR:') {
+      item.classList.add('error');
+    } else if (arguments[0] === 'WARNING:') {
+      item.classList.add('warning');
+    }
+
     logTo.appendChild(item);
   }
 

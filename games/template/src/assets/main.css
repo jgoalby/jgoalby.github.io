@@ -68,6 +68,12 @@ table {
       background: rgba(0,0,0,.1);
     }
   }
+  .warning {
+    color: rgba(255,0,0,.61);
+  }
+  .error {
+    color: rgba(255,0,0,.61);
+  }
   thead {
     background: rgba(0,0,0,.2);
   }
