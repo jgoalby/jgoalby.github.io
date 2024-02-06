@@ -108,7 +108,7 @@ export default function initConsoleLogDiv() {
     // Get the arguments so we can prepend to them and then log the message.
     let args = Array.prototype.slice.call(arguments, 0);
     args.unshift('INFO:');
-    printToDiv.apply(null, args);
+    //printToDiv.apply(null, args);
   };
 
   // Override the error function.
@@ -120,7 +120,7 @@ export default function initConsoleLogDiv() {
     // Get the arguments so we can prepend to them and then log the message.
     let args = Array.prototype.slice.call(arguments, 0);
     args.unshift('ERROR:');
-    printToDiv.apply(null, args);
+    //printToDiv.apply(null, args);
   };
 
   // Override the warn function.

@@ -71,11 +71,11 @@ table {
   .exception {
     color: rgba(255,0,255,.61);
   }
-  .warning {
-    color: rgba(255,165,0,.61);
-  }
   .error {
     color: rgba(255,0,0,.61);
+  }
+  .warning {
+    color: rgba(255,140,0,.61);
   }
   .info {
     color: rgba(0,0,255,.61);
