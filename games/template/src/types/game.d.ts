@@ -26,6 +26,9 @@ interface Element {
     value: any;
 }
 
+interface Console {
+    logToDiv: any;
+}
 
 declare class CheckBoxButton extends Phaser.GameObjects.Container {
     constructor(scene: Phaser.Scene, x: number, y: number, checked: string, unchecked: string, text: string, getState: () => boolean, setState: (boolean) => void);

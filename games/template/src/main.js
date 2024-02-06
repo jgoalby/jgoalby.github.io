@@ -1,5 +1,6 @@
 import { config } from './config/config.js';
 import Globals from './globals.js';
+import initConsoleLogDiv from './lib/console-log-div.js'
 import Scenes from './scenes/Scenes.js';
 
 export default class Game extends Phaser.Game {
@@ -10,6 +11,7 @@ export default class Game extends Phaser.Game {
   }
 }
 
+// Create the global game instance.
 window.game = new Game();
 
 // Called on every resize event.
@@ -46,6 +48,9 @@ function onResizeTimeout() {
 }
 
 (() => {
+  // Initialize the console log div first.
+  initConsoleLogDiv();
+
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js').then((registration) => {

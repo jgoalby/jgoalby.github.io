@@ -35,6 +35,7 @@
 - Released: Jun 10, 2017
 
 # Console Log Div
+- Adapted from:
 - https://github.com/bahmutov/console-log-div
 - Version: 0.6.3
 - Released: Apr 19, 2016

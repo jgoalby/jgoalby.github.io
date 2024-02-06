@@ -1,9 +1,9 @@
+// Adapted from https://github.com/bahmutov/console-log-div
 
-(function initConsoleLogDiv() {
+export default function initConsoleLogDiv() {
   'use strict';
 
-
-  if (console.log.toDiv) {
+  if (console.logToDiv) {
     return;
   }
 
@@ -17,7 +17,7 @@
   var table = console.table ? console.table.bind(console) : null;
   var consoleId = 'console-log-div';
   
-// Create the Console Div container.
+  // Create the Console Div container.
   function createOuterElement(id) {
     var outer = document.getElementById(id);
     if (!outer) {
@@ -28,7 +28,7 @@
     var style = outer.style;
     return outer;
   }
-// Create the logging div and adornments.
+  // Create the logging div and adornments.
   var logTo = (function createLogDiv() {
 
     var outer = createOuterElement(consoleId);
@@ -63,7 +63,7 @@
   }
 
   console.log = logWithCopy;
-  console.log.toDiv = true;
+  console.logToDiv = true;
 
   console.error = function errorWithCopy() {
     error.apply(null, arguments);
@@ -101,7 +101,7 @@
     for (var i = 0; i < len; i++) {
       var $line = document.createElement('tr');
       $tdata = document.createElement('td');
-      $tdata.innerHTML = i;
+      $tdata.innerHTML = String(i);
       $line.appendChild($tdata);
 
       for (var j = 0; j < numCols; j++) {
@@ -152,4 +152,4 @@
          + parseFloat(match[3])
            < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
   }
-}());
+};
