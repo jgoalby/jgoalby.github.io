@@ -10,6 +10,7 @@
 - Have a way to stop the console from adding more content
 - Test the table function and clean up that code as needed and comment.
 - What is the thead css doing for me?
+- Pass params to the function for config. Pass an options object.
 
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.

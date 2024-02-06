@@ -1,6 +1,6 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
-export default function initConsoleLogDiv() {
+export default function initConsoleLogDiv(options) {
   'use strict';
 
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
@@ -10,11 +10,22 @@ export default function initConsoleLogDiv() {
   // it fails for any reason, there's not much more we can do and not running again may be best anyway.
   console.logToDiv = true;
 
-  // If the copyToBrowserConsole flag is set, then we will copy the log messages to the browser console.
-  let copyToBrowserConsole = true;
+  // If the options parameter is not set, then set it to an empty object so we do not fail later.
+  if (!options) { options = {}; }
 
-  // If we want to see the caption.
-  let showCaption = true;
+  // If the copyToBrowserConsole flag is set, then we will copy the log messages to the browser console.
+  let copyToBrowserConsole = options.copyToBrowserConsole || true;
+
+  // If we want to see the caption and specify what it says.
+  let showCaption = options.showCaption || true;
+  let logCaption = options.logCaption || 'Console Output';
+
+  // If we want to see various log messages.
+  let logInfo = options.logInfo || true;
+  let logWarn = options.logWarn || true;
+  let logError = options.logError || true;
+  let logException = options.logException || true;
+  let logTable = options.logTable || true;
 
   // The id of the div that will contain the log messages.
   let consoleId = 'console-log-div';
@@ -55,7 +66,7 @@ export default function initConsoleLogDiv() {
       legend.id = "legend";
 
       // The text for the caption.
-      let caption = document.createTextNode('Console Output');
+      let caption = document.createTextNode(logCaption);
       legend.appendChild(caption);
 
       // Add the caption to the outer element.
@@ -100,39 +111,45 @@ export default function initConsoleLogDiv() {
   }
 
   // Override the log function.
-  console.log = function logInfo() {
+  console.log = function logInfoMessage() {
     if (copyToBrowserConsole) {
       log.apply(null, arguments);
     }
 
-    // Get the arguments so we can prepend to them and then log the message.
-    let args = Array.prototype.slice.call(arguments, 0);
-    args.unshift('INFO:');
-    //printToDiv.apply(null, args);
-  };
-
-  // Override the error function.
-  console.error = function logError() {
-    if (copyToBrowserConsole) {
-      error.apply(null, arguments);
+    if (logInfo) {
+      // Get the arguments so we can prepend to them and then log the message.
+      let args = Array.prototype.slice.call(arguments, 0);
+      args.unshift('INFO:');
+      printToDiv.apply(null, args);
     }
-
-    // Get the arguments so we can prepend to them and then log the message.
-    let args = Array.prototype.slice.call(arguments, 0);
-    args.unshift('ERROR:');
-    //printToDiv.apply(null, args);
   };
 
   // Override the warn function.
-  console.warn = function logWarning() {
+  console.warn = function logWarnMessage() {
     if (copyToBrowserConsole) {
       warn.apply(null, arguments);
     }
 
-    // Get the arguments so we can prepend to them and then log the message.
-    let args = Array.prototype.slice.call(arguments, 0);
-    args.unshift('WARNING:');
-    printToDiv.apply(null, args);
+    if (logWarn) {
+      // Get the arguments so we can prepend to them and then log the message.
+      let args = Array.prototype.slice.call(arguments, 0);
+      args.unshift('WARNING:');
+      printToDiv.apply(null, args);
+    }
+  };
+
+  // Override the error function.
+  console.error = function logErrorMessage() {
+    if (copyToBrowserConsole) {
+      error.apply(null, arguments);
+    }
+
+    if (logError) {
+      // Get the arguments so we can prepend to them and then log the message.
+      let args = Array.prototype.slice.call(arguments, 0);
+      args.unshift('ERROR:');
+      printToDiv.apply(null, args);
+    }
   };
 
   function printTable(objArr, keys) {
@@ -171,7 +188,7 @@ export default function initConsoleLogDiv() {
   }
 
   // Override the table function.
-  console.table = function logTable() {
+  console.table = function logTableMessage() {
     if (copyToBrowserConsole) {
       // Make sure it is a function before calling it.
       if (typeof table === 'function') {
@@ -179,19 +196,23 @@ export default function initConsoleLogDiv() {
       }
     }
 
-    let objArr = arguments[0];
-    let keys;
+    if (!logTable) {
+      let objArr = arguments[0];
+      let keys;
 
-    if (typeof objArr[0] !== 'undefined') {
-      keys = Object.keys(objArr[0]);
+      if (typeof objArr[0] !== 'undefined') {
+        keys = Object.keys(objArr[0]);
+      }
+
+      printTable(objArr, keys);
     }
-
-    printTable(objArr, keys);
   };
 
-  // If we didn't do this then exceptions would go to the regular console and we would not see them
-  // inside our console. At least with this we have a fighting chance of seeing them.
-  window.addEventListener('error', function (err) {
-    printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
-  });
+  if (logException) {
+    // If we didn't do this then exceptions would go to the regular console and we would not see them
+    // inside our console. At least with this we have a fighting chance of seeing them.
+    window.addEventListener('error', function (err) {
+      printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
+    });
+  }
 };
