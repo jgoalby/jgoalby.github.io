@@ -35,22 +35,10 @@ table {
   }
 }
 
-/*
-.console-log-div {
-  border: 1px solid gray;
-  padding: 5px 10px;
-  border-radius: 5px;
-  width: 95% !important;
-  background-color: #efefef;
-}
-*/
-
-/* Make the whole thing smaller with 
-transform: scale(70%) */
-
-
 #console-log-div {
   position: absolute;
+  display: none;
+  z-index: 1000;
   min-height: 55px;
   width: calc(100% - 20px);
   margin: 10px;
