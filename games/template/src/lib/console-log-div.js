@@ -3,54 +3,85 @@
 export default function initConsoleLogDiv() {
   'use strict';
 
-  if (console.logToDiv) {
-    return;
-  }
+  // If the console.logToDiv flag is set, then we have already overridden the console functions.
+  if (console.logToDiv) { return; }
 
-  function toString(x) {
-    return typeof x === 'string' ? x : JSON.stringify(x);
-  }
+  // We have made it here so assume that everything else will succeed and functions overridden. If
+  // it fails for any reason, there's not much more we can do and not running again may be best anyway.
+  console.logToDiv = true;
 
-  var log = console.log.bind(console);
-  var error = console.error.bind(console);
-  var warn = console.warn.bind(console);
-  var table = console.table ? console.table.bind(console) : null;
-  var consoleId = 'console-log-div';
+  // If the copyToBrowserConsole flag is set, then we will copy the log messages to the browser console.
+  let copyToBrowserConsole = true;
+
+  // If we want to see the caption.
+  let showCaption = true;
+
+  // The id of the div that will contain the log messages.
+  let consoleId = 'console-log-div';
+
+  // Capture the original console functions so we can call them from our overridden functions.
+  let log = console.log.bind(console);
+  let error = console.error.bind(console);
+  let warn = console.warn.bind(console);
+  let table = console.table ? console.table.bind(console) : null;
   
-  // Create the Console Div container.
+  // Create or retrieve the Console Div container.
   function createOuterElement(id) {
-    var outer = document.getElementById(id);
+    // See if the user has already created an element with the id.
+    let outer = document.getElementById(id);
+
+    // If there isn't an existing element with the id, create one.
     if (!outer) {
+      // Create the element, give it an id, and append it to the body.
       outer = document.createElement('fieldset');
       outer.id = id;
       document.body.appendChild(outer);
     }
-    var style = outer.style;
+
+    // Return the outer element.
     return outer;
   }
-  // Create the logging div and adornments.
-  var logTo = (function createLogDiv() {
 
-    var outer = createOuterElement(consoleId);
-    var caption = document.createTextNode('Console Output');
-    var legend = document.createElement('div');
-    legend.id = "legend";
-    legend.appendChild(caption);
-    outer.appendChild(legend);
+  // Create the logging div and adornments. This happens once as it is immediately invoked. 
+  // The returned element is where the future log messages will be written.
+  let logTo = (function createLogDiv() {
+    // Create the outer element.
+    let outer = createOuterElement(consoleId);
 
-    var div = document.createElement('div');
-    div.id = 'console-log-text';
-    
-    outer.appendChild(div);
-    return div;
+    // If we have been asked to show the caption, then create it and add it to the outer element.
+    if (showCaption) {
+      // The div for the caption.
+      let legend = document.createElement('div');
+      legend.id = "legend";
+
+      // The text for the caption.
+      let caption = document.createTextNode('Console Output');
+      legend.appendChild(caption);
+
+      // Add the caption to the outer element.
+      outer.appendChild(legend);
+    }
+
+    // This is where log rows will be added.
+    let logDiv = document.createElement('div');
+    logDiv.id = 'console-log-text';
+
+    // Add the log div to the outer element and return the log div for future messages.
+    outer.appendChild(logDiv);
+    return logDiv;
   }());
 
+  // Simple one argument function to convert any value to a string in map.
+  function toString(x) { return typeof x === 'string' ? x : JSON.stringify(x); }
+
   function printToDiv() {
-    var msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
-    var item = document.createElement('div');
+    // Create a log row based on the concatenation of the arguments.
+    let msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
+    let item = document.createElement('div');
     item.textContent = msg;
     item.classList.add('log-row');
 
+    // Should always be true, but just in case.
     if (arguments.length >= 1) {
       // Add CSS class based on the log type.
       if (arguments[0] === 'ERROR:') {
@@ -59,106 +90,108 @@ export default function initConsoleLogDiv() {
         item.classList.add('warning');
       } else if (arguments[0] === 'EXCEPTION:') {
         item.classList.add('exception');
+      } else if (arguments[0] === 'INFO:') {
+        item.classList.add('info');
       }
     }
 
+    // Add the log row to the log div.
     logTo.appendChild(item);
   }
 
-  function logWithCopy() {
-    var ele = document.getElementById('console-log-div');
-    setDarkLight(ele);
-    log.apply(null, arguments);
-    printToDiv.apply(null, arguments);
-  }
+  // Override the log function.
+  console.log = function logInfo() {
+    if (copyToBrowserConsole) {
+      log.apply(null, arguments);
+    }
 
-  console.log = logWithCopy;
-  console.logToDiv = true;
+    // Get the arguments so we can prepend to them and then log the message.
+    let args = Array.prototype.slice.call(arguments, 0);
+    args.unshift('INFO:');
+    printToDiv.apply(null, args);
+  };
 
-  console.error = function errorWithCopy() {
-    error.apply(null, arguments);
-    var args = Array.prototype.slice.call(arguments, 0);
+  // Override the error function.
+  console.error = function logError() {
+    if (copyToBrowserConsole) {
+      error.apply(null, arguments);
+    }
+
+    // Get the arguments so we can prepend to them and then log the message.
+    let args = Array.prototype.slice.call(arguments, 0);
     args.unshift('ERROR:');
     printToDiv.apply(null, args);
   };
 
+  // Override the warn function.
   console.warn = function logWarning() {
-    warn.apply(null, arguments);
-    var args = Array.prototype.slice.call(arguments, 0);
+    if (copyToBrowserConsole) {
+      warn.apply(null, arguments);
+    }
+
+    // Get the arguments so we can prepend to them and then log the message.
+    let args = Array.prototype.slice.call(arguments, 0);
     args.unshift('WARNING:');
     printToDiv.apply(null, args);
   };
 
   function printTable(objArr, keys) {
-
-    var numCols = keys.length;
-    var len = objArr.length;
-    var $table = document.createElement('table');
+    let numCols = keys.length;
+    let len = objArr.length;
+    let $table = document.createElement('table');
     $table.style.width = '100%';
     $table.setAttribute('border', '1');
-    var $head = document.createElement('thead');
-    var $tdata = document.createElement('td');
+    let $head = document.createElement('thead');
+    let $tdata = document.createElement('td');
     $tdata.innerHTML = 'Index';
     $head.appendChild($tdata);
 
-    for (var k = 0; k < numCols; k++) {
+    for (let k = 0; k < numCols; k++) {
       $tdata = document.createElement('td');
       $tdata.innerHTML = keys[k];
       $head.appendChild($tdata);
     }
     $table.appendChild($head);
 
-    for (var i = 0; i < len; i++) {
-      var $line = document.createElement('tr');
+    for (let i = 0; i < len; i++) {
+      let $line = document.createElement('tr');
       $tdata = document.createElement('td');
       $tdata.innerHTML = String(i);
       $line.appendChild($tdata);
 
-      for (var j = 0; j < numCols; j++) {
+      for (let j = 0; j < numCols; j++) {
         $tdata = document.createElement('td');
         $tdata.innerHTML = objArr[i][keys[j]];
         $line.appendChild($tdata);
       }
       $table.appendChild($line);
     }
-    var div = document.getElementById('console-log-text');
+    let div = document.getElementById('console-log-text');
     div.appendChild($table);
   }
 
+  // Override the table function.
   console.table = function logTable() {
-    if (typeof table === 'function') {
-      table.apply(null, arguments);
+    if (copyToBrowserConsole) {
+      // Make sure it is a function before calling it.
+      if (typeof table === 'function') {
+        table.apply(null, arguments);
+      }
     }
 
-    var objArr = arguments[0];
-    var keys;
+    let objArr = arguments[0];
+    let keys;
 
     if (typeof objArr[0] !== 'undefined') {
       keys = Object.keys(objArr[0]);
     }
+
     printTable(objArr, keys);
   };
 
+  // If we didn't do this then exceptions would go to the regular console and we would not see them
+  // inside our console. At least with this we have a fighting chance of seeing them.
   window.addEventListener('error', function (err) {
     printToDiv('EXCEPTION:', err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
   });
-  
-  //   Detect dark or light colors.
-
-  function setDarkLight(element) {
-    var color = window.getComputedStyle(element, null).backgroundColor;
-    if(!isDark(color)) {
-      element.style.color = "rgba(255,255,255,1)";
-    } else {
-      element.style.color = "rgba(0,0,0,.61)";
-    }
-  }
-  
-  function isDark( color ) {
-    var match = /rgb\((\d+).*?(\d+).*?(\d+)\)/.exec(color);
-    return parseFloat(match[1])
-         + parseFloat(match[2])
-         + parseFloat(match[3])
-           < 3 * 256 / 2; // r+g+b should be less than half of max (3 * 256)
-  }
 };
