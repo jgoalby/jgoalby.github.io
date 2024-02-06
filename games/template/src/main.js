@@ -61,7 +61,7 @@ function onResizeTimeout() {
   window.addEventListener('resize', resize);
 
   window.addEventListener("keydown", (event) => {
-      if (event.code == "KeyD") {
+      if ((event.code == "KeyD") && (event.ctrlKey)) {
         var elem = document.getElementById("console-log-div");
         if (elem.style.display === "block") {
           elem.style.display = "none";
@@ -70,6 +70,6 @@ function onResizeTimeout() {
         }
       }
     },
-    true,
+    false,
   );
 })();
