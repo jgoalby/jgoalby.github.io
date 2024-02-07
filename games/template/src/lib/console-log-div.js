@@ -251,8 +251,9 @@ function getLogDivMessages() {
   // Get the element where we add log messages.
   let logDivElement = document.getElementById(MESSAGES_DIV_ID);
 
-  // Return the text content of the log div.
-  return logDivElement.textContent;
+  // Return the text of the log div.
+  //return logDivElement.textContent;
+  return logDivElement.innerText;
 }
 
 function copyLogDivMessages() {
@@ -269,13 +270,25 @@ function copyLogDivMessages() {
       console.log('Failed to copy: ', err);
     }
   } else {
-    try {
-      var successful = document.execCommand('copy');
-      var msg = successful ? 'successful' : 'unsuccessful';
-      console.log('Fallback: Copying text command was ' + msg);
-    } catch (err) {
-      console.error('Fallback: Oops, unable to copy', err);
-    }
+    if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+      var textarea = document.createElement("textarea");
+      textarea.textContent = logMessages;
+      // Prevent scrolling to bottom of page in Microsoft Edge.
+      textarea.style.position = "fixed";
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+          return document.execCommand("copy");
+      }
+      catch (ex) {
+          console.warn("Copy to clipboard failed.", ex);
+      }
+      finally {
+          document.body.removeChild(textarea);
+      }
+  }
+
+
   }
 }
 
