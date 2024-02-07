@@ -228,6 +228,7 @@ function initConsoleLogDiv(options) {
   }
 }
 
+// Clear the log div of all messages.
 function clearConsoleLogDiv() {
   // Get the element where we add log messages.
   let logDivElement = document.getElementById(MESSAGES_DIV_ID);
@@ -239,7 +240,16 @@ function clearConsoleLogDiv() {
   }
 }
 
+function copyLogDiv() {
+  // Get the element where we add log messages.
+  let logDivElement = document.getElementById(MESSAGES_DIV_ID);
+
+  // Return the text content of the log div.
+  return logDivElement.textContent;
+}
+
 export {
   initConsoleLogDiv,
-  clearConsoleLogDiv
+  clearConsoleLogDiv,
+  copyLogDiv
 }

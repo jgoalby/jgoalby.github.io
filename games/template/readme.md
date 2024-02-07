@@ -4,7 +4,6 @@
 - Can I make the background semi transparent?
 - What if I repeat a message? Should I just update the count?
 - Copy the console to the clipboard
-- Have a way to clear the console
 - Have a way to stop the console from adding more content
 - Test the table function and clean up that code as needed and comment.
 - What is the thead css doing for me?

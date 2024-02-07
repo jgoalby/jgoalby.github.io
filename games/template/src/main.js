@@ -1,5 +1,5 @@
 // Initialize the console log div first.
-import { initConsoleLogDiv, clearConsoleLogDiv } from './lib/console-log-div.js'
+import { initConsoleLogDiv, clearConsoleLogDiv, copyLogDiv } from './lib/console-log-div.js'
 (() => { initConsoleLogDiv(); })();
 
 import { config } from './config/config.js';
@@ -75,6 +75,9 @@ function onResizeTimeout() {
       }
     } else if ((event.code == "KeyE") && (event.ctrlKey)) {
       clearConsoleLogDiv();
+    } else if ((event.code == "KeyW") && (event.ctrlKey)) {
+      let logMessages = copyLogDiv();
+      alert(logMessages);
     }
   }, false);
 })();
