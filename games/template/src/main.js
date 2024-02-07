@@ -73,8 +73,7 @@ function onResizeTimeout() {
       } else {
         elem.style.display = "block";
       }
-    }
-    if ((event.code == "KeyE") && (event.ctrlKey)) {
+    } else if ((event.code == "KeyE") && (event.ctrlKey)) {
       clearConsoleLogDiv();
     }
   }, false);

@@ -1,11 +1,14 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
+// Prefixes used for different log types.
 const INFO_PREFIX = 'INFO:';
 const WARN_PREFIX = 'WARNING:';
 const ERROR_PREFIX = 'ERROR:';
 const EXCEPTION_PREFIX = 'EXCEPTION:';
 
-const LOG_DIV_ID = 'console-log-div';
+// The id of the div that will contain the log messages.
+const MESSAGES_DIV_ID = 'console-log-messages-div';
+const CONSOLE_DIV_ID = 'console-log-div';
 
 function initConsoleLogDiv(options) {
   'use strict';
@@ -35,7 +38,7 @@ function initConsoleLogDiv(options) {
   let logTable = options.logTable || true;
 
   // The id of the div that will contain the log messages.
-  let consoleId = 'console-log-div';
+  let consoleId = options.consoleId || CONSOLE_DIV_ID;
 
   // Capture the original console functions so we can call them from our overridden functions.
   let log = console.log.bind(console);
@@ -82,7 +85,7 @@ function initConsoleLogDiv(options) {
 
     // This is where log rows will be added.
     let logDiv = document.createElement('div');
-    logDiv.id = LOG_DIV_ID;
+    logDiv.id = MESSAGES_DIV_ID;
 
     // Add the log div to the outer element and return the log div for future messages.
     outer.appendChild(logDiv);
@@ -223,14 +226,17 @@ function initConsoleLogDiv(options) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
     });
   }
-};
+}
 
 function clearConsoleLogDiv() {
   // Get the element where we add log messages.
-  let logDivElement = document.getElementById(LOG_DIV_ID);
+  let logDivElement = document.getElementById(MESSAGES_DIV_ID);
 
-  // This removes all the children of the log div.
-  logDivElement.replaceChildren();  
+  // Defensive check to make sure the log div element exists.
+  if (logDivElement) {
+    // This removes all the children of the log div.
+    logDivElement.replaceChildren();
+  }
 }
 
 export {
