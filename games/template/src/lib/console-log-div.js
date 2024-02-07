@@ -86,6 +86,7 @@ function initConsoleLogDiv(options) {
       // Create a copy to clipboard button next to the caption.
       const copyButton = document.createElement('button')
       copyButton.textContent= 'Copy';
+      //copyButton.addEventListener('click', copyLogDivMessages);
       copyButton.addEventListener('click', copyLogDivMessages);
       outer.appendChild(copyButton);
     }
@@ -258,26 +259,15 @@ function getLogDivMessages() {
 
 function copyLogDivMessages() {
   let logMessages = getLogDivMessages();
-  alert(logMessages);
 
+  // This might not be present in some cases. Most likely if using HTTP rather than HTTPS.
   if (navigator.clipboard) {
     try {
-      var textarea = document.createElement("textarea");
-      textarea.textContent = logMessages;
-      // Prevent scrolling to bottom of page in Microsoft Edge.
-      //textarea.style.position = "fixed";
-      document.body.appendChild(textarea);
-
-      // Get content of textarea
-      const text = textarea.value;
-
-      navigator.clipboard.writeText(text).then(function() {
+      navigator.clipboard.writeText(" _ " + logMessages).then(function() {
         console.log('Async: Copying to clipboard was successful!');
       }, function(err) {
         console.error('Async: Could not copy text: ', err);
       });
-
-      //document.body.removeChild(textarea);
     } catch (err) {
       console.log('Failed to copy: ', err);
     }
@@ -308,4 +298,3 @@ export {
   getLogDivMessages,
   copyLogDivMessages
 }
-
