@@ -265,8 +265,8 @@ function copyLogDivMessages() {
       var textarea = document.createElement("textarea");
       textarea.textContent = logMessages;
       // Prevent scrolling to bottom of page in Microsoft Edge.
-      textarea.style.position = "fixed";
-      //document.body.appendChild(textarea);
+      //textarea.style.position = "fixed";
+      document.body.appendChild(textarea);
 
       // Get content of textarea
       const text = textarea.value;
@@ -308,3 +308,4 @@ export {
   getLogDivMessages,
   copyLogDivMessages
 }
+
