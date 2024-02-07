@@ -238,7 +238,7 @@ function initConsoleLogDiv(options) {
 // Clear the log div of all messages.
 function clearConsoleLogDiv() {
   // Get the element where we add log messages.
-  let logDivElement = document.getElementById(MESSAGES_DIV_ID);
+  const logDivElement = document.getElementById(MESSAGES_DIV_ID);
 
   // Defensive check to make sure the log div element exists.
   if (logDivElement) {
@@ -249,7 +249,7 @@ function clearConsoleLogDiv() {
 
 function getLogDivMessages() {
   // Get the element where we add log messages.
-  let logDivElement = document.getElementById(MESSAGES_DIV_ID);
+  const logDivElement = document.getElementById(MESSAGES_DIV_ID);
 
   // Return the text of the log div.
   //return logDivElement.textContent;
@@ -261,11 +261,22 @@ function copyLogDivMessages() {
 
   if (navigator.clipboard) {
     try {
-      navigator.clipboard.writeText(logMessages).then(function() {
+      var textarea = document.createElement("textarea");
+      textarea.textContent = logMessages;
+      // Prevent scrolling to bottom of page in Microsoft Edge.
+      textarea.style.position = "fixed";
+      //document.body.appendChild(textarea);
+
+      // Get content of textarea
+      const text = textarea.value;
+
+      navigator.clipboard.writeText(text).then(function() {
         console.log('Async: Copying to clipboard was successful!');
       }, function(err) {
         console.error('Async: Could not copy text: ', err);
       });
+
+      //document.body.removeChild(textarea);
     } catch (err) {
       console.log('Failed to copy: ', err);
     }
@@ -286,9 +297,7 @@ function copyLogDivMessages() {
       finally {
           document.body.removeChild(textarea);
       }
-  }
-
-
+    }
   }
 }
 

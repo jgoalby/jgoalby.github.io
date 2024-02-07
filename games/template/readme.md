@@ -10,6 +10,7 @@
 - Pass in a setting for which keypress to listen to
   - Need to add the listener code if I do that
 - Have a show and hide function? and/or toggle function
+- Change let to const where possible
 
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
