@@ -308,5 +308,3 @@ export {
   getLogDivMessages,
   copyLogDivMessages
 }
-
-info:%20Async%3A%20Copying%20to%20clipboard%20was%20successful!%0AINFO%3A%20Async%3A%20Copying%20to%20clipboard%20was%20successful!%0AINFO%3A%20Async%3A%20Copying%20to%20clipboard%20was%20successful!%0AINFO%3A%20Async%3A%20Copying%20to%20clipboard%20was%20successful!%0AINFO%3A%20Async%3A%20Copying%20to%20clipboard%20was%20successful!
