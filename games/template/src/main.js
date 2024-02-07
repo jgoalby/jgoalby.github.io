@@ -81,6 +81,7 @@ function onResizeTimeout() {
       try {
         await navigator.clipboard.writeText(logMessages);
       } catch (err) {
+        console.log('Failed to copy: ', err);
       }
     }
   }, false);
