@@ -5,7 +5,9 @@ const WARN_PREFIX = 'WARNING:';
 const ERROR_PREFIX = 'ERROR:';
 const EXCEPTION_PREFIX = 'EXCEPTION:';
 
-export default function initConsoleLogDiv(options) {
+const LOG_DIV_ID = 'console-log-div';
+
+function initConsoleLogDiv(options) {
   'use strict';
 
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
@@ -80,7 +82,7 @@ export default function initConsoleLogDiv(options) {
 
     // This is where log rows will be added.
     let logDiv = document.createElement('div');
-    logDiv.id = 'console-log-text';
+    logDiv.id = LOG_DIV_ID;
 
     // Add the log div to the outer element and return the log div for future messages.
     outer.appendChild(logDiv);
@@ -222,3 +224,16 @@ export default function initConsoleLogDiv(options) {
     });
   }
 };
+
+function clearConsoleLogDiv() {
+  // Get the element where we add log messages.
+  let logDivElement = document.getElementById(LOG_DIV_ID);
+
+  // This removes all the children of the log div.
+  logDivElement.replaceChildren();  
+}
+
+export {
+  initConsoleLogDiv,
+  clearConsoleLogDiv
+}

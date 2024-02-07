@@ -1,5 +1,5 @@
 // Initialize the console log div first.
-import initConsoleLogDiv from './lib/console-log-div.js'
+import { initConsoleLogDiv, clearConsoleLogDiv } from './lib/console-log-div.js'
 (() => { initConsoleLogDiv(); })();
 
 import { config } from './config/config.js';
@@ -66,15 +66,16 @@ function onResizeTimeout() {
   window.addEventListener('resize', resize);
 
   window.addEventListener("keydown", (event) => {
-      if ((event.code == "KeyD") && (event.ctrlKey)) {
-        var elem = document.getElementById("console-log-div");
-        if (elem.style.display === "block") {
-          elem.style.display = "none";
-        } else {
-          elem.style.display = "block";
-        }
+    if ((event.code == "KeyD") && (event.ctrlKey)) {
+      var elem = document.getElementById("console-log-div");
+      if (elem.style.display === "block") {
+        elem.style.display = "none";
+      } else {
+        elem.style.display = "block";
       }
-    },
-    false,
-  );
+    }
+    if ((event.code == "KeyE") && (event.ctrlKey)) {
+      clearConsoleLogDiv();
+    }
+  }, false);
 })();
