@@ -72,6 +72,11 @@ function initConsoleLogDiv(options) {
     // Create the outer element.
     let outer = createOuterElement(consoleId);
 
+    // We need a DIV to put caption next to the button.
+    let captionContainer = document.createElement('div');
+    captionContainer.id = "console-log-caption";
+    captionContainer.style.display = "flex";
+
     // If we have been asked to show the caption, then create it and add it to the outer element.
     if (showCaption) {
       // The div for the caption.
@@ -81,15 +86,18 @@ function initConsoleLogDiv(options) {
       // The text for the caption.
       let caption = document.createTextNode(logCaption);
       legend.appendChild(caption);
-      outer.appendChild(legend);
-
-      // Create a copy to clipboard button next to the caption.
-      const copyButton = document.createElement('button')
-      copyButton.textContent= 'Copy';
-      //copyButton.addEventListener('click', copyLogDivMessages);
-      copyButton.addEventListener('click', copyLogDivMessages);
-      outer.appendChild(copyButton);
+      captionContainer.appendChild(legend);
     }
+
+    // Create a copy to clipboard button.
+    const copyButton = document.createElement('button')
+    copyButton.textContent= 'Copy';
+    //copyButton.addEventListener('click', copyLogDivMessages);
+    copyButton.addEventListener('click', copyLogDivMessages);
+    captionContainer.appendChild(copyButton);
+
+    // Now add the caption container to the outer element.
+    outer.appendChild(captionContainer);
 
     // This is where log rows will be added.
     let logDiv = document.createElement('div');
@@ -268,29 +276,33 @@ function copyLogDivMessages() {
       // This happened because the first line started with INFO:.
       const adjustedLogMessages = "\n" + logMessages;
       navigator.clipboard.writeText(adjustedLogMessages).then(function() {
-        console.log('Async: Copying to clipboard was successful!');
+        // console.log('navigator.clipboard.writeText successful!');
       }, function(err) {
-        console.error('Async: Could not copy text: ', err);
+        // console.error('navigator.clipboard.writeText failed: ', err);
       });
-    } catch (err) {
-      console.log('Failed to copy: ', err);
+    } catch (ex) {
+      // console.log('navigator.clipboard.writeText exception: ', ex);
     }
   } else {
+    // This is a deprecated method of copying to the clipboard, but does work in some situations such as when using HTTP.
     if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+      // Create a textarea element, set the value to the log messages, and then select the text.
       var textarea = document.createElement("textarea");
       textarea.textContent = logMessages;
-      // Prevent scrolling to bottom of page in Microsoft Edge.
       textarea.style.position = "fixed";
       document.body.appendChild(textarea);
       textarea.select();
+
       try {
-          return document.execCommand("copy");
+        // This will copy the selected text to the clipboard (hopefully).
+        return document.execCommand("copy");
       }
       catch (ex) {
-          console.warn("Copy to clipboard failed.", ex);
+        // console.warn("document.execCommand failed.", ex);
       }
       finally {
-          document.body.removeChild(textarea);
+        // We added a child earlier, so remove it now we don't need it.
+        document.body.removeChild(textarea);
       }
     }
   }
