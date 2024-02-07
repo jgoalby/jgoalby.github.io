@@ -71,6 +71,9 @@ table {
     padding-bottom: 12px;
     font-size: 1.2em;
   }
+  #console-log-caption {
+    display: flex;
+  }
   .log-row {
     &:nth-child(odd) {
       background: rgba(0,0,0,.1);

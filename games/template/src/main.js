@@ -1,5 +1,5 @@
 // Initialize the console log div first.
-import { initConsoleLogDiv, clearConsoleLogDiv, getLogDivMessages } from './lib/console-log-div.js'
+import { initConsoleLogDiv, clearConsoleLogDiv, toggleVisibility } from './lib/console-log-div.js'
 (() => { initConsoleLogDiv(); })();
 
 import { config } from './config/config.js';
@@ -53,9 +53,9 @@ function onResizeTimeout() {
 (() => {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js').then((registration) => {
-      console.info('Service worker registration successful.');
-    }, function(err) {
+      navigator.serviceWorker.register('service-worker.js').then((registration) => {
+        console.info('Service worker registration successful.');
+      }, function(err) {
         console.error('Service worker registration failed!', err);
       });
     });
@@ -67,12 +67,7 @@ function onResizeTimeout() {
 
   window.addEventListener("keydown", async (event) => {
     if ((event.code == "KeyD") && (event.ctrlKey)) {
-      var elem = document.getElementById("console-log-div");
-      if (elem.style.display === "block") {
-        elem.style.display = "none";
-      } else {
-        elem.style.display = "block";
-      }
+      toggleVisibility();
     } else if ((event.code == "KeyE") && (event.ctrlKey)) {
       clearConsoleLogDiv();
     }

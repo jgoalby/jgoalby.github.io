@@ -1,21 +1,29 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
 // Prefixes used for different log types.
-const INFO_PREFIX = 'INFO:';
-const WARN_PREFIX = 'WARNING:';
-const ERROR_PREFIX = 'ERROR:';
+const INFO_PREFIX      = 'INFO:';
+const WARN_PREFIX      = 'WARNING:';
+const ERROR_PREFIX     = 'ERROR:';
 const EXCEPTION_PREFIX = 'EXCEPTION:';
 
-// Caption.
+// Caption we use by default.
 const DEFAULT_CAPTION = 'Console Output';
 
 // The id of the div that will contain the log messages.
-const MESSAGES_DIV_ID = 'console-log-messages-div';
-const CONSOLE_DIV_ID = 'console-log-div';
+const MESSAGES_DIV_ID        = 'console-log-messages-div';
+const CONSOLE_DIV_ID         = 'console-log-div';
+const CONSOLE_LOG_CAPTION_ID = 'console-log-caption';
+
+// Defaults for boolean options so they are easy to change.
+const DEFAULT_SHOWCAPTION    = true;
+const DEFAULT_SHOWCOPYBUTTON = true;
+const DEFAULT_LOGINFO        = true;
+const DEFAULT_LOGWARN        = true;
+const DEFAULT_LOGERROR       = true;
+const DEFAULT_LOGEXCEPTION   = true;
+const DEFAULT_LOGTABLE       = true;
 
 function initConsoleLogDiv(options) {
-  'use strict';
-
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
   if (console.logToDiv) { return; }
 
@@ -27,27 +35,28 @@ function initConsoleLogDiv(options) {
   if (!options) { options = {}; }
 
   // If the copyToBrowserConsole flag is set, then we will copy the log messages to the browser console.
-  let copyToBrowserConsole = options.copyToBrowserConsole || true;
+  const copyToBrowserConsole = options.copyToBrowserConsole || true;
 
   // If we want to see the caption and specify what it says.
-  let showCaption = options.showCaption || true;
-  let logCaption = options.logCaption || DEFAULT_CAPTION;
+  const showCaption = options.showCaption || DEFAULT_SHOWCAPTION;
+  const showCopyButton = options.showCopyButton || DEFAULT_SHOWCOPYBUTTON;
+  const logCaption = options.logCaption || DEFAULT_CAPTION;
 
   // If we want to see various log messages.
-  let logInfo = options.logInfo || true;
-  let logWarn = options.logWarn || true;
-  let logError = options.logError || true;
-  let logException = options.logException || true;
-  let logTable = options.logTable || true;
+  const logInfo = options.logInfo || DEFAULT_LOGINFO;
+  const logWarn = options.logWarn || DEFAULT_LOGWARN;
+  const logError = options.logError || DEFAULT_LOGERROR;
+  const logException = options.logException || DEFAULT_LOGEXCEPTION;
+  const logTable = options.logTable || DEFAULT_LOGTABLE;
 
   // The id of the div that will contain the log messages.
-  let consoleId = options.consoleId || CONSOLE_DIV_ID;
+  const consoleId = options.consoleId || CONSOLE_DIV_ID;
 
   // Capture the original console functions so we can call them from our overridden functions.
-  let log = console.log.bind(console);
-  let error = console.error.bind(console);
-  let warn = console.warn.bind(console);
-  let table = console.table ? console.table.bind(console) : null;
+  const log = console.log.bind(console);
+  const error = console.error.bind(console);
+  const warn = console.warn.bind(console);
+  const table = console.table ? console.table.bind(console) : null;
   
   // Create or retrieve the Console Div container.
   function createOuterElement(id) {
@@ -62,50 +71,54 @@ function initConsoleLogDiv(options) {
       document.body.appendChild(outer);
     }
 
-    // Return the outer element.
+    // Return the outer element that existed or that we created.
     return outer;
   }
 
   // Create the logging div and adornments. This happens once as it is immediately invoked. 
   // The returned element is where the future log messages will be written.
-  let logTo = (function createLogDiv() {
+  const logTo = (function createLogDiv() {
     // Create the outer element.
-    let outer = createOuterElement(consoleId);
+    const outer = createOuterElement(consoleId);
 
-    // We need a DIV to put caption next to the button.
-    let captionContainer = document.createElement('div');
-    captionContainer.id = "console-log-caption";
-    captionContainer.style.display = "flex";
+    // If we have been asked to show the caption or the copy button, then create the caption container.
+    if (showCaption || showCopyButton) {
+      // We need a DIV to put caption next to the button.
+      const captionContainer = document.createElement('div');
+      captionContainer.id = CONSOLE_LOG_CAPTION_ID;
 
-    // If we have been asked to show the caption, then create it and add it to the outer element.
-    if (showCaption) {
-      // The div for the caption.
-      let legend = document.createElement('div');
-      legend.id = "legend";
+      // If we have been asked to show the caption, then create it and add it to the outer element.
+      if (showCaption) {
+        // The div for the caption.
+        const legend = document.createElement('div');
+        legend.id = "legend";
 
-      // The text for the caption.
-      let caption = document.createTextNode(logCaption);
-      legend.appendChild(caption);
-      captionContainer.appendChild(legend);
+        // The text for the caption.
+        const caption = document.createTextNode(logCaption);
+        legend.appendChild(caption);
+        captionContainer.appendChild(legend);
+      }
+
+      if (showCopyButton) {
+        // Create a copy to clipboard button.
+        const copyButton = document.createElement('button')
+        copyButton.textContent= 'Copy';
+        //copyButton.addEventListener('click', copyLogDivMessages);
+        copyButton.addEventListener('click', copyLogDivMessages);
+        captionContainer.appendChild(copyButton);
+      }
+
+      // Now add the caption container to the outer element.
+      outer.appendChild(captionContainer);
     }
 
-    // Create a copy to clipboard button.
-    const copyButton = document.createElement('button')
-    copyButton.textContent= 'Copy';
-    //copyButton.addEventListener('click', copyLogDivMessages);
-    copyButton.addEventListener('click', copyLogDivMessages);
-    captionContainer.appendChild(copyButton);
-
-    // Now add the caption container to the outer element.
-    outer.appendChild(captionContainer);
-
     // This is where log rows will be added.
-    let logDiv = document.createElement('div');
-    logDiv.id = MESSAGES_DIV_ID;
+    const logToDiv = document.createElement('div');
+    logToDiv.id = MESSAGES_DIV_ID;
 
     // Add the log div to the outer element and return the log div for future messages.
-    outer.appendChild(logDiv);
-    return logDiv;
+    outer.appendChild(logToDiv);
+    return logToDiv;
   }());
 
   // Simple one argument function to convert any value to a string in map.
@@ -113,8 +126,8 @@ function initConsoleLogDiv(options) {
 
   function printToDiv() {
     // Create a log row based on the concatenation of the arguments.
-    let msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
-    let item = document.createElement('div');
+    const msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
+    const item = document.createElement('div');
     item.textContent = msg;
     item.classList.add('log-row');
     item.classList.add('wordwrap');
@@ -145,7 +158,7 @@ function initConsoleLogDiv(options) {
 
     if (logInfo) {
       // Get the arguments so we can prepend to them and then log the message.
-      let args = Array.prototype.slice.call(arguments, 0);
+      const args = Array.prototype.slice.call(arguments, 0);
       args.unshift(INFO_PREFIX);
       printToDiv.apply(null, args);
     }
@@ -159,7 +172,7 @@ function initConsoleLogDiv(options) {
 
     if (logWarn) {
       // Get the arguments so we can prepend to them and then log the message.
-      let args = Array.prototype.slice.call(arguments, 0);
+      const args = Array.prototype.slice.call(arguments, 0);
       args.unshift(WARN_PREFIX);
       printToDiv.apply(null, args);
     }
@@ -173,19 +186,19 @@ function initConsoleLogDiv(options) {
 
     if (logError) {
       // Get the arguments so we can prepend to them and then log the message.
-      let args = Array.prototype.slice.call(arguments, 0);
+      const args = Array.prototype.slice.call(arguments, 0);
       args.unshift(ERROR_PREFIX);
       printToDiv.apply(null, args);
     }
   };
 
   function printTable(objArr, keys) {
-    let numCols = keys.length;
-    let len = objArr.length;
-    let $table = document.createElement('table');
+    const numCols = keys.length;
+    const len = objArr.length;
+    const $table = document.createElement('table');
     $table.style.width = '100%';
     $table.setAttribute('border', '1');
-    let $head = document.createElement('thead');
+    const $head = document.createElement('thead');
     let $tdata = document.createElement('td');
     $tdata.innerHTML = 'Index';
     $head.appendChild($tdata);
@@ -198,7 +211,7 @@ function initConsoleLogDiv(options) {
     $table.appendChild($head);
 
     for (let i = 0; i < len; i++) {
-      let $line = document.createElement('tr');
+      const $line = document.createElement('tr');
       $tdata = document.createElement('td');
       $tdata.innerHTML = String(i);
       $line.appendChild($tdata);
@@ -210,8 +223,10 @@ function initConsoleLogDiv(options) {
       }
       $table.appendChild($line);
     }
-    let div = document.getElementById('console-log-text');
-    div.appendChild($table);
+
+    // Add to the same place that the messages go.
+    const logToDiv = document.getElementById(MESSAGES_DIV_ID);
+    logToDiv.appendChild($table);
   }
 
   // Override the table function.
@@ -224,7 +239,7 @@ function initConsoleLogDiv(options) {
     }
 
     if (!logTable) {
-      let objArr = arguments[0];
+      const objArr = arguments[0];
       let keys;
 
       if (typeof objArr[0] !== 'undefined') {
@@ -241,6 +256,15 @@ function initConsoleLogDiv(options) {
     window.addEventListener('error', function (err) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
     });
+  }
+}
+
+function toggleVisibility() {
+  const elem = document.getElementById(CONSOLE_DIV_ID);
+  if (elem.style.display === "block") {
+    elem.style.display = "none";
+  } else {
+    elem.style.display = "block";
   }
 }
 
@@ -266,7 +290,7 @@ function getLogDivMessages() {
 }
 
 function copyLogDivMessages() {
-  let logMessages = getLogDivMessages();
+  const logMessages = getLogDivMessages();
 
   // This might not be present in some cases. One reason is if using HTTP rather than HTTPS.
   if (navigator.clipboard) {
@@ -287,14 +311,14 @@ function copyLogDivMessages() {
     // This is a deprecated method of copying to the clipboard, but does work in some situations such as when using HTTP.
     if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
       // Create a textarea element, set the value to the log messages, and then select the text.
-      var textarea = document.createElement("textarea");
+      const textarea = document.createElement("textarea");
       textarea.textContent = logMessages;
       textarea.style.position = "fixed";
       document.body.appendChild(textarea);
       textarea.select();
 
       try {
-        // This will copy the selected text to the clipboard (hopefully).
+        // This will hopefully copy the selected text to the clipboard.
         return document.execCommand("copy");
       }
       catch (ex) {
@@ -311,6 +335,7 @@ function copyLogDivMessages() {
 export {
   initConsoleLogDiv,
   clearConsoleLogDiv,
+  toggleVisibility,
   getLogDivMessages,
   copyLogDivMessages
 }

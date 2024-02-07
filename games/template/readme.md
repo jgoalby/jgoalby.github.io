@@ -3,14 +3,13 @@
 # Next console
 - Can I make the background semi transparent?
 - What if I repeat a message? Should I just update the count?
-- Copy the console to the clipboard
 - Have a way to stop the console from adding more content
 - Test the table function and clean up that code as needed and comment.
 - What is the thead css doing for me?
-- Pass in a setting for which keypress to listen to
-  - Need to add the listener code if I do that
 - Have a show and hide function? and/or toggle function
 - Change let to const where possible
+- Need to fix the ids and classes to all have the same prefix and fix CSS to match
+- Create a jsdoc for the functions
 
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
@@ -22,6 +21,8 @@ Settings
   Update settings to be able to store settings objects
   Have a category for each setting, audio for example
   Have a way to get the settings from the settings plugin
+
+# Perhaps have a way to specify keyboard shortcuts for things like the console
 
 # Keyboard stuff
 - Have a quit button in the game
@@ -133,6 +134,10 @@ Settings
 - When running from homescreen the game is full screen
 - Make sure the correct icon show up on the homescreen
 
+## Console and Clipboard
+- Specify various options to the console and see if they work
+- Test copying to clipboard using HTTP site as well as HTTPS because Safari does not like HTTP
+
 # General TODOs
 - Add some native like features to the game for iOS And Android
   - <https://blog.ourcade.co/posts/2020/native-like-web-app-for-your-html5-game/>
@@ -145,7 +150,3 @@ Settings
   - https://putridparrot.com/blog/building-and-testing-typescript-code-using-github-actions/
   - https://github.com/marketplace/actions/typescript-build
 
-# Libraries and PLugins Used
-- Phaser
-- bitECS
-- Firebase
