@@ -260,10 +260,14 @@ function getLogDivMessages() {
 function copyLogDivMessages() {
   let logMessages = getLogDivMessages();
 
-  // This might not be present in some cases. Most likely if using HTTP rather than HTTPS.
+  // This might not be present in some cases. One reason is if using HTTP rather than HTTPS.
   if (navigator.clipboard) {
     try {
-      navigator.clipboard.writeText(" _ " + logMessages).then(function() {
+      // If the log text starts with a "word" followed by a colon, then we need to add a CR to the
+      // beginning of the text so that the text is not made into a single encoded line. No idea why.
+      // This happened because the first line started with INFO:.
+      const adjustedLogMessages = "\n" + logMessages;
+      navigator.clipboard.writeText(adjustedLogMessages).then(function() {
         console.log('Async: Copying to clipboard was successful!');
       }, function(err) {
         console.error('Async: Could not copy text: ', err);
