@@ -240,7 +240,7 @@ function clearConsoleLogDiv() {
   }
 }
 
-function copyLogDiv() {
+function getLogDivMessages() {
   // Get the element where we add log messages.
   let logDivElement = document.getElementById(MESSAGES_DIV_ID);
 
@@ -251,5 +251,5 @@ function copyLogDiv() {
 export {
   initConsoleLogDiv,
   clearConsoleLogDiv,
-  copyLogDiv
+  getLogDivMessages
 }
