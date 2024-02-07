@@ -6,6 +6,9 @@ const WARN_PREFIX = 'WARNING:';
 const ERROR_PREFIX = 'ERROR:';
 const EXCEPTION_PREFIX = 'EXCEPTION:';
 
+// Caption.
+const DEFAULT_CAPTION = 'Console Output';
+
 // The id of the div that will contain the log messages.
 const MESSAGES_DIV_ID = 'console-log-messages-div';
 const CONSOLE_DIV_ID = 'console-log-div';
@@ -28,7 +31,7 @@ function initConsoleLogDiv(options) {
 
   // If we want to see the caption and specify what it says.
   let showCaption = options.showCaption || true;
-  let logCaption = options.logCaption || 'Console Output';
+  let logCaption = options.logCaption || DEFAULT_CAPTION;
 
   // If we want to see various log messages.
   let logInfo = options.logInfo || true;
@@ -78,9 +81,13 @@ function initConsoleLogDiv(options) {
       // The text for the caption.
       let caption = document.createTextNode(logCaption);
       legend.appendChild(caption);
-
-      // Add the caption to the outer element.
       outer.appendChild(legend);
+
+      // Create a copy to clipboard button next to the caption.
+      const copyButton = document.createElement('button')
+      copyButton.textContent= 'Copy';
+      copyButton.addEventListener('click', copyLogDivMessages);
+      outer.appendChild(copyButton);
     }
 
     // This is where log rows will be added.
@@ -248,8 +255,33 @@ function getLogDivMessages() {
   return logDivElement.textContent;
 }
 
+function copyLogDivMessages() {
+  let logMessages = getLogDivMessages();
+
+  if (navigator.clipboard) {
+    try {
+      navigator.clipboard.writeText(logMessages).then(function() {
+        console.log('Async: Copying to clipboard was successful!');
+      }, function(err) {
+        console.error('Async: Could not copy text: ', err);
+      });
+    } catch (err) {
+      console.log('Failed to copy: ', err);
+    }
+  } else {
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      console.log('Fallback: Copying text command was ' + msg);
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+  }
+}
+
 export {
   initConsoleLogDiv,
   clearConsoleLogDiv,
-  getLogDivMessages
+  getLogDivMessages,
+  copyLogDivMessages
 }
