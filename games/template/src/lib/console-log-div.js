@@ -124,15 +124,46 @@ function initConsoleLogDiv(options) {
   // Simple one argument function to convert any value to a string in map.
   function toString(x) { return typeof x === 'string' ? x : JSON.stringify(x); }
 
-  function logMessageWithStyles(message, ...styles) {
+  function createLogRow() {
+    const item = document.createElement('div');
+    item.classList.add('log-row'); // TODO Make better class constant and name etc.
+    item.classList.add('wordwrap');
+    return item;
+  }
+
+  function addClassForLogType(logRow, logType) {
+    // Add CSS class based on the log type.
+    switch (logType) {
+      case ERROR_PREFIX:
+        logRow.classList.add('error');
+        break;
+      case WARN_PREFIX:
+        logRow.classList.add('warning');
+        break;
+      case EXCEPTION_PREFIX:
+        logRow.classList.add('exception');
+        break;
+      case INFO_PREFIX:
+        logRow.classList.add('info');
+        break;
+    }
+  }
+
+  function logMessageWithStyles(logType, text, ...styles) {
+    // Concatenate the first argument with the second separated by a space.
+    const message = logType + ' ' + text;
+
     // Split the message on '%c' to get the text parts
     const parts = message.split('%c');
-    const container = document.createElement('div'); // Container for the whole message
-  
+
+    // Create the log row and add CSS class based on the log type.
+    const logRow = createLogRow();
+    addClassForLogType(logRow, logType);
+
     parts.forEach((part, index) => {
       if (index === 0) {
         // First part is always unstyled
-        container.appendChild(document.createTextNode(part));
+        logRow.appendChild(document.createTextNode(part));
       } else {
         // Subsequent parts may have styles
         const styledSpan = document.createElement('span');
@@ -143,11 +174,11 @@ function initConsoleLogDiv(options) {
           styledSpan.style.cssText = styles[index - 1];
         }
 
-        container.appendChild(styledSpan);
+        logRow.appendChild(styledSpan);
       }
     });
   
-    logTo.appendChild(container);
+    logTo.appendChild(logRow);
   }
   
   function printToDiv() {
@@ -157,38 +188,24 @@ function initConsoleLogDiv(options) {
     // We get (INFO:) (text with %c) (styles...)
     if (arguments.length > 2) { 
       if (arguments[1].includes('%c')) {
-        // Concatenate the first argument with the second separated by a space.
-        const message = arguments[0] + ' ' + arguments[1];
-        // Prepend message to the rest of the arguments.
-        const newArgs = [message].concat(Array.prototype.slice.call(arguments, 2));
-        logMessageWithStyles.apply(null, newArgs);
-        //return;
+        logMessageWithStyles.apply(null, arguments);
+        return;
       }
     }
 
     // Create a log row based on the concatenation of the arguments.
     const msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
-    const item = document.createElement('div');
-    item.textContent = msg;
-    item.classList.add('log-row');
-    item.classList.add('wordwrap');
+    const logRow = createLogRow();
+    logRow.textContent = msg;
 
     // Should always be true, but just in case.
     if (arguments.length >= 1) {
       // Add CSS class based on the log type.
-      if (arguments[0] === ERROR_PREFIX) {
-        item.classList.add('error');
-      } else if (arguments[0] === WARN_PREFIX) {
-        item.classList.add('warning');
-      } else if (arguments[0] === EXCEPTION_PREFIX) {
-        item.classList.add('exception');
-      } else if (arguments[0] === INFO_PREFIX) {
-        item.classList.add('info');
-      }
+      addClassForLogType(logRow, arguments[0]);
     }
 
     // Add the log row to the log div.
-    logTo.appendChild(item);
+    logTo.appendChild(logRow);
   }
 
   // Override the log function.
