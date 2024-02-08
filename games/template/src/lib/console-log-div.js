@@ -414,6 +414,7 @@ function copyLogDivHTMLMessages() {
   try {
       navigator.clipboard.write(data);
   } catch (err) {
+    console.error('Failed to copy: ', err);
   }
 }
 
