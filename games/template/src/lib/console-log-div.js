@@ -426,6 +426,8 @@ async function copyLogDivHTMLMessages() {
         new line here</p><p>new paragraph</p>`;
     var clipboardDataEvt = event.clipboardData;
     console.log(clipboardDataEvt);
+    console.log(clipboardDataEvt.getData('text/plain'));
+    console.log(clipboardDataEvt.getData('text/html');
     clipboardDataEvt.setData('text/plain', textString);
     clipboardDataEvt.setData('text/html', htmlString);
 
