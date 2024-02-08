@@ -155,8 +155,8 @@ function initConsoleLogDiv(options) {
     if (arguments.length === 0) { return; }
 
     // 
-    if (arguments.length > 1) { 
-      if (arguments[0].includes('%c')) {
+    if (arguments.length > 2) { 
+      if (arguments[1].includes('%c')) {
         logMessageWithStyles.apply(null, arguments);
         //return;
       }
