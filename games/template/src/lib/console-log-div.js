@@ -15,13 +15,14 @@ const CONSOLE_DIV_ID         = 'console-log-div';
 const CONSOLE_LOG_CAPTION_ID = 'console-log-caption';
 
 // Defaults for boolean options so they are easy to change.
-const DEFAULT_SHOWCAPTION    = true;
-const DEFAULT_SHOWCOPYBUTTON = true;
-const DEFAULT_LOGINFO        = true;
-const DEFAULT_LOGWARN        = true;
-const DEFAULT_LOGERROR       = true;
-const DEFAULT_LOGEXCEPTION   = true;
-const DEFAULT_LOGTABLE       = true;
+const DEFAULT_SHOWCAPTION        = true;
+const DEFAULT_SHOWCOPYTEXTBUTTON = true;
+const DEFAULT_SHOWCOPYHTMLBUTTON = true;
+const DEFAULT_LOGINFO            = true;
+const DEFAULT_LOGWARN            = true;
+const DEFAULT_LOGERROR           = true;
+const DEFAULT_LOGEXCEPTION       = true;
+const DEFAULT_LOGTABLE           = true;
 
 function initConsoleLogDiv(options) {
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
@@ -39,7 +40,8 @@ function initConsoleLogDiv(options) {
 
   // If we want to see the caption and specify what it says.
   const showCaption = options.showCaption || DEFAULT_SHOWCAPTION;
-  const showCopyButton = options.showCopyButton || DEFAULT_SHOWCOPYBUTTON;
+  const showCopyTextButton = options.showCopyTextButton || DEFAULT_SHOWCOPYTEXTBUTTON;
+  const showCopyHTMLButton = options.showCopyHTMLButton || DEFAULT_SHOWCOPYHTMLBUTTON;
   const logCaption = options.logCaption || DEFAULT_CAPTION;
 
   // If we want to see various log messages.
@@ -82,7 +84,7 @@ function initConsoleLogDiv(options) {
     const outer = createOuterElement(consoleId);
 
     // If we have been asked to show the caption or the copy button, then create the caption container.
-    if (showCaption || showCopyButton) {
+    if (showCaption || showCopyTextButton || showCopyHTMLButton) {
       // We need a DIV to put caption next to the button.
       const captionContainer = document.createElement('div');
       captionContainer.id = CONSOLE_LOG_CAPTION_ID;
@@ -99,12 +101,21 @@ function initConsoleLogDiv(options) {
         captionContainer.appendChild(legend);
       }
 
-      if (showCopyButton) {
+      if (showCopyTextButton) {
         // Create a copy to clipboard button.
         const copyButton = document.createElement('button')
-        copyButton.textContent= 'Copy';
+        copyButton.textContent = 'Copy Text';
         //copyButton.addEventListener('click', copyLogDivMessages);
-        copyButton.addEventListener('click', copyLogDivMessages);
+        copyButton.addEventListener('click', copyLogDivTextMessages);
+        captionContainer.appendChild(copyButton);
+      }
+
+      if (showCopyHTMLButton) {
+        // Create a copy to clipboard button.
+        const copyButton = document.createElement('button')
+        copyButton.textContent= 'Copy HTML';
+        //copyButton.addEventListener('click', copyLogDivMessages);
+        copyButton.addEventListener('click', copyLogDivHTMLMessages);
         captionContainer.appendChild(copyButton);
       }
 
@@ -338,18 +349,17 @@ function clearConsoleLogDiv() {
   }
 }
 
-function getLogDivMessages() {
-  // Get the element where we add log messages.
-  const logDivElement = document.getElementById(MESSAGES_DIV_ID);
-
-  // Return the text of the log div.
-  //return logDivElement.textContent;
-  return logDivElement.innerText;
+function getLogDivTextMessages() {
+  // Get the element where we add log messages and return text.
+  return document.getElementById(MESSAGES_DIV_ID).innerText;
 }
 
-function copyLogDivMessages() {
-  const logMessages = getLogDivMessages();
+function getLogDivHTMLMessages() {
+  // Get the element where we add log messages and return HTML.
+  return document.getElementById(MESSAGES_DIV_ID).innerHTML;
+}
 
+function copyLogDivMessages(logMessages) {
   // This might not be present in some cases. One reason is if using HTTP rather than HTTPS.
   if (navigator.clipboard) {
     try {
@@ -390,10 +400,20 @@ function copyLogDivMessages() {
   }
 }
 
+function copyLogDivTextMessages() {
+  copyLogDivMessages(getLogDivTextMessages());
+}
+
+function copyLogDivHTMLMessages() {
+  copyLogDivMessages(getLogDivHTMLMessages());
+}
+
 export {
   initConsoleLogDiv,
   clearConsoleLogDiv,
   toggleVisibility,
-  getLogDivMessages,
-  copyLogDivMessages
+  getLogDivTextMessages,
+  getLogDivHTMLMessages,
+  copyLogDivTextMessages,
+  copyLogDivHTMLMessages
 }

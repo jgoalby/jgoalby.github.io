@@ -10,6 +10,8 @@
 - Change let to const where possible
 - Need to fix the ids and classes to all have the same prefix and fix CSS to match
 - Create a jsdoc for the functions
+- Clipboard innerText might not be good given new styling, perhaps innerHTML?
+  - Maybe have a copy as text button and a copy as html button?
 
 # Next
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
