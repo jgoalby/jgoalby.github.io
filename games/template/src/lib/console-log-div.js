@@ -411,6 +411,7 @@ async function copyLogDivHTMLMessages() {
   const blob = new Blob([html], { type: 'text/html' });
   const data = [new ClipboardItem({ 'text/html': blob })];
 
+  console.log("we got here!");
   try {
       await navigator.clipboard.write(data);
   } catch (err) {
