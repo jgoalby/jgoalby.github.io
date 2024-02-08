@@ -43,6 +43,11 @@ table {
   word-wrap: break-word;
 }
 
+/* This is needed to make whitespace visible in the console log */
+span {
+  white-space: pre;
+}
+
 #console-log-div {
   position: absolute;
   display: none;
