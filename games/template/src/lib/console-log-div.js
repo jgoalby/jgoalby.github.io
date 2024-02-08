@@ -405,7 +405,16 @@ function copyLogDivTextMessages() {
 }
 
 function copyLogDivHTMLMessages() {
-  copyLogDivMessages(getLogDivHTMLMessages());
+  //copyLogDivMessages(getLogDivHTMLMessages());
+
+  const html = getLogDivHTMLMessages();
+  const blob = new Blob([html], { type: 'text/html' });
+  const data = [new ClipboardItem({ 'text/html': blob })];
+
+  try {
+      navigator.clipboard.write(data);
+  } catch (err) {
+  }
 }
 
 export {
