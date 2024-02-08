@@ -404,7 +404,7 @@ function copyLogDivTextMessages() {
   copyLogDivMessages(getLogDivTextMessages());
 }
 
-function copyLogDivHTMLMessages() {
+async function copyLogDivHTMLMessages() {
   //copyLogDivMessages(getLogDivHTMLMessages());
 
   const html = getLogDivHTMLMessages();
@@ -412,7 +412,7 @@ function copyLogDivHTMLMessages() {
   const data = [new ClipboardItem({ 'text/html': blob })];
 
   try {
-      navigator.clipboard.write(data);
+      await navigator.clipboard.write(data);
   } catch (err) {
     console.error('Failed to copy: ', err);
   }
