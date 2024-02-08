@@ -124,7 +124,44 @@ function initConsoleLogDiv(options) {
   // Simple one argument function to convert any value to a string in map.
   function toString(x) { return typeof x === 'string' ? x : JSON.stringify(x); }
 
+  function logMessageWithStyles(message, ...styles) {
+    // Split the message on '%c' to get the text parts
+    const parts = message.split('%c');
+    const container = document.createElement('div'); // Container for the whole message
+  
+    parts.forEach((part, index) => {
+      if (index === 0) {
+        // First part is always unstyled
+        container.appendChild(document.createTextNode(part));
+      } else {
+        // Subsequent parts may have styles
+        const styledSpan = document.createElement('span');
+        styledSpan.textContent = part;
+
+        // Apply corresponding style if it exists
+        if (styles[index - 1]) {
+          styledSpan.style.cssText = styles[index - 1];
+        }
+
+        container.appendChild(styledSpan);
+      }
+    });
+  
+    logTo.appendChild(container);
+  }
+  
   function printToDiv() {
+    // If there are no arguments, then do nothing.
+    if (arguments.length === 0) { return; }
+
+    // 
+    if (arguments.length > 1) { 
+      if (arguments[0].includes('%c')) {
+        logMessageWithStyles.apply(null, arguments);
+        //return;
+      }
+    }
+
     // Create a log row based on the concatenation of the arguments.
     const msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
     const item = document.createElement('div');
