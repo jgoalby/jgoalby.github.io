@@ -1,6 +1,9 @@
 # TODOs
 
-# Next console
+Check that Log2Div good name to use
+Change the name of things to Log2Div
+
+# Next: console
 - Can I make the background semi transparent?
 - What if I repeat a message? Should I just update the count?
 - Have a way to stop the console from adding more content
@@ -13,7 +16,7 @@
 - Clipboard innerText might not be good given new styling, perhaps innerHTML?
   - Maybe have a copy as text button and a copy as html button?
 
-# Next
+# Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
 Download TweakPane and state machine to the libs folder
 Test tweakpane and when it works remove datgui from libs and from readme
@@ -24,9 +27,26 @@ Settings
   Have a category for each setting, audio for example
   Have a way to get the settings from the settings plugin
 
-# Perhaps have a way to specify keyboard shortcuts for things like the console
+# Next: General
+- Add more buttons next to copy. Clear, stop, show error, warn, info, etc.
+- Add a text box to issue commands to the console. Maybe very simplified and logging based.
+- Add a compact view option to the console. Not sure if thats just CSS or not?
+  - Need to change the class on main container to be compact
+- Enemy sounds through audio plugin via world
+- See if I can make options better, register options somehow? Plugin too?
+- Use the new button throughout the project now
+- Investigate more game programming patterns I can use like state machine
+- Continue to remove the word game from the project
+- Continue with the firebase coding
+- Zones idea for a scene specifying areas buttons can go
+- Make sure there is a good way to turn off the console when you no longer want it in your project
+- Extra parameter for event listener gives context. See screenshot. Test it to see if it works.
+
+# Zones
+In creating these images with Dall-e, I wonder if I can create a fluid interface somehow. One that changes based on the size and shape of the window. And perhaps is not deterministic although that might not be a great user experience?!!!! Or maybe it isn't prescribed in the code, but is deterministic when implemented? Let's say you add 2 groups of buttons to a page. And then you define areas of the page where buttons can go. And it decides where to put them based on the page constraints. Maybe could make zones where stuff can go and it gets put there.
 
 # Keyboard stuff
+- Perhaps have a way to specify keyboard shortcuts in settings for things like the console
 - Have a quit button in the game
 - Assign keys to the other buttons as well, and use escape to go backwards perhaps, and enter to continue?
 - How to define the keys for buttons?
