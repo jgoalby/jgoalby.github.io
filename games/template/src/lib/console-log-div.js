@@ -154,10 +154,14 @@ function initConsoleLogDiv(options) {
     // If there are no arguments, then do nothing.
     if (arguments.length === 0) { return; }
 
-    // 
+    // We get (INFO:) (text with %c) (styles...)
     if (arguments.length > 2) { 
       if (arguments[1].includes('%c')) {
-        logMessageWithStyles.apply(null, arguments);
+        // Concatenate the first argument with the second separated by a space.
+        const message = arguments[0] + ' ' + arguments[1];
+        // Prepend message to the rest of the arguments.
+        const newArgs = [message].concat(Array.prototype.slice.call(arguments, 2));
+        logMessageWithStyles.apply(null, newArgs);
         //return;
       }
     }
