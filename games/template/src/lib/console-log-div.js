@@ -443,12 +443,24 @@ async function copyLogDivHTMLMessages() {
   canvas.addEventListener("click", copyCanvasContentsToClipboard);
 
   async function copyCanvasContentsToClipboard() {
-    // Copy canvas to blob
-    const blob = await canvas.toBlob();
-    // Create ClipboardItem with blob and it's type, and add to an array
-    const data = [new ClipboardItem({ [blob.type]: blob })];
-    // Write the data to the clipboard
-    await navigator.clipboard.write(data);
+    canvas.toBlob(async (blob) => {
+      const newImg = document.createElement("img");
+      const url = URL.createObjectURL(blob);
+    
+      newImg.onload = () => {
+        // no longer need to read the blob so it's revoked
+        URL.revokeObjectURL(url);
+      };
+    
+      newImg.src = url;
+      document.body.appendChild(newImg);
+      
+      // Create ClipboardItem with blob and it's type, and add to an array
+      const data = [new ClipboardItem({ [blob.type]: blob })];
+      // Write the data to the clipboard
+      await navigator.clipboard.write(data);
+    });
+
   }
 }
 
