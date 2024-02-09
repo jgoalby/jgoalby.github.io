@@ -327,75 +327,6 @@ function initConsoleLogDiv(options) {
       printToDiv(EXCEPTION_PREFIX, err);
     });
   }
-
-
-
-
-
-
-
-
-
-  console.log("!!!!we are here!!!!!");
-
-  // Get canvas can add an event handler for the click event.
-  //const canvas = document.getElementById("canvas");
-  //const canvas = document.querySelector('canvas');
-  //const canvi = document.getElementsByTagName('canvas');
-  //const canvas = canvi[0];
-  const main = document.getElementById(consoleId);
-  main.addEventListener("click", copyCanvasContentsToClipboard);
-
-  async function copyCanvasContentsToClipboard() {
-    const canvi = document.getElementsByTagName('canvas');
-    const canvas = canvi[0];
-
-    console.log("111111");
-    console.log(canvas);
-    console.log(canvi);
-
-    canvas.toBlob(async (blob) => {
-      console.log("222222");
-      const newImg = document.createElement("img");
-      const url = URL.createObjectURL(blob);
-    
-      newImg.onload = () => {
-        console.log("3333333");
-        // no longer need to read the blob so it's revoked
-        URL.revokeObjectURL(url);
-      };
-    
-      newImg.src = url;
-      document.body.appendChild(newImg);
-      
-      console.log("444444");
-
-      try {
-        console.log("blobby blobby blobby");
-        console.log(blob.type);
-        console.log(blob);
-
-        // Create ClipboardItem with blob and it's type, and add to an array
-        const data = [new ClipboardItem({ [blob.type]: blob })];
-
-        console.log("data is coming");
-        console.log(data);
-
-        // Write the data to the clipboard
-        //await navigator.clipboard.write(data);
-
-        setTimeout(() => {
-          navigator.clipboard.write(data)
-        }, 0)
-      }
-      catch (ex) {
-        console.warn("Exception.", ex);
-        console.warn("Exception.", ex.message);
-      }
-
-      console.log("55555");
-    });
-  }
 }
 
 function toggleVisibility() {
@@ -481,7 +412,7 @@ async function copyLogDivHTMLMessages() {
 
   var htmlToRtfLocal = new window.htmlToRtf();
   var rtf = htmlToRtfLocal.convertHtmlToRtf(html);
-  
+
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobHRTF = new Blob([rtf], { type: 'text/rtf' });
   const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/rtf': blobHRTF})];
