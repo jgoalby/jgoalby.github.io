@@ -16,6 +16,11 @@ Change the name of things to Log2Div
 - Clipboard innerText might not be good given new styling, perhaps innerHTML?
   - Maybe have a copy as text button and a copy as html button?
 - window.isSecureContext for HTTPS
+- Use this format for log type : [INFO] [ERROR] [WARN] [DEBUG] [LOG]
+     var date = new Date();
+        var strTime = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "." + date.getMilliseconds();
+        logIndex++;
+        var prefix = '[' + logIndex + '] ' + strTime + ' [' + type.toUpperCase() + '] ';
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.

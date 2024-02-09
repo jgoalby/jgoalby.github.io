@@ -477,19 +477,22 @@ function copyLogDivTextMessages() {
 async function copyLogDivHTMLMessages() {
   //copyLogDivMessages(getLogDivHTMLMessages());
 
-  /*const html = getLogDivHTMLMessages();
+  const html = getLogDivHTMLMessages();
   const blob = new Blob([html], { type: 'text/html' });
   const data = [new ClipboardItem({ 'text/html': blob })];
 
   console.log("we got here!", html.length);
   try {
-      await navigator.clipboard.write(data);
+      //await navigator.clipboard.write(data);
+      setTimeout(() => {
+        navigator.clipboard.write(data)
+      }, 0)
   } catch (err) {
     console.error('Failed to copy: ', err);
-  }*/
+  }
 
 
-  function handler (event){
+  /*function handler (event){
     console.log("Somehow we are here");
     var textString = 'This is plain text';
     var htmlString = `<p>${textString}
@@ -505,7 +508,7 @@ async function copyLogDivHTMLMessages() {
   }
 
   document.addEventListener('copy', handler, true);
-  document.execCommand('copy');
+  document.execCommand('copy');*/
 }
 
 export {
