@@ -326,6 +326,54 @@ function initConsoleLogDiv(options) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
     });
   }
+
+
+
+
+
+
+
+
+
+  console.log("!!!!we are here!!!!!");
+
+  // Get canvas can add an event handler for the click event.
+  //const canvas = document.getElementById("canvas");
+  const canvas = document.querySelector('canvas');
+  const main = document.getElementById(consoleId);
+  main.addEventListener("click", copyCanvasContentsToClipboard);
+
+  async function copyCanvasContentsToClipboard() {
+    console.log("111111");
+    canvas.toBlob(async (blob) => {
+      console.log("222222");
+      const newImg = document.createElement("img");
+      const url = URL.createObjectURL(blob);
+    
+      newImg.onload = () => {
+        console.log("3333333");
+        // no longer need to read the blob so it's revoked
+        URL.revokeObjectURL(url);
+      };
+    
+      newImg.src = url;
+      document.body.appendChild(newImg);
+      
+      console.log("444444");
+
+      try {
+        // Create ClipboardItem with blob and it's type, and add to an array
+        const data = [new ClipboardItem({ [blob.type]: blob })];
+        // Write the data to the clipboard
+        await navigator.clipboard.write(data);
+      }
+      catch (ex) {
+        console.warn("Exception.", ex);
+      }
+
+      console.log("55555");
+    });
+  }
 }
 
 function toggleVisibility() {
@@ -397,51 +445,6 @@ function copyLogDivMessages(logMessages) {
         document.body.removeChild(textarea);
       }
     }
-  }
-
-
-
-
-
-
-  console.log("!!!!we are here!!!!!");
-
-  // Get canvas can add an event handler for the click event.
-  //const canvas = document.getElementById("canvas");
-  const canvas = document.querySelector('canvas');
-  const main = document.getElementById('main');
-  main.addEventListener("click", copyCanvasContentsToClipboard);
-
-  async function copyCanvasContentsToClipboard() {
-    console.log("111111");
-    canvas.toBlob(async (blob) => {
-      console.log("222222");
-      const newImg = document.createElement("img");
-      const url = URL.createObjectURL(blob);
-    
-      newImg.onload = () => {
-        console.log("3333333");
-        // no longer need to read the blob so it's revoked
-        URL.revokeObjectURL(url);
-      };
-    
-      newImg.src = url;
-      document.body.appendChild(newImg);
-      
-      console.log("444444");
-
-      try {
-        // Create ClipboardItem with blob and it's type, and add to an array
-        const data = [new ClipboardItem({ [blob.type]: blob })];
-        // Write the data to the clipboard
-        await navigator.clipboard.write(data);
-      }
-      catch (ex) {
-        console.warn("Exception.", ex);
-      }
-
-      console.log("55555");
-    });
   }
 }
 
