@@ -324,6 +324,7 @@ function initConsoleLogDiv(options) {
     // inside our console. At least with this we have a fighting chance of seeing them.
     window.addEventListener('error', function (err) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
+      printToDiv(EXCEPTION_PREFIX, err);
     });
   }
 
@@ -385,6 +386,7 @@ function initConsoleLogDiv(options) {
       }
       catch (ex) {
         console.warn("Exception.", ex);
+        console.warn("Exception.", ex.message);
       }
 
       console.log("55555");
