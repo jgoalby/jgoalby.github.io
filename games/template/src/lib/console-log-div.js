@@ -1,5 +1,7 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
+import htmlToRtf from 'html-to-rtf.js'
+
 // Prefixes used for different log types.
 const INFO_PREFIX      = 'INFO:';
 const WARN_PREFIX      = 'WARNING:';
@@ -478,38 +480,18 @@ async function copyLogDivHTMLMessages() {
   //copyLogDivMessages(getLogDivHTMLMessages());
 
   const html = getLogDivHTMLMessages();
-  //const text = getLogDivTextMessages();
-
+  const rtf = htmlToRtf(html);
   const blobHTML = new Blob([html], { type: 'text/html' });
-  const blobText = new Blob([html], { type: 'text/plain' });
-  const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/plain': blobText})];
+  const blobHRTF = new Blob([rtf], { type: 'text/rtf' });
+  const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/rtf': blobHRTF})];
 
   try {
-      //await navigator.clipboard.write(data);
       setTimeout(() => {
         navigator.clipboard.write(data)
       }, 0)
   } catch (err) {
     console.error('Failed to copy: ', err);
   }
-
-  /*function handler (event){
-    console.log("Somehow we are here");
-    var textString = 'This is plain text';
-    var htmlString = `<p>${textString}
-        new line here</p><p>new paragraph</p>`;
-    var clipboardDataEvt = event.clipboardData;
-    console.log(clipboardDataEvt);
-    console.log(clipboardDataEvt.getData('text/plain'));
-    console.log(clipboardDataEvt.getData('text/html'));
-    clipboardDataEvt.setData('text/plain', textString);
-    clipboardDataEvt.setData('text/html', htmlString);
-
-    document.removeEventListener('copy', handler, true);
-  }
-
-  document.addEventListener('copy', handler, true);
-  document.execCommand('copy');*/
 }
 
 export {
