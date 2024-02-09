@@ -404,7 +404,7 @@ function copyLogDivMessages(logMessages) {
 
 
 
-
+  console.log("!!!!we are here!!!!!");
 
   // Get canvas can add an event handler for the click event.
   //const canvas = document.getElementById("canvas");
@@ -430,10 +430,15 @@ function copyLogDivMessages(logMessages) {
       
       console.log("444444");
 
-      // Create ClipboardItem with blob and it's type, and add to an array
-      const data = [new ClipboardItem({ [blob.type]: blob })];
-      // Write the data to the clipboard
-      await navigator.clipboard.write(data);
+      try {
+        // Create ClipboardItem with blob and it's type, and add to an array
+        const data = [new ClipboardItem({ [blob.type]: blob })];
+        // Write the data to the clipboard
+        await navigator.clipboard.write(data);
+      }
+      catch (ex) {
+        console.warn("Exception.", ex);
+      }
 
       console.log("55555");
     });
