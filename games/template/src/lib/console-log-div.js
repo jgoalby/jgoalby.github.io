@@ -372,6 +372,10 @@ function initConsoleLogDiv(options) {
       try {
         // Create ClipboardItem with blob and it's type, and add to an array
         const data = [new ClipboardItem({ [blob.type]: blob })];
+
+        console.log("data is coming");
+        console.log(data);
+
         // Write the data to the clipboard
         await navigator.clipboard.write(data);
       }
