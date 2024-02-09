@@ -370,6 +370,10 @@ function initConsoleLogDiv(options) {
       console.log("444444");
 
       try {
+        console.log("blobby blobby blobby");
+        console.log(blob.type);
+        console.log(blob);
+
         // Create ClipboardItem with blob and it's type, and add to an array
         const data = [new ClipboardItem({ [blob.type]: blob })];
 
