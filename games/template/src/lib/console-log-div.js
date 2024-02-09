@@ -436,6 +436,20 @@ async function copyLogDivHTMLMessages() {
 
   document.addEventListener('copy', handler, true);
   document.execCommand('copy');
+
+  // Get canvas can add an event handler for the click event.
+  //const canvas = document.getElementById("canvas");
+  const canvas = document.querySelector('canvas');
+  canvas.addEventListener("click", copyCanvasContentsToClipboard);
+
+  async function copyCanvasContentsToClipboard() {
+    // Copy canvas to blob
+    const blob = await canvas.toBlob();
+    // Create ClipboardItem with blob and it's type, and add to an array
+    const data = [new ClipboardItem({ [blob.type]: blob })];
+    // Write the data to the clipboard
+    await navigator.clipboard.write(data);
+  }
 }
 
 export {

@@ -54,6 +54,7 @@ function onResizeTimeout() {
   // Test console message.
   console.log("This is %i %s", 1, "log message.");
   console.log("This is %ca red message", "color: red;");
+  console.log("This is %ca %s message", "color: red;", "red");
   console.log("This is %ca red message %cand this is blue", "color: red; font-size: 20px;", "color: blue; font-size: 15px;");
 
   if ('serviceWorker' in navigator) {
