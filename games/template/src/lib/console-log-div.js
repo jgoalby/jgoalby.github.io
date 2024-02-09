@@ -410,13 +410,19 @@ async function copyLogDivHTMLMessages() {
 
   const html = getLogDivHTMLMessages();
 
-  var htmlToRtfLocal = new window.htmlToRtf();
-  var rtf = htmlToRtfLocal.convertHtmlToRtf(html);
+  // TODO: proper import of the library not in HTML
+
+  const htmlToRtfLocal = new window.htmlToRtf();
+  const rtf = htmlToRtfLocal.convertHtmlToRtf(html);
+
+  // TODO: Remove the text/plain in this handler when RTF works.
 
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobText = new Blob([html], { type: 'text/plain' });
-  const blobRTF = new Blob([rtf], { type: 'application/rtf' });
-  const data = [new ClipboardItem({ ['text/html']: blobHTML, ['text/plain']: blobText, ['application/rtf']: blobRTF})];
+  const blobRTF = new Blob([rtf], { type: 'web text/rtf' });
+  const data = [new ClipboardItem({ [blobHTML.type]: blobHTML,
+                                    [blobText.type]: blobText,
+                                    [blobRTF.type]: blobRTF})];
 
   try {
       setTimeout(() => {
