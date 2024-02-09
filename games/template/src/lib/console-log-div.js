@@ -382,7 +382,11 @@ function initConsoleLogDiv(options) {
         console.log(data);
 
         // Write the data to the clipboard
-        await navigator.clipboard.write(data);
+        //await navigator.clipboard.write(data);
+
+        setTimeout(() => {
+          navigator.clipboard.write(data)
+        }, 0)
       }
       catch (ex) {
         console.warn("Exception.", ex);

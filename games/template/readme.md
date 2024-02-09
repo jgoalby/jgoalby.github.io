@@ -15,6 +15,7 @@ Change the name of things to Log2Div
 - Create a jsdoc for the functions
 - Clipboard innerText might not be good given new styling, perhaps innerHTML?
   - Maybe have a copy as text button and a copy as html button?
+- window.isSecureContext for HTTPS
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
