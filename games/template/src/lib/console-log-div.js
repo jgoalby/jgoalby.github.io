@@ -418,7 +418,7 @@ async function copyLogDivHTMLMessages() {
 
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobHRTF = new Blob([rtf], { type: 'text/rtf' });
-  const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/rtf': blobHRTF})];
+  const data = [new ClipboardItem({ ['text/html']: blobHTML, ['text/rtf']: blobHRTF})];
 
   try {
       setTimeout(() => {
