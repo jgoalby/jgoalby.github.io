@@ -347,10 +347,6 @@ function initConsoleLogDiv(options) {
   main.addEventListener("click", copyCanvasContentsToClipboard);
 
   async function copyCanvasContentsToClipboard() {
-    const readPerm = await navigator.permissions.query({name: 'clipboard-read', allowWithoutGesture: false });  
-    const writePerm = await navigator.permissions.query({name: 'clipboard-write', allowWithoutGesture: false });
-    alert('Read: '+readPerm.state+'\nWrite: '+writePerm.state);
-
     const canvi = document.getElementsByTagName('canvas');
     const canvas = canvi[0];
 
