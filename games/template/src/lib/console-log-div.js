@@ -339,8 +339,9 @@ function initConsoleLogDiv(options) {
 
   // Get canvas can add an event handler for the click event.
   //const canvas = document.getElementById("canvas");
-  const canvas = document.querySelector('canvas');
+  //const canvas = document.querySelector('canvas');
   const canvi = document.getElementsByTagName('canvas');
+  const canvas = canvi[0];
   const main = document.getElementById(consoleId);
   main.addEventListener("click", copyCanvasContentsToClipboard);
 
