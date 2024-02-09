@@ -478,10 +478,12 @@ async function copyLogDivHTMLMessages() {
   //copyLogDivMessages(getLogDivHTMLMessages());
 
   const html = getLogDivHTMLMessages();
-  const blob = new Blob([html], { type: 'text/html' });
-  const data = [new ClipboardItem({ 'text/html': blob })];
+  //const text = getLogDivTextMessages();
 
-  console.log("we got here!", html.length);
+  const blobHTML = new Blob([html], { type: 'text/html' });
+  const blobText = new Blob([html], { type: 'text/plain' });
+  const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/plain': blobText})];
+
   try {
       //await navigator.clipboard.write(data);
       setTimeout(() => {
@@ -490,7 +492,6 @@ async function copyLogDivHTMLMessages() {
   } catch (err) {
     console.error('Failed to copy: ', err);
   }
-
 
   /*function handler (event){
     console.log("Somehow we are here");
