@@ -1,5 +1,10 @@
 # TODOs
 
+Need to move the html to rtf code out of the html if possible?
+https://stackoverflow.com/questions/29299632/how-to-convert-html-to-rtf-using-javascript
+https://github.com/oziresrds/html-to-rtf
+https://github.com/geraphl/javascript-html-to-rtf-browser
+
 Check that Log2Div good name to use
 Change the name of things to Log2Div
 
