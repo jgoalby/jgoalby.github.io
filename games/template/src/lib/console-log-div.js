@@ -413,6 +413,9 @@ async function copyLogDivHTMLMessages() {
   var htmlToRtfLocal = new window.htmlToRtf();
   var rtf = htmlToRtfLocal.convertHtmlToRtf(html);
 
+  console.log("RTFFFFF");
+  console.log("RTF: ", rtf);
+
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobHRTF = new Blob([rtf], { type: 'text/rtf' });
   const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/rtf': blobHRTF})];
