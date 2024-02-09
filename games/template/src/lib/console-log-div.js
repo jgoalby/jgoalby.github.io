@@ -1,7 +1,5 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
-import htmlToRtf from './html-to-rtf.js'
-
 // Prefixes used for different log types.
 const INFO_PREFIX      = 'INFO:';
 const WARN_PREFIX      = 'WARNING:';
@@ -480,7 +478,10 @@ async function copyLogDivHTMLMessages() {
   //copyLogDivMessages(getLogDivHTMLMessages());
 
   const html = getLogDivHTMLMessages();
-  const rtf = htmlToRtf(html);
+
+  var htmlToRtfLocal = new window.htmlToRtf();
+  var rtf = htmlToRtfLocal.convertHtmlToRtf(html);
+  
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobHRTF = new Blob([rtf], { type: 'text/rtf' });
   const data = [new ClipboardItem({ 'text/html': blobHTML, 'text/rtf': blobHRTF})];
