@@ -1,6 +1,6 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
-import htmlToRtf from 'html-to-rtf.js'
+import htmlToRtf from './html-to-rtf.js'
 
 // Prefixes used for different log types.
 const INFO_PREFIX      = 'INFO:';
