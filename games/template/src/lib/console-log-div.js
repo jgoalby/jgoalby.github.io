@@ -409,7 +409,8 @@ function copyLogDivMessages(logMessages) {
   // Get canvas can add an event handler for the click event.
   //const canvas = document.getElementById("canvas");
   const canvas = document.querySelector('canvas');
-  canvas.addEventListener("click", copyCanvasContentsToClipboard);
+  const main = document.getElementById('main');
+  main.addEventListener("click", copyCanvasContentsToClipboard);
 
   async function copyCanvasContentsToClipboard() {
     console.log("111111");
