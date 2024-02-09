@@ -413,13 +413,10 @@ async function copyLogDivHTMLMessages() {
   var htmlToRtfLocal = new window.htmlToRtf();
   var rtf = htmlToRtfLocal.convertHtmlToRtf(html);
 
-  console.log("RTFFFFF");
-  console.log("RTF: ", rtf);
-
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobText = new Blob([html], { type: 'text/plain' });
-  const blobRTF = new Blob([rtf], { type: 'application/rtf' });
-  const data = [new ClipboardItem({ ['text/html']: blobHTML, ['text/plain']: blobText, ['application/rtf']: blobRTF})];
+  const blobRTF = new Blob([rtf], { type: 'web application/rtf' });
+  const data = [new ClipboardItem({ ['text/html']: blobHTML, ['text/plain']: blobText, ['web application/rtf']: blobRTF})];
 
   try {
       setTimeout(() => {
