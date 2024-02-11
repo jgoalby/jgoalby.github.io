@@ -116,7 +116,7 @@ function initLog2Div(options) {
   function createCheckbox(labelText, checkboxID, checked, changeHandler) {
     const checkbox = document.createElement('input');
     checkbox.type = "checkbox";
-    checkbox.value = checked;
+    checkbox.checked = checked;
     checkbox.id = checkboxID;
     checkbox.classList.add(CHECKBOX_CLASS);
     checkbox.addEventListener('change', changeHandler);

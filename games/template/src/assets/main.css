@@ -94,6 +94,7 @@ span { white-space: pre; }
   }
 
   .log2div-checkbox {
+    vertical-align: middle;
     padding: 5px 5px;
     margin-left: 10px;
     cursor: pointer;
