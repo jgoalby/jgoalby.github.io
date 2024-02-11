@@ -86,19 +86,19 @@ span { white-space: pre; }
 
   /* Header buttons styles */
   .log2div-button {
-    padding: 5px 10px;
+    padding: 5px 5px;
     margin-left: 10px;
     cursor: pointer;
     background-color: rgba(255,255,255,.2);
     border-radius: 5px;
   }
 
-  #log2div-start-button {
-    background-color: rgba(0,255,0,.2);
-  }
-
-  #log2div-stop-button {
-    background-color: rgba(255,0,0,.2);
+  .log2div-checkbox {
+    padding: 5px 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,.2);
+    border-radius: 5px;
   }
 
   .log-row {

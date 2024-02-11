@@ -2,6 +2,7 @@
 
 Change the name of things to Log2Div
 Why is it called legend? Make it caption?
+Maybe make a checkbox for the start and stop logging?
 
 # Next: console
 - What if I repeat a message? Should I just update the count?
