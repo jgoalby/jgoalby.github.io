@@ -87,8 +87,10 @@ span { white-space: pre; }
   /* Header buttons styles */
   #log2div-clear-button {
     padding: 5px 10px;
+    margin-left: 10px;
     cursor: pointer;
-    background-color: rgba(255,255,255,.1);
+    background-color: rgba(255,255,255,.2);
+    border-radius: 5px;
   }
 
   .log-row {
