@@ -20,8 +20,6 @@ const CONSOLE_LOG_CAPTION_ID     = 'console-log-caption';
 // Class, IDs for controls and their text.
 const BUTTON_CLASS               = BASE_PROJECT_ID + '-button';
 const CHECKBOX_DIV_CLASS         = BASE_PROJECT_ID + '-checkbox-div';
-const CHECKBOX_CONTROL_CLASS     = BASE_PROJECT_ID + '-checkbox-control';
-const CHECKBOX_LABEL_CLASS       = BASE_PROJECT_ID + '-checkbox-label';
 const CLEAR_BUTTON_ID            = BASE_PROJECT_ID + '-clear-button';
 const CLEAR_BUTTON_TEXT          = 'Clear';
 const COPY_TEXT_BUTTON_ID        = BASE_PROJECT_ID + '-copy-text-button';
@@ -120,12 +118,10 @@ function initLog2Div(options) {
     checkbox.type = "checkbox";
     checkbox.checked = checked;
     checkbox.id = checkboxID;
-    checkbox.classList.add(CHECKBOX_CONTROL_CLASS);
     checkbox.addEventListener('change', changeHandler);
 
     const label = document.createElement('label');
     label.htmlFor = checkboxID;
-    label.classList.add(CHECKBOX_LABEL_CLASS);
     label.appendChild(document.createTextNode(labelText));
 
     // appending the checkbox and label to div

@@ -99,6 +99,14 @@ span { white-space: pre; }
     cursor: pointer;
   }
 
+  .log2div-checkbox-div label {
+    vertical-align: middle;
+  }
+
+  .log2div-checkbox-div input {
+    vertical-align: middle;
+  }
+
   .log-row {
     &:nth-child(odd) {
       background: rgba(0,0,0,.1);
