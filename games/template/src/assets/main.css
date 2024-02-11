@@ -101,9 +101,9 @@ span { white-space: pre; }
 
   /* Message type styles */
   .exception { color: rgb(255,0,255); }
-  .error { color: rgb(255,0,0); }
-  .warning { color: rgb(255,100,50); }
-  .info { color: rgb(0,0,255); }
+  .error     { color: rgb(255,0,0); }
+  .warning   { color: rgb(255,100,50); }
+  .info      { color: rgb(0,0,255); }
 
   thead {
     background: rgba(0,0,0,.2);

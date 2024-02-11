@@ -7,7 +7,7 @@ const ERROR_PREFIX               = '[ERROR]';
 const EXCEPTION_PREFIX           = '[EXCEPTION]';
 
 // Caption we use by default.
-const DEFAULT_CAPTION            = 'Log2Div Output: ';
+const DEFAULT_CAPTIONTEXT        = 'Log2Div Output: ';
 
 // Base project prefix for IDs etc so can change in one place.
 const BASE_PROJECT_ID            = 'log2div';
@@ -22,19 +22,28 @@ const CLEAR_BUTTON_ID            = BASE_PROJECT_ID + '-clear-button';
 const CLEAR_BUTTON_TEXT          = 'Clear';
 const COPY_TEXT_BUTTON_ID        = BASE_PROJECT_ID + '-copy-text-button';
 const COPY_TEXT_BUTTON_TEXT      = 'Copy Text';
-const COPY_HEML_BUTTON_ID        = BASE_PROJECT_ID + '-copy-html-button';
-const COPY_HEML_BUTTON_TEXT      = 'Copy HTML';
+const COPY_HTML_BUTTON_ID        = BASE_PROJECT_ID + '-copy-html-button';
+const COPY_HTML_BUTTON_TEXT      = 'Copy HTML';
+const START_BUTTON_ID            = BASE_PROJECT_ID + '-start-button';
+const START_BUTTON_TEXT          = 'Start';
+const STOP_BUTTON_ID             = BASE_PROJECT_ID + '-stop-button';
+const STOP_BUTTON_TEXT           = 'Stop';
 
 // Defaults for boolean options so they are easy to change.
 const DEFAULT_SHOWCAPTION        = true;
 const DEFAULT_SHOWCLEARBUTTON    = true;
 const DEFAULT_SHOWCOPYTEXTBUTTON = true;
 const DEFAULT_SHOWCOPYHTMLBUTTON = true;
+const DEFAULT_SHOWSTARTBUTTON    = true;
+const DEFAULT_SHOWSTOPBUTTON     = true;
 const DEFAULT_LOGINFO            = true;
 const DEFAULT_LOGWARN            = true;
 const DEFAULT_LOGERROR           = true;
 const DEFAULT_LOGEXCEPTION       = true;
 const DEFAULT_LOGTABLE           = true;
+
+// Globals.
+let _log2div_enabled = true;
 
 function initLog2Div(options) {
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
@@ -51,21 +60,23 @@ function initLog2Div(options) {
   const copyToBrowserConsole = options.copyToBrowserConsole || true;
 
   // If we want to see the caption and specify what it says.
-  const showCaption = options.showCaption || DEFAULT_SHOWCAPTION;
-  const showClearButton = options.showClearButton || DEFAULT_SHOWCLEARBUTTON;
-  const showCopyTextButton = options.showCopyTextButton || DEFAULT_SHOWCOPYTEXTBUTTON;
-  const showCopyHTMLButton = options.showCopyHTMLButton || DEFAULT_SHOWCOPYHTMLBUTTON;
-  const logCaption = options.logCaption || DEFAULT_CAPTION;
+  const showCaption          = options.showCaption || DEFAULT_SHOWCAPTION;
+  const showClearButton      = options.showClearButton || DEFAULT_SHOWCLEARBUTTON;
+  const showCopyTextButton   = options.showCopyTextButton || DEFAULT_SHOWCOPYTEXTBUTTON;
+  const showCopyHTMLButton   = options.showCopyHTMLButton || DEFAULT_SHOWCOPYHTMLBUTTON;
+  const showStartButton      = options.showShowStartButton || DEFAULT_SHOWSTARTBUTTON;
+  const showStopButton       = options.showShowStopButton || DEFAULT_SHOWSTOPBUTTON;
+  const captionText          = options.captionText || DEFAULT_CAPTIONTEXT;
 
   // If we want to see various log messages.
-  const logInfo = options.logInfo || DEFAULT_LOGINFO;
-  const logWarn = options.logWarn || DEFAULT_LOGWARN;
-  const logError = options.logError || DEFAULT_LOGERROR;
-  const logException = options.logException || DEFAULT_LOGEXCEPTION;
-  const logTable = options.logTable || DEFAULT_LOGTABLE;
+  const logInfo              = options.logInfo || DEFAULT_LOGINFO;
+  const logWarn              = options.logWarn || DEFAULT_LOGWARN;
+  const logError             = options.logError || DEFAULT_LOGERROR;
+  const logException         = options.logException || DEFAULT_LOGEXCEPTION;
+  const logTable             = options.logTable || DEFAULT_LOGTABLE;
 
   // The id of the div that will contain the log messages.
-  const consoleId = options.consoleId || CONSOLE_DIV_ID;
+  const consoleId            = options.consoleId || CONSOLE_DIV_ID;
 
   // Capture the original console functions so we can call them from our overridden functions.
   const log = console.log.bind(console);
@@ -78,7 +89,7 @@ function initLog2Div(options) {
     // See if the user has already created an element with the id.
     let outer = document.getElementById(id);
 
-    // If there isn't an existing element with the id, create one.
+    // The user may have made their own container. If there isn't an existing element with the id, create one.
     if (!outer) {
       // Create the element, give it an id, and append it to the body.
       outer = document.createElement('div');
@@ -90,6 +101,14 @@ function initLog2Div(options) {
     return outer;
   }
 
+  function createButton(buttonText, buttonID, clickHandler) {
+    const button = document.createElement('button')
+    button.textContent = buttonText;
+    button.id = buttonID;
+    button.addEventListener('click', clickHandler);
+    return button;
+  }
+
   // Create the logging div and adornments. This happens once as it is immediately invoked. 
   // The returned element is where the future log messages will be written.
   const logTo = (function createLogDiv() {
@@ -97,7 +116,7 @@ function initLog2Div(options) {
     const outer = createOuterElement(consoleId);
 
     // If we have been asked to show something in the header.
-    if (showCaption || showClearButton || showCopyTextButton || showCopyHTMLButton) {
+    if (showCaption || showClearButton || showCopyTextButton || showCopyHTMLButton || showStartButton || showStopButton) {
       // We need a DIV to put hearder stuff.
       const headerContainer = document.createElement('div');
       headerContainer.id = CONSOLE_LOG_CAPTION_ID;
@@ -109,34 +128,17 @@ function initLog2Div(options) {
         legend.id = "legend";
 
         // The text for the caption.
-        const caption = document.createTextNode(logCaption);
+        const caption = document.createTextNode(captionText);
         legend.appendChild(caption);
         headerContainer.appendChild(legend);
       }
 
-      if (showClearButton) {
-        const clearButton = document.createElement('button')
-        clearButton.textContent = CLEAR_BUTTON_TEXT;
-        clearButton.id = CLEAR_BUTTON_ID;
-        clearButton.addEventListener('click', clearLog2Div);
-        headerContainer.appendChild(clearButton);
-      }
-
-      if (showCopyTextButton) {
-        const copyTextButton = document.createElement('button')
-        copyTextButton.textContent = COPY_TEXT_BUTTON_TEXT;
-        copyTextButton.id = COPY_TEXT_BUTTON_ID;
-        copyTextButton.addEventListener('click', copyPlainLogDivMessages);
-        headerContainer.appendChild(copyTextButton);
-      }
-
-      if (showCopyHTMLButton) {
-        const copyHTMLButton = document.createElement('button')
-        copyHTMLButton.textContent= COPY_HEML_BUTTON_TEXT;
-        copyHTMLButton.id = COPY_HEML_BUTTON_ID;
-        copyHTMLButton.addEventListener('click', copyRichLogDivMessages);
-        headerContainer.appendChild(copyHTMLButton);
-      }
+      // Each of the buttons we may show in the header.
+      if (showClearButton)    { headerContainer.appendChild(createButton(CLEAR_BUTTON_TEXT, CLEAR_BUTTON_ID, clearLog2Div)); }
+      if (showCopyTextButton) { headerContainer.appendChild(createButton(COPY_TEXT_BUTTON_TEXT, COPY_TEXT_BUTTON_ID, copyPlainLogDivMessages)); }
+      if (showCopyHTMLButton) { headerContainer.appendChild(createButton(COPY_HTML_BUTTON_TEXT, COPY_HTML_BUTTON_ID, copyRichLogDivMessages)); }
+      if (showStartButton)    { headerContainer.appendChild(createButton(START_BUTTON_TEXT, START_BUTTON_ID, startLog2Div)); }
+      if (showStopButton)     { headerContainer.appendChild(createButton(STOP_BUTTON_TEXT, STOP_BUTTON_ID, stopLog2Div));}
 
       // Now add the caption container to the outer element.
       outer.appendChild(headerContainer);
@@ -216,6 +218,9 @@ function initLog2Div(options) {
     // If there are no arguments, then do nothing.
     if (arguments.length === 0) { return; }
 
+    // The user has decided we do not want to generate output.
+    if (!_log2div_enabled) { return; }
+
     // We get (INFO:) (text with %c) (styles...)
     if (arguments.length > 2) { 
       if (arguments[1].includes('%c')) {
@@ -282,6 +287,12 @@ function initLog2Div(options) {
   };
 
   function printTable(objArr, keys) {
+    // The user has decided we do not want to generate output.
+    if (!_log2div_enabled) { return; }
+
+    // TODO: Go through this function and see if we can use print to div function above.
+    //       the enabled code looks a little clunky being in 2 places right now.
+
     const numCols = keys.length;
     const len = objArr.length;
     const $table = document.createElement('table');
@@ -370,6 +381,16 @@ function clearLog2Div() {
   }
 }
 
+// Start messages being added.
+function startLog2Div() {
+  _log2div_enabled = true;
+}
+
+// Stop messages from being added.
+function stopLog2Div() {
+  _log2div_enabled = false;
+}
+
 function getLogDivTextMessages() {
   // Get the element where we add log messages and return text.
   return document.getElementById(MESSAGES_DIV_ID).innerText;
@@ -390,7 +411,8 @@ function copyPlainLogDivMessages() {
       // If the log text starts with a "word" followed by a colon, then we need to add a CR to the
       // beginning of the text so that the text is not made into a single encoded line. No idea why.
       // Presumably the clipboard api sees that and does something different. Couldn't find an explanation.
-      // This happened because when I had the first line begin with INFO:
+      // This happened because when I had the first line begin with INFO: I have since changed the prefixes
+      // so that this is less likely to happen, but it is best to keep this check in place just in case.
       const beginsWithProblemText = /^\S+:/.test(logMessages);
 
       // Make the change if the problem exists, otherwise we leave the same.

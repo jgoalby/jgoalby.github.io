@@ -2,7 +2,6 @@
 
 Change the name of things to Log2Div
 Why is it called legend? Make it caption?
-Can I make the log2div div scrollable and not affect the game?
 
 # Next: console
 - What if I repeat a message? Should I just update the count?
