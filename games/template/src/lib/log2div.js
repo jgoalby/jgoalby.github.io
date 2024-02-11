@@ -17,8 +17,9 @@ const MESSAGES_DIV_ID            = 'console-log-messages-div';
 const CONSOLE_DIV_ID             = 'console-log-div';
 const CONSOLE_LOG_CAPTION_ID     = 'console-log-caption';
 
-// IDs for controls and their text.
-const CLEAR_BUTTON_ID            = BASE_PROJECT_ID + '-clear-button';
+// Class, IDs for controls and their text.
+const BUTTON_CLASS               = BASE_PROJECT_ID + '-button';
+const CLEAR_BUTTON_ID            =  '-clear-button';
 const CLEAR_BUTTON_TEXT          = 'Clear';
 const COPY_TEXT_BUTTON_ID        = BASE_PROJECT_ID + '-copy-text-button';
 const COPY_TEXT_BUTTON_TEXT      = 'Copy Text';
@@ -105,6 +106,7 @@ function initLog2Div(options) {
     const button = document.createElement('button')
     button.textContent = buttonText;
     button.id = buttonID;
+    button.classList.add(BUTTON_CLASS);
     button.addEventListener('click', clickHandler);
     return button;
   }
