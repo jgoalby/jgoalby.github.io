@@ -50,6 +50,12 @@ function onResizeTimeout() {
   window.game.scale.resize(w, h);
 }
 
+async function showConsole(event) {
+  if ((event.code == "KeyD") && (event.ctrlKey)) {
+    toggleLog2DivVisibility();
+  }
+}
+
 (() => {
   // Test console message.
   console.log("This is %i %s", 1, "log message.");
@@ -70,10 +76,5 @@ function onResizeTimeout() {
   }
 
   window.addEventListener('resize', resize);
-
-  window.addEventListener("keydown", async (event) => {
-    if ((event.code == "KeyD") && (event.ctrlKey)) {
-      toggleLog2DivVisibility();
-    }
-  }, false);
+  window.addEventListener("keydown", showConsole, false);
 })();

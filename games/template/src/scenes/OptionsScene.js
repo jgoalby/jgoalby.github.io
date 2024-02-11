@@ -40,6 +40,8 @@ export default class OptionsScene extends Phaser.Scene {
   gotoMainMenu() {
     this.scale.off('resize', this.resize, this);
     this.scene.start(Scenes.MENU_SCENE);
+
+    console.log("Testing 1,2,3");
   }
 
   resize() {
