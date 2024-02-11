@@ -106,7 +106,7 @@ function initConsoleLogDiv(options) {
         const copyButton = document.createElement('button')
         copyButton.textContent = 'Copy Text';
         //copyButton.addEventListener('click', copyLogDivMessages);
-        copyButton.addEventListener('click', copyLogDivTextMessages);
+        copyButton.addEventListener('click', copyPlainLogDivMessages);
         captionContainer.appendChild(copyButton);
       }
 
@@ -115,7 +115,7 @@ function initConsoleLogDiv(options) {
         const copyButton = document.createElement('button')
         copyButton.textContent= 'Copy HTML';
         //copyButton.addEventListener('click', copyLogDivMessages);
-        copyButton.addEventListener('click', copyLogDivHTMLMessages);
+        copyButton.addEventListener('click', copyRichLogDivMessages);
         captionContainer.appendChild(copyButton);
       }
 
@@ -360,21 +360,30 @@ function getLogDivHTMLMessages() {
   return document.getElementById(MESSAGES_DIV_ID).innerHTML;
 }
 
-function copyLogDivMessages(logMessages) {
+function copyPlainLogDivMessages() {
+  // Get the text of the log div.
+  const logMessages = getLogDivTextMessages();
+
   // This might not be present in some cases. One reason is if using HTTP rather than HTTPS.
   if (navigator.clipboard) {
     try {
       // If the log text starts with a "word" followed by a colon, then we need to add a CR to the
       // beginning of the text so that the text is not made into a single encoded line. No idea why.
-      // This happened because the first line started with INFO:.
-      const adjustedLogMessages = "\n" + logMessages;
+      // Presumably the clipboard api sees that and does something different. Couldn't find an explanation.
+      // This happened because when I had the first line begin with INFO:
+      const beginsWithProblemText = /^\S+:/.test(logMessages);
+
+      // Make the change if the problem exists, otherwise we leave the same.
+      const adjustedLogMessages = beginsWithProblemText ? ("\n" + logMessages) : logMessages;
+
+      // Write the messages to the clipboard as text.
       navigator.clipboard.writeText(adjustedLogMessages).then(function() {
         // console.log('navigator.clipboard.writeText successful!');
       }, function(err) {
         // console.error('navigator.clipboard.writeText failed: ', err);
       });
     } catch (ex) {
-      // console.log('navigator.clipboard.writeText exception: ', ex);
+      // console.error('navigator.clipboard.writeText exception: ', ex);
     }
   } else {
     // This is a deprecated method of copying to the clipboard, but does work in some situations such as when using HTTP.
@@ -389,11 +398,9 @@ function copyLogDivMessages(logMessages) {
       try {
         // This will hopefully copy the selected text to the clipboard.
         return document.execCommand("copy");
-      }
-      catch (ex) {
-        // console.warn("document.execCommand failed.", ex);
-      }
-      finally {
+      } catch (ex) {
+        // console.error("document.execCommand failed.", ex);
+      } finally {
         // We added a child earlier, so remove it now we don't need it.
         document.body.removeChild(textarea);
       }
@@ -401,35 +408,32 @@ function copyLogDivMessages(logMessages) {
   }
 }
 
-function copyLogDivTextMessages() {
-  copyLogDivMessages(getLogDivTextMessages());
-}
-
-async function copyLogDivHTMLMessages() {
-  //copyLogDivMessages(getLogDivHTMLMessages());
-
+async function copyRichLogDivMessages() {
+  // Get the HTML of the log div.
   const html = getLogDivHTMLMessages();
 
-  // TODO: proper import of the library not in HTML
-
-  const htmlToRtfLocal = new window.htmlToRtf();
-  const rtf = htmlToRtfLocal.convertHtmlToRtf(html);
-
-  // TODO: Remove the text/plain in this handler when RTF works.
-
+  // We can support multiple mime types on the clipboard.
   const blobHTML = new Blob([html], { type: 'text/html' });
   const blobText = new Blob([html], { type: 'text/plain' });
-  const blobRTF = new Blob([rtf], { type: 'web text/rtf' });
-  const data = [new ClipboardItem({ [blobHTML.type]: blobHTML,
-                                    [blobText.type]: blobText,
-                                    [blobRTF.type]: blobRTF})];
+
+  // Unfortunately, RTF is not a supported mime type in the clipboard API. Leave here for future.
+  //const rtf = convert the html to rtf here.
+  //const blobRTF = new Blob([rtf], { type: 'web text/rtf' });
+
+  // Create the clipboard item from the blobs we made.
+  const clipboardItemData = [new ClipboardItem({ [blobHTML.type]: blobHTML,
+                                                 [blobText.type]: blobText,
+                                                 //[blobRTF.type]: blobRTF
+                                                })];
 
   try {
-      setTimeout(() => {
-        navigator.clipboard.write(data)
-      }, 0)
+    // Calling the clipboard write directly didn't work very well so using a timeout.
+    setTimeout(() => {
+      // Write to the clipboard.
+      navigator.clipboard.write(clipboardItemData)
+    }, 0)
   } catch (err) {
-    console.error('Failed to copy: ', err);
+    //console.error('navigator.clipboard.write failed: ', err);
   }
 }
 
@@ -439,6 +443,6 @@ export {
   toggleVisibility,
   getLogDivTextMessages,
   getLogDivHTMLMessages,
-  copyLogDivTextMessages,
-  copyLogDivHTMLMessages
+  copyPlainLogDivMessages,
+  copyRichLogDivMessages
 }
