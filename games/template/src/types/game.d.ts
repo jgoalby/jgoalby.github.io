@@ -27,7 +27,7 @@ interface Element {
 }
 
 interface Console {
-    logToDiv: any;
+    log2DivHasBeenInitialized: any;
 }
 
 declare class CheckBoxButton extends Phaser.GameObjects.Container {

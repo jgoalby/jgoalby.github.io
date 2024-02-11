@@ -1,18 +1,29 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
 // Prefixes used for different log types.
-const INFO_PREFIX      = '[INFO]';
-const WARN_PREFIX      = '[WARNING]';
-const ERROR_PREFIX     = '[ERROR]';
-const EXCEPTION_PREFIX = '[EXCEPTION]';
+const INFO_PREFIX                = '[INFO]';
+const WARN_PREFIX                = '[WARNING]';
+const ERROR_PREFIX               = '[ERROR]';
+const EXCEPTION_PREFIX           = '[EXCEPTION]';
 
 // Caption we use by default.
-const DEFAULT_CAPTION = 'Log2Div Output: ';
+const DEFAULT_CAPTION            = 'Log2Div Output: ';
+
+// Base project prefix for IDs etc so can change in one place.
+const BASE_PROJECT_ID            = 'log2div';
 
 // The id of the div that will contain the log messages.
-const MESSAGES_DIV_ID        = 'console-log-messages-div';
-const CONSOLE_DIV_ID         = 'console-log-div';
-const CONSOLE_LOG_CAPTION_ID = 'console-log-caption';
+const MESSAGES_DIV_ID            = 'console-log-messages-div';
+const CONSOLE_DIV_ID             = 'console-log-div';
+const CONSOLE_LOG_CAPTION_ID     = 'console-log-caption';
+
+// IDs for controls and their text.
+const CLEAR_BUTTON_ID            = BASE_PROJECT_ID + '-clear-button';
+const CLEAR_BUTTON_TEXT          = 'Clear';
+const COPY_TEXT_BUTTON_ID        = BASE_PROJECT_ID + '-copy-text-button';
+const COPY_TEXT_BUTTON_TEXT      = 'Copy Text';
+const COPY_HEML_BUTTON_ID        = BASE_PROJECT_ID + '-copy-html-button';
+const COPY_HEML_BUTTON_TEXT      = 'Copy HTML';
 
 // Defaults for boolean options so they are easy to change.
 const DEFAULT_SHOWCAPTION        = true;
@@ -27,11 +38,11 @@ const DEFAULT_LOGTABLE           = true;
 
 function initLog2Div(options) {
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
-  if (console.logToDiv) { return; }
+  if (console.log2DivHasBeenInitialized) { return; }
 
   // We have made it here so assume that everything else will succeed and functions overridden. If
   // it fails for any reason, there's not much more we can do and not running again may be best anyway.
-  console.logToDiv = true;
+  console.log2DivHasBeenInitialized = true;
 
   // If the options parameter is not set, then set it to an empty object so we do not fail later.
   if (!options) { options = {}; }
@@ -105,24 +116,24 @@ function initLog2Div(options) {
 
       if (showClearButton) {
         const clearButton = document.createElement('button')
-        clearButton.textContent = 'Clear';
-        clearButton.id = 'log2div-clear-button';
+        clearButton.textContent = CLEAR_BUTTON_TEXT;
+        clearButton.id = CLEAR_BUTTON_ID;
         clearButton.addEventListener('click', clearLog2Div);
         headerContainer.appendChild(clearButton);
       }
 
       if (showCopyTextButton) {
         const copyTextButton = document.createElement('button')
-        copyTextButton.textContent = 'Copy Text';
-        copyTextButton.id = 'log2div-copy-text-button';
+        copyTextButton.textContent = COPY_TEXT_BUTTON_TEXT;
+        copyTextButton.id = COPY_TEXT_BUTTON_ID;
         copyTextButton.addEventListener('click', copyPlainLogDivMessages);
         headerContainer.appendChild(copyTextButton);
       }
 
       if (showCopyHTMLButton) {
         const copyHTMLButton = document.createElement('button')
-        copyHTMLButton.textContent= 'Copy HTML';
-        copyHTMLButton.id = 'log2div-copy-html-button';
+        copyHTMLButton.textContent= COPY_HEML_BUTTON_TEXT;
+        copyHTMLButton.id = COPY_HEML_BUTTON_ID;
         copyHTMLButton.addEventListener('click', copyRichLogDivMessages);
         headerContainer.appendChild(copyHTMLButton);
       }
