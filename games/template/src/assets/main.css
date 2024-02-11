@@ -56,6 +56,7 @@ span { white-space: pre; }
   z-index: 1000;
   min-height: 55px;
   width: 98% !important;
+  height: 98% !important;
   margin: 10px;
   padding: 5px 0 0 0;
   

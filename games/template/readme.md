@@ -1,15 +1,9 @@
 # TODOs
 
-Need to move the html to rtf code out of the html if possible?
-https://stackoverflow.com/questions/29299632/how-to-convert-html-to-rtf-using-javascript
-https://github.com/oziresrds/html-to-rtf
-https://github.com/geraphl/javascript-html-to-rtf-browser
-
-Check that Log2Div good name to use
 Change the name of things to Log2Div
+Can I make the log2div div scrollable and not affect the game?
 
 # Next: console
-- Can I make the background semi transparent?
 - What if I repeat a message? Should I just update the count?
 - Have a way to stop the console from adding more content
 - Test the table function and clean up that code as needed and comment.
