@@ -407,9 +407,12 @@ function clearLog2Div() {
 }
 
 // Start or stop messages being added through enabled.
-function enabledChanged(value) {
-  console.log("Change handler called with value: ", value);
-  setLog2DivEnabled(value);
+function enabledChanged(event) {
+  // Make sure the event is for a checkbox.
+  if ((!event.target) || (event.target.type !== 'checkbox')) { return; }
+
+  // Set the enabled flag based on the checkbox state.
+  setLog2DivEnabled(event.target.checked);
 }
 
 // Start messages being added.
