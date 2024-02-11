@@ -408,6 +408,7 @@ function clearLog2Div() {
 
 // Start or stop messages being added through enabled.
 function enabledChanged(value) {
+  console.log("Change handler called with value: ", value);
   setLog2DivEnabled(value);
 }
 
