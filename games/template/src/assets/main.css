@@ -57,6 +57,7 @@ span { white-space: pre; }
   min-height: 55px;
   width: 98% !important;
   height: 98% !important;
+  overflow-y: auto;
   margin: 10px;
   padding: 5px 0 0 0;
   
@@ -65,8 +66,8 @@ span { white-space: pre; }
   font-size: 0.8em;
   line-height: 1.4em;
   
-  color: rgba(0,0,0,.61);
-  border-radius: 2px;
+  color: rgb(0,0,0);
+  border-radius: 5px;
   
   box-shadow: inset 0 0 2px rgba(0,0,0,.1);
   background-color: rgba(255, 255, 255, 0.8);
@@ -82,23 +83,26 @@ span { white-space: pre; }
   #console-log-caption {
     display: flex;
   }
+
+  /* Header buttons styles */
+  #log2div-clear-button {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: rgba(255,255,255,.1);
+  }
+
   .log-row {
     &:nth-child(odd) {
       background: rgba(0,0,0,.1);
     }
   }
-  .exception {
-    color: rgb(255,0,255);
-  }
-  .error {
-    color: rgb(255,0,0);
-  }
-  .warning {
-    color: rgb(255,100,50);
-  }
-  .info {
-    color: rgb(0,0,255);
-  }
+
+  /* Message type styles */
+  .exception { color: rgb(255,0,255); }
+  .error { color: rgb(255,0,0); }
+  .warning { color: rgb(255,100,50); }
+  .info { color: rgb(0,0,255); }
+
   thead {
     background: rgba(0,0,0,.2);
   }

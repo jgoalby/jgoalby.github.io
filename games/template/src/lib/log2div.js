@@ -106,22 +106,25 @@ function initLog2Div(options) {
       if (showClearButton) {
         const clearButton = document.createElement('button')
         clearButton.textContent = 'Clear';
+        clearButton.id = 'log2div-clear-button';
         clearButton.addEventListener('click', clearLog2Div);
         headerContainer.appendChild(clearButton);
       }
 
       if (showCopyTextButton) {
-        const copyButton = document.createElement('button')
-        copyButton.textContent = 'Copy Text';
-        copyButton.addEventListener('click', copyPlainLogDivMessages);
-        headerContainer.appendChild(copyButton);
+        const copyTextButton = document.createElement('button')
+        copyTextButton.textContent = 'Copy Text';
+        copyTextButton.id = 'log2div-copy-text-button';
+        copyTextButton.addEventListener('click', copyPlainLogDivMessages);
+        headerContainer.appendChild(copyTextButton);
       }
 
       if (showCopyHTMLButton) {
-        const copyButton = document.createElement('button')
-        copyButton.textContent= 'Copy HTML';
-        copyButton.addEventListener('click', copyRichLogDivMessages);
-        headerContainer.appendChild(copyButton);
+        const copyHTMLButton = document.createElement('button')
+        copyHTMLButton.textContent= 'Copy HTML';
+        copyHTMLButton.id = 'log2div-copy-html-button';
+        copyHTMLButton.addEventListener('click', copyRichLogDivMessages);
+        headerContainer.appendChild(copyHTMLButton);
       }
 
       // Now add the caption container to the outer element.
