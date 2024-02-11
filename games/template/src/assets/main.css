@@ -95,11 +95,8 @@ span { white-space: pre; }
 
   .log2div-checkbox-div {
     vertical-align: middle;
-    padding: 5px 5px;
     margin-left: 10px;
     cursor: pointer;
-    background-color: rgba(255,255,255,.2);
-    border-radius: 5px;
   }
 
   .log-row {
