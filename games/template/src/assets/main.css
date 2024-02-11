@@ -35,17 +35,19 @@ table {
   }
 }
 
+/* 
+    Log2Div related styles
+*/
+
+/* This is needed to make whitespace visible in the console log, for instance in Phaser header. */
+span { white-space: pre; }
+
 .wordwrap { 
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
-}
-
-/* This is needed to make whitespace visible in the console log */
-span {
-  white-space: pre;
 }
 
 #console-log-div {
@@ -66,7 +68,7 @@ span {
   border-radius: 2px;
   
   box-shadow: inset 0 0 2px rgba(0,0,0,.1);
-  background-color: #EBEBEB;
+  background-color: rgba(255, 255, 255, 0.5);
   
   #legend, .log-row, td {
     padding: 10px 0 8px 0;
@@ -85,16 +87,16 @@ span {
     }
   }
   .exception {
-    color: rgba(255,0,255,.61);
+    color: rgb(255,0,255);
   }
   .error {
-    color: rgba(255,0,0,.61);
+    color: rgb(255,0,0);
   }
   .warning {
-    color: rgba(255,100,0,.61);
+    color: rgb(255,100,50);
   }
   .info {
-    color: rgba(0,0,255,.61);
+    color: rgb(0,0,255);
   }
   thead {
     background: rgba(0,0,0,.2);
