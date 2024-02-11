@@ -20,7 +20,7 @@ const CONSOLE_LOG_CAPTION_ID     = 'console-log-caption';
 // Class, IDs for controls and their text.
 const BUTTON_CLASS               = BASE_PROJECT_ID + '-button';
 const CHECKBOX_CLASS             = BASE_PROJECT_ID + '-checkbox';
-const CLEAR_BUTTON_ID            =  '-clear-button';
+const CLEAR_BUTTON_ID            = BASE_PROJECT_ID + '-clear-button';
 const CLEAR_BUTTON_TEXT          = 'Clear';
 const COPY_TEXT_BUTTON_ID        = BASE_PROJECT_ID + '-copy-text-button';
 const COPY_TEXT_BUTTON_TEXT      = 'Copy Text';
@@ -35,14 +35,12 @@ const DEFAULT_SHOWCLEARBUTTON     = true;
 const DEFAULT_SHOWCOPYTEXTBUTTON  = true;
 const DEFAULT_SHOWCOPYHTMLBUTTON  = true;
 const DEFAULT_SHOWENABLEDCHECKBOX = true;
+const DEFAULT_LOGENABLED          = true;
 const DEFAULT_LOGINFO             = true;
 const DEFAULT_LOGWARN             = true;
 const DEFAULT_LOGERROR            = true;
 const DEFAULT_LOGEXCEPTION        = true;
 const DEFAULT_LOGTABLE            = true;
-
-// Globals.
-let _log2div_enabled = true;
 
 function initLog2Div(options) {
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
@@ -59,23 +57,29 @@ function initLog2Div(options) {
   const copyToBrowserConsole = options.copyToBrowserConsole || true;
 
   // If we want to set various options.
-  const showCaption          = options.showCaption || DEFAULT_SHOWCAPTION;
-  const showClearButton      = options.showClearButton || DEFAULT_SHOWCLEARBUTTON;
-  const showCopyTextButton   = options.showCopyTextButton || DEFAULT_SHOWCOPYTEXTBUTTON;
-  const showCopyHTMLButton   = options.showCopyHTMLButton || DEFAULT_SHOWCOPYHTMLBUTTON;
+  const showCaption          = options.showCaption         || DEFAULT_SHOWCAPTION;
+  const showClearButton      = options.showClearButton     || DEFAULT_SHOWCLEARBUTTON;
+  const showCopyTextButton   = options.showCopyTextButton  || DEFAULT_SHOWCOPYTEXTBUTTON;
+  const showCopyHTMLButton   = options.showCopyHTMLButton  || DEFAULT_SHOWCOPYHTMLBUTTON;
   const showEnabledCheckbox  = options.showEnabledCheckbox || DEFAULT_SHOWENABLEDCHECKBOX;
-  const captionText          = options.captionText || DEFAULT_CAPTIONTEXT;
-  _log2div_enabled           = options.enabled || true;
+  const captionText          = options.captionText         || DEFAULT_CAPTIONTEXT;
+
+  // Booleans have to be checked for undefined as they can be set to false.
+  if (options.enabled !== undefined) {
+    setLog2DivEnabled(options.enabled);
+  } else {
+    setLog2DivEnabled(DEFAULT_LOGENABLED);
+  }
 
   // If we want to see various log messages.
-  const logInfo              = options.logInfo || DEFAULT_LOGINFO;
-  const logWarn              = options.logWarn || DEFAULT_LOGWARN;
-  const logError             = options.logError || DEFAULT_LOGERROR;
+  const logInfo              = options.logInfo      || DEFAULT_LOGINFO;
+  const logWarn              = options.logWarn      || DEFAULT_LOGWARN;
+  const logError             = options.logError     || DEFAULT_LOGERROR;
   const logException         = options.logException || DEFAULT_LOGEXCEPTION;
-  const logTable             = options.logTable || DEFAULT_LOGTABLE;
+  const logTable             = options.logTable     || DEFAULT_LOGTABLE;
 
   // The id of the div that will contain the log messages.
-  const consoleId            = options.consoleId || CONSOLE_DIV_ID;
+  const consoleId            = options.consoleId    || CONSOLE_DIV_ID;
 
   // Capture the original console functions so we can call them from our overridden functions.
   const log = console.log.bind(console);
@@ -159,7 +163,7 @@ function initLog2Div(options) {
       if (showCopyTextButton)  { headerContainer.appendChild(createButton(COPY_TEXT_BUTTON_TEXT, COPY_TEXT_BUTTON_ID, copyPlainLogDivMessages)); }
       if (showCopyHTMLButton)  { headerContainer.appendChild(createButton(COPY_HTML_BUTTON_TEXT, COPY_HTML_BUTTON_ID, copyRichLogDivMessages)); }
       // And a checkbox for enabled.
-      if (showEnabledCheckbox) { headerContainer.appendChild(createCheckbox(ENABLED_LABEL_TEXT, ENABLED_CHECKBOX_ID, _log2div_enabled, enabledChanged)); }
+      if (showEnabledCheckbox) { headerContainer.appendChild(createCheckbox(ENABLED_LABEL_TEXT, ENABLED_CHECKBOX_ID, getLog2DivEnabled(), enabledChanged)); }
 
       // Now add the caption container to the outer element.
       outer.appendChild(headerContainer);
@@ -240,7 +244,7 @@ function initLog2Div(options) {
     if (arguments.length === 0) { return; }
 
     // The user has decided we do not want to generate output.
-    if (!_log2div_enabled) { return; }
+    if (! getLog2DivEnabled()) { return; }
 
     // We get (INFO:) (text with %c) (styles...)
     if (arguments.length > 2) { 
@@ -309,7 +313,7 @@ function initLog2Div(options) {
 
   function printTable(objArr, keys) {
     // The user has decided we do not want to generate output.
-    if (!_log2div_enabled) { return; }
+    if (! getLog2DivEnabled()) { return; }
 
     // TODO: Go through this function and see if we can use print to div function above.
     //       the enabled code looks a little clunky being in 2 places right now.
@@ -404,17 +408,25 @@ function clearLog2Div() {
 
 // Start or stop messages being added through enabled.
 function enabledChanged(value) {
-  _log2div_enabled = value;
+  setLog2DivEnabled(value);
 }
 
 // Start messages being added.
 function startLog2Div() {
-  _log2div_enabled = true;
+  setLog2DivEnabled(true);
 }
 
 // Stop messages from being added.
 function stopLog2Div() {
-  _log2div_enabled = false;
+  setLog2DivEnabled(false);
+}
+
+function getLog2DivEnabled() {
+  return console.log2div_enabled;
+}
+
+function setLog2DivEnabled(enabled) {
+  console.log2div_enabled = enabled;
 }
 
 function getLogDivTextMessages() {
@@ -513,6 +525,7 @@ export {
   getLogDivHTMLMessages,
   copyPlainLogDivMessages,
   copyRichLogDivMessages,
+  getLog2DivEnabled,
   startLog2Div,
   stopLog2Div
 }
