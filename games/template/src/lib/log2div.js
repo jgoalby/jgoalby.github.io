@@ -1,13 +1,13 @@
 // Adapted from https://github.com/bahmutov/console-log-div
 
 // Prefixes used for different log types.
-const INFO_PREFIX      = 'INFO:';
-const WARN_PREFIX      = 'WARNING:';
-const ERROR_PREFIX     = 'ERROR:';
-const EXCEPTION_PREFIX = 'EXCEPTION:';
+const INFO_PREFIX      = '[INFO]';
+const WARN_PREFIX      = '[WARNING]';
+const ERROR_PREFIX     = '[ERROR]';
+const EXCEPTION_PREFIX = '[EXCEPTION]';
 
 // Caption we use by default.
-const DEFAULT_CAPTION = 'Console Output';
+const DEFAULT_CAPTION = 'Log2Div Output: ';
 
 // The id of the div that will contain the log messages.
 const MESSAGES_DIV_ID        = 'console-log-messages-div';
@@ -16,6 +16,7 @@ const CONSOLE_LOG_CAPTION_ID = 'console-log-caption';
 
 // Defaults for boolean options so they are easy to change.
 const DEFAULT_SHOWCAPTION        = true;
+const DEFAULT_SHOWCLEARBUTTON    = true;
 const DEFAULT_SHOWCOPYTEXTBUTTON = true;
 const DEFAULT_SHOWCOPYHTMLBUTTON = true;
 const DEFAULT_LOGINFO            = true;
@@ -24,7 +25,7 @@ const DEFAULT_LOGERROR           = true;
 const DEFAULT_LOGEXCEPTION       = true;
 const DEFAULT_LOGTABLE           = true;
 
-function initConsoleLogDiv(options) {
+function initLog2Div(options) {
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
   if (console.logToDiv) { return; }
 
@@ -40,6 +41,7 @@ function initConsoleLogDiv(options) {
 
   // If we want to see the caption and specify what it says.
   const showCaption = options.showCaption || DEFAULT_SHOWCAPTION;
+  const showClearButton = options.showClearButton || DEFAULT_SHOWCLEARBUTTON;
   const showCopyTextButton = options.showCopyTextButton || DEFAULT_SHOWCOPYTEXTBUTTON;
   const showCopyHTMLButton = options.showCopyHTMLButton || DEFAULT_SHOWCOPYHTMLBUTTON;
   const logCaption = options.logCaption || DEFAULT_CAPTION;
@@ -83,11 +85,11 @@ function initConsoleLogDiv(options) {
     // Create the outer element.
     const outer = createOuterElement(consoleId);
 
-    // If we have been asked to show the caption or the copy button, then create the caption container.
-    if (showCaption || showCopyTextButton || showCopyHTMLButton) {
-      // We need a DIV to put caption next to the button.
-      const captionContainer = document.createElement('div');
-      captionContainer.id = CONSOLE_LOG_CAPTION_ID;
+    // If we have been asked to show something in the header.
+    if (showCaption || showClearButton || showCopyTextButton || showCopyHTMLButton) {
+      // We need a DIV to put hearder stuff.
+      const headerContainer = document.createElement('div');
+      headerContainer.id = CONSOLE_LOG_CAPTION_ID;
 
       // If we have been asked to show the caption, then create it and add it to the outer element.
       if (showCaption) {
@@ -98,29 +100,32 @@ function initConsoleLogDiv(options) {
         // The text for the caption.
         const caption = document.createTextNode(logCaption);
         legend.appendChild(caption);
-        captionContainer.appendChild(legend);
+        headerContainer.appendChild(legend);
+      }
+
+      if (showClearButton) {
+        const clearButton = document.createElement('button')
+        clearButton.textContent = 'Clear';
+        clearButton.addEventListener('click', clearLog2Div);
+        headerContainer.appendChild(clearButton);
       }
 
       if (showCopyTextButton) {
-        // Create a copy to clipboard button.
         const copyButton = document.createElement('button')
         copyButton.textContent = 'Copy Text';
-        //copyButton.addEventListener('click', copyLogDivMessages);
         copyButton.addEventListener('click', copyPlainLogDivMessages);
-        captionContainer.appendChild(copyButton);
+        headerContainer.appendChild(copyButton);
       }
 
       if (showCopyHTMLButton) {
-        // Create a copy to clipboard button.
         const copyButton = document.createElement('button')
         copyButton.textContent= 'Copy HTML';
-        //copyButton.addEventListener('click', copyLogDivMessages);
         copyButton.addEventListener('click', copyRichLogDivMessages);
-        captionContainer.appendChild(copyButton);
+        headerContainer.appendChild(copyButton);
       }
 
       // Now add the caption container to the outer element.
-      outer.appendChild(captionContainer);
+      outer.appendChild(headerContainer);
     }
 
     // This is where log rows will be added.
@@ -128,6 +133,7 @@ function initConsoleLogDiv(options) {
     logToDiv.id = MESSAGES_DIV_ID;
 
     // Add the log div to the outer element and return the log div for future messages.
+    // The outer div is not actually important other than to house everything.
     outer.appendChild(logToDiv);
     return logToDiv;
   }());
@@ -329,7 +335,7 @@ function initConsoleLogDiv(options) {
   }
 }
 
-function toggleVisibility() {
+function toggleLog2DivVisibility() {
   const elem = document.getElementById(CONSOLE_DIV_ID);
   if (elem.style.display === "block") {
     elem.style.display = "none";
@@ -339,7 +345,7 @@ function toggleVisibility() {
 }
 
 // Clear the log div of all messages.
-function clearConsoleLogDiv() {
+function clearLog2Div() {
   // Get the element where we add log messages.
   const logDivElement = document.getElementById(MESSAGES_DIV_ID);
 
@@ -438,9 +444,9 @@ async function copyRichLogDivMessages() {
 }
 
 export {
-  initConsoleLogDiv,
-  clearConsoleLogDiv,
-  toggleVisibility,
+  initLog2Div,
+  clearLog2Div,
+  toggleLog2DivVisibility,
   getLogDivTextMessages,
   getLogDivHTMLMessages,
   copyPlainLogDivMessages,

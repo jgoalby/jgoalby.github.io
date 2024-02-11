@@ -1,6 +1,6 @@
-// Initialize the console log div first.
-import { initConsoleLogDiv, clearConsoleLogDiv, toggleVisibility } from './lib/console-log-div.js'
-(() => { initConsoleLogDiv(); })();
+// Initialize the console log2div first.
+import { initLog2Div, toggleLog2DivVisibility } from './lib/log2div.js';
+(() => { initLog2Div(); })();
 
 import { config } from './config/config.js';
 import Globals from './globals.js';
@@ -73,9 +73,7 @@ function onResizeTimeout() {
 
   window.addEventListener("keydown", async (event) => {
     if ((event.code == "KeyD") && (event.ctrlKey)) {
-      toggleVisibility();
-    } else if ((event.code == "KeyE") && (event.ctrlKey)) {
-      clearConsoleLogDiv();
+      toggleLog2DivVisibility();
     }
   }, false);
 })();
