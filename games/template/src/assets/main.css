@@ -85,7 +85,7 @@ span { white-space: pre; }
   }
 
   /* Header buttons styles */
-  #log2div-clear-button {
+  #log2div-clear-button, #log2div-copy-text-button, #log2div-copy-html-button {
     padding: 5px 10px;
     margin-left: 10px;
     cursor: pointer;
