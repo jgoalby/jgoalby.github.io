@@ -99,9 +99,9 @@ span { white-space: pre; }
     align-items: center;
   }
 
-  .log2div-checkbox-div input[type=checkbox]{
+  /*.log2div-checkbox-div input[type=checkbox]{
     flex: none;
-  }
+  }*/
 
   .log-row {
     &:nth-child(odd) {
