@@ -94,12 +94,13 @@ span { white-space: pre; }
   }
 
   .log2div-checkbox-div {
+    display: flex;
     margin-left: 10px;
     cursor: pointer;
+    align-items: center;
   }
 
   .log2div-checkbox-div label {
-    display: flex;
     align-items: center;
   }
 
