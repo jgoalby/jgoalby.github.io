@@ -194,6 +194,7 @@ function initLog2Div(options) {
   function createLogRow(logType) {
     const item = document.createElement('div');
     item.classList.add('log-row'); // TODO Make better class constant and name etc.
+    addClassForLogType(item, logType);
 
     const badge = document.createElement('div');
     addClassForLogType(badge, logType);
@@ -230,8 +231,7 @@ function initLog2Div(options) {
     const parts = message.split('%c');
 
     // Create the log row and add CSS class based on the log type.
-    const logRow = createLogRow();
-    addClassForLogType(logRow, logType);
+    const logRow = createLogRow(logType);
 
     // Go through every split part of the message.
     parts.forEach((part, index) => {
@@ -281,13 +281,7 @@ function initLog2Div(options) {
     lastMessageOutput = msg;
 
     // Create a log row to put our message in.
-    const logRow = createLogRow();
-
-    // Should always be true, but just in case.
-    if (arguments.length >= 1) {
-      // Add CSS class based on the log type.
-      addClassForLogType(logRow, arguments[0]);
-    }
+    const logRow = createLogRow(arguments[0]);
 
     // Put the log message in a span and add it to the log row.
     const styledSpan = document.createElement('span');
