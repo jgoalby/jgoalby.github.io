@@ -1,26 +1,31 @@
 # TODOs
 
-Change the name of things to Log2Div
-Why is it called legend? Make it caption?
-
 # Next: console
-- What if I repeat a message? Should I just update the count?
-- Have a way to stop the console from adding more content
+- On desktop
+  - Issue with spans going onto a new line. Use desktop browser to diagnose in dev console.
+  - I think there is extra space in the formatted output, perhaps a style issue.
+- Test everything now that names have been changed.
 - Test the table function and clean up that code as needed and comment.
 - What is the thead css doing for me?
-- Have a show and hide function? and/or toggle function
-- Change let to const where possible
-- Need to fix the ids and classes to all have the same prefix and fix CSS to match
-- Create a jsdoc for the functions
-- Clipboard innerText might not be good given new styling, perhaps innerHTML?
-  - Maybe have a copy as text button and a copy as html button?
+- Finish creating the jsdoc for the functions
 - window.isSecureContext for HTTPS
-- Use this format for log type : [INFO] [ERROR] [WARN] [DEBUG] [LOG]
+- Add more buttons next to copy. Clear, stop, show error, warn, info, etc.
+- Add a compact view option to the console. Not sure if thats just CSS or not?
+  - Need to change the class on main container to be compact
+- Make sure there is a good way to turn off the console when you no longer want it in your project
+- Make an option to show the row number as part of the output
+- Make an option to output the timestamp
+- Need a version number. How do pure javascript projects do that?
+  - What else do pure javascript projects do?
+- Add a todo section for this project
+  - Copy to clipboard as RTF is one item to add
+- Output timestamp in the console
      var date = new Date();
         var strTime = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "." + date.getMilliseconds();
         logIndex++;
         var prefix = '[' + logIndex + '] ' + strTime + ' [' + type.toUpperCase() + '] ';
-- Output timestamp in the console
+- Add to todo in the new project
+  - Add a text box to issue commands to the console. Maybe very simplified and logging based.
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
@@ -34,10 +39,6 @@ Settings
   Have a way to get the settings from the settings plugin
 
 # Next: General
-- Add more buttons next to copy. Clear, stop, show error, warn, info, etc.
-- Add a text box to issue commands to the console. Maybe very simplified and logging based.
-- Add a compact view option to the console. Not sure if thats just CSS or not?
-  - Need to change the class on main container to be compact
 - Enemy sounds through audio plugin via world
 - See if I can make options better, register options somehow? Plugin too?
 - Use the new button throughout the project now
@@ -45,7 +46,6 @@ Settings
 - Continue to remove the word game from the project
 - Continue with the firebase coding
 - Zones idea for a scene specifying areas buttons can go
-- Make sure there is a good way to turn off the console when you no longer want it in your project
 - Extra parameter for event listener gives context. See screenshot. Test it to see if it works.
 
 # Zones
