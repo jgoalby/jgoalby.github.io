@@ -60,6 +60,9 @@ async function showConsole(event) {
   console.log("This is %i %s", 1, "log message.");
   console.log("This is %ca red message", "color: red;");
   console.log("This is %ca %s message", "color: red;", "red");
+  console.log("This message is repeated");
+  console.log("This message is repeated");
+  console.log("This message is repeated");
   console.log("This is %ca red message %cand this is blue", "color: red; font-size: 20px;", "color: blue; font-size: 15px;");
   console.log("This is a long message with some Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio tempor. More lorem ispsum goes here if we need it to be here.");
 

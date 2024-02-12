@@ -110,16 +110,19 @@ span { white-space: pre; }
     height: 1em; 
     min-width: 1em;
     padding: 3px 11px 0 3px;
-    margin-right: 0.5em;
+    margin-right: 0.4em;
   }
 
-  .log-row span {
-    display: inline-block;
+  .log-row {
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
+  } 
+
+  .log-row span {
+    display: inline-block;
   } 
 
   .log-row {
