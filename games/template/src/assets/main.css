@@ -101,7 +101,7 @@ span { white-space: pre; }
   }
 
   .log2div-log-row-badge {
-    display: flex;
+    display: inline-block;
     background: radial-gradient( 5px -9px, circle, white 8%, red 26px );
     background-color: red;
     border: 2px solid white;
@@ -115,6 +115,10 @@ span { white-space: pre; }
     padding: 4px 3px 0 3px;
     text-align: center;
   }
+
+  .log-row span {
+    display: inline-block;
+  } 
 
   .log2div-log-row-badge_mine {
     display: inline-block;
