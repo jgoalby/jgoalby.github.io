@@ -105,8 +105,8 @@ span { white-space: pre; }
     /*background: radial-gradient( 5px -9px, circle, white 8%, red 26px );*/
     background-color: red;
     /*border: 2px solid white;*/
-    /*border-radius: 12px;*/ /* one half of ( (border * 2) + height + padding ) */
-    border-radius: 50%;
+    border-radius: 12px; /* one half of ( (border * 2) + height + padding ) */
+    /*border-radius: 50%;*/
     /*box-shadow: 1px 1px 1px black;*/
     color: white;
     font: bold 15px/13px Helvetica, Verdana, Tahoma;
@@ -114,7 +114,8 @@ span { white-space: pre; }
     height: 1em; 
     min-width: 1em;
     /*width: auto;*/
-    padding: 4px 3px 0 3px;
+    padding: 4px 10px 0 3px;
+    margin-right: 1em;
     /*text-align: center;*/
   }
 
