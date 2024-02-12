@@ -188,7 +188,6 @@ function initLog2Div(options) {
   function createLogRow() {
     const item = document.createElement('div');
     item.classList.add('log-row'); // TODO Make better class constant and name etc.
-    item.classList.add('wordwrap');
 
     const badge = document.createElement('div');
     badge.classList.add(LOG_ROW_BADGE_CLASS);
