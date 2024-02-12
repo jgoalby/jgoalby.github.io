@@ -28,6 +28,7 @@ const COPY_HTML_BUTTON_ID        = BASE_PROJECT_ID + '-copy-html-button';
 const COPY_HTML_BUTTON_TEXT      = 'Copy HTML';
 const ENABLED_CHECKBOX_ID        = BASE_PROJECT_ID + '-enabled-checkbox';
 const ENABLED_LABEL_TEXT         = 'Enabled';
+const LOG_ROW_BADGE_CLASS        = BASE_PROJECT_ID + '-log-row-badge';
 
 // Defaults for boolean options so they are easy to change.
 const DEFAULT_SHOWCAPTION         = true;
@@ -36,11 +37,11 @@ const DEFAULT_SHOWCOPYTEXTBUTTON  = true;
 const DEFAULT_SHOWCOPYHTMLBUTTON  = true;
 const DEFAULT_SHOWENABLEDCHECKBOX = true;
 const DEFAULT_LOGENABLED          = true;
-const DEFAULT_LOGINFO             = true;
-const DEFAULT_LOGWARN             = true;
-const DEFAULT_LOGERROR            = true;
-const DEFAULT_LOGEXCEPTION        = true;
-const DEFAULT_LOGTABLE            = true;
+const DEFAULT_LOGINFOENABLED      = true;
+const DEFAULT_LOGWARNENABLED      = true;
+const DEFAULT_LOGERRORENABLED     = true;
+const DEFAULT_LOGEXCEPTIONENABLED = true;
+const DEFAULT_LOGTABLEENABLED     = true;
 
 function initLog2Div(options) {
   // If the console.logToDiv flag is set, then we have already overridden the console functions.
@@ -72,11 +73,11 @@ function initLog2Div(options) {
   }
 
   // If we want to see various log messages.
-  const logInfo              = options.logInfo      || DEFAULT_LOGINFO;
-  const logWarn              = options.logWarn      || DEFAULT_LOGWARN;
-  const logError             = options.logError     || DEFAULT_LOGERROR;
-  const logException         = options.logException || DEFAULT_LOGEXCEPTION;
-  const logTable             = options.logTable     || DEFAULT_LOGTABLE;
+  const logInfoEnabled       = options.logInfoEnabled      || DEFAULT_LOGINFOENABLED;
+  const logWarnEnabled       = options.logWarnEnabled      || DEFAULT_LOGWARNENABLED;
+  const logErrorEnabled      = options.logErrorEnabled     || DEFAULT_LOGERRORENABLED;
+  const logExceptionEnabled  = options.logExceptionEnabled || DEFAULT_LOGEXCEPTIONENABLED;
+  const logTableEnabled      = options.logTableEnabled     || DEFAULT_LOGTABLEENABLED;
 
   // The id of the div that will contain the log messages.
   const consoleId            = options.consoleId    || CONSOLE_DIV_ID;
@@ -114,17 +115,19 @@ function initLog2Div(options) {
   }
 
   function createCheckbox(labelText, checkboxID, checked, changeHandler) {
+    // This is the actual box that the user will click on.
     const checkbox = document.createElement('input');
     checkbox.type = "checkbox";
     checkbox.checked = checked;
     checkbox.id = checkboxID;
     checkbox.addEventListener('change', changeHandler);
 
+    // The label for the checkbox.
     const label = document.createElement('label');
     label.htmlFor = checkboxID;
     label.appendChild(document.createTextNode(labelText));
 
-    // appending the checkbox and label to div
+    // Appending the checkbox and label to a div container.
     const checkboxContainer = document.createElement('div');
     checkboxContainer.classList.add(CHECKBOX_DIV_CLASS);
     checkboxContainer.appendChild(checkbox);
@@ -186,6 +189,12 @@ function initLog2Div(options) {
     const item = document.createElement('div');
     item.classList.add('log-row'); // TODO Make better class constant and name etc.
     item.classList.add('wordwrap');
+
+    const badge = document.createElement('div');
+    badge.classList.add(LOG_ROW_BADGE_CLASS);
+    badge.textContent = "0";
+
+    item.appendChild(badge);
     return item;
   }
 
@@ -238,7 +247,10 @@ function initLog2Div(options) {
   
     logTo.appendChild(logRow);
   }
-  
+
+  // Keep track of the last message output so we check if the same message is being output.
+  let lastMessageOutput = '';
+
   function printToDiv() {
     // If there are no arguments, then do nothing.
     if (arguments.length === 0) { return; }
@@ -246,7 +258,7 @@ function initLog2Div(options) {
     // The user has decided we do not want to generate output.
     if (! getLog2DivEnabled()) { return; }
 
-    // We get (INFO:) (text with %c) (styles...)
+    // We get (INFO...) (text with %c) (styles...)
     if (arguments.length > 2) { 
       if (arguments[1].includes('%c')) {
         logMessageWithStyles.apply(null, arguments);
@@ -254,8 +266,14 @@ function initLog2Div(options) {
       }
     }
 
-    // Create a log row based on the concatenation of the arguments.
+    // Get the message by concatenating the arguments.
     const msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
+
+    // If the message is the same as the last message, then do not output it again.
+    if (msg === lastMessageOutput) { return; }
+    lastMessageOutput = msg;
+
+    // Create a log row based on the concatenation of the arguments.
     const logRow = createLogRow();
     logRow.textContent = msg;
 
@@ -271,11 +289,10 @@ function initLog2Div(options) {
 
   // Override the log function.
   console.log = function logInfoMessage() {
-    if (copyToBrowserConsole) {
-      log.apply(null, arguments);
-    }
+    // If we continue to let normal console do its thing.
+    if (copyToBrowserConsole) { log.apply(null, arguments); }
 
-    if (logInfo) {
+    if (logInfoEnabled) {
       // Get the arguments so we can prepend to them and then log the message.
       const args = Array.prototype.slice.call(arguments, 0);
       args.unshift(INFO_PREFIX);
@@ -285,11 +302,10 @@ function initLog2Div(options) {
 
   // Override the warn function.
   console.warn = function logWarnMessage() {
-    if (copyToBrowserConsole) {
-      warn.apply(null, arguments);
-    }
+    // If we continue to let normal console do its thing.
+    if (copyToBrowserConsole) { warn.apply(null, arguments); }
 
-    if (logWarn) {
+    if (logWarnEnabled) {
       // Get the arguments so we can prepend to them and then log the message.
       const args = Array.prototype.slice.call(arguments, 0);
       args.unshift(WARN_PREFIX);
@@ -299,11 +315,10 @@ function initLog2Div(options) {
 
   // Override the error function.
   console.error = function logErrorMessage() {
-    if (copyToBrowserConsole) {
-      error.apply(null, arguments);
-    }
+    // If we continue to let normal console do its thing.
+    if (copyToBrowserConsole) { error.apply(null, arguments); }
 
-    if (logError) {
+    if (logErrorEnabled) {
       // Get the arguments so we can prepend to them and then log the message.
       const args = Array.prototype.slice.call(arguments, 0);
       args.unshift(ERROR_PREFIX);
@@ -356,14 +371,13 @@ function initLog2Div(options) {
 
   // Override the table function.
   console.table = function logTableMessage() {
+    // If we continue to let normal console do its thing.
     if (copyToBrowserConsole) {
       // Make sure it is a function before calling it.
-      if (typeof table === 'function') {
-        table.apply(null, arguments);
-      }
+      if (typeof table === 'function') { table.apply(null, arguments); }
     }
 
-    if (!logTable) {
+    if (!logTableEnabled) {
       const objArr = arguments[0];
       let keys;
 
@@ -375,7 +389,8 @@ function initLog2Div(options) {
     }
   };
 
-  if (logException) {
+  // We only want to add a listener if the exception logging is enabled.
+  if (logExceptionEnabled) {
     // If we didn't do this then exceptions would go to the regular console and we would not see them
     // inside our console. At least with this we have a fighting chance of seeing them.
     window.addEventListener('error', function (err) {

@@ -20,6 +20,7 @@ Why is it called legend? Make it caption?
         var strTime = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds() + "." + date.getMilliseconds();
         logIndex++;
         var prefix = '[' + logIndex + '] ' + strTime + ' [' + type.toUpperCase() + '] ';
+- Output timestamp in the console
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.

@@ -92,6 +92,7 @@ span { white-space: pre; }
     border-radius: 5px;
   }
 
+  /* Checkbox container styles */
   .log2div-checkbox-div {
     display: flex;
     margin-left: 10px;
@@ -99,9 +100,14 @@ span { white-space: pre; }
     align-items: center;
   }
 
-  /*.log2div-checkbox-div input[type=checkbox]{
-    flex: none;
-  }*/
+  .log2div-log-row-badge {
+    margin-right: 10px;
+    padding: 5px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: rgba(255,0,0,.3);
+    color: #fefefe;
+  }
 
   .log-row {
     &:nth-child(odd) {
