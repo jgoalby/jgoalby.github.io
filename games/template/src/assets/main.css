@@ -58,6 +58,7 @@ span { white-space: pre; }
   width: 98% !important;
   height: 98% !important;
   overflow-y: auto;
+  overflow-x: hidden;
   margin: 10px;
   padding: 5px 0 0 0;
   

@@ -165,6 +165,8 @@ In creating these images with Dall-e, I wonder if I can create a fluid interface
 ## Console and Clipboard
 - Specify various options to the console and see if they work
 - Test copying to clipboard using HTTP site as well as HTTPS because Safari does not like HTTP
+- Test wordwrapping
+- Test badges
 
 # General TODOs
 - Add some native like features to the game for iOS And Android
