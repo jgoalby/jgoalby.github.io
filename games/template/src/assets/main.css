@@ -101,13 +101,14 @@ span { white-space: pre; }
   }
 
   .log2div-log-row-badge {
-    margin-right: 10px;
-    padding: 5px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
     border-radius: 50%;
-    width: 1em;
-    height: 1em;
+    width: 0.75em;
+    height: 0.75em;
     text-align: center;
-    background-color: rgba(255,0,0,.3);
+    background-color: rgba(255,0,0,.8);
     color: #fefefe;
   }
 
