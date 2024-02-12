@@ -101,6 +101,7 @@ span { white-space: pre; }
   }
 
   .log2div-log-row-badge {
+    display: flex;
     background: radial-gradient( 5px -9px, circle, white 8%, red 26px );
     background-color: red;
     border: 2px solid white;
