@@ -86,7 +86,6 @@ span { white-space: pre; }
 
   /* Header buttons styles */
   .log2div-button {
-    padding: 5px 5px;
     margin-left: 10px;
     cursor: pointer;
     background-color: rgba(255,255,255,.2);
@@ -97,10 +96,6 @@ span { white-space: pre; }
     display: flex;
     margin-left: 10px;
     cursor: pointer;
-    align-items: center;
-  }
-
-  .log2div-checkbox-div label {
     align-items: center;
   }
 
