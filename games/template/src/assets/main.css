@@ -104,6 +104,8 @@ span { white-space: pre; }
     margin-right: 10px;
     padding: 5px;
     border-radius: 50%;
+    width: 1em;
+    height: 1em;
     text-align: center;
     background-color: rgba(255,0,0,.3);
     color: #fefefe;
