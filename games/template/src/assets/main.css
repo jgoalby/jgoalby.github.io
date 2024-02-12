@@ -113,15 +113,6 @@ span { white-space: pre; }
     margin-right: 0.4em;
   }
 
-  .log-row {
-    display: inline-block;
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-  } 
-
   .log-row span {
     display: inline-block;
     white-space: pre-wrap;

@@ -16,6 +16,7 @@ const BASE_PROJECT_ID            = 'log2div';
 const MESSAGES_DIV_ID            = 'console-log-messages-div';
 const CONSOLE_DIV_ID             = 'console-log-div';
 const CONSOLE_LOG_CAPTION_ID     = 'console-log-caption';
+const LOG_ROW_NUMBER_ID          = BASE_PROJECT_ID + '-log-row-';
 
 // Class, IDs for controls and their text.
 const BUTTON_CLASS               = BASE_PROJECT_ID + '-button';
@@ -191,15 +192,19 @@ function initLog2Div(options) {
   // Simple one argument function to convert any value to a string in map.
   function toString(x) { return typeof x === 'string' ? x : JSON.stringify(x); }
 
+  // Holder for the current row number.
+  let rowNumber = 0;
+
   function createLogRow(logType) {
     const item = document.createElement('div');
+    item.id = LOG_ROW_NUMBER_ID + rowNumber++;
     item.classList.add('log-row'); // TODO Make better class constant and name etc.
     addClassForLogType(item, logType);
 
     const badge = document.createElement('div');
     addClassForLogType(badge, logType);
     badge.classList.add(LOG_ROW_BADGE_CLASS);
-    badge.textContent = "0";
+    badge.textContent = "1";
 
     item.appendChild(badge);
     return item;
@@ -257,6 +262,7 @@ function initLog2Div(options) {
 
   // Keep track of the last message output so we check if the same message is being output.
   let lastMessageOutput = '';
+  let lastMessageRowID = '';
 
   function printToDiv() {
     // If there are no arguments, then do nothing.
@@ -277,11 +283,20 @@ function initLog2Div(options) {
     const msg = Array.prototype.slice.call(arguments, 0).map(toString).join(' ');
 
     // If the message is the same as the last message, then do not output it again.
-    if (msg === lastMessageOutput) { return; }
+    // Update the badge instead. And then we can be done here.
+    if (msg === lastMessageOutput) {
+      const lastRow = document.getElementById(lastMessageRowID);
+      const lastBadge = lastRow.querySelector('.' + LOG_ROW_BADGE_CLASS);
+      lastBadge.textContent = String(parseInt(lastBadge.textContent) + 1);
+      return;
+    }
+
+    // Save this new unique message.
     lastMessageOutput = msg;
 
     // Create a log row to put our message in.
     const logRow = createLogRow(arguments[0]);
+    lastMessageRowID = logRow.id;
 
     // Put the log message in a span and add it to the log row.
     const styledSpan = document.createElement('span');
