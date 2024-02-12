@@ -64,6 +64,8 @@ async function showConsole(event) {
   console.log("This message is repeated");
   console.log("This message is repeated");
   console.log("This is %ca red message %cand this is blue", "color: red; font-size: 20px;", "color: blue; font-size: 15px;");
+  console.error("This message is repeated");
+  console.error("This message is repeated");
   console.log("This is a long message with some Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio tempor. More lorem ispsum goes here if we need it to be here.");
 
   // See if the browser supports service workers.
