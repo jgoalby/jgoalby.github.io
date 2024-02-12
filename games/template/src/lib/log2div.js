@@ -273,15 +273,19 @@ function initLog2Div(options) {
     if (msg === lastMessageOutput) { return; }
     lastMessageOutput = msg;
 
-    // Create a log row based on the concatenation of the arguments.
+    // Create a log row to put our message in.
     const logRow = createLogRow();
-    logRow.textContent = msg;
 
     // Should always be true, but just in case.
     if (arguments.length >= 1) {
       // Add CSS class based on the log type.
       addClassForLogType(logRow, arguments[0]);
     }
+
+    // Put the log message in a span and add it to the log row.
+    const styledSpan = document.createElement('span');
+    styledSpan.textContent = msg;
+    logRow.appendChild(styledSpan);
 
     // Add the log row to the log div.
     logTo.appendChild(logRow);
