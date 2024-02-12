@@ -1,5 +1,8 @@
 # TODOs
 
+The spacing from badge to text is not consistent.
+
+
 Change the name of things to Log2Div
 Why is it called legend? Make it caption?
 
