@@ -102,38 +102,19 @@ span { white-space: pre; }
 
   .log2div-log-row-badge {
     display: inline-block;
-    /*background: radial-gradient( 5px -9px, circle, white 8%, red 26px );*/
-    background-color: red;
-    /*border: 2px solid white;*/
+    background-color: rgba(255,0,0,.8);
     border-radius: 12px; /* one half of ( (border * 2) + height + padding ) */
-    /*border-radius: 50%;*/
-    /*box-shadow: 1px 1px 1px black;*/
     color: white;
     font: bold 15px/13px Helvetica, Verdana, Tahoma;
-    /*height: 16px; */
     height: 1em; 
     min-width: 1em;
-    /*width: auto;*/
-    padding: 4px 10px 0 3px;
+    padding: 3px 11px 0 3px;
     margin-right: 1em;
-    /*text-align: center;*/
   }
 
   .log-row span {
     display: inline-block;
   } 
-
-  .log2div-log-row-badge_mine {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    border-radius: 50%;
-    width: 0.75em;
-    height: 0.75em;
-    text-align: center;
-    background-color: rgba(255,0,0,.8);
-    color: #fefefe;
-  }
 
   .log-row {
     &:nth-child(odd) {
