@@ -226,24 +226,25 @@ function initLog2Div(options) {
     const logRow = createLogRow();
     addClassForLogType(logRow, logType);
 
+    // Go through every split part of the message.
     parts.forEach((part, index) => {
-      if (index === 0) {
-        // First part is always unstyled
-        logRow.appendChild(document.createTextNode(part));
-      } else {
-        // Subsequent parts may have styles
-        const styledSpan = document.createElement('span');
-        styledSpan.textContent = part;
+      // Create a span for every part of the message.
+      const span = document.createElement('span');;
+      span.textContent = part;
 
+      // First part is always unstyled. Subsequent parts may have styles
+      if (index !== 0) {
         // Apply corresponding style if it exists
         if (styles[index - 1]) {
-          styledSpan.style.cssText = styles[index - 1];
+          span.style.cssText = styles[index - 1];
         }
-
-        logRow.appendChild(styledSpan);
       }
+
+      // Add the span.
+      logRow.appendChild(span);
     });
-  
+
+    // Add the log row to the log div.
     logTo.appendChild(logRow);
   }
 
