@@ -100,11 +100,12 @@ span { white-space: pre; }
   }
 
   .log2div-checkbox-div label {
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
   }
 
-  .log2div-checkbox-div input {
-    vertical-align: middle;
+  .log2div-checkbox-div input[type=checkbox]{
+    flex: none;
   }
 
   .log-row {
