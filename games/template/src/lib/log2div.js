@@ -30,6 +30,12 @@ const ENABLED_CHECKBOX_ID        = BASE_PROJECT_ID + '-enabled-checkbox';
 const ENABLED_LABEL_TEXT         = 'Enabled';
 const LOG_ROW_BADGE_CLASS        = BASE_PROJECT_ID + '-log-row-badge';
 
+// Class for log types
+const INFO_CLASS                 = BASE_PROJECT_ID + '-info';
+const WARN_CLASS                 = BASE_PROJECT_ID + '-warning';
+const ERROR_CLASS                = BASE_PROJECT_ID + '-error';
+const EXCEPTION_CLASS            = BASE_PROJECT_ID + '-exception';
+
 // Defaults for boolean options so they are easy to change.
 const DEFAULT_SHOWCAPTION         = true;
 const DEFAULT_SHOWCLEARBUTTON     = true;
@@ -185,11 +191,12 @@ function initLog2Div(options) {
   // Simple one argument function to convert any value to a string in map.
   function toString(x) { return typeof x === 'string' ? x : JSON.stringify(x); }
 
-  function createLogRow() {
+  function createLogRow(logType) {
     const item = document.createElement('div');
     item.classList.add('log-row'); // TODO Make better class constant and name etc.
 
     const badge = document.createElement('div');
+    addClassForLogType(badge, logType);
     badge.classList.add(LOG_ROW_BADGE_CLASS);
     badge.textContent = "0";
 
@@ -197,20 +204,20 @@ function initLog2Div(options) {
     return item;
   }
 
-  function addClassForLogType(logRow, logType) {
+  function addClassForLogType(elen, logType) {
     // Add CSS class based on the log type.
     switch (logType) {
-      case ERROR_PREFIX:
-        logRow.classList.add('error');
+      case INFO_PREFIX:
+        elen.classList.add(INFO_CLASS);
         break;
       case WARN_PREFIX:
-        logRow.classList.add('warning');
+        elen.classList.add(WARN_CLASS);
+        break;
+      case ERROR_PREFIX:
+        elen.classList.add(ERROR_CLASS);
         break;
       case EXCEPTION_PREFIX:
-        logRow.classList.add('exception');
-        break;
-      case INFO_PREFIX:
-        logRow.classList.add('info');
+        elen.classList.add(EXCEPTION_CLASS);
         break;
     }
   }

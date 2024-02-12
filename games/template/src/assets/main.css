@@ -129,10 +129,16 @@ span { white-space: pre; }
   }
 
   /* Message type styles */
-  .exception { color: rgb(255,0,255); }
-  .error     { color: rgb(255,0,0); }
-  .warning   { color: rgb(255,100,50); }
-  .info      { color: rgb(0,0,255); }
+  .log2div-info      { color: rgb(0,0,255); }
+  .log2div-warning   { color: rgb(255,100,50); }
+  .log2div-error     { color: rgb(255,0,0); }
+  .log2div-exception { color: rgb(255,0,255); }
+
+  /* Badge styles based on the logging type */
+  .log2div-log-row-badge.log2div-info      { color: white; background-color: rgb(0,0,255); }
+  .log2div-log-row-badge.log2div-warning   { color: white; background-color: rgb(255,100,50); }
+  .log2div-log-row-badge.log2div-error     { color: white; background-color: rgb(255,0,0); }
+  .log2div-log-row-badge.log2div-exception { color: white; background-color: rgb(255,0,255); }
 
   thead {
     background: rgba(0,0,0,.2);
