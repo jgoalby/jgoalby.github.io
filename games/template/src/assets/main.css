@@ -121,6 +121,7 @@ span { white-space: pre; }
 .log2div-log-row {
   display: flex;
   justify-content: normal;
+  padding: 10px;
   &:nth-child(odd) {
     background: rgba(0,0,0,.1);
   }
