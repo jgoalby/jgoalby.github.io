@@ -70,74 +70,74 @@ span { white-space: pre; }
   color: rgb(0,0,0);
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.8);
+}
 
-  /* Caption styling */
-  #log2div-caption {
-    padding: 10px 0 12px 0;
-    text-indent: 10px;
-    font-size: 1.2em;
+/* Caption styling */
+#log2div-caption {
+  padding: 10px 0 12px 0;
+  text-indent: 10px;
+  font-size: 1.2em;
+}
+
+/* The heading div */
+#log2div-heading {
+  display: flex;
+}
+
+/* Heading buttons styles */
+.log2div-button {
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: rgba(255,255,255,.2);
+  border-radius: 5px;
+}
+
+/* Heading checkbox container styles */
+.log2div-checkbox-container {
+  display: flex;
+  margin-left: 10px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.log2div-log-row-badge {
+  background-color: rgba(255,0,0,.8);
+  border-radius: 12px;
+  color: white;
+  font: bold 15px/13px Helvetica, Verdana, Tahoma;
+  height: 1em; 
+  padding: 5px 5px 5px 5px;
+  margin-right: 0.4em;
+}
+
+.log2div-log-row span {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+} 
+
+.log2div-log-row {
+  display: flex;
+  justify-content: normal;
+  &:nth-child(odd) {
+    background: rgba(0,0,0,.1);
   }
+}
 
-  /* The heading div */
-  #log2div-heading {
-    display: flex;
-  }
+/* Message type styles */
+.log2div-info      { color: rgb(0,0,255); }
+.log2div-warning   { color: rgb(255,100,50); }
+.log2div-error     { color: rgb(255,0,0); }
+.log2div-exception { color: rgb(255,0,255); }
 
-  /* Heading buttons styles */
-  .log2div-button {
-    margin-left: 10px;
-    cursor: pointer;
-    background-color: rgba(255,255,255,.2);
-    border-radius: 5px;
-  }
+/* Badge styles based on the logging type */
+.log2div-log-row-badge.log2div-info      { color: white; background-color: rgba(0,0,255,0.5); }
+.log2div-log-row-badge.log2div-warning   { color: white; background-color: rgba(255,100,50,0.5); }
+.log2div-log-row-badge.log2div-error     { color: white; background-color: rgba(255,0,0,0.5); }
+.log2div-log-row-badge.log2div-exception { color: white; background-color: rgba(255,0,255,0.5); }
 
-  /* Heading checkbox container styles */
-  .log2div-checkbox-container {
-    display: flex;
-    margin-left: 10px;
-    cursor: pointer;
-    align-items: center;
-  }
-
-  .log2div-log-row-badge {
-    background-color: rgba(255,0,0,.8);
-    border-radius: 12px;
-    color: white;
-    font: bold 15px/13px Helvetica, Verdana, Tahoma;
-    height: 1em; 
-    padding: 5px 5px 5px 5px;
-    margin-right: 0.4em;
-  }
-
-  .log2div-log-row span {
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-  } 
-
-  .log2div-log-row {
-    display: flex;
-    justify-content: normal;
-    &:nth-child(odd) {
-      background: rgba(0,0,0,.1);
-    }
-  }
-
-  /* Message type styles */
-  .log2div-info      { color: rgb(0,0,255); }
-  .log2div-warning   { color: rgb(255,100,50); }
-  .log2div-error     { color: rgb(255,0,0); }
-  .log2div-exception { color: rgb(255,0,255); }
-
-  /* Badge styles based on the logging type */
-  .log2div-log-row-badge.log2div-info      { color: white; background-color: rgba(0,0,255,0.5); }
-  .log2div-log-row-badge.log2div-warning   { color: white; background-color: rgba(255,100,50,0.5); }
-  .log2div-log-row-badge.log2div-error     { color: white; background-color: rgba(255,0,0,0.5); }
-  .log2div-log-row-badge.log2div-exception { color: white; background-color: rgba(255,0,255,0.5); }
-
-  thead {
-    background: rgba(0,0,0,.2);
-  }
+thead {
+  background: rgba(0,0,0,.2);
 }
