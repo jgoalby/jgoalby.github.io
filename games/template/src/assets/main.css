@@ -52,7 +52,6 @@ span { white-space: pre; }
 
 #log2div-container {
   position: absolute;
-  display: none;
   z-index: 1000;
   min-height: 55px;
   width: 98% !important;

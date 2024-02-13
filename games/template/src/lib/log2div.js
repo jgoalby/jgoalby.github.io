@@ -56,6 +56,7 @@ const ERROR_PREFIX               = '[ERROR]';
 const EXCEPTION_PREFIX           = '[EXCEPTION]';
 
 // Defaults for boolean options so they are easy to change. If you are a user you can change these via options.
+const DEFAULT_SHOW_CONTAINER      = false;
 const DEFAULT_SHOWCAPTION         = true;
 const DEFAULT_SHOWCLEARBUTTON     = true;
 const DEFAULT_SHOWCOPYTEXTBUTTON  = true;
@@ -84,12 +85,13 @@ function initLog2Div(options) {
   const copyToBrowserConsole = options.copyToBrowserConsole || true;
 
   // If we want to set various options.
-  const showCaption          = options.showCaption         || DEFAULT_SHOWCAPTION;
-  const showClearButton      = options.showClearButton     || DEFAULT_SHOWCLEARBUTTON;
-  const showCopyTextButton   = options.showCopyTextButton  || DEFAULT_SHOWCOPYTEXTBUTTON;
-  const showCopyHTMLButton   = options.showCopyHTMLButton  || DEFAULT_SHOWCOPYHTMLBUTTON;
-  const showEnabledCheckbox  = options.showEnabledCheckbox || DEFAULT_SHOWENABLEDCHECKBOX;
-  const captionText          = options.captionText         || DEFAULT_CAPTIONTEXT;
+  const showLog2DivContainer = options.showLog2DivContainer || DEFAULT_SHOW_CONTAINER;
+  const showCaption          = options.showCaption          || DEFAULT_SHOWCAPTION;
+  const showClearButton      = options.showClearButton      || DEFAULT_SHOWCLEARBUTTON;
+  const showCopyTextButton   = options.showCopyTextButton   || DEFAULT_SHOWCOPYTEXTBUTTON;
+  const showCopyHTMLButton   = options.showCopyHTMLButton   || DEFAULT_SHOWCOPYHTMLBUTTON;
+  const showEnabledCheckbox  = options.showEnabledCheckbox  || DEFAULT_SHOWENABLEDCHECKBOX;
+  const captionText          = options.captionText          || DEFAULT_CAPTIONTEXT;
 
   // Booleans have to be checked for undefined as they can be set to false.
   if (options.enabled !== undefined) {
@@ -129,6 +131,17 @@ function initLog2Div(options) {
       // Create the element, give it an id, and append it to the body.
       outer = document.createElement('div');
       outer.id = id;
+
+      // Add the class for the container for initial visibility. It hasn't been added to the DOM yet
+      // so we need to use classList rather than call the functions for show and hide. Could add it 
+      // before, but then it might flash onto the screen, so this is cleaner.
+      if (showLog2DivContainer) {
+        outer.classList.add(CONSOLE_CONTAINER_SHOW);
+      } else {
+        outer.classList.add(CONSOLE_CONTAINER_HIDE);
+      }
+
+      // Add it to the DOM.
       document.body.appendChild(outer);
     }
 
