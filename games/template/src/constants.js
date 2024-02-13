@@ -49,6 +49,7 @@ const SETTINGS = {
   musicOption: 'musicOption',
   soundOption: 'soundOption',
   introspectOption: 'introspectOption',
+  consoleOption: 'consoleOption',
 };
 
 // Default values for the settings. Make sure names match above.
@@ -56,6 +57,7 @@ const DEFAULT_SETTINGS = {
   musicOption: false,
   soundOption: true,
   introspectOption: false,
+  consoleOption: false,
 };
 
 // The exported class that contains all of the constants.

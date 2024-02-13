@@ -1,9 +1,5 @@
 import Constants from '../constants.js';
-import IntrospectPlugin from '../plugins/IntrospectPlugin.js';
-import SettingsPlugin from '../plugins/SettingsPlugin.js';
-import EventPlugin from '../plugins/EventPlugin.js';
-import AudioPlugin from '../plugins/AudioPlugin.js';
-import FirebasePlugin from '../plugins/FirebasePlugin.js';
+import { global_plugins } from '../plugins/plugins.js'
 
 var config = {
   type: Constants.GENERAL.TYPE,
@@ -18,13 +14,7 @@ var config = {
     },
   },
   plugins: {
-    global: [
-      EventPlugin.options,
-      SettingsPlugin.options,
-      IntrospectPlugin.options,
-      AudioPlugin.options,
-      FirebasePlugin.options,
-    ],
+    global: global_plugins,
   },
   parent: Constants.GENERAL.PARENT,
   dom: { createContainer: Constants.GENERAL.CREATE_CONTAINER },

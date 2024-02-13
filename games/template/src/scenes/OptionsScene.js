@@ -12,6 +12,7 @@ export default class OptionsScene extends Phaser.Scene {
     this.musicCheckBox = null;
     this.soundCheckBox = null;
     this.introspectCheckBox = null;
+    this.consoleCheckBox = null;
   }
 
   create() {
@@ -31,6 +32,10 @@ export default class OptionsScene extends Phaser.Scene {
       () => { return this.settings.getValue(Constants.SETTINGS.introspectOption) },
       (checked) => { this.settings.setValue(Constants.SETTINGS.introspectOption, checked) });
 
+    this.consoleCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Console Enabled',
+      () => { return this.settings.getValue(Constants.SETTINGS.consoleOption) },
+      (checked) => { this.settings.setValue(Constants.SETTINGS.consoleOption, checked) });
+
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
     this.scale.on('resize', this.resize, this);
@@ -47,6 +52,7 @@ export default class OptionsScene extends Phaser.Scene {
     this.musicCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 50);
     this.soundCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 130);
     this.introspectCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 210);
+    this.consoleCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 290);
     this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
   }
 }

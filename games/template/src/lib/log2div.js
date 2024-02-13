@@ -12,6 +12,10 @@ const BASE_PROJECT_ID            = PROJECT_NAME.toLowerCase();
 // The id of the element that will contain everything.
 const CONSOLE_CONTAINER_ID       = BASE_PROJECT_ID + '-container';
 
+// Visibility of the whoole container.
+const CONSOLE_CONTAINER_SHOW     = BASE_PROJECT_ID + '-container-show';
+const CONSOLE_CONTAINER_HIDE     = BASE_PROJECT_ID + '-container-hide';
+
 // The id of the element that will contain the log messages.
 const MESSAGES_CONTAINER_ID      = BASE_PROJECT_ID + '-log-messages-container';
 
@@ -496,6 +500,28 @@ function toggleLog2DivVisibility() {
 }
 
 /**
+ * Show the log div.
+ * 
+ * @returns {void}
+ */
+function showLog2Div() {
+  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+  elem.classList.add(CONSOLE_CONTAINER_SHOW);
+  elem.classList.remove(CONSOLE_CONTAINER_HIDE);
+}
+
+/**
+ * Hide the log div.
+ * 
+ * @returns {void}
+ */
+function hideLog2Div() {
+  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+  elem.classList.remove(CONSOLE_CONTAINER_SHOW);
+  elem.classList.add(CONSOLE_CONTAINER_HIDE);
+}
+
+/**
  * Clear the log div of all messages.
  * 
  * @returns {void}
@@ -674,6 +700,8 @@ export {
   initLog2Div,
   clearLog2Div,
   toggleLog2DivVisibility,
+  showLog2Div,
+  hideLog2Div,
   getLog2DivTextMessages,
   getLog2DivHTMLMessages,
   copyPlainLog2DivMessages,
