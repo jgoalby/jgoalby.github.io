@@ -505,10 +505,11 @@ function initLog2Div(options) {
  */
 function toggleLog2DivVisibility() {
   const elem = document.getElementById(CONSOLE_CONTAINER_ID);
-  if (elem.style.display === "block") {
-    elem.style.display = "none";
+
+  if (elem.classList.contains(CONSOLE_CONTAINER_SHOW)) {
+    hideLog2Div();
   } else {
-    elem.style.display = "block";
+    showLog2Div();
   }
 }
 
