@@ -100,19 +100,16 @@ span { white-space: pre; }
   }
 
   .log2div-log-row-badge {
-    display: inline-block;
     background-color: rgba(255,0,0,.8);
     border-radius: 12px;
     color: white;
     font: bold 15px/13px Helvetica, Verdana, Tahoma;
     height: 1em; 
-    min-width: 1em;
-    padding: 2px 11px 0 3px;
+    padding: 5px 5px 5px 5px;
     margin-right: 0.4em;
   }
 
   .log2div-log-row span {
-    display: inline-block;
     white-space: pre-wrap;
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -121,6 +118,8 @@ span { white-space: pre; }
   } 
 
   .log2div-log-row {
+    display: flex;
+    justify-content: normal;
     &:nth-child(odd) {
       background: rgba(0,0,0,.1);
     }
