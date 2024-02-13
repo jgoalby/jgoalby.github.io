@@ -72,6 +72,10 @@ span { white-space: pre; }
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Show/hide styles */
+.log2div-container-show { display: block; }
+.log2div-container-hide { display: none; }
+
 /* Caption styling */
 #log2div-caption {
   padding: 10px 0 12px 0;
