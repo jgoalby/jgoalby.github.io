@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import {  } from '../lib/log2div.js';
+import { showLog2Div, hideLog2Div } from '../lib/log2div.js';
 
 export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
@@ -33,11 +33,11 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   }
 
   show() {
-    
+    showLog2Div();
   }
 
   hide() {
-    
+    hideLog2Div();
   }
 
   static get options() {
