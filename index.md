@@ -4,6 +4,8 @@ You never know what you are capable of when you are doing yesterday over again â
 
 ## Projects
 
+<div class="content">
+<div class="projects" markdown="1">
 Personal projects:
 
 {% for project in site.projects %}
