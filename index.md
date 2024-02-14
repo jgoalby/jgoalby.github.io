@@ -2,6 +2,15 @@
 
 You never know what you are capable of when you are doing yesterday over again – will.i.am
 
+## Projects
+
+Personal projects:
+
+{% for project in site.projects %}
+* [{{ project.title }}]({{ project.url }})
+{% endfor %}
+</div>
+
 <div class="content">
 <div class="thoughts" markdown="1">
 <img class="left" src="/assets/brain.png" alt="Brain" width="350">
