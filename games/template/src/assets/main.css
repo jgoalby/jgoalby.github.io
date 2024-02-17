@@ -7,9 +7,9 @@ body {
   background: #000;
 }
 
-#main {
+/*#main {
   flex: 1;
-}
+}*/
 
 canvas {
   width: 100%; 
