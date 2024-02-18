@@ -12,6 +12,7 @@ Personal projects I am working on:
 
 {% for project in site.projects %}
 * [{{ project.title }}]({{ project.url }})
+  * {{ project.description }}
 {% endfor %}
 </div>
 
