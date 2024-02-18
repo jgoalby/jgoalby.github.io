@@ -1,12 +1,14 @@
 ---
 layout: default
 title: "log2div"
+description: "Pure Javascript library for viewing console logging messages in the browser."
 date: 2024-02-14
 ---
 
-- # TL;DR:
-	- Pure Javascript library for viewing console logging messages in the browser.
-- # log2div
+# TL;DR:
+- Pure Javascript library for viewing console logging messages in the browser.
+
+# log2div
 
 ## Links
 - [GitHub Page](https://github.com/jgoalby/log2div/)
