@@ -27,10 +27,12 @@ export default class OptionsScene extends Phaser.Scene {
 
     for (let i = 0; i < categories.length; i++) {
       const category = categories[i];
+      console.log(category);
       const settings = this.settings.getSettingsForCategory(category);
 
       for (let j = 0; j < settings.length; j++) {
         const setting = settings[j];
+        console.log(setting);
 
         const ctrl = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', setting.description,
         () => { return this.settings.getValue(setting.category, setting.name) },
