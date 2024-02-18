@@ -24,7 +24,8 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     // Get the settings for the specified category that we know exists.
     const categoryValues = this._settingsByCategory[category];
 
-    // If the setting name is not present in this category, create it.
+    // If the setting name is not present in this category, create it. This will always
+    // happen the first time a setting is accessed.
     if (categoryValues[name] === undefined) {
       categoryValues[name] = {};
       categoryValues[name].name = name;
@@ -32,6 +33,8 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
       categoryValues[name].category = category;
       categoryValues[name].description = name;
       categoryValues[name].type = undefined;
+      categoryValues[name].getFn = () => { return this.getValue(category, name) };
+      categoryValues[name].setFn = (newValue) => { this.setValue(category, name, newValue) };
     }
 
     // Return the setting object.
