@@ -1,5 +1,12 @@
 # TODOs
 
+# More stuff to do
+- Can I have the settings for the console update based on changing the visibility of the console?
+  - So, 2 way communication. Does it mess up everything?
+- Have tabs for the settings and catagories so like settings go into the same tab
+  - Can start with audio as I have 2 of those. The intrpspection could be another
+- Need to add TweakPane to the project and get that going to see how well it works
+
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
 Download TweakPane and state machine to the libs folder
