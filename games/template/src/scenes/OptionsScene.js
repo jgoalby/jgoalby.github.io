@@ -27,7 +27,7 @@ export default class OptionsScene extends Phaser.Scene {
 
     for (let i = 0; i < categories.length; i++) {
       const category = categories[i];
-      const settings = this.settings.getSettingsByCategory(category);
+      const settings = this.settings.getSettingsForCategory(category);
 
       for (let j = 0; j < settings.length; j++) {
         const setting = settings[j];
