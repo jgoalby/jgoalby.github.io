@@ -1,6 +1,6 @@
-// Initialize the console log2div first.
-import { initLog2Div, toggleLog2DivVisibility } from './lib/log2div.js';
-(() => { initLog2Div(); })();
+// Initialize console first. Do it here so that we can capture any console messages that happen during startup.
+import consolePlugin from './plugins/ConsolePlugin.js';
+(() => { consolePlugin.initialize(); })();
 
 import { config } from './config/config.js';
 import Globals from './globals.js';
@@ -51,8 +51,14 @@ function onResizeTimeout() {
 }
 
 async function showConsole(event) {
+  // We need to use the console plugin rather than accessing the console provider directly.
+  const consolePlugin = window.game.plugins.get('ConsolePlugin');
+
+  // If the console plugin is not available then do nothing.
+  if (consolePlugin === undefined) { return; }
+
   // CTRL-D shows the console.
-  if ((event.code == "KeyD") && (event.ctrlKey)) { toggleLog2DivVisibility(); }
+  if ((event.code == "KeyD") && (event.ctrlKey)) { consolePlugin.toggle(); }
 }
 
 (() => {

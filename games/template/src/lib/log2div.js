@@ -522,7 +522,7 @@ function toggleLog2DivVisibility() {
  * 
  * @returns {boolean}
  */
-function isLog2divVisible() {
+function isLog2DivVisible() {
   // Get the main container for log2div.
   const elem = document.getElementById(CONSOLE_CONTAINER_ID);
 
@@ -743,7 +743,7 @@ export {
   initLog2Div,
   clearLog2Div,
   toggleLog2DivVisibility,
-  isLog2divVisible,
+  isLog2DivVisible,
   showLog2Div,
   hideLog2Div,
   getLog2DivTextMessages,
