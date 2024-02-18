@@ -4,6 +4,7 @@ import { showLog2Div, hideLog2Div } from '../lib/log2div.js';
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
 const CONSOLE_OPTION = 'consoleOption';
+const CONSOLE_OPTION_DESC = 'Console Enabled';
 const DEFAULT_CONSOLE_OPTION = false;
 const CONSOLE_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
@@ -16,7 +17,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     this.customevent = pluginManager.get('EventPlugin');
 
     // Register the settings we need.
-    this.settings.registerSetting(CATEGORY, CONSOLE_OPTION, DEFAULT_CONSOLE_OPTION, CONSOLE_OPTION_TYPE);
+    this.settings.registerSetting(CATEGORY, CONSOLE_OPTION, DEFAULT_CONSOLE_OPTION, CONSOLE_OPTION_DESC, CONSOLE_OPTION_TYPE);
 
     // We would like to know when the settings have changed so we can do stuff.
     this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));

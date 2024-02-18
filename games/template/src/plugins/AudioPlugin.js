@@ -3,10 +3,12 @@ import Constants from '../constants.js';
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
 const CATEGORY = 'sound';
 const MUSIC_OPTION = 'musicOption';
+const MUSIC_OPTION_DESC = 'Music Enabled';
 const DEFAULT_MUSIC_OPTION = false;
 const MUSIC_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
 const SOUND_OPTION = 'soundOption';
+const SOUND_OPTION_DESC = 'Sound Effects Enabled';
 const DEFAULT_SOUND_OPTION = true;
 const SOUND_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
@@ -22,8 +24,8 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this.customevent = pluginManager.get('EventPlugin');
 
     // Register the settings we need.
-    this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_TYPE);
-    this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_TYPE);
+    this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
+    this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
 
     // We would like to know when the settings have changed so we can do stuff.
     this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
