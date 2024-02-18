@@ -6,7 +6,8 @@ You never know what you are capable of when you are doing yesterday over again â
 
 <div class="content">
 <div class="projects" markdown="1">
-Personal projects:
+<img class="right" src="/assets/lightbulb.png" alt="Projects" width="350">
+## Projects:
 
 {% for project in site.projects %}
 * [{{ project.title }}]({{ project.url }})
