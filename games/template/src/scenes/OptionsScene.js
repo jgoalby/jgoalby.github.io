@@ -20,6 +20,8 @@ export default class OptionsScene extends Phaser.Scene {
       this.heading = this.add.text(0, 0, 'Options', Constants.STYLES.HEADING_TEXT);
       this.heading.setOrigin(0.5, 0);
       this.heading.setY(50);
+    } else {
+      this.add.existing(this.heading);
     }
 
     // We need to recreate the current settings every time we create the scene because
