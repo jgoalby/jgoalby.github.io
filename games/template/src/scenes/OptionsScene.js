@@ -7,7 +7,7 @@ export default class OptionsScene extends Phaser.Scene {
   constructor() {
     super('Options');
     this.heading = null;
-    this.button = null;
+    this.mainMenuButton = null;
 
     // TODO: Just a list to start with, we need to do better when we use categories
     // TODO: Make "tabs" for categories.
@@ -51,7 +51,7 @@ export default class OptionsScene extends Phaser.Scene {
       }
     }
 
-    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
+    this.mainMenuButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
     this.scale.on('resize', this.resize, this);
     this.resize();
@@ -69,9 +69,10 @@ export default class OptionsScene extends Phaser.Scene {
 
     for (let i = 0; i < this.currentSettings.length; i++) {
       const setting = this.currentSettings[i];
+      console.warn(this.heading.y + 50 + (i * 80));
       setting.setPosition(this.cameras.main.width / 4, this.heading.y + 50 + (i * 80));
     }
 
-    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
+    this.mainMenuButton.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.mainMenuButton.height / 2) + 10));
   }
 }
