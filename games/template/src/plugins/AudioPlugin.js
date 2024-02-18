@@ -2,6 +2,7 @@ import Constants from '../constants.js';
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
 const CATEGORY = 'sound';
+
 const MUSIC_OPTION = 'musicOption';
 const MUSIC_OPTION_DESC = 'Music Enabled';
 const DEFAULT_MUSIC_OPTION = false;
