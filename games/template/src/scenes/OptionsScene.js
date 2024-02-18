@@ -73,7 +73,6 @@ export default class OptionsScene extends Phaser.Scene {
 
     for (let i = 0; i < this.currentSettings.length; i++) {
       const setting = this.currentSettings[i];
-      console.warn(this.heading.y + 50 + (i * 80));
       setting.setPosition(this.cameras.main.width / 4, this.heading.y + 50 + (i * 80));
     }
 

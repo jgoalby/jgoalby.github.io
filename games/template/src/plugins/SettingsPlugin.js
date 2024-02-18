@@ -56,7 +56,7 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     const categoryValue = this.getSetting(category, name);
 
     // Set the value. We do not care if it is there before, but only set it if changed.
-    if (categoryValue.value != newValue) {
+    if (categoryValue.value !== newValue) {
       // Set the new value, and then emit an event to let everyone know the setting has changed.
       categoryValue.value = newValue;
       this.customevent.emit(Constants.EVENTS.SETTING_CHANGED, { category: category, name: name, value: newValue});
@@ -65,6 +65,7 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
 
   getValue(category, name) {
     const categoryValue = this.getSetting(category, name);
+    console.warn(`Getting value for ${categoryValue.category}.${categoryValue.name} = ${categoryValue.value}`);
     return categoryValue.value
   }
 
