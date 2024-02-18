@@ -2,9 +2,8 @@
 
 You never know what you are capable of when you are doing yesterday over again â€“ will.i.am
 
-## Projects
-
 <div class="content">
+
 <div class="projects" markdown="1">
 <img class="right" src="/assets/lightbulb.png" alt="Projects" width="350">
 ## Projects:
@@ -14,7 +13,6 @@ You never know what you are capable of when you are doing yesterday over again â
 {% endfor %}
 </div>
 
-<div class="content">
 <div class="thoughts" markdown="1">
 <img class="left" src="/assets/brain.png" alt="Brain" width="350">
 ## Thoughts
@@ -36,4 +34,5 @@ Fact-based longer writing usually technology related:
 * [{{ article.title }}]({{ article.url }})
 {% endfor %}
 </div>
+
 </div>
