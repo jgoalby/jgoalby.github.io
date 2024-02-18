@@ -6,20 +6,25 @@ import Scenes from './Scenes.js';
 export default class OptionsScene extends Phaser.Scene {
   constructor() {
     super('Options');
-    this.heading = null;
-    this.mainMenuButton = null;
+    this.heading = undefined;
+    this.mainMenuButton = undefined;
 
     // TODO: Just a list to start with, we need to do better when we use categories
     // TODO: Make "tabs" for categories.
-    this.currentSettings = [];
+    this.currentSettings = undefined;
   }
 
   create() {
-    console.log('OptionsScene');
-    console.log(this.heading);
-    this.heading = this.add.text(0, 0, 'Options', Constants.STYLES.HEADING_TEXT);
-    this.heading.setOrigin(0.5, 0);
-    this.heading.setY(50);
+    // Heading does not change, so we only need to create it once.
+    if (this.heading === undefined) {
+      this.heading = this.add.text(0, 0, 'Options', Constants.STYLES.HEADING_TEXT);
+      this.heading.setOrigin(0.5, 0);
+      this.heading.setY(50);
+    }
+
+    // We need to recreate the current settings every time we create the scene because
+    // they could have changed.
+    this.currentSettings = [];
 
     const categories = this.settings.getCategories();
 
@@ -53,7 +58,10 @@ export default class OptionsScene extends Phaser.Scene {
       }
     }
 
-    this.mainMenuButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
+    // Heading does not change, so we only need to create it once.
+    if (this.mainMenuButton === undefined) {
+      this.mainMenuButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
+    }
 
     this.scale.on('resize', this.resize, this);
     this.resize();
