@@ -46,6 +46,9 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     categoryValue.category = category;
     categoryValue.description = description;
     categoryValue.type = type;
+
+    // TODO REMOVE
+    console.log(this._settingsByCategory);
   }
 
   setValue(category, name, value) {
