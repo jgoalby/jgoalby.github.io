@@ -1,6 +1,6 @@
 // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
-import consolePlugin from './plugins/ConsolePlugin.js';
-(() => { consolePlugin.initialize(); })();
+import ConsolePlugin from './plugins/ConsolePlugin.js';
+(() => { ConsolePlugin.initialize(); })();
 
 import { config } from './config/config.js';
 import Globals from './globals.js';
@@ -50,15 +50,20 @@ function onResizeTimeout() {
   window.game.scale.resize(w, h);
 }
 
-async function showConsole(event) {
-  // We need to use the console plugin rather than accessing the console provider directly.
-  const consolePlugin = window.game.plugins.get('ConsolePlugin');
-
-  // If the console plugin is not available then do nothing.
-  if (consolePlugin === undefined) { return; }
-
+async function handleKeydown(event) {
   // CTRL-D shows the console.
-  if ((event.code == "KeyD") && (event.ctrlKey)) { consolePlugin.toggle(); }
+  if ((event.code == "KeyD") && (event.ctrlKey)) {
+    // We need to use the console plugin rather than accessing the console provider directly.
+    /** @type {any} Need to type this as any as function | base plugin does not like me. */
+    const basePlugin = window.game.plugins.get('ConsolePlugin');
+
+    // Only do something if the plugin is available.
+    if (basePlugin !== undefined) {
+      /** @type {ConsolePlugin} Now we can type it as console plugin to get type safety. */
+      const consolePlugin = basePlugin;
+      consolePlugin.toggle();
+    }
+  }
 }
 
 (() => {
@@ -88,5 +93,5 @@ async function showConsole(event) {
   }
 
   window.addEventListener('resize', resize);
-  window.addEventListener("keydown", showConsole, false);
+  window.addEventListener("keydown", handleKeydown, false);
 })();
