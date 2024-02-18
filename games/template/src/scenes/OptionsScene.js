@@ -9,12 +9,8 @@ export default class OptionsScene extends Phaser.Scene {
     this.heading = null;
     this.button = null;
 
-    /*this.musicCheckBox = null;
-    this.soundCheckBox = null;
-    this.introspectCheckBox = null;
-    this.consoleCheckBox = null;*/
-
-    // Just a list to start with, we need to do better when we use categories
+    // TODO: Just a list to start with, we need to do better when we use categories
+    // TODO: Make "tabs" for categories.
     this.currentSettings = [];
   }
 
@@ -26,36 +22,36 @@ export default class OptionsScene extends Phaser.Scene {
     const categories = this.settings.getCategories();
 
     for (let i = 0; i < categories.length; i++) {
-      const category = categories[i];
-      const settings = this.settings.getSettingsForCategory(category);
+      const settings = this.settings.getSettingsForCategory(categories[i]);
 
+      // Settings is a dictionary, so we need to iterate over the keys.
       for (let key in settings) {
+        // Get the current setting object.
         const setting = settings[key];
-        console.log(setting);
 
-        const ctrl = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', setting.description,
-        () => { return this.settings.getValue(setting.category, setting.name) },
-        (checked) => { this.settings.setValue(setting.category, setting.name, checked) });  
+        // TODO: Need to do this based on type of setting.
 
-        this.currentSettings.push(ctrl);
+        let ctrl = undefined;
+
+        switch (setting.type) {
+          case Constants.SETTINGS_TYPES.boolean:
+            ctrl = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', setting.description,
+            () => { return this.settings.getValue(setting.category, setting.name) },
+            (checked) => { this.settings.setValue(setting.category, setting.name, checked) });
+            break;
+          case Constants.SETTINGS_TYPES.number:
+            break;
+          case Constants.SETTINGS_TYPES.string:
+            break;
+        }
+
+        if (ctrl !== undefined) {
+          this.currentSettings.push(ctrl);
+        } else {
+          console.error(`Unknown setting type: ${setting.type}`);
+        }
       }
     }
-
-    /*this.musicCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Music Enabled',
-      () => { return this.settings.getValue(Constants.SETTINGS_CATEGORIES.sound, Constants.SETTINGS.musicOption) },
-      (checked) => { this.settings.setValue(Constants.SETTINGS_CATEGORIES.sound, Constants.SETTINGS.musicOption, checked) });
-
-    this.soundCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Sound Effects Enabled',
-      () => { return this.settings.getValue(Constants.SETTINGS_CATEGORIES.sound, Constants.SETTINGS.soundOption) },
-      (checked) => { this.settings.setValue(Constants.SETTINGS_CATEGORIES.sound, Constants.SETTINGS.soundOption, checked) });
-
-    this.introspectCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Introspect Enabled',
-      () => { return this.settings.getValue(Constants.SETTINGS_CATEGORIES.developer, Constants.SETTINGS.introspectOption) },
-      (checked) => { this.settings.setValue(Constants.SETTINGS_CATEGORIES.developer, Constants.SETTINGS.introspectOption, checked) });
-
-    this.consoleCheckBox = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', 'Console Enabled',
-      () => { return this.settings.getValue(Constants.SETTINGS_CATEGORIES.developer, Constants.SETTINGS.consoleOption) },
-      (checked) => { this.settings.setValue(Constants.SETTINGS_CATEGORIES.developer, Constants.SETTINGS.consoleOption, checked) });*/
 
     this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
 
@@ -71,10 +67,7 @@ export default class OptionsScene extends Phaser.Scene {
   resize() {
     this.heading.setX(this.cameras.main.width / 2);
 
-    /*this.musicCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 50);
-    this.soundCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 130);
-    this.introspectCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 210);
-    this.consoleCheckBox.setPosition(this.cameras.main.width / 4, this.heading.y + 290);*/
+    // TODO: This needs to change based on the categories.
 
     for (let i = 0; i < this.currentSettings.length; i++) {
       const setting = this.currentSettings[i];

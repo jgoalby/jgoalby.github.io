@@ -73,10 +73,6 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   getSettingsForCategory(category) {
-    console.log("this._settingsByCategory[category];");
-    console.log(category);
-    console.log(this._settingsByCategory);
-    console.log(this._settingsByCategory[category]);
     return this._settingsByCategory[category];
   }
 

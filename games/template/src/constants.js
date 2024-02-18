@@ -45,7 +45,7 @@ class Events {
 // Settings types we support.
 const SETTINGS_TYPES = {
   boolean: 'boolean',
-  text: 'text',
+  string: 'string',
   number: 'number',
 };
 
