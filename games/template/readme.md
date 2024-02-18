@@ -122,6 +122,9 @@ In creating these images with Dall-e, I wonder if I can create a fluid interface
 - See if I can get full screen to work using F11 (theres some code in the game for this already)
   - Saw it here:
     - https://github.com/shimozurdo/mobile-game-base-phaser3
+- Could https://stenciljs.com be used to create web components for the game?
+    - Are web components a good idea for the game?
+    - Maybe just the concepts would be useful?
 
 # Testing TODOs
 
@@ -159,4 +162,3 @@ In creating these images with Dall-e, I wonder if I can create a fluid interface
 - Convert to use typescript and github actions to compile?
   - https://putridparrot.com/blog/building-and-testing-typescript-code-using-github-actions/
   - https://github.com/marketplace/actions/typescript-build
-
