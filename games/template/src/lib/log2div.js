@@ -518,12 +518,31 @@ function toggleLog2DivVisibility() {
 }
 
 /**
+ * Return whether log2div is visible or not.
+ * 
+ * @returns {boolean}
+ */
+function isLog2divVisible() {
+  // Get the main container for log2div.
+  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+
+  // If it already has the show class, then we are visible.
+  return elem.classList.contains(CONSOLE_CONTAINER_SHOW);
+}
+
+/**
  * Show the log div.
  * 
  * @returns {void}
  */
 function showLog2Div() {
+  // Get the main container for log2div.
   const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+
+  // If it already has the show class, then we do not need to do anything.
+  if (elem.classList.contains(CONSOLE_CONTAINER_SHOW)) { return; }
+
+  // Add the show class and remove the hide class.
   elem.classList.add(CONSOLE_CONTAINER_SHOW);
   elem.classList.remove(CONSOLE_CONTAINER_HIDE);
 }
@@ -534,7 +553,13 @@ function showLog2Div() {
  * @returns {void}
  */
 function hideLog2Div() {
+  // Get the main container for log2div.
   const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+
+  // If it already has the hide class, then we do not need to do anything.
+  if (elem.classList.contains(CONSOLE_CONTAINER_HIDE)) { return; }
+
+  // Add the hide class and remove the show class.
   elem.classList.remove(CONSOLE_CONTAINER_SHOW);
   elem.classList.add(CONSOLE_CONTAINER_HIDE);
 }
@@ -718,6 +743,7 @@ export {
   initLog2Div,
   clearLog2Div,
   toggleLog2DivVisibility,
+  isLog2divVisible,
   showLog2Div,
   hideLog2Div,
   getLog2DivTextMessages,

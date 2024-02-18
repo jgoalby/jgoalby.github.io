@@ -51,15 +51,16 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     categoryValue.type = type;
   }
 
-  setValue(category, name, value) {
+  setValue(category, name, newValue) {
     // Get it or create it.
     const categoryValue = this.getSetting(category, name);
 
-    // Set the value. We do not care if it is there before.
-    categoryValue.value = value;
-
-    // Emit an event to let everyone know the setting has changed.
-    this.customevent.emit(Constants.EVENTS.SETTING_CHANGED, { category: category, name: name, value: value});
+    // Set the value. We do not care if it is there before, but only set it if changed.
+    if (categoryValue.value != newValue) {
+      // Set the new value, and then emit an event to let everyone know the setting has changed.
+      categoryValue.value = newValue;
+      this.customevent.emit(Constants.EVENTS.SETTING_CHANGED, { category: category, name: name, value: newValue});
+    }
   }
 
   getValue(category, name) {

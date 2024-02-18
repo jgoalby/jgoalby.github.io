@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { showLog2Div, hideLog2Div } from '../lib/log2div.js';
+import { isLog2divVisible, showLog2Div, hideLog2Div } from '../lib/log2div.js';
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -44,11 +44,17 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   }
 
   show() {
+    // Each of these check to make sure there is a change before doing anything.
+    // This method can be called from the options menu or directly.
     showLog2Div();
+    this.settings.setValue(CATEGORY, CONSOLE_OPTION, true);
   }
 
   hide() {
+    // Each of these check to make sure there is a change before doing anything.
+    // This method can be called from the options menu or directly.
     hideLog2Div();
+    this.settings.setValue(CATEGORY, CONSOLE_OPTION, false);
   }
 
   static get options() {
