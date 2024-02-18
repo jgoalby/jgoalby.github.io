@@ -1,5 +1,11 @@
 import Constants from '../constants.js';
 
+// Constants that only this plugin uses.
+const CATEGORY = 'developer';
+const INTROSPECTION_OPTION = 'introspectOption';
+const DEFAULT_INTROSPECTION_OPTION = false;
+const INTROSPECTION_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+
 export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
@@ -7,8 +13,12 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     // Lazy create the GUI.
     this._gui = undefined;
 
-    // Get the event plugin.
+    // Get the dependent plugins.
+    this.settings = pluginManager.get('SettingsPlugin');
     this.customevent = pluginManager.get('EventPlugin');
+
+    // Register the settings we need.
+    this.settings.registerSetting(CATEGORY, INTROSPECTION_OPTION, DEFAULT_INTROSPECTION_OPTION, INTROSPECTION_OPTION_TYPE);
 
     // We would like to know when the settings have changed so we can do stuff.
     this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
@@ -25,7 +35,7 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
-    if (setting.name === Constants.SETTINGS.introspectOption) {
+    if (setting.name === INTROSPECTION_OPTION) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         this.show();

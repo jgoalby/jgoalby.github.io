@@ -42,22 +42,11 @@ class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
 };
 
-// The following SETTINGS constants need to be strings, so they can be used as keys in an object.
-
-// Settings we support. Make sure the names match the values.
-const SETTINGS = {
-  musicOption: 'musicOption',
-  soundOption: 'soundOption',
-  introspectOption: 'introspectOption',
-  consoleOption: 'consoleOption',
-};
-
-// Default values for the settings. Make sure names match above.
-const DEFAULT_SETTINGS = {
-  musicOption: false,
-  soundOption: true,
-  introspectOption: false,
-  consoleOption: false,
+// Settings types we support.
+const SETTINGS_TYPES = {
+  boolean: 'boolean',
+  text: 'text',
+  number: 'number',
 };
 
 // The exported class that contains all of the constants.
@@ -92,6 +81,5 @@ export default class Constants {
   static get PHYSICS() { return Physics; }
   static get STYLES() { return Styles; }
   static get EVENTS() { return Events; }
-  static get SETTINGS() { return SETTINGS; }
-  static get DEFAULT_SETTINGS() { return DEFAULT_SETTINGS; }
+  static get SETTINGS_TYPES() { return SETTINGS_TYPES; }
 }
