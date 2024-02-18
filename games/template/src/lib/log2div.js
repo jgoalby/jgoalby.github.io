@@ -42,6 +42,7 @@ const CLEAR_BUTTON_ID            = BASE_PROJECT_ID + '-clear-button';       cons
 const COPY_TEXT_BUTTON_ID        = BASE_PROJECT_ID + '-copy-text-button';   const COPY_TEXT_BUTTON_TEXT      = 'Copy Text';
 const COPY_HTML_BUTTON_ID        = BASE_PROJECT_ID + '-copy-html-button';   const COPY_HTML_BUTTON_TEXT      = 'Copy HTML';
 const ENABLED_CHECKBOX_ID        = BASE_PROJECT_ID + '-enabled-checkbox';   const ENABLED_LABEL_TEXT         = 'Enabled';
+const CLOSE_BUTTON_ID            = BASE_PROJECT_ID + '-close-button';       const CLOSE_BUTTON_TEXT          = 'Close';
 
 // Class for log types
 const INFO_CLASS                 = BASE_PROJECT_ID + '-info';
@@ -62,6 +63,7 @@ const DEFAULT_SHOWCLEARBUTTON     = true;
 const DEFAULT_SHOWCOPYTEXTBUTTON  = true;
 const DEFAULT_SHOWCOPYHTMLBUTTON  = true;
 const DEFAULT_SHOWENABLEDCHECKBOX = true;
+const DEFAULT_SHOWCLOSEBUTTON     = true;
 const DEFAULT_LOGENABLED          = true;
 const DEFAULT_LOGINFOENABLED      = true;
 const DEFAULT_LOGWARNENABLED      = true;
@@ -91,6 +93,7 @@ function initLog2Div(options) {
   const showCopyTextButton   = options.showCopyTextButton   || DEFAULT_SHOWCOPYTEXTBUTTON;
   const showCopyHTMLButton   = options.showCopyHTMLButton   || DEFAULT_SHOWCOPYHTMLBUTTON;
   const showEnabledCheckbox  = options.showEnabledCheckbox  || DEFAULT_SHOWENABLEDCHECKBOX;
+  const showCloseButton      = options.showCloseButton      || DEFAULT_SHOWCLOSEBUTTON;
   const captionText          = options.captionText          || DEFAULT_CAPTIONTEXT;
 
   // Booleans have to be checked for undefined as they can be set to false.
@@ -206,7 +209,7 @@ function initLog2Div(options) {
     const outer = createOuterElement(consoleId);
 
     // If we have been asked to show something in the header.
-    if (showCaption || showClearButton || showCopyTextButton || showCopyHTMLButton || showEnabledCheckbox) {
+    if (showCaption || showClearButton || showCopyTextButton || showCopyHTMLButton || showEnabledCheckbox || showCloseButton) {
       // We need a DIV to put hearder stuff.
       const headerContainer = document.createElement('div');
       headerContainer.id = CONSOLE_LOG_HEADING_ID;
@@ -228,6 +231,7 @@ function initLog2Div(options) {
       if (showCopyHTMLButton)  { headerContainer.appendChild(createButton(COPY_HTML_BUTTON_TEXT, COPY_HTML_BUTTON_ID, copyRichLog2DivMessages)); }
       // And a checkbox for enabled.
       if (showEnabledCheckbox) { headerContainer.appendChild(createCheckbox(ENABLED_LABEL_TEXT, ENABLED_CHECKBOX_ID, getLog2DivEnabled(), enabledChanged)); }
+      if (showCloseButton)     { headerContainer.appendChild(createButton(CLOSE_BUTTON_TEXT, CLOSE_BUTTON_ID, hideLog2Div)); }
 
       // Now add the caption container to the outer element.
       outer.appendChild(headerContainer);
@@ -544,7 +548,7 @@ function clearLog2Div() {
   // Get the element where we add log messages.
   const logDivElement = document.getElementById(MESSAGES_CONTAINER_ID);
 
-  // Defensive check to make sure the log div element exists.
+  // Defensive check to make sure the element exists.
   if (logDivElement) {
     // This removes all the children of the log div.
     logDivElement.replaceChildren();
