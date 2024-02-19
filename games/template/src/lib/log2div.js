@@ -497,6 +497,7 @@ function initLog2Div(options) {
     // inside our console. At least with this we have a fighting chance of seeing them.
     window.addEventListener('error', function (err) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
+      printToDiv(EXCEPTION_PREFIX, err.error);      
       printToDiv(EXCEPTION_PREFIX, err);
     });
   }
