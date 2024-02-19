@@ -27,10 +27,6 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
-    console.log("in audio plugin");
-    console.log(this.settings);
-    console.log(this.customevent);
-
     // Make sure we have the settings plugin.
     if (this.settings) {
       // Register the settings we need.

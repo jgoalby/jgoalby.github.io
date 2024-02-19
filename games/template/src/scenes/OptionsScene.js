@@ -23,15 +23,12 @@ export default class OptionsScene extends Phaser.Scene {
     // Also, the values could have changed. And the controls that we display need to be created again.
     this.currentSettings = [];
 
-    console.log("OptionsScene create");
     // Make sure we have the settings plugin.
     if (this.settings) {
-      console.log("OptionsScene create 2");
       const categories = this.settings.getCategories();
-      console.log(categories);
+
       for (let i = 0; i < categories.length; i++) {
         const settings = this.settings.getSettingsForCategory(categories[i]);
-        console.log(settings);
   
         // Settings is a dictionary, so we need to iterate over the keys.
         for (let key in settings) {
