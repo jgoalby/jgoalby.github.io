@@ -5,7 +5,7 @@ import ConsolePlugin from './plugins/ConsolePlugin.js';
 import { config } from './config/config.js';
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
-import { getConsolePlugin } from './plugins/plugins.js'
+import { getConsolePlugin } from './plugins/pluginshelpers.js'
 
 export default class Game extends Phaser.Game {
   constructor() {

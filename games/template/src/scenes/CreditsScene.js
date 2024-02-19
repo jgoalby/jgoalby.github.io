@@ -1,7 +1,7 @@
 import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
 import Scenes from './Scenes.js';
-import { getPluginListAsString } from '../plugins/plugins.js'
+import { getPluginListAsString } from '../plugins/pluginshelpers.js'
 
 export default class CreditsScene extends Phaser.Scene {
   constructor() {
