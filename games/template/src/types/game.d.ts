@@ -22,6 +22,12 @@ namespace Phaser {
     }
 }
 
+namespace Phaser.Plugins {
+    interface BasePlugin {
+        getVersion(): string;
+    }
+}
+
 interface Element {
     value: any;
 }

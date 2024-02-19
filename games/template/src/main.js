@@ -5,6 +5,7 @@ import ConsolePlugin from './plugins/ConsolePlugin.js';
 import { config } from './config/config.js';
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
+import { getConsolePlugin } from './plugins/plugins.js'
 
 export default class Game extends Phaser.Game {
   constructor() {
@@ -50,35 +51,20 @@ function onResizeTimeout() {
   window.game.scale.resize(w, h);
 }
 
+/**
+ * Handle the keydown event.
+ * @param {KeyboardEvent} event The event.
+ */
 async function handleKeydown(event) {
   // CTRL-D shows the console.
   if ((event.code == "KeyD") && (event.ctrlKey)) {
-    // We need to use the console plugin rather than accessing the console provider directly.
-    /** @type {any} Need to type this as any as function | base plugin does not like me. */
-    const basePlugin = window.game.plugins.get('ConsolePlugin');
-
-    // Only do something if the plugin is available.
-    if (basePlugin !== undefined) {
-      /** @type {ConsolePlugin} Now we can type it as console plugin to get type safety. */
-      const consolePlugin = basePlugin;
-      consolePlugin.toggle();
-    }
+    // Make sure we have a console plugin to work with, and then toggle it.
+    const consolePlugin = getConsolePlugin();
+    if (consolePlugin) { consolePlugin.toggle(); }
   }
 }
 
 (() => {
-  // Test console message.
-  console.log("This is %i %s", 1, "log message.");
-  console.log("This is %ca red message", "color: red;");
-  console.log("This is %ca %s message", "color: red;", "red");
-  console.log("This message is repeated");
-  console.log("This message is repeated");
-  console.log("This message is repeated");
-  console.log("This is %ca red message %cand this is blue", "color: red; font-size: 20px;", "color: blue; font-size: 15px;");
-  console.error("This message is repeated");
-  console.error("This message is repeated");
-  console.log("This is a long message with some Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec odio tempor. More lorem ispsum goes here if we need it to be here.");
-
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -92,6 +78,7 @@ async function handleKeydown(event) {
     console.info('No service worker support in this browser.');
   }
 
+  // Listen out for things.
   window.addEventListener('resize', resize);
   window.addEventListener("keydown", handleKeydown, false);
 })();

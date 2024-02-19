@@ -1,5 +1,6 @@
 import Constants from '../constants.js';
 import { initLog2Div, isLog2DivVisible, showLog2Div, hideLog2Div } from '../lib/log2div.js';
+import { getSettingsPlugin, getEventPlugin } from '../plugins/plugins.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -17,8 +18,8 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     super(pluginManager);
 
     // Get the dependent plugins.
-    this.settings = pluginManager.get('SettingsPlugin');
-    this.customevent = pluginManager.get('EventPlugin');
+    this.settings = getSettingsPlugin();
+    this.customevent = getEventPlugin();
 
     // Register the settings we need.
     this.settings.registerSetting(CATEGORY, CONSOLE_OPTION, DEFAULT_CONSOLE_OPTION, CONSOLE_OPTION_DESC, CONSOLE_OPTION_TYPE);

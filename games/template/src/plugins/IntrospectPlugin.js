@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import { getSettingsPlugin, getEventPlugin } from '../plugins/plugins.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -15,8 +16,8 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     this._gui = undefined;
 
     // Get the dependent plugins.
-    this.settings = pluginManager.get('SettingsPlugin');
-    this.customevent = pluginManager.get('EventPlugin');
+    this.settings = getSettingsPlugin();
+    this.customevent = getEventPlugin();
 
     // Register the settings we need.
     this.settings.registerSetting(CATEGORY, INTROSPECTION_OPTION, DEFAULT_INTROSPECTION_OPTION, INTROSPECTION_OPTION_DESC, INTROSPECTION_OPTION_TYPE);

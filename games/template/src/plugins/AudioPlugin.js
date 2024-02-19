@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import { getSettingsPlugin, getEventPlugin } from '../plugins/plugins.js'
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
 const CATEGORY = 'sound';
@@ -23,8 +24,8 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this._music = null;
     
     // Get the dependent plugins.
-    this.settings = pluginManager.get('SettingsPlugin');
-    this.customevent = pluginManager.get('EventPlugin');
+    this.settings = getSettingsPlugin();
+    this.customevent = getEventPlugin();
 
     // Register the settings we need.
     this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
