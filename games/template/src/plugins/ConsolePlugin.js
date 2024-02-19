@@ -18,12 +18,8 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     super(pluginManager);
 
     // Get the dependent plugins.
-    
-    this.settings = undefined;
-    this.customevent = undefined;
-
-    //this.settings = getSettingsPlugin();
-    //this.customevent = getEventPlugin();
+    this.settings = getSettingsPlugin();
+    this.customevent = getEventPlugin();
 
     if (this.settings) {
       // Register the settings we need.
@@ -45,7 +41,11 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     }*/
   }
 
-  // Local plugin so we do not provide a version.
+  /**
+   * Local plugin so we do not provide a version.
+   * 
+   * @returns {string | undefined} The version of the plugin.
+   */
   getVersion() { return undefined; }
 
   onSettingChanged(setting) {

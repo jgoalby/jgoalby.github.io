@@ -42,7 +42,11 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
     });
   }
 
-  // External service plugin, so provide the version of firebase.
+  /**
+   * External service plugin, so provide the version of firebase.
+   * 
+   * @returns {string | undefined} The version of the plugin.
+   */
   getVersion() { return window.firebase.default.SDK_VERSION; }
 
   static get options() {

@@ -13,7 +13,11 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     this._settingsByCategory = {};
   }
 
-  // Local plugin so we do not provide a version.
+  /**
+   * Local plugin so we do not provide a version.
+   * 
+   * @returns {string | undefined} The version of the plugin.
+   */
   getVersion() { return undefined; }
 
   getSetting(category, name) {
