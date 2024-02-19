@@ -39,11 +39,7 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
       categoryValues[name].description = name;
       categoryValues[name].type = undefined;
       categoryValues[name].getFn = () => { return this.getValue(category, name) };
-      categoryValues[name].setFn = (newValue) => {
-        if (this.getValue(category, name) !== newValue) {
-          this.setValue(category, name, newValue) 
-        }
-      };
+      categoryValues[name].setFn = (newValue) => { this.setValue(category, name, newValue) };
     }
 
     // Return the setting object.
