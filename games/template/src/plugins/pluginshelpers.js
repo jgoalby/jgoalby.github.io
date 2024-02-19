@@ -7,6 +7,10 @@
  * @returns {any}
  */
 function getPlugin(pluginName) {
+  console.log("get plugin: ");
+  console.log(window);
+  console.log(window.game);
+  console.log(window.game.plugins);
   // Defense.
   if (window && window.game && window.game.plugins) {
     return window.game.plugins.get(pluginName);
