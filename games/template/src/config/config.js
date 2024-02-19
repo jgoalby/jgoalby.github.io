@@ -1,9 +1,6 @@
 import Constants from '../constants.js';
 import { global_plugins } from '../plugins/plugins.js'
 
-console.log("global_plugins");
-console.log(global_plugins);
-
 var config = {
   type: Constants.GENERAL.TYPE,
   width: Constants.GENERAL.WIDTH,
