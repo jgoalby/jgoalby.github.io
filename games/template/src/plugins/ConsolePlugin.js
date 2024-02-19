@@ -28,7 +28,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
 
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
     }
   }
 
@@ -37,7 +37,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
 
     console.log("In Console plugin destructor");
     /*if (this.customevent) {
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
     }*/
   }
 

@@ -26,7 +26,7 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
 
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
     }
   }
 
@@ -35,7 +35,7 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     this.reset();
     // TODO
     /*if (this.customevent) {
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this););
     }*/
   }
 

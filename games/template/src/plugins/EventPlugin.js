@@ -29,7 +29,7 @@ export default class EventPlugin extends Phaser.Plugins.BasePlugin {
    * 
    * @param {string | symbol} event The event name.
    * @param {Function} callback The callback to invoke when the event is emitted.
-   * @param {any} [context] The context to invoke the callback with, default this.
+   * @param {any} context The context to invoke the callback with, need to specify your this.
    * @returns {Phaser.Events.EventEmitter}
    */
   on(event, callback, context) {
@@ -40,8 +40,8 @@ export default class EventPlugin extends Phaser.Plugins.BasePlugin {
    * Remove the listeners of a given event.
    * 
    * @param {string | symbol} event The event name.
-   * @param {Function} [callback] Only remove listeners that have this callback.
-   * @param {any} [context] Only remove listeners that have this context.
+   * @param {Function} callback Only remove listeners that have this callback.
+   * @param {any} context Only remove listeners that have this context, specify your this.
    * @param {boolean} [once] Only remove one time listeners.
    * @returns {Phaser.Events.EventEmitter}
    */

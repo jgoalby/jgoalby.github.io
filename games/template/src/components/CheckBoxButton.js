@@ -22,8 +22,9 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
 
       scene.sys.events.once('shutdown', () => {
-        console.log("In Checkbox events shutdown: " + this.setting.name);
-        this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+        if (this.customevent) {
+          this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+        }
       });
     }
 
@@ -63,14 +64,14 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
   }
 
-  /*destroy() {
-    // TODO: Make sure I do this for all plugins and that it works
+  destroy() {
+    // TODO: Make sure I do this for all components and that it works
 
     console.log("In Checkbox button destructor");
-    // if (this.customevent) {
-    //   this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
-    // }
-  }*/
+    if (this.customevent) {
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+    }
+  }
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.

@@ -37,7 +37,7 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     // Make sure we have the event plugin.
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
     }
   }
 
