@@ -43,5 +43,5 @@ export {
   getIntrospectPlugin,
   getAudioPlugin,
   getFirebasePlugin,
-  getPluginListAsString,
+  getPluginListAsString
 };
