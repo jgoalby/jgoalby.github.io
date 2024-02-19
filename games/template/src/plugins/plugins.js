@@ -8,13 +8,13 @@ import FirebasePlugin from './FirebasePlugin.js';
 
 // List of global plugins, that can be used to initialize the game engine. Order is important.
 const global_plugins = [
-  InitPlugin.options,
+/*  InitPlugin.options,
   EventPlugin.options,
   SettingsPlugin.options,
   ConsolePlugin.options,
   IntrospectPlugin.options,
   AudioPlugin.options,
-  //FirebasePlugin.options,
+  FirebasePlugin.options,*/
 ]
 
 export {
