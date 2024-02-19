@@ -14,11 +14,11 @@ namespace Phaser {
         globals: Globals;
     }
     interface Scene {
-        settings: import('../plugins/SettingsPlugin').SettingsPlugin;
-        customevent: import('../plugins/EventPlugin').default;
-        introspect: import('../plugins/IntrospectPlugin').default;
-        audio: import('../plugins/AudioPlugin').default;
-        firebase: import('../plugins/FirebasePlugin').default;
+        settings: SettingsPlugin;
+        customevent: EventPlugin;
+        introspect: IntrospectPlugin;
+        audio: AudioPlugin;
+        firebase: FirebasePlugin;
     }
 }
 
@@ -40,3 +40,10 @@ interface Console {
 declare class CheckBoxButton extends Phaser.GameObjects.Container {
     constructor(scene: Phaser.Scene, x: number, y: number, checked: string, unchecked: string, text: string, getState: () => boolean, setState: (boolean) => void);
 }
+
+type FirebasePlugin = import('../plugins/FirebasePlugin').default;
+type ConsolePlugin = import('../plugins/ConsolePlugin').default;
+type EventPlugin = import('../plugins/EventPlugin').default;
+type SettingsPlugin = import('../plugins/SettingsPlugin').default;
+type IntrospectPlugin = import('../plugins/IntrospectPlugin').default;
+type AudioPlugin = import('../plugins/AudioPlugin').default;

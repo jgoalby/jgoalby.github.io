@@ -1,10 +1,3 @@
-import EventPlugin from './EventPlugin.js';
-import SettingsPlugin from './SettingsPlugin.js';
-import ConsolePlugin from './ConsolePlugin.js';
-import IntrospectPlugin from './IntrospectPlugin.js';
-import AudioPlugin from './AudioPlugin.js';
-import FirebasePlugin from './FirebasePlugin.js';
-
 /**
  * Get the specified plugin or undefined if not present.
  * Need to return 'any' because the BasePlugin type doesn't work well. So use the specified
