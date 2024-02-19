@@ -18,6 +18,10 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     super(pluginManager);
 
     // Get the dependent plugins.
+    
+    this.settings = undefined;
+    this.customevent = undefined;
+
     /*this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
@@ -60,18 +64,18 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
     showLog2Div();
-    /*if (this.settings) {
+    if (this.settings) {
       this.settings.setValue(CATEGORY, CONSOLE_OPTION, true);
-    }*/
+    }
   }
 
   hide() {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
     hideLog2Div();
-    /*if (this.settings) {
+    if (this.settings) {
       this.settings.setValue(CATEGORY, CONSOLE_OPTION, false);
-    }*/
+    }
   }
 
   toggle() {
