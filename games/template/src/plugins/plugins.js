@@ -14,7 +14,7 @@ const global_plugins = [
   ConsolePlugin.options,
   IntrospectPlugin.options,
   AudioPlugin.options,
-  FirebasePlugin.options,
+  //FirebasePlugin.options,
 ]
 
 export {
