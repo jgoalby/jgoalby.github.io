@@ -73,6 +73,8 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
       this.customevent = undefined;
     }
+
+    super.destroy();
   }
 
   onSettingChanged(setting) {
