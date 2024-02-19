@@ -67,9 +67,11 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
   destroy() {
     // TODO: Make sure I do this for all components and that it works
 
-    console.log("In Checkbox button destructor");
+    //console.log("In Checkbox button destructor");
     if (this.customevent) {
+      console.log("In Checkbox button destructor");
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this.customevent = undefined;
     }
   }
 
