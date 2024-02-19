@@ -1,5 +1,8 @@
 # TODOs
 
+# Next
+- Add an event listener in checkbox button
+
 # Possible major bug
 - Service worker potentially causing issue.
   - To recreate, incognito mode, load game, and then refresh

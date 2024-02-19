@@ -50,7 +50,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
-    if (setting.name === CONSOLE_OPTION) {
+    if ((setting.category === CATEGORY) && (setting.name === CONSOLE_OPTION)) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         this.show();

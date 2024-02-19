@@ -1,23 +1,24 @@
 import Constants from '../constants.js';
 
 export default class CheckBoxButton extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, checked, unchecked, label, getState, setState) {
+  constructor(scene, x, y, setting) {
     super(scene);
     this.scene = scene;
     this.x = x;
     this.y = y;
-    this.getState = getState;
-    this.setState = setState;
-    this.checked = checked;
-    this.unchecked = unchecked;
-    this.label = label;
+    this.setting = setting;
+    this.getState = setting.getFn;
+    this.setState = setting.setFn;
+    this.checked = 'checkedBox';
+    this.unchecked = 'uncheckedBox';
+    this.label = setting.description;
 
     // The check button that changes state when the whole button is clicked.
-    this.button = this.scene.add.image(0, 0, getState() ? checked : unchecked);
+    this.button = this.scene.add.image(0, 0, this.getState() ? this.checked : this.unchecked);
     this.button.setOrigin(0, 0);
 
     // The text label that goes to the side of the button. The y position is set to the middle of the button.
-    this.text = this.scene.add.text(0, 0, label, Constants.STYLES.CHECKBOX_LABEL);
+    this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.CHECKBOX_LABEL);
     this.text.setOrigin(0, 0.5);
     this.text.setPosition(this.button.x + this.button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE, this.button.y + (this.button.height / 2));
 

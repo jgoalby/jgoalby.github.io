@@ -72,7 +72,6 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
 
   getValue(category, name) {
     const categoryValue = this.getSetting(category, name);
-    console.warn(`Getting value for ${categoryValue.category}.${categoryValue.name} = ${categoryValue.value}`);
     return categoryValue.value
   }
 

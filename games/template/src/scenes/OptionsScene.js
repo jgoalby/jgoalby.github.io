@@ -41,7 +41,7 @@ export default class OptionsScene extends Phaser.Scene {
   
           switch (setting.type) {
             case Constants.SETTINGS_TYPES.boolean:
-              ctrl = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', setting.description, setting.getFn, setting.setFn);
+              ctrl = new CheckBoxButton(this, 0, 0, setting);
               break;
             case Constants.SETTINGS_TYPES.number:
               break;

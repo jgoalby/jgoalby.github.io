@@ -54,7 +54,7 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the music setting changes.
-    if (setting.name === MUSIC_OPTION) {
+    if ((setting.category === CATEGORY) && (setting.name === MUSIC_OPTION)) {
       // True means setting is set and we want to play music, otherwise silence.
       if (setting.value) {
         this.playMusic();
