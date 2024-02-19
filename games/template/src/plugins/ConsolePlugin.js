@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 import { initLog2Div, isLog2DivVisible, showLog2Div, hideLog2Div } from '../lib/log2div.js';
-//import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
+import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -22,8 +22,8 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     this.settings = undefined;
     this.customevent = undefined;
 
-    /*this.settings = getSettingsPlugin();
-    this.customevent = getEventPlugin();
+    //this.settings = getSettingsPlugin();
+    //this.customevent = getEventPlugin();
 
     if (this.settings) {
       // Register the settings we need.
@@ -33,7 +33,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
-    }*/
+    }
   }
 
   destroy() {
