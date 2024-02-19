@@ -38,18 +38,26 @@ self.addEventListener("fetch", (e) => {
     return;
   }
 
+  console.log("Fetching: " + e.request.url);
+
   e.respondWith(
     (async () => {
+      console.log("Actual fetch: " + e.request.url);
       let fetchPromise = fetch(e.request).then(function(res) {
+        console.log("Putting in cache: " + e.request.url)
         return caches.open(cacheName).then(function(cache) {
+          console.log("Putting in cache real: " + e.request.url)
           cache.put(e.request.url, res.clone());
           return res;
         });
       }).catch(function(error) {
         // Do nothing as likely not connected to the internet.
+        console.log("Error fetching: " + e.request.url + " " + error);
       });
 
+      console.log("Waiting for fetch: " + e.request.url);
       e.waitUntil(fetchPromise);
+      console.log("Done with fetch: " + e.request.url);
 
       const r = await caches.match(e.request);
 
