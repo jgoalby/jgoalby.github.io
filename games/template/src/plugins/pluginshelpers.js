@@ -7,11 +7,15 @@
  * @returns {any}
  */
 function getPlugin(pluginName) {
+  console.log('getPlugin: ', pluginName);
   if (window && window.game && window.game.plugins) {
+    console.log("1111");
     return window.game.plugins.get(pluginName);
   } else if (window && window.pluginManager) {
+    console.log("23222");
     return window.pluginManager.get(pluginName);
   } else {
+    console.log("343434");
     return undefined;
   }
 }
