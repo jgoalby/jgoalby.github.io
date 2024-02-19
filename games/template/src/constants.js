@@ -51,30 +51,9 @@ const SETTINGS_TYPES = {
 
 // The exported class that contains all of the constants.
 export default class Constants {
-  static getCredits(game) {
-    // Get the list of plugins.
-    const plugins = game.plugins.plugins;
-
-    // The list of plugins we have found as a string.
-    var pluginsList = "";
-
-    if (plugins) {
-      // Go through all of the plugins.
-      for (let i = 0; i < plugins.length; i++) {
-        // Get the key and the plugin itself so we can get its version.
-        const pluginKey = plugins[i].key;
-        const curPlugin = plugins[i].plugin;
-  
-        // If there is no version defined it could be an internal plugin that we do not want listed.
-        if (curPlugin.getVersion) {
-          // Add the current plugin information to the string list of plugins.
-          pluginsList += `${pluginKey} : ${curPlugin.getVersion()}\n`;
-        }
-      }
-    }
-
+  static getCredits() {
     // Fully compiled credits string.
-    return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6\n\n\nPlugins:\n\n\n${pluginsList}\n\nLibraries:\n\n\n`;
+    return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6`;
   }
 
   static get GENERAL() { return General; }

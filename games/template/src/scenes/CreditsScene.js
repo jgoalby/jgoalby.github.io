@@ -15,7 +15,9 @@ export default class CreditsScene extends Phaser.Scene {
     this.heading.setOrigin(0.5, 0);
     this.heading.setY(50);
 
-    this.creditsText = this.add.text(0, 0, Constants.getCredits(this.game), {
+    // TODO: Add plugins and libraries to the credits.
+
+    this.creditsText = this.add.text(0, 0, Constants.getCredits(), {
       fontSize: '26px',
       color: '#fff',
     });
