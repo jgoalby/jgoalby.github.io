@@ -78,8 +78,8 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
   }
 
   updateCheckbox() {
-    console.log(this.scene);
-    console.log(this.button);
+    console.log(this.scene ? "scene exists" : "scene does not exist");
+    console.log(this.button ? "button exists" : "button does not exist");
 
     // Update the button texture to reflect the new state.      
     this.button.setTexture(this.getState() ? this.checked : this.unchecked);
