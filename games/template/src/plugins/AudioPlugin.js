@@ -41,6 +41,18 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  destroy() {
+    // We might not have the plugin, so check this first.
+    if (this.customevent) {
+      // Remove the listener.
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this.customevent = undefined;
+    }
+
+    // MUST do this.
+    super.destroy();
+  }
+
   /**
    * Local plugin so we do not provide a version.
    * 

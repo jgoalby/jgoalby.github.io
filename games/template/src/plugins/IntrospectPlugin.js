@@ -31,12 +31,17 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   destroy() {
-    console.log("In Introspect plugin destructor");
     this.reset();
-    // TODO
-    /*if (this.customevent) {
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this););
-    }*/
+
+    // We might not have the plugin, so check this first.
+    if (this.customevent) {
+      // Remove the listener.
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this.customevent = undefined;
+    }
+
+    // MUST do this.
+    super.destroy();
   }
 
   /**

@@ -33,12 +33,15 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   }
 
   destroy() {
-    // TODO: Make sure I do this for all plugins and that it works
-
-    console.log("In Console plugin destructor");
-    /*if (this.customevent) {
+    // We might not have the plugin, so check this first.
+    if (this.customevent) {
+      // Remove the listener.
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-    }*/
+      this.customevent = undefined;
+    }
+
+    // MUST do this.
+    super.destroy();
   }
 
   /**

@@ -20,12 +20,6 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-
-      /*scene.sys.events.once('shutdown', () => {
-        if (this.customevent) {
-          this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-        }
-      });*/
     }
 
     // The check button that changes state when the whole button is clicked.
@@ -65,18 +59,18 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
   }
 
   destroy() {
+    // Check that we have the event plugin.
     if (this.customevent) {
+      // We are no longer interested in getting events.
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
       this.customevent = undefined;
     }
 
-    // Must call the super destructor.
+    // MUST call the super destructor.
     super.destroy();
   }
 
   onSettingChanged(setting) {
-    console.log("Setting changed event received.");
-
     // We want to make an immediate change when the setting changes.
     if ((setting.category === this.setting.category) && (setting.name === this.setting.name)) {
       // Set the new state.
@@ -88,11 +82,8 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
   }
 
   checkboxClicked() {
-    // New state is the opposite of the current state.
+    // New state is the opposite of the current state. Setting change event will happen.
     this.setState(!this.getState());
-
-    // Update the button texture to reflect the new state.      
-    // TODO : Remove once verified this.updateCheckbox();
   }
 
   updateCheckbox() {
