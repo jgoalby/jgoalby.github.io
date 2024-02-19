@@ -15,6 +15,33 @@ const global_plugins = [
   FirebasePlugin.options,
 ]
 
+function getPlugin(pluginName) {
+  return undefined;
+}
+
+function getPluginListAsString() {
+  return "";
+}
+
+function getEventPlugin() { return getPlugin('EventPlugin'); }
+
+function getSettingsPlugin() { return getPlugin('SettingsPlugin'); }
+
+function getConsolePlugin() { return getPlugin('ConsolePlugin'); }
+
+function getIntrospectPlugin() { return getPlugin('IntrospectPlugin'); }
+
+function getAudioPlugin() { return getPlugin('AudioPlugin'); }
+
+function getFirebasePlugin() { return getPlugin('FirebasePlugin'); }
+
 export {
   global_plugins,
+  getEventPlugin,
+  getSettingsPlugin,
+  getConsolePlugin,
+  getIntrospectPlugin,
+  getAudioPlugin,
+  getFirebasePlugin,
+  getPluginListAsString,
 };
