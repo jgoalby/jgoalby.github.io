@@ -54,7 +54,10 @@ self.addEventListener("fetch", (e) => {
       const r = await caches.match(e.request);
 
       if (r) {
+        console.log("Getting from cache: " + e.request.url);
         return r;
+      } else {
+        console.log("Not in cache: " + e.request.url);
       }
     })(),
   );
