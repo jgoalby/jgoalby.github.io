@@ -1,4 +1,4 @@
-export default class InitPlugin extends Phaser.Plugins.BasePlugin {
+export default class InitSetupPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
@@ -17,10 +17,10 @@ export default class InitPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'InitPlugin', 
-      plugin: InitPlugin, 
+      key: 'InitSetupPlugin', 
+      plugin: InitSetupPlugin, 
       start: true,
-      mapping: 'init',
+      mapping: 'initsetup',
     }
   }
 }
