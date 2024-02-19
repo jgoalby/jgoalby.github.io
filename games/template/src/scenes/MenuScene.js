@@ -18,7 +18,10 @@ export default class MenuScene extends Phaser.Scene {
   }
 
   create() {
-    this.audio.playMusic();
+    // Make sure we have the audio plugin.
+    if (this.audio) {
+      this.audio.playMusic();
+    }
 
     this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Intro', {
       x: 0.7,

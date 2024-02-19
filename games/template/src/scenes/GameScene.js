@@ -38,7 +38,10 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addSound() {
-    this.audio.playMusic();
+    // Make sure we have the audio plugin.
+    if (this.audio) {
+      this.audio.playMusic();
+    }
 
     this.fire = this.sound.add('fire', {
       volume: 0.5,
@@ -243,7 +246,10 @@ export default class GameScene extends Phaser.Scene {
       }, null, this);
     });
 
-    this.audio.playSound(this.fire);
+    // Make sure we have the audio plugin.
+    if (this.audio) {
+      this.audio.playSound(this.fire);
+    }
     this.physics.moveTo(newBullet, this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY, 500);
   }
 

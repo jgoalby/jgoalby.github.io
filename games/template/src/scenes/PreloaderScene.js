@@ -168,10 +168,13 @@ export default class PreloaderScene extends Phaser.Scene {
   }
 
   create() {
-    this.audio.music = this.sound.add('bgMusic', {
-      volume: 0.5,
-      loop: true,
-    });
+    // Make sure the audio plugin is enabled.
+    if (this.audio) {
+      this.audio.music = this.sound.add('bgMusic', {
+        volume: 0.5,
+        loop: true,
+      });
+    }
   }
 
   resize() {
