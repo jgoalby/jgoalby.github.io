@@ -26,7 +26,7 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
       this._settingsByCategory[category] = {};
     }
 
-    // Get the settings for the specified category that we know exists.
+    // Get the settings for the specified category that we now know exists.
     const categoryValues = this._settingsByCategory[category];
 
     // If the setting name is not present in this category, create it. This will always
