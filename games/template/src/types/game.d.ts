@@ -1,5 +1,6 @@
 interface Window {
     game: Phaser.Game;
+    pluginManager: Phaser.Plugins.PluginManager;
     innerWidthPrevious: number;
     innerHeightPrevious: number;
 }

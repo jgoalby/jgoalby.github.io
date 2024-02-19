@@ -7,30 +7,30 @@
  * @returns {any}
  */
 function getPlugin(pluginName) {
-  console.log("get plugin: " + pluginName);
-  console.log(window ? "window exists" : "window does not exist");
-  if (window) {
-    console.log(window.game ? "window.game exists" : "window.game does not exist");
-  }
-  if (window.game) {
-    console.log(window.game.plugins ? "window.game.plugins exists" : "window.game.plugins does not exist");
-  }
-  // Defense.
   if (window && window.game && window.game.plugins) {
     return window.game.plugins.get(pluginName);
+  } else if (window && window.pluginManager) {
+    return window.pluginManager.get(pluginName);
+  } else {
+    return undefined;
+  }
+}
+
+function getPluginsList() {
+  if (window && window.game && window.game.plugins) {
+    return window.game.plugins.plugins;
+  } else if (window && window.pluginManager) {
+    return window.pluginManager.plugins;
   } else {
     return undefined;
   }
 }
 
 function getPluginListAsString() {
-  // Defense.
-  if (! (window && window.game && window.game.plugins)) {
-    return "";
-  }
-
   // Get the list of plugins.
-  const plugins = window.game.plugins.plugins;
+  const plugins = getPluginsList();
+
+  if (!plugins) { return ""; }
 
   // The list of plugins we have found as a string.
   let pluginsList = "";
