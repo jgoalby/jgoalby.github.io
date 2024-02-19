@@ -115,6 +115,7 @@ function initLog2Div(options) {
 
   // Capture the original console functions so we can call them from our overridden functions.
   const log = console.log.bind(console);
+  const info = console.info.bind(console);
   const error = console.error.bind(console);
   const warn = console.warn.bind(console);
   const table = console.table ? console.table.bind(console) : null;
@@ -382,9 +383,9 @@ function initLog2Div(options) {
   }
 
   /**
-   * Override the log function.
+   * Override the log and info functions.
    */
-  console.log = function logInfoMessage() {
+  console.log = console.info = function logInfoMessage() {
     // If we continue to let normal console do its thing.
     if (copyToBrowserConsole) { log.apply(null, arguments); }
 
