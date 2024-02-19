@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-self.addEventListener('install', function(event) {
+/*self.addEventListener('install', function(event) {
   console.log('[Service Worker] Installing Service Worker ...', event);
   event.waitUntil(
     caches.open('static').then(function(cache) {
@@ -38,3 +38,4 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
+*/
