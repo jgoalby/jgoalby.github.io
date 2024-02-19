@@ -33,7 +33,38 @@ function getPlugin(pluginName) {
 }
 
 function getPluginListAsString() {
-  return "";
+  // Defense.
+  if (! (window && window.game && window.game.plugins)) {
+    return "";
+  }
+
+  // Get the list of plugins.
+  const plugins = window.game.plugins.plugins;
+
+  // The list of plugins we have found as a string.
+  let pluginsList = "";
+
+  if (plugins) {
+    // Go through all of the plugins.
+    for (let i = 0; i < plugins.length; i++) {
+      // Get the key and the plugin itself so we can get its version.
+      const pluginKey = plugins[i].key;
+
+      // We cannot tell it to be a Phaser.Plugins.BasePlugin because that doesn't work.
+      /** @type {any} */
+      const curPlugin = plugins[i].plugin;
+      /** @type {Phaser.Plugins.BasePlugin} */
+      const basePlugin = curPlugin;
+
+      // If there is no version defined it could be an internal plugin that we do not want listed.
+      if (basePlugin.getVersion) {
+        // Add the current plugin information to the string list of plugins.
+        pluginsList += `${pluginKey} : ${basePlugin.getVersion()}\n`;
+      }
+    }
+  }
+
+  return pluginsList;
 }
 
 // These functions provide type safe access to the plugins. When using the pluginManager
