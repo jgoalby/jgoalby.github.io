@@ -58,6 +58,15 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
   }
 
+  destroy() {
+    // TODO: Make sure I do this for all plugins and that it works
+
+    console.log("In Checkbox button destructor");
+    if (this.customevent) {
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
+    }
+  }
+
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
     if ((setting.category === this.setting.category) && (setting.name === this.setting.name)) {
