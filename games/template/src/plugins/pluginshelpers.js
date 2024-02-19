@@ -64,6 +64,12 @@ function getPluginListAsString() {
 
 /**
  * Get the plugin instance if it is available, otherwise undefined.
+ * @returns {InitPlugin}
+ */
+function getInitPlugin() { return getPlugin('InitPlugin'); }
+
+/**
+ * Get the plugin instance if it is available, otherwise undefined.
  * @returns {EventPlugin}
  */
 function getEventPlugin() { return getPlugin('EventPlugin'); }
@@ -99,6 +105,7 @@ function getAudioPlugin() { return getPlugin('AudioPlugin'); }
 function getFirebasePlugin() { return getPlugin('FirebasePlugin'); }
 
 export {
+  getInitPlugin,
   getEventPlugin,
   getSettingsPlugin,
   getConsolePlugin,

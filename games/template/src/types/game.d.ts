@@ -15,6 +15,7 @@ namespace Phaser {
         globals: Globals;
     }
     interface Scene {
+        init: InitPlugin;
         settings: SettingsPlugin;
         customevent: EventPlugin;
         introspect: IntrospectPlugin;
@@ -42,6 +43,7 @@ declare class CheckBoxButton extends Phaser.GameObjects.Container {
     constructor(scene: Phaser.Scene, x: number, y: number, checked: string, unchecked: string, text: string, getState: () => boolean, setState: (boolean) => void);
 }
 
+type InitPlugin = import('../plugins/InitPlugin').default;
 type FirebasePlugin = import('../plugins/FirebasePlugin').default;
 type ConsolePlugin = import('../plugins/ConsolePlugin').default;
 type EventPlugin = import('../plugins/EventPlugin').default;
