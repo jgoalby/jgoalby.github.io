@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 import { initLog2Div, isLog2DivVisible, showLog2Div, hideLog2Div } from '../lib/log2div.js';
-import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
+//import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -18,7 +18,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     super(pluginManager);
 
     // Get the dependent plugins.
-    this.settings = getSettingsPlugin();
+    /*this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
     if (this.settings) {
@@ -29,16 +29,16 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
-    }
+    }*/
   }
 
   destroy() {
     // TODO: Make sure I do this for all plugins and that it works
 
     console.log("In Console plugin destructor");
-    if (this.customevent) {
+    /*if (this.customevent) {
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
-    }
+    }*/
   }
 
   // Local plugin so we do not provide a version.
@@ -60,18 +60,18 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
     showLog2Div();
-    if (this.settings) {
+    /*if (this.settings) {
       this.settings.setValue(CATEGORY, CONSOLE_OPTION, true);
-    }
+    }*/
   }
 
   hide() {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
     hideLog2Div();
-    if (this.settings) {
+    /*if (this.settings) {
       this.settings.setValue(CATEGORY, CONSOLE_OPTION, false);
-    }
+    }*/
   }
 
   toggle() {
