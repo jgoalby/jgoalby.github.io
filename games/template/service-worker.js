@@ -10,7 +10,7 @@
                     './src/lib/pathfinding-browser.js']);
     })
   );
-});
+});*/
 
 self.addEventListener('activate', function(event) {
   console.log('Activating Service Worker...', event);
@@ -38,4 +38,3 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
-*/
