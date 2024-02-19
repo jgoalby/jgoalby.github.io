@@ -19,17 +19,23 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
-    // Register the settings we need.
-    this.settings.registerSetting(CATEGORY, INTROSPECTION_OPTION, DEFAULT_INTROSPECTION_OPTION, INTROSPECTION_OPTION_DESC, INTROSPECTION_OPTION_TYPE);
+    if (this.settings) {
+      // Register the settings we need.
+      this.settings.registerSetting(CATEGORY, INTROSPECTION_OPTION, DEFAULT_INTROSPECTION_OPTION, INTROSPECTION_OPTION_DESC, INTROSPECTION_OPTION_TYPE);
+    }
 
-    // We would like to know when the settings have changed so we can do stuff.
-    this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+    if (this.customevent) {
+      // We would like to know when the settings have changed so we can do stuff.
+      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+    }
   }
 
   destroy() {
     console.log("In Introspect plugin destructor");
     this.reset();
-    this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
+    if (this.customevent) {
+      this.customevent.off(Constants.EVENTS.SETTING_CHANGED);
+    }
   }
 
   // Local plugin so we do not provide a version.

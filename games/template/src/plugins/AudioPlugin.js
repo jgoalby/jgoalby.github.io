@@ -27,12 +27,18 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
-    // Register the settings we need.
-    this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
-    this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+    // Make sure we have the settings plugin.
+    if (this.settings) {
+      // Register the settings we need.
+      this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+    }
 
-    // We would like to know when the settings have changed so we can do stuff.
-    this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+    // Make sure we have the event plugin.
+    if (this.customevent) {
+      // We would like to know when the settings have changed so we can do stuff.
+      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged.bind(this));
+    }
   }
 
   // Local plugin so we do not provide a version.
@@ -64,8 +70,16 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   playMusic() {
-    // We can only play/resume the music if the user wants it and there is a valid music object.
-    if ((this.settings.getValue(CATEGORY, MUSIC_OPTION)) && (this.music)) {
+    // If there are settings, check them, and if not, ignore them.
+    if (this.settings) {
+      // We can only play/resume the music if the user wants it.
+      if (! (this.settings.getValue(CATEGORY, MUSIC_OPTION))) {
+        return;
+      }
+    }
+
+    // Make sure we have a music object to play first.
+    if (this.music) {
       // You can only play music if it is not already playing.
       if (this.music.isPaused) {
         this.music.resume();
@@ -76,8 +90,16 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   playSound(sound) {
-    // We can only play the sound if the user wants it, and we have a sound passed in.
-    if ((this.settings.getValue(CATEGORY, SOUND_OPTION)) && (sound)) {
+    // If there are settings, check them, and if not, ignore them.
+    if (this.settings) {
+      // We can only play the sound if the user wants it.
+      if (! (this.settings.getValue(CATEGORY, SOUND_OPTION))) {
+        return;
+      }
+    }
+
+    // Make sure a sound was passed in, and if so, play it.
+    if (sound) {
       sound.play();
     }
   }

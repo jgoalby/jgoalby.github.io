@@ -23,34 +23,37 @@ export default class OptionsScene extends Phaser.Scene {
     // Also, the values could have changed. And the controls that we display need to be created again.
     this.currentSettings = [];
 
-    const categories = this.settings.getCategories();
+    // Make sure we have the settings plugin.
+    if (this.settings) {
+      const categories = this.settings.getCategories();
 
-    for (let i = 0; i < categories.length; i++) {
-      const settings = this.settings.getSettingsForCategory(categories[i]);
-
-      // Settings is a dictionary, so we need to iterate over the keys.
-      for (let key in settings) {
-        // Get the current setting object.
-        const setting = settings[key];
-
-        // TODO: Need to do this based on type of setting.
-
-        let ctrl = undefined;
-
-        switch (setting.type) {
-          case Constants.SETTINGS_TYPES.boolean:
-            ctrl = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', setting.description, setting.getFn, setting.setFn);
-            break;
-          case Constants.SETTINGS_TYPES.number:
-            break;
-          case Constants.SETTINGS_TYPES.string:
-            break;
-        }
-
-        if (ctrl !== undefined) {
-          this.currentSettings.push(ctrl);
-        } else {
-          console.error(`Unknown setting type: ${setting.type}`);
+      for (let i = 0; i < categories.length; i++) {
+        const settings = this.settings.getSettingsForCategory(categories[i]);
+  
+        // Settings is a dictionary, so we need to iterate over the keys.
+        for (let key in settings) {
+          // Get the current setting object.
+          const setting = settings[key];
+  
+          // TODO: Need to do this based on type of setting.
+  
+          let ctrl = undefined;
+  
+          switch (setting.type) {
+            case Constants.SETTINGS_TYPES.boolean:
+              ctrl = new CheckBoxButton(this, 0, 0, 'checkedBox', 'box', setting.description, setting.getFn, setting.setFn);
+              break;
+            case Constants.SETTINGS_TYPES.number:
+              break;
+            case Constants.SETTINGS_TYPES.string:
+              break;
+          }
+  
+          if (ctrl !== undefined) {
+            this.currentSettings.push(ctrl);
+          } else {
+            console.error(`Unknown setting type: ${setting.type}`);
+          }
         }
       }
     }
