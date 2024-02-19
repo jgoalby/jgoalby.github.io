@@ -1,5 +1,9 @@
 # TODOs
 
+# Possible major bug
+- Service worker potentially causing issue.
+  - To recreate, incognito mode, load game, and then refresh
+
 # More stuff to do
 - Can I have the settings for the console update based on changing the visibility of the console?
   - So, 2 way communication. Does it mess up everything?

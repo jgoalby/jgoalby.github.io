@@ -8,9 +8,9 @@
  */
 function getPlugin(pluginName) {
   console.log("get plugin: ");
-  console.log(window);
-  console.log(window.game);
-  console.log(window.game.plugins);
+  console.log(window ? "window exists" : "window does not exist");
+  console.log(window.game ? "window.game exists" : "window.game does not exist");
+  console.log(window.game.plugins ? "window.game.plugins exists" : "window.game.plugins does not exist");
   // Defense.
   if (window && window.game && window.game.plugins) {
     return window.game.plugins.get(pluginName);
