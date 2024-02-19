@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getSettingsPlugin, getEventPlugin } from '../plugins/plugins.js'
+import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
