@@ -65,9 +65,13 @@ async function handleKeydown(event) {
 }
 
 (() => {
+  console.info("Main starting...");
+
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
+    console.info("Service worker is in navigator.");
     window.addEventListener('load', () => {
+      console.info("Registering service worker.");
       navigator.serviceWorker.register('service-worker.js').then((registration) => {
         console.info('Service worker registration successful.');
       }, function(err) {
