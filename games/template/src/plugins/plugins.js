@@ -1,6 +1,6 @@
 import EventPlugin from './EventPlugin.js';
 import SettingsPlugin from './SettingsPlugin.js';
-//import ConsolePlugin from './ConsolePlugin.js';
+import ConsolePlugin from './ConsolePlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
 import AudioPlugin from './AudioPlugin.js';
 //import FirebasePlugin from './FirebasePlugin.js';
@@ -9,7 +9,7 @@ import AudioPlugin from './AudioPlugin.js';
 const global_plugins = [
   EventPlugin.options,
   SettingsPlugin.options,
-  //ConsolePlugin.options,
+  ConsolePlugin.options,
   IntrospectPlugin.options,
   AudioPlugin.options,
   //FirebasePlugin.options,
