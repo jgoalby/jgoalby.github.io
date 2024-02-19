@@ -1,6 +1,7 @@
 import Constants from '../constants.js';
 import { initLog2Div, isLog2DivVisible, showLog2Div, hideLog2Div } from '../lib/log2div.js';
 //import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
+import { getEventPlugin } from './pluginshelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
