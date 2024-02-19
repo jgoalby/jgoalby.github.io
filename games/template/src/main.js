@@ -1,6 +1,10 @@
 // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
 import ConsolePlugin from './plugins/ConsolePlugin.js';
-(() => { ConsolePlugin.initialize(); })();
+(() => {
+  console.info("Initializing console plugin...");
+  ConsolePlugin.initialize();
+  console.info("Console plugin initialized.");
+})();
 
 import { config } from './config/config.js';
 import Globals from './globals.js';
