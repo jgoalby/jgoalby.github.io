@@ -1,22 +1,67 @@
 // @ts-nocheck
 
-/*self.addEventListener('install', function(event) {
+const cacheName = "cache-v1";
+
+self.addEventListener('install', function(event) {
   console.log('[Service Worker] Installing Service Worker ...', event);
   event.waitUntil(
-    caches.open('static').then(function(cache) {
+    caches.open(cacheName).then(function(cache) {
       cache.addAll(['./index.html',
                     './src/manifest.json',
                     './src/lib/phaser.js',
                     './src/lib/pathfinding-browser.js']);
     })
   );
-});*/
-
-self.addEventListener('activate', function(event) {
-  console.log('Activating Service Worker...', event);
 });
 
-self.addEventListener('fetch', function(event) {
+/* Cache space is limited, so clean up old caches. */
+self.addEventListener("activate", (e) => {
+  console.log('Activating Service Worker...', e);
+  e.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(
+        keyList.map((key) => {
+          if (key === cacheName) {
+            return;
+          }
+          return caches.delete(key);
+        }),
+      );
+    }),
+  );
+});
+
+
+self.addEventListener("fetch", (e) => {
+  // Prevent requests such as chrome plugins.
+  if (!e.request.url.startsWith('http')) {
+    return;
+  }
+
+  e.respondWith(
+    (async () => {
+      let fetchPromise = fetch(e.request).then(function(res) {
+        return caches.open(cacheName).then(function(cache) {
+          cache.put(e.request.url, res.clone());
+          return res;
+        });
+      }).catch(function(error) {
+        // Do nothing as likely not connected to the internet.
+      });
+
+      e.waitUntil(fetchPromise);
+
+      const r = await caches.match(e.request);
+
+      if (r) {
+        return r;
+      }
+    })(),
+  );
+});
+
+
+/*self.addEventListener('fetch', function(event) {
   // Prevent requests such as chrome plugins.
   if (!event.request.url.startsWith('http')) {
     return;
@@ -38,3 +83,4 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
+*/
