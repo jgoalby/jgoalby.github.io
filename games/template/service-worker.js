@@ -63,7 +63,7 @@ self.addEventListener('fetch', function(event) {
 
   if (clientObject) {
     clientObject.postMessage("Woohoo! I got a message!");
-    clientObject.postMessage({ type: "cache", message: "I got a cache message!" });
+    //clientObject.postMessage({ type: "cache", message: "I got a cache message!" });
   }
 
   event.respondWith((async () => {
