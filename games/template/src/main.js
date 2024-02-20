@@ -82,9 +82,14 @@ async function handleKeydown(event) {
         console.error('Service worker registration failed!', err);
       });
     });
+    if ('BroadcastChannel' in self) {
+      console.log("BroadcastChannel API supported!");
+    } else {
+      console.log("BroadcastChannel API not supported.");
+    }
     const channel = new BroadcastChannel('sw-messages');
     channel.addEventListener('message', event => {
-        console.log('Received', event.data);
+      console.log('Received', event.data);
     });
   } else {
     console.info('No service worker support in this browser.');
