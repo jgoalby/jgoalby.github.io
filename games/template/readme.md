@@ -10,6 +10,9 @@
 - Have tabs for the settings and catagories so like settings go into the same tab
   - Can start with audio as I have 2 of those. The intrpspection could be another
 - Need to add TweakPane to the project and get that going to see how well it works
+- Make the service worker a plugin?
+- Why is the console blurry on desktop?
+- Update log2div with code from here.
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.

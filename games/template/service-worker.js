@@ -42,10 +42,10 @@ self.addEventListener('activate', function(event) {
 // TODO: Need to see if I can make the messages go both ways for cache thing.
 // TODO: What is the point of the install event and the cache additions?
 
-let client = undefined;
-
 self.addEventListener('message', event => {
-   client = event.source;
+  if (! self.clientObject) {
+    self.clientObject = event.source;
+  }
 });
 
 /**
@@ -59,8 +59,9 @@ self.addEventListener('fetch', function(event) {
   // Only deal with GET requests.
   if (event.request.method != 'GET') { return; }
 
-  if (client) {
-    client.postMessage("Woohoo! I got a message!");
+  if (self.clientObject) {
+    self.clientObject.postMessage("Woohoo! I got a message!");
+    self.clientObject.postMessage({ type: "cache", message: "I got a cache message!" });
   }
 
   event.respondWith((async () => {
