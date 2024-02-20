@@ -42,28 +42,21 @@ self.addEventListener('activate', function(event) {
 // TODO: Need to see if I can make the messages go both ways for cache thing.
 // TODO: What is the point of the install event and the cache additions?
 
-//let clientObject = undefined;
-
-let savedObj = undefined;
-
 self.addEventListener('message', event => {
-  if (!savedObj) {
-    savedObj = event.source;
-  } else {
-    if (savedObj != event.source) {
-      self.clientObject.postMessage("Not equal");
-    } else {
-      self.clientObject.postMessage("Equal");
+  // Make sure we have an event source.
+  if (event.source && event.data) {
+    if (event.data.type === "initialize") {
+      // Save the caller event source for later messages to send back.
+      self.clientObject = event.source;
     }
   }
-
-
-  //if (! self.clientObject && event.source) {
-  if (event.source) {
-    self.clientObject = event.source;
-    self.clientObject.postMessage(event.source);
-  }
 });
+
+self.sendMessage = function(message) {
+  if (self.clientObject) {
+    self.clientObject.postMessage(message);
+  }
+}
 
 /**
  * Fetch handler for the service worker. The goal is to get out of the way when
@@ -76,10 +69,7 @@ self.addEventListener('fetch', function(event) {
   // Only deal with GET requests.
   if (event.request.method != 'GET') { return; }
 
-  if (self.clientObject) {
-    self.clientObject.postMessage("Woohoo! I got a message!");
-    self.clientObject.postMessage({ type: "cache", message: "I got a cache message!" });
-  }
+  self.sendMessage({ type: "cache", message: "I got a cache message!" });
 
   event.respondWith((async () => {
     let response = undefined;

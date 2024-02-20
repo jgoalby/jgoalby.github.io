@@ -75,13 +75,17 @@ async function handleKeydown(event) {
       });
 
       navigator.serviceWorker.addEventListener('message', event => {
-        console.log(`The service worker sent me a message: ${event.data}`);
+        if (event.data) {
+          if (typeof event.data === 'string') {
+            console.log(`The service worker sent me a message: ${event.data}`);
+          } else if ((event.data.type === "cache") && (event.data.message)) {
+            console.log(`The service worker sent me a cache message: ${event.data.message}`);
+          }
+        }
       });
-    
+
       navigator.serviceWorker.ready.then(registration => {
-        console.log("Saying hi to Service worker ready.");
-        console.log(registration.active ? "Active" : "Not active");
-        registration.active.postMessage("Hi service worker");
+        registration.active.postMessage({ type: "initialize" });
       });
     });
   } else {
