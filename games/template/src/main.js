@@ -1,10 +1,6 @@
 // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
 import ConsolePlugin from './plugins/ConsolePlugin.js';
-(() => {
-  console.info("Initializing console plugin...");
-  ConsolePlugin.initialize();
-  console.info("Console plugin initialized.");
-})();
+(() => { ConsolePlugin.initialize(); })();
 
 import { config } from './config/config.js';
 import Globals from './globals.js';
@@ -71,9 +67,7 @@ async function handleKeydown(event) {
 (() => {
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
-    console.info("Service worker is in navigator.");
     window.addEventListener('load', () => {
-      console.info("Registering service worker.");
       navigator.serviceWorker.register('service-worker.js').then((registration) => {
         console.info('Service worker registration successful.');
       }, function(err) {
@@ -86,6 +80,7 @@ async function handleKeydown(event) {
     
       navigator.serviceWorker.ready.then(registration => {
         console.log("Saying hi to Service worker ready.");
+        console.log(registration.active ? "Active" : "Not active");
         registration.active.postMessage("Hi service worker");
       });
     });
