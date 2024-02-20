@@ -68,6 +68,8 @@ async function handleKeydown(event) {
   }
 }
 
+const channel = ('BroadcastChannel' in self) ? new BroadcastChannel('sw-messages') : undefined;
+
 (() => {
   console.info("Main starting...");
 
@@ -82,15 +84,13 @@ async function handleKeydown(event) {
         console.error('Service worker registration failed!', err);
       });
     });
-    if ('BroadcastChannel' in self) {
-      console.log("BroadcastChannel API supported!");
-    } else {
-      console.log("BroadcastChannel API not supported.");
+
+    if (channel) {
+      channel.addEventListener('message', event => {
+        console.log("WHAT????????????");
+        console.log('Received', event.data);
+      });
     }
-    const channel = new BroadcastChannel('sw-messages');
-    channel.addEventListener('message', event => {
-      console.log('Received', event.data);
-    });
   } else {
     console.info('No service worker support in this browser.');
   }
