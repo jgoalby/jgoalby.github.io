@@ -44,11 +44,24 @@ self.addEventListener('activate', function(event) {
 
 //let clientObject = undefined;
 
+let savedObj = undefined;
+
 self.addEventListener('message', event => {
+  if (!savedObj) {
+    savedObj = event.source;
+  } else {
+    if (savedObj != event.source) {
+      self.clientObject.postMessage("Not equal");
+    } else {
+      self.clientObject.postMessage("Equal");
+    }
+  }
+
+
   //if (! self.clientObject && event.source) {
   if (event.source) {
     self.clientObject = event.source;
-    self.clientObject.postMessage(event.source.name);
+    self.clientObject.postMessage(event.source);
   }
 });
 
