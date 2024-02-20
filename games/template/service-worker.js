@@ -44,20 +44,18 @@ self.addEventListener('fetch', function(event) {
   event.respondWith((async () => {
     const response = await fetch(event.request);
   
-    if (!response || response.status !== 200 || response.type !== 'basic') {
-      return response;
+    if (!response || (response.status !== 200)) {
+      const cachedResponse = await caches.match(event.request);
+
+      if (cachedResponse) {
+        return cachedResponse;
+      } else {
+        return response;
+      }
     }
   
     const cache = await caches.open(cacheName);
-    await cache.put(event.request, response.clone());
-  
-    const cachedResponse = await caches.match(event.request);
-
-    if (cachedResponse) {
-      return cachedResponse;
-    } else {
-      return response;
-    }
+    await cache.put(event.request, response.clone());  
   })());
 });
 
