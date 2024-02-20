@@ -1,27 +1,34 @@
 // @ts-nocheck
 
+// A place we can keep the cache name so we can change it in one place in case we need a new version.
 const cacheName = "cache-v1";
 
+/**
+ * Install the service worker and cache the base resources we need.
+ */
 self.addEventListener('install', function(event) {
   event.waitUntil(
+    // Open the cache and put some files in it.
     caches.open(cacheName).then(function(cache) {
+      // We are caching in fetch below, so not sure these are even needed.
       cache.addAll(['./index.html',
                     './src/manifest.json',
-                    './src/lib/phaser.js',
-                    './src/lib/pathfinding-browser.js']);
+                    './src/lib/phaser.js']);
     })
   );
 });
 
-/* Cache space is limited, so clean up old caches. */
-self.addEventListener("activate", (e) => {
-  e.waitUntil(
+/**
+ * Cache space is limited, so clean up old caches (versions).
+ */
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    // Get all of the keys in the cache.
     caches.keys().then((keyList) => {
       return Promise.all(
+        // Go through all of the keys in the cache, deleting what is a different cache name (version).
         keyList.map((key) => {
-          if (key === cacheName) {
-            return;
-          }
+          if (key === cacheName) { return; }
           return caches.delete(key);
         }),
       );
@@ -29,31 +36,42 @@ self.addEventListener("activate", (e) => {
   );
 });
 
+self.addEventListener('message', function(event){
+  const data = event.data;
 
+  if (data.console) {
+    data.console.log("SW Received Message:");
+  }
+});
+
+/**
+ * Fetch handler for the service worker. The goal is to get out of the way when
+ * online and to be fully functional when offline.
+ */
 self.addEventListener('fetch', function(event) {
   // Prevent requests such as chrome plugins.
-  if (!event.request.url.startsWith('http')) {
-    return;
-  }
+  if (!event.request.url.startsWith('http')) { return; }
 
   // Only deal with GET requests.
-  if (event.request.method != 'GET') {
-    return;
-  }
+  if (event.request.method != 'GET') { return; }
 
   event.respondWith((async () => {
     let response = undefined;
     let cachedResponse = undefined;
 
     try {
+      // Get the cached response up front so we can return it if the network fails.
       cachedResponse = await caches.match(event.request);
     } catch (error) {
+      // Oh dear, there was an issue.
       cachedResponse = undefined;
     }
 
     try {
+      // Fetch the resource from the network if we can.
       response = await fetch(event.request);
   
+      // There was a problem so use the cached response if we have one. Otherwise return what we got.
       if (!response || (response.status !== 200)) {
         if (cachedResponse) {
           return cachedResponse;
@@ -61,43 +79,19 @@ self.addEventListener('fetch', function(event) {
           return response;
         }
       } else {
+        // The response was ok, so cache it for future generations.
         const cache = await caches.open(cacheName);
         await cache.put(event.request, response.clone());    
       }
     } catch (error) {
+      // Make sure response is undefined as we cannot use it.
       response = undefined;
     }
 
-    if (response) {
-      return response;
-    }
+    // If the network worked, return the response.
+    if (response) { return response; }
 
-    if (cachedResponse) {
-      return cachedResponse;
-    }
+    // If the network failed, we can try returning the cached response.
+    if (cachedResponse) { return cachedResponse; }
   })());
 });
-
-/*self.addEventListener('fetch', function(event) {
-  // Prevent requests such as chrome plugins.
-  if (!event.request.url.startsWith('http')) {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      let fetchPromise = fetch(event.request).then(function(res) {
-        return caches.open('dynamic').then(function(cache) {
-          cache.put(event.request.url, res.clone());
-          return res;
-        });
-      }).catch(function(error) {
-        // Do nothing as likely not connected to the internet.
-      });
-      
-      event.waitUntil(fetchPromise);
-      return response;
-    })
-  );
-});
-*/

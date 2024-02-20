@@ -78,6 +78,9 @@ async function handleKeydown(event) {
       console.info("Registering service worker.");
       navigator.serviceWorker.register('service-worker.js').then((registration) => {
         console.info('Service worker registration successful.');
+
+        // Send the console to the service worker as otherwise it logs elsewhere.
+        registration.active.postMessage({ console: console });
       }, function(err) {
         console.error('Service worker registration failed!', err);
       });
