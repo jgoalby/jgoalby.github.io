@@ -56,6 +56,8 @@ self.addEventListener('fetch', function(event) {
   
     const cache = await caches.open(cacheName);
     await cache.put(event.request, response.clone());  
+
+    return response;
   })());
 });
 
