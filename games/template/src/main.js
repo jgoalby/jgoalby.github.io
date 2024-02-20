@@ -80,12 +80,12 @@ async function handleKeydown(event) {
         console.error('Service worker registration failed!', err);
       });
 
-
       navigator.serviceWorker.addEventListener('message', event => {
         console.log(`The service worker sent me a message: ${event.data}`);
       });
     
       navigator.serviceWorker.ready.then(registration => {
+        console.log("Saying hi to Service worker ready.");
         registration.active.postMessage("Hi service worker");
       });
     });
