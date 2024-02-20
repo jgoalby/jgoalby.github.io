@@ -383,11 +383,26 @@ function initLog2Div(options) {
   }
 
   /**
-   * Override the log and info functions.
+   * Override the log function.
    */
-  console.log = console.info = function logInfoMessage() {
+  console.log = function logLogMessage() {
     // If we continue to let normal console do its thing.
     if (copyToBrowserConsole) { log.apply(null, arguments); }
+
+    if (logInfoEnabled) {
+      // Get the arguments so we can prepend to them and then log the message.
+      const args = Array.prototype.slice.call(arguments, 0);
+      args.unshift(INFO_PREFIX);
+      printToDiv.apply(null, args);
+    }
+  };
+
+  /**
+   * Override the info function.
+   */
+  console.info = function logInfoMessage() {
+    // If we continue to let normal console do its thing.
+    if (copyToBrowserConsole) { info.apply(null, arguments); }
 
     if (logInfoEnabled) {
       // Get the arguments so we can prepend to them and then log the message.

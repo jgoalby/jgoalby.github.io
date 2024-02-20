@@ -71,8 +71,6 @@ async function handleKeydown(event) {
 const channel = ('BroadcastChannel' in self) ? new BroadcastChannel('sw-messages') : undefined;
 
 (() => {
-  console.info("Main starting...");
-
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
     console.info("Service worker is in navigator.");
@@ -86,6 +84,7 @@ const channel = ('BroadcastChannel' in self) ? new BroadcastChannel('sw-messages
     });
 
     if (channel) {
+      console.log("adding event listener to channel.");
       channel.addEventListener('message', event => {
         console.log("WHAT????????????");
         console.log('Received', event.data);
