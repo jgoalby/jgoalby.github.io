@@ -37,7 +37,8 @@ self.addEventListener('activate', function(event) {
 });
 
 let client = undefined;
-addEventListener('message', event => {
+
+self.addEventListener('message', event => {
    client = event.source;
 });
 
