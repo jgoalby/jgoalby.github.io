@@ -21,7 +21,7 @@ self.addEventListener('install', function(event) {
 /**
  * Cache space is limited, so clean up old caches (versions).
  */
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', function(event) {
   event.waitUntil(
     // Get all of the keys in the cache.
     caches.keys().then((keyList) => {
@@ -36,8 +36,8 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-self.addEventListener('message', function(event){
-  const data = event.data;
+self.addEventListener('message', function(event) {
+  const data = JSON.parse(event.data);
 
   if (data.console) {
     data.console.log("SW Received Message:");

@@ -80,7 +80,7 @@ async function handleKeydown(event) {
         console.info('Service worker registration successful.');
 
         // Send the console to the service worker as otherwise it logs elsewhere.
-        registration.active.postMessage({ console: console });
+        registration.active.postMessage(JSON.stringify({ console: console }));
       }, function(err) {
         console.error('Service worker registration failed!', err);
       });
