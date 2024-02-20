@@ -47,6 +47,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('message', event => {
   //if (! self.clientObject && event.source) {
   if (event.source) {
+    self.clientObject.postMessage("here we are");
     self.clientObject = event.source;
   }
 });
