@@ -37,7 +37,7 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('message', function(event) {
-  const data = JSON.parse(event.data);
+  const data = event.data;
 
   if (data.console) {
     data.console.log("SW Received Message:");
@@ -54,6 +54,8 @@ self.addEventListener('fetch', function(event) {
 
   // Only deal with GET requests.
   if (event.request.method != 'GET') { return; }
+
+  self.postMessage("Fetch event: " + event.request.url);
 
   event.respondWith((async () => {
     let response = undefined;
