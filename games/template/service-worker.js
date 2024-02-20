@@ -3,9 +3,6 @@
 // A place we can keep the cache name so we can change it in one place in case we need a new version.
 const cacheName = "cache-v1";
 
-// Create a broadcast channel to send messages to the main thread.
-const channel = new BroadcastChannel('sw-messages');
-
 /**
  * Install the service worker and cache the base resources we need.
  */
@@ -39,6 +36,11 @@ self.addEventListener('activate', function(event) {
   );
 });
 
+let client = undefined;
+addEventListener('message', event => {
+   client = event.source;
+});
+
 /**
  * Fetch handler for the service worker. The goal is to get out of the way when
  * online and to be fully functional when offline.
@@ -50,7 +52,9 @@ self.addEventListener('fetch', function(event) {
   // Only deal with GET requests.
   if (event.request.method != 'GET') { return; }
 
-  channel.postMessage({title: 'Hello from SW'});
+  if (client) {
+    client.postMessage("Woohoo! I got a message!");
+  }
 
   event.respondWith((async () => {
     let response = undefined;

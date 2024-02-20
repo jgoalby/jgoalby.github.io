@@ -68,8 +68,6 @@ async function handleKeydown(event) {
   }
 }
 
-const channel = ('BroadcastChannel' in self) ? new BroadcastChannel('sw-messages') : undefined;
-
 (() => {
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
@@ -81,15 +79,16 @@ const channel = ('BroadcastChannel' in self) ? new BroadcastChannel('sw-messages
       }, function(err) {
         console.error('Service worker registration failed!', err);
       });
-    });
 
-    if (channel) {
-      console.log("adding event listener to channel.");
-      channel.addEventListener('message', event => {
-        console.log("WHAT????????????");
-        console.log('Received', event.data);
+
+      navigator.serviceWorker.addEventListener('message', event => {
+        console.log(`The service worker sent me a message: ${event.data}`);
       });
-    }
+    
+      navigator.serviceWorker.ready.then(registration => {
+        registration.active.postMessage("Hi service worker");
+      });
+    });
   } else {
     console.info('No service worker support in this browser.');
   }
