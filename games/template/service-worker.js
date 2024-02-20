@@ -42,22 +42,39 @@ self.addEventListener('fetch', function(event) {
   }
 
   event.respondWith((async () => {
-    const response = await fetch(event.request);
-  
-    if (!response || (response.status !== 200)) {
-      const cachedResponse = await caches.match(event.request);
+    let response = undefined;
+    let cachedResponse = undefined;
 
-      if (cachedResponse) {
-        return cachedResponse;
-      } else {
-        return response;
-      }
+    try {
+      cachedResponse = await caches.match(event.request);
+    } catch (error) {
+      cachedResponse = undefined;
     }
-  
-    const cache = await caches.open(cacheName);
-    await cache.put(event.request, response.clone());  
 
-    return response;
+    try {
+      response = await fetch(event.request);
+  
+      if (!response || (response.status !== 200)) {
+        if (cachedResponse) {
+          return cachedResponse;
+        } else {
+          return response;
+        }
+      } else {
+        const cache = await caches.open(cacheName);
+        await cache.put(event.request, response.clone());    
+      }
+    } catch (error) {
+      response = undefined;
+    }
+
+    if (response) {
+      return response;
+    }
+
+    if (cachedResponse) {
+      return cachedResponse;
+    }
   })());
 });
 
