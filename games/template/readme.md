@@ -1,15 +1,12 @@
 # TODOs
 
 # Next
-- Add an event listener in checkbox button
-
-# Possible major bug
-- Service worker potentially causing issue.
-  - To recreate, incognito mode, load game, and then refresh
+- Verify that the checkbox implementation I made works
+- Make sure the service worker code is working correctly
+- Make a button setting that can clear the cache via the service worker
 
 # More stuff to do
-- Can I have the settings for the console update based on changing the visibility of the console?
-  - So, 2 way communication. Does it mess up everything?
+- What about implementing a scrolling area for the settings? Might neeed at some point anyway.
 - Have tabs for the settings and catagories so like settings go into the same tab
   - Can start with audio as I have 2 of those. The intrpspection could be another
 - Need to add TweakPane to the project and get that going to see how well it works
@@ -27,7 +24,6 @@ Settings
 
 # Next: General
 - Enemy sounds through audio plugin via world
-- See if I can make options better, register options somehow? Plugin too?
 - Use the new button throughout the project now
 - Investigate more game programming patterns I can use like state machine
 - Continue to remove the word game from the project

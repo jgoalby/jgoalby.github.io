@@ -36,6 +36,12 @@ self.addEventListener('activate', function(event) {
   );
 });
 
+// TODO: Can I make this self.client?
+// TODO: Make a function for posting the message.
+// TODO: Send an object as the message.
+// TODO: Need to see if I can make the messages go both ways for cache thing.
+// TODO: What is the point of the install event and the cache additions?
+
 let client = undefined;
 
 self.addEventListener('message', event => {
