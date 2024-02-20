@@ -46,7 +46,7 @@ let clientObject = undefined;
 
 self.addEventListener('message', event => {
   //if (! clientObject) {
-    clientObject = event.source;
+    //clientObject = event.source;
   //}
 });
 
@@ -62,7 +62,7 @@ self.addEventListener('fetch', function(event) {
   if (event.request.method != 'GET') { return; }
 
   if (clientObject) {
-    //clientObject.postMessage("Woohoo! I got a message!");
+    clientObject.postMessage("Woohoo! I got a message!");
     //clientObject.postMessage({ type: "cache", message: "I got a cache message!" });
   }
 
