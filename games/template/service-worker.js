@@ -14,9 +14,12 @@ self.addEventListener('install', function(event) {
     // Open the cache and put some files in it.
     caches.open(cacheName).then(function(cache) {
       // We are caching in fetch below, so not sure these are even needed.
-      cache.addAll(['./index.html',
+      cache.addAll(['./index.html']);
+
+      // We are caching in fetch below, so not sure these are even needed.
+      /*cache.addAll(['./index.html',
                     './src/manifest.json',
-                    './src/lib/phaser.js']);
+                    './src/lib/phaser.js']);*/
     })
   );
 });
