@@ -45,6 +45,7 @@ self.addEventListener('activate', function(event) {
 self.addEventListener('message', event => {
   // Make sure we have an event source.
   if (event.source && event.data) {
+    // We want to do this only once, and we know the client will send this message.
     if (event.data.type === "initialize") {
       // Save the caller event source for later messages to send back.
       self.clientObject = event.source;
