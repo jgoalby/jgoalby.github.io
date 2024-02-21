@@ -6,10 +6,9 @@ date: 2024-02-21
 ---
 
 # TL;DR:
-- Pure Javascript starter project for Phaser 3 games and apps.
+Pure Javascript starter project for Phaser 3 games and apps.
 
 # phaser3starter
-
 This project is currently in early stages of development and is not yet made public. It is a pure javascript starter project for creating Phaser 3 games and apps. It is designed to be a low-friction way to make fully featured solutions with Phaser 3.
 
 ## Links
