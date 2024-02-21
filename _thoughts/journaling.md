@@ -7,7 +7,7 @@ date: 2023-11-14
 # TL;DR:
 This article delves into the intersection of journaling and Generative AI.  Your journal entries can be a goldmine for AI-driven self-improvement and personalized writing. I explore the benefits of journaling and highlight an application of this technology in preserving historical narratives for the interactive holograms of Holocaust survivors. If you are curious about using technology for personal growth, this article gives insights into how to use your daily writing with Generative AI.
 
-# Using Journaling for Generative AI: Self-Improvement and Writing
+# Using Journaling for Generative AI
   
 <img align="left" src="/assets/pen.PNG" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">  
 
