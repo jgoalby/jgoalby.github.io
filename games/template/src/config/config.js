@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { global_plugins } from '../plugins/plugins.js'
+import { global_plugins, isGlobalPluginEnabled } from '../plugins/plugins.js'
 
 var config = {
   type: Constants.GENERAL.TYPE,
@@ -13,6 +13,7 @@ var config = {
       debug: Constants.PHYSICS.DEBUG,
     },
   },
+  isGlobalPluginEnabled: isGlobalPluginEnabled,
   plugins: {
     global: global_plugins,
   },

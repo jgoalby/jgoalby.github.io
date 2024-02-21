@@ -1,8 +1,12 @@
-// Initialize console first. Do it here so that we can capture any console messages that happen during startup.
-import ConsolePlugin from './plugins/ConsolePlugin.js';
-(() => { ConsolePlugin.initialize(); })();
-
 import { config } from './config/config.js';
+import ConsolePlugin from './plugins/ConsolePlugin.js';
+
+// If the console plugin is enabled then initialize it. We do not want to do it otherwise.
+if (config.isGlobalPluginEnabled("ConsolePlugin")) {
+  // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
+  (() => { ConsolePlugin.initialize(); })();
+}
+
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
 import { getConsolePlugin } from './plugins/pluginshelpers.js'
