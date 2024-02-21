@@ -9,7 +9,7 @@ Use a habit tracking app to keep track of your subscriptions to know if you are 
 
 # Effective Subscription Management
   
-<img align="left" src="/assets/pen.PNG" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">  
+<img align="left" src="/assets/habittracker.png" alt="Habit Tracker" width="200" style="padding: 15px 15px 0px 0px;">  
 
 ## Introduction
 Subscription are everywhere and managing them can be a challenge, leading to overspending and underutilization. I have discovered a simple way to determine if I should renew.
