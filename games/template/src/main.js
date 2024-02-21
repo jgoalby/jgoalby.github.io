@@ -11,6 +11,7 @@ import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
 import { getConsolePlugin } from './plugins/pluginshelpers.js'
 
+// Create the game!
 export default class Game extends Phaser.Game {
   constructor() {
     super(config);

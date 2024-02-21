@@ -4,6 +4,7 @@
 - Verify that the checkbox implementation I made works
 - Make sure the service worker code is working correctly
 - Make a button setting that can clear the cache via the service worker
+- What is the point of the install event and the cache additions?
 
 # More stuff to do
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
@@ -13,6 +14,9 @@
 - Make the service worker a plugin?
 - Why is the console blurry on desktop?
 - Update log2div with code from here.
+- Find a way to deal with firebase better. Right now there are files for firebase in the html
+  - and when the firebase plugin is disabled, they are still there. So it would be nice if firebase was 
+  - just in a single place.
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.

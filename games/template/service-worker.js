@@ -3,6 +3,9 @@
 // A place we can keep the cache name so we can change it in one place in case we need a new version.
 const cacheName = "cache-v1";
 
+// Control whether to send the main thread messages about cache hits and misses.
+const sendCacheMessages = true;
+
 /**
  * Install the service worker and cache the base resources we need.
  */
@@ -36,12 +39,9 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-// TODO: Can I make this self.client?
-// TODO: Make a function for posting the message.
-// TODO: Send an object as the message.
-// TODO: Need to see if I can make the messages go both ways for cache thing.
-// TODO: What is the point of the install event and the cache additions?
-
+/**
+ * Message from the main thread.
+ */
 self.addEventListener('message', event => {
   // Make sure we have an event source.
   if (event.source && event.data) {
@@ -56,6 +56,11 @@ self.addEventListener('message', event => {
   }
 });
 
+/**
+ * Send a message back to the main thread.
+ * 
+ * @param {any} message Any kind of message that we want to send the main thread.
+ */
 self.sendMessage = function(message) {
   if (self.clientObject) {
     self.clientObject.postMessage(message);
@@ -85,10 +90,10 @@ self.addEventListener('fetch', function(event) {
       cachedResponse = undefined;
     }
 
-    if (cachedResponse) {
-      self.sendMessage({ type: "cache", message: "Cache hit: " + event.request.url});
-    } else {
-      self.sendMessage({ type: "cache", message: "Cache miss: " + event.request.url});
+    // Configured at start of file.
+    if (sendCacheMessages) {
+      // Send the message indicating hit or miss and what the request was.
+      self.sendMessage({ type: "cache", message: "Cache " + (cachedResponse ? "hit" : "miss") + ": " + event.request.url });
     }
 
     try {
