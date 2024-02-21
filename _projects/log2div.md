@@ -6,7 +6,7 @@ date: 2024-02-14
 ---
 
 # TL;DR:
-- Pure Javascript library for viewing console logging messages in the browser.
+Pure Javascript library for viewing console logging messages in the browser.
 
 # log2div
 
