@@ -17,7 +17,8 @@ Personal projects I am working on:
 </div>
 
 <div class="thoughts" markdown="1">
-<img class="left" src="/assets/brain.png" alt="Brain" width="350">
+<img class="left" src="/assets/brain.png" alt="Brain" width="350" style="padding: 15px 15px 0px 0px;">
+
 ## Thoughts
 
 Thoughts and opinions about pretty much anything that takes my fancy:

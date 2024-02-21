@@ -9,7 +9,7 @@ This article delves into the intersection of journaling and Generative AI.  Your
 
 # Using Journaling for Generative AI
   
-<img align="left" src="/assets/pen.PNG" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">  
+<img class="left" src="/assets/pen.PNG" alt="Pen" width="200" style="padding: 15px 15px 0px 0px;">  
 
 ## Introduction
 Personal data is valuable. What could be more personal than our journals? These intimate records of our thoughts, feelings, and experiences can serve as a rich dataset for Generative AI. Combining journaling with GenAI can lead to self-improvement and personalized writing. I explore how the two can be combined for a unique and beneficial experience. Read on to discover a new perspective on journaling in the age of AI.
@@ -43,7 +43,7 @@ The project creates an interactive experience, allowing future generations to en
 
 The project's use of generative AI parallels the personal use of AI in journaling for self-improvement. While journaling allows individuals to understand and analyze their personal experiences and emotions, the Holocaust survivor hologram project extends this concept to a larger scale. It demonstrates the power of narrative data and AI in preserving history, ensuring that these crucial stories remain alive and accessible for future generations.
 	    
-<img align="left" src="/assets/bridge.png" alt="Bridge" width="200" style="padding: 15px 15px 0px 0px;">  
+<img class="left" src="/assets/bridge.png" alt="Bridge" width="200" style="padding: 15px 15px 0px 0px;">  
 
 ## Journaling and Generative AI
 By combining the rich, personal data from journaling with the analytical power of Generative AI, we can create a tool that not only understands us but also helps us understand ourselves better.
@@ -61,7 +61,7 @@ If you're intrigued by the potential of combining journaling with Generative AI,
 The goal is not to create a perfect AI, but to explore a new way of understanding yourself and improving your life. So don't be discouraged if things don't go perfectly at first. Keep experimenting, keep learning, and most importantly, keep journaling.
 
 ## Conclusion
-<img align="right" src="/assets/journal.PNG" alt="Journal" width="200" style="padding: 0px 0px 15px 15px;">  
+<img class="right" src="/assets/journal.PNG" alt="Journal" width="200" style="padding: 0px 0px 15px 15px;">  
 
 The intersection of journaling and Generative AI offers a unique avenue for self-improvement. It also opens doors to remarkable possibilities in preserving history. The case study of the Holocaust survivor holograms shows how the principles underlying personal journaling and AI can be extended to monumental tasks like preserving vital historical narratives.
 
