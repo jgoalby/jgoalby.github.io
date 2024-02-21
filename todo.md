@@ -34,3 +34,6 @@ date: 2023-09-30
 	- sweeping all of the difficult stuff under the rug
 - The Tyranny of Metrics
 - [Reluctant Spammer](https://seths.blog/2023/11/the-reluctant-spammer/)
+- Generalist vs Specialist
+- Tokenization causing LLM issues article on LinkedIn
+- Pokemon Go issues
