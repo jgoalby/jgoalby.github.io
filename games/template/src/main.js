@@ -62,6 +62,17 @@ async function handleKeydown(event) {
     const consolePlugin = getConsolePlugin();
     if (consolePlugin) { consolePlugin.toggle(); }
   }
+
+  // TODO: Put this somewhere better.
+
+  if ((event.code == "KeyE") && (event.ctrlKey)) {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        console.log("doing the deed");
+        registration.active.postMessage({ type: "clearcache" });
+      });
+    }
+  }
 }
 
 (() => {
@@ -79,7 +90,7 @@ async function handleKeydown(event) {
           if (typeof event.data === 'string') {
             console.log(`The service worker sent me a message: ${event.data}`);
           } else if ((event.data.type === "cache") && (event.data.message)) {
-            console.log(`The service worker sent me a cache message: ${event.data.message}`);
+            console.log(`Service worker cache message: ${event.data.message}`);
           }
         }
       });

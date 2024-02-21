@@ -48,6 +48,9 @@ self.addEventListener('message', event => {
     if (event.data.type === "initialize") {
       // Save the caller event source for later messages to send back.
       self.clientObject = event.source;
+    } else if (event.data.type === "clearcache") {
+      // Clear the cache.
+      caches.delete(cacheName);
     }
   }
 });
@@ -69,8 +72,6 @@ self.addEventListener('fetch', function(event) {
   // Only deal with GET requests.
   if (event.request.method != 'GET') { return; }
 
-  self.sendMessage({ type: "cache", message: "I got a cache message!" });
-
   event.respondWith((async () => {
     let response = undefined;
     let cachedResponse = undefined;
@@ -81,6 +82,12 @@ self.addEventListener('fetch', function(event) {
     } catch (error) {
       // Oh dear, there was an issue.
       cachedResponse = undefined;
+    }
+
+    if (cachedResponse) {
+      self.sendMessage({ type: "cache", message: "Cache hit!" });
+    } else {
+      self.sendMessage({ type: "cache", message: "Cache miss!" });
     }
 
     try {
