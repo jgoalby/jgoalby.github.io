@@ -37,3 +37,6 @@ date: 2023-09-30
 - Generalist vs Specialist
 - Tokenization causing LLM issues article on LinkedIn
 - Pokemon Go issues
+
+## General site improvements:
+- Bullets in thoughts on the front page unindent left a lot
