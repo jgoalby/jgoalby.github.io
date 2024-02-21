@@ -94,7 +94,7 @@ async function handleKeydown(event) {
         if (event.data) {
           if (typeof event.data === 'string') {
             console.log(`The service worker sent a message: ${event.data}`);
-          } else if ((event.data.type === "cache") && event.data.cacheHit && event.data.requestURL) {
+          } else if ((event.data.type === "cache") && event.data.requestURL) {
             if (event.data.cacheHit) {
               console.log(`Cache hit: ${event.data.requestURL}`);
             } else {
