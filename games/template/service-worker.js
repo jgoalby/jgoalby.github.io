@@ -85,9 +85,9 @@ self.addEventListener('fetch', function(event) {
     }
 
     if (cachedResponse) {
-      self.sendMessage({ type: "cache", message: "Cache hit!" });
+      self.sendMessage({ type: "cache", message: "Cache hit: " + event.request.url});
     } else {
-      self.sendMessage({ type: "cache", message: "Cache miss!" });
+      self.sendMessage({ type: "cache", message: "Cache miss: " + event.request.url});
     }
 
     try {
