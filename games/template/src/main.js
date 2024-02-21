@@ -1,8 +1,8 @@
-import { config } from './config/config.js';
+import { phaserConfig, generalConfig } from './config/config.js';
 import ConsolePlugin from './plugins/ConsolePlugin.js';
 
 // If the console plugin is enabled then initialize it. We do not want to do it otherwise.
-if (config.isGlobalPluginEnabled("ConsolePlugin")) {
+if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
   // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
   (() => { ConsolePlugin.initialize(); })();
 }
@@ -14,7 +14,7 @@ import { getConsolePlugin } from './plugins/pluginshelpers.js'
 // Create the game!
 export default class Game extends Phaser.Game {
   constructor() {
-    super(config);
+    super(phaserConfig);
     this.globals = Globals.create();
     Scenes.create(this);
   }
@@ -93,15 +93,24 @@ async function handleKeydown(event) {
       navigator.serviceWorker.addEventListener('message', event => {
         if (event.data) {
           if (typeof event.data === 'string') {
-            console.log(`The service worker sent me a message: ${event.data}`);
-          } else if ((event.data.type === "cache") && (event.data.message)) {
-            console.log(`Service worker cache message: ${event.data.message}`);
+            console.log(`The service worker sent a message: ${event.data}`);
+          } else if ((event.data.type === "cache") && event.data.cacheHit && event.data.requestURL) {
+            if (event.data.cacheHit) {
+              console.log(`Cache hit: ${event.data.requestURL}`);
+            } else {
+              console.warn(`Cache miss: ${event.data.requestURL}`);
+            }
           }
         }
       });
 
+      // Once the service worker is ready, send it a message to initialize.
       navigator.serviceWorker.ready.then(registration => {
+        // Message to initialize.
         registration.active.postMessage({ type: "initialize" });
+
+        // Message to set whether we want to receive cache messages.
+        registration.active.postMessage({ type: "config", sendCacheMessages: generalConfig.sendCacheMessages });
       });
     });
   } else {

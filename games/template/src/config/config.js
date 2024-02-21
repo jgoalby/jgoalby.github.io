@@ -1,7 +1,8 @@
 import Constants from '../constants.js';
 import { global_plugins, isGlobalPluginEnabled } from '../plugins/plugins.js'
 
-var config = {
+// Phaser specific settings.
+var phaserConfig = {
   type: Constants.GENERAL.TYPE,
   width: Constants.GENERAL.WIDTH,
   height: Constants.GENERAL.HEIGHT,
@@ -20,9 +21,15 @@ var config = {
   parent: Constants.GENERAL.PARENT,
   dom: { createContainer: Constants.GENERAL.CREATE_CONTAINER },
   title: Constants.GENERAL.TITLE,
-  version: Constants.GENERAL.VERSION
+  version: Constants.GENERAL.VERSION,
 };
 
+// General, non-phaser specific settings.
+var generalConfig = {
+  sendCacheMessages: true,
+}
+
+// Firebase specific settings.
 var firebaseConfig = {
   apiKey: "AIzaSyDCnBfOg8aHhwLQIFWxde-gwLbTefyHzrU",
   authDomain: "phaser-template.firebaseapp.com",
@@ -33,6 +40,7 @@ var firebaseConfig = {
 };
 
 export {
-  config,
+  phaserConfig,
+  generalConfig,
   firebaseConfig
 };

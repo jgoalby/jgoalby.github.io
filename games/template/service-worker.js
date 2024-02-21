@@ -1,10 +1,13 @@
 // @ts-nocheck
 
-// A place we can keep the cache name so we can change it in one place in case we need a new version.
-const cacheName = "cache-v1";
+//----------------------------------------------------------------------------------------------------------
+// GOAL: Work offline by utilizing a cache. Fill the cache as resources are requested. Communicate
+//       with the main thread both ways. We can send update messages and get requests to perform accions.
+//----------------------------------------------------------------------------------------------------------
 
-// Control whether to send the main thread messages about cache hits and misses.
-const sendCacheMessages = true;
+// A place we can keep the cache name so we can change it in one place in case we need a new version.
+// Only the service worker should care about this value, so keep it in here isolated from the outside.
+const cacheName = "cache-v1";
 
 /**
  * Install the service worker and cache the base resources we need.
@@ -13,13 +16,10 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     // Open the cache and put some files in it.
     caches.open(cacheName).then(function(cache) {
-      // We are caching in fetch below, so not sure these are even needed.
+      // We are caching in fetch below, so not sure these are even needed. Prefer to avoid putting
+      // hardcoded filesnames here because what if they change? Leaving like this for now so that
+      // it is a placeholder for future explorers.
       cache.addAll(['./index.html']);
-
-      // We are caching in fetch below, so not sure these are even needed.
-      /*cache.addAll(['./index.html',
-                    './src/manifest.json',
-                    './src/lib/phaser.js']);*/
     })
   );
 });
@@ -52,6 +52,17 @@ self.addEventListener('message', event => {
     if (event.data.type === "initialize") {
       // Save the caller event source for later messages to send back.
       self.clientObject = event.source;
+    }
+
+    // If the client sent a configuration message.
+    if (event.data.type === "config") {
+      // The client controls whether to send cache messages.
+      if (event.data.sendCacheMessages) {
+        // Control whether to send the main thread messages about cache hits and misses.
+        self.sendCacheMessages = true;
+      } else {
+        self.sendCacheMessages = false;
+      }
     } else if (event.data.type === "clearcache") {
       // Clear the cache.
       caches.delete(cacheName);
@@ -65,9 +76,8 @@ self.addEventListener('message', event => {
  * @param {any} message Any kind of message that we want to send the main thread.
  */
 self.sendMessage = function(message) {
-  if (self.clientObject) {
-    self.clientObject.postMessage(message);
-  }
+  // Send the message to the client if we have one.
+  if (self.clientObject) { self.clientObject.postMessage(message); }
 }
 
 /**
@@ -94,9 +104,9 @@ self.addEventListener('fetch', function(event) {
     }
 
     // Configured at start of file.
-    if (sendCacheMessages) {
+    if (self.sendCacheMessages) {
       // Send the message indicating hit or miss and what the request was.
-      self.sendMessage({ type: "cache", message: "Cache " + (cachedResponse ? "hit" : "miss") + ": " + event.request.url });
+      self.sendMessage({ type: "cache", cacheHit: (cachedResponse ? true : false), requestURL: event.request.url });
     }
 
     try {
