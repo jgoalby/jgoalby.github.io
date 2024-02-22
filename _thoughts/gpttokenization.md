@@ -66,4 +66,4 @@ If you ask an LLM to do simple arithmetic, it has no idea what these texutal rep
 # Summary
 If you consider that you have a machine that is incredibly fast at working with numbers (thanks to GPUs) and all it knows is these numbers, you can see why tokenization is important. But you can also see why it is problematic and why LLMs trip over seemingly simple tasks.
 
-The source data for creating the tokenizer has a large impact on how it behaves. This is why LLMs are currently worse at non-English languages.
+The source data for creating the tokenizer has a large impact on how it behaves. The internet consists of a lot of English text. This is why LLMs are currently worse at non-English languages.
