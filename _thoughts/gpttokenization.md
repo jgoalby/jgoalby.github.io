@@ -9,6 +9,8 @@ Andrej Karpathy released a 2 1/4 hour video on tokenization for GPTs. The detail
 
 I am going to distill the video. If you want to watch the whole thing you can find it at [Andrej Karpathy - Let's Build the GPT Tokenizer](https://www.youtube.com/watch?v%253DzduSFxRajkE)
 
+<img class="right" src="/assets/walloftext.png" alt="Wall of Text" width="400" style="padding: 15px 15px 0px 0px;">
+
 # Useful links
 - [TikTokenizer](https://tiktokenizer.vercel.app/)
 - [Jupyter Notebook](https://colab.research.google.com/drive/1y0KnCFZvGVf_odSfcNAws6kcDD7HsI0L?usp%253Dsharing)
