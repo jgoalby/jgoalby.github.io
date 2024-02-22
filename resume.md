@@ -8,6 +8,8 @@ date: 2024-02-22
 # Summary
 Experienced software developer with a passion for creating innovative solutions. I have a strong background in web development and have worked with a variety of programming languages and frameworks. I am a quick learner and enjoy working in a fast-paced environment. I am looking for a challenging role where I can continue to grow and develop my skills.
 
+Connect with me on [LinkedIn](https://www.linkedin.com/in/jgoalby)
+
 # Experience
 
 ## Generative AI
