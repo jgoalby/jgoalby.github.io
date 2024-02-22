@@ -9,6 +9,8 @@ Andrej Karpathy released a 2 1/4 hour video on tokenization for GPTs. The detail
 
 I am going to distill the video. If you want to watch the whole thing you can find it at [Andrej Karpathy - Let's Build the GPT Tokenizer](https://www.youtube.com/watch?v%253DzduSFxRajkE)
 
+<img class="right" src="/assets/walloftext.png" alt="Wall of Text" width="300" style="padding: 25px 0px 0px 25px;">
+
 # Useful links
 - [TikTokenizer](https://tiktokenizer.vercel.app/)
 - [Jupyter Notebook](https://colab.research.google.com/drive/1y0KnCFZvGVf_odSfcNAws6kcDD7HsI0L?usp%253Dsharing)
@@ -16,8 +18,6 @@ I am going to distill the video. If you want to watch the whole thing you can fi
 - [Mini BPE](https://github.com/karpathy/minbpe)
 - [Sentence Piece](https://github.com/google/sentencepiece)
 - [TikToken](https://github.com/openai/tiktoken)
-
-<img class="right" src="/assets/walloftext.png" alt="Wall of Text" width="400" style="padding: 15px 15px 15px 15px;">
 
 # Why tokenize?
 Computers are not good at understanding language or text. They are good at understanding numbers. Even the letters you see on the screen are represented as numbers. Tokenization is the process of converting text to and from numbers.
