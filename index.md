@@ -5,7 +5,7 @@ You never know what you are capable of when you are doing yesterday over again â
 <div class="content">
 
 <div class="projects" markdown="1">
-<img class="right" src="/assets/lightbulb.png" alt="Projects" width="350" style="padding: 40px 0px 0px 0px;">
+<img class="right" src="/assets/lightbulb.png" alt="Projects" width="350" style="padding: 50px 0px 0px 0px;">
 
 ## Projects
 
@@ -18,7 +18,7 @@ Personal projects I am working on:
 </div>
 
 <div class="thoughts" markdown="1">
-<img class="right" src="/assets/brain.png" alt="Brain" width="350" style="padding: 40px 0px 0px 0px;">
+<img class="right" src="/assets/brain.png" alt="Brain" width="350" style="padding: 50px 0px 0px 0px;">
 
 ## Thoughts
 
@@ -30,7 +30,7 @@ Thoughts and opinions about pretty much anything that takes my fancy:
 </div>
 
 <div class="articles" markdown="1">
-<img class="right" src="/assets/articles.png" alt="Articles" width="350" style="padding: 40px 0px 0px 0px;">
+<img class="right" src="/assets/articles.png" alt="Articles" width="350" style="padding: 50px 0px 0px 0px;">
 
 ## Articles
 
