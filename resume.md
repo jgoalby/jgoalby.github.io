@@ -26,15 +26,17 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/jgoalby)
 
 # Skills
 
-## Programming languages I have used at work
+## Programming languages
 - Python
 - Javascript and Typescript
 - F# and C#
 - Java
 - C and C++
-- HTML and CSS etc (not a programming language but still)
+- HTML and CSS etc (not programming languages, but still)
+- Ruby, Pascal, COBOL, and many others
 
 ## Packages and libraries
+- Node.js and Express
 - Playwright and Puppeteer
 - Streamlit and Langchain and Autogen and OpenAI
 - Apollo GraphQL
@@ -42,6 +44,6 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/jgoalby)
 
 ## Certifications
 - Power Platform Fundamentals PL-900
-- Microsoft Certified Trainer
 - Netezza Silver Certified
 - Apollo GraphQL Certified Develoepr
+- Microsoft Certified Trainer
