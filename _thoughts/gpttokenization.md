@@ -61,7 +61,7 @@ While the last bullet is tongue in cheek, the rest are real issues that are caus
 
 The issues raised will make sense once you undeerstand that you have a system that only understands tokens as numbers. For a concrete example, let's assume that the LLM sees the word "hello" as token 123. If you ask the LLM to reverse that text, it has no idea what "hello" is. It only knows 123.
 
-If you ask an LLM to do simple arithmetic, it has no idea what these texutal representations of numbers are. It only knows the numeric tokens. The text "123" may be represented as an arbitrary token, such as 44312.
+If you ask an LLM to do simple arithmetic, it has no idea what these texutal representations of numbers are. It only knows the numeric tokens. The text "123" may be represented as an arbitrary token, such as 54312.
 
 # Summary
 If you consider that you have a machine that is incredibly fast at working with numbers (thanks to GPUs) and all it knows is these numbers, you can see why tokenization is important. But you can also see why it is problematic and why LLMs trip over seemingly simple tasks.
