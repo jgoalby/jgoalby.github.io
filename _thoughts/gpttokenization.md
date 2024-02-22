@@ -39,7 +39,7 @@ The other end of the spectrum is to tokenize each word. This is also simple but 
 The size of the vocabulary is a big issue. The larger the vocabulary, the more memory and computation is required. We would like to have a smaller vocabulary. Many things in computer programming are about trade-offs. We want to have a small vocabulary but we also want to be able to handle all of the text we might encounter.
 
 # Current solutions
-You can tokenize chunks of characters. These chunks are the most common parts in the text. Andrej goes through how you determine the chunks. Basically you run the tokenizer on a sample of your data and capture the most common chunks and assign tokens (numbers) the them. "The" becomes a token.
+You can tokenize chunks of characters. These chunks are the most common parts in the text. Andrej goes through how you determine the chunks. Basically you run the tokenizer on a sample of your data and capture the most common chunks and assign tokens (numbers) to them. The text "the" becomes a token.
 
 # Complications
 Text is actually quite complicated. We have capitalization, punctuation, sentences, abbreviations, misspellings, and more. Words mean different things in different contexts. We also have different languages. Not just human languages, but programming languages. Andrej touches on other modalities like images and audio, which you can basically convert to numbers and then use the same mechanisms.
@@ -65,3 +65,5 @@ If you ask an LLM to do simple arithmetic, it has no idea what these texutal rep
 
 # Summary
 If you consider that you have a machine that is incredibly fast at working with numbers (thanks to GPUs) and all it knows is these numbers, you can see why tokenization is important. But you can also see why it is problematic and why LLMs trip over seemingly simple tasks.
+
+The source data for creating the tokenizer has a large impact on how it behaves. This is why LLMs are currently worse at non-English languages.
