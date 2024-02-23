@@ -51,7 +51,12 @@ When you are designing a product you need to understand how people will use it. 
 
 # Inopportune Notifications
 
+# Mega Evolution restrictions
+Note that you can only contribute to an individual Pokémon's Mega Level once per day. The help center tells you that. The game doesn't. No indication given when day ends or that there's a limitation.
 
+# Mega evolve confirmation x3
+
+# Mega evolve animation every time
 
 # Summary
 TODO

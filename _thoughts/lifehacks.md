@@ -28,6 +28,10 @@ Don't wait for January first.
 # Just spend 10 minutes on a task
 Give yourself the permission to actually stop after 10 minutes.
 
+# Inbox zero
+
+# Email subscriptions
+
 # Daily Journal
 Incorporate your habits into the journal as much as possible.
 
