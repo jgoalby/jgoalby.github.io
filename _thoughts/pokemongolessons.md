@@ -9,7 +9,7 @@ There's a lot to be learned from Pokémon Go as a product manager and developer.
 - You don't have just one type of user. New users are very different than power users.
 - Be careful fixing "bugs" that users come to rely on.
 - Listen to your users and show that you are listening.
-- There is no substitute for wacthing users use your product.
+- There is no substitute for watching users use your product.
 
 # Background
 I have been playing Pokémon Go since it was released. I play it every day. It helps motivate me to go for a walk every day. I am invested in the game and like numerous things about it. However there are many things I wish were different. I doubt any of these things will change, but I feel that there are lessons that can be learned from my experience with the game.
