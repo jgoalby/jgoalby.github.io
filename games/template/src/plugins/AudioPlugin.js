@@ -32,11 +32,12 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
       // Register the settings we need.
       this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "1", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "2", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "3", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "4", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "5", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
     }
 
     // Make sure we have the event plugin.
