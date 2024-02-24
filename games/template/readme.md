@@ -6,7 +6,10 @@
 - Do I want a cache plugin or a service worker plugin?
 - For base scene, can I specify that resize needs to be overridden?
 - Can I add base functionality for adding the scale in the create? Or is there a postCreate method?
-- How to space the buttons out in the menu scene?
+- Test the main menu screen buttons with 1 button and many buttons to make sure it works
+- Remove the old button now that the callback one is everywhere (verify first)
+- Maybe make the new button similar to checkbox don't pass in the textures and no xpos and ypos?
+- Anything else we can do for the button? I want to be able to put it on options page too.
 
 # Next
 - Verify that the checkbox implementation I made works

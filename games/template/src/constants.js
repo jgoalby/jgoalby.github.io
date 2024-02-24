@@ -41,6 +41,9 @@ class Styles {
   static get CHECKBOX_LABEL()            { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR, } }
   static get CHECKBOX_LABEL_HIGHLIGHT()  { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_HIGHLIGHT_COLOR, } }
   static get CHECKBOX_INSIDE_SPACE()     { return 10 }
+  static get BUTTON_TEXT_COLOR()         { return '#fff' }
+  static get BUTTON_TEXT_SIZE()          { return 24 }
+  static get BUTTON_TEXT()               { return { fontSize: Styles.BUTTON_TEXT_SIZE, color: Styles.BUTTON_TEXT_COLOR, } }
   static get INTRO_TEXT()                { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
 }
 

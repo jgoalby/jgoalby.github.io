@@ -38,7 +38,7 @@ export default class CreditsScene extends BaseScene {
     this.tweens.add({targets: this.creditsText, y: -500, ease: 'Power1', duration: 10000, delay: 1000});
     this.tweens.add({targets: this.pluginsText, y: -500 - this.creditsText.height, ease: 'Power1', duration: 10000, delay: 1000, onComplete: () => { this.gotoScene(Scenes.MENU_SCENE) }});
 
-    this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
+    this.button = new Button(this, 0, 0, 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
 
     this.scale.on('resize', this.resize, this);
     this.resize();

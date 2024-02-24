@@ -16,10 +16,10 @@ export default class MenuScene extends BaseScene {
 
     this.menuButtons = [];
 
-    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Play', () => { this.gotoScene(Scenes.INSTRUCTIONS_SCENE) }));
-    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Options', () => { this.gotoScene(Scenes.OPTIONS_SCENE) }));
-    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Credits', () => { this.gotoScene(Scenes.CREDITS_SCENE) }));
-    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Leaderboard', () => { this.gotoScene(Scenes.LEADERBOARD_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'Play', () => { this.gotoScene(Scenes.INSTRUCTIONS_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'Options', () => { this.gotoScene(Scenes.OPTIONS_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'Credits', () => { this.gotoScene(Scenes.CREDITS_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'Leaderboard', () => { this.gotoScene(Scenes.LEADERBOARD_SCENE) }));
 
     this.scale.on('resize', this.resize, this);
     this.resize();
