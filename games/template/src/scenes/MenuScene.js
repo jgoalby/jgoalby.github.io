@@ -23,7 +23,7 @@ export default class MenuScene extends Phaser.Scene {
       this.audio.playMusic();
     }
 
-    this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Intro', {
+    this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Instructions', {
       x: 0.7,
       y: 0.7,
     });

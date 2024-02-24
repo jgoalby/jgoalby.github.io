@@ -16,8 +16,8 @@ export default class OptionsScene extends Phaser.Scene {
 
   create() {
     this.heading = this.add.text(0, 0, 'Options', Constants.STYLES.HEADING_TEXT);
-    this.heading.setOrigin(0.5, 0);
-    this.heading.setY(50);
+    this.heading.setOrigin(Constants.STYLES.HEADING_X_ORIGIN, Constants.STYLES.HEADING_Y_ORIGIN);
+    this.heading.setY(Constants.STYLES.HEADING_Y_POS);
 
     // We need to recreate the current settings every time we create the scene because they could have changed.
     // Also, the values could have changed. And the controls that we display need to be created again.
@@ -60,27 +60,35 @@ export default class OptionsScene extends Phaser.Scene {
       }
     }
 
-    this.mainMenuButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoMainMenu() });
+    this.mainMenuButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
 
     this.scale.on('resize', this.resize, this);
     this.resize();
   }
 
-  gotoMainMenu() {
+  /**
+   * Go to the specified scene and clean up this scene.
+   * 
+   * @param {string} scene The scene to go to.
+   */
+  gotoScene(scene) {
     this.scale.off('resize', this.resize, this);
-    this.scene.start(Scenes.MENU_SCENE);
+    this.scene.start(scene);
   }
 
   resize() {
-    this.heading.setX(this.cameras.main.width / 2);
+    const halfWidth = this.cameras.main.width / 2;
+    this.heading.setX(halfWidth);
 
     // TODO: This needs to change based on the categories.
 
+    const quarterWidth = this.cameras.main.width / 4;
+
     for (let i = 0; i < this.currentSettings.length; i++) {
       const setting = this.currentSettings[i];
-      setting.setPosition(this.cameras.main.width / 4, this.heading.y + 50 + (i * 80));
+      setting.setPosition(quarterWidth, this.heading.y + 50 + (i * 80));
     }
 
-    this.mainMenuButton.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.mainMenuButton.height / 2) + 10));
+    this.mainMenuButton.setPosition(halfWidth, this.cameras.main.height - ((this.mainMenuButton.height / 2) + 10));
   }
 }
