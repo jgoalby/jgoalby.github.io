@@ -1,17 +1,23 @@
-import Button from '../components/Button.js';
+import Button from '../components/ButtonCallback.js';
+import Scenes from './Scenes.js';
 
 export default class IntroScene extends Phaser.Scene {
   constructor() {
     super('Intro');
+    this.text = undefined;
+    this.mainMenuButton = undefined;
+    this.gameButton = undefined;
   }
 
   create() {
-    const text = this.add.text(10, 10, '', {
-      font: '32px',
+    this.text = this.add.text(0, 0, '', {
+      font: '24px',
       color: '#ffffff',
     });
+    this.text.setOrigin(0.5, 0);
+    this.text.setY(10);
 
-    text.setText([
+    this.text.setText([
       'Objectives\n',
       '1. Kill As many enemies as you can',
       '2. Keep your distance from the enemy',
@@ -27,14 +33,27 @@ export default class IntroScene extends Phaser.Scene {
       '\n\nGood Luck!',
     ]);
 
-    new Button(this, 580, 580, 'normalButton', 'hoverButton', 'Chicken Out', 'Menu', {
-      x: 0.7,
-      y: 0.7,
-    });
+    this.mainMenuButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Chicken Out', () => { this.gotoMainMenu() });
+    this.gameButton = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Lets Go!', () => { this.gotoGame() });
 
-    new Button(this, 980, 580, 'normalButton', 'hoverButton', 'Lets Go!', 'Game', {
-      x: 0.7,
-      y: 0.7,
-    });
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+  }
+
+  gotoMainMenu() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start(Scenes.MENU_SCENE);
+  }
+
+  gotoGame() {
+    this.scale.off('resize', this.resize, this);
+    this.scene.start(Scenes.GAME_SCENE);
+  }
+
+  resize() {
+    this.text.setX(this.cameras.main.width / 2);
+
+    this.mainMenuButton.setPosition(this.cameras.main.width / 3, this.cameras.main.height - ((this.mainMenuButton.height / 2) + 10));
+    this.gameButton.setPosition((this.cameras.main.width / 3) * 2, this.cameras.main.height - ((this.mainMenuButton.height / 2) + 10));
   }
 }
