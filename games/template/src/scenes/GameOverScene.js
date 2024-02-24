@@ -35,21 +35,21 @@ export default class GameOverScene extends Phaser.Scene {
       `\nHere lies our great \nsoldier ${player} who died \nfighting the enemy.\n\n${player} got ${score} points.`,
     ]);
 
-    this.restartButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Restart', () => { this.restartGame() });
-    this.mainMenuButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Rest In Peace', () => { this.gotoMainMenu() });
+    this.restartButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Restart', () => { this.gotoScene(Scenes.GAME_SCENE) });
+    this.mainMenuButton = this.button = new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Rest In Peace', () => { this.gotoScene(Scenes.MENU_SCENE) });
 
     this.scale.on('resize', this.resize, this);
     this.resize();
   }
 
-  restartGame() {
+  /**
+   * Go to the specified scene and clean up this scene.
+   * 
+   * @param {string} scene The scene to go to.
+   */
+  gotoScene(scene) {
     this.scale.off('resize', this.resize, this);
-    this.scene.start(Scenes.GAME_SCENE);
-  }
-
-  gotoMainMenu() {
-    this.scale.off('resize', this.resize, this);
-    this.scene.start(Scenes.MENU_SCENE);
+    this.scene.start(scene);
   }
 
   resize() {

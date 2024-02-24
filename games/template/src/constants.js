@@ -29,7 +29,7 @@ class Styles {
   static get BODY_TEXT_COLOR()           { return '#fff' }
   static get BODY_TEXT_HIGHLIGHT_COLOR() { return '#ff0' }
   static get BODY_TEXT_SIZE()            { return 24 }
-  static get BODY_Y_POS()                { return 80 }
+  static get BODY_Y_POS()                { return 90 }
   static get INTRO_TEXT_COLOR()          { return '#fff' }
   static get INTRO_TEXT_SIZE()           { return 24 }
   static get HEADING_TEXT_COLOR()        { return '#f00' }

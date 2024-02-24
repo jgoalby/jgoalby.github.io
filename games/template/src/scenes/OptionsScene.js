@@ -1,9 +1,10 @@
 import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
+import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
 
-export default class OptionsScene extends Phaser.Scene {
+export default class OptionsScene extends BaseScene {
   constructor() {
     super('Options');
     this.heading = undefined;
@@ -64,16 +65,6 @@ export default class OptionsScene extends Phaser.Scene {
 
     this.scale.on('resize', this.resize, this);
     this.resize();
-  }
-
-  /**
-   * Go to the specified scene and clean up this scene.
-   * 
-   * @param {string} scene The scene to go to.
-   */
-  gotoScene(scene) {
-    this.scale.off('resize', this.resize, this);
-    this.scene.start(scene);
   }
 
   resize() {
