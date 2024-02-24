@@ -47,6 +47,7 @@ const SETTINGS_TYPES = {
   boolean: 'boolean',
   string: 'string',
   number: 'number',
+  function: 'function',
 };
 
 // The exported class that contains all of the constants.

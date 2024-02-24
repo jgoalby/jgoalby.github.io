@@ -47,6 +47,8 @@ export default class OptionsScene extends Phaser.Scene {
               break;
             case Constants.SETTINGS_TYPES.string:
               break;
+            case Constants.SETTINGS_TYPES.function:
+              break;
           }
   
           if (ctrl !== undefined) {

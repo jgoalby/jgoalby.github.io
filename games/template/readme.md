@@ -4,7 +4,6 @@
 - Verify that the checkbox implementation I made works
 - Make sure the service worker code is working correctly
 - Make a button setting that can clear the cache via the service worker
-- What is the point of the install event and the cache additions?
 
 # More stuff to do
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
