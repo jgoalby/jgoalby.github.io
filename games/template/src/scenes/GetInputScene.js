@@ -64,7 +64,7 @@ export default class InputScene extends BaseScene {
           // TODO!!!!!!!!!
           //this.gotoScene(Scenes.MENU_SCENE);
 
-          //this.scale.off('resize', this.resize, this);
+          this.scale.off('resize', this.resize, this);
           //this.scene.start(Scenes.MENU_SCENE);
         } else {
           this.nameInputElement.scene.tweens.add({
