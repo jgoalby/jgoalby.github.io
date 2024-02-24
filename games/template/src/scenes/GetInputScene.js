@@ -59,13 +59,8 @@ export default class InputScene extends BaseScene {
         this.sys.game.globals.player = inputText.value;
         if (inputText.value !== '') {
           this.nameInputElement.removeListener('click');
-          this.nameInputElement.setVisible(false);
-          
-          // TODO!!!!!!!!!
-          //this.gotoScene(Scenes.MENU_SCENE);
-
-          this.scale.off('resize', this.resize, this);
-          //this.scene.start(Scenes.MENU_SCENE);
+          this.nameInputElement.setVisible(false);          
+          this.gotoScene(Scenes.MENU_SCENE);
         } else {
           this.nameInputElement.scene.tweens.add({
             targets: this.text,
