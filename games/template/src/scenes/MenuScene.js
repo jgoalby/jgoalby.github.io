@@ -27,7 +27,7 @@ export default class MenuScene extends BaseScene {
 
   resize() {
     const halfWidth = this.cameras.main.width / 2;
-    const fractionHeight = this.cameras.main.height / this.menuButtons.length;
+    const fractionHeight = this.cameras.main.height / (this.menuButtons.length + 1);
 
     for (let i = 0; i < this.menuButtons.length; i++) {
       this.menuButtons[i].setPosition(halfWidth, fractionHeight * (i + 1));
