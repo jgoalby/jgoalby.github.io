@@ -5,10 +5,7 @@ import Scenes from './Scenes.js';
 export default class MenuScene extends BaseScene {
   constructor() {
     super('Menu');
-    this.gameButton = undefined;
-    this.optionsButton = undefined;
-    this.creditsButton = undefined;
-    this.leaderboardButton = undefined;
+    this.menuButtons = undefined;
   }
 
   create() {
@@ -17,10 +14,16 @@ export default class MenuScene extends BaseScene {
       this.audio.playMusic();
     }
 
-    this.gameButton = new Button(this, 0, 100, 'normalButton', 'hoverButton', 'Play', () => { this.gotoScene(Scenes.INSTRUCTIONS_SCENE) });
-    this.optionsButton = new Button(this, 0, 200, 'normalButton', 'hoverButton', 'Options', () => { this.gotoScene(Scenes.OPTIONS_SCENE) });
-    this.creditsButton = new Button(this, 0, 300, 'normalButton', 'hoverButton', 'Credits', () => { this.gotoScene(Scenes.CREDITS_SCENE) });
-    this.leaderboardButton = new Button(this, 0, 400, 'normalButton', 'hoverButton', 'Leaderboard', () => { this.gotoScene(Scenes.LEADERBOARD_SCENE) });
+    this.menuButtons = [];
+
+    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Play', () => { this.gotoScene(Scenes.INSTRUCTIONS_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Options', () => { this.gotoScene(Scenes.OPTIONS_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Credits', () => { this.gotoScene(Scenes.CREDITS_SCENE) }));
+    this.menuButtons.push(new Button(this, 0, 0, 'normalButton', 'hoverButton', 'Leaderboard', () => { this.gotoScene(Scenes.LEADERBOARD_SCENE) }));
+
+    for (let i = 0; i < this.menuButtons.length; i++) {
+      this.menuButtons[i].setOrigin(0.5);
+    }
 
     this.scale.on('resize', this.resize, this);
     this.resize();
@@ -28,9 +31,10 @@ export default class MenuScene extends BaseScene {
 
   resize() {
     const halfWidth = this.cameras.main.width / 2;
-    this.gameButton.setX(halfWidth);
-    this.optionsButton.setX(halfWidth);
-    this.creditsButton.setX(halfWidth);
-    this.leaderboardButton.setX(halfWidth);
+    const fractionHeight = this.cameras.main.height / this.menuButtons.length;
+
+    for (let i = 0; i < this.menuButtons.length; i++) {
+      this.menuButtons[i].setPosition(halfWidth, fractionHeight * (i + 1));
+    }
   }
 }

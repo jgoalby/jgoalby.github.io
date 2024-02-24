@@ -1,5 +1,13 @@
 # TODOs
 
+# Soon
+- Maybe make a cache plugin and have options to log cache hits and cache misses
+- An action to clear the cache
+- Do I want a cache plugin or a service worker plugin?
+- For base scene, can I specify that resize needs to be overridden?
+- Can I add base functionality for adding the scale in the create? Or is there a postCreate method?
+- How to space the buttons out in the menu scene?
+
 # Next
 - Verify that the checkbox implementation I made works
 - Make sure the service worker code is working correctly
