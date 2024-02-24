@@ -1,7 +1,8 @@
 import Button from '../components/ButtonCallback.js';
+import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
 
-export default class GameOverScene extends Phaser.Scene {
+export default class GameOverScene extends BaseScene {
   constructor() {
     super('GameOver');
     this.restartButton = null;
@@ -40,16 +41,6 @@ export default class GameOverScene extends Phaser.Scene {
 
     this.scale.on('resize', this.resize, this);
     this.resize();
-  }
-
-  /**
-   * Go to the specified scene and clean up this scene.
-   * 
-   * @param {string} scene The scene to go to.
-   */
-  gotoScene(scene) {
-    this.scale.off('resize', this.resize, this);
-    this.scene.start(scene);
   }
 
   resize() {

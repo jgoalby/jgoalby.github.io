@@ -1,9 +1,10 @@
 import Constants from '../constants.js';
 import Button from '../components/ButtonCallback.js';
+import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
 import { getPluginListAsString } from '../plugins/pluginshelpers.js'
 
-export default class CreditsScene extends Phaser.Scene {
+export default class CreditsScene extends BaseScene {
   constructor() {
     super('Credits');
     this.heading = undefined;
@@ -41,16 +42,6 @@ export default class CreditsScene extends Phaser.Scene {
 
     this.scale.on('resize', this.resize, this);
     this.resize();
-  }
-
-  /**
-   * Go to the specified scene and clean up this scene.
-   * 
-   * @param {string} scene The scene to go to.
-   */
-  gotoScene(scene) {
-    this.scale.off('resize', this.resize, this);
-    this.scene.start(scene);
   }
 
   resize() {

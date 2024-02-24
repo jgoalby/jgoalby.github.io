@@ -1,3 +1,5 @@
+import BaseScene from './BaseScene.js';
+import Scenes from './Scenes.js';
 import { Types, defineComponent } from '../lib/bitECS/index.mjs';
 
 // TODO: Need to implement bitECS in the scene at some point.
@@ -5,7 +7,7 @@ export const GetInputScene = defineComponent({
   something: Types.ui8,
 });
 
-export default class InputScene extends Phaser.Scene {
+export default class InputScene extends BaseScene {
   constructor() {
     super('Input');
     this.text = null;
@@ -58,8 +60,7 @@ export default class InputScene extends Phaser.Scene {
         if (inputText.value !== '') {
           this.nameInputElement.removeListener('click');
           this.nameInputElement.setVisible(false);
-          this.scale.off('resize', this.resize, this);
-          this.scene.start('Menu');
+          this.gotoScene(Scenes.MENU_SCENE);
         } else {
           this.nameInputElement.scene.tweens.add({
             targets: this.text,
@@ -77,7 +78,9 @@ export default class InputScene extends Phaser.Scene {
   }
 
   resize() {
-    this.text.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2);
-    this.nameInputElement.setPosition(this.cameras.main.width / 2, this.cameras.main.height / 2 + this.textBounds.height + 5);
+    const halfWidth = this.cameras.main.width / 2;
+    const halfHeight = this.cameras.main.height / 2;
+    this.text.setPosition(halfWidth, halfHeight);
+    this.nameInputElement.setPosition(halfWidth, halfHeight + this.textBounds.height + 5);
   }
 }

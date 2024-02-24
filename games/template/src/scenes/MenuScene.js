@@ -1,20 +1,14 @@
-import Button from '../components/Button.js';
+import Button from '../components/ButtonCallback.js';
+import BaseScene from './BaseScene.js';
+import Scenes from './Scenes.js';
 
-var controls = new function() {
-  this.rotationSpeed = 0.02;
-  this.bouncingSpeed = 0.03;
-}
-
-export default class MenuScene extends Phaser.Scene {
+export default class MenuScene extends BaseScene {
   constructor() {
     super('Menu');
-  }
-
-  centerButton(gameObject, offset = 0) {
-    Phaser.Display.Align.In.Center(
-      gameObject,
-      this.add.zone(this.cameras.main.width / 2, this.cameras.main.height / 2 - offset * 100, this.cameras.main.width, this.cameras.main.height),
-    );
+    this.gameButton = undefined;
+    this.optionsButton = undefined;
+    this.creditsButton = undefined;
+    this.leaderboardButton = undefined;
   }
 
   create() {
@@ -23,28 +17,20 @@ export default class MenuScene extends Phaser.Scene {
       this.audio.playMusic();
     }
 
-    this.gameButton = new Button(this, 100, 200, 'normalButton', 'hoverButton', 'Play', 'Instructions', {
-      x: 0.7,
-      y: 0.7,
-    });
-    this.centerButton(this.gameButton, 1.2);
+    this.gameButton = new Button(this, 0, 100, 'normalButton', 'hoverButton', 'Play', this.gotoScene(Scenes.INSTRUCTIONS_SCENE));
+    this.optionsButton = new Button(this, 0, 200, 'normalButton', 'hoverButton', 'Options', this.gotoScene(Scenes.OPTIONS_SCENE));
+    this.creditsButton = new Button(this, 0, 300, 'normalButton', 'hoverButton', 'Credits', this.gotoScene(Scenes.CREDITS_SCENE));
+    this.leaderboardButton = new Button(this, 0, 400, 'normalButton', 'hoverButton', 'Top 10 Players', this.gotoScene(Scenes.LEADERBOARD_SCENE));
 
-    this.optionsButton = new Button(this, 300, 200, 'normalButton', 'hoverButton', 'Options', 'Options', {
-      x: 0.7,
-      y: 0.7,
-    });
-    this.centerButton(this.optionsButton);
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+  }
 
-    this.creditsButton = new Button(this, 300, 200, 'normalButton', 'hoverButton', 'Credits', 'Credits', {
-      x: 0.7,
-      y: 0.7,
-    });
-    this.centerButton(this.creditsButton, -1.2);
-
-    this.leaderboardButton = new Button(this, 300, 200, 'normalButton', 'hoverButton', 'Top 10 Players', 'Leaderboard', {
-      x: 0.7,
-      y: 0.7,
-    });
-    this.centerButton(this.leaderboardButton, -2.4);
+  resize() {
+    const halfWidth = this.cameras.main.width / 2;
+    this.gameButton.setX(halfWidth);
+    this.optionsButton.setX(halfWidth);
+    this.creditsButton.setX(halfWidth);
+    this.leaderboardButton.setX(halfWidth);
   }
 }
