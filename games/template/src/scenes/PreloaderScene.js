@@ -1,15 +1,13 @@
 import Constants from '../constants.js';
+import BaseScene from './BaseScene.js';
+import Scenes from './Scenes.js';
 
-export default class PreloaderScene extends Phaser.Scene {
+export default class PreloaderScene extends BaseScene {
   constructor() {
     super('Preloader');
     this.splash_landscape = null;
     this.splash_portrait = null;
     this.continueText = null;
-  }
-
-  isLandscape() {
-    return (window.innerWidth > window.innerHeight);
   }
 
   preload() {
@@ -106,10 +104,10 @@ export default class PreloaderScene extends Phaser.Scene {
       percentText.destroy();
       assetText.destroy();
       this.input.keyboard.once('keydown', () => {
-        this.startTitleScene();
+        this.gotoScene(Scenes.INPUT_SCENE);
       });
       this.input.once('pointerdown', () => {
-        this.startTitleScene();
+        this.gotoScene(Scenes.INPUT_SCENE);
       });
     });
 
@@ -157,23 +155,12 @@ export default class PreloaderScene extends Phaser.Scene {
     });
 
     this.load.image('tombstone', Constants.GENERAL.ASSETS_PATH + 'misc/tombstone.png');
-
-    this.scale.on('resize', this.resize, this);
-    this.resize();
   }
 
-  startTitleScene() {
-    this.scale.off('resize', this.resize, this);
-    this.scene.start('Input');
-  }
-
-  create() {
+  create_scene() {
     // Make sure the audio plugin is enabled.
     if (this.audio) {
-      this.audio.music = this.sound.add('bgMusic', {
-        volume: 0.5,
-        loop: true,
-      });
+      this.audio.music = this.sound.add('bgMusic', { volume: 0.5, loop: true });
     }
   }
 

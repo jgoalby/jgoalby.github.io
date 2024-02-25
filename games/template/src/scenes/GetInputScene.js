@@ -18,7 +18,7 @@ export default class InputScene extends BaseScene {
   preload() {
   }
 
-  create() {
+  create_scene() {
     this.text = this.add.text(0, 0, 'Please enter your name!', {
       color: 'white',
       fontSize: '20px ',
@@ -72,9 +72,6 @@ export default class InputScene extends BaseScene {
         }
       }
     });
-
-    this.scale.on('resize', this.resize, this);
-    this.resize();
   }
 
   resize() {

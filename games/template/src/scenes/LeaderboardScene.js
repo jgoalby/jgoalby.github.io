@@ -10,7 +10,7 @@ export default class LeaderboardScene extends BaseScene {
     this.button = null;
   }
 
-  create() {
+  create_scene() {
     this.heading = this.add.text(0, 0, 'Leaderboard', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(0.5);
     this.heading.setY(50);
@@ -55,9 +55,6 @@ export default class LeaderboardScene extends BaseScene {
     this.dom.setY(this.heading.y + this.heading.height + 20);
 
     this.button = new Button(this, 0, 0, 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
-
-    this.scale.on('resize', this.resize, this);
-    this.resize();
   }
 
   resize() {

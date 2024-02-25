@@ -6,6 +6,7 @@
   - But how to cope with the menu buttons list as each button does not know where it is?
 
 # Soon
+- Add settings for sounds: volume and loop in preloader
 - Maybe make a cache plugin and have options to log cache hits and cache misses
 - An action to clear the cache
 - Do I want a cache plugin or a service worker plugin?

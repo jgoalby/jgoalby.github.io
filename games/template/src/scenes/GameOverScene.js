@@ -12,7 +12,7 @@ export default class GameOverScene extends BaseScene {
     this.tombstone = null;
   }
 
-  create() {
+  create_scene() {
     const { score, player } = this.sys.game.globals;
 
     this.tombstone = this.add.image(0, 0, 'tombstone').setOrigin(0.5, 0);
@@ -38,9 +38,6 @@ export default class GameOverScene extends BaseScene {
 
     this.restartButton = this.button = new Button(this, 0, 0, 'Restart', () => { this.gotoScene(Scenes.GAME_SCENE) });
     this.mainMenuButton = this.button = new Button(this, 0, 0, 'Rest In Peace', () => { this.gotoScene(Scenes.MENU_SCENE) });
-
-    this.scale.on('resize', this.resize, this);
-    this.resize();
   }
 
   resize() {

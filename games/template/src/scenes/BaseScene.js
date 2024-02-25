@@ -3,12 +3,20 @@ export default class BaseScene extends Phaser.Scene {
     super(config);
   }
 
+  /**
+   * Called by Phaser when the scene is created. Derived scens can override this
+   * method to perform their own creation if they wish. If you do that you will lose
+   * the added functionality offered by this class such as resize handling.
+   * 
+   * Dervied classes can do their creation in the create_scene method.
+   */
   create() {
-    console.log("In base scene create() method.");
+    // Let the scene do its creation.
     this.create_scene();
+
+    // Provide resize functionality for all derived scenes.
     this.scale.on('resize', this.resize, this);
     this.resize();
-    console.log("Base scene create() method finished.");
   }
 
   /**
@@ -21,11 +29,21 @@ export default class BaseScene extends Phaser.Scene {
     this.scene.start(scene);
   }
 
+  /**
+   * Override in derived scenes to create the scene.
+   */
   create_scene() {
     console.warn('BaseScene.create_scene() not implemented');
   }
 
+  /**
+   * Override in derived scenes to handle resize events.
+   */
   resize() {
     console.warn('BaseScene.resize() not implemented');
+  }
+
+  isLandscape() {
+    return (window.innerWidth > window.innerHeight);
   }
 }

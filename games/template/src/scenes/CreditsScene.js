@@ -13,7 +13,7 @@ export default class CreditsScene extends BaseScene {
     this.button = undefined;
   }
 
-  create() {
+  create_scene() {
     // TODO: Put the controls into a container so we can tween the whole thing.
 
     this.heading = this.add.text(0, 0, 'Credits', Constants.STYLES.HEADING_TEXT);
@@ -39,9 +39,6 @@ export default class CreditsScene extends BaseScene {
     this.tweens.add({targets: this.pluginsText, y: -500 - this.creditsText.height, ease: 'Power1', duration: 10000, delay: 1000, onComplete: () => { this.gotoScene(Scenes.MENU_SCENE) }});
 
     this.button = new Button(this, 0, 0, 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
-
-    this.scale.on('resize', this.resize, this);
-    this.resize();
   }
 
   resize() {
