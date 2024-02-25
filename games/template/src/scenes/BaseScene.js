@@ -5,6 +5,9 @@ export default class BaseScene extends Phaser.Scene {
 
   create() {
     console.log("In base scene create() method.");
+    this.scale.on('resize', this.resize, this);
+    this.resize();
+    console.log("Base scene create() method finished.");
   }
 
   /**

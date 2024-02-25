@@ -8,8 +8,8 @@ export default class MenuScene extends BaseScene {
     this.menuButtons = undefined;
   }
 
-  create() {
-    console.log("In menu scene create() method.");
+  create_scene() {
+    console.log("In menu scene create_scene() method.");
 
     // Make sure we have the audio plugin.
     if (this.audio) {
@@ -23,10 +23,7 @@ export default class MenuScene extends BaseScene {
     this.menuButtons.push(new Button(this, 0, 0, 'Credits', () => { this.gotoScene(Scenes.CREDITS_SCENE) }));
     this.menuButtons.push(new Button(this, 0, 0, 'Leaderboard', () => { this.gotoScene(Scenes.LEADERBOARD_SCENE) }));
 
-    this.scale.on('resize', this.resize, this);
-    this.resize();
-
-    console.log("Menu scene create() method finished.");
+    console.log("Menu scene create_scene() method finished.");
   }
 
   resize() {
