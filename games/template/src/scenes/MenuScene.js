@@ -9,6 +9,8 @@ export default class MenuScene extends BaseScene {
   }
 
   create() {
+    console.log("In menu scene create() method.");
+
     // Make sure we have the audio plugin.
     if (this.audio) {
       this.audio.playMusic();
@@ -23,6 +25,8 @@ export default class MenuScene extends BaseScene {
 
     this.scale.on('resize', this.resize, this);
     this.resize();
+
+    console.log("Menu scene create() method finished.");
   }
 
   resize() {

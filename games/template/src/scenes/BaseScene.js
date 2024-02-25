@@ -3,6 +3,10 @@ export default class BaseScene extends Phaser.Scene {
     super(config);
   }
 
+  create() {
+    console.log("In base scene create() method.");
+  }
+
   /**
    * Go to the specified scene and clean up this scene.
    * 
@@ -14,5 +18,6 @@ export default class BaseScene extends Phaser.Scene {
   }
 
   resize() {
+    console.warn('BaseScene.resize() not implemented');
   }
 }

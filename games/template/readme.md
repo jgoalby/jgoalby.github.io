@@ -1,5 +1,10 @@
 # TODOs
 
+# hmmmm.
+- What about if I add callbacks to buttons for the x and y positions?
+  - And then resize would just call a position function for each control on the scene?
+  - But how to cope with the menu buttons list as each button does not know where it is?
+
 # Soon
 - Maybe make a cache plugin and have options to log cache hits and cache misses
 - An action to clear the cache
