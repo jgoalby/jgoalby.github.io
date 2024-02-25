@@ -14,10 +14,6 @@
 - Remove the old button now that the callback one is everywhere (verify first)
 - Maybe make the new button similar to checkbox don't pass in the textures and no xpos and ypos?
 - Anything else we can do for the button? I want to be able to put it on options page too.
-
-# Next
-- Verify that the checkbox implementation I made works
-- Make sure the service worker code is working correctly
 - Make a button setting that can clear the cache via the service worker
 
 # More stuff to do
@@ -27,7 +23,6 @@
 - Need to add TweakPane to the project and get that going to see how well it works
 - Make the service worker a plugin?
 - Why is the console blurry on desktop?
-- Update log2div with code from here.
 - Find a way to deal with firebase better. Right now there are files for firebase in the html
   - and when the firebase plugin is disabled, they are still there. So it would be nice if firebase was 
   - just in a single place.
