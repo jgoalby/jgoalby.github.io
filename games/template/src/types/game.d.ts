@@ -39,6 +39,17 @@ interface Console {
     log2div_enabled: boolean;
 }
 
+interface ButtonOptions {
+    label?: string;
+    actionFn?: () => void;
+    setting?: any;
+}
+
+interface CheckBoxButtonOptions {
+    label?: string;
+    setting?: any;
+}
+
 declare class CheckBoxButton extends Phaser.GameObjects.Container {
     constructor(scene: Phaser.Scene, x: number, y: number, checked: string, unchecked: string, text: string, getState: () => boolean, setState: (boolean) => void);
 }

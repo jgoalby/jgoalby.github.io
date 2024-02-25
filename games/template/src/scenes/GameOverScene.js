@@ -36,8 +36,8 @@ export default class GameOverScene extends BaseScene {
       `\nHere lies our great \nsoldier ${player} who died \nfighting the enemy.\n\n${player} got ${score} points.`,
     ]);
 
-    this.restartButton = this.button = new Button(this, 'Restart', () => { this.gotoScene(Scenes.GAME_SCENE) });
-    this.mainMenuButton = this.button = new Button(this, 'Rest In Peace', () => { this.gotoScene(Scenes.MENU_SCENE) });
+    this.restartButton = this.button = new Button(this, { label: 'Restart', actionFn: () => { this.gotoScene(Scenes.GAME_SCENE) } });
+    this.mainMenuButton = this.button = new Button(this, { label: 'Rest In Peace', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
   }
 
   resize() {

@@ -42,7 +42,7 @@ export default class OptionsScene extends BaseScene {
   
           switch (setting.type) {
             case Constants.SETTINGS_TYPES.boolean:
-              ctrl = new CheckBoxButton(this, setting);
+              ctrl = new CheckBoxButton(this, { setting: setting });
               break;
             case Constants.SETTINGS_TYPES.number:
               break;
@@ -61,7 +61,7 @@ export default class OptionsScene extends BaseScene {
       }
     }
 
-    this.mainMenuButton = new Button(this, 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
+    this.mainMenuButton = new Button(this, { label: 'Menu', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
   }
 
   resize() {

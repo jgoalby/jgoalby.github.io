@@ -2,24 +2,44 @@ import Constants from '../constants.js';
 import { getEventPlugin } from '../plugins/pluginshelpers.js'
 
 export default class CheckBoxButton extends Phaser.GameObjects.Container {
-  constructor(scene, setting) {
+  /**
+   * Make this button by passing the parent scene and some options.
+   * 
+   * @param {Phaser.Scene} scene 
+   * @param {CheckBoxButtonOptions} options 
+   */
+  constructor(scene, options) {
     super(scene);
     this.scene = scene;
     this.x = 0;
     this.y = 0;
-    this.setting = setting;
-    this.getState = setting.getFn;
-    this.setState = setting.setFn;
+
+    // The checkbox can be used on the options scene, so we need to know about the setting.
+    if (options.setting) {
+      this.setting = options.setting;
+      this.getState = options.setting.getFn;
+      this.setState = options.setting.setFn;
+      this.label = options.setting.description;
+    } else {
+      this.currentState = false;
+      this.setting = undefined;
+      this.getState = () => { return this.currentState; };
+      this.setState = (newState) => { this.currentState = newState; }
+      this.label = options.label;
+    }
+
     this.checked = 'checkedBox';
     this.unchecked = 'uncheckedBox';
-    this.label = setting.description;
 
-    // Get the dependent plugin.
-    this.customevent = getEventPlugin();
+    // If this is a setting, then we need to know when it changes.
+    if (this.setting) {
+      // Get the dependent plugin.
+      this.customevent = getEventPlugin();
 
-    if (this.customevent) {
-      // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      if (this.customevent) {
+        // We would like to know when the settings have changed so we can do stuff.
+        this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      }
     }
 
     // The check button that changes state when the whole button is clicked.
@@ -70,24 +90,33 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     super.destroy();
   }
 
-  onSettingChanged(setting) {
-    // We want to make an immediate change when the setting changes.
-    if ((setting.category === this.setting.category) && (setting.name === this.setting.name)) {
-      // Set the new state.
-      this.setState(setting.value);
+  onSettingChanged(newSetting) {
+    // Should never be called if no setting, but worth checking.
+    if (this.setting) {
+      // We want to make an immediate change when the setting changes.
+      if ((newSetting.category === this.setting.category) && (newSetting.name === this.setting.name)) {
+        // Set the new state.
+        this.setState(newSetting.value);
 
-      // Update the button texture to reflect the new state.      
-      this.updateCheckbox();
+        // Update the button texture to reflect the new state.      
+        this.updateCheckbox();
+      }
     }
   }
 
   checkboxClicked() {
-    // New state is the opposite of the current state. Setting change event will happen.
-    this.setState(!this.getState());
+    // Only can do this if we have the functions to get and set the state.
+    if (this.getState && this.setState) {
+      // New state is the opposite of the current state. Setting change event will happen.
+      this.setState(!this.getState());
+    }
   }
 
   updateCheckbox() {
-    // Update the button texture to reflect the new state.      
-    this.button.setTexture(this.getState() ? this.checked : this.unchecked);
+    // Only can do this if we have the function to get the state.
+    if (this.getState) {
+      // Update the button texture to reflect the new state.      
+      this.button.setTexture(this.getState() ? this.checked : this.unchecked);
+    }
   }
 }

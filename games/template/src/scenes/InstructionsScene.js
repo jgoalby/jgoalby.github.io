@@ -37,8 +37,8 @@ export default class InstructionsScene extends BaseScene {
       '\n\nGood Luck!',
     ]);
 
-    this.mainMenuButton = new Button(this, 'Chicken Out', () => { this.gotoScene(Scenes.MENU_SCENE) });
-    this.gameButton = new Button(this, 'Lets Go!', () => { this.gotoScene(Scenes.GAME_SCENE) });
+    this.mainMenuButton = new Button(this, { label: 'Chicken Out', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
+    this.gameButton = new Button(this, { label: 'Lets Go!', actionFn: () => { this.gotoScene(Scenes.GAME_SCENE) } });
   }
 
   resize() {
