@@ -513,6 +513,12 @@ function initLog2Div(options) {
     // inside our console. At least with this we have a fighting chance of seeing them.
     window.addEventListener('error', function (err) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
+
+      // Loop through all of the properties of err and print to div each one
+      for (let prop in err) {
+        printToDiv(EXCEPTION_PREFIX, prop + ': ' + err[prop]);
+      }
+
       printToDiv(EXCEPTION_PREFIX, err);
     });
   }
