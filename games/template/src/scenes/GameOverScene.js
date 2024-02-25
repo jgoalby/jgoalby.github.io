@@ -1,4 +1,4 @@
-import Button from '../components/ButtonCallback.js';
+import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
 

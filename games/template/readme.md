@@ -1,5 +1,10 @@
 # TODOs
 
+# Next
+- Maybe make the new button similar to checkbox don't pass in the textures and no xpos and ypos?
+- Anything else we can do for the button? I want to be able to put it on options page too.
+- Make a button setting that can clear the cache via the service worker
+
 # hmmmm.
 - What about if I add callbacks to buttons for the x and y positions?
   - And then resize would just call a position function for each control on the scene?
@@ -10,11 +15,6 @@
 - Maybe make a cache plugin and have options to log cache hits and cache misses
 - An action to clear the cache
 - Do I want a cache plugin or a service worker plugin?
-- Test the main menu screen buttons with 1 button and many buttons to make sure it works
-- Remove the old button now that the callback one is everywhere (verify first)
-- Maybe make the new button similar to checkbox don't pass in the textures and no xpos and ypos?
-- Anything else we can do for the button? I want to be able to put it on options page too.
-- Make a button setting that can clear the cache via the service worker
 
 # More stuff to do
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
@@ -40,12 +40,10 @@ Settings
 
 # Next: General
 - Enemy sounds through audio plugin via world
-- Use the new button throughout the project now
 - Investigate more game programming patterns I can use like state machine
 - Continue to remove the word game from the project
 - Continue with the firebase coding
 - Zones idea for a scene specifying areas buttons can go
-- Extra parameter for event listener gives context. See screenshot. Test it to see if it works.
 
 # Zones
 In creating these images with Dall-e, I wonder if I can create a fluid interface somehow. One that changes based on the size and shape of the window. And perhaps is not deterministic although that might not be a great user experience?!!!! Or maybe it isn't prescribed in the code, but is deterministic when implemented? Let's say you add 2 groups of buttons to a page. And then you define areas of the page where buttons can go. And it decides where to put them based on the page constraints. Maybe could make zones where stuff can go and it gets put there.

@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import Button from '../components/ButtonCallback.js';
+import Button from '../components/Button.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
 import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
