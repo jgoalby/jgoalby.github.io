@@ -3,10 +3,16 @@ import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
+
 const CACHE_OPTION = 'cacheOption';
-const CACHE_OPTION_DESC = 'Cache  Enabled';
+const CACHE_OPTION_DESC = 'Cache Enabled';
 const DEFAULT_CACHE_OPTION = true;
 const CACHE_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+
+const CLEAR_CACHE_OPTION = 'clearCacheOption';
+const CLEAR_CACHE_OPTION_DESC = 'Clear Cache';
+const DEFAULT_CLEAR_CACHE_OPTION = undefined;
+const CLEAR_CACHE_OPTION_TYPE = Constants.SETTINGS_TYPES.function;
 
 export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
@@ -19,6 +25,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     if (this.settings) {
       // Register the settings we need.
       this.settings.registerSetting(CATEGORY, CACHE_OPTION, DEFAULT_CACHE_OPTION, CACHE_OPTION_DESC, CACHE_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, CLEAR_CACHE_OPTION, DEFAULT_CLEAR_CACHE_OPTION, CLEAR_CACHE_OPTION_DESC, CLEAR_CACHE_OPTION_TYPE);
     }
 
     if (this.customevent) {
@@ -55,6 +62,11 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
       } else {
         console.log("here is where we turn off cache");
       }
+    }
+
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE_OPTION)) {
+      console.log("here is where we clear the cache");
     }
   }
 
