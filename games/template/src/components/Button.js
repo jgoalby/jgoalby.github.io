@@ -1,11 +1,11 @@
 import Constants from '../constants.js';
 
 export default class Button extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, text, callback) {
+  constructor(scene, text, callback) {
     super(scene);
     this.scene = scene;
-    this.x = x;
-    this.y = y;
+    this.x = 0;
+    this.y = 0;
     this.normal = 'normalButton';
     this.hover = 'hoverButton';
 

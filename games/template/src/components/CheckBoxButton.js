@@ -2,11 +2,11 @@ import Constants from '../constants.js';
 import { getEventPlugin } from '../plugins/pluginshelpers.js'
 
 export default class CheckBoxButton extends Phaser.GameObjects.Container {
-  constructor(scene, x, y, setting) {
+  constructor(scene, setting) {
     super(scene);
     this.scene = scene;
-    this.x = x;
-    this.y = y;
+    this.x = 0;
+    this.y = 0;
     this.setting = setting;
     this.getState = setting.getFn;
     this.setState = setting.setFn;

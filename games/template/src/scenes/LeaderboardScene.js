@@ -54,7 +54,7 @@ export default class LeaderboardScene extends BaseScene {
     this.dom.setOrigin(0.5, 0);
     this.dom.setY(this.heading.y + this.heading.height + 20);
 
-    this.button = new Button(this, 0, 0, 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
+    this.button = new Button(this, 'Menu', () => { this.gotoScene(Scenes.MENU_SCENE) });
   }
 
   resize() {
