@@ -5,6 +5,7 @@ export default class BaseScene extends Phaser.Scene {
 
   create() {
     console.log("In base scene create() method.");
+    this.create_scene();
     this.scale.on('resize', this.resize, this);
     this.resize();
     console.log("Base scene create() method finished.");
@@ -18,6 +19,10 @@ export default class BaseScene extends Phaser.Scene {
   gotoScene(scene) {
     this.scale.off('resize', this.resize, this);
     this.scene.start(scene);
+  }
+
+  create_scene() {
+    console.warn('BaseScene.create_scene() not implemented');
   }
 
   resize() {
