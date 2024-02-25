@@ -1,9 +1,7 @@
 # TODOs
 
 # Next
-- Maybe make the new button similar to checkbox don't pass in the textures and no xpos and ypos?
-- Anything else we can do for the button? I want to be able to put it on options page too.
-- Make a button setting that can clear the cache via the service worker
+- I want to be able to put the button on the options page that can clear the cache via the service worker
 
 # hmmmm.
 - What about if I add callbacks to buttons for the x and y positions?

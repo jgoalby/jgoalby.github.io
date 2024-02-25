@@ -94,6 +94,12 @@ function getIntrospectPlugin() { return getPlugin('IntrospectPlugin'); }
 
 /**
  * Get the plugin instance if it is available, otherwise undefined.
+ * @returns {CachePlugin}
+ */
+function getCachePlugin() { return getPlugin('CachePlugin'); }
+
+/**
+ * Get the plugin instance if it is available, otherwise undefined.
  * @returns {AudioPlugin}
  */
 function getAudioPlugin() { return getPlugin('AudioPlugin'); }

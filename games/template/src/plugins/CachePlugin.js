@@ -3,17 +3,14 @@ import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
-const INTROSPECTION_OPTION = 'introspectOption';
-const INTROSPECTION_OPTION_DESC = 'Introspection Enabled';
-const DEFAULT_INTROSPECTION_OPTION = false;
-const INTROSPECTION_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+const CACHE_OPTION = 'cacheOption';
+const CACHE_OPTION_DESC = 'Cache  Enabled';
+const DEFAULT_CACHE_OPTION = true;
+const CACHE_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
-export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
+export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
-
-    // Lazy create the GUI.
-    this._gui = undefined;
 
     // Get the dependent plugins.
     this.settings = getSettingsPlugin();
@@ -21,7 +18,7 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
 
     if (this.settings) {
       // Register the settings we need.
-      this.settings.registerSetting(CATEGORY, INTROSPECTION_OPTION, DEFAULT_INTROSPECTION_OPTION, INTROSPECTION_OPTION_DESC, INTROSPECTION_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, CACHE_OPTION, DEFAULT_CACHE_OPTION, CACHE_OPTION_DESC, CACHE_OPTION_TYPE);
     }
 
     if (this.customevent) {
@@ -31,8 +28,6 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   destroy() {
-    this.reset();
-
     // We might not have the plugin, so check this first.
     if (this.customevent) {
       // Remove the listener.
@@ -53,54 +48,22 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
-    if ((setting.category === CATEGORY) && (setting.name === INTROSPECTION_OPTION)) {
+    if ((setting.category === CATEGORY) && (setting.name === CACHE_OPTION)) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
-        this.show();
+        console.log("here is where we turn on cache");
       } else {
-        this.hide();
+        console.log("here is where we turn off cache");
       }
     }
   }
 
-  // Get property for gui
-  get gui() {
-    if (this._gui === undefined) {
-      this._gui = new window.dat.GUI();
-    }
-
-    return this._gui;
-  }
-
-  show() {
-    this.gui.show();
-  }
-
-  hide() {
-    // We do not want to create the GUI just to hide it.
-    if (this._gui !== undefined) {
-      this.gui.hide();
-    }
-  }
-
-  reset() {
-    // We do not want to create the GUI just to reset it.
-    if (this._gui !== undefined) {
-      this.gui.destroy();
-      this._gui = undefined;
-    }
-  }
-
-  add(object, property, min, max, step) {
-    this.gui.add(object, property, min, max, step);
-  }
-
   static get options() {
     return { 
-      key: 'IntrospectPlugin', 
-      plugin: IntrospectPlugin, 
+      key: 'CachePlugin', 
+      plugin: CachePlugin, 
       start: true,
-      mapping: 'introspect',
+      mapping: 'cache',
     }
   }
 }

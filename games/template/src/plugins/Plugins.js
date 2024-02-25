@@ -3,6 +3,7 @@ import EventPlugin from './EventPlugin.js';
 import SettingsPlugin from './SettingsPlugin.js';
 import ConsolePlugin from './ConsolePlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
+import CachePlugin from './CachePlugin.js';
 import AudioPlugin from './AudioPlugin.js';
 //import FirebasePlugin from './FirebasePlugin.js';
 
@@ -13,6 +14,7 @@ const global_plugins = [
   SettingsPlugin.options,
   ConsolePlugin.options,
   IntrospectPlugin.options,
+  CachePlugin.options,
   AudioPlugin.options,
   //FirebasePlugin.options,
 ]

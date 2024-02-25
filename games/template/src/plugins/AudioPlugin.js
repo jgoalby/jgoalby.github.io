@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getSettingsPlugin, getEventPlugin } from './pluginshelpers.js'
+import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
 const CATEGORY = 'sound';
@@ -33,11 +33,11 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
       this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
 
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "1", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      /*this.settings.registerSetting(CATEGORY, SOUND_OPTION + "1", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, SOUND_OPTION + "2", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, SOUND_OPTION + "3", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, SOUND_OPTION + "4", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "5", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "5", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);*/
     }
 
     // Make sure we have the event plugin.

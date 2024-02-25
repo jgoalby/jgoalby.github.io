@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { global_plugins, isGlobalPluginEnabled } from '../plugins/plugins.js'
+import { global_plugins, isGlobalPluginEnabled } from '../plugins/Plugins.js'
 
 // Phaser specific settings.
 var phaserConfig = {

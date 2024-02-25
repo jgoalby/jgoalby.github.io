@@ -60,4 +60,5 @@ type ConsolePlugin = import('../plugins/ConsolePlugin').default;
 type EventPlugin = import('../plugins/EventPlugin').default;
 type SettingsPlugin = import('../plugins/SettingsPlugin').default;
 type IntrospectPlugin = import('../plugins/IntrospectPlugin').default;
+type CachePlugin = import('../plugins/CachePlugin').default;
 type AudioPlugin = import('../plugins/AudioPlugin').default;

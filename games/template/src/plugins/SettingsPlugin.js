@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getEventPlugin } from './pluginshelpers.js'
+import { getEventPlugin } from './PluginsHelpers.js'
 
 export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {

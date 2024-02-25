@@ -49,6 +49,7 @@ export default class OptionsScene extends BaseScene {
             case Constants.SETTINGS_TYPES.string:
               break;
             case Constants.SETTINGS_TYPES.function:
+              ctrl = new Button(this, { setting: setting });
               break;
           }
   

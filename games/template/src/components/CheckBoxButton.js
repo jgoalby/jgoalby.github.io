@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getEventPlugin } from '../plugins/pluginshelpers.js'
+import { getEventPlugin } from '../plugins/PluginsHelpers.js'
 
 export default class CheckBoxButton extends Phaser.GameObjects.Container {
   /**
