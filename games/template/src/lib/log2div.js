@@ -510,13 +510,10 @@ function initLog2Div(options) {
   // We only want to add a listener if the exception logging is enabled.
   if (logExceptionEnabled) {
     // If we didn't do this then exceptions would go to the regular console and we would not see them
-    // inside our console. At least with this we have a fighting chance of seeing them.
+    // inside our console. At least with this we have a fighting chance of seeing them. I have yet to
+    // determine how to get the stack trace in here despite trying many things.
     window.addEventListener('error', function (err) {
-      console.log(new Error().stack);
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
-      console.log(err.stack);
-      console.log(err);
-      printToDiv(EXCEPTION_PREFIX, error.stack);
     });
   }
 }
