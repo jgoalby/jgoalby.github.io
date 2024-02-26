@@ -17,7 +17,7 @@ export default class Button extends Phaser.GameObjects.Container {
       this.setting = options.setting;
       this.label = options.setting.description;
 
-      // TODO: This is thorny
+      // TODO: This is thorny. Where does the action come from?
       this.actionFn = () => { console.log('Setting button clicked'); }
     } else {
       this.setting = undefined;
@@ -32,13 +32,20 @@ export default class Button extends Phaser.GameObjects.Container {
     this.height = this.button.height;
     this.width = this.button.width;
 
-    this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.BUTTON_TEXT);
-    Phaser.Display.Align.In.Center(this.text, this.button);
+    if (this.label) {
+      this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.BUTTON_TEXT);
+      Phaser.Display.Align.In.Center(this.text, this.button);
+    }
 
     this.add(this.button);
-    this.add(this.text);
 
-    this.button.on('pointerdown', this.actionFn);
+    if (this.text) {
+      this.add(this.text);
+    }
+
+    if (this.actionFn) {
+      this.button.on('pointerdown', this.actionFn);
+    }
 
     this.button.on('pointerover', () => {
       this.button.setTexture(this.hover);
