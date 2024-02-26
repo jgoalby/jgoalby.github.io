@@ -50,6 +50,7 @@ class Styles {
 // Events constants.
 class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
+  static get ACTION()                    { return 'ACTION'; }
 };
 
 // Settings types we support.

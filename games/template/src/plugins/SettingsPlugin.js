@@ -40,13 +40,14 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
       categoryValues[name].type = undefined;
       categoryValues[name].getFn = () => { return this.getValue(category, name) };
       categoryValues[name].setFn = (newValue) => { this.setValue(category, name, newValue) };
+      categoryValues[name].actionFn = () => { this.action(category, name) };
     }
 
     // Return the setting object.
     return categoryValues[name];
   }
 
-  registerSettingnew(setting, actionFn = undefined) {
+  registerSettingnew(setting) {
     // Get it or create it and set the values.
     const categoryValue = this.getSetting(setting.category, setting.name);
     categoryValue.name = setting.name;
@@ -54,10 +55,9 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     categoryValue.category = setting.category;
     categoryValue.description = setting.description;
     categoryValue.type = setting.type;
-    categoryValue.actionFn = actionFn;
   }
 
-  registerSetting(category, name, value, description, type, actionFn = undefined) {
+  registerSetting(category, name, value, description, type) {
     // Get it or create it and set the values.
     const categoryValue = this.getSetting(category, name);
     categoryValue.name = name;
@@ -65,7 +65,12 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     categoryValue.category = category;
     categoryValue.description = description;
     categoryValue.type = type;
-    categoryValue.actionFn = actionFn;
+  }
+
+  action(category, name) {
+    if (this.customevent) {
+      this.customevent.emit(Constants.EVENTS.ACTION, { category: category, name: name});
+    }
   }
 
   setValue(category, name, newValue) {

@@ -2,39 +2,39 @@ import Constants from '../constants.js';
 import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 
 // Constants that only this plugin uses.
-const CATEGORY = 'developer';
+const CATEGORY       = 'developer';
+const CACHE          = 'cacheOption';
+const LOG_CACHE_HIT  = 'logCacheHitOption';
+const LOG_CACHE_MISS = 'logCacheMissOption';
+const CLEAR_CACHE    = 'clearCacheOption';
 
-const cache = {
-  category: CATEGORY,
-  name: 'cacheOption',
-  description: 'Cache Enabled',
-  default: true,
-  type: Constants.SETTINGS_TYPES.boolean
-}
-
-const logCacheHit = {
-  category: CATEGORY,
-  name: 'logCacheHitOption',
-  description: 'Log Cache Hits',
-  default: true,
-  type: Constants.SETTINGS_TYPES.boolean
-}
-
-const logCacheMiss = {
-  category: CATEGORY,
-  name: 'logCacheMissOption',
-  description: 'Log Cache Misses',
-  default: true,
-  type: Constants.SETTINGS_TYPES.boolean
-}
-
-const clearCache = {
-  category: CATEGORY,
-  name: 'clearCacheOption',
-  description: 'Clear Cache',
-  default: undefined,
-  type: Constants.SETTINGS_TYPES.function
-}
+const cacheSettings = [
+  {
+    category: CATEGORY,
+    name: CACHE,
+    description: 'Cache Enabled',
+    default: true,
+    type: Constants.SETTINGS_TYPES.boolean
+  }, {
+    category: CATEGORY,
+    name: LOG_CACHE_HIT,
+    description: 'Log Cache Hits',
+    default: true,
+    type: Constants.SETTINGS_TYPES.boolean
+  }, {
+    category: CATEGORY,
+    name: LOG_CACHE_MISS,
+    description: 'Log Cache Misses',
+    default: true,
+    type: Constants.SETTINGS_TYPES.boolean
+  }, {
+    category: CATEGORY,
+    name: CLEAR_CACHE,
+    description: 'Clear Cache',
+    default: undefined,
+    type: Constants.SETTINGS_TYPES.function
+  }
+]
 
 export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
@@ -44,25 +44,28 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
+    // If we can access the settings plugin.
     if (this.settings) {
-      // Register the settings we need.
-      this.settings.registerSettingnew(cache);
-      this.settings.registerSettingnew(logCacheHit);
-      this.settings.registerSettingnew(logCacheMiss);
-      this.settings.registerSettingnew(clearCache, () => { this.onClearCache() });
+      // Register the settings.
+      for (let i = 0; i < cacheSettings.length; i++) {
+        this.settings.registerSettingnew(cacheSettings[i]);
+      }
     }
 
+    // If we can access the event plugin.
     if (this.customevent) {
-      // We would like to know when the settings have changed so we can do stuff.
+      // We would like to know when the actions or setting changes have changed so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this.customevent.on(Constants.EVENTS.ACTION, this.onAction, this);      
     }
   }
 
   destroy() {
     // We might not have the plugin, so check this first.
     if (this.customevent) {
-      // Remove the listener.
+      // Remove the listeners.
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this.customevent.off(Constants.EVENTS.ACTION, this.onAction, this);
       this.customevent = undefined;
     }
 
@@ -79,7 +82,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
-    if ((setting.category === CATEGORY) && (setting.name === cache.name)) {
+    if ((setting.category === CATEGORY) && (setting.name === CACHE)) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         console.log("here is where we turn on cache");
@@ -89,7 +92,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     }
 
     // We want to make an immediate change when the setting changes.
-    if ((setting.category === CATEGORY) && (setting.name === logCacheHit.name)) {
+    if ((setting.category === CATEGORY) && (setting.name === LOG_CACHE_HIT)) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         console.log("here is where we turn on log cache hits");
@@ -99,7 +102,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     }
 
     // We want to make an immediate change when the setting changes.
-    if ((setting.category === CATEGORY) && (setting.name === logCacheMiss.name)) {
+    if ((setting.category === CATEGORY) && (setting.name === LOG_CACHE_MISS)) {
       // True means setting is set and we want to show the gui otherwise hide.
       if (setting.value) {
         console.log("here is where we turn on log cache misses");
@@ -109,8 +112,11 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
-  onClearCache() {
-    console.log("here is where we clear the cache!! Woohoo!!");
+  onAction(setting) {
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE)) {
+      console.log("here is where we clear the cache!! Woohoo!!");
+    }
   }
 
   static get options() {
