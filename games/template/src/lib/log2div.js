@@ -512,9 +512,10 @@ function initLog2Div(options) {
     // If we didn't do this then exceptions would go to the regular console and we would not see them
     // inside our console. At least with this we have a fighting chance of seeing them.
     window.addEventListener('error', function (err) {
+      console.log(new Error().stack);
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
-      console.log(error.stack);
-      console.log(error);
+      console.log(err.stack);
+      console.log(err);
       printToDiv(EXCEPTION_PREFIX, error.stack);
     });
   }
