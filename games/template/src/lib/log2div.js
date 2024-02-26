@@ -511,16 +511,12 @@ function initLog2Div(options) {
   if (logExceptionEnabled) {
     // If we didn't do this then exceptions would go to the regular console and we would not see them
     // inside our console. At least with this we have a fighting chance of seeing them.
-    /*window.addEventListener('error', function (err) {
+    window.addEventListener('error', function (err) {
       printToDiv(EXCEPTION_PREFIX, err.message + '\n  ' + err.filename, err.lineno + ':' + err.colno);
-    });*/
-
-    window.addEventListener('error', function (msg, url, lineNo, columnNo, error) {
-      printToDiv(EXCEPTION_PREFIX, msg + '\n  ' + url, lineNo + ':' + columnNo);
       console.log(error.stack);
       console.log(error);
       printToDiv(EXCEPTION_PREFIX, error.stack);
-    });    
+    });
   }
 }
 
