@@ -4,10 +4,24 @@ import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
 
+
+//TODO: Make these objects with names to pass a single param to reisterSetting.
+
+
 const CACHE_OPTION = 'cacheOption';
 const CACHE_OPTION_DESC = 'Cache Enabled';
 const DEFAULT_CACHE_OPTION = true;
 const CACHE_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+
+const LOG_CACHE_HIT_OPTION = 'logCacheHitOption';
+const LOG_CACHE_HIT_OPTION_DESC = 'Log Cache Hits';
+const DEFAULT_LOG_CACHE_HIT_OPTION = true;
+const LOG_CACHE_HIT_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+
+const LOG_CACHE_MISS_OPTION = 'logCacheMissOption';
+const LOG_CACHE_MISS_OPTION_DESC = 'Log Cache Misses';
+const DEFAULT_LOG_CACHE_MISS_OPTION = true;
+const LOG_CACHE_MISS_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
 const CLEAR_CACHE_OPTION = 'clearCacheOption';
 const CLEAR_CACHE_OPTION_DESC = 'Clear Cache';
@@ -25,6 +39,8 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     if (this.settings) {
       // Register the settings we need.
       this.settings.registerSetting(CATEGORY, CACHE_OPTION, DEFAULT_CACHE_OPTION, CACHE_OPTION_DESC, CACHE_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, LOG_CACHE_HIT_OPTION, DEFAULT_LOG_CACHE_HIT_OPTION, LOG_CACHE_HIT_OPTION_DESC, LOG_CACHE_HIT_OPTION_TYPE);
+      this.settings.registerSetting(CATEGORY, LOG_CACHE_MISS_OPTION, DEFAULT_LOG_CACHE_MISS_OPTION, LOG_CACHE_MISS_OPTION_DESC, LOG_CACHE_MISS_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, CLEAR_CACHE_OPTION, DEFAULT_CLEAR_CACHE_OPTION, CLEAR_CACHE_OPTION_DESC, CLEAR_CACHE_OPTION_TYPE, () => { this.onClearCache() });
     }
 
@@ -61,6 +77,26 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
         console.log("here is where we turn on cache");
       } else {
         console.log("here is where we turn off cache");
+      }
+    }
+
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === LOG_CACHE_HIT_OPTION)) {
+      // True means setting is set and we want to show the gui otherwise hide.
+      if (setting.value) {
+        console.log("here is where we turn on log cache hits");
+      } else {
+        console.log("here is where we turn off log cache hits");
+      }
+    }
+
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === LOG_CACHE_MISS_OPTION)) {
+      // True means setting is set and we want to show the gui otherwise hide.
+      if (setting.value) {
+        console.log("here is where we turn on log cache misses");
+      } else {
+        console.log("here is where we turn off log cache misses");
       }
     }
   }
