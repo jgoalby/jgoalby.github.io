@@ -4,8 +4,8 @@ export default class Button extends Phaser.GameObjects.Container {
   /**
    * Make this button by passing the parent scene and some options.
    * 
-   * @param {Phaser.Scene} scene 
-   * @param {ButtonOptions} options 
+   * @param {Phaser.Scene} scene The parent scene.
+   * @param {ButtonOptions} options The options for the button.
    */
   constructor(scene, options) {
     super(scene);
@@ -16,9 +16,7 @@ export default class Button extends Phaser.GameObjects.Container {
     if (options.setting) {
       this.setting = options.setting;
       this.label = options.setting.description;
-
-      // TODO: This is thorny. Where does the action come from?
-      this.actionFn = () => { console.log('Setting button clicked'); }
+      this.actionFn = options.setting.actionFn;
     } else {
       this.setting = undefined;
       this.label = options.label;
