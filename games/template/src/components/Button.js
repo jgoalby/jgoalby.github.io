@@ -16,6 +16,9 @@ export default class Button extends Phaser.GameObjects.Container {
     if (options.setting) {
       this.setting = options.setting;
       this.label = options.setting.description;
+
+      // TODO: This is thorny
+      this.actionFn = () => { console.log('Setting button clicked'); }
     } else {
       this.setting = undefined;
       this.label = options.label;
