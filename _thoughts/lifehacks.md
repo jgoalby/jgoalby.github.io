@@ -4,7 +4,7 @@ title: "Life Hacks that work for me"
 date: 2024-02-23
 ---
 
-<img class="left" src="/assets/habittracker.png" alt="Habit Tracker" width="400" style="padding: 15px 15px 0px 0px;">  
+<img class="left" src="/assets/habitstacking.png" alt="Habit Stacking" width="400" style="padding: 15px 15px 0px 0px;">  
 
 # TL;DR:
 There are a lot of life hacks I have tried over the years. Here are quick summaries of some of the ones that have worked for me. If any of them sound interesting, I encourage you to do some research on them to see if they are right for you.
