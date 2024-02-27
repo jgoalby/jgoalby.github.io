@@ -12,7 +12,7 @@ There are a lot of life hacks I have tried over the years. Here are quick summar
 # Habit Stacking
 Combine a new habit with an existing habit. For example, if you want to start flossing, do it right after you brush your teeth.
 
-I leverage ssing ChatGPT while I write my daily journal. Image generation takes a while to complete, so I can write my journal while I wait.
+I leverage using ChatGPT while I write my daily journal. Image generation takes a while to complete, so I can write my journal while I wait.
 
 # Domino Habits
 Stacking habits is great if you already have a habit that you can stack against. When you don't it can be really helpful to create an arbitrary habit that you can stack other habits against. What works for me is setting a number of alarms throughout the day. This keeps me on track. The best one I have found is the nighttime alarm to remind me to go to bed. That positions me well to wake up at a good time and start my day off right. You can set other alarms throughout the day to remind you to do other things. For example, you can remind yourself to eat dinner at a regular time.
