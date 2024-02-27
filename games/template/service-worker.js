@@ -1,5 +1,7 @@
 // @ts-nocheck
 
+import Constants from 'src/constants.js';
+
 //----------------------------------------------------------------------------------------------------------
 // GOAL: Work offline by utilizing a cache. Fill the cache as resources are requested. Communicate
 //       with the main thread both ways. We can send update messages and get requests to perform accions.
@@ -49,13 +51,13 @@ self.addEventListener('message', event => {
   // Make sure we have an event source.
   if (event.source && event.data) {
     // We want to do this only once, and we know the client will send this message.
-    if (event.data.type === "initialize") {
+    if (event.data.type === Constants.SW_EVENTS.INIT) {
       // Save the caller event source for later messages to send back.
       self.clientObject = event.source;
     }
 
     // If the client sent a configuration message.
-    if (event.data.type === "config") {
+    if (event.data.type === Constants.SW_EVENTS.CONFIG) {
       // The client controls whether to send cache messages.
       if (event.data.sendCacheMessages) {
         // Control whether to send the main thread messages about cache hits and misses.
@@ -63,7 +65,7 @@ self.addEventListener('message', event => {
       } else {
         self.sendCacheMessages = false;
       }
-    } else if (event.data.type === "clearcache") {
+    } else if (event.data.type === Constants.SW_EVENTS.CLEAR_CACHE) {
       // Clear the cache.
       caches.delete(cacheName);
     }

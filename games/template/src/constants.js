@@ -47,10 +47,17 @@ class Styles {
   static get INTRO_TEXT()                { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
 }
 
-// Events constants.
+// Regular events constants.
 class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
   static get ACTION()                    { return 'ACTION'; }
+};
+
+// Service Worker events constants.
+class ServiceWorkerEvents {
+  static get INIT()                      { return 'INIT'; }
+  static get CONFIG()                    { return 'CONFIG'; }
+  static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
 };
 
 // Settings types we support.
@@ -72,5 +79,6 @@ export default class Constants {
   static get PHYSICS() { return Physics; }
   static get STYLES() { return Styles; }
   static get EVENTS() { return Events; }
+  static get SW_EVENTS() { return ServiceWorkerEvents; }
   static get SETTINGS_TYPES() { return SETTINGS_TYPES; }
 }

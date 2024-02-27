@@ -10,6 +10,7 @@ if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
 import { getConsolePlugin } from './plugins/PluginsHelpers.js'
+import Constants from './constants.js';
 
 // Create the game!
 export default class Game extends Phaser.Game {
@@ -67,23 +68,14 @@ async function handleKeydown(event) {
     const consolePlugin = getConsolePlugin();
     if (consolePlugin) { consolePlugin.toggle(); }
   }
-
-  // TODO: Put this somewhere better.
-
-  if ((event.code == "KeyE") && (event.ctrlKey)) {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.ready.then(registration => {
-        console.log("doing the deed");
-        registration.active.postMessage({ type: "clearcache" });
-      });
-    }
-  }
 }
 
 (() => {
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
+    // Once the page is loaded, register the service worker.
     window.addEventListener('load', () => {
+      // Register the service worker.
       navigator.serviceWorker.register('service-worker.js').then((registration) => {
         console.info('Service worker registration successful.');
       }, function(err) {
@@ -107,10 +99,10 @@ async function handleKeydown(event) {
       // Once the service worker is ready, send it a message to initialize.
       navigator.serviceWorker.ready.then(registration => {
         // Message to initialize.
-        registration.active.postMessage({ type: "initialize" });
+        registration.active.postMessage({ type: Constants.SW_EVENTS.INIT });
 
         // Message to set whether we want to receive cache messages.
-        registration.active.postMessage({ type: "config", sendCacheMessages: generalConfig.sendCacheMessages });
+        registration.active.postMessage({ type: Constants.SW_EVENTS.CONFIG, sendCacheMessages: generalConfig.sendCacheMessages });
       });
     });
   } else {

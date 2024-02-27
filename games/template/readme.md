@@ -8,6 +8,15 @@
   - And then resize would just call a position function for each control on the scene?
   - But how to cope with the menu buttons list as each button does not know where it is?
 
+
+# morph
+- Could I get it to make buttons for me for example?
+- Could I get it to modify the intro text for the game?
+- Simply update the text on a button?
+- Do I need to integrate with Firebase to get this all working?
+
+
+
 # Soon
 - Add settings for sounds: volume and loop in preloader
 - Maybe make a cache plugin and have options to log cache hits and cache misses

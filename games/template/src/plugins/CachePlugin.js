@@ -40,6 +40,9 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
+    // If there is no service worker then we cannot do anything.
+    if (! ('serviceWorker' in navigator)) { return; }
+
     // Get the dependent plugins.
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
@@ -115,7 +118,10 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   onAction(setting) {
     // We want to make an immediate change when the setting changes.
     if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE)) {
-      console.log("here is where we clear the cache!! Woohoo!!");
+      navigator.serviceWorker.ready.then(registration => {
+        console.log("here is where we clear the cache!! Woohoo!! Yeehaw!");
+        registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });
+      });
     }
   }
 
