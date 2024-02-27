@@ -34,6 +34,8 @@ My current process is that I make the growing list, then pick 3 important goals 
 # Just spend 10 minutes on a task
 Getting started is often the most difficult part of the task. It is easy to talk yourself out of doing anything. Rather than prevent yourself starting, commit to spending just 10 minutes on the task. But, there is something important you have to do. You have to give yourself the permission to actually stop after 10 minutes. If you don't do that, then you are just tricking yourself and you will figure that out eventually and stop doing it.
 
+<img class="right" src="/assets/inboxzero.png" alt="Inbox Zero" width="400" style="padding: 15px 15px 0px 0px;">  
+
 # Inbox zero
 Getting the number of emails in your inbox down to zero is a constant challenge. There are many people that pride themselves in just how large the number next to their inbox is. Those people will suggest that having thousands of emails isn't an issue because you can search them whenever you need information. I have found that to be a terrible way to manage my email.
 
