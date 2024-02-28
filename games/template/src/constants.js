@@ -53,7 +53,8 @@ class Events {
   static get ACTION()                    { return 'ACTION'; }
 };
 
-// Service Worker events constants.
+// Service Worker events constants. If you change anything in there then you need to also change
+// them in the service-worker.js code as it cannot import this file. Luckily, this doesn't change often.
 class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
@@ -79,6 +80,8 @@ export default class Constants {
   static get PHYSICS() { return Physics; }
   static get STYLES() { return Styles; }
   static get EVENTS() { return Events; }
-  static get SW_EVENTS() { return ServiceWorkerEvents; }
   static get SETTINGS_TYPES() { return SETTINGS_TYPES; }
+
+  // If you change the name of this, then you should also change it in service-worker.js.
+  static get SW_EVENTS() { return ServiceWorkerEvents; }
 }

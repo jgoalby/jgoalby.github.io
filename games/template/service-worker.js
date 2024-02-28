@@ -1,10 +1,13 @@
 // @ts-nocheck
 
-import Constants from '/games/template//src/constants.js';
+// Put this here as a placeholder for the solution that would have been ideal.
+// This does not work in some browsers that support service workers but do not support
+// es module import within service workers. Inspect browser on iPad appears to be one.
 //import Constants from './src/constants.js';
-//importScripts('./src/constants.js')
 
-/*class ServiceWorkerEvents {
+// Duplicate the constants for service worker events. If you change these then you need
+// to also change them in constants.js.
+class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
@@ -13,7 +16,7 @@ import Constants from '/games/template//src/constants.js';
 // The exported class that contains all of the constants.
 class Constants {
   static get SW_EVENTS() { return ServiceWorkerEvents; }
-}*/
+}
 
 //----------------------------------------------------------------------------------------------------------
 // GOAL: Work offline by utilizing a cache. Fill the cache as resources are requested. Communicate
