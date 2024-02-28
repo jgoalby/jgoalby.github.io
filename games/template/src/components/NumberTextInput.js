@@ -39,6 +39,8 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
 
     this.nameInputElement = this.scene.add.dom(0, 0, dom);
 
+    this.add(this.nameInputElement);
+
     this.scene.add.existing(this);
   }
 }
