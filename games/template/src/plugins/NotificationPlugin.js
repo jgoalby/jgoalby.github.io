@@ -10,7 +10,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
 
     // If we can access the event plugin.
     if (this.customevent) {
-      // We would like to know when the actions have changed so we can do stuff.
+      // We would like to know when notification events happen so we can do stuff.
       this.customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);      
     }
   }
@@ -34,6 +34,11 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
    */
   getVersion() { return undefined; }
 
+  /**
+   * Called when a notification event occurs.
+   * 
+   * @param {string} notification The notification text.
+   */
   onNotification(notification) {
     console.log("NOTIFICATION: " + notification);
   }

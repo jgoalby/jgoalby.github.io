@@ -1,7 +1,6 @@
 # TODOs
 
 # Next
-- Need a way to know that the action associated with the button succeeded or failed. How?
 - Add settings for sounds: volume and loop in preloader
 
 # hmmmm.
@@ -19,6 +18,7 @@
 
 
 # More stuff to do
+- Need to display some kind of toast notification when notifications happen.
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
 - Have tabs for the settings and catagories so like settings go into the same tab
   - Can start with audio as I have 2 of those. The intrpspection could be another

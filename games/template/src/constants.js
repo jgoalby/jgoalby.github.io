@@ -50,7 +50,7 @@ class Styles {
 // Regular events constants.
 class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
-  static get ACTION()                    { return 'ACTION'; }
+  static get SETTING_ACTION()            { return 'SETTING_ACTION'; }
   static get NOTIFICATION()              { return 'NOTIFICATION'; }
 };
 

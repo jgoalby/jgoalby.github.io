@@ -53,7 +53,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     // If we can access the event plugin.
     if (this.customevent) {
       // We would like to know when the actions have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.ACTION, this.onAction, this);      
+      this.customevent.on(Constants.EVENTS.SETTING_ACTION, this.onAction, this);      
     }
   }
 
@@ -61,7 +61,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     // We might not have the plugin, so check this first.
     if (this.customevent) {
       // Remove the listener.
-      this.customevent.off(Constants.EVENTS.ACTION, this.onAction, this);
+      this.customevent.off(Constants.EVENTS.SETTING_ACTION, this.onAction, this);
       this.customevent = undefined;
     }
 
@@ -110,6 +110,11 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  /**
+   * Action happened in settings.
+   * 
+   * @param {any} setting The setting that has changed.
+   */
   onAction(setting) {
     // We want to make an immediate change when the setting changes.
     if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE)) {

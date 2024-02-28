@@ -68,8 +68,10 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   action(category, name) {
+    // If we have the event plugin, we can emit an event.
     if (this.customevent) {
-      this.customevent.emit(Constants.EVENTS.ACTION, { category: category, name: name});
+      // Emit that a setting action happened.
+      this.customevent.emit(Constants.EVENTS.SETTING_ACTION, { category: category, name: name});
     }
   }
 

@@ -10,6 +10,11 @@ const MUSIC_OPTION_DESC = 'Music Enabled';
 const DEFAULT_MUSIC_OPTION = false;
 const MUSIC_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
+const VOLUME_OPTION = 'volumeOption';
+const VOLUME_OPTION_DESC = 'Music Volume';
+const DEFAULT_VOLUME_OPTION = 0.5;
+const VOLUME_OPTION_TYPE = Constants.SETTINGS_TYPES.number;
+
 // Sound option settings.
 const SOUND_OPTION = 'soundOption';
 const SOUND_OPTION_DESC = 'Sound Effects Enabled';
@@ -32,12 +37,6 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
       // Register the settings we need.
       this.settings.registerSetting(CATEGORY, MUSIC_OPTION, DEFAULT_MUSIC_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
       this.settings.registerSetting(CATEGORY, SOUND_OPTION, DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-
-      /*this.settings.registerSetting(CATEGORY, SOUND_OPTION + "1", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "2", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "3", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "4", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION + "5", DEFAULT_SOUND_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);*/
     }
 
     // Make sure we have the event plugin.
@@ -66,9 +65,30 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    */
   getVersion() { return undefined; }
 
-  // We get the music object from the scene.
   set music(value)          { this._music = value; }
   get music()               { return this._music; }
+
+  /**
+   * Set the volume.
+   * 
+   * @param {number} volume The volume from 0 to 1.
+   */
+  setVolume(volume) {
+    if (this.music) {
+      this.music.setVolume(volume);
+    }
+  }
+
+  /**
+   * Set whether to loop the music.
+   * 
+   * @param {boolean} loop Whether to loop the music.
+   */
+  setLoop(loop) {
+    if (this.music) {
+      this.music.setLoop(loop);
+    }
+  }
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the music setting changes.
