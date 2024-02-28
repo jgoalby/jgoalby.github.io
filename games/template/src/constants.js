@@ -38,6 +38,7 @@ class Styles {
   static get HEADING_X_ORIGIN()          { return 0.5 }
   static get HEADING_Y_ORIGIN()          { return 0 }
   static get HEADING_TEXT()              { return { fontSize: Styles.HEADING_TEXT_SIZE, color: Styles.HEADING_TEXT_COLOR, } }
+  static get LABEL()                     { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR, } }
   static get CHECKBOX_LABEL()            { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR, } }
   static get CHECKBOX_LABEL_HIGHLIGHT()  { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_HIGHLIGHT_COLOR, } }
   static get CHECKBOX_INSIDE_SPACE()     { return 10 }

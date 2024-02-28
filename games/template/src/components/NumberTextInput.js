@@ -22,7 +22,7 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
     }
 
     if (this.label) {
-      this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.BUTTON_TEXT);
+      this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.LABEL);
       //Phaser.Display.Align.In.Center(this.text, this.button);
     }
 
@@ -33,7 +33,8 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
     const dom = document.createElement('div');
     const input = document.createElement('input');
     input.name = 'inputField';
-    input.placeholder = 'Enter number';
+    input.placeholder = '0-1';
+    input.width = 50;
 
     dom.append(input);
 
