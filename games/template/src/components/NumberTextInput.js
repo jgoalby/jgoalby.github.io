@@ -1,3 +1,5 @@
+import Constants from '../constants.js';
+
 export default class NumberTextInput extends Phaser.GameObjects.Container {
   /**
    * Make this control by passing the parent scene and some options.
@@ -13,8 +15,15 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
 
     if (options.setting) {
       this.setting = options.setting;
+      this.label = options.setting.description;
     } else {
       this.setting = undefined;
+      this.label = options.label;
+    }
+
+    if (this.label) {
+      this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.BUTTON_TEXT);
+      //Phaser.Display.Align.In.Center(this.text, this.button);
     }
 
     const dom = document.createElement('div');

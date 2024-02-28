@@ -51,6 +51,7 @@ interface CheckBoxButtonOptions {
 }
 
 interface NumberTextInputOptions {
+    label?: string;
     setting?: any;
 }
 
