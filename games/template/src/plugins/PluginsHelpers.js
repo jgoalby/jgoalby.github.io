@@ -116,6 +116,7 @@ export {
   getSettingsPlugin,
   getConsolePlugin,
   getIntrospectPlugin,
+  getCachePlugin,
   getAudioPlugin,
   getFirebasePlugin,
   getPluginListAsString,

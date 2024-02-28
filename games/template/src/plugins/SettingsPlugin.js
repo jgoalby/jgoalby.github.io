@@ -51,7 +51,7 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     // Get it or create it and set the values.
     const categoryValue = this.getSetting(setting.category, setting.name);
     categoryValue.name = setting.name;
-    categoryValue.value = setting.default;
+    categoryValue.value = setting.value;
     categoryValue.category = setting.category;
     categoryValue.description = setting.description;
     categoryValue.type = setting.type;

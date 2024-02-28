@@ -9,7 +9,7 @@ if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
 
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
-import { getConsolePlugin } from './plugins/PluginsHelpers.js'
+import { getCachePlugin, getConsolePlugin } from './plugins/PluginsHelpers.js'
 import Constants from './constants.js';
 
 // Create the game!
@@ -79,18 +79,24 @@ async function handleKeydown(event) {
       navigator.serviceWorker.register('service-worker.js').then((registration) => {
         console.info('Service worker registration successful.');
       }, function(err) {
+        // The service worker can fail for numerous reasons. This is async so nothing to do here.
         console.error('Service worker registration failed!', err);
       });
 
+      // Get the cache plugin.
+      const cachePlugin = getCachePlugin();
+
+      // These are messages received from the service worker.
       navigator.serviceWorker.addEventListener('message', event => {
+        // Sanity check.
         if (event.data) {
+          // Messages can be a string type or object type.
           if (typeof event.data === 'string') {
-            console.log(`The service worker sent a message: ${event.data}`);
-          } else if ((event.data.type === "cache") && event.data.requestURL) {
-            if (event.data.cacheHit) {
-              console.log(`Cache hit: ${event.data.requestURL}`);
-            } else {
-              console.warn(`Cache miss: ${event.data.requestURL}`);
+            // console.log(`The service worker sent a message: ${event.data}`);
+          } else if (event.data.type === Constants.SW_EVENTS.CACHE_MESSAGE) {
+            if (cachePlugin) {
+              // Have the cache plugin log the cache hit or miss.
+              cachePlugin.logCacheMessage(event.data.cacheHit, event.data.requestURL);
             }
           }
         }
@@ -98,11 +104,14 @@ async function handleKeydown(event) {
 
       // Once the service worker is ready, send it a message to initialize.
       navigator.serviceWorker.ready.then(registration => {
-        // Message to initialize.
+        // Message to initialize the service worker with us.
         registration.active.postMessage({ type: Constants.SW_EVENTS.INIT });
 
-        // Message to set whether we want to receive cache messages.
-        registration.active.postMessage({ type: Constants.SW_EVENTS.CONFIG, sendCacheMessages: generalConfig.sendCacheMessages });
+        // No point capturing cache messages if we don't have a cache plugin.
+        if (cachePlugin) {
+          // Message to set whether we want to receive cache messages.
+          registration.active.postMessage({ type: Constants.SW_EVENTS.CONFIG, sendCacheMessages: generalConfig.sendCacheMessages });
+        }
       });
     });
   } else {

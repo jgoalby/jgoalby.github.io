@@ -11,6 +11,7 @@ class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
+  static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
 };
 
 // The exported class that contains all of the constants.
@@ -124,7 +125,7 @@ self.addEventListener('fetch', function(event) {
     // Configured at start of file.
     if (self.sendCacheMessages) {
       // Send the message indicating hit or miss and what the request was.
-      self.sendMessage({ type: "cache", cacheHit: (cachedResponse ? true : false), requestURL: event.request.url });
+      self.sendMessage({ type: Constants.SW_EVENTS.CACHE_MESSAGE, cacheHit: (cachedResponse ? true : false), requestURL: event.request.url });
     }
 
     try {
