@@ -77,23 +77,23 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.height = Math.max(firstButton.height, this.text.height);
 
     // Rather than using the width and height of the button, we use the width and height of the whole container.
-    this.hitZone = this.scene.add.zone(0, 0, this.width, this.height);
-    this.hitZone.setOrigin(0, 0);
-    this.hitZone.setInteractive();
+    //this.hitZone = this.scene.add.zone(0, 0, this.width, this.height);
+    //this.hitZone.setOrigin(0, 0);
+    //this.hitZone.setInteractive();
 
     // Add the button, text, and hit zone to the container.
     //this.add(this.button1);
     //this.add(this.button2);
     //this.add(this.button3);
     this.add(this.text);
-    this.add(this.hitZone);
+    //this.add(this.hitZone);
 
     // When the hit zone is clicked, call the checkboxClicked method.
     //this.hitZone.on('pointerdown', () => { this.checkboxClicked(); });
 
     // Show when the user hovers over the hit zone.
-    this.hitZone.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
-    this.hitZone.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
+    //this.hitZone.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
+    //this.hitZone.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
 
     // Add the container to the scene.
     this.scene.add.existing(this);
