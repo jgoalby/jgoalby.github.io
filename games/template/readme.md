@@ -2,6 +2,12 @@
 
 # Next
 - I want to be able to put the button on the options page that can clear the cache via the service worker
+- Need a way to know that the action associated with the button succeeded or failed. How?
+- Add settings for sounds: volume and loop in preloader
+- Maybe make a cache plugin and have options to log cache hits and cache misses
+  - Make this functional
+- An action to clear the cache
+- Do I want a cache plugin or a service worker plugin?
 
 # hmmmm.
 - What about if I add callbacks to buttons for the x and y positions?
@@ -16,12 +22,6 @@
 - Do I need to integrate with Firebase to get this all working?
 
 
-
-# Soon
-- Add settings for sounds: volume and loop in preloader
-- Maybe make a cache plugin and have options to log cache hits and cache misses
-- An action to clear the cache
-- Do I want a cache plugin or a service worker plugin?
 
 # More stuff to do
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
