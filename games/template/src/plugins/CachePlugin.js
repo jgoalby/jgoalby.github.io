@@ -7,7 +7,7 @@ const LOG_CACHE_HIT  = 'logCacheHitOption';
 const LOG_CACHE_MISS = 'logCacheMissOption';
 const CLEAR_CACHE    = 'clearCacheOption';
 
-const cacheSettings = {
+const pluginSettings = {
   LOG_CACHE_HIT:{
     category: CATEGORY,
     name: LOG_CACHE_HIT,
@@ -45,8 +45,8 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     // If we can access the settings plugin.
     if (this.settings) {
       // Register all of the settings.
-      Object.keys(cacheSettings).forEach((key) => {
-        this.settings.registerSettingnew(cacheSettings[key]);
+      Object.keys(pluginSettings).forEach((key) => {
+        this.settings.registerSetting(pluginSettings[key]);
       });
     }
 

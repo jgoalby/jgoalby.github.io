@@ -5,9 +5,16 @@ import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
 const CONSOLE_OPTION = 'consoleOption';
-const CONSOLE_OPTION_DESC = 'Console Enabled';
-const DEFAULT_CONSOLE_OPTION = false;
-const CONSOLE_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+
+const pluginSettings = {
+  CONSOLE_OPTION:{
+    category: CATEGORY,
+    name: CONSOLE_OPTION,
+    description: 'Console Enabled',
+    value: false,
+    type: Constants.SETTINGS_TYPES.boolean
+  }
+}
 
 export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   static initialize() {
@@ -21,9 +28,12 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
+    // If we can access the settings plugin.
     if (this.settings) {
-      // Register the settings we need.
-      this.settings.registerSetting(CATEGORY, CONSOLE_OPTION, DEFAULT_CONSOLE_OPTION, CONSOLE_OPTION_DESC, CONSOLE_OPTION_TYPE);
+      // Register all of the settings.
+      Object.keys(pluginSettings).forEach((key) => {
+        this.settings.registerSetting(pluginSettings[key]);
+      });
     }
 
     if (this.customevent) {

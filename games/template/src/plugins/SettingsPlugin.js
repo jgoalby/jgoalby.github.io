@@ -47,7 +47,7 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     return categoryValues[name];
   }
 
-  registerSettingnew(setting) {
+  registerSetting(setting) {
     // Get it or create it and set the values.
     const categoryValue = this.getSetting(setting.category, setting.name);
     categoryValue.name = setting.name;
@@ -55,16 +55,6 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     categoryValue.category = setting.category;
     categoryValue.description = setting.description;
     categoryValue.type = setting.type;
-  }
-
-  registerSetting(category, name, value, description, type) {
-    // Get it or create it and set the values.
-    const categoryValue = this.getSetting(category, name);
-    categoryValue.name = name;
-    categoryValue.value = value;
-    categoryValue.category = category;
-    categoryValue.description = description;
-    categoryValue.type = type;
   }
 
   action(category, name) {

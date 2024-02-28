@@ -120,7 +120,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
         this.setState(newSetting.value);
 
         // Update the button texture to reflect the new state.      
-        this.updateCheckbox();
+        this.updateCheckboxes();
       }
     }
   }
@@ -166,7 +166,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     }
   }
 
-  updateCheckbox() {
+  updateCheckboxes() {
     // Only can do this if we have the function to get the state.
     if (this.getState) {
       const curState = this.getState();

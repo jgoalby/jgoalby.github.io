@@ -4,9 +4,16 @@ import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
 const INTROSPECTION_OPTION = 'introspectOption';
-const INTROSPECTION_OPTION_DESC = 'Introspection Enabled';
-const DEFAULT_INTROSPECTION_OPTION = false;
-const INTROSPECTION_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+
+const pluginSettings = {
+  INTROSPECTION_OPTION:{
+    category: CATEGORY,
+    name: INTROSPECTION_OPTION,
+    description: 'Introspection Enabled',
+    value: false,
+    type: Constants.SETTINGS_TYPES.boolean
+  }
+}
 
 export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
@@ -19,9 +26,12 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
+    // If we can access the settings plugin.
     if (this.settings) {
-      // Register the settings we need.
-      this.settings.registerSetting(CATEGORY, INTROSPECTION_OPTION, DEFAULT_INTROSPECTION_OPTION, INTROSPECTION_OPTION_DESC, INTROSPECTION_OPTION_TYPE);
+      // Register all of the settings.
+      Object.keys(pluginSettings).forEach((key) => {
+        this.settings.registerSetting(pluginSettings[key]);
+      });
     }
 
     if (this.customevent) {

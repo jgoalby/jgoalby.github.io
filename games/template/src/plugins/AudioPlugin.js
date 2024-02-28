@@ -3,23 +3,33 @@ import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
 const CATEGORY = 'sound';
-
-// Music option settings.
-const MUSIC_OPTION = 'musicOption';
-const MUSIC_OPTION_DESC = 'Music Enabled';
-const MUSIC_DEFAULT_OPTION = false;
-const MUSIC_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
-
+const MUSIC_OPTION  = 'musicOption';
 const VOLUME_OPTION = 'volumeOption';
-const VOLUME_OPTION_DESC = 'Music Volume';
-const VOLUME_DEFAULT_OPTION = 2;
-const VOLUME_OPTION_TYPE = Constants.SETTINGS_TYPES.range;
+const SOUND_OPTION    = 'soundOption';
 
-// Sound option settings.
-const SOUND_OPTION = 'soundOption';
-const SOUND_OPTION_DESC = 'Sound Effects Enabled';
-const SOUND_DEFAULT_OPTION = true;
-const SOUND_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
+const pluginSettings = {
+  MUSIC_OPTION:{
+    category: CATEGORY,
+    name: MUSIC_OPTION,
+    description: 'Music Enabled',
+    value: false,
+    type: Constants.SETTINGS_TYPES.boolean
+  },
+  VOLUME_OPTION: {
+    category: CATEGORY,
+    name: VOLUME_OPTION,
+    description: 'Music Volume',
+    value: 2,
+    type: Constants.SETTINGS_TYPES.range
+  },
+  SOUND_OPTION: {
+    category: CATEGORY,
+    name: SOUND_OPTION,
+    description: 'Sound Effects Enabled',
+    value: true,
+    type: Constants.SETTINGS_TYPES.function
+  }
+}
 
 export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
@@ -32,12 +42,12 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this.settings = getSettingsPlugin();
     this.customevent = getEventPlugin();
 
-    // Make sure we have the settings plugin.
+    // If we can access the settings plugin.
     if (this.settings) {
-      // Register the settings we need.
-      this.settings.registerSetting(CATEGORY, MUSIC_OPTION, MUSIC_DEFAULT_OPTION, MUSIC_OPTION_DESC, MUSIC_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, VOLUME_OPTION, VOLUME_DEFAULT_OPTION, VOLUME_OPTION_DESC, VOLUME_OPTION_TYPE);
-      this.settings.registerSetting(CATEGORY, SOUND_OPTION, SOUND_DEFAULT_OPTION, SOUND_OPTION_DESC, SOUND_OPTION_TYPE);
+      // Register all of the settings.
+      Object.keys(pluginSettings).forEach((key) => {
+        this.settings.registerSetting(pluginSettings[key]);
+      });
     }
 
     // Make sure we have the event plugin.
@@ -79,7 +89,8 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
       
       // TODO: How do I know the range?
       
-      let volume0to1 = volume / 5;
+      // The volume is zero-based, so add 1 as disabling music provides the ability to turn off music.
+      let volume0to1 = (volume + 1) / 5;
       this.music.setVolume(volume0to1);
     }
   }
