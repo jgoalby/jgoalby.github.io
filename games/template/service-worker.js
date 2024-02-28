@@ -1,9 +1,10 @@
 // @ts-nocheck
 
+import Constants from '/games/template//src/constants.js';
 //import Constants from './src/constants.js';
 //importScripts('./src/constants.js')
 
-class ServiceWorkerEvents {
+/*class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
@@ -12,7 +13,7 @@ class ServiceWorkerEvents {
 // The exported class that contains all of the constants.
 class Constants {
   static get SW_EVENTS() { return ServiceWorkerEvents; }
-}
+}*/
 
 //----------------------------------------------------------------------------------------------------------
 // GOAL: Work offline by utilizing a cache. Fill the cache as resources are requested. Communicate
