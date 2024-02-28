@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 
-export default class NumberTextInput extends Phaser.GameObjects.Container {
+export default class NumberInput extends Phaser.GameObjects.Container {
   /**
    * Make this control by passing the parent scene and some options.
    * 

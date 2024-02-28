@@ -1,7 +1,8 @@
 import Constants from '../constants.js';
 import Button from '../components/Button.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
-import NumberTextInput from '../components/NumberTextInput.js';
+import NumberInput from '../components/NumberInput.js';
+import TextInput from '../components/TextInput.js';
 import RangeButton from '../components/RangeButton.js';
 import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
@@ -47,12 +48,13 @@ export default class OptionsScene extends BaseScene {
               ctrl = new CheckBoxButton(this, { setting: setting });
               break;
             case Constants.SETTINGS_TYPES.number:
-              ctrl = new NumberTextInput(this, { setting: setting });
+              ctrl = new NumberInput(this, { setting: setting });
               break;
             case Constants.SETTINGS_TYPES.range:
               ctrl = new RangeButton(this, { setting: setting });
               break;
             case Constants.SETTINGS_TYPES.string:
+              ctrl = new TextInput(this, { setting: setting });
               break;
             case Constants.SETTINGS_TYPES.function:
               ctrl = new Button(this, { setting: setting });
