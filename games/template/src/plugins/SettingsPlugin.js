@@ -50,11 +50,19 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
   registerSetting(setting) {
     // Get it or create it and set the values.
     const categoryValue = this.getSetting(setting.category, setting.name);
-    categoryValue.name = setting.name;
+
+
+    // Go through all of the properties of setting and set on categoryValue
+    for (const key in setting) {
+      console.log("AAA key: " + key + " value: " + setting[key]);
+      categoryValue[key] = setting[key];
+    }
+
+    /*categoryValue.name = setting.name;
     categoryValue.value = setting.value;
     categoryValue.category = setting.category;
     categoryValue.description = setting.description;
-    categoryValue.type = setting.type;
+    categoryValue.type = setting.type;*/
   }
 
   action(category, name) {
