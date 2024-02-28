@@ -131,18 +131,27 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       // Do not presume to use what is passed.
       let newState = undefined;
 
+      // We support numeric indexes as well as strings for relative changes.
       if (typeof index === "number") {
         // The index passed in can be used directly.
         newState = index;
       } else {
+        // Increment the value.
         if (index === "+") {
+          // Do the increment.
           newState = this.getState() + 1;
+
+          // Check that the new state is not out of range.
           if (newState > (this.buttonList.length - 1)) {
             newState = 0;
           }
         }
+        // Decrement the value.
         if (index === "-") {
+          // Do the decrement.
           newState = this.getState() - 1;
+
+          // Check that the new state is not out of range.
           if (newState < 0) {
             newState = (this.buttonList.length - 1);
           }
