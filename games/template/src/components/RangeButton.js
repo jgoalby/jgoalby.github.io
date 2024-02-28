@@ -45,9 +45,9 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     // The check button that changes state when the whole button is clicked.
     this.button1 = this.scene.add.image(0, 0, this.getState() ? this.checked : this.unchecked);
     this.button1.setOrigin(0, 0);
-    this.button2 = this.scene.add.image(0, 0, this.getState() ? this.checked : this.unchecked);
+    this.button2 = this.scene.add.image(30, 0, this.getState() ? this.checked : this.unchecked);
     this.button2.setOrigin(0, 0);
-    this.button3 = this.scene.add.image(0, 0, this.getState() ? this.checked : this.unchecked);
+    this.button3 = this.scene.add.image(60, 0, this.getState() ? this.checked : this.unchecked);
     this.button3.setOrigin(0, 0);
 
     // The text label that goes to the side of the button. The y position is set to the middle of the button.

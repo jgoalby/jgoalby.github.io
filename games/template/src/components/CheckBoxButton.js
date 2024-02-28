@@ -91,7 +91,7 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
   }
 
   onSettingChanged(newSetting) {
-    // Should never be called if no setting, but worth checking.
+    // This method should never be called if no setting, but worth checking.
     if (this.setting) {
       // We want to make an immediate change when the setting changes.
       if ((newSetting.category === this.setting.category) && (newSetting.name === this.setting.name)) {
