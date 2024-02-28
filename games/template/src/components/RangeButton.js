@@ -1,6 +1,10 @@
 import Constants from '../constants.js';
 import { getEventPlugin } from '../plugins/PluginsHelpers.js'
 
+
+// TODO:
+//       When click label move to the next button
+
 export default class RangeButton extends Phaser.GameObjects.Container {
   /**
    * Make this button by passing the parent scene and some options.
@@ -42,24 +46,30 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       }
     }
 
-    // The check button that changes state when the whole button is clicked.
-    this.button1 = this.scene.add.image(0, 0, this.getState() ? this.checked : this.unchecked);
-    this.button1.setOrigin(0, 0);
-    this.button2 = this.scene.add.image(30, 0, this.getState() ? this.checked : this.unchecked);
-    this.button2.setOrigin(0, 0);
-    this.button3 = this.scene.add.image(60, 0, this.getState() ? this.checked : this.unchecked);
-    this.button3.setOrigin(0, 0);
+    const numButtons = 3;
+    this.buttonList = [];
+    let curXPos = 0;
+
+    for (let i = 0; i < numButtons; i++) {
+      const button = this.scene.add.image(curXPos, 0, this.getState() ? this.checked : this.unchecked);
+      curXPos += button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE;
+      button.setOrigin(0, 0);
+      this.add(button);
+      this.buttonList.push(button);
+    }
+
+    const firstButton = this.buttonList[0];
 
     // The text label that goes to the side of the button. The y position is set to the middle of the button.
     this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.CHECKBOX_LABEL);
     this.text.setOrigin(0, 0.5);
-    this.text.setPosition(this.button3.x + this.button3.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE, this.button3.y + (this.button3.height / 2));
+    this.text.setPosition(curXPos, firstButton.y + (firstButton.height / 2));
 
     // Don't want to use specific padding numbers. We know that the button is leftmost and the text is rightmost.
     // So we can calculate the width by subtracting the x position of the button from the x position of the text
     // and then add the width of the text.
-    this.width = (this.text.x - this.button1.x) + this.text.width;
-    this.height = Math.max(this.button1.height, this.text.height);
+    this.width = (this.text.x - firstButton.x) + this.text.width;
+    this.height = Math.max(firstButton.height, this.text.height);
 
     // Rather than using the width and height of the button, we use the width and height of the whole container.
     this.hitZone = this.scene.add.zone(0, 0, this.width, this.height);
@@ -67,9 +77,9 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.hitZone.setInteractive();
 
     // Add the button, text, and hit zone to the container.
-    this.add(this.button1);
-    this.add(this.button2);
-    this.add(this.button3);
+    //this.add(this.button1);
+    //this.add(this.button2);
+    //this.add(this.button3);
     this.add(this.text);
     this.add(this.hitZone);
 
@@ -122,7 +132,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     // Only can do this if we have the function to get the state.
     if (this.getState) {
       // Update the button texture to reflect the new state.      
-      this.button1.setTexture(this.getState() ? this.checked : this.unchecked);
+      this.buttonList[0].setTexture(this.getState() ? this.checked : this.unchecked);
     }
   }
 }

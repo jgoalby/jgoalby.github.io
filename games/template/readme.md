@@ -22,6 +22,7 @@
 
 
 # More stuff to do
+- Could make a base container that contains code to always call events and clean up etc.
 - Need to display some kind of toast notification when notifications happen.
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
 - Have tabs for the settings and catagories so like settings go into the same tab
