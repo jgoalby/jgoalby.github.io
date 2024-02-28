@@ -55,7 +55,6 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     for (let i = 0; i < numButtons; i++) {
       const button = this.scene.add.image(curXPos, 0, (curState == i) ? this.checked : this.unchecked);
       curXPos += button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE;
-      button.setData('rangeIndex', i);
       button.setOrigin(0, 0);
       button.setInteractive();
       button.on('pointerdown', () => { this.checkboxClicked(i); });
@@ -113,7 +112,6 @@ export default class RangeButton extends Phaser.GameObjects.Container {
   }
 
   onSettingChanged(newSetting) {
-    console.log("onSettingChanged called");
     // Should never be called if no setting, but worth checking.
     if (this.setting) {
       // We want to make an immediate change when the setting changes.
@@ -128,7 +126,6 @@ export default class RangeButton extends Phaser.GameObjects.Container {
   }
 
   checkboxClicked(index) {
-    console.log("Checkbox clicked. Index: " + index);
     // Only can do this if we have the function to set the state.
     if (this.setState) {
       // Do not presume to use what is passed.
@@ -161,7 +158,6 @@ export default class RangeButton extends Phaser.GameObjects.Container {
   }
 
   updateCheckbox() {
-    console.log("update checkbox called");
     // Only can do this if we have the function to get the state.
     if (this.getState) {
       const curState = this.getState();

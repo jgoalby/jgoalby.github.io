@@ -76,13 +76,11 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    */
   setVolume(volume) {
     if (this.music) {
-
-
-      // TODO: Need to convert the range to the actual volume 0-1.
-
-
-
-      this.music.setVolume(volume);
+      
+      // TODO: How do I know the range?
+      
+      let volume0to1 = volume / 5;
+      this.music.setVolume(volume0to1);
     }
   }
 
@@ -106,6 +104,11 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
       } else {
         this.pauseMusic();
       }
+    }
+
+    // We want to make an immediate change when the volume  setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === VOLUME_OPTION)) {
+      this.setVolume(setting.value);
     }
   }
 
