@@ -78,13 +78,13 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   getVersion() { return undefined; }
 
   /**
-   * Simple helper to get setting values.
+   * Simple helper to get a setting value.
    * 
    * @param {string} settingName The name of the setting to get.
    * @returns {any} the setting value.
    */
   getSettingValue(settingName) {
-    return this.settings.getSetting(CATEGORY, settingName);
+    return this.settings.getSetting(CATEGORY, settingName).value;
   }
 
   /**

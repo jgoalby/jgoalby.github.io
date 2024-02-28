@@ -25,7 +25,7 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
     const input = document.createElement('input');
     input.name = 'inputField';
     input.placeholder = '0-1';
-    input.style.width = '50px';
+    input.style.width = '25px';
 
     containerDiv.append(input);
 
