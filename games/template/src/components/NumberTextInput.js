@@ -21,26 +21,28 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
       this.label = options.label;
     }
 
+    const containerDiv = document.createElement('div');
+    const input = document.createElement('input');
+    input.name = 'inputField';
+    input.placeholder = '0-1';
+    input.style.width = '50px';
+
+    containerDiv.append(input);
+
+    this.nameInputElement = this.scene.add.dom(0, 0, containerDiv);
+
+    this.add(this.nameInputElement);
+
     if (this.label) {
       this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.LABEL);
+      this.text.setOrigin(0, 0.5);
+      this.text.setPosition(this.nameInputElement.x + this.nameInputElement.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE, this.nameInputElement.y + (this.nameInputElement.height / 2));
       //Phaser.Display.Align.In.Center(this.text, this.button);
     }
 
     if (this.text) {
       this.add(this.text);
     }
-
-    const dom = document.createElement('div');
-    const input = document.createElement('input');
-    input.name = 'inputField';
-    input.placeholder = '0-1';
-    input.width = 50;
-
-    dom.append(input);
-
-    this.nameInputElement = this.scene.add.dom(0, 0, dom);
-
-    this.add(this.nameInputElement);
 
     this.scene.add.existing(this);
   }
