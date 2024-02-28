@@ -13,7 +13,7 @@ const MUSIC_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 const VOLUME_OPTION = 'volumeOption';
 const VOLUME_OPTION_DESC = 'Music Volume';
 const VOLUME_DEFAULT_OPTION = 0.5;
-const VOLUME_OPTION_TYPE = Constants.SETTINGS_TYPES.number;
+const VOLUME_OPTION_TYPE = Constants.SETTINGS_TYPES.range;
 
 // Sound option settings.
 const SOUND_OPTION = 'soundOption';

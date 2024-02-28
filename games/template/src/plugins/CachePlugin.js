@@ -84,6 +84,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * @returns {any} the setting value.
    */
   getSettingValue(settingName) {
+    // Get the setting object, and then the value from that object.
     return this.settings.getSetting(CATEGORY, settingName).value;
   }
 

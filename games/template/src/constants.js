@@ -69,6 +69,7 @@ const SETTINGS_TYPES = {
   boolean: 'boolean',
   string: 'string',
   number: 'number',
+  range: 'range',
   function: 'function',
 };
 
