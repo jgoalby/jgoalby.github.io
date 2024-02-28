@@ -1,6 +1,10 @@
 # TODOs
 
 # Next
+- Maybe just get the number text input working first?
+- What about making a 0-1 field type?
+- Make the checkboxbutton be a dom checkbox element?
+- Maybe make the button a dom element as well? Hmmm... I don't think so?
 - Add settings for sounds: volume and loop in preloader
 
 # hmmmm.
