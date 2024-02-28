@@ -30,14 +30,12 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     const categoryValues = this._settingsByCategory[category];
 
     // If the setting name is not present in this category, create it. This will always
-    // happen the first time a setting is accessed.
+    // happen the first time a setting is accessed. These are defaults we can assume.
     if (categoryValues[name] === undefined) {
       categoryValues[name] = {};
       categoryValues[name].name = name;
-      categoryValues[name].value = undefined;
       categoryValues[name].category = category;
       categoryValues[name].description = name;
-      categoryValues[name].type = undefined;
       categoryValues[name].getFn = () => { return this.getValue(category, name) };
       categoryValues[name].setFn = (newValue) => { this.setValue(category, name, newValue) };
       categoryValues[name].actionFn = () => { this.action(category, name) };
@@ -51,18 +49,11 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
     // Get it or create it and set the values.
     const categoryValue = this.getSetting(setting.category, setting.name);
 
-
-    // Go through all of the properties of setting and set on categoryValue
+    // Go through all of the properties of setting and set on categoryValue, this means we do not
+    // have to set them all individually, and when a client adds a new value, we do not have to change.
     for (const key in setting) {
-      console.log("AAA key: " + key + " value: " + setting[key]);
       categoryValue[key] = setting[key];
     }
-
-    /*categoryValue.name = setting.name;
-    categoryValue.value = setting.value;
-    categoryValue.category = setting.category;
-    categoryValue.description = setting.description;
-    categoryValue.type = setting.type;*/
   }
 
   action(category, name) {
