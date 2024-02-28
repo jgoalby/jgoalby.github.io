@@ -18,6 +18,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.scene = scene;
     this.x = 0;
     this.y = 0;
+    this.buttonList = [];
 
     // The checkbox can be used on the options scene, so we need to know about the setting.
     if (options.setting) {
@@ -25,12 +26,14 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       this.getState = options.setting.getFn;
       this.setState = options.setting.setFn;
       this.label = options.setting.description;
+      this.numButtons = options.setting.numvalues;
     } else {
       this.currentState = false;
       this.setting = undefined;
       this.getState = () => { return this.currentState; };
       this.setState = (newState) => { this.currentState = newState; }
-      this.label = options.label;
+      this.label = options.label || "";
+      this.numButtons = options.numvalues || 1;
     }
 
     this.checked = 'checkedBox';
@@ -47,12 +50,14 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       }
     }
 
-    const numButtons = 5;
-    this.buttonList = [];
+    // These buttons go next to each other, so this allows us to space them.
     let curXPos = 0;
+
+    // The state does not change yet, so just get it once before hte loop.
     const curState = this.getState();
 
-    for (let i = 0; i < numButtons; i++) {
+    // For the number of buttons that has been requested, create them.
+    for (let i = 0; i < this.numButtons; i++) {
       const button = this.scene.add.image(curXPos, 0, (curState == i) ? this.checked : this.unchecked);
       curXPos += button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE;
       button.setOrigin(0, 0);
@@ -62,6 +67,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       this.buttonList.push(button);
     }
 
+    // A sample button for measuring.
     const firstButton = this.buttonList[0];
 
     // The text label that goes to the side of the button. The y position is set to the middle of the button.
@@ -76,22 +82,13 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.width = (this.text.x - firstButton.x) + this.text.width;
     this.height = Math.max(firstButton.height, this.text.height);
 
-    // Rather than using the width and height of the button, we use the width and height of the whole container.
-    //this.hitZone = this.scene.add.zone(0, 0, this.width, this.height);
-    //this.hitZone.setOrigin(0, 0);
-    //this.hitZone.setInteractive();
-
-    // Add the button, text, and hit zone to the container.
+    // Add the text to the container.
     this.add(this.text);
-    //this.add(this.hitZone);
 
-    // When the hit zone is clicked, call the checkboxClicked method.
-    //this.hitZone.on('pointerdown', () => { this.checkboxClicked(); });
+    // When the text is clicked, call the checkboxClicked method.
     this.text.on('pointerdown', () => { this.checkboxClicked("+"); });
 
-    // Show when the user hovers over the hit zone.
-    //this.hitZone.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
-    //this.hitZone.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
+    // Show when the user hovers over the text.
     this.text.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
     this.text.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
 

@@ -47,6 +47,7 @@ interface ButtonOptions {
 
 interface CheckBoxButtonOptions {
     label?: string;
+    numvalues?: number;
     setting?: any;
 }
 

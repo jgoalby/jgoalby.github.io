@@ -20,6 +20,7 @@ const pluginSettings = {
     name: VOLUME_OPTION,
     description: 'Music Volume',
     value: 2,
+    numvalues: 5,
     type: Constants.SETTINGS_TYPES.range
   },
   SOUND_OPTION: {
@@ -79,6 +80,18 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
   set music(value)          { this._music = value; }
   get music()               { return this._music; }
 
+  addMusic(sound) {
+    // Set the music.
+    this._music = sound;
+
+    // We always want to loop the music.
+    this._music.setLoop(true);
+
+    // Set the volume for the music based on the volume setting.
+    const volumeSetting = this.settings.getValue(CATEGORY, VOLUME_OPTION);
+    this.setVolume(volumeSetting);
+  }
+
   /**
    * Set the volume.
    * 
@@ -86,11 +99,8 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    */
   setVolume(volume) {
     if (this.music) {
-      
-      // TODO: How do I know the range?
-      
-      // The volume is zero-based, so add 1 as disabling music provides the ability to turn off music.
-      let volume0to1 = (volume + 1) / 5;
+      // The volume is zero-based, so add 1 as disabling music already provides the ability to turn off music (0).
+      let volume0to1 = (volume + 1) / pluginSettings.VOLUME_OPTION.numvalues;
       this.music.setVolume(volume0to1);
     }
   }

@@ -22,6 +22,8 @@
 
 
 # More stuff to do
+- For the input screen, make it so you can use the keyboard if you like, but can also click to get text.
+  - Also could generate a username for the user? Random words.
 - Make the get input scene not use keyboard to get the username, but use mouse based text input instead.
 - Could make a base container that contains code to always call events and clean up etc.
 - Could also make a base plugin that does the same thing and registers settings etc.
