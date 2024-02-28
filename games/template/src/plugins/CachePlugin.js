@@ -12,7 +12,7 @@ const cacheSettings = {
     category: CATEGORY,
     name: LOG_CACHE_HIT,
     description: 'Log Cache Hits',
-    value: true,
+    value: false,
     type: Constants.SETTINGS_TYPES.boolean
   },
   LOG_CACHE_MISS: {
@@ -52,7 +52,8 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
 
     // If we can access the event plugin.
     if (this.customevent) {
-      // We would like to know when the actions have changed so we can do stuff.
+      // We would like to know when the actions have changed so we can do stuff. Note that we
+      // do not care about the setting changes as we do not need to take immediate action on them.
       this.customevent.on(Constants.EVENTS.SETTING_ACTION, this.onAction, this);      
     }
   }
