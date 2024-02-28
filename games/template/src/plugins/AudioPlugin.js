@@ -19,8 +19,8 @@ const pluginSettings = {
     category: CATEGORY,
     name: VOLUME_OPTION,
     description: 'Music Volume',
-    value: 2,
-    numvalues: 5,
+    value: 6,
+    numvalues: 10,
     type: Constants.SETTINGS_TYPES.range
   },
   SOUND_OPTION: {
