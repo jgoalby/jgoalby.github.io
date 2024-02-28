@@ -1,11 +1,6 @@
 import Constants from '../constants.js';
 import { getEventPlugin } from '../plugins/PluginsHelpers.js'
 
-
-// TODO:
-//       When click label move to the next button
-//       What if I have 2 labels, one for up and one for down? Or a + and a -?
-
 export default class RangeButton extends Phaser.GameObjects.Container {
   /**
    * Make this button by passing the parent scene and some options.

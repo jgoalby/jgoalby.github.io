@@ -1,17 +1,12 @@
 # TODOs
 
 # Next
-- Maybe just get the number text input working first?
-- What about making a 0-1 field type?
-- Make the checkboxbutton be a dom checkbox element?
-- Maybe make the button a dom element as well? Hmmm... I don't think so?
-- Add settings for sounds: volume and loop in preloader
+- Fix the button for clear cache. Make a form button?
 
 # hmmmm.
 - What about if I add callbacks to buttons for the x and y positions?
   - And then resize would just call a position function for each control on the scene?
   - But how to cope with the menu buttons list as each button does not know where it is?
-
 
 # morph
 - Could I get it to make buttons for me for example?
@@ -19,7 +14,9 @@
 - Simply update the text on a button?
 - Do I need to integrate with Firebase to get this all working?
 
-
+# Range Button
+- When click label move to the next button
+- What if I have 2 labels, one for up and one for down? Or a + and a -?
 
 # More stuff to do
 - For the input screen, make it so you can use the keyboard if you like, but can also click to get text.
