@@ -57,8 +57,9 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       curXPos += button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE;
       button.setData('rangeIndex', i);
       button.setOrigin(0, 0);
-      this.add(button);
+      button.setInteractive();
       button.on('pointerdown', () => { this.checkboxClicked(i); });
+      this.add(button);
       this.buttonList.push(button);
     }
 
