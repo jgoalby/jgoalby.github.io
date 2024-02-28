@@ -12,7 +12,7 @@ const MUSIC_OPTION_TYPE = Constants.SETTINGS_TYPES.boolean;
 
 const VOLUME_OPTION = 'volumeOption';
 const VOLUME_OPTION_DESC = 'Music Volume';
-const VOLUME_DEFAULT_OPTION = 0.5;
+const VOLUME_DEFAULT_OPTION = 2;
 const VOLUME_OPTION_TYPE = Constants.SETTINGS_TYPES.range;
 
 // Sound option settings.
@@ -76,6 +76,12 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    */
   setVolume(volume) {
     if (this.music) {
+
+
+      // TODO: Need to convert the range to the actual volume 0-1.
+
+
+
       this.music.setVolume(volume);
     }
   }

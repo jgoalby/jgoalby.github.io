@@ -4,6 +4,7 @@ import { getEventPlugin } from '../plugins/PluginsHelpers.js'
 
 // TODO:
 //       When click label move to the next button
+//       What if I have 2 labels, one for up and one for down? Or a + and a -?
 
 export default class RangeButton extends Phaser.GameObjects.Container {
   /**
@@ -49,10 +50,12 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     const numButtons = 3;
     this.buttonList = [];
     let curXPos = 0;
+    const curState = this.getState();
 
     for (let i = 0; i < numButtons; i++) {
-      const button = this.scene.add.image(curXPos, 0, this.getState() ? this.checked : this.unchecked);
+      const button = this.scene.add.image(curXPos, 0, (curState == i) ? this.checked : this.unchecked);
       curXPos += button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE;
+      button.setData('rangeIndex', i);
       button.setOrigin(0, 0);
       this.add(button);
       this.buttonList.push(button);
@@ -131,8 +134,12 @@ export default class RangeButton extends Phaser.GameObjects.Container {
   updateCheckbox() {
     // Only can do this if we have the function to get the state.
     if (this.getState) {
-      // Update the button texture to reflect the new state.      
-      this.buttonList[0].setTexture(this.getState() ? this.checked : this.unchecked);
+      const curState = this.getState();
+
+      for (let i = 0; i < this.buttonList.length; i++) {
+        // Update the button texture to reflect the new state.      
+        this.buttonList[i].setTexture((curState == i) ? this.checked : this.unchecked);
+      }
     }
   }
 }
