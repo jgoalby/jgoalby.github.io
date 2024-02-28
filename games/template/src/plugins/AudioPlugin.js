@@ -19,8 +19,8 @@ const pluginSettings = {
     category: CATEGORY,
     name: VOLUME_OPTION,
     description: 'Music Volume',
-    value: 6,
-    numvalues: 10,
+    value: 2,
+    numvalues: 5,
     type: Constants.SETTINGS_TYPES.range
   },
   SOUND_OPTION: {
@@ -77,9 +77,6 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    */
   getVersion() { return undefined; }
 
-  set music(value)          { this._music = value; }
-  get music()               { return this._music; }
-
   addMusic(sound) {
     // Set the music.
     this._music = sound;
@@ -98,10 +95,10 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    * @param {number} volume The volume from 0 to 1.
    */
   setVolume(volume) {
-    if (this.music) {
+    if (this._music) {
       // The volume is zero-based, so add 1 as disabling music already provides the ability to turn off music (0).
       let volume0to1 = (volume + 1) / pluginSettings.VOLUME_OPTION.numvalues;
-      this.music.setVolume(volume0to1);
+      this._music.setVolume(volume0to1);
     }
   }
 
@@ -111,8 +108,8 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    * @param {boolean} loop Whether to loop the music.
    */
   setLoop(loop) {
-    if (this.music) {
-      this.music.setLoop(loop);
+    if (this._music) {
+      this._music.setLoop(loop);
     }
   }
 
@@ -135,9 +132,9 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   pauseMusic() {
     // Mmake sure the variable contains an object.
-    if (this.music) {
-      if (this.music.isPlaying) {
-        this.music.pause();
+    if (this._music) {
+      if (this._music.isPlaying) {
+        this._music.pause();
       }
     }
   }
@@ -152,12 +149,12 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     }
 
     // Make sure we have a music object to play first.
-    if (this.music) {
+    if (this._music) {
       // You can only play music if it is not already playing.
-      if (this.music.isPaused) {
-        this.music.resume();
-      } else if (!this.music.isPlaying) {
-        this.music.play();
+      if (this._music.isPaused) {
+        this._music.resume();
+      } else if (!this._music.isPlaying) {
+        this._music.play();
       }
     }
   }
