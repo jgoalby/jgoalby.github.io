@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import Constants from 'src/constants.js';
+import Constants from './src/constants.js';
 
 //----------------------------------------------------------------------------------------------------------
 // GOAL: Work offline by utilizing a cache. Fill the cache as resources are requested. Communicate
