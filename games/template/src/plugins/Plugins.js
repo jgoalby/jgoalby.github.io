@@ -2,6 +2,7 @@ import InitSetupPlugin from './InitSetupPlugin.js';
 import EventPlugin from './EventPlugin.js';
 import SettingsPlugin from './SettingsPlugin.js';
 import ConsolePlugin from './ConsolePlugin.js';
+import NotificationPlugin from './NotificationPlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
 import CachePlugin from './CachePlugin.js';
 import AudioPlugin from './AudioPlugin.js';
@@ -13,6 +14,7 @@ const global_plugins = [
   EventPlugin.options,
   SettingsPlugin.options,
   ConsolePlugin.options,
+  NotificationPlugin.options,
   IntrospectPlugin.options,
   CachePlugin.options,
   AudioPlugin.options,

@@ -88,6 +88,12 @@ function getConsolePlugin() { return getPlugin('ConsolePlugin'); }
 
 /**
  * Get the plugin instance if it is available, otherwise undefined.
+ * @returns {NotificationPlugin}
+ */
+function getNotificationPlugin() { return getPlugin('NotificationPlugin'); }
+
+/**
+ * Get the plugin instance if it is available, otherwise undefined.
  * @returns {IntrospectPlugin}
  */
 function getIntrospectPlugin() { return getPlugin('IntrospectPlugin'); }
@@ -115,6 +121,7 @@ export {
   getEventPlugin,
   getSettingsPlugin,
   getConsolePlugin,
+  getNotificationPlugin,
   getIntrospectPlugin,
   getCachePlugin,
   getAudioPlugin,

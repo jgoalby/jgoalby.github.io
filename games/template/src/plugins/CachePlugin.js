@@ -114,8 +114,8 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     // We want to make an immediate change when the setting changes.
     if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE)) {
       navigator.serviceWorker.ready.then(registration => {
-        console.log("here is where we clear the cache!! Woohoo!! Yeehaw!");
         registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });
+        this.customevent.emit(Constants.EVENTS.NOTIFICATION, "Cache Cleared");
       });
     }
   }

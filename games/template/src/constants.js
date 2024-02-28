@@ -51,6 +51,7 @@ class Styles {
 class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
   static get ACTION()                    { return 'ACTION'; }
+  static get NOTIFICATION()              { return 'NOTIFICATION'; }
 };
 
 // Service Worker events constants. If you change anything in there then you need to also change
