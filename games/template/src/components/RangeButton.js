@@ -47,7 +47,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       }
     }
 
-    const numButtons = 3;
+    const numButtons = 5;
     this.buttonList = [];
     let curXPos = 0;
     const curState = this.getState();
@@ -69,6 +69,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.text = this.scene.add.text(0, 0, this.label, Constants.STYLES.CHECKBOX_LABEL);
     this.text.setOrigin(0, 0.5);
     this.text.setPosition(curXPos, firstButton.y + (firstButton.height / 2));
+    this.text.setInteractive();
 
     // Don't want to use specific padding numbers. We know that the button is leftmost and the text is rightmost.
     // So we can calculate the width by subtracting the x position of the button from the x position of the text
@@ -82,18 +83,18 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     //this.hitZone.setInteractive();
 
     // Add the button, text, and hit zone to the container.
-    //this.add(this.button1);
-    //this.add(this.button2);
-    //this.add(this.button3);
     this.add(this.text);
     //this.add(this.hitZone);
 
     // When the hit zone is clicked, call the checkboxClicked method.
     //this.hitZone.on('pointerdown', () => { this.checkboxClicked(); });
+    this.text.on('pointerdown', () => { this.checkboxClicked("+"); });
 
     // Show when the user hovers over the hit zone.
     //this.hitZone.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
     //this.hitZone.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
+    this.text.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
+    this.text.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
 
     // Add the container to the scene.
     this.scene.add.existing(this);
@@ -130,8 +131,32 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     console.log("Checkbox clicked. Index: " + index);
     // Only can do this if we have the function to set the state.
     if (this.setState) {
-      // New state is the index passed in.
-      this.setState(index);
+      // Do not presume to use what is passed.
+      let newState = undefined;
+
+      if (typeof index === "number") {
+        // The index passed in can be used directly.
+        newState = index;
+      } else {
+        if (index === "+") {
+          newState = this.getState() + 1;
+          if (newState > (this.buttonList.length - 1)) {
+            newState = 0;
+          }
+        }
+        if (index === "-") {
+          newState = this.getState() - 1;
+          if (newState < 0) {
+            newState = (this.buttonList.length - 1);
+          }
+        }
+      }
+
+      // If we got a new state, then set it.
+      if (newState !== undefined) {
+        // New state is the index passed in or the new state we calculated.
+        this.setState(newState);
+      }
     }
   }
 
