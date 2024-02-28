@@ -58,6 +58,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       button.setData('rangeIndex', i);
       button.setOrigin(0, 0);
       this.add(button);
+      button.on('pointerdown', () => { this.checkboxClicked(i); });
       this.buttonList.push(button);
     }
 
@@ -87,7 +88,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.add(this.hitZone);
 
     // When the hit zone is clicked, call the checkboxClicked method.
-    this.hitZone.on('pointerdown', () => { this.checkboxClicked(); });
+    //this.hitZone.on('pointerdown', () => { this.checkboxClicked(); });
 
     // Show when the user hovers over the hit zone.
     this.hitZone.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
@@ -123,11 +124,11 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     }
   }
 
-  checkboxClicked() {
-    // Only can do this if we have the functions to get and set the state.
-    if (this.getState && this.setState) {
-      // New state is the opposite of the current state. Setting change event will happen.
-      this.setState(!this.getState());
+  checkboxClicked(index) {
+    // Only can do this if we have the function to set the state.
+    if (this.setState) {
+      // New state is the index passed in.
+      this.setState(index);
     }
   }
 

@@ -22,6 +22,7 @@
 
 
 # More stuff to do
+- Make the get input scene not use keyboard to get the username, but use mouse based text input instead.
 - Could make a base container that contains code to always call events and clean up etc.
 - Need to display some kind of toast notification when notifications happen.
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
