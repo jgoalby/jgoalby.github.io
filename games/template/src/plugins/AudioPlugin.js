@@ -27,7 +27,7 @@ const pluginSettings = {
     name: SOUND_OPTION,
     description: 'Sound Effects Enabled',
     value: true,
-    type: Constants.SETTINGS_TYPES.function
+    type: Constants.SETTINGS_TYPES.boolean
   }
 }
 
