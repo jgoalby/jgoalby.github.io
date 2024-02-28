@@ -26,6 +26,10 @@ export default class NumberTextInput extends Phaser.GameObjects.Container {
       //Phaser.Display.Align.In.Center(this.text, this.button);
     }
 
+    if (this.text) {
+      this.add(this.text);
+    }
+
     const dom = document.createElement('div');
     const input = document.createElement('input');
     input.name = 'inputField';
