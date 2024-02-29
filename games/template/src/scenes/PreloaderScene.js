@@ -106,7 +106,7 @@ export default class PreloaderScene extends BaseScene {
       this.input.keyboard.once('keydown', () => {
         this.gotoScene(Scenes.INPUT_SCENE);
       });
-      this.input.once('pointerdown', () => {
+      this.input.once(Phaser.Input.Events.POINTER_DOWN, () => {
         this.gotoScene(Scenes.INPUT_SCENE);
       });
     });

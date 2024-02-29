@@ -57,7 +57,7 @@ export default class RangeButton extends Phaser.GameObjects.Container {
       curXPos += button.width + Constants.STYLES.CHECKBOX_INSIDE_SPACE;
       button.setOrigin(0, 0);
       button.setInteractive();
-      button.on('pointerdown', () => { this.checkboxClicked(i); });
+      button.on(Phaser.Input.Events.POINTER_DOWN, () => { this.checkboxClicked(i); });
       this.add(button);
       this.buttonList.push(button);
     }
@@ -81,11 +81,11 @@ export default class RangeButton extends Phaser.GameObjects.Container {
     this.add(this.text);
 
     // When the text is clicked, call the checkboxClicked method.
-    this.text.on('pointerdown', () => { this.checkboxClicked("+"); });
+    this.text.on(Phaser.Input.Events.POINTER_DOWN, () => { this.checkboxClicked("+"); });
 
     // Show when the user hovers over the text.
-    this.text.on('pointerover', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
-    this.text.on('pointerout', () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
+    this.text.on(Phaser.Input.Events.POINTER_OVER, () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL_HIGHLIGHT); });
+    this.text.on(Phaser.Input.Events.POINTER_OUT, () => { this.text.setStyle(Constants.STYLES.CHECKBOX_LABEL); });
 
     // Add the container to the scene.
     this.scene.add.existing(this);

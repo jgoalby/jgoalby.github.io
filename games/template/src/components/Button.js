@@ -42,14 +42,14 @@ export default class Button extends Phaser.GameObjects.Container {
     }
 
     if (this.actionFn) {
-      this.button.on('pointerdown', this.actionFn);
+      this.button.on(Phaser.Input.Events.POINTER_DOWN, this.actionFn);
     }
 
-    this.button.on('pointerover', () => {
+    this.button.on(Phaser.Input.Events.POINTER_OVER, () => {
       this.button.setTexture(this.hover);
     });
 
-    this.button.on('pointerout', () => {
+    this.button.on(Phaser.Input.Events.POINTER_OUT, () => {
       this.button.setTexture(this.normal);
     });
 

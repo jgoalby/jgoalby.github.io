@@ -122,7 +122,7 @@ export default class GameScene extends Phaser.Scene {
     this.mouse = this.input.mousePointer;
     this.input.setPollAlways();
 
-    this.input.on('pointerdown', () => {
+    this.input.on(Phaser.Input.Events.POINTER_OVER, () => {
       this.fireAtEnemy();
     });
     this.input.keyboard.on('keydown-SPACE', () => {
