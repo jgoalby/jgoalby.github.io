@@ -22,6 +22,7 @@ https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.jso
 - What if I have 2 labels, one for up and one for down? Or a + and a -?
 
 # More stuff to do
+- Implement the implementation document and use it to control GPT
 - For the input screen, make it so you can use the keyboard if you like, but can also click to get text.
   - Also could generate a username for the user? Random words.
 - Make the get input scene not use keyboard to get the username, but use mouse based text input instead.

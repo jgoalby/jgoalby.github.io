@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import { getActiveScene } from '../common.js';
 import { getEventPlugin } from './PluginsHelpers.js'
 import Notification from '../components/Notification.js';
 
@@ -42,8 +43,11 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
    */
   onNotification(notification) {
     console.log("NOTIFICATION: " + notification);
-    const currentScene = window.game.scene.getScene('Options');
-    const notificationComponent = new Notification(currentScene);
+    const activeScene = getActiveScene();
+
+    if (activeScene) {
+      const notificationComponent = new Notification(activeScene);
+    }
 
   }
 
