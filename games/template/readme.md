@@ -8,6 +8,7 @@ Someone said the nineslices doesn't work in canvas? Did that change?
 
 # Next
 - Fix the button for clear cache. Make a form button?
+- Make a style for the notification text
 
 # hmmmm.
 - What about if I add callbacks to buttons for the x and y positions?

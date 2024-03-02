@@ -9,18 +9,22 @@ What is this?
 ## Adding
 - TODO
 
-# Changing
+## Changing
 - TODO
 
-# Removing
+## Removing
 - TODO
 
-# Testing
+## Testing
 - TODO
 
 # Scenes
 
 # Plugins
 
+# Styles
 
+# Events
+
+# Settings
 
