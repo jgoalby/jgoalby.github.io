@@ -35,11 +35,11 @@ export default class Notification extends Phaser.GameObjects.Container {
           duration: 750
         },
         {
-          duration: 1000
+          duration: 10000
         },
         {
           x: width * 2,
-          ease: 'power3',
+          ease: 'power1',
           duration: 750
         }
       ]

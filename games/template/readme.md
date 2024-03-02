@@ -2,6 +2,8 @@
 
 https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.json
 
+Check out tweens more and timelines as well
+Atlas?
 
 # Next
 - Fix the button for clear cache. Make a form button?
