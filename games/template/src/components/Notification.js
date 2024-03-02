@@ -20,7 +20,8 @@ export default class Notification extends Phaser.GameObjects.Container {
     //const height = this.stopY - this.startY
 
     const { height, width } = this.scene.scale;
-    this.panel = this.scene.add.nineslice(width + 10, height / 2, "panel", 0, 600, 400, 32, 32, 32, 32);
+    this.panel = this.scene.add.nineslice(width * 2, height / 2, "panel", 0, 600, 400, 32, 32, 32, 32);
+    this.panel.setOrigin(0.5, 1);
 
     // this.scene.tweens.add({targets: this.panel, y: -500, ease: 'Power1', duration: 5000, delay: 1000});
     // this.scene.tweens.add({targets: this.panel, y: -500, ease: 'Power1', duration: 10000, delay: 1000});
@@ -31,13 +32,13 @@ export default class Notification extends Phaser.GameObjects.Container {
       tweens: [
         {
           x: width /2,
-          ease: 'bounce.out',
+          ease: 'quart.out',
           duration: 2000
         },
         {
-          x: width + 10,
-          hold: 5000,
-          ease: 'bounce.in',
+          x: width * 2,
+          hold: 15000,
+          ease: 'quart.in',
           duration: 2000
         }
       ]
