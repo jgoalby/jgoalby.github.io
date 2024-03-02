@@ -34,11 +34,6 @@
 - Version: 3.1.0
 - Released: Jun 10, 2017
 
-## Phaser3 Nineslice Plugin
-- https://github.com/jdotrjs/phaser3-nineslice
-- Version: 0.5.0
-- Released: Feb 8, 2019
-
 # Console Log Div
 - Adapted from:
 - https://github.com/bahmutov/console-log-div

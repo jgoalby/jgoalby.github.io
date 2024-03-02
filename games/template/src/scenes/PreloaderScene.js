@@ -156,7 +156,10 @@ export default class PreloaderScene extends BaseScene {
 
     this.load.image('tombstone', Constants.GENERAL.ASSETS_PATH + 'misc/tombstone.png');
 
+    // TODO: Temporary assets.
     this.load.image('kenny', Constants.GENERAL.ASSETS_PATH + 'misc/kennyBlue.png')
+    this.load.atlas('ui', Constants.GENERAL.ASSETS_PATH + 'misc/nine-slice.png', Constants.GENERAL.ASSETS_PATH + 'misc/nine-slice.json');
+    this.load.image('panel', Constants.GENERAL.ASSETS_PATH + 'misc/glassPanel_corners.png');
   }
 
   create_scene() {
