@@ -19,27 +19,21 @@ export default class Notification extends Phaser.GameObjects.Container {
     const { height, width } = this.scene.scale;
 
     // Create some text
-    this.text = this.scene.add.text(width * 2, height - 20, this.notification, { fontFamily: 'Arial', fontSize: 24, color: '#0000FF' });
+    this.text = this.scene.add.text(width * 2, height - 70, this.notification, { fontFamily: 'Arial', fontSize: 24, color: '#0000FF' });
     this.text.setOrigin(0.5, 0.5);
     //this.add(this.text);
 
-    this.panel = this.scene.add.nineslice(width * 2, height - 20, "panel", 0, 400, 100, 32, 32, 32, 32);
+    this.panel = this.scene.add.nineslice(width * 2, height - 70, "panel", 0, 400, 100, 32, 32, 32, 32);
     this.panel.setOrigin(0.5, 0.5);
     //this.add(this.panel);
 
     this.objs = [this.panel, this.text];
 
-    //this.tween = this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 5000, oncomplete: () => { console.log("WAAAAAA!!!!!"); this.destroy() }});
     this.tween = this.scene.tweens.add({targets: this.objs, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 500 });
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
-    this.tween.on('complete', () => { this.listener() });
+    this.tween.on('complete', () => { this.destroy() });
 
     this.scene.add.existing(this);
-  }
-
-  listener() {
-    console.log("WAAAAAA!!!!! LISTENER");
-    this.destroy();
   }
 
   destroy() {
