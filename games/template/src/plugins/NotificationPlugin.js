@@ -18,6 +18,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   destroy() {
+    console.log("DESTROYING NOTIFICATION PLUGIN");
     // We might not have the plugin, so check this first.
     if (this.customevent) {
       // Remove the listener.
@@ -48,7 +49,6 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     if (activeScene) {
       const notificationComponent = new Notification(activeScene);
     }
-
   }
 
   static get options() {
