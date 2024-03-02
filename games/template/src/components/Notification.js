@@ -23,11 +23,11 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.panel = this.scene.add.nineslice(width * 2, height / 2, "panel", 0, 600, 400, 32, 32, 32, 32);
     this.panel.setOrigin(0.5, 1);
 
-    // this.scene.tweens.add({targets: this.panel, y: -500, ease: 'Power1', duration: 5000, delay: 1000});
+    this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 5000, hold: 10000, yoyo: true});
     // this.scene.tweens.add({targets: this.panel, y: -500, ease: 'Power1', duration: 10000, delay: 1000});
     // this.scene.tweens.add({targets: this.panel, x: height / 2, ease: 'Power1', duration: 3000, delay: 100, onComplete: () => { this.gotoScene(Scenes.MENU_SCENE) }});
 
-    const chain = this.scene.tweens.chain({
+    /*const chain = this.scene.tweens.chain({
       targets: this.panel,
       tweens: [
         {
@@ -42,7 +42,7 @@ export default class Notification extends Phaser.GameObjects.Container {
           duration: 2000
         }
       ]
-    });
+    });*/
 
     /*this.dlg = this.scene.add.nineslice(
       this.startX,
