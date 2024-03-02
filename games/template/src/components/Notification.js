@@ -1,4 +1,3 @@
-import { Game } from 'phaser';
 import Constants from '../constants.js';
 
 export default class Notification extends Phaser.GameObjects.Container {
