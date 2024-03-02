@@ -46,8 +46,10 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     console.log("NOTIFICATION: " + notification);
     const activeScene = getActiveScene();
 
+    // Check just in case.
     if (activeScene) {
-      const notificationComponent = new Notification(activeScene, { notification: notification });
+      // The notification is a throwaway. Do no need to do anything with it.
+      new Notification(activeScene, { notification: notification });
     }
   }
 

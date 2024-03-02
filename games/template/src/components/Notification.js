@@ -37,7 +37,6 @@ export default class Notification extends Phaser.GameObjects.Container {
   }
 
   destroy() {
-    console.log("DESTROYING NOTIFICATION");
     super.destroy();
   }
 }
