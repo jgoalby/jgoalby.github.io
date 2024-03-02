@@ -7,6 +7,7 @@ import IntrospectPlugin from './IntrospectPlugin.js';
 import CachePlugin from './CachePlugin.js';
 import AudioPlugin from './AudioPlugin.js';
 //import FirebasePlugin from './FirebasePlugin.js';
+import { Plugin as NineSlicePlugin } from 'phaser3-nineslice'
 
 // List of global plugins, that can be used to initialize the game engine. Order is important.
 const global_plugins = [
@@ -19,6 +20,7 @@ const global_plugins = [
   CachePlugin.options,
   AudioPlugin.options,
   //FirebasePlugin.options,
+  NineSlicePlugin.DefaultCfg
 ]
 
 /**

@@ -155,6 +155,8 @@ export default class PreloaderScene extends BaseScene {
     });
 
     this.load.image('tombstone', Constants.GENERAL.ASSETS_PATH + 'misc/tombstone.png');
+
+    this.load.image('kenny', Constants.GENERAL.ASSETS_PATH + 'misc/kennyBlue.png')
   }
 
   create_scene() {
