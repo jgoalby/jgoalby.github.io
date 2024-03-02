@@ -32,13 +32,13 @@ export default class Notification extends Phaser.GameObjects.Container {
         {
           x: width /2,
           ease: 'bounce.out',
-          duration: 1000
+          duration: 2000
         },
         {
           x: width * 2,
-          hold: 3000,
+          hold: 5000,
           ease: 'bounce.in',
-          duration: 750
+          duration: 2000
         }
       ]
     });
@@ -53,6 +53,10 @@ export default class Notification extends Phaser.GameObjects.Container {
     )*/
     
     this.scene.add.existing(this);
+  }
+
+  create() {
+    console.log("CREATING NOTIFICATION");
   }
 
   destroy() {
