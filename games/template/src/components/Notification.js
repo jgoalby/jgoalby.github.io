@@ -16,8 +16,9 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.panel = this.scene.add.nineslice(width * 2, height - 20, "panel", 0, 400, 100, 32, 32, 32, 32);
     this.panel.setOrigin(0.5, 1);
 
-    this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1500, yoyo: true, completeDelay: 5000, oncomplete: () => { console.log("WAAAAAA!!!!!"); this.destroy() }});
+    this.tween = this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 5000, oncomplete: () => { console.log("WAAAAAA!!!!!"); this.destroy() }});
     
+    this.scene.add.existing(this.panel);
     this.scene.add.existing(this);
   }
 
