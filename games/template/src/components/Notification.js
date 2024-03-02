@@ -20,16 +20,22 @@ export default class Notification extends Phaser.GameObjects.Container {
 
     // Create some text
     this.text = this.scene.add.text(0, 0, this.notification, { fontFamily: 'Arial', fontSize: 24, color: '#0000FF' });
-    //this.add(this.text);
+    this.add(this.text);
 
     this.panel = this.scene.add.nineslice(width * 2, height - 20, "panel", 0, 400, 100, 32, 32, 32, 32);
     this.panel.setOrigin(0.5, 1);
 
-    this.tween = this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 5000, oncomplete: () => { console.log("WAAAAAA!!!!!"); this.destroy() }});
-    
+    //this.tween = this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 5000, oncomplete: () => { console.log("WAAAAAA!!!!!"); this.destroy() }});
+    this.tween = this.scene.tweens.add({targets: this.panel, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 5000 });
+    this.tween.on('complete', () => { this.listener() });
+
     //this.add(this.panel);
 
     this.scene.add.existing(this);
+  }
+
+  listener() {
+    console.log("WAAAAAA!!!!! LISTENER");
   }
 
   destroy() {
