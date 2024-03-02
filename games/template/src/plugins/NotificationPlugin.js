@@ -42,7 +42,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
    */
   onNotification(notification) {
     console.log("NOTIFICATION: " + notification);
-    const currentScene = window.game.scene.systemScene;
+    const currentScene = window.game.scene.getScene('Options');
     const notificationComponent = new Notification(currentScene);
 
   }
