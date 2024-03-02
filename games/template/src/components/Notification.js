@@ -20,8 +20,30 @@ export default class Notification extends Phaser.GameObjects.Container {
     //const height = this.stopY - this.startY
 
     const { height, width } = this.scene.scale;
-    this.scene.add.image(width / 2, height / 2, "panel", 0);
-    this.scene.add.nineslice(width / 2, height / 2, "panel", 0, 600, 400, 32, 32, 32, 32);
+    this.panel = this.scene.add.nineslice(width * 2, height / 2, "panel", 0, 600, 400, 32, 32, 32, 32);
+
+    // this.scene.tweens.add({targets: this.panel, y: -500, ease: 'Power1', duration: 5000, delay: 1000});
+    // this.scene.tweens.add({targets: this.panel, y: -500, ease: 'Power1', duration: 10000, delay: 1000});
+    // this.scene.tweens.add({targets: this.panel, x: height / 2, ease: 'Power1', duration: 3000, delay: 100, onComplete: () => { this.gotoScene(Scenes.MENU_SCENE) }});
+
+    const chain = this.scene.tweens.chain({
+      targets: this.panel,
+      tweens: [
+        {
+          x: width /2,
+          ease: 'power3',
+          duration: 750
+        },
+        {
+          duration: 1000
+        },
+        {
+          x: width * 2,
+          ease: 'power3',
+          duration: 750
+        }
+      ]
+    });
 
     /*this.dlg = this.scene.add.nineslice(
       this.startX,

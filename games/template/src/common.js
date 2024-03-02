@@ -20,9 +20,6 @@ function getActiveScene(sceneManager = undefined) {
   } else {
     // Go through all of the active scenes.
     for (let i = 0; i < allActiveScenes.length; i++) {
-
-      console.log("SCENE: " + allActiveScenes[i].scene.key + " VISIBLE: " + allActiveScenes[i].scene.isVisible());
-
       // If this one is visible, let's return it.
       if (allActiveScenes[i].scene.isVisible()) {
         return allActiveScenes[i];
