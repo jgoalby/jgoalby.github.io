@@ -29,7 +29,7 @@ export default class Notification extends Phaser.GameObjects.Container {
 
     this.objs = [this.panel, this.text];
 
-    this.tween = this.scene.tweens.add({targets: this.objs, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1200, yoyo: true, completeDelay: 500 });
+    this.tween = this.scene.tweens.add({targets: this.objs, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1000, yoyo: true, completeDelay: 500 });
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
     this.tween.on('complete', () => { this.destroy() });
 
