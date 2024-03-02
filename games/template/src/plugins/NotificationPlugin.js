@@ -47,7 +47,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     const activeScene = getActiveScene();
 
     if (activeScene) {
-      const notificationComponent = new Notification(activeScene);
+      const notificationComponent = new Notification(activeScene, { notification: notification });
     }
   }
 
