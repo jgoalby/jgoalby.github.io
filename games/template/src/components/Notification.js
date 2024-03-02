@@ -31,15 +31,13 @@ export default class Notification extends Phaser.GameObjects.Container {
       tweens: [
         {
           x: width /2,
-          ease: 'power3',
-          duration: 750
-        },
-        {
-          duration: 10000
+          ease: 'bounce.out',
+          duration: 1000
         },
         {
           x: width * 2,
-          ease: 'power1',
+          hold: 3000,
+          ease: 'bounce.in',
           duration: 750
         }
       ]
