@@ -1,3 +1,7 @@
+import { doit } from './styles.js';
+
+doit();
+
 // Master constants.
 const TITLE = 'Template';
 const VERSION = '0.1'
