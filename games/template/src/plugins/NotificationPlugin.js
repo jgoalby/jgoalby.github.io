@@ -50,7 +50,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
       // The notification is a throwaway. Do no need to do anything with it.
       const notificationObj = new Notification(activeScene, { notificationText: notification.notificationText, onCompleteFn: this.onNotificationComplete});
 
-      console.log(notificationObj.height);
+      console.log(notificationObj.getPanelHeight());
     }
   }
 

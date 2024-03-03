@@ -67,6 +67,14 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
   }
 
+  getPanelHeight() {
+    return this.panel.height;
+  }
+
+  getPanelWidth() {
+    return this.panel.width;
+  }
+
   destroy() {
     super.destroy();
   }
