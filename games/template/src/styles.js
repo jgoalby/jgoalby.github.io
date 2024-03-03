@@ -22,9 +22,16 @@ console.log(a);
 // 'My template is: awesome and versatile' 
 
 
-function defer(strs, ...defaults) {
+/*function defer(strs, ...defaults) {
   var [first, ...rest] = strs;
   return (...vals) => rest.reduce((acc, str, i) => acc + vals[i] + str, first);
+}*/
+
+function defer(strs, ...defaults) {
+  var [first, ...rest] = strs;
+  return (...values) => rest.reduce((acc, curr, i) => {
+    return acc + (i < values.length ? values[i] : defaults[i]) + curr;
+  }, first);
 }
 
 let t = defer`My template is: ${null} and ${null}`;
