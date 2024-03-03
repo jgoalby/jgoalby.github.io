@@ -10,6 +10,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     // Get the dependent plugins.
     this.customevent = getEventPlugin();
 
+    this.currentNotifications = 0;
     this.currentHeight = 0;
 
     // If we can access the event plugin.
@@ -20,8 +21,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   destroy() {
-    console.log("DESTROYING NOTIFICATION PLUGIN");
-    // We might not have the plugin, so check this first.
+    // We might not have the event plugin, so check this first.
     if (this.customevent) {
       // Remove the listener.
       this.customevent.off(Constants.EVENTS.NOTIFICATION, this.onNotification, this);
@@ -49,20 +49,25 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
 
     // Check just in case.
     if (activeScene) {
-      // The notification is a throwaway. Do no need to do anything with it.
-      const notificationObj = new Notification(activeScene, { currentHeight: this.currentHeight, notificationText: notification.notificationText, onCompleteFn: (notificationDetails) => { this.onNotificationComplete(notificationDetails) }});
+      const notifcationOptions = { 
+        currentHeight: this.currentHeight, 
+        notificationText: notification.notificationText, 
+        onCompleteFn: (notificationDetails) => { this.onNotificationComplete(notificationDetails) 
+      }}
 
+      const notificationObj = new Notification(activeScene, notifcationOptions);
+
+      this.currentNotifications += 1;
       this.currentHeight += notificationObj.getPanelHeight();
     }
   }
 
   onNotificationComplete(notificationDetails) {
-    console.log("1 Notification complete callback called!!!" + notificationDetails.height);
-    console.log("2 Notification complete callback called!!!" + this.currentHeight);
+    this.currentNotifications -= 1;
 
-    this.currentHeight -= notificationDetails.height;
-
-    console.log("3 Notification complete callback called!!!" + this.currentHeight);
+    if (this.currentNotifications <= 0) {
+      this.currentHeight = 0;
+    }
   }
 
   static get options() {
