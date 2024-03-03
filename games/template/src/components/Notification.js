@@ -1,7 +1,7 @@
 import Constants from '../constants.js';
 
 // The tweening constants for the notification animation.
-const NOTIFICATION_TWEEN_EASE = 'quad.out';
+const NOTIFICATION_TWEEN_EASE = 'Quad.out';
 const NOTIFICATION_TWEEN_IN_DURATION_MS = 3000;
 
 // In the margins.
@@ -60,7 +60,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     // This creates the animation of the text and panel.
     this.tween = this.scene.tweens.add({targets: this.objs,
                                         y: sceneHeight / 2,
-                                        alpha: 0.2,
+                                        alpha: 0,
                                         ease: NOTIFICATION_TWEEN_EASE,
                                         duration: NOTIFICATION_TWEEN_IN_DURATION_MS,
                                         yoyo: false,

@@ -51,7 +51,7 @@ class Styles {
   static get BUTTON_TEXT()                    { return Styles.BODY_TEXT }
   static get INTRO_TEXT()                     { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
 
-  static get INFO_TEXT_COLOR()                { return '#0000aa' }
+  static get INFO_TEXT_COLOR()                { return '#000066' }
   static get WARN_TEXT_COLOR()                { return '#00ff00' }
   static get ERROR_TEXT_COLOR()               { return '#ff0000' }
   static get EXCEPTION_TEXT_COLOR()           { return '#ff00ff' }
