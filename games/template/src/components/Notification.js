@@ -13,23 +13,34 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.x = 0;
     this.y = 0;
 
-    this.notification = options.notification;
+    this.notificationText = options.notification;
 
-    // TODO: Not the way I typically get the width and height I don't think
-    const { height, width } = this.scene.scale;
+    const sceneWidth = this.scene.cameras.main.width;
+    const sceneHeight = this.scene.cameras.main.width;
 
     // Create some text
-    this.text = this.scene.add.text(width * 2, height - 70, this.notification, { fontFamily: 'Arial', fontSize: 24, color: '#0000FF' });
+    this.text = this.scene.add.text(0, 0, this.notificationText, Constants.STYLES.NOTIFICATION_TEXT);
     this.text.setOrigin(0.5, 0.5);
     //this.add(this.text);
 
-    this.panel = this.scene.add.nineslice(width * 2, height - 70, "panel", 0, 400, 100, 32, 32, 32, 32);
+    const marginText = 20;
+    const textWidth = this.text.width;
+    const textHeight = this.text.height;
+    const panelWidth = textWidth + (marginText * 2);
+    const panelHeight = textHeight + (marginText * 2);
+    const panelButtonMargin = 20;
+
+    this.text.setPosition(sceneWidth * 2, sceneHeight - ((panelHeight / 2) + panelButtonMargin));
+
+    this.panel = this.scene.add.nineslice(0, 0, "panel", 0, panelWidth, panelHeight, 32, 32, 32, 32);
     this.panel.setOrigin(0.5, 0.5);
     //this.add(this.panel);
 
+    this.panel.setPosition(sceneWidth * 2, sceneHeight - ((panelHeight / 2) + panelButtonMargin));
+
     this.objs = [this.panel, this.text];
 
-    this.tween = this.scene.tweens.add({targets: this.objs, x: width / 2, ease: 'quart.out', duration: 1000, hold: 1000, yoyo: true, completeDelay: 500 });
+    this.tween = this.scene.tweens.add({targets: this.objs, x: sceneWidth / 2, ease: 'quart.out', duration: 1000, hold: 1000, yoyo: true, completeDelay: 500 });
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
     this.tween.on('complete', () => { this.destroy() });
 

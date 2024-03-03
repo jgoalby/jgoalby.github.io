@@ -46,6 +46,7 @@ class Styles {
   static get BUTTON_TEXT_SIZE()          { return 24 }
   static get BUTTON_TEXT()               { return { fontSize: Styles.BUTTON_TEXT_SIZE, color: Styles.BUTTON_TEXT_COLOR, } }
   static get INTRO_TEXT()                { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
+  static get NOTIFICATION_TEXT()         { return { fontfamily: 'Arial', fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR, } }
 }
 
 // Regular events constants.
