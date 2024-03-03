@@ -57,9 +57,12 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   onNotificationComplete(notificationDetails) {
-    console.log("Notification complete callback called!!!" + notificationDetails.height);
+    console.log("1 Notification complete callback called!!!" + notificationDetails.height);
+    console.log("2 Notification complete callback called!!!" + this.currentHeight);
 
     this.currentHeight -= notificationDetails.height;
+
+    console.log("3 Notification complete callback called!!!" + this.currentHeight);
   }
 
   static get options() {
