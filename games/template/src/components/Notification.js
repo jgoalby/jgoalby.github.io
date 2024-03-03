@@ -62,7 +62,7 @@ export default class Notification extends Phaser.GameObjects.Container {
                                         completeDelay: 500 });
 
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
-    this.tween.on('complete', () => { this.destroy() });
+    this.tween.on('complete', () => { this.destroy(); if (options.onCompleteFn) { options.onCompleteFn(); } });
 
     this.scene.add.existing(this);
   }

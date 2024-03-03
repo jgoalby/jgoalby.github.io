@@ -58,6 +58,7 @@ interface NumberTextInputOptions {
 
 interface NotificationOptions {
     notificationText: string;
+    onCompleteFn?: () => void;
 }
 
 interface NotificationEvent {

@@ -48,8 +48,14 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     // Check just in case.
     if (activeScene) {
       // The notification is a throwaway. Do no need to do anything with it.
-      new Notification(activeScene, { notificationText: notification.notificationText });
+      const notificationObj = new Notification(activeScene, { notificationText: notification.notificationText, onCompleteFn: this.onNotificationComplete});
+
+      console.log(notificationObj.height);
     }
+  }
+
+  onNotificationComplete() {
+    console.log("Notification complete callback called!!!");
   }
 
   static get options() {
