@@ -2,8 +2,7 @@ import Constants from '../constants.js';
 
 // The tweening constants for the notification animation.
 const NOTIFICATION_TWEEN_EASE = 'quart.out';
-const NOTIFICATION_TWEEN_IN_DURATION_MS = 3000;
-const NOTIFICATION_TWEEN_HOLD_DURATION_MS = 1000;
+const NOTIFICATION_TWEEN_IN_DURATION_MS = 5000;
 
 // In the margins.
 const MARGIN_TEXT = 20;
