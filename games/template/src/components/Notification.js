@@ -34,7 +34,7 @@ export default class Notification extends Phaser.GameObjects.Container {
 
     this.panel = this.scene.add.nineslice(0, 0, "panel", 0, panelWidth, panelHeight, 32, 32, 32, 32);
     this.panel.setOrigin(0.5, 0.5);
-    //this.add(this.panel);
+    this.add(this.panel);
 
     this.panel.setPosition(sceneWidth * 2, sceneHeight - ((panelHeight / 2) + panelButtonMargin));
 
