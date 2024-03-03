@@ -5,7 +5,7 @@ export default class Notification extends Phaser.GameObjects.Container {
    * Make this notification by passing the parent scene and some options.
    * 
    * @param {Phaser.Scene} scene The parent scene.
-   * @param {object} options The options.
+   * @param {NotificationOptions} options The options.
    */
   constructor(scene, options) {
     super(scene);
@@ -13,7 +13,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.x = 0;
     this.y = 0;
 
-    this.notificationText = options.notification;
+    this.notificationText = options.notificationText;
 
     const sceneWidth = this.scene.cameras.main.width;
     const sceneHeight = this.scene.cameras.main.height;
@@ -21,7 +21,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     // Create some text
     this.text = this.scene.add.text(0, 0, this.notificationText, Constants.STYLES.NOTIFICATION_TEXT);
     this.text.setOrigin(0.5, 0.5);
-    //this.add(this.text);
+    this.add(this.text);
 
     const marginText = 20;
     const textWidth = this.text.width;

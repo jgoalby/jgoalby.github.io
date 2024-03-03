@@ -40,7 +40,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
   /**
    * Called when a notification event occurs.
    * 
-   * @param {string} notification The notification text.
+   * @param {NotificationEvent} notification The notification event object.
    */
   onNotification(notification) {
     const activeScene = getActiveScene();
@@ -48,7 +48,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     // Check just in case.
     if (activeScene) {
       // The notification is a throwaway. Do no need to do anything with it.
-      new Notification(activeScene, { notification: notification });
+      new Notification(activeScene, { notificationText: notification.notificationText });
     }
   }
 
