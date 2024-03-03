@@ -5,6 +5,7 @@ https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.jso
 Check out tweens more and timelines as well
 Atlas?
 Someone said the nineslices doesn't work in canvas? Did that change?
+Can I use Texttastic web server to do faster development?
 
 # Next
 - Fix the button for clear cache. Make a form button?
