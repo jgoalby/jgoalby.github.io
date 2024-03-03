@@ -25,18 +25,18 @@ class Physics {
 
 // Styles constants for how various elements look.
 class Styles {
-  static get BACKGROUND_COLOR()               { return '#000'; }
+  static get BACKGROUND_COLOR()               { return '#000000'; }
   static get MAIN_FONT()                      { return 'Arial'; }
   static get BODY_TEXT_FONT()                 { return Styles.MAIN_FONT }
-  static get BODY_TEXT_COLOR()                { return '#fff' }
+  static get BODY_TEXT_COLOR()                { return '#ffffff' }
   static get BODY_TEXT_SIZE()                 { return 24 }
   static get BODY_TEXT()                      { return { fontfamily: Styles.BODY_TEXT_FONT, fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR } }
-  static get BODY_TEXT_HIGHLIGHT_COLOR()      { return '#ff0' }
+  static get BODY_TEXT_HIGHLIGHT_COLOR()      { return '#ffff00' }
   static get BODY_Y_POS()                     { return 90 }
-  static get INTRO_TEXT_COLOR()               { return '#fff' }
+  static get INTRO_TEXT_COLOR()               { return '#ffffff' }
   static get INTRO_TEXT_SIZE()                { return 24 }
   static get HEADING_TEXT_FONT()              { return Styles.MAIN_FONT }
-  static get HEADING_TEXT_COLOR()             { return '#f00' }
+  static get HEADING_TEXT_COLOR()             { return '#ff0000' }
   static get HEADING_TEXT_SIZE()              { return 32 }
   static get HEADING_Y_POS()                  { return 50 }
   static get HEADING_X_ORIGIN()               { return 0.5 }
@@ -46,12 +46,12 @@ class Styles {
   static get CHECKBOX_LABEL()                 { return Styles.BODY_TEXT }
   static get CHECKBOX_LABEL_HIGHLIGHT()       { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_HIGHLIGHT_COLOR, } }
   static get CHECKBOX_INSIDE_SPACE()          { return 10 }
-  static get BUTTON_TEXT_COLOR()              { return '#fff' }
+  static get BUTTON_TEXT_COLOR()              { return '#ffffff' }
   static get BUTTON_TEXT_SIZE()               { return 24 }
   static get BUTTON_TEXT()                    { return Styles.BODY_TEXT }
   static get INTRO_TEXT()                     { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
 
-  static get INFO_TEXT_COLOR()                { return '#0000ff' }
+  static get INFO_TEXT_COLOR()                { return '#0000aa' }
   static get WARN_TEXT_COLOR()                { return '#00ff00' }
   static get ERROR_TEXT_COLOR()               { return '#ff0000' }
   static get EXCEPTION_TEXT_COLOR()           { return '#ff00ff' }
