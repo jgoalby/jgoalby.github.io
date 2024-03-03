@@ -34,7 +34,7 @@ function defer(strs, ...defaults) {
   }, first);
 }
 
-let t = defer`My template is: ${null} and ${null}`;
+let t = defer`My template is: ${'extendable'} and ${'versatile'}`;
 let a = t('simple', 'reusable');
 // 'My template is: simple and reusable'
 let b = t('obvious', 'late to the party');
