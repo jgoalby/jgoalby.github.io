@@ -50,7 +50,7 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     // Check just in case.
     if (activeScene) {
       // The notification is a throwaway. Do no need to do anything with it.
-      const notificationObj = new Notification(activeScene, { currentHeight: this.currentHeight, notificationText: notification.notificationText, onCompleteFn: this.onNotificationComplete});
+      const notificationObj = new Notification(activeScene, { currentHeight: this.currentHeight, notificationText: notification.notificationText, onCompleteFn: (notificationDetails) => { this.onNotificationComplete(notificationDetails) }});
 
       this.currentHeight += notificationObj.getPanelHeight();
     }
