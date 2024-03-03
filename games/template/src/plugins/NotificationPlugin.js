@@ -43,7 +43,6 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
    * @param {string} notification The notification text.
    */
   onNotification(notification) {
-    console.log("NOTIFICATION: " + notification);
     const activeScene = getActiveScene();
 
     // Check just in case.

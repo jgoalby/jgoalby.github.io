@@ -6,6 +6,7 @@ Check out tweens more and timelines as well
 Atlas?
 Someone said the nineslices doesn't work in canvas? Did that change?
 Can I use Texttastic web server to do faster development?
+For the styles, do I want to specify it as JSON instead? I think so, as that would be easier to serialize.
 
 # Next
 - Fix the button for clear cache. Make a form button?
