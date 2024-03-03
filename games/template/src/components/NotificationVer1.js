@@ -50,7 +50,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.add(this.panel);
 
     // Set the position of the panel. As text is centered in the panel, its position is identical.
-    this.panel.setPosition(sceneWidth - ((this.panel.width / 2) + MARGIN_PANEL), sceneHeight);
+    this.panel.setPosition(sceneWidth * 2, sceneHeight - ((panelHeight / 2) + MARGIN_PANEL + this.currentHeight));
     this.text.setPosition(this.panel.x, this.panel.y);
 
     // We can animate (tween) more than one game object at a time with the same animation.
@@ -58,10 +58,11 @@ export default class Notification extends Phaser.GameObjects.Container {
 
     // This creates the animation of the text and panel moving in from the right to the middle of the screen.
     this.tween = this.scene.tweens.add({targets: this.objs,
-                                        y: 0,
+                                        x: sceneWidth / 2,
                                         ease: NOTIFICATION_TWEEN_EASE,
                                         duration: NOTIFICATION_TWEEN_IN_DURATION_MS,
-                                        yoyo: false,
+                                        hold: NOTIFICATION_TWEEN_HOLD_DURATION_MS,
+                                        yoyo: true,
                                         completeDelay: 0 });
 
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
