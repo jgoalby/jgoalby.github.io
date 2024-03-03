@@ -7,6 +7,7 @@ Atlas?
 Someone said the nineslices doesn't work in canvas? Did that change?
 Can I use Texttastic web server to do faster development?
 For the styles, do I want to specify it as JSON instead? I think so, as that would be easier to serialize.
+The notification class uses a panel. We specify the panel to use. Needs to be part of styles?
 
 # Next
 - Fix the button for clear cache. Make a form button?
@@ -66,6 +67,10 @@ Settings
 - Continue to remove the word game from the project
 - Continue with the firebase coding
 - Zones idea for a scene specifying areas buttons can go
+
+# Future Todos that are not urgent
+## Notifications
+- Look in the notification plugin class and see if there is a good way to have notifications shunt down the scene as they come in
 
 # Zones
 In creating these images with Dall-e, I wonder if I can create a fluid interface somehow. One that changes based on the size and shape of the window. And perhaps is not deterministic although that might not be a great user experience?!!!! Or maybe it isn't prescribed in the code, but is deterministic when implemented? Let's say you add 2 groups of buttons to a page. And then you define areas of the page where buttons can go. And it decides where to put them based on the page constraints. Maybe could make zones where stuff can go and it gets put there.

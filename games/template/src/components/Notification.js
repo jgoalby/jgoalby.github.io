@@ -1,9 +1,11 @@
 import Constants from '../constants.js';
 
+// The tweening constants for the notification animation.
 const NOTIFICATION_TWEEN_EASE = 'quart.out';
 const NOTIFICATION_TWEEN_IN_DURATION_MS = 1000;
 const NOTIFICATION_TWEEN_HOLD_DURATION_MS = 1000;
 
+// In the margins.
 const MARGIN_TEXT = 20;
 const MARGIN_PANEL = 20;
 
@@ -64,19 +66,41 @@ export default class Notification extends Phaser.GameObjects.Container {
                                         completeDelay: 0 });
 
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
-    this.tween.on('complete', () => { this.destroy(); if (options.onCompleteFn) { options.onCompleteFn({ height: this.panel.height }); } });
+    this.tween.on('complete', () => {
+      // The notification is complete so destroy it.
+      this.destroy(); 
+
+      // If a function was passed in the options, call it.
+      if (options.onCompleteFn) {
+        // We can pass information that may be useful to the caller.
+        options.onCompleteFn({ height: this.panel.height });
+      } 
+    });
 
     this.scene.add.existing(this);
   }
 
+  /**
+   * Get the height of the panel.
+   * 
+   * @returns {number} The height of the panel.
+   */
   getPanelHeight() {
     return this.panel.height;
   }
 
+  /**
+   * Get the width of the panel.
+   * 
+   * @returns {number} The width of the panel.
+   */
   getPanelWidth() {
     return this.panel.width;
   }
 
+  /**
+   * Destroy the notification.
+   */
   destroy() {
     super.destroy();
   }
