@@ -123,6 +123,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
       navigator.serviceWorker.ready.then(registration => {
         registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });
         this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: "Cache Cleared" });
+        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: "Cache Cleared\nAnother message" });
       });
     }
   }
