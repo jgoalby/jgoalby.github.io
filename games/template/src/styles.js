@@ -1,5 +1,3 @@
-import * as Sqrl from 'squirrelly'
-
 /*function deferWithDefaults([first, ...rest], ...defaults) {
   return (...values) => rest.reduce((acc, curr, i) => {
     return acc + (i < values.length ? values[i] : defaults[i]) + curr;
@@ -64,12 +62,6 @@ function doit() {
   const styles = JSON.parse(Styles);
   console.log(styles);
 
-  var myTemplate = 'My favorite template engine is {{it.favorite}}.'
-  var data = {
-    favorite: 'Squirrelly'
-  }
-  var result = Sqrl.Render(myTemplate, data)
-  console.log(result);
 }
 
 export {
