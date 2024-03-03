@@ -21,17 +21,19 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.x = 0;
     this.y = 0;
 
-    this.currentHeight = options.currentHeight || 0;
-
-    // Capture the notification text.
+    // Capture the notification text and level.
     this.notificationText = options.notificationText;
+    this.notificationLevel = options.level || Constants.NOTIFICATION_LEVELS.INFO;
+
+    // Determine the text color based on the level.
+    this.notificationTextColor = this.getNotificationTextColor(this.notificationLevel);
 
     // Scene dimensions help us position the notification nicely.
     const sceneWidth = this.scene.cameras.main.width;
     const sceneHeight = this.scene.cameras.main.height;
 
     // Create a text object to display the notification.
-    this.text = this.scene.add.text(0, 0, this.notificationText, Constants.STYLES.NOTIFICATION_TEXT);
+    this.text = this.scene.add.text(0, 0, this.notificationText, this.notificationTextColor);
     this.text.setOrigin(0.5, 0.5);
     this.add(this.text);
 
@@ -55,7 +57,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     // We can animate (tween) more than one game object at a time with the same animation.
     this.objs = [this.panel, this.text];
 
-    // This creates the animation of the text and panel moving in from the right to the middle of the screen.
+    // This creates the animation of the text and panel.
     this.tween = this.scene.tweens.add({targets: this.objs,
                                         y: 0,
                                         alpha: 0,
@@ -72,29 +74,26 @@ export default class Notification extends Phaser.GameObjects.Container {
       // If a function was passed in the options, call it.
       if (options.onCompleteFn) {
         // We can pass information that may be useful to the caller.
-        options.onCompleteFn({ height: this.panel.height });
+        options.onCompleteFn( { } );
       } 
     });
 
     this.scene.add.existing(this);
   }
 
-  /**
-   * Get the height of the panel.
-   * 
-   * @returns {number} The height of the panel.
-   */
-  getPanelHeight() {
-    return this.panel.height;
-  }
-
-  /**
-   * Get the width of the panel.
-   * 
-   * @returns {number} The width of the panel.
-   */
-  getPanelWidth() {
-    return this.panel.width;
+  getNotificationTextColor(level) {
+    switch (level) {
+      case Constants.NOTIFICATION_LEVELS.INFO:
+        return Constants.STYLES.NOTIFICATION_TEXT_INFO;
+      case Constants.NOTIFICATION_LEVELS.WARN:
+        return Constants.STYLES.NOTIFICATION_TEXT_WARN;
+      case Constants.NOTIFICATION_LEVELS.ERROR:
+        return Constants.STYLES.NOTIFICATION_TEXT_ERROR;
+      case Constants.NOTIFICATION_LEVELS.EXCEPTION:
+        return Constants.STYLES.NOTIFICATION_TEXT_EXCEPTION;
+      default:
+        return Constants.STYLES.NOTIFICATION_TEXT_INFO;
+    }
   }
 
   /**

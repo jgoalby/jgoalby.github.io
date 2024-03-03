@@ -74,6 +74,13 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
       categoryValue.value = newValue;
       if (this.customevent) {
         this.customevent.emit(Constants.EVENTS.SETTING_CHANGED, { category: category, name: name, value: newValue});
+
+
+        // TODO: Temp
+        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: "Setting changed: " + name, level: Constants.NOTIFICATION_LEVELS.WARN });
+
+
+
       }
     }
   }

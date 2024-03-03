@@ -58,12 +58,13 @@ interface NumberTextInputOptions {
 
 interface NotificationOptions {
     notificationText: string;
-    currentHeight?: number;
+    level?: string;
     onCompleteFn?: (any) => void;
 }
 
 interface NotificationEvent {
     notificationText: string;
+    level?: string;
 }
 
 declare class CheckBoxButton extends Phaser.GameObjects.Container {

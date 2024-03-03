@@ -25,32 +25,40 @@ class Physics {
 
 // Styles constants for how various elements look.
 class Styles {
-  static get BACKGROUND_COLOR()          { return '#000'; }
-  static get MAIN_FONT()                 { return 'Arial'; }
-  static get BODY_TEXT_FONT()            { return Styles.MAIN_FONT }
-  static get BODY_TEXT_COLOR()           { return '#fff' }
-  static get BODY_TEXT_SIZE()            { return 24 }
-  static get BODY_TEXT()                 { return { fontfamily: Styles.BODY_TEXT_FONT, fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR } }
-  static get BODY_TEXT_HIGHLIGHT_COLOR() { return '#ff0' }
-  static get BODY_Y_POS()                { return 90 }
-  static get INTRO_TEXT_COLOR()          { return '#fff' }
-  static get INTRO_TEXT_SIZE()           { return 24 }
-  static get HEADING_TEXT_FONT()         { return Styles.MAIN_FONT }
-  static get HEADING_TEXT_COLOR()        { return '#f00' }
-  static get HEADING_TEXT_SIZE()         { return 32 }
-  static get HEADING_Y_POS()             { return 50 }
-  static get HEADING_X_ORIGIN()          { return 0.5 }
-  static get HEADING_Y_ORIGIN()          { return 0 }
-  static get HEADING_TEXT()              { return { fontfamily: Styles.HEADING_TEXT_FONT, fontSize: Styles.HEADING_TEXT_SIZE, color: Styles.HEADING_TEXT_COLOR, } }
-  static get LABEL()                     { return Styles.BODY_TEXT }
-  static get CHECKBOX_LABEL()            { return Styles.BODY_TEXT }
-  static get CHECKBOX_LABEL_HIGHLIGHT()  { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_HIGHLIGHT_COLOR, } }
-  static get CHECKBOX_INSIDE_SPACE()     { return 10 }
-  static get BUTTON_TEXT_COLOR()         { return '#fff' }
-  static get BUTTON_TEXT_SIZE()          { return 24 }
-  static get BUTTON_TEXT()               { return Styles.BODY_TEXT }
-  static get INTRO_TEXT()                { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
-  static get NOTIFICATION_TEXT()         { return Styles.BODY_TEXT }
+  static get BACKGROUND_COLOR()               { return '#000'; }
+  static get MAIN_FONT()                      { return 'Arial'; }
+  static get BODY_TEXT_FONT()                 { return Styles.MAIN_FONT }
+  static get BODY_TEXT_COLOR()                { return '#fff' }
+  static get BODY_TEXT_SIZE()                 { return 24 }
+  static get BODY_TEXT()                      { return { fontfamily: Styles.BODY_TEXT_FONT, fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_COLOR } }
+  static get BODY_TEXT_HIGHLIGHT_COLOR()      { return '#ff0' }
+  static get BODY_Y_POS()                     { return 90 }
+  static get INTRO_TEXT_COLOR()               { return '#fff' }
+  static get INTRO_TEXT_SIZE()                { return 24 }
+  static get HEADING_TEXT_FONT()              { return Styles.MAIN_FONT }
+  static get HEADING_TEXT_COLOR()             { return '#f00' }
+  static get HEADING_TEXT_SIZE()              { return 32 }
+  static get HEADING_Y_POS()                  { return 50 }
+  static get HEADING_X_ORIGIN()               { return 0.5 }
+  static get HEADING_Y_ORIGIN()               { return 0 }
+  static get HEADING_TEXT()                   { return { fontfamily: Styles.HEADING_TEXT_FONT, fontSize: Styles.HEADING_TEXT_SIZE, color: Styles.HEADING_TEXT_COLOR, } }
+  static get LABEL()                          { return Styles.BODY_TEXT }
+  static get CHECKBOX_LABEL()                 { return Styles.BODY_TEXT }
+  static get CHECKBOX_LABEL_HIGHLIGHT()       { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_HIGHLIGHT_COLOR, } }
+  static get CHECKBOX_INSIDE_SPACE()          { return 10 }
+  static get BUTTON_TEXT_COLOR()              { return '#fff' }
+  static get BUTTON_TEXT_SIZE()               { return 24 }
+  static get BUTTON_TEXT()                    { return Styles.BODY_TEXT }
+  static get INTRO_TEXT()                     { return { fontSize: Styles.INTRO_TEXT_SIZE, color: Styles.INTRO_TEXT_COLOR, } }
+
+  static get INFO_TEXT_COLOR()                { return '#0000ff' }
+  static get WARN_TEXT_COLOR()                { return '#00ff00' }
+  static get ERROR_TEXT_COLOR()               { return '#ff0000' }
+  static get EXCEPTION_TEXT_COLOR()           { return '#ff00ff' }
+  static get NOTIFICATION_TEXT_INFO()         { return Object.assign(Styles.BODY_TEXT, { color: Styles.INFO_TEXT_COLOR }) }
+  static get NOTIFICATION_TEXT_WARN()         { return Object.assign(Styles.BODY_TEXT, { color: Styles.WARN_TEXT_COLOR }) }
+  static get NOTIFICATION_TEXT_ERROR()        { return Object.assign(Styles.BODY_TEXT, { color: Styles.ERROR_TEXT_COLOR }) }
+  static get NOTIFICATION_TEXT_EXCEPTION()    { return Object.assign(Styles.BODY_TEXT, { color: Styles.EXCEPTION_TEXT_COLOR }) }
 }
 
 // Regular events constants.
@@ -58,6 +66,14 @@ class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
   static get SETTING_ACTION()            { return 'SETTING_ACTION'; }
   static get NOTIFICATION()              { return 'NOTIFICATION'; }
+};
+
+// Notification levels.
+class NotificationLevels {
+  static get INFO()                      { return 'INFO'; }
+  static get WARN()                      { return 'WARN'; }
+  static get ERROR()                     { return 'ERROR'; }
+  static get EXCEPTION()                 { return 'EXCEPTION'; }
 };
 
 // Service Worker events constants. If you change anything in there then you need to also change
@@ -89,6 +105,7 @@ export default class Constants {
   static get PHYSICS() { return Physics; }
   static get STYLES() { return Styles; }
   static get EVENTS() { return Events; }
+  static get NOTIFICATION_LEVELS() { return NotificationLevels; }
   static get SETTINGS_TYPES() { return SETTINGS_TYPES; }
 
   // If you change the name of this, then you should also change it in service-worker.js.
