@@ -1,7 +1,11 @@
-const BACKGROUND_COLOR = '#000000';
+import * as Sqrl from 'squirrelly'
+
+const BaseStyles = {
+  BACKGROUND_COLOR: '#000000',
+}
 
 const Styles = `{
-  "BACKGROUND_COLOR": "${BACKGROUND_COLOR}",
+  "BACKGROUND_COLOR": "${BaseStyles.BACKGROUND_COLOR}",
   "MAIN_FONT": "Arial",
   "BODY_TEXT_FONT": "Arial",
   "BODY_TEXT_COLOR": "#ffffff",
@@ -18,6 +22,13 @@ function doit() {
 
   const styles = JSON.parse(Styles);
   console.log(styles);
+
+  var myTemplate = 'My favorite template engine is {{it.favorite}}.'
+  var data = {
+    favorite: 'Squirrelly'
+  }
+  var result = Sqrl.Render(myTemplate, data)
+  console.log(result);
 }
 
 export {
