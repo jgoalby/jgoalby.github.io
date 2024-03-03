@@ -10,6 +10,8 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     // Get the dependent plugins.
     this.customevent = getEventPlugin();
 
+    this.currentHeight = 0;
+
     // If we can access the event plugin.
     if (this.customevent) {
       // We would like to know when notification events happen so we can do stuff.
@@ -48,14 +50,16 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     // Check just in case.
     if (activeScene) {
       // The notification is a throwaway. Do no need to do anything with it.
-      const notificationObj = new Notification(activeScene, { notificationText: notification.notificationText, onCompleteFn: this.onNotificationComplete});
+      const notificationObj = new Notification(activeScene, { currentHeight: this.currentHeight, notificationText: notification.notificationText, onCompleteFn: this.onNotificationComplete});
 
-      console.log(notificationObj.getPanelHeight());
+      this.currentHeight += notificationObj.getPanelHeight();
     }
   }
 
-  onNotificationComplete() {
+  onNotificationComplete(notificationDetails) {
     console.log("Notification complete callback called!!!");
+
+    this.currentHeight -= notificationDetails.height;
   }
 
   static get options() {

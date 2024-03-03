@@ -20,6 +20,8 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.x = 0;
     this.y = 0;
 
+    this.currentHeight = options.currentHeight || 0;
+
     // Capture the notification text.
     this.notificationText = options.notificationText;
 
@@ -46,7 +48,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.add(this.panel);
 
     // Set the position of the panel. As text is centered in the panel, its position is identical.
-    this.panel.setPosition(sceneWidth * 2, sceneHeight - ((panelHeight / 2) + MARGIN_PANEL));
+    this.panel.setPosition(sceneWidth * 2, sceneHeight - ((panelHeight / 2) + MARGIN_PANEL + this.currentHeight));
     this.text.setPosition(this.panel.x, this.panel.y);
 
     // We can animate (tween) more than one game object at a time with the same animation.
@@ -62,7 +64,7 @@ export default class Notification extends Phaser.GameObjects.Container {
                                         completeDelay: 500 });
 
     // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
-    this.tween.on('complete', () => { this.destroy(); if (options.onCompleteFn) { options.onCompleteFn(); } });
+    this.tween.on('complete', () => { this.destroy(); if (options.onCompleteFn) { options.onCompleteFn({ height: this.panel.height }); } });
 
     this.scene.add.existing(this);
   }
