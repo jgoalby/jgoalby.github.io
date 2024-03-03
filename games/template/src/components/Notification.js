@@ -2,7 +2,7 @@ import Constants from '../constants.js';
 
 // The tweening constants for the notification animation.
 const NOTIFICATION_TWEEN_EASE = 'quart.out';
-const NOTIFICATION_TWEEN_IN_DURATION_MS = 1000;
+const NOTIFICATION_TWEEN_IN_DURATION_MS = 3000;
 const NOTIFICATION_TWEEN_HOLD_DURATION_MS = 1000;
 
 // In the margins.
@@ -59,12 +59,13 @@ export default class Notification extends Phaser.GameObjects.Container {
     // This creates the animation of the text and panel moving in from the right to the middle of the screen.
     this.tween = this.scene.tweens.add({targets: this.objs,
                                         y: 0,
+                                        alpha: 0,
                                         ease: NOTIFICATION_TWEEN_EASE,
                                         duration: NOTIFICATION_TWEEN_IN_DURATION_MS,
                                         yoyo: false,
                                         completeDelay: 0 });
 
-    // The oncomplete on the tween itself always seemed to execute immdiately, so I added a listener to the tween instead.
+    // When the tween completes, do some stuff.
     this.tween.on('complete', () => {
       // The notification is complete so destroy it.
       this.destroy(); 
