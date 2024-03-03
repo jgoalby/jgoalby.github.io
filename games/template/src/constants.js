@@ -61,6 +61,84 @@ class Styles {
   static get NOTIFICATION_TEXT_EXCEPTION()    { return Object.assign(Styles.BODY_TEXT, { color: Styles.EXCEPTION_TEXT_COLOR }) }
 }
 
+const NewStyles = {
+  "BACKGROUND_COLOR": "#000000",
+  "MAIN_FONT": "Arial",
+  "BODY_TEXT_FONT": "Arial",
+  "BODY_TEXT_COLOR": "#ffffff",
+  "BODY_TEXT_SIZE": 24,
+  "BODY_TEXT": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ffffff"
+  },
+  "BODY_TEXT_HIGHLIGHT_COLOR": "#ffff00",
+  "BODY_Y_POS": 90,
+  "INTRO_TEXT_COLOR": "#ffffff",
+  "INTRO_TEXT_SIZE": 24,
+  "HEADING_TEXT_FONT": "Arial",
+  "HEADING_TEXT_COLOR": "#ff0000",
+  "HEADING_TEXT_SIZE": 32,
+  "HEADING_Y_POS": 50,
+  "HEADING_X_ORIGIN": 0.5,
+  "HEADING_Y_ORIGIN": 0,
+  "HEADING_TEXT": {
+    "fontfamily": "Arial",
+    "fontSize": 32,
+    "color": "#ff0000"
+  },
+  "LABEL": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ffffff"
+  },
+  "CHECKBOX_LABEL": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ffffff"
+  },
+  "CHECKBOX_LABEL_HIGHLIGHT": {
+    "fontSize": 24,
+    "color": "#ffff00"
+  },
+  "CHECKBOX_INSIDE_SPACE": 10,
+  "BUTTON_TEXT_COLOR": "#ffffff",
+  "BUTTON_TEXT_SIZE": 24,
+  "BUTTON_TEXT": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ffffff"
+  },
+  "INTRO_TEXT": {
+    "fontSize": 24,
+    "color": "#ffffff"
+  },
+  "INFO_TEXT_COLOR": "#ADD8E6",
+  "WARN_TEXT_COLOR": "#00ff00",
+  "ERROR_TEXT_COLOR": "#ff0000",
+  "EXCEPTION_TEXT_COLOR": "#ff00ff",
+  "NOTIFICATION_TEXT_INFO": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ADD8E6"
+  },
+  "NOTIFICATION_TEXT_WARN": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#00ff00"
+  },
+  "NOTIFICATION_TEXT_ERROR": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ff0000"
+  },
+  "NOTIFICATION_TEXT_EXCEPTION": {
+    "fontfamily": "Arial",
+    "fontSize": 24,
+    "color": "#ff00ff"
+  }
+}
+
 // Regular events constants.
 class Events {
   static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
