@@ -80,8 +80,9 @@ const resolveTemplate2 = function(str, variables) {
   return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => evalWithContext(g1, variables))
 }
 */
+
 const BaseStylesJSON = `{
-  BACKGROUND_COLOR: '#000000'
+  BACKGROUND_COLOR: "#000000"
 }`
 
 const StylesJSON = `{
