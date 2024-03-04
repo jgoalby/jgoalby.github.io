@@ -90,13 +90,22 @@ const StylesJSON = `{
   "MAIN_FONT": "Arial",
   "BODY_TEXT_FONT": "[[MAIN_FONT]]",
   "BODY_TEXT_COLOR": "#ffffff",
-  "BODY_TEXT_SIZE": 24,
+  "BODY_TEXT_SIZE": "24",
   "BODY_TEXT": {
     "fontfamily": "[[MAIN_FONT]]",
-    "fontSize": 24,
+    "fontSize": "24",
     "color": "#ffffff"
   }
+  "HEADING_TEXT": {
+    "fontfamily": "[[BODY_TEXT.fontfamily]]",
+    "fontSize": "[[BODY_TEXT.fontSize]]",
+    "color": "#123123"
+  }
 }`
+
+// TODO: can I do something like this...
+// 
+// "fontSize": "[[BODY_TEXT.fontSize]] + 10",
 
 const resolveTemplate = (source, variables) => {
   // For all of the keys in source object, replace the value with value from variables
