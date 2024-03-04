@@ -46,6 +46,41 @@ let d = defer`Choose: ${'ignore'} / ${undefined}`(true, false);
 
 console.log(a + "\n" + b + "\n" + c + "\n" + d + "\n");
 
+
+const isUndefined = o => typeof o === 'undefined'
+
+const nvl = (o, valueIfUndefined) => isUndefined(o) ? valueIfUndefined : o
+
+// gets a deep value from an object, given a 'path'.
+const getDeepValue = (obj, path) =>
+  path
+    .replace(/\[|\]\.?/g, '.')
+    .split('.')
+    .filter(s => s)
+    .reduce((acc, val) => acc && acc[val], obj)
+
+// given a string, resolves all template variables.
+const resolveTemplate = (str, variables) => {
+  return str.replace(/\$\{([^\}]+)\}/g, (m, g1) =>
+            nvl(getDeepValue(variables, g1), m))
+}
+
+// setup variables for resolution...
+var variables = {}
+variables['top level'] = 'Foo'
+variables['deep object'] = {text:'Bar'}
+var aGlobalVariable = 'Dog'
+
+// ==> Foo Bar <==
+console.log(resolveTemplate('==> ${top level} ${deep object.text} <==', variables))
+
+// ==> Dog Dog <==
+console.log(resolveTemplate('==> ${aGlobalVariable} ${aGlobalVariable} <==', this))
+
+// ==> ${not an object.text} <==
+console.log(resolveTemplate('==> ${not an object.text} <==', variables))
+
+
 const BaseStyles = {
   BACKGROUND_COLOR: '#000000',
 }
