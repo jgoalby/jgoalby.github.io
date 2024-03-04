@@ -92,12 +92,12 @@ const StylesJSON = `{
   "BODY_TEXT_COLOR": "#ffffff",
   "BODY_TEXT_SIZE": "24",
   "BODY_TEXT": {
-    "fontfamily": "[[MAIN_FONT]]",
+    "fontFamily": "[[MAIN_FONT]]",
     "fontSize": "24",
     "color": "#ffffff"
-  }
+  },
   "HEADING_TEXT": {
-    "fontfamily": "[[BODY_TEXT.fontfamily]]",
+    "fontFamily": "[[BODY_TEXT.fontFamily]]",
     "fontSize": "[[BODY_TEXT.fontSize]]",
     "color": "#123123"
   }
