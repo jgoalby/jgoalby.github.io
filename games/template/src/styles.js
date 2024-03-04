@@ -75,7 +75,9 @@ const resolveTemplate = (source, variables) => {
     console.log("1:" + key);
     if (source.hasOwnProperty(key)) {
       if (typeof source[key] === 'string') {
-        source[key] = oldresolveTemplate(source[key], variables);
+        const retVal = oldresolveTemplate(source[key], variables);
+        console.log("2:" + key + " " + retVal);
+        source[key] = retVal;
       } else {
         source[key] = resolveTemplate(source[key], variables);
       }
