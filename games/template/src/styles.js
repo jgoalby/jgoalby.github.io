@@ -61,10 +61,18 @@ const getDeepValue = (obj, path) =>
 
 // given a string, resolves all template variables.
 const resolveTemplate = (str, variables) => {
-  return str.replace(/\$\{([^\}]+)\}/g, (m, g1) =>
-            nvl(getDeepValue(variables, g1), m))
+  return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => nvl(getDeepValue(variables, g1), m))
 }
 
+// evalutes with a provided 'this' context.
+const evalWithContext = (string, context) => function(s){
+  return eval(s);
+}.call(context, string)
+
+// given a string, resolves all template variables.
+const resolveTemplate2 = function(str, variables) {
+  return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => evalWithContext(g1, variables))
+}
 
 const BaseStyles = {
   BACKGROUND_COLOR: '#000000',
@@ -93,17 +101,18 @@ function doit() {
   var variables = {}
   variables['top level'] = 'Foo'
   variables['deep object'] = {text:'Bar'}
-  var aGlobalVariable = 'Dog'
-
+  
   // ==> Foo Bar <==
   console.log(resolveTemplate('==> ${top level} ${deep object.text} <==', variables))
 
   // ==> Dog Dog <==
-  console.log(resolveTemplate('==> ${aGlobalVariable} ${aGlobalVariable} <==', this))
+  console.log(resolveTemplate('==> ${aGlobalVariable} ${aGlobalVariable} <==', { aGlobalVariable: 'Dog' }))
 
   // ==> ${not an object.text} <==
   console.log(resolveTemplate('==> ${not an object.text} <==', variables))
 
+  // ==> 5Foobar <==
+  console.log(resolveTemplate2('==> ${1 + 4 + this.someVal} <==', {someVal: 'Foobar'}))
 }
 
 export {
