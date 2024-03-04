@@ -28,11 +28,10 @@ const resolveTemplate2 = function(str, variables) {
 }
 */
 
-// Add some comments to the JSON string at the top to indicate how it is formatted for GenAI.
-
 // Need to implement error checking for the JSON and print something useful. Missing commas for instance.
 
-// Can you overwrite values? Trying now
+// Can you overwrite values? Trying now. Might have to be unique???
+// SHIT. What about the order?????
 
 const StylesJSON = `{
   // Comments like these are allowed in this file as they will be stripped out before parsing.
@@ -72,6 +71,7 @@ const StylesJSON = `{
 const resolveTemplate = (source, variables) => {
   // For all of the keys in source object, replace the value with value from variables
   for (var key in source) {
+    console.log("1:" + key);
     if (source.hasOwnProperty(key)) {
       if (typeof source[key] === 'string') {
         source[key] = oldresolveTemplate(source[key], variables);
