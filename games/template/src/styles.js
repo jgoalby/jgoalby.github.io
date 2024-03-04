@@ -81,6 +81,8 @@ const resolveTemplate2 = function(str, variables) {
 }
 */
 
+// Add some comments to the JSON string at the top to indicate how it is formatted for GenAI.
+
 const StylesJSON = `{
   // Base styles.
   "BASE_BACKGROUND_COLOR": "#001122"
@@ -152,6 +154,8 @@ function doit() {
 
   // Remove the comment lines from the StylesJSON
   const cleanedStylesJSON = StylesJSON.replace(/\/\/.*/g, '');
+
+  console.log(cleanedStylesJSON);
 
   let styles = JSON.parse(cleanedStylesJSON);
 
