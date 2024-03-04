@@ -28,7 +28,11 @@ console.log(a);
 }*/
 
 function defer(strs, ...defaults) {
+  console.log('-- defer --');
+  console.log(strs);
   var [first, ...rest] = strs;
+  console.log(first);
+  console.log(rest);
   return (...values) => rest.reduce((acc, curr, i) => {
     return acc + (i < values.length ? values[i] : defaults[i]) + curr;
   }, first);
