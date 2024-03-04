@@ -109,6 +109,8 @@ const resolveTemplate = (source, variables) => {
       }
     }
   }
+
+  return source;
 }
 
 function doit() {
@@ -135,6 +137,7 @@ function doit() {
   let baseStyles = JSON.parse(BaseStylesJSON);
   let styles = JSON.parse(StylesJSON);
 
+  console.log("resolve template output");
   console.log(resolveTemplate(styles, baseStyles))
 
 
