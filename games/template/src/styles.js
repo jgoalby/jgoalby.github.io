@@ -83,9 +83,11 @@ const resolveTemplate2 = function(str, variables) {
 
 // Add some comments to the JSON string at the top to indicate how it is formatted for GenAI.
 
+// Need to implement error checking for the JSON and print something useful. Missing commas for instance.
+
 const StylesJSON = `{
   // Base styles.
-  "BASE_BACKGROUND_COLOR": "#001122"
+  "BASE_BACKGROUND_COLOR": "#001122",
   
   // Main styles.
   "BACKGROUND_COLOR": "[[BASE_BACKGROUND_COLOR]]",
