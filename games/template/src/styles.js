@@ -32,7 +32,17 @@ const resolveTemplate2 = function(str, variables) {
 
 // Need to implement error checking for the JSON and print something useful. Missing commas for instance.
 
+// Can you overwrite values? Trying now
+
 const StylesJSON = `{
+  // Comments like these are allowed in this file as they will be stripped out before parsing.
+  // All values must be in double quotes.
+  // All keys must be in double quotes.
+  // Case sensitive.
+  // Values within double square brackets are resolved as variables.
+  // Values can reference previously defined values.
+  // Cannot replace an object. Only strings.
+
   // Base styles.
   "BASE_BACKGROUND_COLOR": "#001122",
   
@@ -42,6 +52,7 @@ const StylesJSON = `{
   "BODY_TEXT_FONT": "[[MAIN_FONT]]",
   "BODY_TEXT_COLOR": "#ffffff",
   "BODY_TEXT_SIZE": "24",
+  "MAIN_FONT": "Times New Roman",
   "BODY_TEXT": {
     "fontFamily": "[[MAIN_FONT]]",
     "fontSize": "[[BODY_TEXT_SIZE]]",
