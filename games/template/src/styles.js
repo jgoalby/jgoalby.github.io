@@ -65,21 +65,6 @@ const resolveTemplate = (str, variables) => {
             nvl(getDeepValue(variables, g1), m))
 }
 
-// setup variables for resolution...
-var variables = {}
-variables['top level'] = 'Foo'
-variables['deep object'] = {text:'Bar'}
-var aGlobalVariable = 'Dog'
-
-// ==> Foo Bar <==
-console.log(resolveTemplate('==> ${top level} ${deep object.text} <==', variables))
-
-// ==> Dog Dog <==
-console.log(resolveTemplate('==> ${aGlobalVariable} ${aGlobalVariable} <==', this))
-
-// ==> ${not an object.text} <==
-console.log(resolveTemplate('==> ${not an object.text} <==', variables))
-
 
 const BaseStyles = {
   BACKGROUND_COLOR: '#000000',
@@ -103,6 +88,21 @@ function doit() {
 
   const styles = JSON.parse(Styles);
   console.log(styles);
+
+  // setup variables for resolution...
+  var variables = {}
+  variables['top level'] = 'Foo'
+  variables['deep object'] = {text:'Bar'}
+  var aGlobalVariable = 'Dog'
+
+  // ==> Foo Bar <==
+  console.log(resolveTemplate('==> ${top level} ${deep object.text} <==', variables))
+
+  // ==> Dog Dog <==
+  console.log(resolveTemplate('==> ${aGlobalVariable} ${aGlobalVariable} <==', this))
+
+  // ==> ${not an object.text} <==
+  console.log(resolveTemplate('==> ${not an object.text} <==', variables))
 
 }
 
