@@ -117,14 +117,8 @@ const resolveTemplate = (source, variables) => {
     if (source.hasOwnProperty(key)) {
       if (typeof source[key] === 'string') {
         source[key] = oldresolveTemplate(source[key], variables);
-        if (!(key in variables)) {
-          variables[key] = source[key];
-        }
       } else {
         source[key] = resolveTemplate(source[key], variables);
-        if (!(key in variables)) {
-          variables[key] = source[key];
-        }
       }
     }
   }
