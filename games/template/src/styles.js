@@ -64,8 +64,9 @@ const getDeepValue = (obj, path) =>
     .reduce((acc, val) => acc && acc[val], obj)
 
 // given a string, resolves all template variables.
-const resolveTemplate = (str, variables) => {
-  return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => nvl(getDeepValue(variables, g1), m))
+const oldresolveTemplate = (str, variables) => {
+  //return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => nvl(getDeepValue(variables, g1), m))
+  return str.replace(/\[\[([^\}]+)\]\]/g, (m, g1) => nvl(getDeepValue(variables, g1), m))
 }
 
 // evalutes with a provided 'this' context.
@@ -78,12 +79,12 @@ const resolveTemplate2 = function(str, variables) {
   return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => evalWithContext(g1, variables))
 }
 
-const BaseStyles = {
+const BaseStylesJSON = `{
   BACKGROUND_COLOR: '#000000',
-}
+}`
 
-const Styles = `{
-  "BACKGROUND_COLOR": "${BaseStyles.BACKGROUND_COLOR}",
+const StylesJSON = `{
+  "BACKGROUND_COLOR": "[[BaseStyles.BACKGROUND_COLOR]]",
   "MAIN_FONT": "Arial",
   "BODY_TEXT_FONT": "Arial",
   "BODY_TEXT_COLOR": "#ffffff",
@@ -95,10 +96,23 @@ const Styles = `{
   }
 }`
 
+const resolveTemplate = (source, variables) => {
+  // For all of the keys in source object, replace the value with value from variables
+  for (var key in source) {
+    if (source.hasOwnProperty(key)) {
+      if (typeof source[key] === 'string') {
+        source[key] = oldresolveTemplate(source[key], variables);
+      } else {
+        source[key] = resolveTemplate(source[key], variables);
+      }
+    }
+  }
+}
+
 function doit() {
   console.log('styles.js doit()');
 
-  const styles = JSON.parse(Styles);
+  /*const styles = JSON.parse(Styles);
   console.log(styles);
 
   // setup variables for resolution...
@@ -117,6 +131,13 @@ function doit() {
 
   // ==> 5Foobar <==
   console.log(resolveTemplate2('==> ${1 + 4 + this.someVal} <==', {someVal: 'Foobar'}))
+*/
+  let baseStyles = JSON.parse(BaseStylesJSON);
+  let styles = JSON.parse(StylesJSON);
+
+  console.log(resolveTemplate(styles, baseStyles))
+
+
 }
 
 export {
