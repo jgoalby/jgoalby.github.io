@@ -28,10 +28,7 @@ const resolveTemplate2 = function(str, variables) {
 }
 */
 
-// Need to implement error checking for the JSON and print something useful. Missing commas for instance.
-
-// Can you overwrite values? Trying now. Might have to be unique???
-// SHIT. What about the order?????
+// TODO: Need to implement error checking for the JSON and print something useful. Missing commas for instance.
 
 const StylesJSON = `{
   // Comments like these are allowed in this file as they will be stripped out before parsing.
@@ -40,6 +37,8 @@ const StylesJSON = `{
   // Case sensitive.
   // Values within double square brackets are resolved as variables.
   // Order is important. Keys will be processed from top to bottom.
+  // If you have duplicate keys, JSON will automatically take the last one defined as the only value.
+  // So, it is best if the keys are unique to prevent confusion.
   // Values can reference previously defined values.
   // Cannot replace an object. Only strings.
 
@@ -52,7 +51,6 @@ const StylesJSON = `{
   "BODY_TEXT_FONT": "[[MAIN_FONT]]",
   "BODY_TEXT_COLOR": "#ffffff",
   "BODY_TEXT_SIZE": "24",
-  "MAIN_FONT": "Times New Roman",
   "BODY_TEXT": {
     "fontFamily": "[[MAIN_FONT]]",
     "fontSize": "[[BODY_TEXT_SIZE]]",
