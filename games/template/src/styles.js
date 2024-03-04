@@ -88,11 +88,11 @@ const BaseStylesJSON = `{
 const StylesJSON = `{
   "BACKGROUND_COLOR": "[[BACKGROUND_COLOR]]",
   "MAIN_FONT": "Arial",
-  "BODY_TEXT_FONT": "Arial",
+  "BODY_TEXT_FONT": "[[MAIN_FONT]]",
   "BODY_TEXT_COLOR": "#ffffff",
   "BODY_TEXT_SIZE": 24,
   "BODY_TEXT": {
-    "fontfamily": "Arial",
+    "fontfamily": "[[MAIN_FONT]]",
     "fontSize": 24,
     "color": "#ffffff"
   }
@@ -104,8 +104,14 @@ const resolveTemplate = (source, variables) => {
     if (source.hasOwnProperty(key)) {
       if (typeof source[key] === 'string') {
         source[key] = oldresolveTemplate(source[key], variables);
+        if (!(key in variables)) {
+          variables[key] = source[key];
+        }
       } else {
         source[key] = resolveTemplate(source[key], variables);
+        if (!(key in variables)) {
+          variables[key] = source[key];
+        }
       }
     }
   }
@@ -140,6 +146,8 @@ function doit() {
   console.log("resolve template output");
   console.log(resolveTemplate(styles, baseStyles))
 
+  console.log(styles);
+  console.log(baseStyles);
 
 }
 
