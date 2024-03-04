@@ -45,7 +45,7 @@ class Styles {
   static get HEADING_Y_POS()                  { return 50 }
   static get HEADING_X_ORIGIN()               { return 0.5 }
   static get HEADING_Y_ORIGIN()               { return 0 }
-  static get HEADING_TEXT()                   { return { fontfamily: Styles.HEADING_TEXT_FONT, fontsize: Styles.HEADING_TEXT_SIZE, color: Styles.HEADING_TEXT_COLOR, } }
+  static get HEADING_TEXT()                   { return { fontFamily: Styles.HEADING_TEXT_FONT, fontSize: Styles.HEADING_TEXT_SIZE, color: Styles.HEADING_TEXT_COLOR, } }
   static get LABEL()                          { return Styles.BODY_TEXT }
   static get CHECKBOX_LABEL()                 { return Styles.BODY_TEXT }
   static get CHECKBOX_LABEL_HIGHLIGHT()       { return { fontSize: Styles.BODY_TEXT_SIZE, color: Styles.BODY_TEXT_HIGHLIGHT_COLOR, } }

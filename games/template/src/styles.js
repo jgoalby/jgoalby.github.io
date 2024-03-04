@@ -29,6 +29,7 @@ const resolveTemplate2 = function(str, variables) {
 */
 
 // TODO: Need to implement error checking for the JSON and print something useful. Missing commas for instance.
+//       What to do if the styles fail for some reason? Have a default I presume.
 
 const StylesJSON = `{
   // Comments like these are allowed in this file as they will be stripped out before parsing.
@@ -41,6 +42,7 @@ const StylesJSON = `{
   // So, it is best if the keys are unique to prevent confusion.
   // Values can reference previously defined values.
   // Cannot replace an object. Only strings.
+  // Key names are case sensitive in Phaser. fontFamily is correct, fontfamily is not.
 
   // Base styles.
   "BASE_BACKGROUND_COLOR": "#001122",
