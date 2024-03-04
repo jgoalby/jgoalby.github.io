@@ -81,20 +81,20 @@ const resolveTemplate2 = function(str, variables) {
 }
 */
 
-const BaseStylesJSON = `{
-  "BACKGROUND_COLOR": "#001122"
-}`
-
 const StylesJSON = `{
-  "BACKGROUND_COLOR": "[[BACKGROUND_COLOR]]",
+  // Base styles.
+  "BASE_BACKGROUND_COLOR": "#001122"
+  
+  // Main styles.
+  "BACKGROUND_COLOR": "[[BASE_BACKGROUND_COLOR]]",
   "MAIN_FONT": "Arial",
   "BODY_TEXT_FONT": "[[MAIN_FONT]]",
   "BODY_TEXT_COLOR": "#ffffff",
   "BODY_TEXT_SIZE": "24",
   "BODY_TEXT": {
     "fontFamily": "[[MAIN_FONT]]",
-    "fontSize": "24",
-    "color": "#ffffff"
+    "fontSize": "[[BODY_TEXT_SIZE]]",
+    "color": "[[BODY_TEXT_COLOR]]"
   },
   "HEADING_TEXT": {
     "fontFamily": "[[BODY_TEXT.fontFamily]]",
@@ -149,14 +149,16 @@ function doit() {
   // ==> 5Foobar <==
   console.log(resolveTemplate2('==> ${1 + 4 + this.someVal} <==', {someVal: 'Foobar'}))
 */
-  let baseStyles = JSON.parse(BaseStylesJSON);
-  let styles = JSON.parse(StylesJSON);
+
+  // Remove the comment lines from the StylesJSON
+  const cleanedStylesJSON = StylesJSON.replace(/\/\/.*/g, '');
+
+  let styles = JSON.parse(cleanedStylesJSON);
 
   console.log("resolve template output");
-  console.log(resolveTemplate(styles, baseStyles))
+  console.log(resolveTemplate(styles, styles))
 
   console.log(styles);
-  console.log(baseStyles);
 
 }
 
