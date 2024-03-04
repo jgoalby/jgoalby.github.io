@@ -39,6 +39,7 @@ const StylesJSON = `{
   // All keys must be in double quotes.
   // Case sensitive.
   // Values within double square brackets are resolved as variables.
+  // Order is important. Keys will be processed from top to bottom.
   // Values can reference previously defined values.
   // Cannot replace an object. Only strings.
 
