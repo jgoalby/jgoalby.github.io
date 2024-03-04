@@ -27,7 +27,7 @@ console.log(a);
   return (...vals) => rest.reduce((acc, str, i) => acc + vals[i] + str, first);
 }*/
 
-function defer(strs, ...defaults) {
+/*function defer(strs, ...defaults) {
   console.log('-- defer --');
   console.log(strs);
   var [first, ...rest] = strs;
@@ -49,7 +49,7 @@ let d = defer`Choose: ${'ignore'} / ${undefined}`(true, false);
 // 'Choose: true / false'
 
 console.log(a + "\n" + b + "\n" + c + "\n" + d + "\n");
-
+*/
 
 const isUndefined = o => typeof o === 'undefined'
 
@@ -69,6 +69,7 @@ const oldresolveTemplate = (str, variables) => {
   return str.replace(/\[\[([^\}]+)\]\]/g, (m, g1) => nvl(getDeepValue(variables, g1), m))
 }
 
+/*
 // evalutes with a provided 'this' context.
 const evalWithContext = (string, context) => function(s){
   return eval(s);
@@ -78,9 +79,9 @@ const evalWithContext = (string, context) => function(s){
 const resolveTemplate2 = function(str, variables) {
   return str.replace(/\$\{([^\}]+)\}/g, (m, g1) => evalWithContext(g1, variables))
 }
-
+*/
 const BaseStylesJSON = `{
-  BACKGROUND_COLOR: '#000000',
+  BACKGROUND_COLOR: '#000000'
 }`
 
 const StylesJSON = `{
@@ -110,8 +111,6 @@ const resolveTemplate = (source, variables) => {
 }
 
 function doit() {
-  console.log('styles.js doit()');
-
   /*const styles = JSON.parse(Styles);
   console.log(styles);
 
