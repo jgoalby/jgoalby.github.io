@@ -82,7 +82,7 @@ const resolveTemplate2 = function(str, variables) {
 */
 
 const BaseStylesJSON = `{
-  BACKGROUND_COLOR: "#000000"
+  "BACKGROUND_COLOR": "#000000"
 }`
 
 const StylesJSON = `{
