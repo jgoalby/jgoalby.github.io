@@ -82,6 +82,19 @@ export default class Notification extends Phaser.GameObjects.Container {
 
     console.log("Func: " + this.getNotificationTextColor);
     console.log("Object: " + this);
+    console.log("All funcs: " + this.getAllFuncs(this));
+  }
+
+  getAllFuncs(toCheck) {
+    const props = [];
+    let obj = toCheck;
+    do {
+        props.push(...Object.getOwnPropertyNames(obj));
+    } while (obj = Object.getPrototypeOf(obj));
+    
+    return props.sort().filter((e, i, arr) => { 
+       if (e!=arr[i+1] && typeof toCheck[e] == 'function') return true;
+    })
   }
 
   getNotificationTextColor(level) {
