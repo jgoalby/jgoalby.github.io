@@ -85,6 +85,8 @@ export default class Notification extends Phaser.GameObjects.Container {
     console.log("All funcs: " + this.getFuncs(this, true));
     console.log("Desc: " + this.getFuncs['description']);
 
+    console.log("Meths: " + this.getAllMethodNames(this));
+
     console.log("Own prop names: " + Object.getOwnPropertyNames(this))
 
     const funks = this.getFuncs(this);
@@ -92,6 +94,15 @@ export default class Notification extends Phaser.GameObjects.Container {
     funks.map((e) => {
       console.log("Func: " + e + " type: " + (typeof this[e]));
     })
+  }
+
+  getAllMethodNames(obj) {
+    let methods = new Set();
+    while (obj = Reflect.getPrototypeOf(obj)) {
+      let keys = Reflect.ownKeys(obj)
+      keys.forEach((k) => methods.add(k));
+    }
+    return methods;
   }
 
   getFuncs(theObject, all=false) {
