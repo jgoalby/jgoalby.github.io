@@ -65,7 +65,7 @@ self.addEventListener('activate', function(event) {
 /**
  * Message from the main thread.
  */
-self.addEventListener('message', event => {
+self.addEventListener('message', async event => {
   // Make sure we have an event source.
   if (event.source && event.data) {
     // We want to do this only once, and we know the client will send this message.
