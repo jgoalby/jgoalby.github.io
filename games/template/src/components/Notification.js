@@ -101,6 +101,8 @@ export default class Notification extends Phaser.GameObjects.Container {
     let methods = new Set();
     while (obj = Reflect.getPrototypeOf(obj)) {
       let keys = Reflect.ownKeys(obj)
+      console.log("keys");
+      console.log(keys);
       keys.forEach((k) => methods.add(k));
     }
     return methods;
