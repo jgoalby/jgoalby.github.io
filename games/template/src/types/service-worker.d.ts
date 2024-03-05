@@ -68,7 +68,7 @@ interface Cache {
 	add(request: Request): Promise<void>;
 	addAll(requestArray: Array<Request>): Promise<void>;
 	'delete'(request: Request, options?: CacheStorageOptions): Promise<boolean>;
-	keys(request?: Request, options?: CacheStorageOptions): Promise<Array<string>>;
+	keys(request?: Request, options?: CacheStorageOptions): Promise<Array<Request>>;
 	match(request: Request, options?: CacheStorageOptions): Promise<Response>;
 	matchAll(request: Request, options?: CacheStorageOptions): Promise<Array<Response>>;
 	put(request: Request|string, response: Response): Promise<void>;

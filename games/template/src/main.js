@@ -86,7 +86,7 @@ async function handleKeydown(event) {
       cachedResponse = await cache.match('https://www.goalby.org/games/template/src/common.js');
       const cacheKeys = await cache.keys();
       for (let i = 0; i < cacheKeys.length; i++) {
-        cacheKeyStr += cacheKeys[i] + " | ";
+        cacheKeyStr += cacheKeys[i].url + " | ";
       }
     } catch (error) {
       // Oh dear, there was an issue.
