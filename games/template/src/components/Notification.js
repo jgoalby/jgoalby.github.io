@@ -104,6 +104,8 @@ export default class Notification extends Phaser.GameObjects.Container {
       console.log("keys");
       console.log(keys);
       keys.forEach((k) => methods.add(k));
+      console.log("Set");
+      console.log(methods);
     }
     return methods;
   }
