@@ -95,32 +95,31 @@ self.addEventListener('message', async event => {
       }
     } else if (event.data.type === Constants.SW_EVENTS.CLEAR_CACHE) {
       // Clear the cache.
-      caches.delete(cacheName);
+      await caches.delete(cacheName);
     } else if (event.data.type === Constants.SW_EVENTS.GET_CACHED_FILE) {
       if (event.data.requestURL) {
         let cachedResponse = undefined;
+        let cacheKeyStr = "";
 
         try {
           const cache = await caches.open(cacheName);
           cachedResponse = await cache.match(event.data.requestURL);
+          const cacheKeys = await cache.keys();
+          for (let i = 0; i < cacheKeys.length; i++) {
+            cacheKeyStr += cacheKeys[i] + " | ";
+          }
         } catch (error) {
           // Oh dear, there was an issue.
           cachedResponse = undefined;
         }
     
+        self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: "NUM 3!!! " + cacheKeyStr });
+
         if (cachedResponse) {
           self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: cachedResponse.body });
         } else {
           self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: "NOT FOUND 2!!!" });
         }
-
-        /*const cachedResponse = await caches.match(event.data.requestURL);
-
-        if (cachedResponse) {
-          self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: cachedResponse.body });
-        } else {
-          self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: "NOT FOUND!!!" });
-        }*/
       }
     }
   }
