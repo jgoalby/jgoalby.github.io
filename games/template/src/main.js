@@ -94,6 +94,7 @@ async function handleKeydown(event) {
       navigator.serviceWorker.addEventListener('message', event => {
         // Sanity check.
         if (event.data) {
+          console.log("***** WE got an event: " + event.data.type + " *****");
           // Messages can be a string type or object type.
           if (typeof event.data === 'string') {
             // console.log(`The service worker sent a message: ${event.data}`);

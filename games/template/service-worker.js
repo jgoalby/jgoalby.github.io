@@ -154,6 +154,7 @@ self.addEventListener('fetch', function(event) {
     const ret = response || cachedResponse;
 
     // TODO: Need configure like sendCacheMessage
+    // TODO: Might need url as well
     self.sendMessage({ type: Constants.SW_EVENTS.MODULE_LOAD, source: 'this is a test for now' });
 
     // We can return the response.
