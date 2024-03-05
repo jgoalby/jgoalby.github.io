@@ -133,12 +133,10 @@ self.addEventListener('fetch', function(event) {
       // Fetch the resource from the network if we can.
       response = await fetch(event.request);
   
-      // There was a problem so use the cached response if we have one. Otherwise return what we got.
+      // There was a problem so use the cached response if we have one. Otherwise we will return what we got.
       if (!response || (response.status !== 200)) {
         if (cachedResponse) {
-          return cachedResponse;
-        } else {
-          return response;
+          response = cachedResponse;
         }
       } else {
         // The response was ok, so cache it for future generations.
@@ -155,7 +153,9 @@ self.addEventListener('fetch', function(event) {
 
     // TODO: Need configure like sendCacheMessage
     // TODO: Might need url as well
-    self.sendMessage({ type: Constants.SW_EVENTS.MODULE_LOAD, source: 'this is a test for now' });
+    if (ret) {
+      self.sendMessage({ type: Constants.SW_EVENTS.MODULE_LOAD, source: 'this is a test for now' });
+    }
 
     // We can return the response.
     return ret;
