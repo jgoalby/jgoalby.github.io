@@ -83,10 +83,7 @@ async function importUMD(url, module = {exports:{}})
 
 //var { esprima } = require("./lib/esprima.js").default;
 
-async function doSomeTests() {
-  //const esprima = await importUMD(`https://www.goalby.org/games/template/src/lib/esprima.js`)
-  //  const esprima = await importUMD(`./src/lib/esprima.js`)
-
+function doSomeTests() {
   console.log("Func str2: " + this.getFunctions);
   console.log("Funcs: " + getFunctions(this));
   console.log("All funcs: " + getFunctions(this, true));
