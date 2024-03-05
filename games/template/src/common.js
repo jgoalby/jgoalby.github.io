@@ -71,7 +71,7 @@ function getFunctionSource(func) {
 }
 
 function doSomeTests() {
-  console.log("Start bigger ");
+  console.log("Start bigger again ");
   console.log("Func str2: " + this.getFunctions);
   console.log("Funcs: " + getFunctions(this));
   console.log("All funcs: " + getFunctions(this, true));
@@ -87,7 +87,7 @@ function doSomeTests() {
     console.log("Func: " + e + " type: " + (typeof this[e]));
   })
 
-/*  let protoB = Object.getPrototypeOf(this);
+  let protoB = Object.getPrototypeOf(this);
   console.log("protoB");
   console.log(Object.getOwnPropertyNames(protoB));
 
@@ -98,7 +98,7 @@ function doSomeTests() {
   })
 
   console.log("About to parse with esprima");
-  console.log(esprima.parseModule('import { sqrt } from "math.js"'));*/
+  /*console.log(esprima.parseModule('import { sqrt } from "math.js"'));*/
 }
 
 export {
