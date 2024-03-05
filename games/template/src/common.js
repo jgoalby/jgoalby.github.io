@@ -70,21 +70,9 @@ function getFunctionSource(func) {
   return func.toString();
 }
 
-//import { esprima } from './lib/esprima.js';
-
-async function importUMD(url, module = {exports:{}})
-{
-    const response = await fetch(url);
-    const script = await response.text();
-    const func = Function("module", "exports", script)
-    func.call(module, module, module.exports);
-    return module.exports;
-};
-
-//var { esprima } = require("./lib/esprima.js").default;
-
 function doSomeTests() {
-  console.log("Func str2: " + this.getFunctions);
+  console.log("Start small ");
+/*  console.log("Func str2: " + this.getFunctions);
   console.log("Funcs: " + getFunctions(this));
   console.log("All funcs: " + getFunctions(this, true));
 
@@ -110,7 +98,7 @@ function doSomeTests() {
   })
 
   console.log("About to parse with esprima");
-  console.log(esprima.parseModule('import { sqrt } from "math.js"'));
+  console.log(esprima.parseModule('import { sqrt } from "math.js"'));*/
 }
 
 export {
