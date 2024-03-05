@@ -98,6 +98,20 @@ function doSomeTests() {
 
   console.log("About to parse with esprima");
   console.log(esprima.parseModule('import { sqrt } from "math.js"'));
+
+  const aModule = `/**
+  * Get the source of a function.
+  * 
+  * @param {Function} func The function to get the source of.
+  */
+ function getFunctionSource(func) {
+   return func.toString();
+ }`;
+
+  console.log("About to parse with esprima");
+  console.log(esprima.parseModule(aModule));
+  
+  console.log("End biggerest ");
 }
 
 export {
