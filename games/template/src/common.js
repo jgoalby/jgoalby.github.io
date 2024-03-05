@@ -71,7 +71,7 @@ function getFunctionSource(func) {
 }
 
 function doSomeTests() {
-  console.log("Start bigger again ");
+  console.log("Start biggerest ");
   console.log("Func str2: " + this.getFunctions);
   console.log("Funcs: " + getFunctions(this));
   console.log("All funcs: " + getFunctions(this, true));
@@ -98,7 +98,7 @@ function doSomeTests() {
   })
 
   console.log("About to parse with esprima");
-  /*console.log(esprima.parseModule('import { sqrt } from "math.js"'));*/
+  console.log(esprima.parseModule('import { sqrt } from "math.js"'));
 }
 
 export {
