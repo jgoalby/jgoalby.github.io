@@ -73,21 +73,21 @@ function getFunctionSource(func) {
 function doSomeTests() {
   console.log("Start biggerest ");
   console.log("Func str2: " + getFunctions);
-  console.log("Funcs: " + getFunctions(this));
-  console.log("All funcs: " + getFunctions(this, true));
+  //console.log("Funcs: " + getFunctions(this));
+  //console.log("All funcs: " + getFunctions(this, true));
 
   console.log("Desc1: " + getFunctions['description']);
   console.log("Desc2: " + getFunctionSource['description']);
 
-  console.log("Own prop names: " + Object.getOwnPropertyNames(this))
+  //console.log("Own prop names: " + Object.getOwnPropertyNames(this))
 
-  const funks = getFunctions(this);
+  /*const funks = getFunctions(this);
 
   funks.map((e) => {
     console.log("Func: " + e + " type: " + (typeof this[e]));
-  })
+  })*/
 
-  let protoB = Object.getPrototypeOf(this);
+  /*let protoB = Object.getPrototypeOf(this);
   console.log("protoB");
   console.log(Object.getOwnPropertyNames(protoB));
 
@@ -95,7 +95,7 @@ function doSomeTests() {
 
   funks2.map((e) => {
     console.log("Func2: " + e + " type: " + (typeof this[e]));
-  })
+  })*/
 
   console.log("About to parse with esprima");
   console.log(esprima.parseModule('import { sqrt } from "math.js"'));
