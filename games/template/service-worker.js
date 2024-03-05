@@ -98,9 +98,16 @@ self.addEventListener('message', async event => {
       caches.delete(cacheName);
     } else if (event.data.type === Constants.SW_EVENTS.GET_CACHED_FILE) {
       if (event.data.requestURL) {
-        const cache = await caches.open(cacheName);
-        const cachedResponse = await cache.match(event.data.requestURL);
-  
+        let cachedResponse = undefined;
+
+        try {
+          const cache = await caches.open(cacheName);
+          cachedResponse = await cache.match(event.data.requestURL);
+        } catch (error) {
+          // Oh dear, there was an issue.
+          cachedResponse = undefined;
+        }
+    
         if (cachedResponse) {
           self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: cachedResponse.body });
         } else {
