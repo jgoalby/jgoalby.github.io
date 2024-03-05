@@ -96,17 +96,33 @@ function doSomeTests() {
     console.log("Func2: " + e + " type: " + (typeof this[e]));
   })*/
 
-  console.log("About to parse with esprima");
-  console.log(esprima.parseModule('import { sqrt } from "math.js"'));
+  const aModule = `
+  /**
+   * Get the current active scene.
+   * 
+   * @param {Phaser.Scenes.SceneManager} [sceneManager=undefined] 
+   * @returns {Phaser.Scene | undefined} The active scene.
+   */
+  function getActiveScene(sceneManager = undefined) {
+    // This is empty for the most part
+    return undefined;
+  }
 
-  const aModule = `/**
+  function getFunctionDescription(func) {
+    // Return the description.
+    // It is needed.
+    return func['description'];
+  }
+  
+  /**
   * Get the source of a function.
   * 
   * @param {Function} func The function to get the source of.
   */
  function getFunctionSource(func) {
    return func.toString();
- }`;
+ }
+ `;
 
   console.log("About to parse with esprima");
   console.log(esprima.parseModule(aModule, { comment: true }));
