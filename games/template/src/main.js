@@ -57,6 +57,8 @@ function onResizeTimeout() {
   window.game.scale.resize(w, h);
 }
 
+import { doSomeTests } from './common.js'
+
 /**
  * Handle the keydown event.
  * @param {KeyboardEvent} event The event.
@@ -65,8 +67,10 @@ async function handleKeydown(event) {
   // CTRL-D shows the console.
   if ((event.code == "KeyD") && (event.ctrlKey)) {
     // Make sure we have a console plugin to work with, and then toggle it.
-    const consolePlugin = getConsolePlugin();
-    if (consolePlugin) { consolePlugin.toggle(); }
+    //const consolePlugin = getConsolePlugin();
+    //if (consolePlugin) { consolePlugin.toggle(); }
+
+    doSomeTests();
   }
 }
 
