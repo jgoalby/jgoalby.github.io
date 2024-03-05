@@ -98,13 +98,23 @@ self.addEventListener('message', async event => {
       caches.delete(cacheName);
     } else if (event.data.type === Constants.SW_EVENTS.GET_CACHED_FILE) {
       if (event.data.requestURL) {
-        const cachedResponse = await caches.match(event.data.requestURL);
+        caches.open(cacheName).then(function(cache) {
+          cache.match(event.data.requestURL).then(function(cachedResponse) {
+            if (cachedResponse) {
+              self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: cachedResponse.body });
+            } else {
+              self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: "NOT FOUND 2!!!" });
+            }
+          });
+        });
+
+        /*const cachedResponse = await caches.match(event.data.requestURL);
 
         if (cachedResponse) {
           self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: cachedResponse.body });
         } else {
           self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: "NOT FOUND!!!" });
-        }
+        }*/
       }
     }
   }
