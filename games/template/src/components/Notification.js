@@ -118,6 +118,9 @@ export default class Notification extends Phaser.GameObjects.Container {
       console.log("Func: " + e + " type: " + (typeof this[e]));
     })
 
+    let protoB = Object.getPrototypeOf(this);
+    console.log("protoB");
+    console.log(Object.getOwnPropertyNames(protoB));
 
     switch (level) {
       case Constants.NOTIFICATION_LEVELS.INFO:
