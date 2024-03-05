@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 // Put this here as a placeholder for the solution that would have been ideal.
 // This does not work in some browsers that support service workers but do not support
 // es module import within service workers. Inspect browser on iPad appears to be one.
@@ -30,9 +28,10 @@ class Constants {
 const cacheName = "cache-v1";
 
 /**
- * Install the service worker and cache the base resources we need.
+ * 
+ * @param {ExtendableEvent} event 
  */
-self.addEventListener('install', function(event) {
+function installEventHandler(event) {
   event.waitUntil(
     // Open the cache and put some files in it.
     caches.open(cacheName).then(function(cache) {
@@ -42,12 +41,18 @@ self.addEventListener('install', function(event) {
       cache.addAll(['./index.html']);
     })
   );
-});
+}
 
 /**
- * Cache space is limited, so clean up old caches (versions).
+ * Install the service worker and cache the base resources we need.
  */
-self.addEventListener('activate', function(event) {
+self.addEventListener('install', installEventHandler);
+
+/**
+ * 
+ * @param {ExtendableEvent} event 
+ */
+function activateEventHandler(event) {
   event.waitUntil(
     // Get all of the keys in the cache.
     caches.keys().then((keyList) => {
@@ -60,7 +65,12 @@ self.addEventListener('activate', function(event) {
       );
     }),
   );
-});
+}
+
+/**
+ * Cache space is limited, so clean up old caches (versions).
+ */
+self.addEventListener('activate', activateEventHandler);
 
 /**
  * Message from the main thread.
@@ -111,10 +121,11 @@ self.sendMessage = function(message) {
 }
 
 /**
- * Fetch handler for the service worker. The goal is to get out of the way when
- * online and to be fully functional when offline.
+ * 
+ * @param {FetchEvent} event 
+ * @returns 
  */
-self.addEventListener('fetch', function(event) {
+function fetchEventHandler(event) {
   // Prevent requests such as chrome plugins.
   if (!event.request.url.startsWith('http')) { return; }
 
@@ -161,4 +172,10 @@ self.addEventListener('fetch', function(event) {
     // If the network worked, return the response. If the network failed, we can try returning the cached response.
     return response || cachedResponse;
   })());
-});
+}
+
+/**
+ * Fetch handler for the service worker. The goal is to get out of the way when
+ * online and to be fully functional when offline.
+ */
+self.addEventListener('fetch', fetchEventHandler);

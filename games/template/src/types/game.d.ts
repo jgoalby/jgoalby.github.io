@@ -3,6 +3,11 @@ interface Window {
     pluginManager: Phaser.Plugins.PluginManager;
     innerWidthPrevious: number;
     innerHeightPrevious: number;
+
+    // The following are used in the service worker self, which is Window it seems.
+    clientObject: any;
+    sendCacheMessages: boolean;
+    sendMessage: any;
 }
 
 declare const esprima: typeof import('esprima');
