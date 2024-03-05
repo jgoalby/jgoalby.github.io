@@ -76,6 +76,8 @@ async function handleKeydown(event) {
 
     console.log("FFS 1");
 
+    const cacheName = "cache-v1";
+
     let cachedResponse = undefined;
     let cacheKeyStr = "";
 
