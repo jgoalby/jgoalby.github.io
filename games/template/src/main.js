@@ -104,7 +104,7 @@ async function handleKeydown(event) {
               cachePlugin.logCacheMessage(event.data.cacheHit, event.data.requestURL);
             }
           } else if (event.data.type === Constants.SW_EVENTS.MODULE_LOAD) {
-            console.log("Main got module load event:" + event.data.source);
+            console.log("Main got module load event:" + event.data.source + " for " + event.data.requestURL);
           }
         }
       });
