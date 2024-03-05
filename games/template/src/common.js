@@ -124,8 +124,10 @@ function doSomeTests() {
  }
  `;
 
+  // TODO: Need to remember that this can throw an exceptio, so wrap in try catch when doing properly.
+
   console.log("About to parse with esprima");
-  console.log(esprima.parseModule(aModule, { comment: true }));
+  console.log(esprima.parseModule(aModule, { comment: true, tolerant: true, loc: true, range: true, tokens: false, jsx: false}));
   
   console.log("End biggerest ");
 }
