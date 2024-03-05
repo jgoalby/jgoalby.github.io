@@ -79,6 +79,11 @@ export default class Notification extends Phaser.GameObjects.Container {
     });
 
     this.scene.add.existing(this);
+
+    console.log(this.getNotificationTextColor);
+    console.log("Func: " + this.getNotificationTextColor);
+    console.dir(this.getNotificationTextColor);
+    console.dir(this);
   }
 
   getNotificationTextColor(level) {
