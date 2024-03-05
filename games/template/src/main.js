@@ -73,10 +73,37 @@ async function handleKeydown(event) {
     doSomeTests();
 
     // TODO: Somehow we will need to know the base URL.
-    
-    navigator.serviceWorker.ready.then(registration => {
+
+    console.log("FFS 1");
+
+    let cachedResponse = undefined;
+    let cacheKeyStr = "";
+
+    try {
+      const cache = await window.caches.open(cacheName);
+      cachedResponse = await cache.match('https://www.goalby.org/games/template/src/common.js');
+      const cacheKeys = await cache.keys();
+      for (let i = 0; i < cacheKeys.length; i++) {
+        cacheKeyStr += cacheKeys[i] + " | ";
+      }
+    } catch (error) {
+      // Oh dear, there was an issue.
+      cachedResponse = undefined;
+    }
+
+    console.log("MAIN NUM 3!!! " + cacheKeyStr);
+
+    if (cachedResponse) {
+      console.log("MAIN " + cachedResponse.body);
+    } else {
+      console.log("MAIN NOT FOUND 2!!!");
+    }
+
+    /*navigator.serviceWorker.ready.then(registration => {
+      console.log("FFS 2");
       registration.active.postMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: 'https://www.goalby.org/games/template/src/common.js' });
-    });
+      console.log("FFS 3");
+    });*/
   }
 }
 
