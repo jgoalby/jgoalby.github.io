@@ -84,6 +84,8 @@ export default class Notification extends Phaser.GameObjects.Container {
     console.log("Funcs: " + this.getFuncs(this));
     console.log("All funcs: " + this.getFuncs(this, true));
     console.log("Desc: " + this.getFuncs['description']);
+
+    console.log("Own prop names: " + Object.getOwnPropertyNames(this))
   }
 
   getFuncs(theObject, all=false) {
