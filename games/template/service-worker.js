@@ -93,7 +93,7 @@ self.addEventListener('message', event => {
         if (cachedResponse) {
           self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: cachedResponse.body });
         } else {
-          self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: 'NOT FOUND!!!' });
+          self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: "NOT FOUND!!!" });
         }
       }
     }
