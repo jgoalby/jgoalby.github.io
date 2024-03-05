@@ -32,7 +32,6 @@ function getActiveScene(sceneManager = undefined) {
 }
 
 function getFunctions(theObject, getAllFunctions = false) {
-  getFunctions['description'] = "Get all functions of an object. If getAllFunctions is false, only the object's own functions are returned. If getAllFunctions is true, all functions are returned.";
 
   // Holder for the properties we capture as we go down prototype chain.
   const props = [];
@@ -54,12 +53,12 @@ function getFunctions(theObject, getAllFunctions = false) {
     if (e != arr[i+1] && typeof theObject[e] == 'function') return true;
   })
 }
+getFunctions['description'] = "Get all functions of an object. If getAllFunctions is false, only the object's own functions are returned. If getAllFunctions is true, all functions are returned.";
 
 function getFunctionDescription(func) {
-  getFunctionDescription['description'] = "Get the description of a function.";
-
   return func['description'];
 }
+getFunctionDescription['description'] = "Get the description of a function.";
 
 /**
  * Get the source of a function.
