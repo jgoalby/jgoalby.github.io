@@ -69,7 +69,7 @@ export default class Notification extends Phaser.GameObjects.Container {
     // When the tween completes, do some stuff.
     this.tween.on('complete', () => {
       // The notification is complete so destroy it.
-      this.destroy(); 
+      this.destroy();
 
       // If a function was passed in the options, call it.
       if (options.onCompleteFn) {
@@ -81,19 +81,27 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
 
     console.log("Func: " + this.getNotificationTextColor);
-    console.log("Object: " + this);
-    console.log("All funcs: " + this.getAllFuncs(this));
+    console.log("Funcs: " + this.getFuncs(this));
+    console.log("All funcs: " + this.getFuncs(this, true));
+    console.log("Desc: " + this.getFuncs['description']);
   }
 
-  getAllFuncs(toCheck) {
+  getFuncs(theObject, all=false) {
+    this.getFuncs['description'] = "This is a function I made";
+
     const props = [];
-    let obj = toCheck;
-    do {
-        props.push(...Object.getOwnPropertyNames(obj));
-    } while (obj = Object.getPrototypeOf(obj));
-    
+    let curObj = theObject;
+
+    props.push(...Object.getOwnPropertyNames(curObj));
+
+    if (all) {
+      while (curObj = Object.getPrototypeOf(curObj)) {
+        props.push(...Object.getOwnPropertyNames(curObj));
+      }
+    }
+
     return props.sort().filter((e, i, arr) => { 
-       if (e!=arr[i+1] && typeof toCheck[e] == 'function') return true;
+       if (e!=arr[i+1] && typeof theObject[e] == 'function') return true;
     })
   }
 
