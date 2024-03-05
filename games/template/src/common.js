@@ -72,7 +72,7 @@ function getFunctionSource(func) {
 
 function doSomeTests() {
   console.log("Start biggerest ");
-  console.log("Func str2: " + this.getFunctions);
+  console.log("Func str2: " + getFunctions);
   console.log("Funcs: " + getFunctions(this));
   console.log("All funcs: " + getFunctions(this, true));
 
