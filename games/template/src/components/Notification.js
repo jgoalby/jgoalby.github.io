@@ -81,18 +81,15 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
   }
 
-  getFuncs(theObject, all=false) {
-    this.getFuncs['description'] = "This is a function I made";
+  getFuncs(theObject, all = false) {
+    this.getFuncs['description'] = "Get all functions of an object. If all is false, only the object's own functions are returned. If all is true, all functions are returned.";
 
     const props = [];
     let curObj = theObject;
 
-    props.push(...Object.getOwnPropertyNames(curObj));
-
-    if (all) {
-      while (curObj = Object.getPrototypeOf(curObj)) {
-        props.push(...Object.getOwnPropertyNames(curObj));
-      }
+    while (curObj = Object.getPrototypeOf(curObj)) {
+      props.push(...Object.getOwnPropertyNames(curObj));
+      if (!all) break;
     }
 
     return props.sort();
@@ -105,7 +102,8 @@ export default class Notification extends Phaser.GameObjects.Container {
 
 
 
-    console.log("Func: " + this.getNotificationTextColor);
+    console.log("Func str1: " + this.getNotificationTextColor);
+    console.log("Func str2: " + this.getFuncs);
     console.log("Funcs: " + this.getFuncs(this));
     console.log("All funcs: " + this.getFuncs(this, true));
     console.log("Desc: " + this.getFuncs['description']);
