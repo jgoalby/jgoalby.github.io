@@ -79,39 +79,6 @@ export default class Notification extends Phaser.GameObjects.Container {
     });
 
     this.scene.add.existing(this);
-
-    console.log("Func: " + this.getNotificationTextColor);
-    console.log("Funcs: " + this.getFuncs(this));
-    console.log("All funcs: " + this.getFuncs(this, true));
-    console.log("Desc: " + this.getFuncs['description']);
-
-    console.log("Methods coming:");
-    console.log(this.getAllMethodNames(this));
-
-    console.log("Own prop names: " + Object.getOwnPropertyNames(this))
-
-    const funks = this.getFuncs(this);
-
-    funks.map((e) => {
-      console.log("Func: " + e + " type: " + (typeof this[e]));
-    })
-  }
-
-  getAllMethodNames(obj) {
-    let methods = new Set();
-    let methods2 = methods.add("getAllMethodNames");
-    console.log("after adding");
-    console.log(methods);
-    console.log(methods2);
-    while (obj = Reflect.getPrototypeOf(obj)) {
-      let keys = Reflect.ownKeys(obj)
-      console.log("keys");
-      console.log(keys);
-      keys.forEach((k) => methods.add(k));
-      console.log("Set");
-      console.log(methods);
-    }
-    return methods;
   }
 
   getFuncs(theObject, all=false) {
@@ -135,6 +102,23 @@ export default class Notification extends Phaser.GameObjects.Container {
   }
 
   getNotificationTextColor(level) {
+
+
+
+    console.log("Func: " + this.getNotificationTextColor);
+    console.log("Funcs: " + this.getFuncs(this));
+    console.log("All funcs: " + this.getFuncs(this, true));
+    console.log("Desc: " + this.getFuncs['description']);
+
+    console.log("Own prop names: " + Object.getOwnPropertyNames(this))
+
+    const funks = this.getFuncs(this);
+
+    funks.map((e) => {
+      console.log("Func: " + e + " type: " + (typeof this[e]));
+    })
+
+
     switch (level) {
       case Constants.NOTIFICATION_LEVELS.INFO:
         return Constants.STYLES.NOTIFICATION_TEXT_INFO;
