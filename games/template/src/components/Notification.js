@@ -102,9 +102,10 @@ export default class Notification extends Phaser.GameObjects.Container {
       }
     }
 
-    return props.sort().filter((e, i, arr) => { 
-       if (e!=arr[i+1] && typeof theObject[e] == 'function') return true;
-    })
+    return props.sort();
+    /*return props.sort().filter((e, i, arr) => { 
+      if (e!=arr[i+1] && typeof theObject[e] == 'function') return true;
+    })*/
   }
 
   getNotificationTextColor(level) {
