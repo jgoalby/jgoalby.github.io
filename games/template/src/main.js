@@ -71,6 +71,12 @@ async function handleKeydown(event) {
     //if (consolePlugin) { consolePlugin.toggle(); }
 
     doSomeTests();
+
+    // TODO: Somehow we will need to know the base URL.
+    
+    navigator.serviceWorker.ready.then(registration => {
+      registration.active.postMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: 'https://www.goalby.org/games/template/src/common.js' });
+    });
   }
 }
 
@@ -103,8 +109,8 @@ async function handleKeydown(event) {
               // Have the cache plugin log the cache hit or miss.
               cachePlugin.logCacheMessage(event.data.cacheHit, event.data.requestURL);
             }
-          } else if (event.data.type === Constants.SW_EVENTS.MODULE_LOAD) {
-            console.log("Main got module load event:" + event.data.source + " for " + event.data.requestURL);
+          } else if (event.data.type === Constants.SW_EVENTS.GET_CACHED_FILE) {
+            console.log("Main got cached file event:" + event.data.source + " for " + event.data.requestURL);
           }
         }
       });

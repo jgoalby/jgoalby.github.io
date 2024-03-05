@@ -11,8 +11,8 @@ class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
+  static get GET_CACHED_FILE()           { return 'GET_CACHED_FILE'; }
   static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
-  static get MODULE_LOAD()               { return 'MODULE_LOAD'; }
 };
 
 // The exported class that contains all of the constants.
@@ -86,6 +86,12 @@ self.addEventListener('message', event => {
     } else if (event.data.type === Constants.SW_EVENTS.CLEAR_CACHE) {
       // Clear the cache.
       caches.delete(cacheName);
+    } else if (event.data.type === Constants.SW_EVENTS.GET_CACHED_FILE) {
+      if (event.data.requestURL) {
+        const cachedResponse = await caches.match(event.data.requestURL);
+
+        self.sendMessage({ type: Constants.SW_EVENTS.GET_CACHED_FILE, requestURL: event.data.requestURL, source: 'this is a test for now' });
+      }
     }
   }
 });
@@ -149,17 +155,6 @@ self.addEventListener('fetch', function(event) {
     }
 
     // If the network worked, return the response. If the network failed, we can try returning the cached response.
-    const ret = response || cachedResponse;
-
-    // TODO: Need configure like sendCacheMessage
-    // TODO: Might need url as well
-    if (ret) {
-      if (event.request.url.endsWith('.js')) {
-        self.sendMessage({ type: Constants.SW_EVENTS.MODULE_LOAD, requestURL: event.request.url, source: 'this is a test for now' });
-      }
-    }
-
-    // We can return the response.
-    return ret;
+    return response || cachedResponse;
   })());
 });

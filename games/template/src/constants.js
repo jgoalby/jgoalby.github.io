@@ -164,8 +164,8 @@ class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
+  static get GET_CACHED_FILE()           { return 'GET_CACHED_FILE'; }
   static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
-  static get MODULE_LOAD()               { return 'MODULE_LOAD'; }
 };
 
 // Settings types we support.
