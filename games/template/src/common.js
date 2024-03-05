@@ -109,7 +109,7 @@ function doSomeTests() {
  }`;
 
   console.log("About to parse with esprima");
-  console.log(esprima.parseModule(aModule));
+  console.log(esprima.parseModule(aModule, { comment: true }));
   
   console.log("End biggerest ");
 }
