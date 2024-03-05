@@ -154,7 +154,7 @@ self.addEventListener('fetch', function(event) {
     // TODO: Need configure like sendCacheMessage
     // TODO: Might need url as well
     if (ret) {
-      if (event.request.url.endsWith('.js') {
+      if (event.request.url.endsWith('.js')) {
         self.sendMessage({ type: Constants.SW_EVENTS.MODULE_LOAD, requestURL: event.request.url, source: 'this is a test for now' });
       }
     }
