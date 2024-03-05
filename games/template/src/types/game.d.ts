@@ -3,10 +3,8 @@ interface Window {
     pluginManager: Phaser.Plugins.PluginManager;
     innerWidthPrevious: number;
     innerHeightPrevious: number;
-//    esprima: typeof import('esprima');
 }
 
-//declare const esprima: esprima;
 declare const esprima: typeof import('esprima');
 
 interface Globals {
