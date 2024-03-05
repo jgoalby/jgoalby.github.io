@@ -122,6 +122,12 @@ export default class Notification extends Phaser.GameObjects.Container {
     console.log("protoB");
     console.log(Object.getOwnPropertyNames(protoB));
 
+    const funks2 = Object.getOwnPropertyNames(protoB);
+
+    funks2.map((e) => {
+      console.log("Func2: " + e + " type: " + (typeof this[e]));
+    })
+
     switch (level) {
       case Constants.NOTIFICATION_LEVELS.INFO:
         return Constants.STYLES.NOTIFICATION_TEXT_INFO;
