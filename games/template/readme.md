@@ -29,6 +29,7 @@ The notification class uses a panel. We specify the panel to use. Needs to be pa
 - What if I have 2 labels, one for up and one for down? Or a + and a -?
 
 # More stuff to do
+- Need to do a better job at getNotificationTextColor once styles is sorted
 - Implement the implementation document and use it to control GPT
 - For the input screen, make it so you can use the keyboard if you like, but can also click to get text.
   - Also could generate a username for the user? Random words.
