@@ -96,9 +96,7 @@ async function handleKeydown(event) {
     console.log("MAIN NUM 3!!! " + cacheKeyStr);
 
     if (cachedResponse) {
-      cachedResponse.body.getReader().read().then(({ value, done }) => {
-        console.log("MAIN " + value);
-      });
+      console.log("MAIN 5: " + cachedResponse.text());
     } else {
       console.log("MAIN NOT FOUND 2!!!");
     }
