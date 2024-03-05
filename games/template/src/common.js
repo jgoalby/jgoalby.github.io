@@ -70,6 +70,8 @@ function getFunctionSource(func) {
   return func.toString();
 }
 
+import { esprima } from './lib/esprima.js';
+
 function doSomeTests() {
   console.log("Func str2: " + this.getFunctions);
   console.log("Funcs: " + getFunctions(this));

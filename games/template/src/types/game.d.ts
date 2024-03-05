@@ -5,6 +5,8 @@ interface Window {
     innerHeightPrevious: number;
 }
 
+//declare const esprima: esprima;
+
 interface Globals {
     player: any;
     score: number;
