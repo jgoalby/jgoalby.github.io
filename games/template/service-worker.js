@@ -12,6 +12,7 @@ class ServiceWorkerEvents {
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
   static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
+  static get MODULE_LOAD()               { return 'MODULE_LOAD'; }
 };
 
 // The exported class that contains all of the constants.
@@ -149,10 +150,13 @@ self.addEventListener('fetch', function(event) {
       response = undefined;
     }
 
-    // If the network worked, return the response.
-    if (response) { return response; }
+    // If the network worked, return the response. If the network failed, we can try returning the cached response.
+    const ret = response || cachedResponse;
 
-    // If the network failed, we can try returning the cached response.
-    if (cachedResponse) { return cachedResponse; }
+    // TODO: Need configure like sendCacheMessage
+    self.sendMessage({ type: Constants.SW_EVENTS.MODULE_LOAD, source: 'this is a test for now' });
+
+    // We can return the response.
+    return ret;
   })());
 });

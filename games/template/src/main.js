@@ -102,6 +102,8 @@ async function handleKeydown(event) {
               // Have the cache plugin log the cache hit or miss.
               cachePlugin.logCacheMessage(event.data.cacheHit, event.data.requestURL);
             }
+          } else if (event.data.type === Constants.SW_EVENTS.MODULE_LOAD) {
+            console.log("Main got module load event:" + event.data.source);
           }
         }
       });
