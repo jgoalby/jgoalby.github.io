@@ -9,6 +9,8 @@ class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
+  static get CACHE_EVENT()               { return 'CACHE_EVENT'; }
+  static get CACHE_CLEARED()             { return 'CACHE_CLEARED'; }
   static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
 };
 
@@ -94,7 +96,10 @@ self.addEventListener('message', async event => {
       }
     } else if (event.data.type === Constants.SW_EVENTS.CLEAR_CACHE) {
       // Clear the cache.
-      await caches.delete(cacheName);
+      const ret = await caches.delete(cacheName);
+
+      // Send the message indicating we have cleared the cache.
+      self.sendMessage({ type: Constants.SW_EVENTS.CACHE_EVENT, message: Constants.SW_EVENTS.CACHE_CLEARED, success: ret });
     }
   }
 });
@@ -137,7 +142,7 @@ function fetchEventHandler(event) {
     // Configured at start of file.
     if (self.sendCacheMessages) {
       // Send the message indicating hit or miss and what the request was.
-      self.sendMessage({ type: Constants.SW_EVENTS.CACHE_MESSAGE, cacheHit: (cachedResponse ? true : false), requestURL: event.request.url });
+      self.sendMessage({ type: Constants.SW_EVENTS.CACHE_EVENT, message: Constants.SW_EVENTS.CACHE_MESSAGE, cacheHit: (cachedResponse ? true : false), requestURL: event.request.url });
     }
 
     try {

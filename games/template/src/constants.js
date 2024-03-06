@@ -164,6 +164,8 @@ class ServiceWorkerEvents {
   static get INIT()                      { return 'INIT'; }
   static get CONFIG()                    { return 'CONFIG'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
+  static get CACHE_EVENT()               { return 'CACHE_EVENT'; }
+  static get CACHE_CLEARED()             { return 'CACHE_CLEARED'; }
   static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
 };
 
@@ -175,6 +177,9 @@ const SETTINGS_TYPES = {
   range: 'range',
   function: 'function',
 };
+
+// TODO: Make a const for plugin names.
+// TODO: Change the above classes to variables when just return strings?
 
 // The exported class that contains all of the constants.
 export default class Constants {

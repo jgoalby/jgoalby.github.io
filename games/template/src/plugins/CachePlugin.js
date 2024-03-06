@@ -58,6 +58,9 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  /**
+   * Destroy the plugin and clean up after ourselves.
+   */
   destroy() {
     // We might not have the plugin, so check this first.
     if (this.customevent) {
@@ -89,27 +92,52 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
-   * Log the passed in cache message.
+   * Effectively called in response to service worker messages.
+   * 
+   * @param {any} eventData The event data sent from the service worker.
+   */
+  onCacheEvent(eventData) {
+    if (eventData.message === Constants.SW_EVENTS.CACHE_CLEARED) {
+      // Have the cache plugin log the cache hit or miss.
+      this.onCacheMessage(eventData.cacheHit, eventData.requestURL);
+    } else if (eventData.message === Constants.SW_EVENTS.CACHE_MESSAGE) {
+      // Let the cache plugin know that the cache was cleared.
+      this.onCacheCleared(eventData.success);
+    }
+  }
+
+  /**
+   * Called when we are to log the passed in cache message.
    * 
    * @param {boolean} hit Whether this is a cache hit (true) or a miss (false).
    * @param {string} url The request url that was hit or missed.
    */
-  logCacheMessage(hit, url) {
+  onCacheMessage(hit, url) {
     // Sanity check that we got a url to log.
     if (url) {
       // If a hit...
       if (hit) {
-        // ..check that we want to log hits...
+        // ..check that we want to log hits as it is configurable.
         if (this.getSettingValue(LOG_CACHE_HIT)) {
           console.log(`Cache hit: ${url}`);
         }
       } else {
-        // ..check that we want to log misses...
+        // ..check that we want to log misses as it is configurable.
         if (this.getSettingValue(LOG_CACHE_MISS)) {
           console.warn(`Cache miss: ${url}`);
         }
       }
     }
+  }
+
+  /**
+   * Called when the cache has been cleared.
+   * 
+   * @param {boolean} success Whether the cache was cleared successfully.
+   */
+  onCacheCleared(success) {
+    // Notify the user that the cache has been cleared.
+    this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Cache Cleared: ${success}` });
   }
 
   /**
@@ -123,9 +151,6 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
       navigator.serviceWorker.ready.then(registration => {
         // Send the message to the service worker to clear the cache.
         registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });
-
-        // Notify the user that the cache has been cleared (we assume).
-        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: "Cache Cleared" });
       });
     }
   }

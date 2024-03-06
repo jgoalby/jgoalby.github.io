@@ -173,14 +173,13 @@ async function handleKeydown(event) {
       navigator.serviceWorker.addEventListener('message', event => {
         // Sanity check.
         if (event.data) {
-          console.log("***** WE got an event: " + event.data.type + " *****");
           // Messages can be a string type or object type.
           if (typeof event.data === 'string') {
             // console.log(`The service worker sent a message: ${event.data}`);
-          } else if (event.data.type === Constants.SW_EVENTS.CACHE_MESSAGE) {
+          } else if (event.data.type === Constants.SW_EVENTS.CACHE_EVENT) {
             if (cachePlugin) {
-              // Have the cache plugin log the cache hit or miss.
-              cachePlugin.logCacheMessage(event.data.cacheHit, event.data.requestURL);
+              // Have the cache plugin deal with the event.
+              cachePlugin.onCacheEvent(event.data);
             }
           }
         }
