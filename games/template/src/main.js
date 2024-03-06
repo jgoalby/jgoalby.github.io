@@ -7,7 +7,8 @@ async function chatCompletions(token, body) {
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
+      'OpenAI-Organization': 'org-jmIOL3J06dIzXGVo3M8T9loQ',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
@@ -18,18 +19,6 @@ async function chatCompletions(token, body) {
 
   return response;
 };
-
-const template = `You are a helpful assistant.".
-
-Question: {QUERY}
-
-Answer: `;
-
-const getPrompt = (query) => {
-  return template.replace('{QUERY}', query);
-};
-
-const prompt = getPrompt('What is an LLM?');
 
 // If the console plugin is enabled then initialize it. We do not want to do it otherwise.
 if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
@@ -103,17 +92,20 @@ async function handleKeydown(event) {
     console.log("In handleKeydown");
     console.log(window.game.globals.player);
 
-    const messages = [];
-    messages.push({
-      role: 'user',
-      content: prompt,
-    });
-
     const response = await chatCompletions({
       token: window.game.globals.player,
       body: {
         model: 'gpt-3.5-turbo',
-        messages,
+        "messages": [
+          {
+            "role": "system",
+            "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."
+          },
+          {
+            "role": "user",
+            "content": "Compose a poem that explains the concept of recursion in programming."
+          }
+        ]
       },
     });
 
