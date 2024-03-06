@@ -77,6 +77,13 @@ Obviously tag management is not a central part of the game and maybe doesn't get
 
 If you want to add a new tag to Pokémon, you need to scroll down the list of existing tags to get to the Add New Tag option. That could be positioned at the top of the page next to the image of the Pokémon so that it doesn't take up room and is easier to access. Then once you create a new tag it is actually not added to the Pokémon automatically. Often I add a new tag and then forget to actually add it to the Pokémon. This could be solved many ways. Simply having 2 buttons for adding a new tag is one solution where one of the buttons specifically adds a new tag and assigns it to the Pokémon as part of the same step.
 
+# Raid Wait Time
+When joining a raid there is a timer for 2 minutes before the raid begins. Quite often I want to participate in a single person raid. Up until recently you could not indicate you were ready for the raid to begin without waiting the full 2 minutes. This is different when multiple people join a raid. If multiple people join and all indicate they are ready, then the raid can begin.
+
+The idea behind this feature is to allow other players time to get in on the raid. You don't want to have a raid that requires multiple people to complete and be left out from participating. This is a good feature. However, in the case of a single player, the raid has to be low difficulty and can easily be completed by a single player. I would actually pass on doing raids because I was on a walk and didn't want to stand around the area for 2 minutes waiting while nothing is happening.
+
+Niantic did update the game to reduce the wait when a single player wants to join a raid. It is 30 seconds I believe. A welcome addition. I am not sure why it cannot just be 10 seconds, but I can wait for 30.
+
 # Search feature
 The game has a quite extensive search feature. You can search for Pokémon using various terms as well as using boolean operators to combine terms. This is impressive and very useful. The only issue I have with the search feature is the lack of discoverability. Even as someone that knows the feature exists, unless I use a particular search term often I easily forget it. It would be nice if there was a way to see in-game what search terms are possible.
 
