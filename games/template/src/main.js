@@ -2,6 +2,8 @@ import { phaserConfig, generalConfig } from './config/config.js';
 import ConsolePlugin from './plugins/ConsolePlugin.js';
 
 async function chatCompletions(token, body) {
+  console.log("Before fetch");
+
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -10,6 +12,8 @@ async function chatCompletions(token, body) {
     },
     body: JSON.stringify(body),
   });
+
+  console.log("After fetch");
 
   return response;
 };
@@ -98,6 +102,9 @@ async function handleKeydown(event) {
     // this.sys.game.globals.player
 
     //chatCompletions(this.sys.game.globals.player, { model: "gpt-3.5-turbo", messages: [{ role: "system", content: "You are a helpful assistant." }] }).then((response) => {
+
+    console.log("In handleKeydown");
+    console.log(this.sys.game.globals.player);
 
     const messages = [];
     messages.push({
