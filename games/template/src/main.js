@@ -3,11 +3,15 @@ import ConsolePlugin from './plugins/ConsolePlugin.js';
 
 async function chatCompletions(token, body) {
   console.log("Before fetch");
+  console.log("Token" + token);
+
+  const strToken = "" + token;
+  console.log("strToken" + strToken);
 
   const response = await fetch('https://api.openai.com/v1/chat/completions', {
     method: 'POST',
     headers: {
-      'Authorization': `Bearer ${token}`,
+      'Authorization': `Bearer ${strToken}`,
       'OpenAI-Organization': 'org-jmIOL3J06dIzXGVo3M8T9loQ',
       'Content-Type': 'application/json',
     },
