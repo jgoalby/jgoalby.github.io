@@ -1,6 +1,31 @@
 import { phaserConfig, generalConfig } from './config/config.js';
 import ConsolePlugin from './plugins/ConsolePlugin.js';
 
+async function chatCompletions(token, body) {
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  return response;
+};
+
+const template = `You are a helpful assistant.".
+
+Question: {QUERY}
+
+Answer: `;
+
+const getPrompt = (query) => {
+  return template.replace('{QUERY}', query);
+};
+
+const prompt = getPrompt('What is an LLM?');
+
 // If the console plugin is enabled then initialize it. We do not want to do it otherwise.
 if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
   // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
@@ -69,6 +94,29 @@ async function handleKeydown(event) {
     // Make sure we have a console plugin to work with, and then toggle it.
     //const consolePlugin = getConsolePlugin();
     //if (consolePlugin) { consolePlugin.toggle(); }
+
+    // this.sys.game.globals.player
+
+    //chatCompletions(this.sys.game.globals.player, { model: "gpt-3.5-turbo", messages: [{ role: "system", content: "You are a helpful assistant." }] }).then((response) => {
+
+    const messages = [];
+    messages.push({
+      role: 'user',
+      content: prompt,
+    });
+
+    const response = await chatCompletions({
+      token: this.sys.game.globals.player,
+      body: {
+        model: 'gpt-3.5-turbo',
+        messages,
+      },
+    });
+
+    const data = await response.json();
+    const text = data.choices[0].message.content;
+
+    console.log(text);
 
     doSomeTests();
 
