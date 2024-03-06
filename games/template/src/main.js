@@ -1,7 +1,7 @@
 import { phaserConfig, generalConfig } from './config/config.js';
 import ConsolePlugin from './plugins/ConsolePlugin.js';
 
-async function chatCompletions(token, body) {
+async function chatCompletions({token, body}) {
   console.log("Before fetch");
   console.log("Token" + token);
 
@@ -12,7 +12,6 @@ async function chatCompletions(token, body) {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${strToken}`,
-      'OpenAI-Organization': 'org-jmIOL3J06dIzXGVo3M8T9loQ',
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body),
