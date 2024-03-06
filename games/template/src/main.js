@@ -99,12 +99,8 @@ async function handleKeydown(event) {
     //const consolePlugin = getConsolePlugin();
     //if (consolePlugin) { consolePlugin.toggle(); }
 
-    // this.sys.game.globals.player
-
-    //chatCompletions(this.sys.game.globals.player, { model: "gpt-3.5-turbo", messages: [{ role: "system", content: "You are a helpful assistant." }] }).then((response) => {
-
     console.log("In handleKeydown");
-    console.log(this.sys.game.globals.player);
+    console.log(window.game.globals.player);
 
     const messages = [];
     messages.push({
@@ -113,7 +109,7 @@ async function handleKeydown(event) {
     });
 
     const response = await chatCompletions({
-      token: this.sys.game.globals.player,
+      token: window.game.globals.player,
       body: {
         model: 'gpt-3.5-turbo',
         messages,
