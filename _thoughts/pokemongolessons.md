@@ -44,7 +44,7 @@ It seems to me that Niantic might not want players to be able to skip the animat
 When developing a product, what should you do when improving the user experience will possibly reduce income?
 
 # Inopportune Notifications
-There are many notifications that popup in the game. Sometimes they popup at the top of the screen. Other times the show at the bottom right of the screen. And yet other times they show up in the middle of the screen. And sometimes they appear down the whole right side of the scren. There's probably other ones I am forgetting. Being consistent is preferable of course, but amny of these notifications are notifying different information so I can see how it makes sense. That's not my issue with the notifications, although may be the underlying cause.
+There are many notifications that popup in the game. Sometimes they popup at the top of the screen. Other times the show at the bottom right of the screen. And yet other times they show up in the middle of the screen. And sometimes they appear down the whole right side of the scren. There's probably other ones I am forgetting. Being consistent is preferable of course, but many of these notifications are notifying different information so I can see how it makes sense. That's not my issue with the notifications, although may be the underlying cause.
 
 Unfortunately more often that not, the notifications cover up areas of the screen that you need to get to for your next action. So you have to wait for the notification to go away before you can move ahead. A dedicated notification area might solve this, or alternatively having areas of the screen designated as action areas and not showing notifications in those areas.
 
@@ -89,10 +89,10 @@ On the items screen you can delete items from your inventory. There is a pretty 
 # Mega Evolution restrictions
 Note that you can only contribute to an individual Pokémon's Mega Level once per day. The help center tells you that. The game doesn't. No indication given when day ends or that there's a limitation.
 
-# Mega evolve confirmations
+# Mega Evolve Confirmations
 When mega evolving a Pokémon you click once to indicate you want to Mega Evolve, then a button to confirm you want to Mega Evolve, then another button to actually do the Mega Evolve, and then if you already have a Pokémon mega evolved, you need to confirm that you no longer want that mega Pokémon evolved. So, 4 confirmations.
 
-Frequent players will work on mega evolving multiple Pokémon to get the best Pokémdex, often mega evolving 10s or even possibly 100s of Pokémon at a time. You can imagine that confirming 4 times for each one can get a little draining. And then each evolution incurs waiting for the animation to complete (see below).
+Frequent players will work on mega evolving multiple Pokémon to get the best Pokédex, often mega evolving 10s or even possibly 100s of Pokémon at a time. You can imagine that confirming 4 times for each one can get a little draining. And then each evolution incurs waiting for the animation to complete (see below).
 
 When there are multiple confirmations required in a sequence, it can be more efficient to provide more information and possibly alternative buttons on the first screen. So a Mega Evolve button and below it, a Mega Evolve Replace Existing button that bypasses all of the confirmations. The game could check ahead of time if this is a Pokémon that has been mega evolved and does not require extra Mega candy to prevent a mistake costing the gamer.
 
