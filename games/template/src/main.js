@@ -14,6 +14,7 @@ async function chatCompletions(token, body) {
   });
 
   console.log("After fetch");
+  console.log(response);
 
   return response;
 };
@@ -116,9 +117,10 @@ async function handleKeydown(event) {
       },
     });
 
+    console.log("before data");
     const data = await response.json();
+    console.log(data);
     const text = data.choices[0].message.content;
-
     console.log(text);
 
     doSomeTests();
