@@ -55,7 +55,10 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     if (this.customevent) {
       // We would like to know when the actions have changed so we can do stuff. Note that we
       // do not care about the setting changes as we do not need to take immediate action on them.
-      this.customevent.on(Constants.EVENTS.SETTING_ACTION, this.onAction, this);      
+      this.customevent.on(Constants.EVENTS.SETTING_ACTION, this.onAction, this);
+
+      // We also are interested in cache events please.
+      this.customevent.on(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
     }
   }
 
@@ -67,6 +70,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     if (this.customevent) {
       // Remove the listener.
       this.customevent.off(Constants.EVENTS.SETTING_ACTION, this.onAction, this);
+      this.customevent.off(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
       this.customevent = undefined;
     }
 
@@ -97,7 +101,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * 
    * @param {any} eventData The event data sent from the service worker.
    */
-  onEvent(eventData) {
+  onCacheEvent(eventData) {
     // Figure out which specific message this event is for.
     if (eventData.message === Constants.SW_EVENTS.CACHE_MESSAGE) {
       // Have the cache plugin log the cache hit or miss.
