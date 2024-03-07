@@ -171,6 +171,7 @@ async function handleKeydown(event) {
 
       // These are messages received from the service worker.
       navigator.serviceWorker.addEventListener('message', event => {
+        console.log("In main.js message event listener.");
         // Sanity check.
         if (event.data) {
           // Messages can be a string type or object type.
@@ -179,7 +180,7 @@ async function handleKeydown(event) {
           } else if (event.data.type === Constants.SW_EVENTS.CACHE_EVENT) {
             if (cachePlugin) {
               // Have the cache plugin deal with the event.
-              cachePlugin.onCacheEvent(event.data);
+              cachePlugin.onEvent(event.data);
             }
           }
         }

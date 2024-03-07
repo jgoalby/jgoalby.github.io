@@ -92,11 +92,11 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
-   * Effectively called in response to service worker messages.
+   * Called in response to messages.
    * 
    * @param {any} eventData The event data sent from the service worker.
    */
-  onCacheEvent(eventData) {
+  onEvent(eventData) {
     if (eventData.message === Constants.SW_EVENTS.CACHE_CLEARED) {
       // Have the cache plugin log the cache hit or miss.
       this.onCacheMessage(eventData.cacheHit, eventData.requestURL);
