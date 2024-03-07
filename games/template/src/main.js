@@ -18,7 +18,6 @@ import ServiceWorkerPlugin from './plugins/ServiceWorkerPlugin.js';
 
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
-import { getPlugin } from './plugins/PluginsHelpers.js'
 import Constants from './constants.js';
 
 // Create the game!
@@ -66,11 +65,6 @@ async function chatCompletions({token, body}) {
 async function handleKeydown(event) {
   // CTRL-D shows the console.
   if ((event.code == "KeyD") && (event.ctrlKey)) {
-    // Make sure we have a console plugin to work with, and then toggle it.
-    /** @type {ConsolePlugin} */
-    const consolePlugin = getPlugin(Constants.PLUGIN_INFO.CONSOLE_KEY);
-    //if (consolePlugin) { consolePlugin.toggle(); }
-
     console.log("In handleKeydown");
     console.log(window.game.globals.player);
 

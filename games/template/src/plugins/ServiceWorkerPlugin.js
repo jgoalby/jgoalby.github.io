@@ -59,12 +59,28 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
     // If there is no service worker then we cannot do anything.
     if (! ('serviceWorker' in navigator)) { return; }
 
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+
+    // If we can access the event plugin.
+    if (this.customevent) {
+      // We want to know when anyone wants the cache to be cleared as it is handled by the service worker.
+      // This means we can keep all of the service worker code in this plugin, separating the concerns.
+      this.customevent.on(Constants.EVENTS.CLEAR_CACHE, this.clearCache, this);      
+    }
   }
 
   /**
    * Destroy the plugin and clean up after ourselves.
    */
   destroy() {
+    // We might not have the plugin, so check this first.
+    if (this.customevent) {
+      // Remove the listener.
+      this.customevent.off(Constants.EVENTS.CLEAR_CACHE, this.clearCache, this);
+      this.customevent = undefined;
+    }
+
     // MUST do this.
     super.destroy();
   }
@@ -75,6 +91,17 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
    * @returns {string | undefined} The version of the plugin.
    */
   getVersion() { return undefined; }
+
+  /**
+   * Ask the service worker to clear the cache.
+   */
+  clearCache() {
+    console.log("THIS IS THE SERVICE WORKER CLEAR CACHE FUNCTION.");
+    navigator.serviceWorker.ready.then(registration => {
+      // Send the message to the service worker to clear the cache.
+      registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });
+    });
+  }
 
   static get options() {
     return { 

@@ -149,6 +149,7 @@ class Events {
   static get SETTING_ACTION()            { return 'SETTING_ACTION'; }
   static get NOTIFICATION()              { return 'NOTIFICATION'; }
   static get KEYBOARD()                  { return 'KEYBOARD'; }
+  static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
 };
 
 // Notification levels.
