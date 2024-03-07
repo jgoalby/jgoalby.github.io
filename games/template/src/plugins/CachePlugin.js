@@ -2,29 +2,29 @@ import Constants from '../constants.js';
 import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
 
 // Constants that only this plugin uses.
-const CATEGORY       = 'developer';
-const LOG_CACHE_HIT  = 'logCacheHitOption';
-const LOG_CACHE_MISS = 'logCacheMissOption';
-const CLEAR_CACHE    = 'clearCacheOption';
+const CATEGORY              = 'developer';
+const LOG_CACHE_HIT_OPTION  = 'logCacheHitOption';
+const LOG_CACHE_MISS_OPTION = 'logCacheMissOption';
+const CLEAR_CACHE_OPTION    = 'clearCacheOption';
 
 const pluginSettings = {
   LOG_CACHE_HIT:{
     category: CATEGORY,
-    name: LOG_CACHE_HIT,
+    name: LOG_CACHE_HIT_OPTION,
     description: 'Log Cache Hits',
     value: false,
     type: Constants.SETTINGS_TYPES.boolean
   },
   LOG_CACHE_MISS: {
     category: CATEGORY,
-    name: LOG_CACHE_MISS,
+    name: LOG_CACHE_MISS_OPTION,
     description: 'Log Cache Misses',
     value: true,
     type: Constants.SETTINGS_TYPES.boolean
   },
   CLEAR_CACHE: {
     category: CATEGORY,
-    name: CLEAR_CACHE,
+    name: CLEAR_CACHE_OPTION,
     description: 'Clear Cache',
     value: undefined,
     type: Constants.SETTINGS_TYPES.function
@@ -97,10 +97,11 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * @param {any} eventData The event data sent from the service worker.
    */
   onEvent(eventData) {
-    if (eventData.message === Constants.SW_EVENTS.CACHE_CLEARED) {
+    // Figure out which specific message this event is for.
+    if (eventData.message === Constants.SW_EVENTS.CACHE_MESSAGE) {
       // Have the cache plugin log the cache hit or miss.
       this.onCacheMessage(eventData.cacheHit, eventData.requestURL);
-    } else if (eventData.message === Constants.SW_EVENTS.CACHE_MESSAGE) {
+    } else if (eventData.message === Constants.SW_EVENTS.CACHE_CLEARED) {
       // Let the cache plugin know that the cache was cleared.
       this.onCacheCleared(eventData.success);
     }
@@ -118,12 +119,12 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
       // If a hit...
       if (hit) {
         // ..check that we want to log hits as it is configurable.
-        if (this.getSettingValue(LOG_CACHE_HIT)) {
+        if (this.getSettingValue(LOG_CACHE_HIT_OPTION)) {
           console.log(`Cache hit: ${url}`);
         }
       } else {
         // ..check that we want to log misses as it is configurable.
-        if (this.getSettingValue(LOG_CACHE_MISS)) {
+        if (this.getSettingValue(LOG_CACHE_MISS_OPTION)) {
           console.warn(`Cache miss: ${url}`);
         }
       }
@@ -147,7 +148,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    */
   onAction(setting) {
     // We want to make an immediate change when the setting changes.
-    if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE)) {
+    if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE_OPTION)) {
       navigator.serviceWorker.ready.then(registration => {
         // Send the message to the service worker to clear the cache.
         registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });
