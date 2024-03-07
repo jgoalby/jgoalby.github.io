@@ -150,6 +150,7 @@ class Events {
   static get NOTIFICATION()              { return 'NOTIFICATION'; }
   static get KEYBOARD()                  { return 'KEYBOARD'; }
   static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
+  static get CACHE_EVENT()               { return 'CACHE_EVENT'; }
 };
 
 // Notification levels.

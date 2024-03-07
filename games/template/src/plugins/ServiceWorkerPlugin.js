@@ -16,21 +16,22 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
           console.error('Service worker registration failed!', err);
         });
 
-        // Get the cache plugin.
-        /** @type {CachePlugin} */
-        const cachePlugin = getPlugin(Constants.PLUGIN_INFO.CACHE_KEY);
-
         // These are messages received from the service worker.
         navigator.serviceWorker.addEventListener('message', event => {
           // Sanity check.
           if (event.data) {
             // Messages can be a string type or object type.
             if (typeof event.data === 'string') {
-              // console.log(`The service worker sent a message: ${event.data}`);
+              console.log(`The service worker sent a message: ${event.data}`);
             } else if (event.data.type === Constants.SW_EVENTS.CACHE_EVENT) {
-              if (cachePlugin) {
-                // Have the cache plugin deal with the event.
-                cachePlugin.onEvent(event.data);
+              // Get the event plugin.
+              /** @type {EventPlugin} */
+              const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+
+              // It might not be available.
+              if (customevent) {
+                // Emit an event for the cache event.
+                customevent.emit(Constants.EVENTS.CACHE_EVENT, event.data);
               }
             }
           }
@@ -41,11 +42,8 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
           // Message to initialize the service worker with us.
           registration.active.postMessage({ type: Constants.SW_EVENTS.INIT });
 
-          // No point capturing cache messages if we don't have a cache plugin.
-          if (cachePlugin) {
-            // Message to set whether we want to receive cache messages.
-            registration.active.postMessage({ type: Constants.SW_EVENTS.CONFIG, sendCacheMessages: generalConfig.sendCacheMessages });
-          }
+          // Message to set whether we want to receive cache messages.
+          registration.active.postMessage({ type: Constants.SW_EVENTS.CONFIG, sendCacheMessages: generalConfig.sendCacheMessages });
         });
       });
     } else {

@@ -35,9 +35,6 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
-    // If there is no service worker then we cannot do anything.
-    if (! ('serviceWorker' in navigator)) { return; }
-
     // Get the dependent plugins.
 
     /** @type {SettingsPlugin} */
