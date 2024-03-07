@@ -1,10 +1,12 @@
 /**
  * Get the specified plugin or undefined if not present.
- * Need to return 'any' because the BasePlugin type doesn't work well. So use the specified
- * plugin methods if you want type safety.
+ * Need to return 'any' because the BasePlugin type doesn't work well.
+ *   Error: Type 'Function | BasePlugin' is not assignable to type 'BasePlugin'.
+ * Maybe we can change this if we implement our own base plugin.
+ * Use the @ type feature for type safety for your returned objects.
  * 
  * @param {string} pluginName The name of the plugin to get.
- * @returns {any}
+ * @returns {any } The plugin or undefined if not present.
  */
 function getPlugin(pluginName) {
   if (window && window.game && window.game.plugins) {
@@ -16,6 +18,11 @@ function getPlugin(pluginName) {
   }
 }
 
+/**
+ * Return a list of the plugins that are available or undefined.
+ * 
+ * @returns {Phaser.Types.Plugins.GlobalPlugin[] | undefined}
+ */
 function getPluginsList() {
   if (window && window.game && window.game.plugins) {
     return window.game.plugins.plugins;
@@ -26,105 +33,43 @@ function getPluginsList() {
   }
 }
 
+/**
+ * Get the list of plugins as a string, useful for showing what plugins are used.
+ * 
+ * @returns {string} The list of plugins.
+ */
 function getPluginListAsString() {
   // Get the list of plugins.
   const plugins = getPluginsList();
 
+  // Short circuit if there are no plugins.
   if (!plugins) { return ""; }
 
   // The list of plugins we have found as a string.
   let pluginsList = "";
 
-  if (plugins) {
-    // Go through all of the plugins.
-    for (let i = 0; i < plugins.length; i++) {
-      // Get the key and the plugin itself so we can get its version.
-      const pluginKey = plugins[i].key;
+  // Go through all of the plugins.
+  for (let i = 0; i < plugins.length; i++) {
+    // Get the key and the plugin itself so we can get its version.
+    const pluginKey = plugins[i].key;
 
-      // We cannot tell it to be a Phaser.Plugins.BasePlugin because that doesn't work.
-      /** @type {any} */
-      const curPlugin = plugins[i].plugin;
-      /** @type {Phaser.Plugins.BasePlugin} */
-      const basePlugin = curPlugin;
+    // We cannot tell it to be a Phaser.Plugins.BasePlugin because that doesn't work.
+    /** @type {any} */
+    const curPlugin = plugins[i].plugin;
+    /** @type {Phaser.Plugins.BasePlugin} */
+    const basePlugin = curPlugin;
 
-      // If there is no version defined it could be an internal plugin that we do not want listed.
-      if (basePlugin.getVersion) {
-        // Add the current plugin information to the string list of plugins.
-        pluginsList += `${pluginKey} : ${basePlugin.getVersion()}\n`;
-      }
+    // If there is no version defined it could be an internal plugin that we do not want listed.
+    if (basePlugin.getVersion) {
+      // Add the current plugin information to the string list of plugins.
+      pluginsList += `${pluginKey} : ${basePlugin.getVersion()}\n`;
     }
   }
 
   return pluginsList;
 }
 
-// These functions provide type safe access to the plugins. When using the pluginManager
-// or going straight to the plugins in the game object, you get a base class that does not
-// have the methods you need. This is a workaround to get the methods you need with type safety.
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {InitSetupPlugin}
- */
-function getInitSetupPlugin() { return getPlugin('InitSetupPlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {EventPlugin}
- */
-function getEventPlugin() { return getPlugin('EventPlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {SettingsPlugin}
- */
-function getSettingsPlugin() { return getPlugin('SettingsPlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {ConsolePlugin}
- */
-function getConsolePlugin() { return getPlugin('ConsolePlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {NotificationPlugin}
- */
-function getNotificationPlugin() { return getPlugin('NotificationPlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {IntrospectPlugin}
- */
-function getIntrospectPlugin() { return getPlugin('IntrospectPlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {CachePlugin}
- */
-function getCachePlugin() { return getPlugin('CachePlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {AudioPlugin}
- */
-function getAudioPlugin() { return getPlugin('AudioPlugin'); }
-
-/**
- * Get the plugin instance if it is available, otherwise undefined.
- * @returns {FirebasePlugin}
- */
-function getFirebasePlugin() { return getPlugin('FirebasePlugin'); }
-
 export {
-  getInitSetupPlugin,
-  getEventPlugin,
-  getSettingsPlugin,
-  getConsolePlugin,
-  getNotificationPlugin,
-  getIntrospectPlugin,
-  getCachePlugin,
-  getAudioPlugin,
-  getFirebasePlugin,
+  getPlugin,
   getPluginListAsString,
 };

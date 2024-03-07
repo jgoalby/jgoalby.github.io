@@ -80,6 +80,7 @@ declare class CheckBoxButton extends Phaser.GameObjects.Container {
 
 type InitSetupPlugin = import('../plugins/InitSetupPlugin').default;
 type FirebasePlugin = import('../plugins/FirebasePlugin').default;
+type ServiceWorkerPlugin = import('../plugins/ServiceWorkerPlugin').default;
 type ConsolePlugin = import('../plugins/ConsolePlugin').default;
 type NotificationPlugin = import('../plugins/NotificationPlugin').default;
 type EventPlugin = import('../plugins/EventPlugin').default;

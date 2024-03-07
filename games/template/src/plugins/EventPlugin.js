@@ -1,3 +1,5 @@
+import Constants from '../constants.js';
+
 export default class EventPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
@@ -51,10 +53,10 @@ export default class EventPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'EventPlugin', 
-      plugin: EventPlugin, 
+      key: Constants.PLUGIN_INFO.EVENT_KEY,
+      plugin: EventPlugin,
       start: true,
-      mapping: 'customevent',
+      mapping: Constants.PLUGIN_INFO.EVENT_MAPPING,
     }
   }
 }

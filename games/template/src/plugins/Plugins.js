@@ -1,6 +1,7 @@
 import InitSetupPlugin from './InitSetupPlugin.js';
 import EventPlugin from './EventPlugin.js';
 import SettingsPlugin from './SettingsPlugin.js';
+import ServiceWorkerPlugin from './ServiceWorkerPlugin.js';
 import ConsolePlugin from './ConsolePlugin.js';
 import NotificationPlugin from './NotificationPlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
@@ -13,6 +14,7 @@ const global_plugins = [
   InitSetupPlugin.options,
   EventPlugin.options,
   SettingsPlugin.options,
+  ServiceWorkerPlugin.options,
   ConsolePlugin.options,
   NotificationPlugin.options,
   IntrospectPlugin.options,
@@ -22,7 +24,8 @@ const global_plugins = [
 ]
 
 /**
- * Is the passed in plugin key enabled?
+ * Is the passed in plugin key enabled? These are global plugins as defined
+ * by Phaser 3.
  * 
  * @param {string} pluginKey The plugin key to check on.
  * @returns {boolean} true if it is enabled, false otherwise.

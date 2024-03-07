@@ -31,7 +31,7 @@ if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
 
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
-import { getCachePlugin, getConsolePlugin } from './plugins/PluginsHelpers.js'
+import { getPlugin } from './plugins/PluginsHelpers.js'
 import Constants from './constants.js';
 
 // Create the game!
@@ -89,7 +89,8 @@ async function handleKeydown(event) {
   // CTRL-D shows the console.
   if ((event.code == "KeyD") && (event.ctrlKey)) {
     // Make sure we have a console plugin to work with, and then toggle it.
-    //const consolePlugin = getConsolePlugin();
+    /** @type {ConsolePlugin} */
+    const consolePlugin = getPlugin(Constants.PLUGIN_INFO.CONSOLE_KEY);
     //if (consolePlugin) { consolePlugin.toggle(); }
 
     console.log("In handleKeydown");
@@ -167,11 +168,11 @@ async function handleKeydown(event) {
       });
 
       // Get the cache plugin.
-      const cachePlugin = getCachePlugin();
+      /** @type {CachePlugin} */
+      const cachePlugin = getPlugin(Constants.PLUGIN_INFO.CACHE_KEY);
 
       // These are messages received from the service worker.
       navigator.serviceWorker.addEventListener('message', event => {
-        console.log("In main.js message event listener.");
         // Sanity check.
         if (event.data) {
           // Messages can be a string type or object type.

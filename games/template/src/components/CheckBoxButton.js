@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getEventPlugin } from '../plugins/PluginsHelpers.js'
+import { getPlugin } from '../plugins/PluginsHelpers.js'
 
 export default class CheckBoxButton extends Phaser.GameObjects.Container {
   /**
@@ -34,7 +34,8 @@ export default class CheckBoxButton extends Phaser.GameObjects.Container {
     // If this is a setting, then we need to know when it changes.
     if (this.setting) {
       // Get the dependent plugin.
-      this.customevent = getEventPlugin();
+      /** @type {EventPlugin} */
+      this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
       if (this.customevent) {
         // We would like to know when the settings have changed so we can do stuff.

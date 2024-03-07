@@ -1,3 +1,4 @@
+import Constants from '../constants.js';
 //import { firebase } from '../lib/firebase/firebase-app.js';
 //import { initializeApp } from '../lib/firebase/firebase-app.js';
 //import { getAuth, signInAnonymously, onAuthStateChanged } from '../lib/firebase/firebase-auth.js';
@@ -51,10 +52,10 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'FirebasePlugin', 
-      plugin: FirebasePlugin, 
+      key: Constants.PLUGIN_INFO.FIREBASE_KEY,
+      plugin: FirebasePlugin,
       start: true,
-      mapping: 'firebase',
+      mapping: Constants.PLUGIN_INFO.FIREBASE_MAPPING,
     }
   }
 }

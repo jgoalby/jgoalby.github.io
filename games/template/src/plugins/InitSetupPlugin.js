@@ -1,3 +1,5 @@
+import Constants from '../constants.js';
+
 export default class InitSetupPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
@@ -17,10 +19,10 @@ export default class InitSetupPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'InitSetupPlugin', 
-      plugin: InitSetupPlugin, 
+      key: Constants.PLUGIN_INFO.INIT_SETUP_KEY,
+      plugin: InitSetupPlugin,
       start: true,
-      mapping: 'initsetup',
+      mapping: Constants.PLUGIN_INFO.INIT_SETUP_MAPPING,
     }
   }
 }

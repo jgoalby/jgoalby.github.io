@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
+import { getPlugin } from './PluginsHelpers.js'
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
 const CATEGORY = 'sound';
@@ -40,8 +40,12 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
     this._music = null;
     
     // Get the dependent plugins.
-    this.settings = getSettingsPlugin();
-    this.customevent = getEventPlugin();
+
+    /** @type {SettingsPlugin} */
+    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
+
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // If we can access the settings plugin.
     if (this.settings) {
@@ -176,10 +180,10 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'AudioPlugin', 
-      plugin: AudioPlugin, 
+      key: Constants.PLUGIN_INFO.AUDIO_KEY,
+      plugin: AudioPlugin,
       start: true,
-      mapping: 'audio',
+      mapping: Constants.PLUGIN_INFO.AUDIO_MAPPING,
     }
   }
 }

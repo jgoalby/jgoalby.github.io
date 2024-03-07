@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 import { getActiveScene } from '../common.js';
-import { getEventPlugin } from './PluginsHelpers.js'
+import { getPlugin } from './PluginsHelpers.js'
 import Notification from '../components/Notification.js';
 
 /**
@@ -15,7 +15,9 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
     super(pluginManager);
 
     // Get the dependent plugins.
-    this.customevent = getEventPlugin();
+
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // If we can access the event plugin.
     if (this.customevent) {
@@ -78,10 +80,10 @@ export default class NotificationPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'NotificationPlugin', 
-      plugin: NotificationPlugin, 
+      key: Constants.PLUGIN_INFO.NOTIFICATION_KEY,
+      plugin: NotificationPlugin,
       start: true,
-      mapping: 'notification',
+      mapping: Constants.PLUGIN_INFO.NOTIFICATION_MAPPING,
     }
   }
 }

@@ -1,12 +1,14 @@
 import Constants from '../constants.js';
-import { getEventPlugin } from './PluginsHelpers.js'
+import { getPlugin } from './PluginsHelpers.js'
 
 export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
     // We need access to the event emitter.
-    this.customevent = getEventPlugin();
+
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // Holder for the settings. Stored by category. Each category contains a dictionary of settings.
     // Each setting has a name, value, description, and type.
@@ -104,10 +106,10 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'SettingsPlugin', 
-      plugin: SettingsPlugin, 
+      key: Constants.PLUGIN_INFO.SETTINGS_KEY,
+      plugin: SettingsPlugin,
       start: true,
-      mapping: 'settings',
+      mapping: Constants.PLUGIN_INFO.SETTINGS_MAPPING,
     }
   }
 }

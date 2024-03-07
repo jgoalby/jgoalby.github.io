@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
+import { getPlugin } from './PluginsHelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -23,8 +23,12 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
     this._gui = undefined;
 
     // Get the dependent plugins.
-    this.settings = getSettingsPlugin();
-    this.customevent = getEventPlugin();
+
+    /** @type {SettingsPlugin} */
+    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
+
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // If we can access the settings plugin.
     if (this.settings) {
@@ -107,10 +111,10 @@ export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'IntrospectPlugin', 
-      plugin: IntrospectPlugin, 
+      key: Constants.PLUGIN_INFO.INTROSPECT_KEY,
+      plugin: IntrospectPlugin,
       start: true,
-      mapping: 'introspect',
+      mapping: Constants.PLUGIN_INFO.INTROSPECT_MAPPING,
     }
   }
 }

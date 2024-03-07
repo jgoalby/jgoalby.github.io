@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getSettingsPlugin, getEventPlugin } from './PluginsHelpers.js'
+import { getPlugin } from './PluginsHelpers.js'
 
 // Constants that only this plugin uses.
 const CATEGORY              = 'developer';
@@ -39,8 +39,12 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
     if (! ('serviceWorker' in navigator)) { return; }
 
     // Get the dependent plugins.
-    this.settings = getSettingsPlugin();
-    this.customevent = getEventPlugin();
+
+    /** @type {SettingsPlugin} */
+    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
+
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // If we can access the settings plugin.
     if (this.settings) {
@@ -158,10 +162,10 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
 
   static get options() {
     return { 
-      key: 'CachePlugin', 
-      plugin: CachePlugin, 
+      key: Constants.PLUGIN_INFO.CACHE_KEY,
+      plugin: CachePlugin,
       start: true,
-      mapping: 'cache',
+      mapping: Constants.PLUGIN_INFO.CACHE_MAPPING,
     }
   }
 }

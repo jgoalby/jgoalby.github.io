@@ -178,6 +178,30 @@ const SETTINGS_TYPES = {
   function: 'function',
 };
 
+// Plugin keys and mappings as they are used in multiple places.
+const PLUGIN_INFO = {
+  INIT_SETUP_KEY: 'InitSetupPlugin',
+  INIT_SETUP_MAPPING: 'initsetup',
+  EVENT_KEY: 'EventPlugin',
+  EVENT_MAPPING: 'customevent',
+  SETTINGS_KEY: 'SettingsPlugin',
+  SETTINGS_MAPPING: 'settings',
+  SERVICE_WORKER_KEY: 'ServiceWorkerPlugin',
+  SERVICE_WORKER_MAPPING: 'serviceworker',
+  CONSOLE_KEY: 'ConsolePlugin',
+  CONSOLE_MAPPING: 'console',
+  NOTIFICATION_KEY: 'NotificationPlugin',
+  NOTIFICATION_MAPPING: 'notification',
+  INTROSPECT_KEY: 'IntrospectPlugin',
+  INTROSPECT_MAPPING: 'introspect',
+  CACHE_KEY: 'CachePlugin',
+  CACHE_MAPPING: 'cache',
+  AUDIO_KEY: 'AudioPlugin',
+  AUDIO_MAPPING: 'audio',
+  FIREBASE_KEY: 'FirebasePlugin',
+  FIREBASE_MAPPING: 'firebase'
+}
+
 // TODO: Make a const for plugin names.
 // TODO: Change the above classes to variables when just return strings?
 
@@ -194,6 +218,7 @@ export default class Constants {
   static get EVENTS() { return Events; }
   static get NOTIFICATION_LEVELS() { return NotificationLevels; }
   static get SETTINGS_TYPES() { return SETTINGS_TYPES; }
+  static get PLUGIN_INFO() { return PLUGIN_INFO; }
 
   // If you change the name of this, then you should also change it in service-worker.js.
   static get SW_EVENTS() { return ServiceWorkerEvents; }
