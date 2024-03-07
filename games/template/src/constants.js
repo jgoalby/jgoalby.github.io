@@ -188,6 +188,8 @@ const PLUGIN_INFO = {
   SETTINGS_MAPPING: 'settings',
   SERVICE_WORKER_KEY: 'ServiceWorkerPlugin',
   SERVICE_WORKER_MAPPING: 'serviceworker',
+  WINDOW_KEY: 'WindowPlugin',
+  WINDOW_MAPPING: 'windowplugin',
   CONSOLE_KEY: 'ConsolePlugin',
   CONSOLE_MAPPING: 'console',
   NOTIFICATION_KEY: 'NotificationPlugin',

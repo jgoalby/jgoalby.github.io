@@ -14,10 +14,6 @@ import ServiceWorkerPlugin from './plugins/ServiceWorkerPlugin.js';
     // Initialize early on as it is important.
     ServiceWorkerPlugin.initialize();
   }
-
-  // Listen out for things.
-  window.addEventListener('resize', resize);
-  window.addEventListener("keydown", handleKeydown, false);
 })();
 
 import Globals from './globals.js';
@@ -37,38 +33,7 @@ export default class Game extends Phaser.Game {
 // Create the global game instance.
 window.game = new Game();
 
-// Called on every resize event.
-function resize() {
-  // The current width and height.
-  var w = window.innerWidth;   
-  var h = window.innerHeight;
 
-  // Save the current width and height for the next event.
-  window.innerWidthPrevious = w;
-  window.innerHeightPrevious = h;
-
-  // Resize, and set a timer to check again very soon.
-  window.game.scale.resize(w, h);
-  window.setTimeout(onResizeTimeout, 5);
-}
-
-// Called after a short timeout for the case of iPad strange behavior.
-function onResizeTimeout() {
-  // The current width and height.
-  var w = window.innerWidth;   
-  var h = window.innerHeight;
-
-  // The previous width and height.
-  var wPrev = window.innerWidthPrevious;
-  var hPrev = window.innerHeightPrevious;
-
-  // If the values are the same then do nothing. If they are not the same that means they were changed
-  // during the short timeout. This happens occasionally on iPads.
-  if (wPrev === w && hPrev === h) { return; }
-
-  // We need to do a resize because the values are different.
-  window.game.scale.resize(w, h);
-}
 
 import { doSomeTests } from './common.js'
 
@@ -166,57 +131,3 @@ async function handleKeydown(event) {
     }
   }
 }
-
-(() => {
-  /*
-  // See if the browser supports service workers.
-  if ('serviceWorker' in navigator) {
-    // Once the page is loaded, register the service worker.
-    window.addEventListener('load', () => {
-      // Register the service worker.
-      navigator.serviceWorker.register('service-worker.js').then((registration) => {
-        console.info('Service worker registration successful.');
-      }, function(err) {
-        // The service worker can fail for numerous reasons. This is async so nothing to do here.
-        console.error('Service worker registration failed!', err);
-      });
-
-      // Get the cache plugin.
-      const cachePlugin = getPlugin(Constants.PLUGIN_INFO.CACHE_KEY);
-
-      // These are messages received from the service worker.
-      navigator.serviceWorker.addEventListener('message', event => {
-        // Sanity check.
-        if (event.data) {
-          // Messages can be a string type or object type.
-          if (typeof event.data === 'string') {
-            // console.log(`The service worker sent a message: ${event.data}`);
-          } else if (event.data.type === Constants.SW_EVENTS.CACHE_EVENT) {
-            if (cachePlugin) {
-              // Have the cache plugin deal with the event.
-              cachePlugin.onEvent(event.data);
-            }
-          }
-        }
-      });
-
-      // Once the service worker is ready, send it a message to initialize.
-      navigator.serviceWorker.ready.then(registration => {
-        // Message to initialize the service worker with us.
-        registration.active.postMessage({ type: Constants.SW_EVENTS.INIT });
-
-        // No point capturing cache messages if we don't have a cache plugin.
-        if (cachePlugin) {
-          // Message to set whether we want to receive cache messages.
-          registration.active.postMessage({ type: Constants.SW_EVENTS.CONFIG, sendCacheMessages: generalConfig.sendCacheMessages });
-        }
-      });
-    });
-  } else {
-    console.info('No service worker support in this browser.');
-  }*/
-
-  // Listen out for things.
-  //window.addEventListener('resize', resize);
-  //window.addEventListener("keydown", handleKeydown, false);
-})();
