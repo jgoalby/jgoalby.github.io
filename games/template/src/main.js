@@ -1,33 +1,24 @@
-import { phaserConfig, generalConfig } from './config/config.js';
+import { phaserConfig } from './config/config.js';
 import ConsolePlugin from './plugins/ConsolePlugin.js';
+import ServiceWorkerPlugin from './plugins/ServiceWorkerPlugin.js';
 
-async function chatCompletions({token, body}) {
-  console.log("Before fetch");
-  console.log("Token" + token);
+(() => {
+  // If the console plugin is enabled then initialize it. We do not want to do it otherwise.
+  if (phaserConfig.isGlobalPluginEnabled(Constants.PLUGIN_INFO.CONSOLE_KEY)) {
+    // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
+    ConsolePlugin.initialize();
+  }
 
-  const strToken = "" + token;
-  console.log("strToken" + strToken);
+  // If the service worker plugin is enabled then initialize it. We do not want to do it otherwise.
+  if (phaserConfig.isGlobalPluginEnabled(Constants.PLUGIN_INFO.SERVICE_WORKER_KEY)) {
+    // Initialize early on as it is important.
+    ServiceWorkerPlugin.initialize();
+  }
 
-  const response = await fetch('https://api.openai.com/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${strToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-
-  console.log("After fetch");
-  console.log(response);
-
-  return response;
-};
-
-// If the console plugin is enabled then initialize it. We do not want to do it otherwise.
-if (phaserConfig.isGlobalPluginEnabled("ConsolePlugin")) {
-  // Initialize console first. Do it here so that we can capture any console messages that happen during startup.
-  (() => { ConsolePlugin.initialize(); })();
-}
+  // Listen out for things.
+  window.addEventListener('resize', resize);
+  window.addEventListener("keydown", handleKeydown, false);
+})();
 
 import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
@@ -80,6 +71,28 @@ function onResizeTimeout() {
 }
 
 import { doSomeTests } from './common.js'
+
+async function chatCompletions({token, body}) {
+  console.log("Before fetch");
+  console.log("Token" + token);
+
+  const strToken = "" + token;
+  console.log("strToken" + strToken);
+
+  const response = await fetch('https://api.openai.com/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${strToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+
+  console.log("After fetch");
+  console.log(response);
+
+  return response;
+};
 
 /**
  * Handle the keydown event.
@@ -155,6 +168,7 @@ async function handleKeydown(event) {
 }
 
 (() => {
+  /*
   // See if the browser supports service workers.
   if ('serviceWorker' in navigator) {
     // Once the page is loaded, register the service worker.
@@ -168,7 +182,6 @@ async function handleKeydown(event) {
       });
 
       // Get the cache plugin.
-      /** @type {CachePlugin} */
       const cachePlugin = getPlugin(Constants.PLUGIN_INFO.CACHE_KEY);
 
       // These are messages received from the service worker.
@@ -201,9 +214,9 @@ async function handleKeydown(event) {
     });
   } else {
     console.info('No service worker support in this browser.');
-  }
+  }*/
 
   // Listen out for things.
-  window.addEventListener('resize', resize);
-  window.addEventListener("keydown", handleKeydown, false);
+  //window.addEventListener('resize', resize);
+  //window.addEventListener("keydown", handleKeydown, false);
 })();
