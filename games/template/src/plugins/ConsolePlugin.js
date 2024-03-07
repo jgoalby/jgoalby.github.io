@@ -18,6 +18,7 @@ const pluginSettings = {
 
 export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   static initialize() {
+    // Do some early initialization.
     initLog2Div();
   }
 
@@ -47,6 +48,9 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  /**
+   * Destroy the plugin and clean up after ourselves.
+   */
   destroy() {
     // We might not have the plugin, so check this first.
     if (this.customevent) {
@@ -67,12 +71,24 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
    */
   getVersion() { return undefined; }
 
+  /**
+   * A custom key event happened. We want to listen for keys as we want to toggle the console.
+   * 
+   * @param {*} keyEvent The keyboard event.
+   */
   onKeyboard(keyEvent) {
+    // Right now this is hardcoded. It would be nice to make it configurable.
     if ((keyEvent.code == "KeyD") && (keyEvent.ctrlKey)) {
+      // Toggle the console.
       this.toggle();
     }
   }
 
+  /**
+   * A setting changed. We look to see if it for us and act appropriately.
+   * 
+   * @param {*} setting The setting.
+   */
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.
     if ((setting.category === CATEGORY) && (setting.name === CONSOLE_OPTION)) {
@@ -85,6 +101,9 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  /**
+   * Show the console.
+   */
   show() {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
@@ -94,6 +113,9 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  /**
+   * Hide the console.
+   */
   hide() {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
@@ -103,6 +125,9 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     }
   }
 
+  /**
+   * Toggle the console.
+   */
   toggle() {
     // Call appropriate function internally so we get the setting changed event.
     if (isLog2DivVisible()) {

@@ -11,7 +11,7 @@ import ServiceWorkerPlugin from './plugins/ServiceWorkerPlugin.js';
 
   // If the service worker plugin is enabled then initialize it. We do not want to do it otherwise.
   if (phaserConfig.isGlobalPluginEnabled(Constants.PLUGIN_INFO.SERVICE_WORKER_KEY)) {
-    // Initialize early on as it is important.
+    // Initialize early on as it is important for functionality.
     ServiceWorkerPlugin.initialize();
   }
 })();

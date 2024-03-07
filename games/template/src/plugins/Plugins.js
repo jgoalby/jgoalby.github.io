@@ -12,11 +12,16 @@ import AudioPlugin from './AudioPlugin.js';
 
 // List of global plugins, that can be used to initialize the game engine. Order is important.
 const global_plugins = [
+  // This plugin makes other plugins available, so it is necessary and should be first.
   InitSetupPlugin.options,
+
+  // Important plugins for general functionality.
   EventPlugin.options,
   SettingsPlugin.options,
   ServiceWorkerPlugin.options,
   WindowPlugin.options,
+
+  // Less critical plugins.
   ConsolePlugin.options,
   NotificationPlugin.options,
   IntrospectPlugin.options,

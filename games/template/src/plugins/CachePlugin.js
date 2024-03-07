@@ -99,7 +99,7 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
   /**
    * Called in response to messages.
    * 
-   * @param {any} eventData The event data sent from the service worker.
+   * @param {any} eventData The event data sent.
    */
   onCacheEvent(eventData) {
     // Figure out which specific message this event is for.

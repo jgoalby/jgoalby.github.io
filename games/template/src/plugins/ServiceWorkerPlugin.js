@@ -2,6 +2,10 @@ import Constants from '../constants.js';
 import { generalConfig } from '../config/config.js';
 import { getPlugin } from './PluginsHelpers.js'
 
+// Note that the event mechanism for the service worker is different from the custom event
+// mechanism for the rest of the game. This plugin basically translates from the service worker
+// event mechanism to the custom event mechanism.
+
 export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
   static initialize() {
     // See if the browser supports service workers.
@@ -22,6 +26,7 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
           if (event.data) {
             // Messages can be a string type or object type.
             if (typeof event.data === 'string') {
+              // Not implemented anything with string messages, so just log it.
               console.log(`The service worker sent a message: ${event.data}`);
             } else if (event.data.type === Constants.SW_EVENTS.CACHE_EVENT) {
               // Get the event plugin.
@@ -94,7 +99,9 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
    * Ask the service worker to clear the cache.
    */
   clearCache() {
-    console.log("THIS IS THE SERVICE WORKER CLEAR CACHE FUNCTION.");
+    // If there is no service worker then we cannot do anything.
+    if (! ('serviceWorker' in navigator)) { return; }
+
     navigator.serviceWorker.ready.then(registration => {
       // Send the message to the service worker to clear the cache.
       registration.active.postMessage({ type: Constants.SW_EVENTS.CLEAR_CACHE });

@@ -2,8 +2,10 @@ import Constants from '../constants.js';
 
 export default class InitSetupPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
+    // the plugin manager is available to us.
     super(pluginManager);
 
+    // The window should always be present.
     if (window) {
       // Set the plugin manager available to other plugins and functions used by them.
       window.pluginManager = pluginManager;
