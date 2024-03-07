@@ -18,6 +18,7 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
 
         // These are messages received from the service worker.
         navigator.serviceWorker.addEventListener('message', event => {
+          console.log("HERE WE ARE!!!!!!");
           // Sanity check.
           if (event.data) {
             // Messages can be a string type or object type.
