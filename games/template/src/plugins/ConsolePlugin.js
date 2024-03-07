@@ -43,6 +43,9 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     if (this.customevent) {
       // We would like to know when the settings have changed so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+
+      // We would like to know when the keyboard events happen so we can do stuff.
+      this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
     }
   }
 
@@ -64,6 +67,12 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
    * @returns {string | undefined} The version of the plugin.
    */
   getVersion() { return undefined; }
+
+  onKeyboard(keyEvent) {
+    if ((keyEvent.code == "KeyD") && (keyEvent.ctrlKey)) {
+      this.toggle();
+    }
+  }
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.

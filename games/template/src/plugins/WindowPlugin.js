@@ -6,8 +6,8 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
     super(pluginManager);
 
     // Listen out for things.
-    window.addEventListener('resize', this.resize);
-    window.addEventListener("keydown", this.handleKeydown, false);
+    window.addEventListener('resize', () => { this.resize() });
+    window.addEventListener("keydown", (e) => { this.handleKeydown(e) }, false);
   }
 
   /**
@@ -38,7 +38,7 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
 
     // Resize, and set a timer to check again very soon.
     window.game.scale.resize(w, h);
-    window.setTimeout(this.onResizeTimeout, 5);
+    window.setTimeout(() => { this.onResizeTimeout() }, 5);
   }
 
   // Called after a short timeout for the case of iPad strange behavior.
