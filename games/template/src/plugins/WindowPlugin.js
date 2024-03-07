@@ -5,6 +5,9 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
+    /** @type {EventPlugin} */
+    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+
     // Listen out for things.
     window.addEventListener('resize', () => { this.resize() });
     window.addEventListener("keydown", (e) => { this.handleKeydown(e) }, false);
@@ -65,10 +68,8 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
    * @param {KeyboardEvent} event The event.
    */
   async handleKeydown(event) {
-    // CTRL-D shows the console.
-    if ((event.code == "KeyD") && (event.ctrlKey)) {
-      console.log("In handleKeydown");
-    }
+    // Notify the user that the cache has been cleared.
+    this.customevent.emit(Constants.EVENTS.KEYBOARD, event);
   }
 
   static get options() {

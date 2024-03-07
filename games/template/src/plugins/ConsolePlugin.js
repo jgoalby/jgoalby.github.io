@@ -41,10 +41,8 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
     }
 
     if (this.customevent) {
-      // We would like to know when the settings have changed so we can do stuff.
+      // We would like to know when events occur so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-
-      // We would like to know when the keyboard events happen so we can do stuff.
       this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
     }
   }
@@ -52,8 +50,9 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
   destroy() {
     // We might not have the plugin, so check this first.
     if (this.customevent) {
-      // Remove the listener.
+      // Remove the listeners.
       this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this.customevent.off(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
       this.customevent = undefined;
     }
 
