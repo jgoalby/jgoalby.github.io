@@ -2,6 +2,7 @@ import InitSetupPlugin from './InitSetupPlugin.js';
 import EventPlugin from './EventPlugin.js';
 import SettingsPlugin from './SettingsPlugin.js';
 import ServiceWorkerPlugin from './ServiceWorkerPlugin.js';
+import WindowPlugin from './WindowPlugin.js';
 import ConsolePlugin from './ConsolePlugin.js';
 import NotificationPlugin from './NotificationPlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
@@ -15,6 +16,7 @@ const global_plugins = [
   EventPlugin.options,
   SettingsPlugin.options,
   ServiceWorkerPlugin.options,
+  WindowPlugin.options,
   ConsolePlugin.options,
   NotificationPlugin.options,
   IntrospectPlugin.options,
