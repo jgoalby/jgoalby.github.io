@@ -6,7 +6,6 @@ import NumberInput from '../components/NumberInput.js';
 import TextInput from '../components/TextInput.js';
 import RangeButton from '../components/RangeButton.js';
 import BaseScene from './BaseScene.js';
-import Scenes from './Scenes.js';
 
 export default class OptionsScene extends BaseScene {
   constructor() {

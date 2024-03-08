@@ -1,5 +1,10 @@
 # TODOs
 
+# More nexts
+- Shortcuts for menus
+- Customizable shortcuts
+
+
 https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.json
 
 Check out tweens more and timelines as well

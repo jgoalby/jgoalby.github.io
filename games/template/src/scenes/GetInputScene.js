@@ -1,6 +1,5 @@
 import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
-import Scenes from './Scenes.js';
 import { Types, defineComponent } from '../lib/bitECS/index.mjs';
 
 // TODO: Need to implement bitECS in the scene at some point.

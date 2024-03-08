@@ -41,6 +41,7 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
       });
     }
 
+    // If we can access the event plugin.
     if (this.customevent) {
       // We would like to know when events occur so we can do stuff.
       this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);

@@ -1,6 +1,5 @@
 import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
-import Scenes from './Scenes.js';
 
 export default class PreloaderScene extends BaseScene {
   constructor() {
