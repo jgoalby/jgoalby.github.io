@@ -8,7 +8,7 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
     /** @type {EventPlugin} */
     this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
-    // Listen out for things.
+    // Listen out for window messages that we would like to handle.
     window.addEventListener('resize', () => { this.resize() });
     window.addEventListener("keydown", (e) => { this.handleKeydown(e) }, false);
   }
@@ -28,9 +28,12 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
    */
   getVersion() { return undefined; }
 
-  // Called on every resize event.
+  /**
+   * Called on every resize event.
+   * 
+   * @returns {void}
+   */
   resize() {
-    console.log("In resize");
     // The current width and height.
     var w = window.innerWidth;   
     var h = window.innerHeight;
@@ -44,9 +47,12 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
     window.setTimeout(() => { this.onResizeTimeout() }, 5);
   }
 
-  // Called after a short timeout for the case of iPad strange behavior.
+  /**
+   * Called after a short timeout for the case of iPad strange behavior.
+   * 
+   * @returns {void}
+   */
   onResizeTimeout() {
-    console.log("In onResizeTimeout");
     // The current width and height.
     var w = window.innerWidth;   
     var h = window.innerHeight;

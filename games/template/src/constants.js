@@ -1,30 +1,26 @@
-import { doit } from './styles.js';
-
-doit();
-
 // Master constants.
 const TITLE = 'Template';
 const VERSION = '0.1'
 const AUTHOR = 'John Goalby';
 
 // General constants.
-class General {
-  static get WIDTH()                     { return window.innerWidth; }
-  static get HEIGHT()                    { return window.innerHeight; }
-  static get TYPE()                      { return Phaser.AUTO; }
-  static get PARENT()                    { return 'main'; }
-  static get TITLE()                     { return TITLE; }
-  static get VERSION()                   { return VERSION; }
-  static get ASSETS_PATH()               { return './src/assets/'; }
-  static get CREATE_CONTAINER()          { return true; }
+const General = {
+  WIDTH:             window.innerWidth,
+  HEIGHT:            window.innerHeight,
+  TYPE:              Phaser.AUTO,
+  PARENT:            'main',
+  TITLE:             TITLE,
+  VERSION:           VERSION,
+  ASSETS_PATH:       './src/assets/',
+  CREATE_CONTAINER:  true,
 }
 
 // Physics constants.
-class Physics {
-  static get PHYSICS()                   { return 'arcade'; }
-  static get X()                         { return 0; }
-  static get Y()                         { return 0; }
-  static get DEBUG()                     { return false; }
+const Physics = {
+  PHYSICS:           'arcade',
+  X:                 0,
+  Y:                 0,
+  DEBUG:             false,
 }
 
 // Styles constants for how various elements look.
@@ -144,32 +140,32 @@ const NewStyles = {
 }
 
 // Regular events constants.
-class Events {
-  static get SETTING_CHANGED()           { return 'SETTING_CHANGED'; }
-  static get SETTING_ACTION()            { return 'SETTING_ACTION'; }
-  static get NOTIFICATION()              { return 'NOTIFICATION'; }
-  static get KEYBOARD()                  { return 'KEYBOARD'; }
-  static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
-  static get CACHE_EVENT()               { return 'CACHE_EVENT'; }
+const Events = {
+  SETTING_CHANGED: 'SETTING_CHANGED',
+  SETTING_ACTION:  'SETTING_ACTION',
+  NOTIFICATION:    'NOTIFICATION',
+  KEYBOARD:        'KEYBOARD',
+  CLEAR_CACHE:     'CLEAR_CACHE',
+  CACHE_EVENT:     'CACHE_EVENT',
 };
 
 // Notification levels.
-class NotificationLevels {
-  static get INFO()                      { return 'INFO'; }
-  static get WARN()                      { return 'WARN'; }
-  static get ERROR()                     { return 'ERROR'; }
-  static get EXCEPTION()                 { return 'EXCEPTION'; }
-};
+const NotificationLevels = {
+  INFO:            'INFO',
+  WARN:            'WARN',
+  ERROR:           'ERROR',
+  EXCEPTION:       'EXCEPTION',
+}
 
 // Service Worker events constants. If you change anything in there then you need to also change
 // them in the service-worker.js code as it cannot import this file. Luckily, this doesn't change often.
-class ServiceWorkerEvents {
-  static get INIT()                      { return 'INIT'; }
-  static get CONFIG()                    { return 'CONFIG'; }
-  static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
-  static get CACHE_EVENT()               { return 'CACHE_EVENT'; }
-  static get CACHE_CLEARED()             { return 'CACHE_CLEARED'; }
-  static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
+const ServiceWorkerEvents = {
+  INIT:            'INIT',
+  CONFIG:          'CONFIG',
+  CLEAR_CACHE:     'CLEAR_CACHE',
+  CACHE_EVENT:     'CACHE_EVENT',
+  CACHE_CLEARED:   'CACHE_CLEARED',
+  CACHE_MESSAGE:   'CACHE_MESSAGE',
 };
 
 // Settings types we support.
@@ -201,8 +197,14 @@ const PLUGIN_INFO = {
   INTROSPECT_MAPPING: 'introspect',
   CACHE_KEY: 'CachePlugin',
   CACHE_MAPPING: 'cache',
+  STYLES_KEY: 'StylesPlugin',
+  STYLES_MAPPING: 'styles',
   AUDIO_KEY: 'AudioPlugin',
   AUDIO_MAPPING: 'audio',
+  REFLECTION_KEY: 'ReflectionPlugin',
+  REFLECTION_MAPPING: 'reflection',
+  GENAI_KEY: 'GenAIPlugin',
+  GENAI_MAPPING: 'genai',
   FIREBASE_KEY: 'FirebasePlugin',
   FIREBASE_MAPPING: 'firebase'
 }
@@ -212,7 +214,7 @@ const PLUGIN_INFO = {
 
 // The exported class that contains all of the constants.
 export default class Constants {
-  static getCredits() {
+  static get credits() {
     // Fully compiled credits string.
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6`;
   }

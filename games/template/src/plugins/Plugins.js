@@ -7,6 +7,9 @@ import ConsolePlugin from './ConsolePlugin.js';
 import NotificationPlugin from './NotificationPlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
 import CachePlugin from './CachePlugin.js';
+import StylesPlugin from './StylesPlugin.js';
+import ReflectionPlugin from './ReflectionPlugin.js';
+import GenAIPlugin from './GenAIPlugin.js';
 import AudioPlugin from './AudioPlugin.js';
 //import FirebasePlugin from './FirebasePlugin.js';
 
@@ -26,6 +29,9 @@ const global_plugins = [
   NotificationPlugin.options,
   IntrospectPlugin.options,
   CachePlugin.options,
+  StylesPlugin.options,
+  ReflectionPlugin.options,
+  GenAIPlugin.options,
   AudioPlugin.options,
   //FirebasePlugin.options,
 ]

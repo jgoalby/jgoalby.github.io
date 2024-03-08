@@ -5,13 +5,13 @@
 
 // Duplicate the constants for service worker events. If you change these then you need
 // to also change them in constants.js.
-class ServiceWorkerEvents {
-  static get INIT()                      { return 'INIT'; }
-  static get CONFIG()                    { return 'CONFIG'; }
-  static get CLEAR_CACHE()               { return 'CLEAR_CACHE'; }
-  static get CACHE_EVENT()               { return 'CACHE_EVENT'; }
-  static get CACHE_CLEARED()             { return 'CACHE_CLEARED'; }
-  static get CACHE_MESSAGE()             { return 'CACHE_MESSAGE'; }
+const ServiceWorkerEvents = {
+  INIT:           'INIT',
+  CONFIG:         'CONFIG',
+  CLEAR_CACHE:    'CLEAR_CACHE',
+  CACHE_EVENT:    'CACHE_EVENT',
+  CACHE_CLEARED:  'CACHE_CLEARED',
+  CACHE_MESSAGE:  'CACHE_MESSAGE',
 };
 
 // The exported class that contains all of the constants.
@@ -29,6 +29,7 @@ class Constants {
 const cacheName = "cache-v1";
 
 /**
+ * Install the service worker and cache the base resources we need.
  * 
  * @param {ExtendableEvent} event 
  */
@@ -45,11 +46,7 @@ function installEventHandler(event) {
 }
 
 /**
- * Install the service worker and cache the base resources we need.
- */
-self.addEventListener('install', installEventHandler);
-
-/**
+ * Cache space is limited, so clean up old caches (versions).
  * 
  * @param {ExtendableEvent} event 
  */
@@ -69,14 +66,11 @@ function activateEventHandler(event) {
 }
 
 /**
- * Cache space is limited, so clean up old caches (versions).
- */
-self.addEventListener('activate', activateEventHandler);
-
-/**
  * Message from the main thread.
+ * 
+ * @param {any} event
  */
-self.addEventListener('message', async event => {
+async function messageEventHandler(event) {
   // Make sure we have an event source.
   if (event.source && event.data) {
     // We want to do this only once, and we know the client will send this message.
@@ -102,7 +96,7 @@ self.addEventListener('message', async event => {
       self.sendMessage({ type: Constants.SW_EVENTS.CACHE_EVENT, message: Constants.SW_EVENTS.CACHE_CLEARED, success: ret });
     }
   }
-});
+}
 
 /**
  * Send a message back to the main thread.
@@ -115,6 +109,8 @@ self.sendMessage = function(message) {
 }
 
 /**
+ * Fetch handler for the service worker. The goal is to get out of the way when
+ * online and to be fully functional when offline.
  * 
  * @param {FetchEvent} event 
  * @returns 
@@ -169,8 +165,8 @@ function fetchEventHandler(event) {
   })());
 }
 
-/**
- * Fetch handler for the service worker. The goal is to get out of the way when
- * online and to be fully functional when offline.
- */
+// Add the event listeners for the functions above.
+self.addEventListener('install', installEventHandler);
+self.addEventListener('activate', activateEventHandler);
+self.addEventListener('message', messageEventHandler);
 self.addEventListener('fetch', fetchEventHandler);

@@ -1,3 +1,35 @@
+import Constants from '../constants.js';
+
+export default class StylesPlugin extends Phaser.Plugins.BasePlugin {
+  constructor(pluginManager) {
+    super(pluginManager);
+  }
+
+  /**
+   * Destroy the plugin and clean up after ourselves.
+   */
+  destroy() {
+    // MUST do this.
+    super.destroy();
+  }
+
+  /**
+   * Local plugin so we do not provide a version.
+   * 
+   * @returns {string | undefined} The version of the plugin.
+   */
+  getVersion() { return undefined; }
+
+  static get options() {
+    return { 
+      key: Constants.PLUGIN_INFO.STYLES_KEY, 
+      plugin: StylesPlugin, 
+      start: true,
+      mapping: Constants.PLUGIN_INFO.STYLES_MAPPING,
+    }
+  }
+}
+
 const isUndefined = o => typeof o === 'undefined'
 
 const nvl = (o, valueIfUndefined) => isUndefined(o) ? valueIfUndefined : o
@@ -100,8 +132,4 @@ function doit() {
 
   console.log(styles);
 
-}
-
-export {
-  doit
 }

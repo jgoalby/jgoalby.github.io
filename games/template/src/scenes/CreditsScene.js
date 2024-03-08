@@ -20,7 +20,7 @@ export default class CreditsScene extends BaseScene {
     this.heading.setOrigin(0.5, 0);
     this.heading.setY(50);
 
-    this.creditsText = this.add.text(0, 0, Constants.getCredits(), {
+    this.creditsText = this.add.text(0, 0, Constants.credits, {
       fontSize: '26px',
       color: '#fff',
     });

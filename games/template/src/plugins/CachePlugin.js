@@ -142,7 +142,8 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * @param {boolean} success Whether the cache was cleared successfully.
    */
   onCacheCleared(success) {
-    // Notify the user that the cache has been cleared.
+    // Notify the user that the cache has been cleared. The success value can be false if the cache is
+    // cleared twice or more in a row for example.
     this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Cache Cleared: ${success}` });
   }
 
@@ -166,5 +167,42 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
       start: true,
       mapping: Constants.PLUGIN_INFO.CACHE_MAPPING,
     }
+  }
+}
+
+/**
+ * Handle the keydown event.
+ * @param {KeyboardEvent} event The event.
+ */
+async function handleKeydown(event) {
+  // TODO: Somehow we will need to know the base URL. Can we get it from window?
+
+  console.log("FFS 1");
+
+  // TODO: Put in constants.
+  const cacheName = "cache-v1";
+
+  let cachedResponse = undefined;
+  let cacheKeyStr = "";
+
+  try {
+    const cache = await window.caches.open(cacheName);
+    cachedResponse = await cache.match('https://www.goalby.org/games/template/src/common.js');
+    const cacheKeys = await cache.keys();
+    for (let i = 0; i < cacheKeys.length; i++) {
+      cacheKeyStr += cacheKeys[i].url + " | ";
+    }
+  } catch (error) {
+    // Oh dear, there was an issue.
+    cachedResponse = undefined;
+  }
+
+  console.log("MAIN NUM 3!!! " + cacheKeyStr);
+
+  if (cachedResponse) {
+    const text = await cachedResponse.text();
+    console.log("MAIN 5: " + text);
+  } else {
+    console.log("MAIN NOT FOUND 2!!!");
   }
 }
