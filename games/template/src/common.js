@@ -11,12 +11,13 @@ function getActiveScene(sceneManager = undefined) {
   // Get the active scenes in reverse.
   const allActiveScenes = sceneMgr.getScenes(true, true);
 
-  if (allActiveScenes.length == 0) {
-    // Nothing to choose.
-    return undefined;
-  } else if (allActiveScenes.length == 1) {
+  // Check how many active scenes we have. Hopefully just one would be nice.
+  if (allActiveScenes.length == 1) {
     // There's a chosen one.
     return allActiveScenes[0];
+  } else if (allActiveScenes.length == 0) {
+    // Nothing to choose.
+    return undefined;
   } else {
     // Go through all of the active scenes.
     for (let i = 0; i < allActiveScenes.length; i++) {
@@ -26,7 +27,7 @@ function getActiveScene(sceneManager = undefined) {
       }
     }
 
-    // Just return the first one (which is the last one) even though it isn't visible?
+    // Just return the first one (which is the last one because we reversed order) even though it isn't visible?
     return allActiveScenes[0];
   }
 }

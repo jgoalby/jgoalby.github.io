@@ -209,9 +209,6 @@ const PLUGIN_INFO = {
   FIREBASE_MAPPING: 'firebase'
 }
 
-// TODO: Make a const for plugin names.
-// TODO: Change the above classes to variables when just return strings?
-
 // The exported class that contains all of the constants.
 export default class Constants {
   static get credits() {
