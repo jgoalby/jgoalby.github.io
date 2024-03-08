@@ -14,7 +14,8 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
       window.addEventListener('load', () => {
         // Register the service worker.
         navigator.serviceWorker.register('service-worker.js').then((registration) => {
-          console.info('Service worker registration successful.');
+          // Uncomment this to see the service worker registration.
+          //console.info('Service worker registration successful.');
         }, function(err) {
           // The service worker can fail for numerous reasons. This is async so nothing to do here.
           console.error('Service worker registration failed!', err);
