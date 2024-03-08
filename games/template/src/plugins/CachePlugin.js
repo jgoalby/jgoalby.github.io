@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getPlugin } from './PluginsHelpers.js'
+import BasePlugin from './BasePlugin.js'
 
 // Constants that only this plugin uses.
 const CATEGORY              = 'developer';
@@ -31,59 +31,17 @@ const pluginSettings = {
   }
 }
 
-export default class CachePlugin extends Phaser.Plugins.BasePlugin {
+export default class CachePlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
-
-    // Get the dependent plugins.
-
-    /** @type {SettingsPlugin} */
-    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
-
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
-    // If we can access the settings plugin.
-    if (this.settings) {
-      // Register all of the settings.
-      Object.keys(pluginSettings).forEach((key) => {
-        this.settings.registerSetting(pluginSettings[key]);
-      });
-    }
-
-    // If we can access the event plugin.
-    if (this.customevent) {
-      // We would like to know when the actions have changed so we can do stuff. Note that we
-      // do not care about the setting changes as we do not need to take immediate action on them.
-      this.customevent.on(Constants.EVENTS.SETTING_ACTION, this.onAction, this);
-
-      // We also are interested in cache events please.
-      this.customevent.on(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
-    }
   }
 
   /**
-   * Destroy the plugin and clean up after ourselves.
-   */
-  destroy() {
-    // We might not have the plugin, so check this first.
-    if (this.customevent) {
-      // Remove the listener.
-      this.customevent.off(Constants.EVENTS.SETTING_ACTION, this.onAction, this);
-      this.customevent.off(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
-      this.customevent = undefined;
-    }
-
-    // MUST do this.
-    super.destroy();
-  }
-
-  /**
-   * Local plugin so we do not provide a version.
+   * Get the plugin settings.
    * 
-   * @returns {string | undefined} The version of the plugin.
+   * @returns {Object} The plugin settings.
    */
-  getVersion() { return undefined; }
+  getPluginSettings() { return pluginSettings; }
 
   /**
    * Simple helper to get a setting value.
@@ -92,8 +50,12 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * @returns {any} the setting value.
    */
   getSettingValue(settingName) {
-    // Get the setting object, and then the value from that object.
-    return this.settings.getSetting(CATEGORY, settingName).value;
+    if (this.settings) {
+      // Get the setting object, and then the value from that object.
+      return this.settings.getSetting(CATEGORY, settingName).value;
+    } else {
+      return undefined;
+    }
   }
 
   /**
@@ -142,9 +104,11 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * @param {boolean} success Whether the cache was cleared successfully.
    */
   onCacheCleared(success) {
-    // Notify the user that the cache has been cleared. The success value can be false if the cache is
-    // cleared twice or more in a row for example.
-    this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Cache Cleared: ${success}` });
+    if (this.customevent) {
+      // Notify the user that the cache has been cleared. The success value can be false if the cache is
+      // cleared twice or more in a row for example.
+      this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Cache Cleared: ${success}` });
+    }
   }
 
   /**
@@ -152,11 +116,13 @@ export default class CachePlugin extends Phaser.Plugins.BasePlugin {
    * 
    * @param {any} setting The setting that has changed.
    */
-  onAction(setting) {
-    // We want to make an immediate change when the setting changes.
-    if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE_OPTION)) {
-      // Emit an event to ask anyone listening to clear the cache.
-      this.customevent.emit(Constants.EVENTS.CLEAR_CACHE, { });
+  onSettingAction(setting) {
+    if (this.customevent) {
+      // We want to make an immediate change when the setting changes.
+      if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE_OPTION)) {
+        // Emit an event to ask anyone listening to clear the cache.
+        this.customevent.emit(Constants.EVENTS.CLEAR_CACHE, { });
+      }
     }
   }
 

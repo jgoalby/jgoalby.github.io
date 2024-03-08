@@ -83,6 +83,11 @@ export default class AudioPlugin extends BasePlugin {
     }
   }
 
+  /**
+   * Called when a setting is changed.
+   * 
+   * @param {any} setting The changed setting.
+   */
   onSettingChanged(setting) {
     // We want to make an immediate change when the music setting changes.
     if ((setting.category === CATEGORY) && (setting.name === MUSIC_OPTION)) {

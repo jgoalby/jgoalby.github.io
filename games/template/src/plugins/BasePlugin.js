@@ -8,13 +8,13 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
     // Get the dependent plugins.
 
     /** @type {SettingsPlugin} */
-    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
+    this._settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
 
     /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+    this._customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // If we can access the settings plugin.
-    if (this.settings) {
+    if (this._settings) {
       // Get the plugin settings from derived classes if implemented.
       const pluginSettings = this.getPluginSettings();
 
@@ -22,28 +22,37 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
       if (pluginSettings) {
         // Register all of the settings.
         Object.keys(pluginSettings).forEach((key) => {
-          this.settings.registerSetting(pluginSettings[key]);
+          this._settings.registerSetting(pluginSettings[key]);
         });
       }
     }
 
     // If we can access the event plugin.
-    if (this.customevent) {
+    if (this._customevent) {
       // We would like to know when notification events happen so we can do stuff.
-      this.customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);      
+      this._customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);      
 
       // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this._customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+
+      // We would like to know when the actions have changed so we can do stuff. Note that we
+      // do not care about the setting changes as we do not need to take immediate action on them.
+      this._customevent.on(Constants.EVENTS.SETTING_ACTION, this.onSettingAction, this);
+
+      // We also are interested in cache events please.
+      this._customevent.on(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
     }
   }
 
   destroy() {
     // We might not have the event plugin, so check this first.
-    if (this.customevent) {
+    if (this._customevent) {
       // Remove the listener.
-      this.customevent.off(Constants.EVENTS.NOTIFICATION, this.onNotification, this);
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-      this.customevent = undefined;
+      this._customevent.off(Constants.EVENTS.NOTIFICATION, this.onNotification, this);
+      this._customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      this._customevent.off(Constants.EVENTS.SETTING_ACTION, this.onSettingAction, this);
+      this._customevent.off(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
+      this._customevent = undefined;
     }
 
     // MUST do this.
@@ -64,6 +73,10 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    */
   getPluginSettings() { return undefined; }
 
+  get settings() { return this._settings; }
+  
+  get customevent() { return this._customevent; }
+
   /**
    * Called when a notification event occurs.
    * 
@@ -77,4 +90,18 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    * @param {any} setting The setting that changed.
    */
   onSettingChanged(setting) { }
+
+  /**
+   * Action happened in settings.
+   * 
+   * @param {any} setting The setting that has changed.
+   */
+  onSettingAction(setting) { }
+
+  /**
+   * Called in response to messages.
+   * 
+   * @param {any} eventData The event data sent.
+   */
+  onCacheEvent(eventData) { }
 }
