@@ -1,3 +1,4 @@
+import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
 import { Types, defineComponent } from '../lib/bitECS/index.mjs';
@@ -9,7 +10,8 @@ export const GetInputScene = defineComponent({
 
 export default class InputScene extends BaseScene {
   constructor() {
-    super('Input');
+    super(Constants.SCENES.INPUT_SCENE);
+
     this.text = null;
     this.textBounds = null;
     this.nameInputElement = null;
@@ -60,7 +62,7 @@ export default class InputScene extends BaseScene {
         if (inputText.value !== '') {
           this.nameInputElement.removeListener('click');
           this.nameInputElement.setVisible(false);          
-          this.gotoScene(Scenes.MENU_SCENE);
+          this.gotoScene(Constants.SCENES.MENU_SCENE);
         } else {
           this.nameInputElement.scene.tweens.add({
             targets: this.text,

@@ -10,7 +10,8 @@ import Scenes from './Scenes.js';
 
 export default class OptionsScene extends BaseScene {
   constructor() {
-    super('Options');
+    super(Constants.SCENES.OPTIONS_SCENE);
+
     this.heading = undefined;
     this.mainMenuButton = undefined;
 
@@ -71,7 +72,7 @@ export default class OptionsScene extends BaseScene {
       }
     }
 
-    this.mainMenuButton = new Button(this, { label: 'Menu', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
+    this.mainMenuButton = new Button(this, { label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
   }
 
   resize() {

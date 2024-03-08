@@ -43,6 +43,11 @@ export default class BaseScene extends Phaser.Scene {
     console.warn('BaseScene.resize() not implemented');
   }
 
+  /**
+   * Simple helper to determine if the device is in landscape mode.
+   * 
+   * @returns {boolean} True if the device is in landscape mode.
+   */
   isLandscape() {
     return (window.innerWidth > window.innerHeight);
   }

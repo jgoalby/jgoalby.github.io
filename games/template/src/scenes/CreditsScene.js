@@ -6,7 +6,8 @@ import { getPluginListAsString } from '../plugins/PluginsHelpers.js'
 
 export default class CreditsScene extends BaseScene {
   constructor() {
-    super('Credits');
+    super(Constants.SCENES.CREDITS_SCENE);
+
     this.heading = undefined;
     this.creditsText = undefined;
     this.pluginsText = undefined;
@@ -20,7 +21,7 @@ export default class CreditsScene extends BaseScene {
     this.heading.setOrigin(0.5, 0);
     this.heading.setY(50);
 
-    this.creditsText = this.add.text(0, 0, Constants.credits, {
+    this.creditsText = this.add.text(0, 0, Constants.CREDITS, {
       fontSize: '26px',
       color: '#fff',
     });
@@ -36,9 +37,9 @@ export default class CreditsScene extends BaseScene {
 
     this.tweens.add({targets: this.heading, y: -500, ease: 'Power1', duration: 5000, delay: 1000});
     this.tweens.add({targets: this.creditsText, y: -500, ease: 'Power1', duration: 10000, delay: 1000});
-    this.tweens.add({targets: this.pluginsText, y: -500 - this.creditsText.height, ease: 'Power1', duration: 10000, delay: 1000, onComplete: () => { this.gotoScene(Scenes.MENU_SCENE) }});
+    this.tweens.add({targets: this.pluginsText, y: -500 - this.creditsText.height, ease: 'Power1', duration: 10000, delay: 1000, onComplete: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) }});
 
-    this.button = new Button(this, { label: 'Menu', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
+    this.button = new Button(this, { label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
   }
 
   resize() {

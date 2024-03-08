@@ -5,7 +5,8 @@ import Scenes from './Scenes.js';
 
 export default class InstructionsScene extends BaseScene {
   constructor() {
-    super('Instructions');
+    super(Constants.SCENES.INSTRUCTIONS_SCENE);
+
     this.heading = undefined;
     this.text = undefined;
     this.mainMenuButton = undefined;
@@ -37,8 +38,8 @@ export default class InstructionsScene extends BaseScene {
       '\n\nGood Luck!',
     ]);
 
-    this.mainMenuButton = new Button(this, { label: 'Chicken Out', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
-    this.gameButton = new Button(this, { label: 'Lets Go!', actionFn: () => { this.gotoScene(Scenes.GAME_SCENE) } });
+    this.mainMenuButton = new Button(this, { label: 'Chicken Out', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
+    this.gameButton = new Button(this, { label: 'Lets Go!', actionFn: () => { this.gotoScene(Constants.SCENES.GAME_SCENE) } });
   }
 
   resize() {

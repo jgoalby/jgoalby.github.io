@@ -169,60 +169,77 @@ const ServiceWorkerEvents = {
 };
 
 // Settings types we support.
-const SETTINGS_TYPES = {
-  boolean: 'boolean',
-  string: 'string',
-  number: 'number',
-  range: 'range',
-  function: 'function',
+const SettingsTypes = {
+  boolean:         'boolean',
+  string:          'string',
+  number:          'number',
+  range:           'range',
+  function:        'function',
 };
 
-// Plugin keys and mappings as they are used in multiple places.
-const PLUGIN_INFO = {
-  INIT_SETUP_KEY: 'InitSetupPlugin',
-  INIT_SETUP_MAPPING: 'initsetup',
-  EVENT_KEY: 'EventPlugin',
-  EVENT_MAPPING: 'customevent',
-  SETTINGS_KEY: 'SettingsPlugin',
-  SETTINGS_MAPPING: 'settings',
-  SERVICE_WORKER_KEY: 'ServiceWorkerPlugin',
+// Plugin keys and mappings as they are used in multiple places. Make sure to define
+// both the KEY and MAPPING for each plugin.
+const PluginInfo = {
+  INIT_SETUP_KEY:         'InitSetupPlugin',
+  INIT_SETUP_MAPPING:     'initsetup',
+  EVENT_KEY:              'EventPlugin',
+  EVENT_MAPPING:          'customevent',
+  SETTINGS_KEY:           'SettingsPlugin',
+  SETTINGS_MAPPING:       'settings',
+  SERVICE_WORKER_KEY:     'ServiceWorkerPlugin',
   SERVICE_WORKER_MAPPING: 'serviceworker',
-  WINDOW_KEY: 'WindowPlugin',
-  WINDOW_MAPPING: 'windowplugin',
-  CONSOLE_KEY: 'ConsolePlugin',
-  CONSOLE_MAPPING: 'console',
-  NOTIFICATION_KEY: 'NotificationPlugin',
-  NOTIFICATION_MAPPING: 'notification',
-  INTROSPECT_KEY: 'IntrospectPlugin',
-  INTROSPECT_MAPPING: 'introspect',
-  CACHE_KEY: 'CachePlugin',
-  CACHE_MAPPING: 'cache',
-  STYLES_KEY: 'StylesPlugin',
-  STYLES_MAPPING: 'styles',
-  AUDIO_KEY: 'AudioPlugin',
-  AUDIO_MAPPING: 'audio',
-  REFLECTION_KEY: 'ReflectionPlugin',
-  REFLECTION_MAPPING: 'reflection',
-  GENAI_KEY: 'GenAIPlugin',
-  GENAI_MAPPING: 'genai',
-  FIREBASE_KEY: 'FirebasePlugin',
-  FIREBASE_MAPPING: 'firebase'
+  WINDOW_KEY:             'WindowPlugin',
+  WINDOW_MAPPING:         'windowplugin',
+  CONSOLE_KEY:            'ConsolePlugin',
+  CONSOLE_MAPPING:        'console',
+  NOTIFICATION_KEY:       'NotificationPlugin',
+  NOTIFICATION_MAPPING:   'notification',
+  INTROSPECT_KEY:         'IntrospectPlugin',
+  INTROSPECT_MAPPING:     'introspect',
+  CACHE_KEY:              'CachePlugin',
+  CACHE_MAPPING:          'cache',
+  STYLES_KEY:             'StylesPlugin',
+  STYLES_MAPPING:         'styles',
+  AUDIO_KEY:              'AudioPlugin',
+  AUDIO_MAPPING:          'audio',
+  REFLECTION_KEY:         'ReflectionPlugin',
+  REFLECTION_MAPPING:     'reflection',
+  GENAI_KEY:              'GenAIPlugin',
+  GENAI_MAPPING:          'genai',
+  FIREBASE_KEY:           'FirebasePlugin',
+  FIREBASE_MAPPING:       'firebase',
+}
+
+// The scene identifiers.
+const Scenes = {
+  BOOT_SCENE:             'Boot',
+  PRELOADER_SCENE:        'Preloader',
+  INPUT_SCENE:            'Input',
+  MENU_SCENE:             'Menu',
+  OPTIONS_SCENE:          'Options',
+  CREDITS_SCENE:          'Credits',
+  LEADERBOARD_SCENE:      'Leaderboard',
+  INSTRUCTIONS_SCENE:     'Instructions',
+  GAME_SCENE:             'Game',
+  GAMEOVER_SCENE:         'GameOver',
 }
 
 // The exported class that contains all of the constants.
 export default class Constants {
-  static get credits() {
+  static get CREDITS() {
     // Fully compiled credits string.
     return `${TITLE} : ${VERSION}\nCreated By: ${AUTHOR}\nMade With: Phaser ${Phaser.VERSION}, Javascript ES6`;
   }
 
+  // Accessors for the constants.
   static get GENERAL() { return General; }
   static get PHYSICS() { return Physics; }
   static get STYLES() { return Styles; }
   static get EVENTS() { return Events; }
   static get NOTIFICATION_LEVELS() { return NotificationLevels; }
-  static get SETTINGS_TYPES() { return SETTINGS_TYPES; }
-  static get PLUGIN_INFO() { return PLUGIN_INFO; }
+  static get SETTINGS_TYPES() { return SettingsTypes; }
+  static get PLUGIN_INFO() { return PluginInfo; }
+  static get SCENES() { return Scenes; }
 
   // If you change the name of this, then you should also change it in service-worker.js.
   static get SW_EVENTS() { return ServiceWorkerEvents; }

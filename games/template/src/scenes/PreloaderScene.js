@@ -4,7 +4,8 @@ import Scenes from './Scenes.js';
 
 export default class PreloaderScene extends BaseScene {
   constructor() {
-    super('Preloader');
+    super(Constants.SCENES.PRELOADER_SCENE);
+
     this.splash_landscape = null;
     this.splash_portrait = null;
     this.continueText = null;
@@ -104,10 +105,10 @@ export default class PreloaderScene extends BaseScene {
       percentText.destroy();
       assetText.destroy();
       this.input.keyboard.once('keydown', () => {
-        this.gotoScene(Scenes.INPUT_SCENE);
+        this.gotoScene(Constants.SCENES.INPUT_SCENE);
       });
       this.input.once(Phaser.Input.Events.POINTER_DOWN, () => {
-        this.gotoScene(Scenes.INPUT_SCENE);
+        this.gotoScene(Constants.SCENES.INPUT_SCENE);
       });
     });
 

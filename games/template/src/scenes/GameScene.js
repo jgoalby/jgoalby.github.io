@@ -1,9 +1,11 @@
+import Constants from '../constants.js';
 import Enemy from '../components/Enemy.js';
 import Path from '../components/Paths.js';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {
-    super('Game');
+    super(Constants.SCENES.GAME_SCENE);
+
     this.colliders = [];
     this.reloaded = true;
     this.paths = {};
@@ -271,7 +273,7 @@ export default class GameScene extends Phaser.Scene {
     this.colliders = [];
     this.enemyGroup = [];
     this.toRespawn = 0;
-    this.scene.start('GameOver');
+    this.scene.start(Constants.SCENES.GAMEOVER_SCENE);
   }
 
   update() {

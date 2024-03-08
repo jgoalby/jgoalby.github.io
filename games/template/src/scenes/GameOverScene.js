@@ -1,10 +1,12 @@
+import Constants from '../constants.js';
 import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 import Scenes from './Scenes.js';
 
 export default class GameOverScene extends BaseScene {
   constructor() {
-    super('GameOver');
+    super(Constants.SCENES.GAMEOVER_SCENE);
+
     this.restartButton = null;
     this.mainMenuButton = null;
     this.ripText = null;
@@ -36,8 +38,8 @@ export default class GameOverScene extends BaseScene {
       `\nHere lies our great \nsoldier ${player} who died \nfighting the enemy.\n\n${player} got ${score} points.`,
     ]);
 
-    this.restartButton = this.button = new Button(this, { label: 'Restart', actionFn: () => { this.gotoScene(Scenes.GAME_SCENE) } });
-    this.mainMenuButton = this.button = new Button(this, { label: 'Rest In Peace', actionFn: () => { this.gotoScene(Scenes.MENU_SCENE) } });
+    this.restartButton = this.button = new Button(this, { label: 'Restart', actionFn: () => { this.gotoScene(Constants.SCENES.GAME_SCENE) } });
+    this.mainMenuButton = this.button = new Button(this, { label: 'Rest In Peace', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
   }
 
   resize() {

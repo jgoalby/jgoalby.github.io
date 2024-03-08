@@ -8,6 +8,9 @@ function getActiveScene(sceneManager = undefined) {
   // Figure out which scene manager to use based on if one was passed in or not.
   const sceneMgr = sceneManager ? sceneManager : window.game.scene;
 
+  // No scene manager, no active scene.
+  if (!sceneMgr) { return undefined; }
+
   // Get the active scenes in reverse.
   const allActiveScenes = sceneMgr.getScenes(true, true);
 
