@@ -29,6 +29,11 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
 
     // If we can access the event plugin.
     if (this._customevent) {
+      // Does a derived class have a onNotification method?
+      console.log("Has own prop: " + Object.hasOwnProperty('onNotification'));
+
+
+
       // We would like to know when notification events happen so we can do stuff.
       this._customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);      
 
