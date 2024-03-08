@@ -1,11 +1,11 @@
 import Constants from '../constants.js';
-import { getPlugin } from './PluginsHelpers.js'
+import BasePlugin from './BasePlugin.js'
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
-const CATEGORY = 'sound';
+const CATEGORY      = 'sound';
 const MUSIC_OPTION  = 'musicOption';
 const VOLUME_OPTION = 'volumeOption';
-const SOUND_OPTION    = 'soundOption';
+const SOUND_OPTION  = 'soundOption';
 
 const pluginSettings = {
   MUSIC_OPTION:{
@@ -32,54 +32,13 @@ const pluginSettings = {
   }
 }
 
-export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
+export default class AudioPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
     // The background music object.
     this._music = null;
-    
-    // Get the dependent plugins.
-
-    /** @type {SettingsPlugin} */
-    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
-
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
-    // If we can access the settings plugin.
-    if (this.settings) {
-      // Register all of the settings.
-      Object.keys(pluginSettings).forEach((key) => {
-        this.settings.registerSetting(pluginSettings[key]);
-      });
-    }
-
-    // Make sure we have the event plugin.
-    if (this.customevent) {
-      // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-    }
   }
-
-  destroy() {
-    // We might not have the plugin, so check this first.
-    if (this.customevent) {
-      // Remove the listener.
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-      this.customevent = undefined;
-    }
-
-    // MUST do this.
-    super.destroy();
-  }
-
-  /**
-   * Local plugin so we do not provide a version.
-   * 
-   * @returns {string | undefined} The version of the plugin.
-   */
-  getVersion() { return undefined; }
 
   /**
    * Get the plugin settings.
