@@ -21,6 +21,7 @@ export default class NotificationPlugin extends BasePlugin {
    * @param {NotificationEvent} notification The notification event object.
    */
   onNotification(notification) {
+    console.log("calling the new code");
     // Get the currently active scene, could be undefined.
     const activeScene = getActiveScene();
 
