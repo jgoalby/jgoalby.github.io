@@ -81,6 +81,13 @@ export default class AudioPlugin extends Phaser.Plugins.BasePlugin {
    */
   getVersion() { return undefined; }
 
+  /**
+   * Get the plugin settings.
+   * 
+   * @returns {Object} The plugin settings.
+   */
+  getPluginSettings() { return pluginSettings; }
+
   addMusic(sound) {
     // Set the music.
     this._music = sound;
