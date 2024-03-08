@@ -30,9 +30,33 @@ export default class ReflectionPlugin extends Phaser.Plugins.BasePlugin {
   }
 }
 
+/*someFunc(level) {
+  console.log("Func str1: " + this.getNotificationTextColor);
+  console.log("Func str2: " + this.getFunctions);
+  console.log("Funcs: " + this.getFunctions(this));
+  console.log("All funcs: " + this.getFunctions(this, true));
+  console.log("Desc: " + this.getFunctions['description']);
+
+  console.log("Own prop names: " + Object.getOwnPropertyNames(this))
+
+  const funks = this.getFunctions(this);
+
+  funks.map((e) => {
+    console.log("Func: " + e + " type: " + (typeof this[e]));
+  })
+
+  let protoB = Object.getPrototypeOf(this);
+  console.log("protoB");
+  console.log(Object.getOwnPropertyNames(protoB));
+
+  const funks2 = Object.getOwnPropertyNames(protoB);
+
+  funks2.map((e) => {
+    console.log("Func2: " + e + " type: " + (typeof this[e]));
+  })
+}*/
 
 function getFunctions(theObject, getAllFunctions = false) {
-
   // Holder for the properties we capture as we go down prototype chain.
   const props = [];
 

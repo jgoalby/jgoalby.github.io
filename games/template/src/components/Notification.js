@@ -5,8 +5,15 @@ const NOTIFICATION_TWEEN_EASE = 'Sine.out';
 const NOTIFICATION_TWEEN_IN_DURATION_MS = 3000;
 
 // In the margins.
-const MARGIN_TEXT = 20;
+const MARGIN_TEXT  = 20;
 const MARGIN_PANEL = 20;
+
+// Map from notification level to style.
+const mapLevelToStyle = { };
+mapLevelToStyle[Constants.NOTIFICATION_LEVELS.INFO]      = Constants.STYLES.NOTIFICATION_TEXT_INFO;
+mapLevelToStyle[Constants.NOTIFICATION_LEVELS.WARN]      = Constants.STYLES.NOTIFICATION_TEXT_WARN;
+mapLevelToStyle[Constants.NOTIFICATION_LEVELS.ERROR]     = Constants.STYLES.NOTIFICATION_TEXT_ERROR;
+mapLevelToStyle[Constants.NOTIFICATION_LEVELS.EXCEPTION] = Constants.STYLES.NOTIFICATION_TEXT_EXCEPTION;
 
 export default class Notification extends Phaser.GameObjects.Container {
   /**
@@ -81,62 +88,14 @@ export default class Notification extends Phaser.GameObjects.Container {
     this.scene.add.existing(this);
   }
 
-  getFunctions(theObject, getAllFunctions = false) {
-    this.getFunctions['description'] = "Get all functions of an object. If getAllFunctions is false, only the object's own functions are returned. If getAllFunctions is true, all functions are returned.";
-
-    const props = [];
-    let curObj = theObject;
-
-    while (curObj = Object.getPrototypeOf(curObj)) {
-      props.push(...Object.getOwnPropertyNames(curObj));
-      if (!getAllFunctions) break;
-    }
-
-    return props.sort().filter((e, i, arr) => { 
-      if (e!=arr[i+1] && typeof theObject[e] == 'function') return true;
-    })
-  }
-
+  /**
+   * Returns a style fot the passed in notification level.
+   * 
+   * @param {any} level Level.
+   * @returns 
+   */
   getNotificationTextColor(level) {
-
-
-
-    console.log("Func str1: " + this.getNotificationTextColor);
-    console.log("Func str2: " + this.getFunctions);
-    console.log("Funcs: " + this.getFunctions(this));
-    console.log("All funcs: " + this.getFunctions(this, true));
-    console.log("Desc: " + this.getFunctions['description']);
-
-    console.log("Own prop names: " + Object.getOwnPropertyNames(this))
-
-    const funks = this.getFunctions(this);
-
-    funks.map((e) => {
-      console.log("Func: " + e + " type: " + (typeof this[e]));
-    })
-
-    let protoB = Object.getPrototypeOf(this);
-    console.log("protoB");
-    console.log(Object.getOwnPropertyNames(protoB));
-
-    const funks2 = Object.getOwnPropertyNames(protoB);
-
-    funks2.map((e) => {
-      console.log("Func2: " + e + " type: " + (typeof this[e]));
-    })
-
-    switch (level) {
-      case Constants.NOTIFICATION_LEVELS.INFO:
-        return Constants.STYLES.NOTIFICATION_TEXT_INFO;
-      case Constants.NOTIFICATION_LEVELS.WARN:
-        return Constants.STYLES.NOTIFICATION_TEXT_WARN;
-      case Constants.NOTIFICATION_LEVELS.ERROR:
-        return Constants.STYLES.NOTIFICATION_TEXT_ERROR;
-      case Constants.NOTIFICATION_LEVELS.EXCEPTION:
-        return Constants.STYLES.NOTIFICATION_TEXT_EXCEPTION;
-      default:
-        return Constants.STYLES.NOTIFICATION_TEXT_INFO;
-    }
+    return mapLevelToStyle[level];
   }
 
   /**
