@@ -37,6 +37,8 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
       const baseFn = BasePlugin.prototype.onNotification;
       const thisFn = this.onNotification;
 
+      console.log(this.constructor.name);
+
       if (baseFn === thisFn) {
         console.log("Base and this are the same.");
       } else {
