@@ -109,3 +109,9 @@ Every time you mega evolve a Pokémon you have to watch the animation. Much like
 # Summary
 There's a lot that goes into creating a product. Having people in-house that use the product is important. It is essential though to see how your actual customers are using it to really understand what is working and how to improve it.
 
+# Some Questions / Todos
+How does Niantic attract new users?
+Would focus groups be useful?
+Go out with users on watch them.
+Use the game themselves (maybe they do).
+Look on forums like Reddit.
