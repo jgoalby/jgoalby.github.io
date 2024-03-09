@@ -41,10 +41,10 @@ export default class ConsolePlugin extends BasePlugin {
    */
   onKeyboard(keyEvent) {
     // Right now this is hardcoded. It would be nice to make it configurable.
-    if ((keyEvent.code == "KeyD") && (keyEvent.ctrlKey)) {
+    /*if ((keyEvent.code == "KeyD") && (keyEvent.ctrlKey)) {
       // Toggle the console.
       this.toggle();
-    }
+    }*/
   }
 
   /**

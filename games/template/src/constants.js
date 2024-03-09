@@ -204,6 +204,8 @@ const PluginInfo = {
   AUDIO_MAPPING:          'audio',
   REFLECTION_KEY:         'ReflectionPlugin',
   REFLECTION_MAPPING:     'reflection',
+  SHORTCUTS_KEY:          'ShortcutsPlugin',
+  SHORTCUTS_MAPPING:      'shortcuts',
   GENAI_KEY:              'GenAIPlugin',
   GENAI_MAPPING:          'genai',
   FIREBASE_KEY:           'FirebasePlugin',
