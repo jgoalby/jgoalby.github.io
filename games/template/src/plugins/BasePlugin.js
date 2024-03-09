@@ -29,43 +29,29 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
 
     // If we can access the event plugin.
     if (this._customevent) {
-      const myProto = Object.getPrototypeOf(this);
+      // If the derived class has implemented the method, then setup the event handler. By doing this
+      // we can avoid having events sent to us when the derived class does not override the method.
 
-      // Does a derived class have a onNotification method?
-      console.log("Has own prop: " + myProto.hasOwnProperty('onNotification'));
-
-      const baseFn = BasePlugin.prototype.onNotification;
-      const thisFn = this.onNotification;
-
-      console.log(this.constructor.name);
-
-      if (baseFn === thisFn) {
-        console.log("Base and this are the same.");
-      } else {
-        console.log("Base and this are different.");
+      if (BasePlugin.prototype.onNotification !== this.onNotification) {
+        // We would like to know when notification events happen so we can do stuff.
+        this._customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);    
       }
 
-      const proto = Object.getPrototypeOf(this);
-      const superProto = BasePlugin.prototype;
-      const missing = Object.getOwnPropertyNames(superProto).find(name =>
-          typeof superProto[name] === "function" && !proto.hasOwnProperty(name)
-      );
-      console.log("Missing: " + missing);
+      if (BasePlugin.prototype.onSettingChanged !== this.onSettingChanged) {
+        // We would like to know when the settings have changed so we can do stuff.
+        this._customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      }
 
+      if (BasePlugin.prototype.onSettingAction !== this.onSettingAction) {
+        // We would like to know when the actions have changed so we can do stuff. Note that we
+        // do not care about the setting changes as we do not need to take immediate action on them.
+        this._customevent.on(Constants.EVENTS.SETTING_ACTION, this.onSettingAction, this);
+      }
 
-
-      // We would like to know when notification events happen so we can do stuff.
-      this._customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);      
-
-      // We would like to know when the settings have changed so we can do stuff.
-      this._customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-
-      // We would like to know when the actions have changed so we can do stuff. Note that we
-      // do not care about the setting changes as we do not need to take immediate action on them.
-      this._customevent.on(Constants.EVENTS.SETTING_ACTION, this.onSettingAction, this);
-
-      // We also are interested in cache events please.
-      this._customevent.on(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
+      if (BasePlugin.prototype.onCacheEvent !== this.onCacheEvent) {
+        // We also are interested in cache events please.
+        this._customevent.on(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
+      }
     }
   }
 
