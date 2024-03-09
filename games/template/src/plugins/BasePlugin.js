@@ -52,17 +52,37 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
         // We also are interested in cache events please.
         this._customevent.on(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
       }
+
+      if (BasePlugin.prototype.onKeyboard !== this.onKeyboard) {
+        // This time we would like to have keyboard events.
+        this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
+      }
     }
   }
 
+  /**
+   * Destroy the plugin and clean up after ourselves.
+   */
   destroy() {
     // We might not have the event plugin, so check this first.
     if (this._customevent) {
-      // Remove the listener.
-      this._customevent.off(Constants.EVENTS.NOTIFICATION, this.onNotification, this);
-      this._customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-      this._customevent.off(Constants.EVENTS.SETTING_ACTION, this.onSettingAction, this);
-      this._customevent.off(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
+      // Remove the listeners. Do not want to remove them unless we set them up in the first place.
+
+      if (BasePlugin.prototype.onNotification !== this.onNotification) {
+        this._customevent.off(Constants.EVENTS.NOTIFICATION, this.onNotification, this);
+      }
+      if (BasePlugin.prototype.onSettingChanged !== this.onSettingChanged) {
+        this._customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
+      }
+      if (BasePlugin.prototype.onSettingAction !== this.onSettingAction) {
+        this._customevent.off(Constants.EVENTS.SETTING_ACTION, this.onSettingAction, this);
+      }
+      if (BasePlugin.prototype.onCacheEvent !== this.onCacheEvent) {
+        this._customevent.off(Constants.EVENTS.CACHE_EVENT, this.onCacheEvent, this);
+      }
+      if (BasePlugin.prototype.onKeyboard !== this.onKeyboard) {
+        this._customevent.off(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
+      }
       this._customevent = undefined;
     }
 
@@ -84,8 +104,14 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    */
   getPluginSettings() { return undefined; }
 
+  /**
+   * Get the settings plugin.
+   */
   get settings() { return this._settings; }
-  
+
+  /**
+   * Get the event plugin.
+   */
   get customevent() { return this._customevent; }
 
   /**
@@ -115,4 +141,11 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    * @param {any} eventData The event data sent.
    */
   onCacheEvent(eventData) { }
+
+  /**
+   * A custom key event happened. We want to listen for keys as we want to toggle the console.
+   * 
+   * @param {any} keyEvent The keyboard event.
+   */
+  onKeyboard(keyEvent) { }
 }

@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 import { initLog2Div, isLog2DivVisible, showLog2Div, hideLog2Div } from '../lib/log2div.js';
-import { getPlugin } from './PluginsHelpers.js'
+import BasePlugin from './BasePlugin.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -16,7 +16,7 @@ const pluginSettings = {
   }
 }
 
-export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
+export default class ConsolePlugin extends BasePlugin {
   static initialize() {
     // Do some early initialization.
     initLog2Div();
@@ -24,53 +24,14 @@ export default class ConsolePlugin extends Phaser.Plugins.BasePlugin {
 
   constructor(pluginManager) {
     super(pluginManager);
-
-    // Get the dependent plugins.
-
-    /** @type {SettingsPlugin} */
-    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
-
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
-    // If we can access the settings plugin.
-    if (this.settings) {
-      // Register all of the settings.
-      Object.keys(pluginSettings).forEach((key) => {
-        this.settings.registerSetting(pluginSettings[key]);
-      });
-    }
-
-    // If we can access the event plugin.
-    if (this.customevent) {
-      // We would like to know when events occur so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-      this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
-    }
   }
 
   /**
-   * Destroy the plugin and clean up after ourselves.
-   */
-  destroy() {
-    // We might not have the plugin, so check this first.
-    if (this.customevent) {
-      // Remove the listeners.
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-      this.customevent.off(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
-      this.customevent = undefined;
-    }
-
-    // MUST do this.
-    super.destroy();
-  }
-
-  /**
-   * Local plugin so we do not provide a version.
+   * Get the plugin settings.
    * 
-   * @returns {string | undefined} The version of the plugin.
+   * @returns {Object} The plugin settings.
    */
-  getVersion() { return undefined; }
+  getPluginSettings() { return pluginSettings; }
 
   /**
    * A custom key event happened. We want to listen for keys as we want to toggle the console.
