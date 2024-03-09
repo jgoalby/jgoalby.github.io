@@ -1,39 +1,19 @@
 import Constants from '../constants.js';
-import { getPlugin } from './PluginsHelpers.js'
+import BasePlugin from './BasePlugin.js'
 
-export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
+export default class WindowPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
     // Listen out for window messages that we would like to handle.
-    window.addEventListener('resize', () => { this.resize() });
-    window.addEventListener("keydown", (e) => { this.handleKeydown(e) }, false);
+    window.addEventListener('resize', () => { this.onResize() });
+    window.addEventListener("keydown", (e) => { this.onKeydown(e) }, false);
   }
 
   /**
-   * Destroy the plugin and clean up after ourselves.
+   * Called on every resize event. See if we need to scale the game.
    */
-  destroy() {
-    // MUST do this.
-    super.destroy();
-  }
-
-  /**
-   * Local plugin so we do not provide a version.
-   * 
-   * @returns {string | undefined} The version of the plugin.
-   */
-  getVersion() { return undefined; }
-
-  /**
-   * Called on every resize event.
-   * 
-   * @returns {void}
-   */
-  resize() {
+  onResize() {
     // The current width and height.
     var w = window.innerWidth;   
     var h = window.innerHeight;
@@ -48,9 +28,8 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
-   * Called after a short timeout for the case of iPad strange behavior.
-   * 
-   * @returns {void}
+   * Called after a short timeout for the case of iPad strange behavior. Without this
+   * the resizing would not work correctly.
    */
   onResizeTimeout() {
     // The current width and height.
@@ -71,10 +50,11 @@ export default class WindowPlugin extends Phaser.Plugins.BasePlugin {
 
   /**
    * Handle the keydown event.
+   * 
    * @param {KeyboardEvent} event The event.
    */
-  async handleKeydown(event) {
-    // Notify the user that the cache has been cleared.
+  onKeydown(event) {
+    // Notify everyone that a keyboard event happened.
     this.customevent.emit(Constants.EVENTS.KEYBOARD, event);
   }
 

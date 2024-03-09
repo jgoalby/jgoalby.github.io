@@ -1,6 +1,7 @@
 import Constants from '../constants.js';
+import BasePlugin from './BasePlugin.js'
 
-export default class InitSetupPlugin extends Phaser.Plugins.BasePlugin {
+export default class InitSetupPlugin extends BasePlugin {
   constructor(pluginManager) {
     // the plugin manager is available to us.
     super(pluginManager);
@@ -13,11 +14,20 @@ export default class InitSetupPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
-   * Local plugin so we do not provide a version.
+   * We do not want the BasePlugin to create an instance of the setting plugin because we
+   * are defined before the settings plugin has initialized.
    * 
-   * @returns {string | undefined} The version of the plugin.
+   * @returns {boolean} False as the plugin is not wanted.
    */
-  getVersion() { return undefined; }
+  isSettingsPluginWanted() { return false; }
+
+  /**
+   * We do not want the BasePlugin to create an instance of the event plugin because we
+   * are defined before the event plugin has initialized.
+   * 
+   * @returns {boolean} False as the plugin is not wanted.
+   */
+  isEventPluginWanted() { return false; }
 
   static get options() {
     return { 

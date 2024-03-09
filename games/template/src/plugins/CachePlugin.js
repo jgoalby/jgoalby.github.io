@@ -2,30 +2,33 @@ import Constants from '../constants.js';
 import BasePlugin from './BasePlugin.js'
 
 // Constants that only this plugin uses.
-const CATEGORY              = 'developer';
-const LOG_CACHE_HIT_OPTION  = 'logCacheHitOption';
-const LOG_CACHE_MISS_OPTION = 'logCacheMissOption';
-const CLEAR_CACHE_OPTION    = 'clearCacheOption';
+const CATEGORY                   = 'developer';
+const LOG_CACHE_HIT_OPTION       = 'logCacheHitOption';
+const LOG_CACHE_HIT_OPTION_DESC  = 'Log Cache Hits';
+const LOG_CACHE_MISS_OPTION      = 'logCacheMissOption';
+const LOG_CACHE_MISS_OPTION_DESC = 'Log Cache Misses';
+const CLEAR_CACHE_OPTION         = 'clearCacheOption';
+const CLEAR_CACHE_OPTION_DESC    = 'Clear Cache';
 
 const pluginSettings = {
   LOG_CACHE_HIT:{
     category: CATEGORY,
     name: LOG_CACHE_HIT_OPTION,
-    description: 'Log Cache Hits',
+    description: LOG_CACHE_HIT_OPTION_DESC,
     value: false,
     type: Constants.SETTINGS_TYPES.boolean
   },
   LOG_CACHE_MISS: {
     category: CATEGORY,
     name: LOG_CACHE_MISS_OPTION,
-    description: 'Log Cache Misses',
+    description: LOG_CACHE_MISS_OPTION_DESC,
     value: true,
     type: Constants.SETTINGS_TYPES.boolean
   },
   CLEAR_CACHE: {
     category: CATEGORY,
     name: CLEAR_CACHE_OPTION,
-    description: 'Clear Cache',
+    description: CLEAR_CACHE_OPTION_DESC,
     value: undefined,
     type: Constants.SETTINGS_TYPES.function
   }

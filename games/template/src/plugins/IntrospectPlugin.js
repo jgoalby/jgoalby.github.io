@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getPlugin } from './PluginsHelpers.js'
+import BasePlugin from './BasePlugin.js'
 
 // Constants that only this plugin uses.
 const CATEGORY = 'developer';
@@ -15,55 +15,27 @@ const pluginSettings = {
   }
 }
 
-export default class IntrospectPlugin extends Phaser.Plugins.BasePlugin {
+export default class IntrospectPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
     // Lazy create the GUI.
     this._gui = undefined;
-
-    // Get the dependent plugins.
-
-    /** @type {SettingsPlugin} */
-    this.settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
-
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
-    // If we can access the settings plugin.
-    if (this.settings) {
-      // Register all of the settings.
-      Object.keys(pluginSettings).forEach((key) => {
-        this.settings.registerSetting(pluginSettings[key]);
-      });
-    }
-
-    if (this.customevent) {
-      // We would like to know when the settings have changed so we can do stuff.
-      this.customevent.on(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-    }
   }
 
   destroy() {
     this.reset();
-
-    // We might not have the plugin, so check this first.
-    if (this.customevent) {
-      // Remove the listener.
-      this.customevent.off(Constants.EVENTS.SETTING_CHANGED, this.onSettingChanged, this);
-      this.customevent = undefined;
-    }
 
     // MUST do this.
     super.destroy();
   }
 
   /**
-   * Local plugin so we do not provide a version.
+   * Get the plugin settings.
    * 
-   * @returns {string | undefined} The version of the plugin.
+   * @returns {Object} The plugin settings.
    */
-  getVersion() { return undefined; }
+  getPluginSettings() { return pluginSettings; }
 
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.

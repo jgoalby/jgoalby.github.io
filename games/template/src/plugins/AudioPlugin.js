@@ -2,23 +2,26 @@ import Constants from '../constants.js';
 import BasePlugin from './BasePlugin.js'
 
 // Various constants for the audio plugin. These are not global as the only thing that needs to know about them is this plugin.
-const CATEGORY      = 'sound';
-const MUSIC_OPTION  = 'musicOption';
-const VOLUME_OPTION = 'volumeOption';
-const SOUND_OPTION  = 'soundOption';
+const CATEGORY           = 'sound';
+const MUSIC_OPTION       = 'musicOption';
+const MUSIC_OPTION_DESC  = 'Music Enabled';
+const VOLUME_OPTION      = 'volumeOption';
+const VOLUME_OPTION_DESC = 'Music Volume';
+const SOUND_OPTION       = 'soundOption';
+const SOUND_OPTION_DESC  = 'Sound Effects Enabled';
 
 const pluginSettings = {
   MUSIC_OPTION:{
     category: CATEGORY,
     name: MUSIC_OPTION,
-    description: 'Music Enabled',
+    description: MUSIC_OPTION_DESC,
     value: false,
     type: Constants.SETTINGS_TYPES.boolean
   },
   VOLUME_OPTION: {
     category: CATEGORY,
     name: VOLUME_OPTION,
-    description: 'Music Volume',
+    description: VOLUME_OPTION_DESC,
     value: 2,
     numvalues: 5,
     type: Constants.SETTINGS_TYPES.range
@@ -26,7 +29,7 @@ const pluginSettings = {
   SOUND_OPTION: {
     category: CATEGORY,
     name: SOUND_OPTION,
-    description: 'Sound Effects Enabled',
+    description: SOUND_OPTION_DESC,
     value: true,
     type: Constants.SETTINGS_TYPES.boolean
   }
@@ -47,6 +50,11 @@ export default class AudioPlugin extends BasePlugin {
    */
   getPluginSettings() { return pluginSettings; }
 
+  /**
+   * Add music.
+   * 
+   * @param {any} sound The sound to add as the music.
+   */
   addMusic(sound) {
     // Set the music.
     this._music = sound;
@@ -105,6 +113,9 @@ export default class AudioPlugin extends BasePlugin {
     }
   }
 
+  /**
+   * Pause the music.
+   */
   pauseMusic() {
     // Mmake sure the variable contains an object.
     if (this._music) {
@@ -114,6 +125,9 @@ export default class AudioPlugin extends BasePlugin {
     }
   }
 
+  /**
+   * Play the music.
+   */
   playMusic() {
     // If there are settings, check them, and if not, ignore them.
     if (this.settings) {
@@ -134,11 +148,17 @@ export default class AudioPlugin extends BasePlugin {
     }
   }
 
+  /**
+   * Play the specified sound.
+   * 
+   * @param {any} sound The sound to play.
+   */
   playSound(sound) {
     // If there are settings, check them, and if not, ignore them.
     if (this.settings) {
       // We can only play the sound if the user wants it.
       if (! (this.settings.getValue(CATEGORY, SOUND_OPTION))) {
+        // User said no.
         return;
       }
     }

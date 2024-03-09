@@ -37,8 +37,7 @@ const global_plugins = [
 ]
 
 /**
- * Is the passed in plugin key enabled? These are global plugins as defined
- * by Phaser 3.
+ * Is the passed in plugin key enabled? These are what Phaser 3 considers global plugins.
  * 
  * @param {string} pluginKey The plugin key to check on.
  * @returns {boolean} true if it is enabled, false otherwise.

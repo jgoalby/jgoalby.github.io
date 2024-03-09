@@ -1,12 +1,13 @@
 import Constants from '../constants.js';
 import { generalConfig } from '../config/config.js';
+import BasePlugin from './BasePlugin.js'
 import { getPlugin } from './PluginsHelpers.js'
 
 // Note that the event mechanism for the service worker is different from the custom event
 // mechanism for the rest of the game. This plugin basically translates from the service worker
 // event mechanism to the custom event mechanism.
 
-export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
+export default class ServiceWorkerPlugin extends BasePlugin {
   static initialize() {
     // See if the browser supports service workers.
     if ('serviceWorker' in navigator) {
@@ -30,7 +31,7 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
               // Not implemented anything with string messages, so just log it.
               console.log(`The service worker sent a message: ${event.data}`);
             } else if (event.data.type === Constants.SW_EVENTS.CACHE_EVENT) {
-              // Get the event plugin.
+              // Get the event plugin, as we are a static initializer we do not have a plugin instance.
               /** @type {EventPlugin} */
               const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
@@ -63,43 +64,13 @@ export default class ServiceWorkerPlugin extends Phaser.Plugins.BasePlugin {
     // If there is no service worker then we cannot do anything.
     if (! ('serviceWorker' in navigator)) { return; }
 
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
-    // If we can access the event plugin.
-    if (this.customevent) {
-      // We want to know when anyone wants the cache to be cleared as it is handled by the service worker.
-      // This means we can keep all of the service worker code in this plugin, separating the concerns.
-      this.customevent.on(Constants.EVENTS.CLEAR_CACHE, this.clearCache, this);      
-    }
+    // Do anything else you want to do here...
   }
-
-  /**
-   * Destroy the plugin and clean up after ourselves.
-   */
-  destroy() {
-    // We might not have the plugin, so check this first.
-    if (this.customevent) {
-      // Remove the listener.
-      this.customevent.off(Constants.EVENTS.CLEAR_CACHE, this.clearCache, this);
-      this.customevent = undefined;
-    }
-
-    // MUST do this.
-    super.destroy();
-  }
-
-  /**
-   * Local plugin so we do not provide a version.
-   * 
-   * @returns {string | undefined} The version of the plugin.
-   */
-  getVersion() { return undefined; }
 
   /**
    * Ask the service worker to clear the cache.
    */
-  clearCache() {
+  onClearCache() {
     // If there is no service worker then we cannot do anything.
     if (! ('serviceWorker' in navigator)) { return; }
 

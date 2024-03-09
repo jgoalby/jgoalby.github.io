@@ -3,14 +3,15 @@ import { initLog2Div, isLog2DivVisible, showLog2Div, hideLog2Div } from '../lib/
 import BasePlugin from './BasePlugin.js'
 
 // Constants that only this plugin uses.
-const CATEGORY = 'developer';
-const CONSOLE_OPTION = 'consoleOption';
+const CATEGORY            = 'developer';
+const CONSOLE_OPTION      = 'consoleOption';
+const CONSOLE_OPTION_DESC = 'Console Enabled';
 
 const pluginSettings = {
   CONSOLE_OPTION:{
     category: CATEGORY,
     name: CONSOLE_OPTION,
-    description: 'Console Enabled',
+    description: CONSOLE_OPTION_DESC,
     value: false,
     type: Constants.SETTINGS_TYPES.boolean
   }
@@ -36,7 +37,7 @@ export default class ConsolePlugin extends BasePlugin {
   /**
    * A custom key event happened. We want to listen for keys as we want to toggle the console.
    * 
-   * @param {*} keyEvent The keyboard event.
+   * @param {any} keyEvent The keyboard event.
    */
   onKeyboard(keyEvent) {
     // Right now this is hardcoded. It would be nice to make it configurable.
@@ -49,7 +50,7 @@ export default class ConsolePlugin extends BasePlugin {
   /**
    * A setting changed. We look to see if it for us and act appropriately.
    * 
-   * @param {*} setting The setting.
+   * @param {any} setting The setting.
    */
   onSettingChanged(setting) {
     // We want to make an immediate change when the setting changes.

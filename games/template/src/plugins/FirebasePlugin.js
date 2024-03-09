@@ -7,6 +7,8 @@ import Constants from '../constants.js';
 
 import { firebaseConfig } from '../config/config.js';
 
+// TODO: Change the base plugin
+
 export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);

@@ -113,7 +113,7 @@ self.sendMessage = function(message) {
  * online and to be fully functional when offline.
  * 
  * @param {FetchEvent} event 
- * @returns 
+ * @returns response.
  */
 function fetchEventHandler(event) {
   // Prevent requests such as chrome plugins.

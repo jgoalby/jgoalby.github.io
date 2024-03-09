@@ -66,6 +66,7 @@ function getPluginListAsString() {
     }
   }
 
+  // Return the list of plugins as a single string.
   return pluginsList;
 }
 

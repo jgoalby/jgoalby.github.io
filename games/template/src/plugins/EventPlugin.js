@@ -1,6 +1,7 @@
 import Constants from '../constants.js';
+import BasePlugin from './BasePlugin.js'
 
-export default class EventPlugin extends Phaser.Plugins.BasePlugin {
+export default class EventPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
@@ -9,18 +10,27 @@ export default class EventPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
-   * Local plugin so we do not provide a version.
+   * We do not want the BasePlugin to create an instance of the setting plugin because we
+   * are defined before the settings plugin has initialized.
    * 
-   * @returns {string | undefined} The version of the plugin.
+   * @returns {boolean} False as the plugin is not wanted.
    */
-  getVersion() { return undefined; }
+  isSettingsPluginWanted() { return false; }
+
+  /**
+   * We do not want the BasePlugin to create an instance of the event plugin for quite
+   * obvious reasons.
+   * 
+   * @returns {boolean} False as the plugin is not wanted.
+   */
+  isEventPluginWanted() { return false; }
 
   /**
    * Calls each of the listeners registered for a given event.
    * 
    * @param {string | symbol} event The event name.
    * @param {any} data additional arguments that will be passed to the event listener.
-   * @returns {boolean}
+   * @returns {boolean} true if the event had listeners, false otherwise.
    */
   emit(event, data) {
     return this._eventDispatcher.emit(event, data);

@@ -89,10 +89,10 @@ export default class Notification extends Phaser.GameObjects.Container {
   }
 
   /**
-   * Returns a style fot the passed in notification level.
+   * Returns a style for the passed in notification level.
    * 
    * @param {any} level Level.
-   * @returns 
+   * @returns style object.
    */
   getNotificationTextColor(level) {
     return mapLevelToStyle[level];

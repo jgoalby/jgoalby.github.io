@@ -1,24 +1,10 @@
 import Constants from '../constants.js';
+import BasePlugin from './BasePlugin.js'
 
-export default class ReflectionPlugin extends Phaser.Plugins.BasePlugin {
+export default class ReflectionPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
   }
-
-  /**
-   * Destroy the plugin and clean up after ourselves.
-   */
-  destroy() {
-    // MUST do this.
-    super.destroy();
-  }
-
-  /**
-   * Local plugin so we do not provide a version.
-   * 
-   * @returns {string | undefined} The version of the plugin.
-   */
-  getVersion() { return undefined; }
 
   static get options() {
     return { 

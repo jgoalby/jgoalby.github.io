@@ -5,20 +5,26 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
-    // Get the dependent plugins.
+    // Get the dependent plugins (can be overridden).
 
-    /** @type {SettingsPlugin} */
-    this._settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
+    // Some derived classes may not want the settings plugin.
+    if (this.isSettingsPluginWanted()) {
+      /** @type {SettingsPlugin} */
+      this._settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
+    }
 
-    /** @type {EventPlugin} */
-    this._customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+    // Some derived classes may not want the event plugin.
+    if (this.isEventPluginWanted()) {
+      /** @type {EventPlugin} */
+      this._customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+    }
 
     // If we can access the settings plugin.
     if (this._settings) {
       // Get the plugin settings from derived classes if implemented.
       const pluginSettings = this.getPluginSettings();
 
-      // Make sure there are any plugin settings before doing anything with them.
+      // Make sure there are plugin settings before doing anything with them.
       if (pluginSettings) {
         // Register all of the settings.
         Object.keys(pluginSettings).forEach((key) => {
@@ -57,6 +63,12 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
         // This time we would like to have keyboard events.
         this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
       }
+
+      if (BasePlugin.prototype.onClearCache !== this.onClearCache) {
+        // We want to know when anyone wants the cache to be cleared as it is handled by the service worker.
+        // This means we can keep all of the service worker code in this plugin, separating the concerns.
+        this.customevent.on(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
+      }
     }
   }
 
@@ -83,6 +95,9 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
       if (BasePlugin.prototype.onKeyboard !== this.onKeyboard) {
         this._customevent.off(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
       }
+      if (BasePlugin.prototype.onClearCache !== this.onClearCache) {
+        this.customevent.off(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
+      }
       this._customevent = undefined;
     }
 
@@ -105,12 +120,34 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
   getPluginSettings() { return undefined; }
 
   /**
+   * There are some plugins that do not want the settings plugin. For example the settings plugin
+   * might get into a pickle if it tries to use the settings plugin. Derived classes can return false
+   * if they do not want the plugin created.
+   * 
+   * @returns {boolean} True if the settings plugin is wanted.
+   */
+  isSettingsPluginWanted() { return true; }
+
+  /**
+   * There are some plugins that do not want the custom event plugin. For example the event plugin
+   * might get into a pickle if it tries to use the event plugin. Derived classes can return false
+   * if they do not want the plugin created.
+   * 
+   * @returns {boolean} True if the custom event plugin is wanted.
+   */
+  isEventPluginWanted() { return true; }
+
+  /**
    * Get the settings plugin.
+   * 
+   * @returns {SettingsPlugin | undefined} The settings plugin or undefined.
    */
   get settings() { return this._settings; }
 
   /**
    * Get the event plugin.
+   * 
+   * @returns {EventPlugin | undefined} The event plugin or undefined.
    */
   get customevent() { return this._customevent; }
 
@@ -148,4 +185,9 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    * @param {any} keyEvent The keyboard event.
    */
   onKeyboard(keyEvent) { }
+
+  /**
+   * Event requesting to clear the cache.
+   */
+  onClearCache() { }
 }

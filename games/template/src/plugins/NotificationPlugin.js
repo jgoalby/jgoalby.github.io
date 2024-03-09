@@ -45,8 +45,7 @@ export default class NotificationPlugin extends BasePlugin {
    * 
    * @param {any} notificationDetails 
    */
-  onNotificationComplete(notificationDetails) {
-  }
+  onNotificationComplete(notificationDetails) { }
 
   static get options() {
     return { 

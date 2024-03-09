@@ -1,14 +1,9 @@
 import Constants from '../constants.js';
-import { getPlugin } from './PluginsHelpers.js'
+import BasePlugin from './BasePlugin.js'
 
-export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
+export default class SettingsPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
-
-    // We need access to the event emitter.
-
-    /** @type {EventPlugin} */
-    this.customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
     // Holder for the settings. Stored by category. Each category contains a dictionary of settings.
     // Each setting has a name, value, description, and type.
@@ -16,11 +11,12 @@ export default class SettingsPlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
-   * Local plugin so we do not provide a version.
+   * We do not want the BasePlugin to create an instance of the setting plugin for quite
+   * obvious reasons.
    * 
-   * @returns {string | undefined} The version of the plugin.
+   * @returns {boolean} False as the plugin is not wanted.
    */
-  getVersion() { return undefined; }
+  isSettingsPluginWanted() { return false; }
 
   getSetting(category, name) {
     // If the category does not exist, create it.
