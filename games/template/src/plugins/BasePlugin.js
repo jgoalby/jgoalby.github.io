@@ -40,6 +40,7 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
           typeof superProto[name] === "function" && !proto.hasOwnProperty(name)
       );
       console.log("Missing: " + missing);
+      console.log(this.constructor["name"]);
 
 
       // We would like to know when notification events happen so we can do stuff.
