@@ -34,6 +34,13 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
       // Does a derived class have a onNotification method?
       console.log("Has own prop: " + myProto.hasOwnProperty('onNotification'));
 
+      const proto = Object.getPrototypeOf(this);
+      const superProto = BasePlugin.prototype;
+      const missing = Object.getOwnPropertyNames(superProto).find(name =>
+          typeof superProto[name] === "function" && !proto.hasOwnProperty(name)
+      );
+      console.log("Missing: " + missing);
+
 
       // We would like to know when notification events happen so we can do stuff.
       this._customevent.on(Constants.EVENTS.NOTIFICATION, this.onNotification, this);      
