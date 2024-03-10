@@ -145,6 +145,8 @@ const Events = {
   SETTING_ACTION:  'SETTING_ACTION',
   NOTIFICATION:    'NOTIFICATION',
   KEYBOARD:        'KEYBOARD',
+  ADD_SHORTCUT:    'ADD_SHORTCUT',
+  REMOVE_SHORTCUT: 'REMOVE_SHORTCUT',
   CLEAR_CACHE:     'CLEAR_CACHE',
   CACHE_EVENT:     'CACHE_EVENT',
 };
@@ -197,7 +199,7 @@ const PluginInfo = {
   INTROSPECT_KEY:         'IntrospectPlugin',
   INTROSPECT_MAPPING:     'introspect',
   CACHE_KEY:              'CachePlugin',
-  CACHE_MAPPING:          'cache',
+  CACHE_MAPPING:          'filecache',
   STYLES_KEY:             'StylesPlugin',
   STYLES_MAPPING:         'styles',
   AUDIO_KEY:              'AudioPlugin',

@@ -19,7 +19,7 @@ export default class OptionsScene extends BaseScene {
     this.currentSettings = undefined;
   }
 
-  create_scene() {
+  createScene() {
     this.heading = this.add.text(0, 0, 'Options', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(Constants.STYLES.HEADING_X_ORIGIN, Constants.STYLES.HEADING_Y_ORIGIN);
     this.heading.setY(Constants.STYLES.HEADING_Y_POS);
@@ -71,7 +71,7 @@ export default class OptionsScene extends BaseScene {
       }
     }
 
-    this.mainMenuButton = new Button(this, { label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
+    this.mainMenuButton = new Button(this, { keyEventCode: 'KeyX', scene: Constants.SCENES.MENU_SCENE, label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
   }
 
   resize() {

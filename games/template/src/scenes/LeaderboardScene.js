@@ -10,7 +10,7 @@ export default class LeaderboardScene extends BaseScene {
     this.button = null;
   }
 
-  create_scene() {
+  createScene() {
     this.heading = this.add.text(0, 0, 'Leaderboard', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(0.5);
     this.heading.setY(50);

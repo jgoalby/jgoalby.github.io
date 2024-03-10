@@ -9,7 +9,7 @@ export default class MenuScene extends BaseScene {
     this.menuButtons = undefined;
   }
 
-  create_scene() {
+  createScene() {
     // Make sure we have the audio plugin.
     if (this.audio) {
       this.audio.playMusic();
@@ -17,10 +17,10 @@ export default class MenuScene extends BaseScene {
 
     this.menuButtons = [];
 
-    this.menuButtons.push(new Button(this, { label: 'Play', actionFn: () => { this.gotoScene(Constants.SCENES.INSTRUCTIONS_SCENE) } }));
-    this.menuButtons.push(new Button(this, { label: 'Options', actionFn: () => { this.gotoScene(Constants.SCENES.OPTIONS_SCENE) } }));
-    this.menuButtons.push(new Button(this, { label: 'Credits', actionFn: () => { this.gotoScene(Constants.SCENES.CREDITS_SCENE) } }));
-    this.menuButtons.push(new Button(this, { label: 'Leaderboard', actionFn: () => { this.gotoScene(Constants.SCENES.LEADERBOARD_SCENE) } }));
+    this.menuButtons.push(new Button(this, { keyEventCode: 'KeyI', scene: Constants.SCENES.INSTRUCTIONS_SCENE, label: 'Play', actionFn: () => { this.gotoScene(Constants.SCENES.INSTRUCTIONS_SCENE) } }));
+    this.menuButtons.push(new Button(this, { keyEventCode: 'KeyO', scene: Constants.SCENES.OPTIONS_SCENE, label: 'Options', actionFn: () => { this.gotoScene(Constants.SCENES.OPTIONS_SCENE) } }));
+    this.menuButtons.push(new Button(this, { keyEventCode: 'KeyC', scene: Constants.SCENES.CREDITS_SCENE, label: 'Credits', actionFn: () => { this.gotoScene(Constants.SCENES.CREDITS_SCENE) } }));
+    this.menuButtons.push(new Button(this, { keyEventCode: 'KeyL', scene: Constants.SCENES.LEADERBOARD_SCENE, label: 'Leaderboard', actionFn: () => { this.gotoScene(Constants.SCENES.LEADERBOARD_SCENE) } }));
   }
 
   resize() {

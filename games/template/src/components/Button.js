@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import { getPlugin } from '../plugins/PluginsHelpers.js'
 
 export default class Button extends Phaser.GameObjects.Container {
   /**
@@ -9,6 +10,32 @@ export default class Button extends Phaser.GameObjects.Container {
    */
   constructor(scene, options) {
     super(scene);
+    
+    this.scene = options.scene;
+    this.keyEventCode = options.keyEventCode;
+
+    this.once('destroy', () => { this.onDestroy() });
+
+    if (this.keyEventCode) {
+      /** @type {EventPlugin} */
+      const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+
+      // It might not be available.
+      if (customevent) {
+        customevent.emit(Constants.EVENTS.ADD_SHORTCUT, {
+                      getInstanceClassName: 'BaseScene',
+                      getInstanceArgs:      [],
+                      memberName:           'gotoScene',
+                      memberArgs:           [this.scene],
+                      keyEventCode:         this.keyEventCode,
+                      keyEventCtrlKey:      false,
+                      keyEventAltKey:       false,
+                      keyEventMetaKey:      false,
+                      keyEventShiftKey:     false
+                    });
+      }
+    }
+
     this.scene = scene;
     this.x = 0;
     this.y = 0;
@@ -54,5 +81,27 @@ export default class Button extends Phaser.GameObjects.Container {
     });
 
     this.scene.add.existing(this);
+  }
+
+  onDestroy() {
+    if (this.keyEventCode) {
+      /** @type {EventPlugin} */
+      const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+
+      // It might not be available.
+      if (customevent) {
+        customevent.emit(Constants.EVENTS.REMOVE_SHORTCUT, {
+                      getInstanceClassName: 'BaseScene',
+                      getInstanceArgs:      [],
+                      memberName:           'gotoScene',
+                      memberArgs:           [this.scene],
+                      keyEventCode:         this.keyEventCode,
+                      keyEventCtrlKey:      false,
+                      keyEventAltKey:       false,
+                      keyEventMetaKey:      false,
+                      keyEventShiftKey:     false
+                    });
+      }
+    }
   }
 }

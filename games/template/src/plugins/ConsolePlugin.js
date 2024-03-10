@@ -35,19 +35,6 @@ export default class ConsolePlugin extends BasePlugin {
   getPluginSettings() { return pluginSettings; }
 
   /**
-   * A custom key event happened. We want to listen for keys as we want to toggle the console.
-   * 
-   * @param {any} keyEvent The keyboard event.
-   */
-  onKeyboard(keyEvent) {
-    // Right now this is hardcoded. It would be nice to make it configurable.
-    /*if ((keyEvent.code == "KeyD") && (keyEvent.ctrlKey)) {
-      // Toggle the console.
-      this.toggle();
-    }*/
-  }
-
-  /**
    * A setting changed. We look to see if it for us and act appropriately.
    * 
    * @param {any} setting The setting.

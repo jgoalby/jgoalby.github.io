@@ -162,7 +162,7 @@ export default class PreloaderScene extends BaseScene {
     this.load.image('panel', Constants.GENERAL.ASSETS_PATH + 'misc/glassPanel_corners.png');
   }
 
-  create_scene() {
+  createScene() {
     // Make sure the audio plugin is enabled before accessing it.
     if (this.audio) {
       // Add the background music. Audio plugin takes care of volume.

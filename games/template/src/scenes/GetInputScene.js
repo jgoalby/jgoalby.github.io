@@ -19,7 +19,7 @@ export default class InputScene extends BaseScene {
   preload() {
   }
 
-  create_scene() {
+  createScene() {
     this.text = this.add.text(0, 0, 'Please enter your name!', {
       color: 'white',
       fontSize: '20px ',

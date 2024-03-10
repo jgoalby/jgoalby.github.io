@@ -64,6 +64,16 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
         this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
       }
 
+      if (BasePlugin.prototype.onAddShortcut !== this.onAddShortcut) {
+        // This time we would like to have add shortcut events.
+        this.customevent.on(Constants.EVENTS.ADD_SHORTCUT, this.onAddShortcut, this);
+      }
+
+      if (BasePlugin.prototype.onRemoveShortcut !== this.onRemoveShortcut) {
+        // This time we would like to have remove shortcut events.
+        this.customevent.on(Constants.EVENTS.REMOVE_SHORTCUT, this.onRemoveShortcut, this);
+      }
+
       if (BasePlugin.prototype.onClearCache !== this.onClearCache) {
         // We want to know when anyone wants the cache to be cleared as it is handled by the service worker.
         // This means we can keep all of the service worker code in this plugin, separating the concerns.
@@ -95,6 +105,12 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
       if (BasePlugin.prototype.onKeyboard !== this.onKeyboard) {
         this._customevent.off(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
       }
+      if (BasePlugin.prototype.onAddShortcut !== this.onAddShortcut) {
+        this._customevent.off(Constants.EVENTS.ADD_SHORTCUT, this.onAddShortcut, this);
+      }
+      if (BasePlugin.prototype.onRemoveShortcut !== this.onRemoveShortcut) {
+        this._customevent.off(Constants.EVENTS.REMOVE_SHORTCUT, this.onRemoveShortcut, this);
+      }
       if (BasePlugin.prototype.onClearCache !== this.onClearCache) {
         this.customevent.off(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
       }
@@ -103,6 +119,16 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
 
     // MUST do this.
     super.destroy();
+  }
+
+  /**
+   * Get a plugin instance using the plugin name.
+   *
+   * @param {string} pluginName The plugin name to get the instance of.
+   * @returns {BasePlugin | undefined} The plugin or undefined if not found.
+   */
+  static getInstance(pluginName) {
+    return getPlugin(pluginName);
   }
 
   /**
@@ -185,6 +211,20 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    * @param {any} keyEvent The keyboard event.
    */
   onKeyboard(keyEvent) { }
+
+  /**
+   * An add shortcut event happened.
+   * 
+   * @param {any} shortcutInfo The shortcut information.
+   */
+  onAddShortcut(shortcutInfo) { }
+
+  /**
+   * A remove shortcut event happened.
+   * 
+   * @param {any} shortcutInfo The shortcut information.
+   */
+  onRemoveShortcut(shortcutInfo) { }
 
   /**
    * Event requesting to clear the cache.

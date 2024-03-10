@@ -12,7 +12,7 @@ export default class InstructionsScene extends BaseScene {
     this.gameButton = undefined;
   }
 
-  create_scene() {
+  createScene() {
     this.heading = this.add.text(0, 0, 'Instructions', Constants.STYLES.HEADING_TEXT);
     this.heading.setOrigin(Constants.STYLES.HEADING_X_ORIGIN, Constants.STYLES.HEADING_Y_ORIGIN);
     this.heading.setY(Constants.STYLES.HEADING_Y_POS);

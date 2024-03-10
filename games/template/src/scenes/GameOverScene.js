@@ -13,7 +13,7 @@ export default class GameOverScene extends BaseScene {
     this.tombstone = null;
   }
 
-  create_scene() {
+  createScene() {
     const { score, player } = this.sys.game.globals;
 
     this.tombstone = this.add.image(0, 0, 'tombstone').setOrigin(0.5, 0);
