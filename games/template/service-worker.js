@@ -124,6 +124,7 @@ function fetchEventHandler(event) {
   if (event.request.method != 'GET') { return; }
 
   event.respondWith((async () => {
+    // Holders for possible responses.
     let response = undefined;
     let cachedResponse = undefined;
 
@@ -131,8 +132,12 @@ function fetchEventHandler(event) {
       // Get the cached response up front so we can return it if the network fails.
       const cache = await caches.open(Constants.CACHE_NAME);
       cachedResponse = await cache.match(event.request);
-      // Clone here to make sure it is actually done rather than trying to be clever later.
-      cachedResponse = cachedResponse.clone();
+
+      // If we actually got the cached response.
+      if (cachedResponse) {
+        // Clone here to make sure it is actually done rather than trying to be clever later.
+        cachedResponse = cachedResponse.clone();
+      }
     } catch (error) {
       // Oh dear, there was an issue.
       cachedResponse = undefined;

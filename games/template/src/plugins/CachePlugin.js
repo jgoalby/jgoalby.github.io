@@ -136,7 +136,6 @@ export default class CachePlugin extends BasePlugin {
     try {
       const cache = await window.caches.open(Constants.CACHE_NAME);
       cachedResponse = await cache.match(fullRequestedFile);
-      cachedResponse = cachedResponse.clone();
       const cacheKeys = await cache.keys();
       for (let i = 0; i < cacheKeys.length; i++) {
         cacheKeyStr += cacheKeys[i].url + " | ";
@@ -149,6 +148,8 @@ export default class CachePlugin extends BasePlugin {
     console.log("MAIN NUM 3!!! " + cacheKeyStr);
 
     if (cachedResponse) {
+      cachedResponse = cachedResponse.clone();
+
       console.log("MAIN 5 COMING UP *********");
       console.log(cachedResponse);
       try {
