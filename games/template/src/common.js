@@ -124,118 +124,129 @@ function callMemberFunction(functionName, ...args) {
   }
 }
 
-
-
+// Various key options we care about. Upper case.
 const keyOptions = {
-  meta: 'meta',
-  ctrl: 'ctrl',
-  alt: 'alt',
-  shift: 'shift',
+  meta:      'META',
+  ctrl:      'CTRL',
+  alt:       'ALT',
+  shift:     'SHIFT',
   separator: ' '
 }
 
+// Lookup from key code to string representation for special cases. Make sure to keep
+// everything UPPERCASE so lookups work correctly. We make sure to upper case and the
+// function String.fromCharCode forces the issue by returning UPPER case.
 const keyMap = {
-  8: 'backspace',
-  9: 'tab',
-  13: 'enter',
-  16: keyOptions.shift,
-  17: keyOptions.ctrl,
-  18: keyOptions.alt,
-  20: 'capslock',
-  27: 'esc',
-  32: 'space',
-  33: 'pageup',
-  34: 'pagedown',
-  35: 'end',
-  36: 'home',
-  37: 'left',
-  38: 'up',
-  39: 'right',
-  40: 'down',
-  45: 'ins',
-  46: 'del',
-  91: keyOptions.meta,
-  93: keyOptions.meta,
-  112: 'F1', 
-  113: 'F2', 
-  114: 'F3', 
-  115: 'F4', 
-  116: 'F5', 
-  117: 'F6', 
-  118: 'F7', 
-  119: 'F8', 
-  120: 'F9', 
-  121: 'F10', 
-  122: 'F11', 
-  123: 'F12',
-  124: 'F13',
-  125: 'F14',
-  126: 'F15',
-  127: 'F16',
-  128: 'F17',
-  129: 'F18',
-  130: 'F19',
+  // 0-7: ???
+  8:   'BACKSPACE',
+  9:   'TAB',
+  // 10-12: ??? ??? Numlock
+  13:  'ENTER',
+  // 14-15: ???
+  16:  keyOptions.shift,
+  17:  keyOptions.ctrl,
+  18:  keyOptions.alt,
+  // 19: Pause
+  20:  'CAPSLOCK',
+  // 21-26: ???
+  27:  'ESC',
+  // 28-31: ???
+  32:  'SPACE',
+  33:  'pageup', 34: 'PAGEDOWN',
+  35:  'END', 36: 'HOME',
+  37:  'LEFT', 38: 'UP', 39: 'RIGHT', 40: 'DOWN',
+  // 41-44: Select Print Execute PrintScreen
+  45:  'INS', 46: 'DEL',
+  // 47: Help
+  // 48-57: 0-9
+  // 58-64: . ; < = - @
+  // 65-90: A-Z
+  91:  keyOptions.meta,
+  92:  keyOptions.meta,
+  93:  keyOptions.meta,
+  // 96-111 : Numpad 0-9 * + . - . /
+  112: 'F1',  113: 'F2',  114: 'F3',  115: 'F4',  116: 'F5',  117: 'F6',  118: 'F7',  119: 'F8',  120: 'F9',  121: 'F10', 
+  122: 'F11', 123: 'F12', 124: 'F13', 125: 'F14', 126: 'F15', 127: 'F16', 128: 'F17', 129: 'F18', 130: 'F19',
+  // 131-185: ???
   186: ';',
   187: '=',
   188: ',',
   189: '-',
   190: '.',
+  // 191: /
   192: '`',
+  // 193-218: ???
+  // 219-221: [ \ ]
   222: "'",
+  // 223: `
   224: keyOptions.meta,
+  // 225-255: ???
 }
 
+// Holder for the reverse key map lazily created from regular keymap.
 let reverseKeyMap = undefined;
 
 function createReverseKeyMap() {
-  if (reverseKeyMap == undefined) {
-    reverseKeyMap = {};
-    for (const key in keyMap) {
-      if (keyMap.hasOwnProperty(key)) {
-          reverseKeyMap[keyMap[key]] = parseInt(key);
-      }
+  // Make a new reverse key map object.
+  reverseKeyMap = {};
+
+  // Go through each entry in the regular keymap.
+  for (const key in keyMap) {
+    // If this is its won property...
+    if (keyMap.hasOwnProperty(key)) {
+      // ...add it to the reverse key map and convert to an integer.
+      reverseKeyMap[keyMap[key]] = parseInt(key);
     }
   }
 }
 
 function keyEventToString(keyEvent) {
+  // To make a string with a give separator we make an array first.
   let arr = [];
 
+  // Check each of the modifier keys and if present add to the array.
   if (keyEvent.metaKey)  { arr.push(keyOptions.meta); }
   if (keyEvent.ctrlKey)  { arr.push(keyOptions.ctrl); }
   if (keyEvent.altKey)   { arr.push(keyOptions.alt); }
   if (keyEvent.shiftKey) { arr.push(keyOptions.shift); }
 
+  // Look to see if the keycode is a modifier itself. If so, this is a special case.
   const isModifier = [16, 17, 18, 91, 93, 224].indexOf(keyEvent.keyCode) !== -1;
 
+  // This is NOT a modifier key on its own, so we can add it to the array. If we didn't do
+  // this check we would end up with "shift shift" when pressing shift key once.
   if (!isModifier) {
+    // Add the keycode if we find it in the lookup, or the straight conversion from character code.
+    // Interesting to note that fromCharCode returns an upper case letter, so we uppercase in string to keyevent.
     arr.push(keyMap[keyEvent.keyCode] || String.fromCharCode(keyEvent.keyCode));
   }
 
+  // We can take everything in the array and join back together with the given separator.
   return arr.join(keyOptions.separator);
 }
 
 function stringToKeyEvent(str) {
-  createReverseKeyMap();
+  if (reverseKeyMap == undefined) {
+    // Create the reverse key map lookup if not already.
+    createReverseKeyMap();
+  }
 
+  // Create a blank key event with sensible defaults.
   let keyEvent = {};
   keyEvent.metaKey  = false;
   keyEvent.ctrlKey  = false;
   keyEvent.altKey   = false;
   keyEvent.shiftKey = false;
 
+  // Split the input string based on the separator.
   let arr = str.split(keyOptions.separator);
 
-  if (arr.length === 0) {
-    return undefined;
-  }
+  // This is not good, so esacpe.
+  if (arr.length === 0) { return undefined; }
 
-  // If there is just 1 element then it needs to be the keycode.
-  if (arr.length === 1) {
-    keyEvent.keyCode = reverseKeyMap[arr[0]] || (arr[0]).charCodeAt(0);
-    return keyEvent;
-  }
-
+  // Go through the array except for the last element which is the keycode and we
+  // will look at that last. Note that if there is only 1 element we will skip this
+  // loop altogether.
   for (let i = 0; i < (arr.length - 1); i++) {
     const currentKeyCode = reverseKeyMap[arr[i]];
 
@@ -251,11 +262,31 @@ function stringToKeyEvent(str) {
     }
   }
 
-  const lastElement = arr[arr.length - 1];
+  // Look at the last element of the array and return the key code for it. We make sure the
+  // element is upper case as that is what we get when converting the opposite direction.
+  const lastElement = arr[arr.length - 1].toUpperCase();
   keyEvent.keyCode = reverseKeyMap[lastElement] || lastElement.charCodeAt(0);
 
+  // Retun the key event now.
   return keyEvent;
 }
+
+
+/*
+
+TODO:
+
+Maybe we can make an export for each module that tests the code within the module.
+
+Would be good to have some tests for this stuff.
+
+    const str1 = keyEventToString(keyEvent);
+    console.log(str1);
+    const key1 = stringToKeyEvent(str1);
+    console.log(key1);
+
+*/
+
 
 export {
   getActiveScene,

@@ -89,6 +89,19 @@ export default class ShortcutsPlugin extends BasePlugin {
     } 
   }
 
+  expandShortcutInfo(shortcutInfo) {
+    // If the shortcut info uses shortcut to define the key information, expand to make future
+    // comparisons easier.
+    if (shortcutInfo.shortcut) {
+      const keyEvent = stringToKeyEvent(shortcutInfo.shortcut);
+      shortcutInfo.keyEventCode     = keyEvent.keyCode;
+      shortcutInfo.keyEventCtrlKey  = keyEvent.ctrlKey;
+      shortcutInfo.keyEventAltKey   = keyEvent.altKey;
+      shortcutInfo.keyEventMetaKey  = keyEvent.metaKey;
+      shortcutInfo.keyEventShiftKey = keyEvent.shiftKey;
+    }
+  }
+
   /**
    * An add shortcut event happened.
    * 
@@ -97,26 +110,19 @@ export default class ShortcutsPlugin extends BasePlugin {
   onAddShortcut(shortcutInfo) {
     // TODO: This just adds, we need something better. To check for existence? Do we care?
 
-    this.shortcuts.push(shortcutInfo);
+    // Expand shortcut info to make future comparisons easier.
+    this.expandShortcutInfo(shortcutInfo);
 
-    console.log(this.shortcuts);
+    this.shortcuts.push(shortcutInfo);
   }
 
   getCanonicalShortcutInfo(shortcutInfo) {
-    let keyEvent = undefined;
-
-    if (shortcutInfo.shortcut) {
-      keyEvent = stringToKeyEvent(shortcutInfo.shortcut);
-    } else {
-      keyEvent = shortcutInfo;
-    }
-
     let canonical = {};
-    canonical.keyEventCode     = shortcutInfo.code     || keyEvent.keyEventCode;
-    canonical.keyEventCtrlKey  = shortcutInfo.ctrlKey  || keyEvent.keyEventCtrlKey  || false;
-    canonical.keyEventAltKey   = shortcutInfo.altKey   || keyEvent.keyEventAltKey   || false;
-    canonical.keyEventMetaKey  = shortcutInfo.metaKey  || keyEvent.keyEventMetaKey  || false;
-    canonical.keyEventShiftKey = shortcutInfo.shiftKey || keyEvent.keyEventShiftKey || false;
+    canonical.keyEventCode     = shortcutInfo.keyCode  || shortcutInfo.keyEventCode;
+    canonical.keyEventCtrlKey  = shortcutInfo.ctrlKey  || shortcutInfo.keyEventCtrlKey  || false;
+    canonical.keyEventAltKey   = shortcutInfo.altKey   || shortcutInfo.keyEventAltKey   || false;
+    canonical.keyEventMetaKey  = shortcutInfo.metaKey  || shortcutInfo.keyEventMetaKey  || false;
+    canonical.keyEventShiftKey = shortcutInfo.shiftKey || shortcutInfo.keyEventShiftKey || false;
     return canonical;
   }
 
@@ -146,7 +152,8 @@ export default class ShortcutsPlugin extends BasePlugin {
    */
   onRemoveShortcut(shortcutInfo) {
 
-    console.log("remove here");
+    // Expand shortcut info to make removal easier.
+    this.expandShortcutInfo(shortcutInfo);
 
     this.shortcuts = this.shortcuts.filter((value) => { return !this.isSameShortcut(shortcutInfo, value) });
 
