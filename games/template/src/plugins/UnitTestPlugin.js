@@ -1,6 +1,6 @@
 import Constants from '../constants.js';
 import BasePlugin from './BasePlugin.js'
-import { testModule } from '../common.js';
+import { testModule as testCommon } from '../common.js';
 
 export default class UnitTestPlugin extends BasePlugin {
   constructor(pluginManager) {
@@ -8,10 +8,18 @@ export default class UnitTestPlugin extends BasePlugin {
   }
 
   test() {
-    const testRet = testModule();
-
+    // If a test happens and there is no event to hear it, does it matter?
     if (this.customevent) {
-      this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Test status: ${testRet}` });
+      try {
+        // Run the tests.
+        testCommon();
+
+        // Announce the winners!
+        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: 'All tests passed.' });
+      } catch (e) {
+        // Announce the winners!
+        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Test failed: ${e.message}` });
+      }
     }
   }
 

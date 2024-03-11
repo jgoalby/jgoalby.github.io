@@ -14,19 +14,20 @@ const ServiceWorkerEvents = {
   CACHE_MESSAGE:  'CACHE_MESSAGE',
 };
 
+// A place we can keep the cache name so we can change it in one place in case we need a new version.
+// Also defined in constants.js, so, if you change it here, change it there also.
+const SW_CACHE_NAME = "cache-v1";
+
 // The exported class that contains all of the constants.
 class Constants {
   static get SW_EVENTS() { return ServiceWorkerEvents; }
+  static get CACHE_NAME() { return SW_CACHE_NAME };
 }
 
 //----------------------------------------------------------------------------------------------------------
 // GOAL: Work offline by utilizing a cache. Fill the cache as resources are requested. Communicate
 //       with the main thread both ways. We can send update messages and get requests to perform accions.
 //----------------------------------------------------------------------------------------------------------
-
-// A place we can keep the cache name so we can change it in one place in case we need a new version.
-// Only the service worker should care about this value, so keep it in here isolated from the outside.
-const cacheName = "cache-v1";
 
 /**
  * Install the service worker and cache the base resources we need.
@@ -36,7 +37,7 @@ const cacheName = "cache-v1";
 function installEventHandler(event) {
   event.waitUntil(
     // Open the cache and put some files in it.
-    caches.open(cacheName).then(function(cache) {
+    caches.open(Constants.CACHE_NAME).then(function(cache) {
       // We are caching in fetch below, so not sure these are even needed. Prefer to avoid putting
       // hardcoded filesnames here because what if they change? Leaving like this for now so that
       // it is a placeholder for future explorers.
@@ -57,7 +58,7 @@ function activateEventHandler(event) {
       return Promise.all(
         // Go through all of the keys in the cache, deleting what is a different cache name (version).
         keyList.map((key) => {
-          if (key === cacheName) { return; }
+          if (key === Constants.CACHE_NAME) { return; }
           return caches.delete(key);
         }),
       );
@@ -90,7 +91,7 @@ async function messageEventHandler(event) {
       }
     } else if (event.data.type === Constants.SW_EVENTS.CLEAR_CACHE) {
       // Clear the cache.
-      const ret = await caches.delete(cacheName);
+      const ret = await caches.delete(Constants.CACHE_NAME);
 
       // Send the message indicating we have cleared the cache.
       self.sendMessage({ type: Constants.SW_EVENTS.CACHE_EVENT, message: Constants.SW_EVENTS.CACHE_CLEARED, success: ret });
@@ -128,7 +129,7 @@ function fetchEventHandler(event) {
 
     try {
       // Get the cached response up front so we can return it if the network fails.
-      const cache = await caches.open(cacheName);
+      const cache = await caches.open(Constants.CACHE_NAME);
       cachedResponse = await cache.match(event.request);
     } catch (error) {
       // Oh dear, there was an issue.
@@ -152,7 +153,7 @@ function fetchEventHandler(event) {
         }
       } else {
         // The response was ok, so cache it for future generations.
-        const cache = await caches.open(cacheName);
+        const cache = await caches.open(Constants.CACHE_NAME);
         await cache.put(event.request, response.clone());    
       }
     } catch (error) {

@@ -3,6 +3,9 @@ const TITLE = 'Template';
 const VERSION = '0.1'
 const AUTHOR = 'John Goalby';
 
+// Cache constant.
+const SW_CACHE_NAME = "cache-v1";
+
 // General constants.
 const General = {
   WIDTH:             window.innerWidth,
@@ -247,6 +250,7 @@ export default class Constants {
   static get PLUGIN_INFO() { return PluginInfo; }
   static get SCENES() { return Scenes; }
 
-  // If you change the name of this, then you should also change it in service-worker.js.
+  // If you change the name of these, then you should also change them in service-worker.js.
   static get SW_EVENTS() { return ServiceWorkerEvents; }
+  static get CACHE_NAME() { return SW_CACHE_NAME };
 }

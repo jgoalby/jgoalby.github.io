@@ -50,6 +50,22 @@ export default class ShortcutsPlugin extends BasePlugin {
                   });
 
     this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.SHORTCUTS_KEY],
+                    memberName:           'logShortcuts',
+                    memberArgs:           [],
+                    shortcut:             'CTRL SHIFT J'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.CACHE_KEY],
+                    memberName:           'getCachedFile',
+                    memberArgs:           [],
+                    shortcut:             'CTRL SHIFT K'
+                  });
+
+    this.onAddShortcut({
                     actionFn:             () => { console.log("This is the life!") },
                     actionFnArgs:         [],
                     shortcut:             'CTRL SHIFT J'
@@ -184,6 +200,10 @@ export default class ShortcutsPlugin extends BasePlugin {
 
     this.shortcuts = this.shortcuts.filter((value) => { return !this.isSameShortcut(shortcutInfo, value) });
 
+  }
+
+  logShortcuts() {
+    console.log(this.shortcuts);
   }
 
   static get options() {

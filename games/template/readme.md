@@ -178,6 +178,9 @@ In creating these images with Dall-e, I wonder if I can create a fluid interface
 
 # Testing TODOs
 
+- All modules need to have a testModule function and have tests.
+- The unit tests plugin should work on dynamic module code.
+
 ## General
 - Favicon
 - Full screen

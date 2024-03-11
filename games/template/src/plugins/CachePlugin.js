@@ -114,6 +114,56 @@ export default class CachePlugin extends BasePlugin {
     }
   }
 
+  async getCachedFile() {
+    // TODO: Make params for this. What should I be requesting? common.js? /src/common.js?
+    // TODO: Somehow we will need to know the base URL. Can we get it from window?
+
+    console.log("FFS 1");
+
+    const pathname = window.location.pathname;
+    const pathNameWithoutFile = pathname.substring(0, pathname.lastIndexOf("/"));
+    const urlWithoutFile = window.location.origin + pathNameWithoutFile;
+
+    console.log(urlWithoutFile);
+
+    const requestedFile = '/src/common.js'
+
+    const fullRequestedFile = urlWithoutFile + requestedFile;
+
+    console.log(fullRequestedFile);
+
+    let cachedResponse = undefined;
+    let cacheKeyStr = "";
+
+    try {
+      const cache = await window.caches.open(Constants.CACHE_NAME);
+      cachedResponse = await cache.match(fullRequestedFile);
+      const cacheKeys = await cache.keys();
+      for (let i = 0; i < cacheKeys.length; i++) {
+        cacheKeyStr += cacheKeys[i].url + " | ";
+      }
+    } catch (error) {
+      // Oh dear, there was an issue.
+      cachedResponse = undefined;
+    }
+
+    console.log("MAIN NUM 3!!! " + cacheKeyStr);
+
+    if (cachedResponse) {
+      console.log("MAIN 5 COMING UP *********");
+      console.log(cachedResponse);
+      try {
+        const text = await cachedResponse.text();
+        console.log("MAIN 5: " + text);
+      } catch(e) {
+        console.log("EXCEPTION!!!!");
+      }
+      console.log("MAIN 5");
+    } else {
+      console.log("MAIN NOT FOUND 2!!!");
+    }
+  }
+
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.CACHE_KEY,
@@ -124,39 +174,3 @@ export default class CachePlugin extends BasePlugin {
   }
 }
 
-/**
- * Handle the keydown event.
- * @param {KeyboardEvent} event The event.
- */
-async function handleKeydown(event) {
-  // TODO: Somehow we will need to know the base URL. Can we get it from window?
-
-  console.log("FFS 1");
-
-  // TODO: Put in constants.
-  const cacheName = "cache-v1";
-
-  let cachedResponse = undefined;
-  let cacheKeyStr = "";
-
-  try {
-    const cache = await window.caches.open(cacheName);
-    cachedResponse = await cache.match('https://www.goalby.org/games/template/src/common.js');
-    const cacheKeys = await cache.keys();
-    for (let i = 0; i < cacheKeys.length; i++) {
-      cacheKeyStr += cacheKeys[i].url + " | ";
-    }
-  } catch (error) {
-    // Oh dear, there was an issue.
-    cachedResponse = undefined;
-  }
-
-  console.log("MAIN NUM 3!!! " + cacheKeyStr);
-
-  if (cachedResponse) {
-    const text = await cachedResponse.text();
-    console.log("MAIN 5: " + text);
-  } else {
-    console.log("MAIN NOT FOUND 2!!!");
-  }
-}

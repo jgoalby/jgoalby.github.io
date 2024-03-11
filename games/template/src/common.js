@@ -271,33 +271,51 @@ function stringToKeyEvent(str) {
   return keyEvent;
 }
 
-
-/*
-
-TODO:
-
-Maybe we can make an export for each module that tests the code within the module.
-
-Would be good to have some tests for this stuff.
-
-    const str1 = keyEventToString(keyEvent);
-    console.log(str1);
-    const key1 = stringToKeyEvent(str1);
-    console.log(key1);
-
-*/
-
-function testModule() {
-  const key1 = stringToKeyEvent("ESC");
-  if (key1.keyCode == 27) {
-    return true;
-  } else {
-    return false;
+const assert = function(condition, message) {
+  if (!condition) {
+    throw Error('Assert failed' + (message ? (': ' + message) : '.'));
   }
+};
+
+const assertEqual = function(value, expected, message) {
+  if (value != expected) {
+    throw Error(`Assert failed value(${value}) != expected(${expected})` + (message ? (': ' + message) : '.'));
+  }
+};
+
+//-----------------------------------------------------------------------------
+//                                 MODULE TESTS
+//-----------------------------------------------------------------------------
+
+function testStringToKeyEvent() {
+  const str1 = 'ESC';
+  const key1 = stringToKeyEvent(str1);
+  assertEqual(key1.keyCode, 27, `for string (${str1})`);
 }
 
+function testKeyEventToString() {
+  const keyEventA =         { keyCode: 65, metaKey: false, ctrlKey: false, altKey: false, shiftKey: false };
+  const keyEventShift =     { keyCode: 16, metaKey: false, ctrlKey: false, altKey: false, shiftKey: true  };
+  const keyEventEscapeAll = { keyCode: 27, metaKey: true,  ctrlKey: true,  altKey: true,  shiftKey: true  };
+
+  const str1 = keyEventToString(keyEventA);
+  assertEqual(str1, 'A', 'for keyEventA');
+
+  const str2 = keyEventToString(keyEventShift);
+  assertEqual(str2, 'SHIFT', 'for keyEventShift');
+
+  const str3 = keyEventToString(keyEventEscapeAll);
+  assertEqual(str3, 'META CTRL ALT SHIFT ESC', 'for keyEventEscapeAll');
+}
+
+function testModule() {
+  testStringToKeyEvent();
+  testKeyEventToString();
+}
 
 export {
+  assert,
+  assertEqual,
   getActiveScene,
   getScene,
   getClassNamesWithGetInstanceFn,

@@ -134,9 +134,9 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
   /**
    * Simple helper to get a setting value.
    * 
-   * @param {string} category The category.
+   * @param {string} category The category for the setting.
    * @param {string} settingName The name of the setting to get.
-   * @returns {any} the setting value.
+   * @returns {any | undefined} the setting value or undefined.
    */
   getSettingValue(category, settingName) {
     if (this.settings) {
