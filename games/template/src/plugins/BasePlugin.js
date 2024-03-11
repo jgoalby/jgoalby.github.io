@@ -132,6 +132,22 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
   }
 
   /**
+   * Simple helper to get a setting value.
+   * 
+   * @param {string} category The category.
+   * @param {string} settingName The name of the setting to get.
+   * @returns {any} the setting value.
+   */
+  getSettingValue(category, settingName) {
+    if (this.settings) {
+      // Get the setting object, and then the value from that object.
+      return this.settings.getSetting(category, settingName).value;
+    } else {
+      return undefined;
+    }
+  }
+
+  /**
    * Local plugin so we do not provide a version.
    * 
    * @returns {string | undefined} The version of the plugin.

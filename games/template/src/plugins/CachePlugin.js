@@ -47,21 +47,6 @@ export default class CachePlugin extends BasePlugin {
   getPluginSettings() { return pluginSettings; }
 
   /**
-   * Simple helper to get a setting value.
-   * 
-   * @param {string} settingName The name of the setting to get.
-   * @returns {any} the setting value.
-   */
-  getSettingValue(settingName) {
-    if (this.settings) {
-      // Get the setting object, and then the value from that object.
-      return this.settings.getSetting(CATEGORY, settingName).value;
-    } else {
-      return undefined;
-    }
-  }
-
-  /**
    * Called in response to messages.
    * 
    * @param {any} eventData The event data sent.
@@ -89,12 +74,12 @@ export default class CachePlugin extends BasePlugin {
       // If a hit...
       if (hit) {
         // ..check that we want to log hits as it is configurable.
-        if (this.getSettingValue(LOG_CACHE_HIT_OPTION)) {
+        if (this.getSettingValue(CATEGORY, LOG_CACHE_HIT_OPTION)) {
           console.log(`Cache hit: ${url}`);
         }
       } else {
         // ..check that we want to log misses as it is configurable.
-        if (this.getSettingValue(LOG_CACHE_MISS_OPTION)) {
+        if (this.getSettingValue(CATEGORY, LOG_CACHE_MISS_OPTION)) {
           console.warn(`Cache miss: ${url}`);
         }
       }

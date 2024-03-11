@@ -2,11 +2,28 @@ import Constants from '../constants.js';
 import { keyEventToString, stringToKeyEvent, withClass, callMemberFunction } from '../common.js'
 import BasePlugin from './BasePlugin.js'
 
+// Constants that only this plugin uses.
+const CATEGORY                        = 'developer';
+const LOG_KEYBOARD_EVENTS_OPTION      = 'logKeyboardEventsOption';
+const LOG_KEYBOARD_EVENTS_OPTION_DESC = 'Log Keyboard Events';
+
+const pluginSettings = {
+  LOG_KEYBOARD_EVENTS:{
+    category: CATEGORY,
+    name: LOG_KEYBOARD_EVENTS_OPTION,
+    description: LOG_KEYBOARD_EVENTS_OPTION_DESC,
+    value: false,
+    type: Constants.SETTINGS_TYPES.boolean
+  }
+}
+
 export default class ShortcutsPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
     this.shortcuts = [];
+
+    // TODO: These are not going to stay here.
 
     this.onAddShortcut({
                     getInstanceClassName: 'BasePlugin',
@@ -37,9 +54,14 @@ export default class ShortcutsPlugin extends BasePlugin {
                     actionFnArgs:         [],
                     shortcut:             'CTRL SHIFT J'
                   });
-
-    console.log(this.shortcuts);
   }
+
+  /**
+   * Get the plugin settings.
+   * 
+   * @returns {Object} The plugin settings.
+   */
+  getPluginSettings() { return pluginSettings; }
 
   /**
    * A custom key event happened. We want to listen for keys and then do something.
@@ -47,15 +69,13 @@ export default class ShortcutsPlugin extends BasePlugin {
    * @param {KeyboardEvent} keyEvent The keyboard event.
    */
   onKeyboard(keyEvent) {
-
-
-    // TODO: Make the following output to the console settings based.
-
-
-    const str1 = keyEventToString(keyEvent);
-    console.log(str1);
-    const key1 = stringToKeyEvent(str1);
-    console.log(key1);
+    // This can be turned on and off in options.
+    if (this.getSettingValue(CATEGORY, LOG_KEYBOARD_EVENTS_OPTION)) {
+      const str = keyEventToString(keyEvent);
+      console.log(str);
+      const key = stringToKeyEvent(str);
+      console.log(key);
+    }
 
     // This list could be dynamic depending on which scene you are in.
     // I can see a case where say buttons in a scene will register their own hotkeys and shortcuts.
