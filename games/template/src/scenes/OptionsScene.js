@@ -71,7 +71,7 @@ export default class OptionsScene extends BaseScene {
       }
     }
 
-    this.mainMenuButton = new Button(this, { keyEventCode: 'KeyX', scene: Constants.SCENES.MENU_SCENE, label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
+    this.mainMenuButton = new Button(this, { shortcut: 'X', label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
   }
 
   resize() {

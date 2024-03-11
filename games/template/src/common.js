@@ -124,10 +124,145 @@ function callMemberFunction(functionName, ...args) {
   }
 }
 
+
+
+const keyOptions = {
+  meta: 'meta',
+  ctrl: 'ctrl',
+  alt: 'alt',
+  shift: 'shift',
+  separator: ' '
+}
+
+const keyMap = {
+  8: 'backspace',
+  9: 'tab',
+  13: 'enter',
+  16: keyOptions.shift,
+  17: keyOptions.ctrl,
+  18: keyOptions.alt,
+  20: 'capslock',
+  27: 'esc',
+  32: 'space',
+  33: 'pageup',
+  34: 'pagedown',
+  35: 'end',
+  36: 'home',
+  37: 'left',
+  38: 'up',
+  39: 'right',
+  40: 'down',
+  45: 'ins',
+  46: 'del',
+  91: keyOptions.meta,
+  93: keyOptions.meta,
+  112: 'F1', 
+  113: 'F2', 
+  114: 'F3', 
+  115: 'F4', 
+  116: 'F5', 
+  117: 'F6', 
+  118: 'F7', 
+  119: 'F8', 
+  120: 'F9', 
+  121: 'F10', 
+  122: 'F11', 
+  123: 'F12',
+  124: 'F13',
+  125: 'F14',
+  126: 'F15',
+  127: 'F16',
+  128: 'F17',
+  129: 'F18',
+  130: 'F19',
+  186: ';',
+  187: '=',
+  188: ',',
+  189: '-',
+  190: '.',
+  192: '`',
+  222: "'",
+  224: keyOptions.meta,
+}
+
+let reverseKeyMap = undefined;
+
+function createReverseKeyMap() {
+  if (reverseKeyMap == undefined) {
+    reverseKeyMap = {};
+    for (const key in keyMap) {
+      if (keyMap.hasOwnProperty(key)) {
+          reverseKeyMap[keyMap[key]] = parseInt(key);
+      }
+    }
+  }
+}
+
+function keyEventToString(keyEvent) {
+  let arr = [];
+
+  if (keyEvent.metaKey)  { arr.push(keyOptions.meta); }
+  if (keyEvent.ctrlKey)  { arr.push(keyOptions.ctrl); }
+  if (keyEvent.altKey)   { arr.push(keyOptions.alt); }
+  if (keyEvent.shiftKey) { arr.push(keyOptions.shift); }
+
+  const isModifier = [16, 17, 18, 91, 93, 224].indexOf(keyEvent.keyCode) !== -1;
+
+  if (!isModifier) {
+    arr.push(keyMap[keyEvent.keyCode] || String.fromCharCode(keyEvent.keyCode));
+  }
+
+  return arr.join(keyOptions.separator);
+}
+
+function stringToKeyEvent(str) {
+  createReverseKeyMap();
+
+  let keyEvent = {};
+  keyEvent.metaKey  = false;
+  keyEvent.ctrlKey  = false;
+  keyEvent.altKey   = false;
+  keyEvent.shiftKey = false;
+
+  let arr = str.split(keyOptions.separator);
+
+  if (arr.length === 0) {
+    return undefined;
+  }
+
+  // If there is just 1 element then it needs to be the keycode.
+  if (arr.length === 1) {
+    keyEvent.keyCode = reverseKeyMap[arr[0]] || (arr[0]).charCodeAt(0);
+    return keyEvent;
+  }
+
+  for (let i = 0; i < (arr.length - 1); i++) {
+    const currentKeyCode = reverseKeyMap[arr[i]];
+
+    const isModifier = [16, 17, 18, 91, 93, 224].indexOf(currentKeyCode) !== -1;
+
+    if (isModifier) {
+      if (currentKeyCode == 16) { keyEvent.shiftKey = true; }
+      if (currentKeyCode == 17) { keyEvent.ctrlKey = true; }
+      if (currentKeyCode == 18) { keyEvent.altKey = true; }
+      if ([91, 93, 224].indexOf(currentKeyCode) !== -1) { keyEvent.metaKey = true; }
+    } else {
+      // If it is not a modifier, then its not really something we can deal with right now.
+    }
+  }
+
+  const lastElement = arr[arr.length - 1];
+  keyEvent.keyCode = reverseKeyMap[lastElement] || lastElement.charCodeAt(0);
+
+  return keyEvent;
+}
+
 export {
   getActiveScene,
   getScene,
   getClassNamesWithGetInstanceFn,
   withClass,
   callMemberFunction,
+  keyEventToString,
+  stringToKeyEvent,
 }

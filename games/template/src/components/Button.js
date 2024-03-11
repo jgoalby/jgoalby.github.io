@@ -11,31 +11,6 @@ export default class Button extends Phaser.GameObjects.Container {
   constructor(scene, options) {
     super(scene);
     
-    this.scene = options.scene;
-    this.keyEventCode = options.keyEventCode;
-
-    this.once('destroy', () => { this.onDestroy() });
-
-    if (this.keyEventCode) {
-      /** @type {EventPlugin} */
-      const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
-
-      // It might not be available.
-      if (customevent) {
-        customevent.emit(Constants.EVENTS.ADD_SHORTCUT, {
-                      getInstanceClassName: 'BaseScene',
-                      getInstanceArgs:      [],
-                      memberName:           'gotoScene',
-                      memberArgs:           [this.scene],
-                      keyEventCode:         this.keyEventCode,
-                      keyEventCtrlKey:      false,
-                      keyEventAltKey:       false,
-                      keyEventMetaKey:      false,
-                      keyEventShiftKey:     false
-                    });
-      }
-    }
-
     this.scene = scene;
     this.x = 0;
     this.y = 0;
@@ -44,10 +19,24 @@ export default class Button extends Phaser.GameObjects.Container {
       this.setting = options.setting;
       this.label = options.setting.description;
       this.actionFn = options.setting.actionFn;
+      this.shortcut = options.setting.shortcut;
     } else {
       this.setting = undefined;
       this.label = options.label;
       this.actionFn = options.actionFn;
+      this.shortcut = options.shortcut;
+    }
+
+    this.once('destroy', () => { this.onDestroy() });
+
+    if (this.shortcut) {
+      /** @type {EventPlugin} */
+      const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
+
+      // It might not be available.
+      if (customevent) {
+        customevent.emit(Constants.EVENTS.ADD_SHORTCUT, { actionFn: this.actionFn, shortcut: this.shortcut });
+      }
     }
 
     this.normal = 'normalButton';
@@ -84,23 +73,13 @@ export default class Button extends Phaser.GameObjects.Container {
   }
 
   onDestroy() {
-    if (this.keyEventCode) {
+    if (this.shortcut) {
       /** @type {EventPlugin} */
       const customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
 
       // It might not be available.
       if (customevent) {
-        customevent.emit(Constants.EVENTS.REMOVE_SHORTCUT, {
-                      getInstanceClassName: 'BaseScene',
-                      getInstanceArgs:      [],
-                      memberName:           'gotoScene',
-                      memberArgs:           [this.scene],
-                      keyEventCode:         this.keyEventCode,
-                      keyEventCtrlKey:      false,
-                      keyEventAltKey:       false,
-                      keyEventMetaKey:      false,
-                      keyEventShiftKey:     false
-                    });
+        customevent.emit(Constants.EVENTS.REMOVE_SHORTCUT, { actionFn: this.actionFn, shortcut: this.shortcut });
       }
     }
   }
