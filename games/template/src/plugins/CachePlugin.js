@@ -118,8 +118,6 @@ export default class CachePlugin extends BasePlugin {
     // TODO: Make params for this. What should I be requesting? common.js? /src/common.js?
     // TODO: Somehow we will need to know the base URL. Can we get it from window?
 
-    console.log("FFS 1");
-
     const pathname = window.location.pathname;
     const pathNameWithoutFile = pathname.substring(0, pathname.lastIndexOf("/"));
     const urlWithoutFile = window.location.origin + pathNameWithoutFile;
@@ -138,6 +136,7 @@ export default class CachePlugin extends BasePlugin {
     try {
       const cache = await window.caches.open(Constants.CACHE_NAME);
       cachedResponse = await cache.match(fullRequestedFile);
+      cachedResponse = cachedResponse.clone();
       const cacheKeys = await cache.keys();
       for (let i = 0; i < cacheKeys.length; i++) {
         cacheKeyStr += cacheKeys[i].url + " | ";
@@ -153,10 +152,11 @@ export default class CachePlugin extends BasePlugin {
       console.log("MAIN 5 COMING UP *********");
       console.log(cachedResponse);
       try {
-        const text = await cachedResponse.text();
+        let text = await cachedResponse.text();
+        //text = await cachedResponse.text();
         console.log("MAIN 5: " + text);
       } catch(e) {
-        console.log("EXCEPTION!!!!");
+        console.log("EXCEPTION!!!! " + e.message);
       }
       console.log("MAIN 5");
     } else {
