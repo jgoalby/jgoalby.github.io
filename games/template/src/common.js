@@ -287,6 +287,15 @@ Would be good to have some tests for this stuff.
 
 */
 
+function testModule() {
+  const key1 = stringToKeyEvent("ESC");
+  if (key1.keyCode == 27) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 
 export {
   getActiveScene,
@@ -296,4 +305,5 @@ export {
   callMemberFunction,
   keyEventToString,
   stringToKeyEvent,
+  testModule,
 }

@@ -81,10 +81,16 @@ declare class CheckBoxButton extends Phaser.GameObjects.Container {
 type InitSetupPlugin = import('../plugins/InitSetupPlugin').default;
 type FirebasePlugin = import('../plugins/FirebasePlugin').default;
 type ServiceWorkerPlugin = import('../plugins/ServiceWorkerPlugin').default;
+type WindowPlugin = import('./WindowPlugin.js').default;
 type ConsolePlugin = import('../plugins/ConsolePlugin').default;
 type NotificationPlugin = import('../plugins/NotificationPlugin').default;
 type EventPlugin = import('../plugins/EventPlugin').default;
 type SettingsPlugin = import('../plugins/SettingsPlugin').default;
 type IntrospectPlugin = import('../plugins/IntrospectPlugin').default;
 type CachePlugin = import('../plugins/CachePlugin').default;
+type StylesPlugin = import('../plugins/StylesPlugin.js').default;
+type ReflectionPlugin = import('../plugins/ReflectionPlugin.js').default;
+type ShortcutsPlugin = import('../plugins/ShortcutsPlugin.js').default;
+type GenAIPlugin = import('../plugins/GenAIPlugin.js').default;
 type AudioPlugin = import('../plugins/AudioPlugin').default;
+type UnitTestPlugin = import('../plugins/UnitTestPlugin.js').default;

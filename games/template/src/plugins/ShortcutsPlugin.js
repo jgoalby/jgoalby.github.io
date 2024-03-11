@@ -7,6 +7,38 @@ export default class ShortcutsPlugin extends BasePlugin {
     super(pluginManager);
 
     this.shortcuts = [];
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.CONSOLE_KEY],
+                    memberName:           'toggle',
+                    memberArgs:           [],
+                    shortcut:             'CTRL SHIFT D'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BaseScene',
+                    getInstanceArgs:      [],
+                    memberName:           'gotoScene',
+                    memberArgs:           [Constants.SCENES.MENU_SCENE],
+                    shortcut:             'CTRL SHIFT E'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.UNIT_TEST_KEY],
+                    memberName:           'test',
+                    memberArgs:           [],
+                    shortcut:             'CTRL SHIFT G'
+                  });
+
+    this.onAddShortcut({
+                    actionFn:             () => { console.log("This is the life!") },
+                    actionFnArgs:         [],
+                    shortcut:             'CTRL SHIFT J'
+                  });
+
+    console.log(this.shortcuts);
   }
 
   /**
@@ -15,6 +47,11 @@ export default class ShortcutsPlugin extends BasePlugin {
    * @param {KeyboardEvent} keyEvent The keyboard event.
    */
   onKeyboard(keyEvent) {
+
+
+    // TODO: Make the following output to the console settings based.
+
+
     const str1 = keyEventToString(keyEvent);
     console.log(str1);
     const key1 = stringToKeyEvent(str1);
@@ -25,36 +62,6 @@ export default class ShortcutsPlugin extends BasePlugin {
     // Need to make it configurable.
 
     // We also need the statemachine set up for the scenes as this might interact with that?
-
-    const infoList = [{
-                    getInstanceClassName: 'BasePlugin',
-                    getInstanceArgs:      [Constants.PLUGIN_INFO.CONSOLE_KEY],
-                    memberName:           'toggle',
-                    memberArgs:           [],
-                    shortcut:             'ctrl shift D'
-                  }, {
-                    getInstanceClassName: 'BaseScene',
-                    getInstanceArgs:      [],
-                    memberName:           'gotoScene',
-                    memberArgs:           [Constants.SCENES.MENU_SCENE],
-                    shortcut:             'ctrl shift E'
-                  }, {
-                    actionFn:             () => { console.log("This is the life!") },
-                    actionFnArgs:         [],
-                    shortcut:             'ctrl shift J'
-                  }];
-
-    // Go through them all.
-    for (const info of infoList) {
-      // Check the code and modifier keys all match.
-      if (this.isSameShortcut(keyEvent, info)) {
-        // Call the action in the info.
-        this.callAction(info);
-
-        // Assume one shortcut for each action.
-        break;
-      }
-    }
 
     // TODO:
 

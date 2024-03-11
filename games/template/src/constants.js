@@ -212,6 +212,8 @@ const PluginInfo = {
   GENAI_MAPPING:          'genai',
   FIREBASE_KEY:           'FirebasePlugin',
   FIREBASE_MAPPING:       'firebase',
+  UNIT_TEST_KEY:          'UnitTestPlugin',
+  UNIT_TEST_MAPPING:      'unittest',
 }
 
 // The scene identifiers.

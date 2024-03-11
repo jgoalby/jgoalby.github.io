@@ -12,6 +12,7 @@ import ReflectionPlugin from './ReflectionPlugin.js';
 import ShortcutsPlugin from './ShortcutsPlugin.js';
 import GenAIPlugin from './GenAIPlugin.js';
 import AudioPlugin from './AudioPlugin.js';
+import UnitTestPlugin from './UnitTestPlugin.js';
 //import FirebasePlugin from './FirebasePlugin.js';
 
 // List of global plugins, that can be used to initialize the game engine. Order is important.
@@ -35,6 +36,7 @@ const global_plugins = [
   ShortcutsPlugin.options,
   GenAIPlugin.options,
   AudioPlugin.options,
+  UnitTestPlugin.options,
   //FirebasePlugin.options,
 ]
 
