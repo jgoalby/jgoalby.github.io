@@ -8,18 +8,15 @@ export default class UnitTestPlugin extends BasePlugin {
   }
 
   test() {
-    // If a test happens and there is no event to hear it, does it matter?
-    if (this.customevent) {
-      try {
-        // Run the tests.
-        testCommon();
+    try {
+      // Run the tests.
+      testCommon();
 
-        // Announce the winners!
-        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: 'All tests passed.' });
-      } catch (e) {
-        // Announce the winners!
-        this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Test failed: ${e.message}` });
-      }
+      // Announce the winners!
+      this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: 'All tests passed.' });
+    } catch (e) {
+      // Announce the winners!
+      this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Test failed: ${e.message}` });
     }
   }
 

@@ -180,6 +180,7 @@ const SettingsTypes = {
   number:          'number',
   range:           'range',
   function:        'function',
+  paste:           'paste',
 };
 
 // Plugin keys and mappings as they are used in multiple places. Make sure to define

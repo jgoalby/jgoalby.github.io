@@ -92,11 +92,9 @@ export default class CachePlugin extends BasePlugin {
    * @param {boolean} success Whether the cache was cleared successfully.
    */
   onCacheCleared(success) {
-    if (this.customevent) {
-      // Notify the user that the cache has been cleared. The success value can be false if the cache is
-      // cleared twice or more in a row for example.
-      this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Cache Cleared: ${success}` });
-    }
+    // Notify the user that the cache has been cleared. The success value can be false if the cache is
+    // cleared twice or more in a row for example.
+    this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `Cache Cleared: ${success}` });
   }
 
   /**
@@ -105,12 +103,10 @@ export default class CachePlugin extends BasePlugin {
    * @param {any} setting The setting that has changed.
    */
   onSettingAction(setting) {
-    if (this.customevent) {
-      // We want to make an immediate change when the setting changes.
-      if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE_OPTION)) {
-        // Emit an event to ask anyone listening to clear the cache.
-        this.customevent.emit(Constants.EVENTS.CLEAR_CACHE, { });
-      }
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === CLEAR_CACHE_OPTION)) {
+      // Emit an event to ask anyone listening to clear the cache.
+      this.customevent.emit(Constants.EVENTS.CLEAR_CACHE, { });
     }
   }
 

@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { getPlugin } from './PluginsHelpers.js'
+import { getPlugin, getPluginProxy } from './PluginsHelpers.js'
 
 export default class BasePlugin extends Phaser.Plugins.BasePlugin {
   constructor(pluginManager) {
@@ -13,11 +13,17 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
       this._settings = getPlugin(Constants.PLUGIN_INFO.SETTINGS_KEY);
     }
 
+    // This can be used in place of the plugin so clients do not have to check if it exists.
+    this._settingsProxy = getPluginProxy();
+
     // Some derived classes may not want the event plugin.
     if (this.isEventPluginWanted()) {
       /** @type {EventPlugin} */
       this._customevent = getPlugin(Constants.PLUGIN_INFO.EVENT_KEY);
     }
+
+    // This can be used in place of the plugin so clients do not have to check if it exists.
+    this._customeventProxy = getPluginProxy();
 
     // If we can access the settings plugin.
     if (this._settings) {
@@ -61,23 +67,23 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
 
       if (BasePlugin.prototype.onKeyboard !== this.onKeyboard) {
         // This time we would like to have keyboard events.
-        this.customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
+        this._customevent.on(Constants.EVENTS.KEYBOARD, this.onKeyboard, this);
       }
 
       if (BasePlugin.prototype.onAddShortcut !== this.onAddShortcut) {
         // This time we would like to have add shortcut events.
-        this.customevent.on(Constants.EVENTS.ADD_SHORTCUT, this.onAddShortcut, this);
+        this._customevent.on(Constants.EVENTS.ADD_SHORTCUT, this.onAddShortcut, this);
       }
 
       if (BasePlugin.prototype.onRemoveShortcut !== this.onRemoveShortcut) {
         // This time we would like to have remove shortcut events.
-        this.customevent.on(Constants.EVENTS.REMOVE_SHORTCUT, this.onRemoveShortcut, this);
+        this._customevent.on(Constants.EVENTS.REMOVE_SHORTCUT, this.onRemoveShortcut, this);
       }
 
       if (BasePlugin.prototype.onClearCache !== this.onClearCache) {
         // We want to know when anyone wants the cache to be cleared as it is handled by the service worker.
         // This means we can keep all of the service worker code in this plugin, separating the concerns.
-        this.customevent.on(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
+        this._customevent.on(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
       }
     }
   }
@@ -112,7 +118,7 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
         this._customevent.off(Constants.EVENTS.REMOVE_SHORTCUT, this.onRemoveShortcut, this);
       }
       if (BasePlugin.prototype.onClearCache !== this.onClearCache) {
-        this.customevent.off(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
+        this._customevent.off(Constants.EVENTS.CLEAR_CACHE, this.onClearCache, this);
       }
       this._customevent = undefined;
     }
@@ -182,16 +188,16 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
   /**
    * Get the settings plugin.
    * 
-   * @returns {SettingsPlugin | undefined} The settings plugin or undefined.
+   * @returns {SettingsPlugin} The settings plugin or a proxy so you do not have to check if undefined.
    */
-  get settings() { return this._settings; }
+  get settings() { return this._settings ? this._settings : this._settingsProxy; }
 
   /**
    * Get the event plugin.
    * 
-   * @returns {EventPlugin | undefined} The event plugin or undefined.
+   * @returns {EventPlugin} The event plugin or a proxy so you do not have to check if undefined.
    */
-  get customevent() { return this._customevent; }
+  get customevent() { return this._customevent ? this._customevent : this._customeventProxy; }
 
   /**
    * Called when a notification event occurs.

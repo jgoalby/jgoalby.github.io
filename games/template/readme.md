@@ -28,6 +28,8 @@
   - and when the firebase plugin is disabled, they are still there. So it would be nice if firebase was 
   - just in a single place.
 
+- Make a console feature or is tweakpane good enough I don't need it?
+
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
 Download TweakPane and state machine to the libs folder

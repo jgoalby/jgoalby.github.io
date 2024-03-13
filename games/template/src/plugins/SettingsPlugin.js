@@ -36,7 +36,7 @@ export default class SettingsPlugin extends BasePlugin {
       categoryValues[name].description = name;
       categoryValues[name].getFn = () => { return this.getValue(category, name) };
       categoryValues[name].setFn = (newValue) => { this.setValue(category, name, newValue) };
-      categoryValues[name].actionFn = () => { this.action(category, name) };
+      categoryValues[name].actionFn = (args) => { this.action(category, name, args) };
     }
 
     // Return the setting object.
@@ -54,12 +54,9 @@ export default class SettingsPlugin extends BasePlugin {
     }
   }
 
-  action(category, name) {
-    // If we have the event plugin, we can emit an event.
-    if (this.customevent) {
-      // Emit that a setting action happened.
-      this.customevent.emit(Constants.EVENTS.SETTING_ACTION, { category: category, name: name});
-    }
+  action(category, name, args) {
+    // Emit that a setting action happened.
+    this.customevent.emit(Constants.EVENTS.SETTING_ACTION, { category: category, name: name, value: args });
   }
 
   setValue(category, name, newValue) {
@@ -70,9 +67,8 @@ export default class SettingsPlugin extends BasePlugin {
     if (categoryValue.value !== newValue) {
       // Set the new value, and then emit an event to let everyone know the setting has changed.
       categoryValue.value = newValue;
-      if (this.customevent) {
-        this.customevent.emit(Constants.EVENTS.SETTING_CHANGED, { category: category, name: name, value: newValue});
-      }
+
+      this.customevent.emit(Constants.EVENTS.SETTING_CHANGED, { category: category, name: name, value: newValue});
     }
   }
 

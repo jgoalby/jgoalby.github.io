@@ -3,24 +3,77 @@ import BasePlugin from './BasePlugin.js'
 
 const LOCAL_STORAGE_OPENAI_TOKEN = 'OpenAIToken';
 const OPENAI_TOKEN_PREFIX = 'sk-';
-const OPENAI_MODEL = 'gpt-3.5-turbo';
+
+// Updated GPT 3.5 Turbo. The latest GPT-3.5 Turbo model with higher accuracy at responding in requested formats
+// and a fix for a bug which caused a text encoding issue for non-English language function calls. Returns a maximum
+// of 4,096 output tokens. 16,385 tokens context. Up to Sep 2021.
+const OPENAI_MODEL_3_5_TURBO_0125 = 'gpt-3.5-turbo-0125';
+
+// GPT-4 Turbo model featuring improved instruction following, JSON mode, reproducible outputs, parallel function
+// calling, and more. Returns a maximum of 4,096 output tokens. 128,000 tokens context. Up to Apr 2023.
+const OPENAI_MODEL_4_1106 = 'gpt-4-1106-preview';
+
+// GPT-4 Turbo. The latest GPT-4 model intended to reduce cases of “laziness” where the model doesn’t complete a task.
+// Returns a maximum of 4,096 output tokens. 128,000 tokens context. Up to Dec 2023.
+const OPENAI_MODEL_4_0125 = 'gpt-4-0125-preview';
+
+// The actual model we are choosing to use.
+const OPENAI_MODEL = OPENAI_MODEL_3_5_TURBO_0125;
+
+// Constants that only this plugin uses.
+const CATEGORY                   = 'genai';
+const OPEN_AI_TOKEN_OPTION       = 'openAITokenOption';
+const OPEN_AI_TOKEN_OPTION_DESC  = 'Paste Open AI Token';
+
+const pluginSettings = {
+  CLEAR_CACHE: {
+    category: CATEGORY,
+    name: OPEN_AI_TOKEN_OPTION,
+    description: OPEN_AI_TOKEN_OPTION_DESC,
+    value: undefined,
+    type: Constants.SETTINGS_TYPES.paste
+  }
+}
 
 export default class GenAIPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
   }
 
+  /**
+   * Get the plugin settings.
+   * 
+   * @returns {Object} The plugin settings.
+   */
+  getPluginSettings() { return pluginSettings; }
+
+  /**
+   * Action happened in settings.
+   * 
+   * @param {any} setting The setting that has changed.
+   */
+  async onSettingAction(setting) {
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === OPEN_AI_TOKEN_OPTION)) {
+      // The token will be passed as part of the settings.
+      const openAIToken = setting.value;
+
+      // Before doing anything with the value, make sure it exists
+      if (openAIToken) {
+        // The OpenAI token begins with this, so make sure before using.
+        if (openAIToken.startsWith(OPENAI_TOKEN_PREFIX)) {
+          localStorage.setItem(LOCAL_STORAGE_OPENAI_TOKEN, openAIToken);
+
+          this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `OpenAI Token read successfully` });
+        } else {
+          this.customevent.emit(Constants.EVENTS.NOTIFICATION, { notificationText: `OpenAI Token incorrect format` });
+        }
+      }
+    }
+  }
+
   async test() {
     let openAIToken = localStorage.getItem(LOCAL_STORAGE_OPENAI_TOKEN);
-
-    // TODO: This is just temp as its a way to get token, need to change at some point.
-    const userToken = String(window.game.globals.player);
-
-    // The OpenAI token begins with this, so make sure before using.
-    if (userToken.startsWith(OPENAI_TOKEN_PREFIX)) {
-      openAIToken = userToken;
-      localStorage.setItem(LOCAL_STORAGE_OPENAI_TOKEN, openAIToken);
-    }
 
     console.log("TOKEN: " + openAIToken);
 

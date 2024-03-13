@@ -2,6 +2,14 @@ import Constants from '../constants.js';
 import { keyEventToString, stringToKeyEvent, withClass, callMemberFunction } from '../common.js'
 import BasePlugin from './BasePlugin.js'
 
+
+
+
+
+import EventPlugin from './EventPlugin.js'
+
+
+
 // Constants that only this plugin uses.
 const CATEGORY                        = 'developer';
 const LOG_KEYBOARD_EVENTS_OPTION      = 'logKeyboardEventsOption';
@@ -54,6 +62,14 @@ export default class ShortcutsPlugin extends BasePlugin {
                     getInstanceArgs:      [Constants.PLUGIN_INFO.GENAI_KEY],
                     memberName:           'test',
                     memberArgs:           [],
+                    shortcut:             'CTRL SHIFT O'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.SHORTCUTS_KEY],
+                    memberName:           'test',
+                    memberArgs:           [],
                     shortcut:             'CTRL SHIFT G'
                   });
 
@@ -76,8 +92,30 @@ export default class ShortcutsPlugin extends BasePlugin {
     this.onAddShortcut({
                     actionFn:             () => { console.log("This is the life!") },
                     actionFnArgs:         [],
-                    shortcut:             'CTRL SHIFT J'
+                    shortcut:             'CTRL SHIFT W'
                   });
+  }
+
+  test() {
+    // See what I can do with proxy.
+
+    const blankHandler = {
+      get(target, prop, receiver) {
+        // Just return a blank function. This also works as a value. A value though does not
+        // work as a function, so we need to return this. This is because we would be using a
+        // class vs object. And as we do cannot use the class, we don't need to pass it in.
+        return function() { };
+      },
+    };
+
+    const proxy2 = new Proxy({}, blankHandler);
+
+    console.log("in test");
+    proxy2.isEventPluginWanted();
+    proxy2._eventDispatcher;
+    proxy2._eventDispatcher = undefined;
+    proxy2.emit(Constants.EVENTS.SETTING_ACTION, { category: 'category', name: 'name', value: 'args' });
+    console.log("out test");
   }
 
   /**

@@ -2,6 +2,7 @@ import Constants from '../constants.js';
 import Button from '../components/Button.js';
 import CheckBoxButton from '../components/CheckBoxButton.js';
 import FormButton from '../components/FormButton.js';
+import PasteButton from '../components/PasteButton.js';
 import NumberInput from '../components/NumberInput.js';
 import TextInput from '../components/TextInput.js';
 import RangeButton from '../components/RangeButton.js';
@@ -59,6 +60,9 @@ export default class OptionsScene extends BaseScene {
               break;
             case Constants.SETTINGS_TYPES.function:
               ctrl = new FormButton(this, { setting: setting });
+              break;
+            case Constants.SETTINGS_TYPES.paste:
+              ctrl = new PasteButton(this, { setting: setting });
               break;
           }
   

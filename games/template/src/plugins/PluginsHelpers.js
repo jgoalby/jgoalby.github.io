@@ -19,6 +19,25 @@ function getPlugin(pluginName) {
 }
 
 /**
+ * Get a proxy to any plugin so you do not have to check if it is undefined or not.
+ * 
+ * @returns {any } The plugin proxy.
+ */
+function getPluginProxy() {
+  const blankHandler = {
+    get(target, prop, receiver) {
+      // Just return a blank function. This also works as a value. A value though does not
+      // work as a function, so we need to return this. This is because we would be using a
+      // class vs object. And as we do cannot use the class, we don't need to pass it in.
+      return function() { };
+    },
+  };
+
+  // Return a proxy for a plugin that does not blow up when methods called on it.
+  return new Proxy({}, blankHandler);
+}
+
+/**
  * Return a list of the plugins that are available or undefined.
  * 
  * @returns {Phaser.Types.Plugins.GlobalPlugin[] | undefined}
@@ -72,5 +91,6 @@ function getPluginListAsString() {
 
 export {
   getPlugin,
+  getPluginProxy,
   getPluginListAsString,
 };
