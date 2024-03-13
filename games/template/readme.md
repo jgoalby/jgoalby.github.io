@@ -7,28 +7,22 @@
 - Remove the DOM pieces and replace with native Phaser pieces???
   - How much value is there to doing this now?
   - Am I trying to get rid of all DOM pieces for actual functionality? (log2div will be DOM)
-- Need a way to specify the OpenAI token
-  - Should this be in settings?
-  - If in settings, I don't use the DOM, so how to do text input?
-  - Could potntially do a popup?
-- For the input screen, make it so you can use the keyboard if you like, but can also click to get text.
+- For the login screen, make it so you can use the keyboard if you like, but can also click to get text.
   - Also could generate a username for the user? Random words.
-- Make the get input scene not use keyboard to get the username, but use mouse based text input instead.
+- Make the login scene not use keyboard to get the username, but use mouse based text input instead.
 - Implement the implementation document and use it to control GPT
 - Could make a base container that contains code to always call events and clean up etc.
-- Could also make a base plugin that does the same thing and registers settings etc.
-- Need to display some kind of toast notification when notifications happen.
 - What about implementing a scrolling area for the settings? Might neeed at some point anyway.
 - Have tabs for the settings and catagories so like settings go into the same tab
   - Can start with audio as I have 2 of those. The intrpspection could be another
 - Need to add TweakPane to the project and get that going to see how well it works
-- Make the service worker a plugin?
 - Why is the console blurry on desktop?
 - Find a way to deal with firebase better. Right now there are files for firebase in the html
   - and when the firebase plugin is disabled, they are still there. So it would be nice if firebase was 
   - just in a single place.
-
 - Make a console feature or is tweakpane good enough I don't need it?
+  - Be able to query information and set information?
+  - Is that better than tweakpane?
 
 # Bit ECS
 //import { Types, defineComponent } from '../lib/bitECS/index.mjs';
@@ -37,7 +31,6 @@
 //export const GetInputScene = defineComponent({
 //  something: Types.ui8,
 //});
-
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
