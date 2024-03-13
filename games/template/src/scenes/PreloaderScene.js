@@ -104,10 +104,10 @@ export default class PreloaderScene extends BaseScene {
       percentText.destroy();
       assetText.destroy();
       this.input.keyboard.once('keydown', () => {
-        this.gotoScene(Constants.SCENES.INPUT_SCENE);
+        this.gotoScene(Constants.SCENES.LOGIN_SCENE);
       });
       this.input.once(Phaser.Input.Events.POINTER_DOWN, () => {
-        this.gotoScene(Constants.SCENES.INPUT_SCENE);
+        this.gotoScene(Constants.SCENES.LOGIN_SCENE);
       });
     });
 

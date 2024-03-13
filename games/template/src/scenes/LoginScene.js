@@ -1,15 +1,9 @@
 import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
-import { Types, defineComponent } from '../lib/bitECS/index.mjs';
 
-// TODO: Need to implement bitECS in the scene at some point.
-export const GetInputScene = defineComponent({
-  something: Types.ui8,
-});
-
-export default class InputScene extends BaseScene {
+export default class LoginScene extends BaseScene {
   constructor() {
-    super(Constants.SCENES.INPUT_SCENE);
+    super(Constants.SCENES.LOGIN_SCENE);
 
     this.text = null;
     this.textBounds = null;

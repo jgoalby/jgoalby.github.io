@@ -224,7 +224,7 @@ const PluginInfo = {
 const Scenes = {
   BOOT_SCENE:             'Boot',
   PRELOADER_SCENE:        'Preloader',
-  INPUT_SCENE:            'Input',
+  LOGIN_SCENE:            'Login',
   MENU_SCENE:             'Menu',
   OPTIONS_SCENE:          'Options',
   CREDITS_SCENE:          'Credits',

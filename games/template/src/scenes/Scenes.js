@@ -3,7 +3,7 @@ import Constants from '../constants.js';
 // Import each of the scenes we want to use.
 import BootScene from './BootScene.js';
 import PreloaderScene from './PreloaderScene.js';
-import InputScene from './GetInputScene.js';
+import LoginScene from './LoginScene.js';
 import MenuScene from './MenuScene.js';
 import OptionsScene from './OptionsScene.js';
 import CreditsScene from './CreditsScene.js';
@@ -22,7 +22,7 @@ export default class Scenes {
     // Add all of the scenes here
     game.scene.add(Constants.SCENES.BOOT_SCENE,         new BootScene());
     game.scene.add(Constants.SCENES.PRELOADER_SCENE,    new PreloaderScene());
-    game.scene.add(Constants.SCENES.INPUT_SCENE,        new InputScene());
+    game.scene.add(Constants.SCENES.LOGIN_SCENE,        new LoginScene());
     game.scene.add(Constants.SCENES.MENU_SCENE,         new MenuScene());
     game.scene.add(Constants.SCENES.OPTIONS_SCENE,      new OptionsScene());
     game.scene.add(Constants.SCENES.CREDITS_SCENE,      new CreditsScene());

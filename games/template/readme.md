@@ -1,8 +1,8 @@
 # TODOs
 
 # Things that are possibly next
-- Change the input scene to a login scene
 - Rename the title screen to actually title scene
+  - It actually does preload things, so maybe name is ok? Hard to decide.
 - Create a good title screen. morph?
 - Remove the DOM pieces and replace with native Phaser pieces???
   - How much value is there to doing this now?
@@ -29,6 +29,15 @@
   - just in a single place.
 
 - Make a console feature or is tweakpane good enough I don't need it?
+
+# Bit ECS
+//import { Types, defineComponent } from '../lib/bitECS/index.mjs';
+
+// TODO: Need to implement bitECS in the scene at some point.
+//export const GetInputScene = defineComponent({
+//  something: Types.ui8,
+//});
+
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
