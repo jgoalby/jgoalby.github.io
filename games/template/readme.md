@@ -1,44 +1,20 @@
 # TODOs
 
-# More nexts
-- Shortcuts for menus
-- Customizable shortcuts
-
-
-https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.json
-
-Check out tweens more and timelines as well
-Atlas?
-Someone said the nineslices doesn't work in canvas? Did that change?
-Can I use Texttastic web server to do faster development?
-For the styles, do I want to specify it as JSON instead? I think so, as that would be easier to serialize.
-The notification class uses a panel. We specify the panel to use. Needs to be part of styles?
-
-# Next
-- Fix the button for clear cache. Make a form button?
-- Make a style for the notification text
-
-# hmmmm.
-- What about if I add callbacks to buttons for the x and y positions?
-  - And then resize would just call a position function for each control on the scene?
-  - But how to cope with the menu buttons list as each button does not know where it is?
-
-# morph
-- Could I get it to make buttons for me for example?
-- Could I get it to modify the intro text for the game?
-- Simply update the text on a button?
-- Do I need to integrate with Firebase to get this all working?
-
-# Range Button
-- When click label move to the next button
-- What if I have 2 labels, one for up and one for down? Or a + and a -?
-
-# More stuff to do
-- Need to do a better job at getNotificationTextColor once styles is sorted
-- Implement the implementation document and use it to control GPT
+# Things that are possibly next
+- Change the input scene to a login scene
+- Rename the title screen to actually title scene
+- Create a good title screen. morph?
+- Remove the DOM pieces and replace with native Phaser pieces???
+  - How much value is there to doing this now?
+  - Am I trying to get rid of all DOM pieces for actual functionality? (log2div will be DOM)
+- Need a way to specify the OpenAI token
+  - Should this be in settings?
+  - If in settings, I don't use the DOM, so how to do text input?
+  - Could potntially do a popup?
 - For the input screen, make it so you can use the keyboard if you like, but can also click to get text.
   - Also could generate a username for the user? Random words.
 - Make the get input scene not use keyboard to get the username, but use mouse based text input instead.
+- Implement the implementation document and use it to control GPT
 - Could make a base container that contains code to always call events and clean up etc.
 - Could also make a base plugin that does the same thing and registers settings etc.
 - Need to display some kind of toast notification when notifications happen.
@@ -51,10 +27,6 @@ The notification class uses a panel. We specify the panel to use. Needs to be pa
 - Find a way to deal with firebase better. Right now there are files for firebase in the html
   - and when the firebase plugin is disabled, they are still there. So it would be nice if firebase was 
   - just in a single place.
-
-# Potnential scrolling help?
-- Scolling camera for options perhaps?
-- https://github.com/jjcapellan/Phaser3-ScrollingCamera/blob/master/demo/js/scenes/test.js
 
 # Next: Settings
 Include the settings enum in the settings plugin itself and then access simpler and remove import.
@@ -73,6 +45,41 @@ Settings
 - Continue to remove the word game from the project
 - Continue with the firebase coding
 - Zones idea for a scene specifying areas buttons can go
+
+# Potnential scrolling help?
+- Scolling camera for options perhaps?
+- https://github.com/jjcapellan/Phaser3-ScrollingCamera/blob/master/demo/js/scenes/test.js
+
+https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.json
+
+# Research needed
+Check out tweens more and timelines as well
+Atlas?
+Someone said the nineslices doesn't work in canvas? Did that change?
+
+# Styles
+- For the styles, do I want to specify it as JSON instead? I think so, as that would be easier to serialize.
+- The notification class uses a panel. We specify the panel to use. Needs to be part of styles?
+- Make a style for the notification text
+- Need to do a better job at getNotificationTextColor once styles is sorted
+
+# Form Button
+- Improve the form button to show that it is being clicked.
+
+# hmmmm.
+- What about if I add callbacks to buttons for the x and y positions?
+  - And then resize would just call a position function for each control on the scene?
+  - But how to cope with the menu buttons list as each button does not know where it is?
+
+# morph
+- Could I get it to make buttons for me for example?
+- Could I get it to modify the intro text for the game?
+- Simply update the text on a button?
+- Do I need to integrate with Firebase to get this all working?
+
+# Range Button
+- When click label move to the next button
+- What if I have 2 labels, one for up and one for down? Or a + and a -?
 
 # Future Todos that are not urgent
 ## Notifications

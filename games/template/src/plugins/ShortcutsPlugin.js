@@ -46,6 +46,14 @@ export default class ShortcutsPlugin extends BasePlugin {
                     getInstanceArgs:      [Constants.PLUGIN_INFO.UNIT_TEST_KEY],
                     memberName:           'test',
                     memberArgs:           [],
+                    shortcut:             'CTRL SHIFT T'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.GENAI_KEY],
+                    memberName:           'test',
+                    memberArgs:           [],
                     shortcut:             'CTRL SHIFT G'
                   });
 
