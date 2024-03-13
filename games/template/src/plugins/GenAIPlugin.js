@@ -1,7 +1,10 @@
 import Constants from '../constants.js';
 import BasePlugin from './BasePlugin.js'
 
+// Key used for local storage of the OpenAI API key.
 const LOCAL_STORAGE_OPENAI_TOKEN = 'OpenAIToken';
+
+// The OpenAI Token begins with these characters.
 const OPENAI_TOKEN_PREFIX = 'sk-';
 
 // Updated GPT 3.5 Turbo. The latest GPT-3.5 Turbo model with higher accuracy at responding in requested formats
