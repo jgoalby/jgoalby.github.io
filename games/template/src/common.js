@@ -313,13 +313,20 @@ function testModule() {
   testKeyEventToString();
 }
 
+// NOTE: This seems to be how to import QUnit.
 import './lib/qunit.js';
 
 function add(a, b) {
   return a + b;
 }
 
-QUnit.module()
+QUnit.done(function(details) {
+  console.log("Total: " + details.total + " Failed: " + details.failed + " Passed: " + details.passed + " Runtime: " + details.runtime);
+});
+
+QUnit.moduleDone(function(details) {
+  console.log("Module: " + details.name + " Failed/Total: " + details.failed + "/" + details.total + " Runtime: " + details.runtime);
+});
 
 QUnit.module('add', function() {
   QUnit.test('two numbers', function(assert) {
@@ -330,6 +337,7 @@ QUnit.module('add', function() {
     console.log("Doubt it !!!!!!!!!!!!!");
   });
 });
+
 
 export {
   //assert,
