@@ -17,10 +17,17 @@ export default class MenuScene extends BaseScene {
 
     this.menuButtons = [];
 
-    this.menuButtons.push(new Button(this, { shortcut: 'I', label: 'Play',        actionFn: () => { this.gotoScene(Constants.SCENES.INSTRUCTIONS_SCENE) } }));
+    this.mainMenuData = this.sys.game.globals.data.getMainMenu();
+
+    for (let curIndex = 0; curIndex < this.mainMenuData.length; curIndex++) {
+      const curMenu = this.mainMenuData[curIndex];
+      this.menuButtons.push(new Button(this, { shortcut: curMenu.shortcut, label: curMenu.label, actionFn: () => { this.gotoScene(curMenu.scene) } }));
+    }
+
+    /*this.menuButtons.push(new Button(this, { shortcut: 'I', label: 'Play',        actionFn: () => { this.gotoScene(Constants.SCENES.INSTRUCTIONS_SCENE) } }));
     this.menuButtons.push(new Button(this, { shortcut: 'O', label: 'Options',     actionFn: () => { this.gotoScene(Constants.SCENES.OPTIONS_SCENE) } }));
     this.menuButtons.push(new Button(this, { shortcut: 'C', label: 'Credits',     actionFn: () => { this.gotoScene(Constants.SCENES.CREDITS_SCENE) } }));
-    this.menuButtons.push(new Button(this, { shortcut: 'L', label: 'Leaderboard', actionFn: () => { this.gotoScene(Constants.SCENES.LEADERBOARD_SCENE) } }));
+    this.menuButtons.push(new Button(this, { shortcut: 'L', label: 'Leaderboard', actionFn: () => { this.gotoScene(Constants.SCENES.LEADERBOARD_SCENE) } }));*/
   }
 
   resize() {

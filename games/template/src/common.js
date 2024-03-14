@@ -1,5 +1,6 @@
-import BasePlugin from './plugins/BasePlugin.js'
-import BaseScene from './scenes/BaseScene.js'
+import Globals from './globals.js';
+import BasePlugin from './plugins/BasePlugin.js';
+import BaseScene from './scenes/BaseScene.js';
 
 /**
  * Get the current active scene.
@@ -83,7 +84,11 @@ function getClassesWithGetInstanceFn() {
   // If the lookup has not yet been created...
   if (!classesWithGetInstanceFn) {
     // ...create the lookup of class name to static getInstance funcion now.
-    classesWithGetInstanceFn = { "BasePlugin": BasePlugin.getInstance, "BaseScene": BaseScene.getInstance };
+    classesWithGetInstanceFn = {
+      "Globals":    Globals.getInstance,
+      "BasePlugin": BasePlugin.getInstance,
+      "BaseScene":  BaseScene.getInstance
+    };
   }
 
   // Return the lookup.

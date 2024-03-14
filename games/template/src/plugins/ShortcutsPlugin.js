@@ -25,6 +25,8 @@ export default class ShortcutsPlugin extends BasePlugin {
 
     // TODO: These are not going to stay here.
 
+    // Make sure that classes used for class name are in common : getClassesWithGetInstanceFn
+
     this.onAddShortcut({
                     getInstanceClassName: 'BasePlugin',
                     getInstanceArgs:      [Constants.PLUGIN_INFO.CONSOLE_KEY],
@@ -60,6 +62,14 @@ export default class ShortcutsPlugin extends BasePlugin {
     this.onAddShortcut({
                     getInstanceClassName: 'BasePlugin',
                     getInstanceArgs:      [Constants.PLUGIN_INFO.SHORTCUTS_KEY],
+                    memberName:           'test',
+                    memberArgs:           [],
+                    shortcut:             'CTRL SHIFT Y'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'Globals',
+                    getInstanceArgs:      ['data'],
                     memberName:           'test',
                     memberArgs:           [],
                     shortcut:             'CTRL SHIFT G'
