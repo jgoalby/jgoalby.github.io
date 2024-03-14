@@ -23,6 +23,7 @@
 - Make a console feature or is tweakpane good enough I don't need it?
   - Be able to query information and set information?
   - Is that better than tweakpane?
+- Do a better job of QUnit
 
 # Bit ECS
 //import { Types, defineComponent } from '../lib/bitECS/index.mjs';

@@ -42,16 +42,27 @@ export default class LoginScene extends BaseScene {
     button.name = 'playButton';
     button.value = "Let's Play";
 
-    dom.append(input, button);
+    const genNameButton = document.createElement('input');
+    genNameButton.type = 'button';
+    genNameButton.name = 'genUsernameButton';
+    genNameButton.value = "Random Name";
+
+    dom.append(input, button, genNameButton);
 
     this.nameInputElement = this.add.dom(0, 0, dom);
 
     this.nameInputElement.addListener('click');
 
     this.nameInputElement.on('click', (event) => {
+      if (event.target.name === 'genUsernameButton') {
+        const inputText = this.nameInputElement.getChildByName('nameField');
+        inputText.value = this.generateUsername();
+      }
+
       if (event.target.name === 'playButton') {
         const inputText = this.nameInputElement.getChildByName('nameField');
         this.sys.game.globals.player = inputText.value;
+
         if (inputText.value !== '') {
           this.nameInputElement.removeListener('click');
           this.nameInputElement.setVisible(false);          
@@ -67,6 +78,16 @@ export default class LoginScene extends BaseScene {
         }
       }
     });
+  }
+
+  generateUsername() {
+    const colors  = ['Amethyst', 'Bronze', 'Canary', 'Denim', 'Emerals', 'Fuchsia', 'Gold', 'Honeydew', 'Indigo', 'Jade',  'Khaki',  'Lime',  'Maroon',  'Nickel',  'Olive',  'Purple',  'Quartz', 'Red',  'Sapphire',  'Teal',  'Ultramarine',  'Violet',  'White',  'Xanadu',  'Yellow',  'Zaffre'];
+    const animals = ['Alpaca', 'Butterfly', 'Chameleon', 'Dolphin', 'Eagle', 'Flamingo', 'Gecko', 'Hummingbird', 'Iguana', 'Jellyfish', 'Kingfisher', 'Ladybug', 'Mockingbird', 'Narwhal', 'Octopus', 'Panda', 'Quail', 'Roadrunner', 'Starfish', 'Tiger', 'Unicorn', 'Viper', 'Walrus', 'Xerinae', 'Yak', 'Zebra'];
+
+    const randColor  = colors[Math.round(Math.random()  * (colors.length - 1))];
+    const randAnimal = animals[Math.round(Math.random() * (animals.length - 1))];
+
+    return randColor + randAnimal;
   }
 
   resize() {
