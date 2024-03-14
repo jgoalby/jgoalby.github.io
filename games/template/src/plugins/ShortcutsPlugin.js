@@ -2,14 +2,6 @@ import Constants from '../constants.js';
 import { keyEventToString, stringToKeyEvent, withClass, callMemberFunction } from '../common.js'
 import BasePlugin from './BasePlugin.js'
 
-
-
-
-
-import EventPlugin from './EventPlugin.js'
-
-
-
 // Constants that only this plugin uses.
 const CATEGORY                        = 'developer';
 const LOG_KEYBOARD_EVENTS_OPTION      = 'logKeyboardEventsOption';

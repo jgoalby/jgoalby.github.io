@@ -50,6 +50,7 @@ interface ButtonOptions {
     label?: string;
     actionFn?: () => void;
     setting?: any;
+    shortcut? : string;
 }
 
 interface CheckBoxButtonOptions {

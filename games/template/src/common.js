@@ -41,11 +41,11 @@ function getActiveScene(sceneManager = undefined) {
 /**
  * Get the specified scene.
  * 
- * @param {string} sceneName The scene name.
+ * @param {string} sceneKey The scene key.
  * @param {Phaser.Scenes.SceneManager} [sceneManager=undefined] 
  * @returns {Phaser.Scene | undefined} The scene.
  */
-function getScene(sceneName, sceneManager = undefined) {
+function getScene(sceneKey, sceneManager = undefined) {
   // Figure out which scene manager to use based on if one was passed in or not.
   const sceneMgr = sceneManager ? sceneManager : window.game.scene;
 
@@ -57,8 +57,8 @@ function getScene(sceneName, sceneManager = undefined) {
 
   // Go through all of the scenes.
   for (let i = 0; i < allScenes.length; i++) {
-    // If this name matches we can return it.
-    if (allScenes[i].scene.sceneName === sceneName) {
+    // If this key matches we can return it.
+    if (allScenes[i].scene.key === sceneKey) {
       return allScenes[i];
     }
   }

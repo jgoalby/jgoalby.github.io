@@ -43,17 +43,17 @@ export default class BaseScene extends Phaser.Scene {
   }
 
   /**
-   * Get a scene instance using the scene name.
+   * Get a scene instance using the scene key.
    *
-   * @param {string} sceneName The scene name to get the instance of.
-   * @returns {BaseScene | undefined} The scene or undefined if not found.
+   * @param {string} sceneKey The scene key to get the instance of.
+   * @returns {Phaser.Scene | undefined} The scene or undefined if not found.
    */
-  static getInstance(sceneName) {
-    if (sceneName) {
+  static getInstance(sceneKey) {
+    if (sceneKey) {
       // Return the specified scene if we can.
-      return getScene(sceneName);
+      return getScene(sceneKey);
     } else {
-      // Get the active scene as a scene name was not specified.
+      // Get the active scene as a scene key was not specified.
       return getActiveScene();
     }
   }

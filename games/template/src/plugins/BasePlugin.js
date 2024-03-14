@@ -134,6 +134,7 @@ export default class BasePlugin extends Phaser.Plugins.BasePlugin {
    * @returns {BasePlugin | undefined} The plugin or undefined if not found.
    */
   static getInstance(pluginName) {
+    // Use the plugin helper function to get the plugin for us.
     return getPlugin(pluginName);
   }
 
