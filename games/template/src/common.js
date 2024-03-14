@@ -313,19 +313,6 @@ function testModule() {
   testKeyEventToString();
 }
 
-// Jasmine testing
-
-describe('Player', function() {
-
-  beforeEach(function() {
-  });
-
-  it('should be working', function() {
-    //expect(player).toBePlaying(song);
-  });
-});
-
-
 export {
   assert,
   assertEqual,
