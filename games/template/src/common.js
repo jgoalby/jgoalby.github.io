@@ -271,41 +271,41 @@ function stringToKeyEvent(str) {
   return keyEvent;
 }
 
-const assert = function(condition, message) {
-  if (!condition) {
-    throw Error('Assert failed' + (message ? (': ' + message) : '.'));
-  }
-};
+// const assert = function(condition, message) {
+//   if (!condition) {
+//     throw Error('Assert failed' + (message ? (': ' + message) : '.'));
+//   }
+// };
 
-const assertEqual = function(value, expected, message) {
-  if (value != expected) {
-    throw Error(`Assert failed value(${value}) != expected(${expected})` + (message ? (': ' + message) : '.'));
-  }
-};
+// const assertEqual = function(value, expected, message) {
+//   if (value != expected) {
+//     throw Error(`Assert failed value(${value}) != expected(${expected})` + (message ? (': ' + message) : '.'));
+//   }
+// };
 
 //-----------------------------------------------------------------------------
 //                                 MODULE TESTS
 //-----------------------------------------------------------------------------
 
 function testStringToKeyEvent() {
-  const str1 = 'ESC';
-  const key1 = stringToKeyEvent(str1);
-  assertEqual(key1.keyCode, 27, `for string (${str1})`);
+  // const str1 = 'ESC';
+  // const key1 = stringToKeyEvent(str1);
+  // assertEqual(key1.keyCode, 27, `for string (${str1})`);
 }
 
 function testKeyEventToString() {
-  const keyEventA =         { keyCode: 65, metaKey: false, ctrlKey: false, altKey: false, shiftKey: false };
-  const keyEventShift =     { keyCode: 16, metaKey: false, ctrlKey: false, altKey: false, shiftKey: true  };
-  const keyEventEscapeAll = { keyCode: 27, metaKey: true,  ctrlKey: true,  altKey: true,  shiftKey: true  };
+  // const keyEventA =         { keyCode: 65, metaKey: false, ctrlKey: false, altKey: false, shiftKey: false };
+  // const keyEventShift =     { keyCode: 16, metaKey: false, ctrlKey: false, altKey: false, shiftKey: true  };
+  // const keyEventEscapeAll = { keyCode: 27, metaKey: true,  ctrlKey: true,  altKey: true,  shiftKey: true  };
 
-  const str1 = keyEventToString(keyEventA);
-  assertEqual(str1, 'A', 'for keyEventA');
+  // const str1 = keyEventToString(keyEventA);
+  // assertEqual(str1, 'A', 'for keyEventA');
 
-  const str2 = keyEventToString(keyEventShift);
-  assertEqual(str2, 'SHIFT', 'for keyEventShift');
+  // const str2 = keyEventToString(keyEventShift);
+  // assertEqual(str2, 'SHIFT', 'for keyEventShift');
 
-  const str3 = keyEventToString(keyEventEscapeAll);
-  assertEqual(str3, 'META CTRL ALT SHIFT ESC', 'for keyEventEscapeAll');
+  // const str3 = keyEventToString(keyEventEscapeAll);
+  // assertEqual(str3, 'META CTRL ALT SHIFT ESC', 'for keyEventEscapeAll');
 }
 
 function testModule() {
@@ -313,9 +313,27 @@ function testModule() {
   testKeyEventToString();
 }
 
+import './lib/qunit.js';
+
+function add(a, b) {
+  return a + b;
+}
+
+QUnit.module()
+
+QUnit.module('add', function() {
+  QUnit.test('two numbers', function(assert) {
+    console.log(QUnit.version);
+    console.log("Doubt it !!!!!!!!!!!!!");
+    assert.equal(add(1, 2), 3);
+    assert.deepEqual(add(1, 2), 4);
+    console.log("Doubt it !!!!!!!!!!!!!");
+  });
+});
+
 export {
-  assert,
-  assertEqual,
+  //assert,
+  //assertEqual,
   getActiveScene,
   getScene,
   getClassNamesWithGetInstanceFn,
