@@ -3,8 +3,10 @@ import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 
 export default class MenuScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.MENU_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.MENU_SCENE;
+    super(config);
 
     this.menuButtons = undefined;
   }

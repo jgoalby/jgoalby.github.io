@@ -3,8 +3,10 @@ import Enemy from '../components/Enemy.js';
 import Path from '../components/Paths.js';
 
 export default class GameScene extends Phaser.Scene {
-  constructor() {
-    super(Constants.SCENES.GAME_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.GAME_SCENE;
+    super(config);
 
     this.colliders = [];
     this.reloaded = true;

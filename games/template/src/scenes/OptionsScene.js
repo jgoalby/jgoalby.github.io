@@ -9,8 +9,10 @@ import RangeButton from '../components/RangeButton.js';
 import BaseScene from './BaseScene.js';
 
 export default class OptionsScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.OPTIONS_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.OPTIONS_SCENE;
+    super(config);
 
     this.heading = undefined;
     this.mainMenuButton = undefined;

@@ -232,6 +232,7 @@ const Scenes = {
   INSTRUCTIONS_SCENE:     'Instructions',
   GAME_SCENE:             'Game',
   GAMEOVER_SCENE:         'GameOver',
+  BASIC_SCENE:            'Basic',
 }
 
 // The exported class that contains all of the constants.

@@ -3,8 +3,10 @@ import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 
 export default class InstructionsScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.INSTRUCTIONS_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.INSTRUCTIONS_SCENE;
+    super(config);
 
     this.heading = undefined;
     this.text = undefined;

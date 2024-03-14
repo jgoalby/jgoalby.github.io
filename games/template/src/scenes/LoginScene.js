@@ -2,8 +2,10 @@ import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
 
 export default class LoginScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.LOGIN_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.LOGIN_SCENE;
+    super(config);
 
     this.text = null;
     this.textBounds = null;

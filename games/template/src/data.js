@@ -8,6 +8,7 @@ export default class Data {
         { shortcut: 'O', label: 'Options',     scene: Constants.SCENES.OPTIONS_SCENE },
         { shortcut: 'C', label: 'Credits',     scene: Constants.SCENES.CREDITS_SCENE },
         { shortcut: 'L', label: 'Leaderboard', scene: Constants.SCENES.LEADERBOARD_SCENE },
+        { shortcut: 'B', label: 'Basic',       scene: Constants.SCENES.BASIC_SCENE },
       ]
     };
   }

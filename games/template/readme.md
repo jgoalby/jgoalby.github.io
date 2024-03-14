@@ -25,6 +25,10 @@
   - Is that better than tweakpane?
 - Do a better job of QUnit
 
+# Instructions md
+- Put more instructions closer to the code
+- Maybe just have instructions point to places such as files and folders for where to get more info?
+
 # Bit ECS
 //import { Types, defineComponent } from '../lib/bitECS/index.mjs';
 

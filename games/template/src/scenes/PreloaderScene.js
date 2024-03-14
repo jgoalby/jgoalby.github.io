@@ -2,8 +2,10 @@ import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
 
 export default class PreloaderScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.PRELOADER_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.PRELOADER_SCENE;
+    super(config);
 
     this.splash_landscape = null;
     this.splash_portrait = null;

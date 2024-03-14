@@ -4,8 +4,10 @@ import BaseScene from './BaseScene.js';
 import { getPluginListAsString } from '../plugins/PluginsHelpers.js'
 
 export default class CreditsScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.CREDITS_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.CREDITS_SCENE;
+    super(config);
 
     this.heading = undefined;
     this.creditsText = undefined;

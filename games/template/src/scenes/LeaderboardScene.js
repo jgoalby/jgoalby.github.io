@@ -3,8 +3,10 @@ import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 
 export default class LeaderboardScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.LEADERBOARD_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.LEADERBOARD_SCENE;
+    super(config);
 
     this.dom = null;
     this.button = null;

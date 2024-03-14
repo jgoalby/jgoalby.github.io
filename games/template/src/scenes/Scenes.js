@@ -1,5 +1,3 @@
-import Constants from '../constants.js';
-
 // Import each of the scenes we want to use.
 import BootScene from './BootScene.js';
 import PreloaderScene from './PreloaderScene.js';
@@ -11,6 +9,7 @@ import LeaderboardScene from './LeaderboardScene.js';
 import InstructionsScene from './InstructionsScene.js';
 import GameScene from './GameScene.js';
 import GameOverScene from './GameOverScene.js';
+import BasicScene from './BasicScene.js';
 
 export default class Scenes {
   /**
@@ -19,8 +18,24 @@ export default class Scenes {
    * @param {any} game The game instance.
    */
   static create(game) {
+    // The first scene is special as we start it.
+    const startScene = new BootScene();
+
     // Add all of the scenes here
-    game.scene.add(Constants.SCENES.BOOT_SCENE,         new BootScene());
+    Scenes.addSceneToGame(game, startScene);
+    Scenes.addSceneToGame(game, new PreloaderScene());
+    Scenes.addSceneToGame(game, new LoginScene());
+    Scenes.addSceneToGame(game, new MenuScene());
+    Scenes.addSceneToGame(game, new OptionsScene());
+    Scenes.addSceneToGame(game, new CreditsScene());
+    Scenes.addSceneToGame(game, new LeaderboardScene());
+    Scenes.addSceneToGame(game, new InstructionsScene());
+    Scenes.addSceneToGame(game, new GameScene());
+    Scenes.addSceneToGame(game, new GameOverScene());
+    Scenes.addSceneToGame(game, new BasicScene());
+
+    // Add all of the scenes here
+    /*game.scene.add(Constants.SCENES.BOOT_SCENE,         new BootScene());
     game.scene.add(Constants.SCENES.PRELOADER_SCENE,    new PreloaderScene());
     game.scene.add(Constants.SCENES.LOGIN_SCENE,        new LoginScene());
     game.scene.add(Constants.SCENES.MENU_SCENE,         new MenuScene());
@@ -30,8 +45,23 @@ export default class Scenes {
     game.scene.add(Constants.SCENES.INSTRUCTIONS_SCENE, new InstructionsScene());
     game.scene.add(Constants.SCENES.GAME_SCENE,         new GameScene());
     game.scene.add(Constants.SCENES.GAMEOVER_SCENE,     new GameOverScene());
+    game.scene.add(Constants.SCENES.BASIC_SCENE,        new BasicScene());*/
 
     // Start the first scene
-    game.scene.start(Constants.SCENES.BOOT_SCENE);
+    game.scene.start(startScene.sys.config.key);
+  }
+
+  /**
+   * Add the scene to the game.
+   * 
+   * @param {any} game The game instance.
+   * @param {any} scene The scene instance.
+   */
+  static addSceneToGame(game, scene) {
+    console.log("1111");
+    console.dir(scene);
+    console.log(scene.sys.config.key);
+    // Add the passed in scene to the passed in game.
+    game.scene.add(scene.sys.config.key, scene);
   }
 }

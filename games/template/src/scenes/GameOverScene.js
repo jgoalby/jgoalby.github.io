@@ -3,8 +3,10 @@ import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 
 export default class GameOverScene extends BaseScene {
-  constructor() {
-    super(Constants.SCENES.GAMEOVER_SCENE);
+  constructor(config) {
+    if (!config) { config = {} }
+    config.key = Constants.SCENES.GAMEOVER_SCENE;
+    super(config);
 
     this.restartButton = null;
     this.mainMenuButton = null;
