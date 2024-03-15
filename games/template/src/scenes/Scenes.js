@@ -1,3 +1,5 @@
+import BaseScene from './BaseScene.js';
+
 // Import each of the scenes we want to use.
 import BootScene from './BootScene.js';
 import PreloaderScene from './PreloaderScene.js';
@@ -15,7 +17,7 @@ export default class Scenes {
   /**
    * Create scenes and start the first scene.
    * 
-   * @param {any} game The game instance.
+   * @param {Phaser.Game} game The game instance.
    */
   static create(game) {
     // The first scene is special as we start it.
@@ -48,20 +50,20 @@ export default class Scenes {
     game.scene.add(Constants.SCENES.BASIC_SCENE,        new BasicScene());*/
 
     // Start the first scene
-    game.scene.start(startScene.sys.config.key);
+    game.scene.start(startScene.key);
   }
 
   /**
    * Add the scene to the game.
    * 
-   * @param {any} game The game instance.
-   * @param {any} scene The scene instance.
+   * @param {Phaser.Game} game The game instance.
+   * @param {BaseScene} scene The scene instance.
    */
   static addSceneToGame(game, scene) {
     console.log("1111");
     console.dir(scene);
-    console.log(scene.sys.config.key);
+    console.log(scene.key);
     // Add the passed in scene to the passed in game.
-    game.scene.add(scene.sys.config.key, scene);
+    game.scene.add(scene.key, scene);
   }
 }

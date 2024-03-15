@@ -58,6 +58,10 @@ export default class BaseScene extends Phaser.Scene {
     }
   }
 
+  get key() {
+    return this.sys.settings.key;
+  }
+
   /**
    * Go to the specified scene and clean up this scene.
    * 

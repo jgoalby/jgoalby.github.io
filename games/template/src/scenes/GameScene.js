@@ -1,8 +1,9 @@
 import Constants from '../constants.js';
 import Enemy from '../components/Enemy.js';
 import Path from '../components/Paths.js';
+import BaseScene from './BaseScene.js';
 
-export default class GameScene extends Phaser.Scene {
+export default class GameScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
     config.key = Constants.SCENES.GAME_SCENE;

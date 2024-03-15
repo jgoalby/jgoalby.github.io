@@ -1,6 +1,7 @@
 import Constants from '../constants.js';
+import BaseScene from './BaseScene.js';
 
-export default class BootScene extends Phaser.Scene {
+export default class BootScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
     config.key = Constants.SCENES.BOOT_SCENE;
