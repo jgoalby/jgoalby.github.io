@@ -2,10 +2,13 @@
 
 # Most likely next
 - Scenes manage their own shortcut and label text to make them self-contained
+- Test the CMD key in the game to make sure I can respond to that shortcut
 
 # Things that are possibly next
 - Rename the title screen to actually title scene
   - It actually does preload things, so maybe name is ok? Hard to decide.
+  - It is only showing a title while it preloads. Hmmm....
+  - I think perhaps title is a better name and just note that it does preload?
 - Create a good title screen. morph?
 - Remove the DOM pieces and replace with native Phaser pieces???
   - How much value is there to doing this now?
@@ -199,6 +202,7 @@ In creating these images with Dall-e, I wonder if I can create a fluid interface
 
 - All modules need to have a testModule function and have tests.
 - The unit tests plugin should work on dynamic module code.
+- Test that various shortut combinations work and are responded to somehow.
 
 ## General
 - Favicon
