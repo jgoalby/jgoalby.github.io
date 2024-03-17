@@ -186,43 +186,6 @@ const SettingsTypes = {
   paste:           'paste',
 };
 
-// Plugin keys and mappings as they are used in multiple places. Make sure to define
-// both the KEY and MAPPING for each plugin.
-const PluginInfo = {
-  /*INIT_SETUP_KEY:         'InitSetupPlugin',
-  INIT_SETUP_MAPPING:     'initsetup',
-  EVENT_KEY:              'EventPlugin',
-  EVENT_MAPPING:          'customevent',
-  SETTINGS_KEY:           'SettingsPlugin',
-  SETTINGS_MAPPING:       'settings',
-  SERVICE_WORKER_KEY:     'ServiceWorkerPlugin',
-  SERVICE_WORKER_MAPPING: 'serviceworker',
-  WINDOW_KEY:             'WindowPlugin',
-  WINDOW_MAPPING:         'windowplugin',
-  CONSOLE_KEY:            'ConsolePlugin',
-  CONSOLE_MAPPING:        'console',
-  NOTIFICATION_KEY:       'NotificationPlugin',
-  NOTIFICATION_MAPPING:   'notification',
-  INTROSPECT_KEY:         'IntrospectPlugin',
-  INTROSPECT_MAPPING:     'introspect',
-  CACHE_KEY:              'CachePlugin',
-  CACHE_MAPPING:          'filecache',
-  STYLES_KEY:             'StylesPlugin',
-  STYLES_MAPPING:         'styles',
-  AUDIO_KEY:              'AudioPlugin',
-  AUDIO_MAPPING:          'audio',
-  REFLECTION_KEY:         'ReflectionPlugin',
-  REFLECTION_MAPPING:     'reflection',
-  SHORTCUTS_KEY:          'ShortcutsPlugin',
-  SHORTCUTS_MAPPING:      'shortcuts',
-  GENAI_KEY:              'GenAIPlugin',
-  GENAI_MAPPING:          'genai',
-  FIREBASE_KEY:           'FirebasePlugin',
-  FIREBASE_MAPPING:       'firebase',
-  UNIT_TEST_KEY:          'UnitTestPlugin',
-  UNIT_TEST_MAPPING:      'unittest',*/
-}
-
 // The plugin identifiers. The types are defined for the static definitions in the game.d.ts file.
 // Proxy for plugin info allowing dynamic creation.
 const PluginInfoProxy = new Proxy(PluginInfo, constantHandler);

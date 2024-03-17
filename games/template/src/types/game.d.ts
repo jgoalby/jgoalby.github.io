@@ -59,6 +59,8 @@ interface PluginInfoProxy {
     FIREBASE_MAPPING: string;
     UNIT_TEST_KEY: string;
     UNIT_TEST_MAPPING: string;
+    GLOBALS_KEY: string;
+    GLOBALS_MAPPING: string;
 }
 
 interface Globals {
