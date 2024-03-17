@@ -9,9 +9,9 @@ export default class ReflectionPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.REFLECTION_KEY, 
-      plugin: ReflectionPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.REFLECTION_MAPPING,
+      mapping: Constants.PLUGIN_INFO.REFLECTION_PLUGIN,
     }
   }
 }

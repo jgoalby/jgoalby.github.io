@@ -84,9 +84,9 @@ export default class IntrospectPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.INTROSPECT_KEY,
-      plugin: IntrospectPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.INTROSPECT_MAPPING,
+      mapping: Constants.PLUGIN_INFO.INTROSPECT_PLUGIN,
     }
   }
 }

@@ -9,9 +9,9 @@ export default class StylesPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.STYLES_KEY, 
-      plugin: StylesPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.STYLES_MAPPING,
+      mapping: Constants.PLUGIN_INFO.STYLES_PLUGIN,
     }
   }
 }

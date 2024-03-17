@@ -257,9 +257,9 @@ export default class ShortcutsPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.SHORTCUTS_KEY, 
-      plugin: ShortcutsPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.SHORTCUTS_MAPPING,
+      mapping: Constants.PLUGIN_INFO.SHORTCUTS_PLUGIN,
     }
   }
 }

@@ -125,9 +125,9 @@ export default class GenAIPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.GENAI_KEY, 
-      plugin: GenAIPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.GENAI_MAPPING,
+      mapping: Constants.PLUGIN_INFO.GENAI_PLUGIN,
     }
   }
 }

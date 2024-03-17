@@ -32,11 +32,11 @@ export default class OptionsScene extends BaseScene {
     this.currentSettings = [];
 
     // Make sure we have the settings plugin.
-    if (this.settings) {
-      const categories = this.settings.getCategories();
+    if (this.SETTINGS_PLUGIN) {
+      const categories = this.SETTINGS_PLUGIN.getCategories();
 
       for (let i = 0; i < categories.length; i++) {
-        const settings = this.settings.getSettingsForCategory(categories[i]);
+        const settings = this.SETTINGS_PLUGIN.getSettingsForCategory(categories[i]);
   
         // Settings is a dictionary, so we need to iterate over the keys.
         for (let key in settings) {

@@ -13,8 +13,8 @@ export default class MenuScene extends BaseScene {
 
   createScene() {
     // Make sure we have the audio plugin.
-    if (this.audio) {
-      this.audio.playMusic();
+    if (this.AUDIO_PLUGIN) {
+      this.AUDIO_PLUGIN.playMusic();
     }
 
     this.menuButtons = [];

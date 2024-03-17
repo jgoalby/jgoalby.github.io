@@ -44,8 +44,8 @@ export default class GameScene extends BaseScene {
 
   addSound() {
     // Make sure we have the audio plugin.
-    if (this.audio) {
-      this.audio.playMusic();
+    if (this.AUDIO_PLUGIN) {
+      this.AUDIO_PLUGIN.playMusic();
     }
 
     this.fire = this.sound.add('fire', {
@@ -252,8 +252,8 @@ export default class GameScene extends BaseScene {
     });
 
     // Make sure we have the audio plugin.
-    if (this.audio) {
-      this.audio.playSound(this.fire);
+    if (this.AUDIO_PLUGIN) {
+      this.AUDIO_PLUGIN.playSound(this.fire);
     }
     this.physics.moveTo(newBullet, this.game.input.mousePointer.worldX, this.game.input.mousePointer.worldY, 500);
   }

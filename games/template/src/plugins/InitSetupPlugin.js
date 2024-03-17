@@ -32,9 +32,9 @@ export default class InitSetupPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.INIT_SETUP_KEY,
-      plugin: InitSetupPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.INIT_SETUP_MAPPING,
+      mapping: Constants.PLUGIN_INFO.INIT_SETUP_PLUGIN,
     }
   }
 }

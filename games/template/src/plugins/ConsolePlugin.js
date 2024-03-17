@@ -90,9 +90,9 @@ export default class ConsolePlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.CONSOLE_KEY,
-      plugin: ConsolePlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.CONSOLE_MAPPING,
+      mapping: Constants.PLUGIN_INFO.CONSOLE_PLUGIN,
     }
   }
 }

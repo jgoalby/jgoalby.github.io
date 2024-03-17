@@ -50,9 +50,9 @@ export default class NotificationPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.NOTIFICATION_KEY,
-      plugin: NotificationPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.NOTIFICATION_MAPPING,
+      mapping: Constants.PLUGIN_INFO.NOTIFICATION_PLUGIN,
     }
   }
 }

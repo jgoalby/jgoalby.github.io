@@ -64,9 +64,9 @@ export default class EventPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.EVENT_KEY,
-      plugin: EventPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.EVENT_MAPPING,
+      mapping: Constants.PLUGIN_INFO.EVENT_PLUGIN,
     }
   }
 }

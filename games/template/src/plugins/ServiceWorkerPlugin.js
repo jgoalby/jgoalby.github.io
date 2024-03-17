@@ -83,9 +83,9 @@ export default class ServiceWorkerPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.SERVICE_WORKER_KEY, 
-      plugin: ServiceWorkerPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.SERVICE_WORKER_MAPPING,
+      mapping: Constants.PLUGIN_INFO.SERVICE_WORKER_PLUGIN,
     }
   }
 }

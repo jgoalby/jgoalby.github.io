@@ -23,9 +23,9 @@ export default class UnitTestPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.UNIT_TEST_KEY, 
-      plugin: UnitTestPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.UNIT_TEST_MAPPING,
+      mapping: Constants.PLUGIN_INFO.UNIT_TEST_PLUGIN,
     }
   }
 }

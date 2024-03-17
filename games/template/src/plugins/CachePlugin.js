@@ -244,9 +244,9 @@ export default class CachePlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.CACHE_KEY,
-      plugin: CachePlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.CACHE_MAPPING,
+      mapping: Constants.PLUGIN_INFO.CACHE_PLUGIN,
     }
   }
 }

@@ -61,9 +61,9 @@ export default class WindowPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.WINDOW_KEY, 
-      plugin: WindowPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.WINDOW_MAPPING,
+      mapping: Constants.PLUGIN_INFO.WINDOW_PLUGIN,
     }
   }
 }

@@ -9,9 +9,9 @@ export default class GlobalsPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.GLOBALS_KEY, 
-      plugin: GlobalsPlugin, 
+      plugin: this, 
       start: true,
-      mapping: Constants.PLUGIN_INFO.GLOBALS_MAPPING,
+      mapping: Constants.PLUGIN_INFO.GLOBALS_PLUGIN,
     }
   }
 }

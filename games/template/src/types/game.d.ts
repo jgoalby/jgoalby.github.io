@@ -26,41 +26,43 @@ interface ScenesProxy {
     EXAMPLE_SCENE: string;
 }
 
+// The _PLUGIN is used for mapping the plugin in Scenes.
+
 interface PluginInfoProxy {
     INIT_SETUP_KEY: string;
-    INIT_SETUP_MAPPING: string;
+    INIT_SETUP_PLUGIN: string;
     EVENT_KEY: string;
-    EVENT_MAPPING: string;
+    EVENT_PLUGIN: string;
     SETTINGS_KEY: string;
-    SETTINGS_MAPPING: string;
+    SETTINGS_PLUGIN: string;
     SERVICE_WORKER_KEY: string;
-    SERVICE_WORKER_MAPPING: string;
+    SERVICE_WORKER_PLUGIN: string;
     WINDOW_KEY: string;
-    WINDOW_MAPPING: string;
+    WINDOW_PLUGIN: string;
     CONSOLE_KEY: string;
-    CONSOLE_MAPPING: string;
+    CONSOLE_PLUGIN: string;
     NOTIFICATION_KEY: string;
-    NOTIFICATION_MAPPING: string;
+    NOTIFICATION_PLUGIN: string;
     INTROSPECT_KEY: string;
-    INTROSPECT_MAPPING: string;
+    INTROSPECT_PLUGIN: string;
     CACHE_KEY: string;
-    CACHE_MAPPING: string;
+    CACHE_PLUGIN: string;
     STYLES_KEY: string;
-    STYLES_MAPPING: string;
+    STYLES_PLUGIN: string;
     AUDIO_KEY: string;
-    AUDIO_MAPPING: string;
+    AUDIO_PLUGIN: string;
     REFLECTION_KEY: string;
-    REFLECTION_MAPPING: string;
+    REFLECTION_PLUGIN: string;
     SHORTCUTS_KEY: string;
-    SHORTCUTS_MAPPING: string;
+    SHORTCUTS_PLUGIN: string;
     GENAI_KEY: string;
-    GENAI_MAPPING: string;
+    GENAI_PLUGIN: string;
     FIREBASE_KEY: string;
-    FIREBASE_MAPPING: string;
+    FIREBASE_PLUGIN: string;
     UNIT_TEST_KEY: string;
-    UNIT_TEST_MAPPING: string;
+    UNIT_TEST_PLUGIN: string;
     GLOBALS_KEY: string;
-    GLOBALS_MAPPING: string;
+    GLOBALS_PLUGIN: string;
 }
 
 interface Globals {

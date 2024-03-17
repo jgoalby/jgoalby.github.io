@@ -172,9 +172,9 @@ export default class AudioPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.AUDIO_KEY,
-      plugin: AudioPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.AUDIO_MAPPING,
+      mapping: Constants.PLUGIN_INFO.AUDIO_PLUGIN,
     }
   }
 }

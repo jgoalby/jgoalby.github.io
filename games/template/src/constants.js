@@ -188,7 +188,7 @@ const SettingsTypes = {
 
 // The plugin identifiers. The types are defined for the static definitions in the game.d.ts file.
 // Proxy for plugin info allowing dynamic creation.
-const PluginInfoProxy = new Proxy(PluginInfo, constantHandler);
+const PluginInfoProxy = new Proxy({}, constantHandler);
 
 // The scene identifiers. The types are defined for the static definitions in the game.d.ts file.
 // This is the proxy for scenes allowing dynamic creation.

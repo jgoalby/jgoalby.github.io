@@ -55,9 +55,9 @@ export default class FirebasePlugin extends Phaser.Plugins.BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.FIREBASE_KEY,
-      plugin: FirebasePlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.FIREBASE_MAPPING,
+      mapping: Constants.PLUGIN_INFO.FIREBASE_PLUGIN,
     }
   }
 }

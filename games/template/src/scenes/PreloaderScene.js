@@ -166,9 +166,9 @@ export default class PreloaderScene extends BaseScene {
 
   createScene() {
     // Make sure the audio plugin is enabled before accessing it.
-    if (this.audio) {
+    if (this.AUDIO_PLUGIN) {
       // Add the background music. Audio plugin takes care of volume.
-      this.audio.addMusic(this.sound.add('bgMusic'));
+      this.AUDIO_PLUGIN.addMusic(this.sound.add('bgMusic'));
     }
   }
 

@@ -92,9 +92,9 @@ export default class SettingsPlugin extends BasePlugin {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.SETTINGS_KEY,
-      plugin: SettingsPlugin,
+      plugin: this,
       start: true,
-      mapping: Constants.PLUGIN_INFO.SETTINGS_MAPPING,
+      mapping: Constants.PLUGIN_INFO.SETTINGS_PLUGIN,
     }
   }
 }
