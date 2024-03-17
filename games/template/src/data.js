@@ -23,16 +23,23 @@ export default class Data {
   }
 
   addMainMenu(mainMenuItem) {
-    
-    // TODO: Check the item first?
-    //       Conflicting shortcuts?
+    // Go through all of the existing mane menu items looking for same one we are adding.    
+    for (let curMainMenuItem of this.data.mainMenu) {
+      if ((curMainMenuItem.shortcut === mainMenuItem.shortcut) && 
+          (curMainMenuItem.label === mainMenuItem.label) && 
+          (curMainMenuItem.scene === mainMenuItem.scene)) {
+            // Main menu item already exists, do not add again.
+            return;
+          }
+    }
 
+    // Add this new main menu item.
     this.data.mainMenu.push(mainMenuItem);
   }
 
   async test() {
-    const item = { shortcut: 'B', label: 'Basic!', scene: Constants.SCENES.BASIC_SCENE };
-    this.addMainMenu(item);
+    // const item = { shortcut: 'B', label: 'Basic!', scene: Constants.SCENES.BASIC_SCENE };
+    // this.addMainMenu(item);
     await this.test2();
   }
 
@@ -50,30 +57,42 @@ export default class Data {
     const heading = 'This is dynamic';
 
     let basicSceneCode = `import Constants from '../constants.js';
-import Button from '../components/Button.js';
 import BaseScene from './BaseScene.js';
 
-export default class BasicScene extends BaseScene {
+export default class ScrollingQuoteScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.BASIC_SCENE;
+    config.key = Constants.SCENES.SCROLLING_QUOTE_SCENE;
     super(config);
 
-    this.heading = undefined;
-    this.button = undefined;
+    this.quoteText = undefined;
   }
 
   createScene() {
-    this.heading = this.add.text(0, 0, '${heading} - ${this.count}', Constants.STYLES.HEADING_TEXT);
-    this.heading.setOrigin(0.5, 0);
-    this.heading.setY(50);
+    const quote = "The only way to do great work is to love what you do. - Steve Jobs";
+    this.quoteText = this.add.text(this.cameras.main.width / 2, this.cameras.main.height, quote, Constants.STYLES.HEADING_TEXT);
+    this.quoteText.setOrigin(0.5, 1); // Center the text horizontally and align its bottom with the given y position
 
-    this.button = new Button(this, { shortcut: 'esc', label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
+    this.createScrollingAnimation();
+  }
+
+  createScrollingAnimation() {
+    this.tweens.add({
+      targets: this.quoteText,
+      y: -this.quoteText.height, // Target y position is above the top of the screen
+      ease: 'Linear', // Linear easing for constant scroll speed
+      duration: 10000, // Duration of the scroll in milliseconds
+      repeat: 0, // No repeat
+      onComplete: () => {
+        // Optional: what to do when the scroll animation completes
+        console.log('Quote has finished scrolling');
+      },
+    });
   }
 
   resize() {
-    this.heading.setX(this.cameras.main.width / 2);
-    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
+    // Ensure the quote remains centered during resizing
+    this.quoteText.setX(this.cameras.main.width / 2);
   }
 }`;
 
@@ -85,11 +104,17 @@ export default class BasicScene extends BaseScene {
 
     // Go through all of the imports we found.
     for (const match of allImports) {
-      // Get the absolute URL based on what we found.
-      const absoluteURL = await cachePlugin.getAbsoluteURL(match[1]);
+      // Just making sure before we access it.
+      if (match.length >= 2) {
+        // The importString we matched
+        const importString = match[1];
 
-      // Replace the relative URL with the absolutel URL.
-      basicSceneCode = basicSceneCode.replace(match[1], absoluteURL);
+        // Get the absolute URL based on the import we found.
+        const absoluteURL = await cachePlugin.getAbsoluteURL(importString);
+
+        // Replace the relative URL with the absolute URL.
+        basicSceneCode = basicSceneCode.replace(importString, absoluteURL);
+      }
     }
 
     try {
@@ -97,41 +122,13 @@ export default class BasicScene extends BaseScene {
       const module = await import(objectURL);
       URL.revokeObjectURL(objectURL);
       const baseSceneClass = module.default;
-      let myClass = new baseSceneClass();
-      Scenes.addSceneToGame(window.game, myClass);
+      let myScene = new baseSceneClass();
+      Scenes.addSceneToGame(window.game, myScene);
+
+      const item = { shortcut: 'B', label: 'Basic!', scene: myScene.key };
+      this.addMainMenu(item);
     } catch(e) {
       console.log(e.message);
     }
   }
 }
-
-/*
-    const basicSceneCode = `import Constants from '../constants.js';
-import Button from './components/Button.js';
-import BaseScene from './scenes/BaseScene.js';
-
-export default class BasicScene extends BaseScene {
-  constructor(config) {
-    if (!config) { config = {} }
-    config.key = Constants.SCENES.BASIC_SCENE;
-    super(config);
-
-    this.heading = undefined;
-    this.button = undefined;
-  }
-
-  createScene() {
-    this.heading = this.add.text(0, 0, 'Basic Scene', Constants.STYLES.HEADING_TEXT);
-    this.heading.setOrigin(0.5, 0);
-    this.heading.setY(50);
-
-    this.button = new Button(this, { shortcut: 'esc', label: 'Menu', actionFn: () => { this.gotoScene(Constants.SCENES.MENU_SCENE) } });
-  }
-
-  resize() {
-    this.heading.setX(this.cameras.main.width / 2);
-    this.button.setPosition(this.cameras.main.width / 2, this.cameras.main.height - ((this.button.height / 2) + 10));
-  }
-}`;
-
-*/

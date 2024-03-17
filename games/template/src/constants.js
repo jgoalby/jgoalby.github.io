@@ -222,7 +222,7 @@ const PluginInfo = {
 
 // The scene identifiers.
 const Scenes = {
-  BOOT_SCENE:             'Boot',
+  /*BOOT_SCENE:             'Boot',
   PRELOADER_SCENE:        'Preloader',
   LOGIN_SCENE:            'Login',
   MENU_SCENE:             'Menu',
@@ -232,8 +232,16 @@ const Scenes = {
   INSTRUCTIONS_SCENE:     'Instructions',
   GAME_SCENE:             'Game',
   GAMEOVER_SCENE:         'GameOver',
-  BASIC_SCENE:            'Basic',
+  BASIC_SCENE:            'Basic',*/
 }
+
+const constantHandler = {
+  get(obj, prop) {
+    return prop in obj ? obj[prop] : prop;
+  },
+};
+
+const ScenesProxy = new Proxy(Scenes, constantHandler);
 
 // The exported class that contains all of the constants.
 export default class Constants {
@@ -250,7 +258,7 @@ export default class Constants {
   static get NOTIFICATION_LEVELS() { return NotificationLevels; }
   static get SETTINGS_TYPES() { return SettingsTypes; }
   static get PLUGIN_INFO() { return PluginInfo; }
-  static get SCENES() { return Scenes; }
+  static get SCENES() { return ScenesProxy; }
 
   // If you change the name of these, then you should also change them in service-worker.js.
   static get SW_EVENTS() { return ServiceWorkerEvents; }

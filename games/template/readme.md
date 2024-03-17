@@ -1,5 +1,8 @@
 # TODOs
 
+# Most likely next
+- Scenes manage their own shortcut and label text to make them self-contained
+
 # Things that are possibly next
 - Rename the title screen to actually title scene
   - It actually does preload things, so maybe name is ok? Hard to decide.
