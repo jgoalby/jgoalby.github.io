@@ -110,6 +110,86 @@ export default class CachePlugin extends BasePlugin {
     }
   }
 
+  // TODO: I could try to know when cache last updated? Serviceworked could add a value? Or is there one? I tried
+  //       adding a property to the cache in service-worker but it didn't show up here.
+
+  async getCacheURLs() {
+    // Holder for the return value of each URL we found in the cache.
+    let cacheURLs = [];
+
+    try {
+      // Get the cache.
+      const cache = await window.caches.open(Constants.CACHE_NAME);
+
+      // Get the cache keys.
+      const cacheKeys = await cache.keys();
+
+      // Go through each of the URLs we retrieved.
+      for (let i = 0; i < cacheKeys.length; i++) {
+        // Add the current URL to the array.
+        cacheURLs.push(cacheKeys[i].url);
+      }
+    } catch (error) {
+      // Oh dear, there was an issue. But nothing we can do, so ignore it.
+    }
+
+    // Return the array we made.
+    return cacheURLs;
+  }
+
+  getNumSameElements(arr1, arr2) {
+    // Sanity check.
+    if (!arr1 || !arr2 || !arr1.length || !arr2.length) { return 0; }
+
+    // Start at no elements being the same.
+    let countSame = 0;
+
+    // Can only compare up to the shortest array length.
+    for (let i = 0; i < Math.min(arr1.length, arr2.length); i++) {
+      if (arr1[i] === arr2[i]) {
+        // Add to the count of elements that are the same.
+        countSame += 1;
+      } else {
+        // They are no longer the same so can stop comparing.
+        break;
+      }
+    }
+
+    // Return the count.
+    return countSame;
+  }
+
+  async getAbsoluteURL(sourceURL) {
+    // We get each part of the URL in reverse order so we can compare.
+    const sourceURLArr = sourceURL.split('/').reverse();
+
+    // Holders for the best match we have found so far.
+    let curBestLen = 0;
+    let curBestURL = undefined;
+
+    // Get the URLs stored in the cache.
+    let cacheURLs = await this.getCacheURLs();
+
+    // Go through every URL in the cache, looking for the best match.
+    for (let i = 0; i < cacheURLs.length; i++) {
+      // We need to convert the current cache URL to same array as the sourceURL.
+      const cacheURL = cacheURLs[i];
+      const cacheURLArr = cacheURL.split('/').reverse();
+
+      // Compare the 2 arrays and see how many consecutive elements are the same.
+      let same = this.getNumSameElements(sourceURLArr, cacheURLArr);
+
+      // If this one is better than the best so far, it is now the best.
+      if (same > curBestLen) {
+        curBestLen = same;
+        curBestURL = cacheURL;
+      }
+    }
+
+    // Return the best one we found.
+    return curBestURL;
+  }
+
   async getCachedFile() {
     // TODO: Make params for this. What should I be requesting? common.js? /src/common.js?
     // TODO: Somehow we will need to know the base URL. Can we get it from window?

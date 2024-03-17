@@ -161,7 +161,7 @@ function fetchEventHandler(event) {
       } else {
         // The response was ok, so cache it for future generations.
         const cache = await caches.open(Constants.CACHE_NAME);
-        await cache.put(event.request, response.clone());    
+        await cache.put(event.request, response.clone());
       }
     } catch (error) {
       // Make sure response is undefined as we cannot use it.
