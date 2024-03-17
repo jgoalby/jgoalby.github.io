@@ -79,12 +79,16 @@ export default class BasicScene extends BaseScene {
 
     /** @type {CachePlugin} */
     const cachePlugin = getPlugin(Constants.PLUGIN_INFO.CACHE_KEY);
-   
+
+    // Look for import statements and capture the quoted part as we want to make that absolute.
     const allImports = basicSceneCode.matchAll(/^\s*import [^\'\"]+[\'\"](.*)[\'\"];\s*$/gm);
 
+    // Go through all of the imports we found.
     for (const match of allImports) {
+      // Get the absolute URL based on what we found.
       const absoluteURL = await cachePlugin.getAbsoluteURL(match[1]);
 
+      // Replace the relative URL with the absolutel URL.
       basicSceneCode = basicSceneCode.replace(match[1], absoluteURL);
     }
 
