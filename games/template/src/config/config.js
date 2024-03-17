@@ -1,5 +1,4 @@
 import Constants from '../constants.js';
-import { global_plugins, isGlobalPluginEnabled } from '../plugins/Plugins.js'
 
 // Phaser specific settings.
 var phaserConfig = {
@@ -14,9 +13,9 @@ var phaserConfig = {
       debug: Constants.PHYSICS.DEBUG,
     },
   },
-  isGlobalPluginEnabled: isGlobalPluginEnabled,
   plugins: {
-    global: global_plugins,
+    // Global plugins are defined in Plugins.js
+    //global: global_plugins,
   },
   parent: Constants.GENERAL.PARENT,
   dom: { createContainer: Constants.GENERAL.CREATE_CONTAINER },

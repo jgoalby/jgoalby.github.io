@@ -19,6 +19,9 @@ import UnitTestPlugin from './UnitTestPlugin.js';
 //import FirebasePlugin from './FirebasePlugin.js';
 
 // List of global plugins, that can be used to initialize the game engine. Order is important.
+// Can be used to pass directly to the game in the configuration for example as:
+//  plugins: { global: global_plugins, }
+// Or you can use the create static method to create the plugins dynamically and have more control.
 const global_plugins = [
   // This plugin makes other plugins available, so it is necessary and should be first.
   InitSetupPlugin.options,
@@ -44,24 +47,34 @@ const global_plugins = [
   //FirebasePlugin.options,
 ]
 
-/**
- * Is the passed in plugin key enabled? These are what Phaser 3 considers global plugins.
- * 
- * @param {string} pluginKey The plugin key to check on.
- * @returns {boolean} true if it is enabled, false otherwise.
- */
-function isGlobalPluginEnabled(pluginKey) {
-  // Go through all the global plugins and see if the key is there.
-  for (let i = 0; i < global_plugins.length; i++) {
-    // Is the key there?
-    if (global_plugins[i].key === pluginKey) { return true; }
+export default class Plugins {
+  /**
+  * Is the passed in plugin key enabled? These are what Phaser 3 considers global plugins.
+  * 
+  * @param {string} pluginKey The plugin key to check on.
+  * @returns {boolean} true if it is enabled, false otherwise.
+  */
+  static isGlobalPluginEnabled(pluginKey) {
+    // Go through all the global plugins and see if the key is there.
+    for (let i = 0; i < global_plugins.length; i++) {
+      // Is the key there?
+      if (global_plugins[i].key === pluginKey) { return true; }
+    }
+
+    // Did not find the key.
+    return false;
   }
 
-  // Did not find the key.
-  return false;
+  static create(game) {
+    // Go through all the global plugins
+    for (let i = 0; i < global_plugins.length; i++) {
+      game.plugins.install(
+        global_plugins[i].key,
+        global_plugins[i].plugin,
+        global_plugins[i].start,
+        global_plugins[i].mapping);
+    }
+  }
 }
 
-export {
-  global_plugins,
-  isGlobalPluginEnabled,
-};
+//        (...args) => { console.log("Like magic!"); console.log(args); return global_plugins[i].plugin },

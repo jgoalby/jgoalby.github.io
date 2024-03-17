@@ -4,6 +4,17 @@ import BasePlugin from './BasePlugin.js'
 import Scenes from '../scenes/Scenes.js';
 import { getPlugin } from './PluginsHelpers.js'
 
+// class DataPluginProxy {
+//   constructor(pluginManager) {
+//     return new Proxy(new DataPlugin(pluginManager), {
+//       get(target, prop, receiver) {
+//         console.log(prop);
+//         return Reflect.get(...arguments);
+//       }
+//     });
+//   }
+// }
+
 export default class DataPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
@@ -20,23 +31,48 @@ export default class DataPlugin extends BasePlugin {
     };
 
     this.count = 0;
+
+    return new Proxy(this, {
+      get(target, prop, receiver) {
+        if (prop in target) {
+          console.log("Getting OWN value " + prop);
+          return target[prop];
+        }
+
+
+        console.log("Getting proxy value");
+        console.log(prop);
+        return Reflect.get(...arguments);
+      },
+      set(obj, prop, value) {
+        console.log("Setting");
+        if (prop in obj) {
+          console.log("Setting OWN value " + prop);
+          obj[prop] = value;
+          return true;
+        }
+
+        obj[prop] = value;
+        return true;
+      }
+    });
   }
 
-  get player() {
-    return this.data.player;
-  }
+  // get player() {
+  //   return this.data.player;
+  // }
 
-  set player(value) {
-    this.data.player = value;
-  }
+  // set player(value) {
+  //   this.data.player = value;
+  // }
 
-  get score() {
-    return this.data.score;
-  }
+  // get score() {
+  //   return this.data.score;
+  // }
 
-  set score(value) {
-    this.data.score = value;
-  }
+  // set score(value) {
+  //   this.data.score = value;
+  // }
 
   get mainMenu() {
     return this.data.mainMenu;
@@ -155,7 +191,7 @@ export default class ScrollingQuoteScene extends BaseScene {
   static get options() {
     return { 
       key: Constants.PLUGIN_INFO.DATA_KEY, 
-      plugin: this, 
+      plugin: this,
       start: true,
       mapping: Constants.PLUGIN_INFO.DATA_PLUGIN,
     }
