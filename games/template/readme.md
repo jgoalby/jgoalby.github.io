@@ -3,6 +3,9 @@
 # Most likely next
 - Scenes manage their own shortcut and label text to make them self-contained
 - Test the CMD key in the game to make sure I can respond to that shortcut
+- In menu scene,     this.mainMenuData = this.sys.game.globals.data.getMainMenu();
+  - Make a global plugin to access "global" data better
+  - Will need to update types in type file
 
 # Things that are possibly next
 - Rename the title screen to actually title scene

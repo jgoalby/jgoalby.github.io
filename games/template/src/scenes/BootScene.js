@@ -4,7 +4,7 @@ import BaseScene from './BaseScene.js';
 export default class BootScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.BOOT_SCENE;
+    config.key = config.key || Constants.SCENES.BOOT_SCENE;
     super(config);
   }
 

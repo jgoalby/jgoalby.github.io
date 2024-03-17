@@ -5,7 +5,7 @@ import BaseScene from './BaseScene.js';
 export default class InstructionsScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.INSTRUCTIONS_SCENE;
+    config.key = config.key || Constants.SCENES.INSTRUCTIONS_SCENE;
     super(config);
 
     this.heading = undefined;

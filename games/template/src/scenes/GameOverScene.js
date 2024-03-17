@@ -5,7 +5,7 @@ import BaseScene from './BaseScene.js';
 export default class GameOverScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.GAMEOVER_SCENE;
+    config.key = config.key || Constants.SCENES.GAMEOVER_SCENE;
     super(config);
 
     this.restartButton = null;

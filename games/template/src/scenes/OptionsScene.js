@@ -11,7 +11,7 @@ import BaseScene from './BaseScene.js';
 export default class OptionsScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.OPTIONS_SCENE;
+    config.key = config.key || Constants.SCENES.OPTIONS_SCENE;
     super(config);
 
     this.heading = undefined;

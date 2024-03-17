@@ -23,7 +23,7 @@ interface ScenesProxy {
     INSTRUCTIONS_SCENE: string;
     GAME_SCENE: string;
     GAMEOVER_SCENE: string;
-    BASIC_SCENE: string;
+    EXAMPLE_SCENE: string;
 }
 
 interface PluginInfoProxy {

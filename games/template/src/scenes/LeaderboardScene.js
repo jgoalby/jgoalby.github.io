@@ -5,7 +5,7 @@ import BaseScene from './BaseScene.js';
 export default class LeaderboardScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.LEADERBOARD_SCENE;
+    config.key = config.key || Constants.SCENES.LEADERBOARD_SCENE;
     super(config);
 
     this.dom = null;

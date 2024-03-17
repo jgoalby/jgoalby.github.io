@@ -6,7 +6,7 @@ import { getPluginListAsString } from '../plugins/PluginsHelpers.js'
 export default class CreditsScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.CREDITS_SCENE;
+    config.key = config.key || Constants.SCENES.CREDITS_SCENE;
     super(config);
 
     this.heading = undefined;

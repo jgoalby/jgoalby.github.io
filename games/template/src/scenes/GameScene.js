@@ -6,7 +6,7 @@ import BaseScene from './BaseScene.js';
 export default class GameScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.GAME_SCENE;
+    config.key = config.key || Constants.SCENES.GAME_SCENE;
     super(config);
 
     this.colliders = [];

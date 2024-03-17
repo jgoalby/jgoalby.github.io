@@ -4,7 +4,7 @@ import BaseScene from './BaseScene.js';
 export default class PreloaderScene extends BaseScene {
   constructor(config) {
     if (!config) { config = {} }
-    config.key = Constants.SCENES.PRELOADER_SCENE;
+    config.key = config.key || Constants.SCENES.PRELOADER_SCENE;
     super(config);
 
     this.splash_landscape = null;
