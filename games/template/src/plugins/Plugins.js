@@ -6,7 +6,7 @@ import ServiceWorkerPlugin from './ServiceWorkerPlugin.js';
 import WindowPlugin from './WindowPlugin.js';
 
 import ConsolePlugin from './ConsolePlugin.js';
-import GlobalsPlugin from './GlobalsPlugin.js';
+import DataPlugin from './DataPlugin.js';
 import NotificationPlugin from './NotificationPlugin.js';
 import IntrospectPlugin from './IntrospectPlugin.js';
 import CachePlugin from './CachePlugin.js';
@@ -31,7 +31,7 @@ const global_plugins = [
 
   // Less critical plugins.
   ConsolePlugin.options,
-  GlobalsPlugin.options,
+  DataPlugin.options,
   NotificationPlugin.options,
   IntrospectPlugin.options,
   CachePlugin.options,
@@ -46,8 +46,6 @@ const global_plugins = [
 
 /**
  * Is the passed in plugin key enabled? These are what Phaser 3 considers global plugins.
- * Note that global plugins are different than the globals plugin. The globals plugin handles
- * global values. Global plugins are plugins that are global.
  * 
  * @param {string} pluginKey The plugin key to check on.
  * @returns {boolean} true if it is enabled, false otherwise.

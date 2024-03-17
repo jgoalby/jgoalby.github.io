@@ -1,5 +1,5 @@
+console.log("hello");
 import Constants from './constants.js';
-import Globals from './globals.js';
 import Scenes from './scenes/Scenes.js';
 import { phaserConfig } from './config/config.js';
 import ConsolePlugin from './plugins/ConsolePlugin.js';
@@ -33,7 +33,6 @@ import ServiceWorkerPlugin from './plugins/ServiceWorkerPlugin.js';
 export default class Game extends Phaser.Game {
   constructor() {
     super(phaserConfig);
-    this.globals = Globals.create();
     Scenes.create(this);
   }
 }

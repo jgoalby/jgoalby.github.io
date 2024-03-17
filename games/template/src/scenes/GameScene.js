@@ -271,7 +271,7 @@ export default class GameScene extends BaseScene {
     this.events.off();
     clearInterval(this.respawnInterval);
     clearInterval(this.regenerateHealth);
-    this.sys.game.globals.score = this.scoreNumber;
+    this.DATA_PLUGIN.score = this.scoreNumber;
     this.scoreNumber = 0;
     this.colliders = [];
     this.enemyGroup = [];

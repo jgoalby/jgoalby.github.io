@@ -1,12 +1,16 @@
-import Constants from './constants.js';
+import Constants from '../constants.js';
+import BasePlugin from './BasePlugin.js'
 
-import Scenes from './scenes/Scenes.js';
+import Scenes from '../scenes/Scenes.js';
+import { getPlugin } from './PluginsHelpers.js'
 
-import { getPlugin } from './plugins/PluginsHelpers.js'
+export default class DataPlugin extends BasePlugin {
+  constructor(pluginManager) {
+    super(pluginManager);
 
-export default class Data {
-  constructor() {
     this.data = {
+      player: '',
+      score: 0,
       mainMenu: [
         { shortcut: 'I', label: 'Play',        scene: Constants.SCENES.INSTRUCTIONS_SCENE },
         { shortcut: 'O', label: 'Options',     scene: Constants.SCENES.OPTIONS_SCENE },
@@ -18,7 +22,23 @@ export default class Data {
     this.count = 0;
   }
 
-  getMainMenu() {
+  get player() {
+    return this.data.player;
+  }
+
+  set player(value) {
+    this.data.player = value;
+  }
+
+  get score() {
+    return this.data.score;
+  }
+
+  set score(value) {
+    this.data.score = value;
+  }
+
+  get mainMenu() {
     return this.data.mainMenu;
   }
 
@@ -129,6 +149,15 @@ export default class ScrollingQuoteScene extends BaseScene {
       this.addMainMenu(item);
     } catch(e) {
       console.log(e.message);
+    }
+  }
+
+  static get options() {
+    return { 
+      key: Constants.PLUGIN_INFO.DATA_KEY, 
+      plugin: this, 
+      start: true,
+      mapping: Constants.PLUGIN_INFO.DATA_PLUGIN,
     }
   }
 }

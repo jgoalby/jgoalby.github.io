@@ -1,4 +1,3 @@
-import Globals from './globals.js';
 import BasePlugin from './plugins/BasePlugin.js';
 import BaseScene from './scenes/BaseScene.js';
 
@@ -85,7 +84,6 @@ function getClassesWithGetInstanceFn() {
   if (!classesWithGetInstanceFn) {
     // ...create the lookup of class name to static getInstance funcion now.
     classesWithGetInstanceFn = {
-      "Globals":    Globals.getInstance,
       "BasePlugin": BasePlugin.getInstance,
       "BaseScene":  BaseScene.getInstance
     };

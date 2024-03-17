@@ -16,7 +16,8 @@ export default class GameOverScene extends BaseScene {
   }
 
   createScene() {
-    const { score, player } = this.sys.game.globals;
+    const score = this.DATA_PLUGIN.score;
+    const player = this.DATA_PLUGIN.player;
 
     this.tombstone = this.add.image(0, 0, 'tombstone').setOrigin(0.5, 0);
 

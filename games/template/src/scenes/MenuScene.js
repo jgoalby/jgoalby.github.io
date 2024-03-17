@@ -19,7 +19,7 @@ export default class MenuScene extends BaseScene {
 
     this.menuButtons = [];
 
-    this.mainMenuData = this.sys.game.globals.data.getMainMenu();
+    this.mainMenuData = this.DATA_PLUGIN.mainMenu;
 
     for (let curIndex = 0; curIndex < this.mainMenuData.length; curIndex++) {
       const curMenu = this.mainMenuData[curIndex];

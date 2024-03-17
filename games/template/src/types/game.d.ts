@@ -61,13 +61,8 @@ interface PluginInfoProxy {
     FIREBASE_PLUGIN: string;
     UNIT_TEST_KEY: string;
     UNIT_TEST_PLUGIN: string;
-    GLOBALS_KEY: string;
-    GLOBALS_PLUGIN: string;
-}
-
-interface Globals {
-    player: any;
-    score: number;
+    DATA_KEY: string;
+    DATA_PLUGIN: string;
 }
 
 namespace Phaser {

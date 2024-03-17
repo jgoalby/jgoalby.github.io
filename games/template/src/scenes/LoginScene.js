@@ -63,7 +63,7 @@ export default class LoginScene extends BaseScene {
 
       if (event.target.name === 'playButton') {
         const inputText = this.nameInputElement.getChildByName('nameField');
-        this.sys.game.globals.player = inputText.value;
+        this.DATA_PLUGIN.player = inputText.value;
 
         if (inputText.value !== '') {
           this.nameInputElement.removeListener('click');

@@ -68,8 +68,8 @@ export default class ShortcutsPlugin extends BasePlugin {
                   });
 
     this.onAddShortcut({
-                    getInstanceClassName: 'Globals',
-                    getInstanceArgs:      ['data'],
+                    getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.DATA_KEY],
                     memberName:           'test',
                     memberArgs:           [],
                     shortcut:             'CTRL SHIFT G'
