@@ -6,6 +6,9 @@ const AUTHOR = 'John Goalby';
 // Cache constant.
 const SW_CACHE_NAME = "cache-v1";
 
+// Proxy handler for constants. This gets the defined constants but allows dynamic also.
+const constantHandler = { get(obj, prop) { return prop in obj ? obj[prop] : prop; } };
+
 // General constants.
 const General = {
   WIDTH:             window.innerWidth,
@@ -186,7 +189,7 @@ const SettingsTypes = {
 // Plugin keys and mappings as they are used in multiple places. Make sure to define
 // both the KEY and MAPPING for each plugin.
 const PluginInfo = {
-  INIT_SETUP_KEY:         'InitSetupPlugin',
+  /*INIT_SETUP_KEY:         'InitSetupPlugin',
   INIT_SETUP_MAPPING:     'initsetup',
   EVENT_KEY:              'EventPlugin',
   EVENT_MAPPING:          'customevent',
@@ -217,31 +220,16 @@ const PluginInfo = {
   FIREBASE_KEY:           'FirebasePlugin',
   FIREBASE_MAPPING:       'firebase',
   UNIT_TEST_KEY:          'UnitTestPlugin',
-  UNIT_TEST_MAPPING:      'unittest',
+  UNIT_TEST_MAPPING:      'unittest',*/
 }
 
-// The scene identifiers.
-const Scenes = {
-  /*BOOT_SCENE:             'Boot',
-  PRELOADER_SCENE:        'Preloader',
-  LOGIN_SCENE:            'Login',
-  MENU_SCENE:             'Menu',
-  OPTIONS_SCENE:          'Options',
-  CREDITS_SCENE:          'Credits',
-  LEADERBOARD_SCENE:      'Leaderboard',
-  INSTRUCTIONS_SCENE:     'Instructions',
-  GAME_SCENE:             'Game',
-  GAMEOVER_SCENE:         'GameOver',
-  BASIC_SCENE:            'Basic',*/
-}
+// The plugin identifiers. The types are defined for the static definitions in the game.d.ts file.
+// Proxy for plugin info allowing dynamic creation.
+const PluginInfoProxy = new Proxy(PluginInfo, constantHandler);
 
-const constantHandler = {
-  get(obj, prop) {
-    return prop in obj ? obj[prop] : prop;
-  },
-};
-
-const ScenesProxy = new Proxy(Scenes, constantHandler);
+// The scene identifiers. The types are defined for the static definitions in the game.d.ts file.
+// This is the proxy for scenes allowing dynamic creation.
+const ScenesProxy = new Proxy({}, constantHandler);
 
 // The exported class that contains all of the constants.
 export default class Constants {
@@ -257,7 +245,17 @@ export default class Constants {
   static get EVENTS() { return Events; }
   static get NOTIFICATION_LEVELS() { return NotificationLevels; }
   static get SETTINGS_TYPES() { return SettingsTypes; }
-  static get PLUGIN_INFO() { return PluginInfo; }
+
+  /**
+   * Access the plugin info constants.
+   * @returns {PluginInfoProxy} The plugin constants.
+   */
+  static get PLUGIN_INFO() { return PluginInfoProxy; }
+
+  /**
+   * Access the scenes constants.
+   * @returns {ScenesProxy} The scenes constants.
+   */
   static get SCENES() { return ScenesProxy; }
 
   // If you change the name of these, then you should also change them in service-worker.js.
