@@ -4,24 +4,11 @@ import BasePlugin from './BasePlugin.js'
 import Scenes from '../scenes/Scenes.js';
 import { getPlugin } from './PluginsHelpers.js'
 
-// class DataPluginProxy {
-//   constructor(pluginManager) {
-//     return new Proxy(new DataPlugin(pluginManager), {
-//       get(target, prop, receiver) {
-//         console.log(prop);
-//         return Reflect.get(...arguments);
-//       }
-//     });
-//   }
-// }
-
 export default class DataPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
     this.data = {
-      player: '',
-      score: 0,
       mainMenu: [
         { shortcut: 'I', label: 'Play',        scene: Constants.SCENES.INSTRUCTIONS_SCENE },
         { shortcut: 'O', label: 'Options',     scene: Constants.SCENES.OPTIONS_SCENE },
@@ -30,52 +17,27 @@ export default class DataPlugin extends BasePlugin {
       ]
     };
 
-    this.count = 0;
-
+    // We want to intercept getting and setting so that we can store arbitrary values.
     return new Proxy(this, {
-      get(target, prop, receiver) {
-        if (prop in target) {
-          console.log("Getting OWN value " + prop);
-          return target[prop];
-        }
+      get(obj, prop) {
+        // If there is an existing property on the obj, return it.
+        if (prop in obj) { return obj[prop]; }
 
+        // If our data member has the property, use it.
+        if (prop in obj.data) { return obj.data[prop]; }
 
-        console.log("Getting proxy value");
-        console.log(prop);
-        return Reflect.get(...arguments);
+        // We did not find the property, so undefined.
+        return undefined;
       },
       set(obj, prop, value) {
-        console.log("Setting");
-        if (prop in obj) {
-          console.log("Setting OWN value " + prop);
-          obj[prop] = value;
-          return true;
-        }
+        // If there is an existing property on the obj, set it.
+        if (prop in obj) { obj[prop] = value; return true; }
 
-        obj[prop] = value;
+        // We just add to our data member otherwise.
+        obj.data[prop] = value;
         return true;
       }
     });
-  }
-
-  // get player() {
-  //   return this.data.player;
-  // }
-
-  // set player(value) {
-  //   this.data.player = value;
-  // }
-
-  // get score() {
-  //   return this.data.score;
-  // }
-
-  // set score(value) {
-  //   this.data.score = value;
-  // }
-
-  get mainMenu() {
-    return this.data.mainMenu;
   }
 
   addMainMenu(mainMenuItem) {
@@ -109,9 +71,6 @@ export default class DataPlugin extends BasePlugin {
   }
 
   async test2() {
-    this.count += 1;
-    const heading = 'This is dynamic';
-
     let basicSceneCode = `import Constants from '../constants.js';
 import BaseScene from './BaseScene.js';
 

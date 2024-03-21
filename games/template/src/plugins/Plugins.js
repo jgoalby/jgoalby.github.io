@@ -65,9 +65,17 @@ export default class Plugins {
     return false;
   }
 
+  /**
+   * Create plugins. Allows us to have more control over creation of the plugins
+   * if we want it. Worth remembering that the plugin that is passed to install is a class
+   * rather than an object instance.
+   * 
+   * @param {Phaser.Game} game The game instance.
+   */
   static create(game) {
     // Go through all the global plugins
     for (let i = 0; i < global_plugins.length; i++) {
+      // Do the install with the properties defined.
       game.plugins.install(
         global_plugins[i].key,
         global_plugins[i].plugin,
@@ -76,5 +84,3 @@ export default class Plugins {
     }
   }
 }
-
-//        (...args) => { console.log("Like magic!"); console.log(args); return global_plugins[i].plugin },
