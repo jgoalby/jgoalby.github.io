@@ -22,7 +22,7 @@ export default class Scenes {
     // The first scene is special as we start it.
     const startScene = new BootScene();
 
-    // Add all of the scenes here
+    // Add all of the scenes here.
     Scenes.addSceneToGame(game, startScene);
     Scenes.addSceneToGame(game, new PreloaderScene());
     Scenes.addSceneToGame(game, new LoginScene());
@@ -34,7 +34,7 @@ export default class Scenes {
     Scenes.addSceneToGame(game, new GameScene());
     Scenes.addSceneToGame(game, new GameOverScene());
 
-    // Start the first scene
+    // Start the first scene.
     game.scene.start(startScene.key);
   }
 
