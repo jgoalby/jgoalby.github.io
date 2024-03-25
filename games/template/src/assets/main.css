@@ -14,20 +14,20 @@ table {
   padding: 0;
   color: white;
   font-size: 32px;
+}
 
-  tr {
-    padding: 0;
-  }
+table th,td {
+  border: 1px solid #ddd;
+  text-align: left;
+  padding: 3px 8px;
+}
 
-  tr:nth-child(even) {
-    background-color: #575555;
-  }
+table tr:nth-child(even) {
+  background-color: #575555;
+}
 
-  th,td {
-    border: 1px solid #ddd;
-    text-align: left;
-    padding: 3px 8px;
-  }
+table tr {
+  padding: 0;
 }
 
 /*
@@ -45,7 +45,7 @@ span { white-space: pre; }
   word-wrap: break-word;
 }
 
-#log2div-container {
+.log2div-container {
   position: absolute;
   left: 0px;
   top: 0px;
@@ -122,9 +122,10 @@ span { white-space: pre; }
   display: flex;
   justify-content: normal;
   padding: 10px;
-  &:nth-child(odd) {
-    background: rgba(0,0,0,.1);
-  }
+}
+
+.log2div-log-row:nth-child(odd) {
+  background: rgba(0,0,0,.1);
 }
 
 /* Message type styles */
@@ -140,5 +141,69 @@ span { white-space: pre; }
 .log2div-log-row-badge.log2div-exception { color: white; background-color: rgba(255,0,255,0.5); }
 
 thead {
-  background: rgba(0,0,0,.2);
+  background: rgba(0,255,0,.8);
+}
+
+
+
+
+
+
+/*
+  GenAIUI related styles
+*/
+
+.genaiui-container {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1000;
+  min-height: 55px;
+  width: 98% !important;
+  height: 98% !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 10px;
+  padding: 5px 0 0 0;
+  
+  font-family: "Input Mono", monospace;
+  font-weight: 400;
+  font-size: 0.8em;
+  line-height: 1.4em;
+  
+  color: rgb(0,0,0);
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Show/hide styles */
+.genaiui-container-show { display: block; }
+.genaiui-container-hide { display: none; }
+
+/* Caption styling */
+#genaiui-caption {
+  padding: 10px 0 12px 0;
+  text-indent: 10px;
+  font-size: 1.2em;
+}
+
+/* The heading div */
+#genaiui-heading {
+  display: flex;
+}
+
+/* Heading buttons styles */
+.genaiui-button {
+  margin-left: 10px;
+  cursor: pointer;
+  background-color: rgba(255,255,255,.2);
+  border-radius: 5px;
+}
+
+/* Heading checkbox container styles */
+.genaiui-checkbox-container {
+  display: flex;
+  margin-left: 10px;
+  cursor: pointer;
+  align-items: center;
 }

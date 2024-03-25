@@ -4,6 +4,14 @@
 - Scenes manage their own shortcut and label text to make them self-contained
 - Test the CMD key in the game to make sure I can respond to that shortcut
 - GenAI plugin use a html screen to input data for sending to API
+  - What does it need?
+    - Model chooser?
+    - Request message?
+    - Output response?
+    - Way to connect to the app?
+
+# GenAIUI and log2div
+- make them into classes that derive from common functionality
 
 # Things that are possibly next
 - Rename the title screen to actually title scene

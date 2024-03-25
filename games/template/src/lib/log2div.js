@@ -9,8 +9,10 @@ const DEFAULT_CAPTIONTEXT        = PROJECT_NAME + ' Output: ';
 // Base project prefix for IDs etc.
 const BASE_PROJECT_ID            = PROJECT_NAME.toLowerCase();
 
-// The id of the element that will contain everything.
+// The id of the element that will contain everything. Do not use this directly as the
+// user can specify their own ID if they want. Use the module scope variable consoleId instead.
 const CONSOLE_CONTAINER_ID       = BASE_PROJECT_ID + '-container';
+const CONSOLE_CONTAINER_CLASS    = BASE_PROJECT_ID + '-container';
 
 // Visibility of the whoole container.
 const CONSOLE_CONTAINER_SHOW     = BASE_PROJECT_ID + '-container-show';
@@ -71,6 +73,9 @@ const DEFAULT_LOGERRORENABLED     = true;
 const DEFAULT_LOGEXCEPTIONENABLED = true;
 const DEFAULT_LOGTABLEENABLED     = true;
 
+// We need to set the default for the console id, and change it later if the user specifies a different id.
+let consoleId = CONSOLE_CONTAINER_ID;
+
 function initLog2Div(options) {
   // If this flag is set, then we have already overridden the console functions.
   if (console.log2DivHasBeenInitialized) { return; }
@@ -110,8 +115,9 @@ function initLog2Div(options) {
   const logExceptionEnabled  = options.logExceptionEnabled || DEFAULT_LOGEXCEPTIONENABLED;
   const logTableEnabled      = options.logTableEnabled     || DEFAULT_LOGTABLEENABLED;
 
-  // The id of the element that will contain everything.
-  const consoleId            = options.consoleId           || CONSOLE_CONTAINER_ID;
+  // The id of the element that will contain everything. This is declared module scope as other
+  // functions need to care about this value if the user overrides it.
+  consoleId                  = options.consoleId           || CONSOLE_CONTAINER_ID;
 
   // Capture the original console functions so we can call them from our overridden functions.
   const log = console.log.bind(console);
@@ -147,7 +153,19 @@ function initLog2Div(options) {
 
       // Add it to the DOM.
       document.body.appendChild(outer);
+    } else {
+      // The user has provided an element, but we still want to show/hide it based on options.
+      // We cannot do anything to prevent a flash as the user is in control of the element creation,
+      // so its best to just use the same method as above to show/hide the element.
+      if (showLog2DivContainer) {
+        outer.classList.add(CONSOLE_CONTAINER_SHOW);
+      } else {
+        outer.classList.add(CONSOLE_CONTAINER_HIDE);
+      }
     }
+
+    // Add the class we need to the id whether we create it or not.
+    outer.classList.add(CONSOLE_CONTAINER_CLASS);
 
     // Return the outer element that existed or that we created.
     return outer;
@@ -524,7 +542,7 @@ function initLog2Div(options) {
  * @returns {void}
  */
 function toggleLog2DivVisibility() {
-  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+  const elem = document.getElementById(consoleId);
 
   if (elem.classList.contains(CONSOLE_CONTAINER_SHOW)) {
     hideLog2Div();
@@ -540,7 +558,7 @@ function toggleLog2DivVisibility() {
  */
 function isLog2DivVisible() {
   // Get the main container for log2div.
-  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+  const elem = document.getElementById(consoleId);
 
   // If it already has the show class, then we are visible.
   return elem.classList.contains(CONSOLE_CONTAINER_SHOW);
@@ -553,7 +571,7 @@ function isLog2DivVisible() {
  */
 function showLog2Div() {
   // Get the main container for log2div.
-  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+  const elem = document.getElementById(consoleId);
 
   // If it already has the show class, then we do not need to do anything.
   if (elem.classList.contains(CONSOLE_CONTAINER_SHOW)) { return; }
@@ -570,7 +588,7 @@ function showLog2Div() {
  */
 function hideLog2Div() {
   // Get the main container for log2div.
-  const elem = document.getElementById(CONSOLE_CONTAINER_ID);
+  const elem = document.getElementById(consoleId);
 
   // If it already has the hide class, then we do not need to do anything.
   if (elem.classList.contains(CONSOLE_CONTAINER_HIDE)) { return; }

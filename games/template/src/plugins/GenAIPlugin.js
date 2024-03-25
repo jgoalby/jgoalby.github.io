@@ -1,4 +1,5 @@
 import Constants from '../constants.js';
+import { initGenAIUI, isGenAIUIVisible, showGenAIUI, hideGenAIUI } from '../lib/genaiui.js';
 import BasePlugin from './BasePlugin.js'
 
 // Key used for local storage of the OpenAI API key.
@@ -27,6 +28,8 @@ const OPENAI_MODEL = OPENAI_MODEL_3_5_TURBO_0125;
 const CATEGORY                   = 'genai';
 const OPEN_AI_TOKEN_OPTION       = 'openAITokenOption';
 const OPEN_AI_TOKEN_OPTION_DESC  = 'Paste Open AI Token';
+const INPUT_OPTION               = 'inputOption';
+const INPUT_OPTION_DESC          = 'GenAI Input Enabled';
 
 const pluginSettings = {
   CLEAR_CACHE: {
@@ -35,12 +38,21 @@ const pluginSettings = {
     description: OPEN_AI_TOKEN_OPTION_DESC,
     value: undefined,
     type: Constants.SETTINGS_TYPES.paste
+  },
+  INPUT_OPTION:{
+    category: CATEGORY,
+    name: INPUT_OPTION,
+    description: INPUT_OPTION_DESC,
+    value: false,
+    type: Constants.SETTINGS_TYPES.boolean
   }
 }
 
 export default class GenAIPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
+
+    initGenAIUI();
   }
 
   /**
@@ -49,6 +61,59 @@ export default class GenAIPlugin extends BasePlugin {
    * @returns {Object} The plugin settings.
    */
   getPluginSettings() { return pluginSettings; }
+
+  /**
+   * A setting changed. We look to see if it for us and act appropriately.
+   * 
+   * @param {any} setting The setting.
+   */
+  onSettingChanged(setting) {
+    // We want to make an immediate change when the setting changes.
+    if ((setting.category === CATEGORY) && (setting.name === INPUT_OPTION)) {
+      // True means setting is set and we want to show the gui otherwise hide.
+      if (setting.value) {
+        this.show();
+      } else {
+        this.hide();
+      }
+    }
+  }
+
+  /**
+   * Show the console.
+   */
+  show() {
+    // Each of these check to make sure there is a change before doing anything.
+    // This method can be called from the options menu or directly.
+    showGenAIUI();
+    if (this.settings) {
+      this.settings.setValue(CATEGORY, INPUT_OPTION, true);
+    }
+  }
+
+  /**
+   * Hide the console.
+   */
+  hide() {
+    // Each of these check to make sure there is a change before doing anything.
+    // This method can be called from the options menu or directly.
+    hideGenAIUI();
+    if (this.settings) {
+      this.settings.setValue(CATEGORY, INPUT_OPTION, false);
+    }
+  }
+
+  /**
+   * Toggle the gui.
+   */
+  toggle() {
+    // Call appropriate function internally so we get the setting changed event.
+    if (isGenAIUIVisible()) {
+      this.hide();
+    } else {
+      this.show();
+    }
+  }
 
   /**
    * Action happened in settings.

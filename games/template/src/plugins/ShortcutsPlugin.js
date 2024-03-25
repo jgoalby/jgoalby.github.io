@@ -61,6 +61,14 @@ export default class ShortcutsPlugin extends BasePlugin {
 
     this.onAddShortcut({
                     getInstanceClassName: 'BasePlugin',
+                    getInstanceArgs:      [Constants.PLUGIN_INFO.GENAI_KEY],
+                    memberName:           'toggle',
+                    memberArgs:           [],
+                    shortcut:             'CTRL SHIFT Y'
+                  });
+
+    this.onAddShortcut({
+                    getInstanceClassName: 'BasePlugin',
                     getInstanceArgs:      [Constants.PLUGIN_INFO.SHORTCUTS_KEY],
                     memberName:           'test',
                     memberArgs:           [],
