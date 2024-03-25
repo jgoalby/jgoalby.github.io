@@ -1,5 +1,5 @@
 import Constants from '../constants.js';
-import { initGenAIUI, isGenAIUIVisible, showGenAIUI, hideGenAIUI } from '../lib/genaiui.js';
+import GenAIUI from '../lib/genaiui.js';
 import BasePlugin from './BasePlugin.js'
 
 // Key used for local storage of the OpenAI API key.
@@ -52,7 +52,7 @@ export default class GenAIPlugin extends BasePlugin {
   constructor(pluginManager) {
     super(pluginManager);
 
-    initGenAIUI();
+    this.genAIUI = new GenAIUI();
   }
 
   /**
@@ -85,7 +85,7 @@ export default class GenAIPlugin extends BasePlugin {
   show() {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
-    showGenAIUI();
+    this.genAIUI.showUI();
     if (this.settings) {
       this.settings.setValue(CATEGORY, INPUT_OPTION, true);
     }
@@ -97,7 +97,7 @@ export default class GenAIPlugin extends BasePlugin {
   hide() {
     // Each of these check to make sure there is a change before doing anything.
     // This method can be called from the options menu or directly.
-    hideGenAIUI();
+    this.genAIUI.hideUI();
     if (this.settings) {
       this.settings.setValue(CATEGORY, INPUT_OPTION, false);
     }
@@ -108,7 +108,7 @@ export default class GenAIPlugin extends BasePlugin {
    */
   toggle() {
     // Call appropriate function internally so we get the setting changed event.
-    if (isGenAIUIVisible()) {
+    if (this.genAIUI.isUIVisible()) {
       this.hide();
     } else {
       this.show();

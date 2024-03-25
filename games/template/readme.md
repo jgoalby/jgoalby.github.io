@@ -42,6 +42,8 @@
 - Do a better job of QUnit
 - Check out sys.game.device in search for Phaser device flags
   - Audio is one, where perhaps can load different audio files?
+- Can I run QUnit outside of the game?
+  - Do I even want to as I can modify the game at runtime, being able to test at runtime helps?
 
 # Instructions md
 - Put more instructions closer to the code
