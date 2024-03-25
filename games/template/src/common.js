@@ -77,11 +77,16 @@ function getScene(sceneKey, sceneManager = undefined) {
 // And then we need a list of shortcuts assigned to one of these functions.
 //   These need to be multiple key combinations with ctrl etc.
 
+// TODO: Make a collection and have each getInstance register itself with us.
+
 // TODO: Should be dynmamic perhaps?
 
 // Cannot define in the global scope as some classes not yet ready. So, lazy initialize.
 let classesWithGetInstanceFn = undefined;
 
+/**
+ * Get the lookup of classes that have getinstance functions defined that we can use.
+ */
 function getClassesWithGetInstanceFn() {
   // If the lookup has not yet been created...
   if (!classesWithGetInstanceFn) {
@@ -96,12 +101,23 @@ function getClassesWithGetInstanceFn() {
   return classesWithGetInstanceFn;
 }
 
+/** 
+ * Helper function to get a list of the classes that are registered with us so
+ * it can for instance be used for picking one of them from a dropdown list.
+ */
 function getClassNamesWithGetInstanceFn() {
   // Get the object we want to get names for and return the keys.
   const obj = getClassesWithGetInstanceFn();
   return Object.keys(obj);
 }
 
+/**
+ * If the specified className is one that is registered with us, we lookup
+ * the getInstance function on that class. Using that instance function we
+ * pass in the getInstanceArgs to give us an instance of that class that we 
+ * can use. We then call the callFnOnObj function on that instance we made.
+ * Used to call a function by name on a class for keyboard shortcuts.
+ */
 function withClass(className, getInstanceArgs, callFnOnObj) {
   // Make sure the user gave a class name.
   if (className) {
@@ -109,19 +125,21 @@ function withClass(className, getInstanceArgs, callFnOnObj) {
     const classLookup = getClassesWithGetInstanceFn();
     const getInstanceFn = classLookup[className];
 
-    // It is possible we do not have an instance function.
+    // It is possible (though not very useful) we do not have an instance function.
     if (getInstanceFn) {
       // Create an instance using the get instance function we retrieved.
       const obj = getInstanceFn(...getInstanceArgs);
 
       // If the instance is something, call the member function on it.
-      if (obj) {
-        callFnOnObj(obj);
-      }
+      if (obj) { callFnOnObj(obj); }
     }
   }
 }
 
+/**
+ * Returns a function that takes a single obj parameter. The function calls the passed in function name
+ * on the passed in object using our passed in args.
+ */
 function callMemberFunction(functionName, ...args) {
   // Return a function that calls our passed in function on the passed in object using our passed in args.
   return function(obj) {
@@ -192,6 +210,9 @@ const keyMap = {
 // Holder for the reverse key map lazily created from regular keymap.
 let reverseKeyMap = undefined;
 
+/**
+ * Takes the keyMap and creates a reversed lookup.
+ */
 function createReverseKeyMap() {
   // Make a new reverse key map object.
   reverseKeyMap = {};
@@ -206,6 +227,11 @@ function createReverseKeyMap() {
   }
 }
 
+/**
+ * Take the passed in keyEvent and return a string representation.
+ *
+ * @returns {string} the string representation of the keyEvent.
+ */
 function keyEventToString(keyEvent) {
   // To make a string with a give separator we make an array first.
   let arr = [];
@@ -231,7 +257,13 @@ function keyEventToString(keyEvent) {
   return arr.join(keyOptions.separator);
 }
 
+/**
+ * Take the passed in string representation of a keyEvent and create the keyEvent from it.
+ *
+ * @returns {KeyEvent} the keyEvent representation of the string.
+ */
 function stringToKeyEvent(str) {
+  // Lazily create the reverse keymap only when we need it.
   if (reverseKeyMap == undefined) {
     // Create the reverse key map lookup if not already.
     createReverseKeyMap();
@@ -256,9 +288,12 @@ function stringToKeyEvent(str) {
   for (let i = 0; i < (arr.length - 1); i++) {
     const currentKeyCode = reverseKeyMap[arr[i]];
 
+    // Check to see if the current key code is a modifier key.
     const isModifier = [16, 17, 18, 91, 93, 224].indexOf(currentKeyCode) !== -1;
 
+    // If the key code is a modifier...
     if (isModifier) {
+      // ... figure out which modifier it is.
       if (currentKeyCode == 16) { keyEvent.shiftKey = true; }
       if (currentKeyCode == 17) { keyEvent.ctrlKey = true; }
       if (currentKeyCode == 18) { keyEvent.altKey = true; }
@@ -302,10 +337,18 @@ function testKeyEventToString() {
   // assertEqual(str3, 'META CTRL ALT SHIFT ESC', 'for keyEventEscapeAll');
 }
 
+/**
+ * Entry point to testing all of this module.
+ */
 function testModule() {
   testStringToKeyEvent();
   testKeyEventToString();
 }
+
+
+// TODO: How does QUnit work? Do we need testModule?
+// TODO: We need to be able to run QUnit on demand when we change code for example.
+
 
 function add(a, b) {
   return a + b;
@@ -329,8 +372,6 @@ QUnit.module('add', function() {
 
 
 export {
-  //assert,
-  //assertEqual,
   getActiveScene,
   getScene,
   getClassNamesWithGetInstanceFn,
