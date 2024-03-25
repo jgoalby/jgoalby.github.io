@@ -1,6 +1,9 @@
 import BasePlugin from './plugins/BasePlugin.js';
 import BaseScene from './scenes/BaseScene.js';
 
+// NOTE: This seems to be how to import QUnit (no ... from after import statement)
+import './lib/qunit.js';
+
 /**
  * Get the current active scene.
  * 
@@ -274,18 +277,6 @@ function stringToKeyEvent(str) {
   return keyEvent;
 }
 
-// const assert = function(condition, message) {
-//   if (!condition) {
-//     throw Error('Assert failed' + (message ? (': ' + message) : '.'));
-//   }
-// };
-
-// const assertEqual = function(value, expected, message) {
-//   if (value != expected) {
-//     throw Error(`Assert failed value(${value}) != expected(${expected})` + (message ? (': ' + message) : '.'));
-//   }
-// };
-
 //-----------------------------------------------------------------------------
 //                                 MODULE TESTS
 //-----------------------------------------------------------------------------
@@ -316,9 +307,6 @@ function testModule() {
   testKeyEventToString();
 }
 
-// NOTE: This seems to be how to import QUnit.
-import './lib/qunit.js';
-
 function add(a, b) {
   return a + b;
 }
@@ -334,10 +322,8 @@ QUnit.moduleDone(function(details) {
 QUnit.module('add', function() {
   QUnit.test('two numbers', function(assert) {
     console.log(QUnit.version);
-    console.log("Doubt it !!!!!!!!!!!!!");
     assert.equal(add(1, 2), 3);
     assert.deepEqual(add(1, 2), 4);
-    console.log("Doubt it !!!!!!!!!!!!!");
   });
 });
 

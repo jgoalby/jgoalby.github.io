@@ -65,7 +65,7 @@ function initGenAIUI(options) {
       // The user has provided an element, but we still want to show/hide it based on options.
       // We cannot do anything to prevent a flash as the user is in control of the element creation,
       // so its best to just use the same method as above to show/hide the element.
-      if (showLog2DivContainer) {
+      if (showGenAIUIContainer) {
         outer.classList.add(GENAIUI_CONTAINER_SHOW);
       } else {
         outer.classList.add(GENAIUI_CONTAINER_HIDE);
@@ -137,7 +137,7 @@ function initGenAIUI(options) {
 }
 
 /**
- * Toggle the visibility of the log div.
+ * Toggle the visibility of the div.
  * 
  * @returns {void}
  */
@@ -145,19 +145,19 @@ function toggleGenAIUIVisibility() {
   const elem = document.getElementById(genAIUIId);
 
   if (elem.classList.contains(GENAIUI_CONTAINER_SHOW)) {
-    hideLog2Div();
+    hideGenAIUI();
   } else {
-    showLog2Div();
+    showGenAIUI();
   }
 }
 
 /**
- * Return whether log2div is visible or not.
+ * Return whether div is visible or not.
  * 
  * @returns {boolean}
  */
 function isGenAIUIVisible() {
-  // Get the main container for log2div.
+  // Get the main container.
   const elem = document.getElementById(genAIUIId);
 
   // If it already has the show class, then we are visible.
@@ -165,12 +165,12 @@ function isGenAIUIVisible() {
 }
 
 /**
- * Show the log div.
+ * Show the div.
  * 
  * @returns {void}
  */
 function showGenAIUI() {
-  // Get the main container for log2div.
+  // Get the main container.
   const elem = document.getElementById(genAIUIId);
 
   // If it already has the show class, then we do not need to do anything.
@@ -182,12 +182,12 @@ function showGenAIUI() {
 }
 
 /**
- * Hide the log div.
+ * Hide the div.
  * 
  * @returns {void}
  */
 function hideGenAIUI() {
-  // Get the main container for log2div.
+  // Get the main container.
   const elem = document.getElementById(genAIUIId);
 
   // If it already has the hide class, then we do not need to do anything.

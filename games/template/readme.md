@@ -1,6 +1,7 @@
 # TODOs
 
 # Most likely next
+- Document functions in common.js before I forget how they work
 - Scenes manage their own shortcut and label text to make them self-contained
 - Test the CMD key in the game to make sure I can respond to that shortcut
 - GenAI plugin use a html screen to input data for sending to API
