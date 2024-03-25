@@ -115,3 +115,7 @@ Would focus groups be useful?
 Go out with users on watch them.
 Use the game themselves (maybe they do).
 Look on forums like Reddit.
+What do your users love most about the game?
+Does a feature affect what your users play the game for?
+Consider the benefits for the company as well as the player.
+Provide multiple ways to do same outcome automatic vs custom and manual.

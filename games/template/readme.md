@@ -70,6 +70,11 @@ Settings
 
 https://github.com/phaserjs/examples/blob/master/public/assets/ui/nine-slice.json
 
+# Some links to look at
+- https://github.com/Raiper34/awesome-phaser?tab=readme-ov-file
+- https://github.com/jakesgordon/javascript-state-machine
+- https://github.com/cocopon/tweakpane/blob/main/README.md
+
 # Research needed
 Check out tweens more and timelines as well
 Atlas?
