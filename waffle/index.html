@@ -298,9 +298,9 @@
 </head>
 <body>
   <main class="app">
-    <h1>Letter Swap Puzzle</h1>
+    <h1>Letter Swap</h1>
     <p class="subtitle">
-      Fill the letter cells, then switch to solve mode and drag one letter onto another to swap them.
+      Fill the letter cells, switch to solve mode and drag to swap them.
     </p>
 
     <div class="toolbar">
@@ -310,7 +310,6 @@
     </div>
 
     <section id="grid" class="grid" aria-label="Puzzle grid"></section>
-    <p id="hint" class="hint">Type one letter into each filled square. The blank spaces stay empty.</p>
   </main>
 
   <script>
@@ -479,9 +478,6 @@
 
       modeLabel.textContent = state.mode === "edit" ? "Edit Mode" : "Solve Mode";
       modeButton.textContent = state.mode === "edit" ? "Switch To Solve Mode" : "Back To Edit Mode";
-      hint.textContent = state.mode === "edit"
-        ? "Type one letter into each filled square. The blank spaces stay empty."
-        : "Tap a cell to cycle none, green, and yellow. Green cells are locked and cannot be used in swaps.";
 
       if (state.mode === "edit" && state.pendingFocusIndex !== null) {
         const focusIndex = state.pendingFocusIndex;
