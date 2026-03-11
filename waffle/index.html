@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Letter Swap Puzzle</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --panel: rgba(255, 251, 245, 0.92);
+      --panel-border: rgba(70, 56, 39, 0.16);
+      --ink: #2d2418;
+      --muted: #786954;
+      --accent: #b6632f;
+      --accent-strong: #92481b;
+      --tile: #fffaf2;
+      --tile-border: #d3c2a8;
+      --tile-green: #dff0d6;
+      --tile-green-border: #83b274;
+      --tile-yellow: #f9efb7;
+      --tile-yellow-border: #d0b24b;
+      --tile-shadow: 0 16px 30px rgba(76, 57, 32, 0.14);
+      --gap: transparent;
+      --highlight: rgba(182, 99, 47, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      min-height: 100dvh;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.75), transparent 42%),
+        linear-gradient(145deg, #efe2cc 0%, #f7f2e8 52%, #e8d3b8 100%);
+      display: grid;
+      place-items: center;
+      padding:
+        max(16px, env(safe-area-inset-top))
+        max(16px, env(safe-area-inset-right))
+        max(16px, env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
+    }
+
+    .app {
+      width: min(100%, 640px);
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 28px;
+      padding: clamp(18px, 4vw, 28px);
+      box-shadow: 0 24px 60px rgba(63, 44, 25, 0.15);
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 2.7rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      min-height: 48px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 14px 26px rgba(182, 99, 47, 0.28);
+    }
+
+    .primary:hover {
+      background: var(--accent-strong);
+    }
+
+    .secondary {
+      background: rgba(120, 105, 84, 0.12);
+      color: var(--ink);
+    }
+
+    .mode-pill {
+      margin-left: auto;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(182, 99, 47, 0.1);
+      color: var(--accent-strong);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.84rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: clamp(6px, 1.8vw, 10px);
+      width: min(100%, 460px);
+      margin: 0 auto;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .cell {
+      aspect-ratio: 1 / 1;
+      position: relative;
+      border-radius: clamp(12px, 3vw, 18px);
+    }
+
+    .cell.gap {
+      background: var(--gap);
+    }
+
+    .cell.active::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: clamp(12px, 3vw, 18px);
+      background: var(--tile);
+      border: 1px solid var(--tile-border);
+      box-shadow: var(--tile-shadow);
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .cell.over::before {
+      background: #fff0e2;
+      border-color: rgba(182, 99, 47, 0.5);
+      transform: scale(1.04);
+    }
+
+    .cell.drag-source::before {
+      background: var(--highlight);
+      border-color: rgba(182, 99, 47, 0.45);
+    }
+
+    .cell.color-green::before {
+      background: var(--tile-green);
+      border-color: var(--tile-green-border);
+    }
+
+    .cell.color-yellow::before {
+      background: var(--tile-yellow);
+      border-color: var(--tile-yellow-border);
+    }
+
+    .tile-input,
+    .tile-value {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: transparent;
+      text-align: center;
+      color: var(--ink);
+      font-size: clamp(1.25rem, 5vw, 2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      outline: none;
+      border-radius: clamp(12px, 3vw, 18px);
+    }
+
+    .tile-input {
+      padding: 0;
+      caret-color: var(--accent);
+    }
+
+    .tile-value {
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    .tile-value.movable {
+      cursor: grab;
+    }
+
+    .cell.drag-source .tile-value.movable {
+      cursor: grabbing;
+    }
+
+    .floating-tile {
+      position: fixed;
+      width: clamp(56px, 16vw, 76px);
+      aspect-ratio: 1 / 1;
+      margin-left: calc(clamp(56px, 16vw, 76px) / -2);
+      margin-top: calc(clamp(56px, 16vw, 76px) / -2);
+      display: grid;
+      place-items: center;
+      border-radius: clamp(12px, 3vw, 18px);
+      background: #fff7ee;
+      border: 1px solid rgba(182, 99, 47, 0.35);
+      box-shadow: 0 18px 42px rgba(94, 59, 22, 0.25);
+      font-size: clamp(1.25rem, 5vw, 2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--ink);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .hint {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      min-height: 1.5em;
+    }
+
+    @media (max-width: 640px) {
+      .app {
+        border-radius: 24px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      .toolbar > button,
+      .mode-pill {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+      }
+
+      .subtitle,
+      .hint {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body {
+        place-items: stretch;
+      }
+
+      .app {
+        width: 100%;
+        min-height: calc(100vh - 32px);
+        min-height: calc(100dvh - 32px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 8vw, 2.1rem);
+      }
+
+      .subtitle {
+        margin-bottom: 18px;
+      }
+
+      .toolbar {
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <h1>Letter Swap Puzzle</h1>
+    <p class="subtitle">
+      Fill the letter cells, then switch to solve mode and drag one letter onto another to swap them.
+    </p>
+
+    <div class="toolbar">
+      <button id="modeButton" class="primary" type="button">Switch To Solve Mode</button>
+      <button id="clearButton" class="secondary" type="button">Clear Letters</button>
+      <div id="modeLabel" class="mode-pill">Edit Mode</div>
+    </div>
+
+    <section id="grid" class="grid" aria-label="Puzzle grid"></section>
+    <p id="hint" class="hint">Type one letter into each filled square. The blank spaces stay empty.</p>
+  </main>
+
+  <script>
+    const layout = [
+      [1, 1, 1, 1, 1],
+      [1, 0, 1, 0, 1],
+      [1, 1, 1, 1, 1],
+      [1, 0, 1, 0, 1],
+      [1, 1, 1, 1, 1]
+    ];
+
+    const letters = Array.from({ length: 25 }, (_, index) => {
+      const row = Math.floor(index / 5);
+      const col = index % 5;
+      return layout[row][col] ? "" : null;
+    });
+
+    const cellColors = Array.from({ length: 25 }, (_, index) => {
+      const row = Math.floor(index / 5);
+      const col = index % 5;
+      return layout[row][col] ? "none" : null;
+    });
+
+    const state = {
+      mode: "edit",
+      pressedIndex: null,
+      dragIndex: null,
+      overIndex: null,
+      pointerId: null,
+      pointerStartX: 0,
+      pointerStartY: 0,
+      ghost: null,
+      pendingFocusIndex: 0
+    };
+
+    const grid = document.getElementById("grid");
+    const modeButton = document.getElementById("modeButton");
+    const clearButton = document.getElementById("clearButton");
+    const modeLabel = document.getElementById("modeLabel");
+    const hint = document.getElementById("hint");
+
+    function findNextPlayableIndex(currentIndex, direction = 1) {
+      for (let index = currentIndex + direction; index >= 0 && index < letters.length; index += direction) {
+        const row = Math.floor(index / 5);
+        const col = index % 5;
+        if (layout[row][col]) {
+          return index;
+        }
+      }
+
+      return null;
+    }
+
+    function allPlayableCellsFilled() {
+      return letters.every((value) => value === null || value);
+    }
+
+    function focusEditCell(index) {
+      if (index === null || state.mode !== "edit") {
+        return;
+      }
+
+      const input = grid.querySelector(`.tile-input[data-index="${index}"]`);
+      if (!input) {
+        return;
+      }
+
+      input.focus();
+      input.select();
+    }
+
+    function cycleCellColor(index) {
+      const nextColor = {
+        none: "green",
+        green: "yellow",
+        yellow: "none"
+      };
+      cellColors[index] = nextColor[cellColors[index]] || "none";
+    }
+
+    function isDraggableCell(index) {
+      return Boolean(letters[index]) && cellColors[index] !== "green";
+    }
+
+    function isDropTargetCell(index) {
+      return Boolean(letters[index]) && cellColors[index] !== "green";
+    }
+
+    function render() {
+      grid.innerHTML = "";
+
+      letters.forEach((value, index) => {
+        const row = Math.floor(index / 5);
+        const col = index % 5;
+        const cell = document.createElement("div");
+        cell.className = `cell ${layout[row][col] ? "active" : "gap"}`;
+        cell.dataset.index = index;
+
+        if (cellColors[index] === "green") {
+          cell.classList.add("color-green");
+        } else if (cellColors[index] === "yellow") {
+          cell.classList.add("color-yellow");
+        }
+
+        if (state.dragIndex === index) {
+          cell.classList.add("drag-source");
+        }
+
+        if (state.overIndex === index) {
+          cell.classList.add("over");
+        }
+
+        if (!layout[row][col]) {
+          cell.setAttribute("aria-hidden", "true");
+          grid.appendChild(cell);
+          return;
+        }
+
+        if (state.mode === "edit") {
+          const input = document.createElement("input");
+          input.className = "tile-input";
+          input.dataset.index = index;
+          input.type = "text";
+          input.inputMode = "text";
+          input.maxLength = 1;
+          input.autocomplete = "off";
+          input.spellcheck = false;
+          input.value = value;
+          input.setAttribute("aria-label", `Letter at row ${row + 1}, column ${col + 1}`);
+          input.addEventListener("input", (event) => {
+            letters[index] = event.target.value.replace(/[^a-z]/gi, "").slice(0, 1).toUpperCase();
+            event.target.value = letters[index];
+
+            if (letters[index]) {
+              if (allPlayableCellsFilled()) {
+                state.mode = "solve";
+                state.pendingFocusIndex = null;
+                render();
+                return;
+              }
+
+              const nextIndex = findNextPlayableIndex(index);
+              focusEditCell(nextIndex);
+            }
+          });
+          cell.appendChild(input);
+        } else {
+          const tile = document.createElement("button");
+          tile.className = `tile-value${isDraggableCell(index) ? " movable" : ""}`;
+          tile.type = "button";
+          tile.textContent = value || "";
+          tile.setAttribute("aria-label", value ? `Letter ${value}` : "Empty letter cell");
+          tile.addEventListener("pointerdown", (event) => startDrag(event, index));
+          tile.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              cycleCellColor(index);
+              render();
+            }
+          });
+          cell.appendChild(tile);
+        }
+
+        grid.appendChild(cell);
+      });
+
+      modeLabel.textContent = state.mode === "edit" ? "Edit Mode" : "Solve Mode";
+      modeButton.textContent = state.mode === "edit" ? "Switch To Solve Mode" : "Back To Edit Mode";
+      hint.textContent = state.mode === "edit"
+        ? "Type one letter into each filled square. The blank spaces stay empty."
+        : "Tap a cell to cycle none, green, and yellow. Green cells are locked and cannot be used in swaps.";
+
+      if (state.mode === "edit" && state.pendingFocusIndex !== null) {
+        const focusIndex = state.pendingFocusIndex;
+        state.pendingFocusIndex = null;
+        requestAnimationFrame(() => focusEditCell(focusIndex));
+      }
+    }
+
+    function startDrag(event, index) {
+      if (state.mode !== "solve") {
+        return;
+      }
+
+      event.preventDefault();
+      state.pressedIndex = index;
+      state.pointerId = event.pointerId;
+      state.pointerStartX = event.clientX;
+      state.pointerStartY = event.clientY;
+      state.dragIndex = null;
+      state.overIndex = null;
+    }
+
+    function beginDrag(index, x, y) {
+      state.dragIndex = index;
+      state.overIndex = index;
+
+      const ghost = document.createElement("div");
+      ghost.className = "floating-tile";
+      ghost.textContent = letters[index];
+      document.body.appendChild(ghost);
+      state.ghost = ghost;
+
+      updateGhostPosition(x, y);
+      render();
+    }
+
+    function updateGhostPosition(x, y) {
+      if (!state.ghost) {
+        return;
+      }
+
+      state.ghost.style.left = `${x}px`;
+      state.ghost.style.top = `${y}px`;
+    }
+
+    function clearDrag() {
+      if (state.ghost) {
+        state.ghost.remove();
+      }
+
+      state.pressedIndex = null;
+      state.dragIndex = null;
+      state.overIndex = null;
+      state.pointerId = null;
+      state.pointerStartX = 0;
+      state.pointerStartY = 0;
+      state.ghost = null;
+      render();
+    }
+
+    function swapLetters(firstIndex, secondIndex) {
+      const firstValue = letters[firstIndex];
+      const firstColor = cellColors[firstIndex];
+      letters[firstIndex] = letters[secondIndex];
+      cellColors[firstIndex] = cellColors[secondIndex];
+      letters[secondIndex] = firstValue;
+      cellColors[secondIndex] = firstColor;
+    }
+
+    function pointerIndexFromPoint(x, y, requireLetter = false) {
+      const target = document.elementFromPoint(x, y);
+      const cell = target ? target.closest(".cell.active") : null;
+      if (!cell) {
+        return null;
+      }
+
+      const index = Number(cell.dataset.index);
+      return requireLetter && !letters[index] ? null : index;
+    }
+
+    window.addEventListener("pointermove", (event) => {
+      if (state.pointerId !== event.pointerId || state.pressedIndex === null) {
+        return;
+      }
+
+      if (state.dragIndex === null) {
+        const distance = Math.hypot(event.clientX - state.pointerStartX, event.clientY - state.pointerStartY);
+        if (distance < 8 || !isDraggableCell(state.pressedIndex)) {
+          return;
+        }
+
+        beginDrag(state.pressedIndex, event.clientX, event.clientY);
+        return;
+      }
+
+      updateGhostPosition(event.clientX, event.clientY);
+      const hoveredIndex = pointerIndexFromPoint(event.clientX, event.clientY, true);
+      const nextOverIndex = hoveredIndex !== null && isDropTargetCell(hoveredIndex) ? hoveredIndex : null;
+      if (nextOverIndex !== state.overIndex) {
+        state.overIndex = nextOverIndex;
+        render();
+      }
+    });
+
+    window.addEventListener("pointerup", (event) => {
+      if (state.pointerId !== event.pointerId || state.pressedIndex === null) {
+        return;
+      }
+
+      if (state.dragIndex !== null) {
+        const hoveredIndex = pointerIndexFromPoint(event.clientX, event.clientY, true);
+        const dropIndex = hoveredIndex !== null && isDropTargetCell(hoveredIndex) ? hoveredIndex : null;
+        if (dropIndex !== null && dropIndex !== state.dragIndex) {
+          swapLetters(state.dragIndex, dropIndex);
+        }
+      } else {
+        const releaseIndex = pointerIndexFromPoint(event.clientX, event.clientY, false);
+        if (releaseIndex === state.pressedIndex) {
+          cycleCellColor(releaseIndex);
+        }
+      }
+
+      clearDrag();
+    });
+
+    window.addEventListener("pointercancel", () => {
+      if (state.dragIndex !== null) {
+        clearDrag();
+      }
+    });
+
+    modeButton.addEventListener("click", () => {
+      state.mode = state.mode === "edit" ? "solve" : "edit";
+      state.pendingFocusIndex = state.mode === "edit" ? 0 : null;
+      clearDrag();
+    });
+
+    clearButton.addEventListener("click", () => {
+      letters.forEach((value, index) => {
+        if (value !== null) {
+          letters[index] = "";
+          cellColors[index] = "none";
+        }
+      });
+      state.mode = "edit";
+      state.pendingFocusIndex = 0;
+      clearDrag();
+    });
+
+    render();
+  </script>
+</body>
+</html>
