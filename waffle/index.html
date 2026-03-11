@@ -306,7 +306,6 @@
     <div class="toolbar">
       <button id="modeButton" class="primary" type="button">Switch To Solve Mode</button>
       <button id="clearButton" class="secondary" type="button">Clear Letters</button>
-      <div id="modeLabel" class="mode-pill">Edit Mode</div>
     </div>
 
     <section id="grid" class="grid" aria-label="Puzzle grid"></section>
@@ -348,8 +347,6 @@
     const grid = document.getElementById("grid");
     const modeButton = document.getElementById("modeButton");
     const clearButton = document.getElementById("clearButton");
-    const modeLabel = document.getElementById("modeLabel");
-    const hint = document.getElementById("hint");
 
     function findNextPlayableIndex(currentIndex, direction = 1) {
       for (let index = currentIndex + direction; index >= 0 && index < letters.length; index += direction) {
@@ -476,7 +473,6 @@
         grid.appendChild(cell);
       });
 
-      modeLabel.textContent = state.mode === "edit" ? "Edit Mode" : "Solve Mode";
       modeButton.textContent = state.mode === "edit" ? "Switch To Solve Mode" : "Back To Edit Mode";
 
       if (state.mode === "edit" && state.pendingFocusIndex !== null) {
