@@ -154,6 +154,13 @@
       transform: scale(1.04);
     }
 
+    .cell.edit-active::before {
+      border-color: rgba(182, 99, 47, 0.65);
+      box-shadow:
+        0 0 0 3px rgba(182, 99, 47, 0.12),
+        var(--tile-shadow);
+    }
+
     .cell.drag-source::before {
       background: var(--highlight);
       border-color: rgba(182, 99, 47, 0.45);
@@ -355,6 +362,7 @@
       [1, 1, 1, 1, 1]
     ];
     const keyboardLayout = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"];
+    const compactLayoutQuery = window.matchMedia("(max-width: 640px)");
 
     const letters = Array.from({ length: 25 }, (_, index) => {
       const row = Math.floor(index / 5);
@@ -386,6 +394,10 @@
     const modeButton = document.getElementById("modeButton");
     const clearButton = document.getElementById("clearButton");
 
+    function usesMobileKeyboard() {
+      return compactLayoutQuery.matches;
+    }
+
     function findNextPlayableIndex(currentIndex, direction = 1) {
       for (let index = currentIndex + direction; index >= 0 && index < letters.length; index += direction) {
         const row = Math.floor(index / 5);
@@ -409,6 +421,12 @@
 
     function focusEditCell(index) {
       if (index === null || state.mode !== "edit") {
+        return;
+      }
+
+      if (usesMobileKeyboard()) {
+        state.activeEditIndex = index;
+        render();
         return;
       }
 
@@ -476,6 +494,10 @@
         cell.className = `cell ${layout[row][col] ? "active" : "gap"}`;
         cell.dataset.index = index;
 
+        if (state.mode === "edit" && state.activeEditIndex === index) {
+          cell.classList.add("edit-active");
+        }
+
         if (cellColors[index] === "green") {
           cell.classList.add("color-green");
         } else if (cellColors[index] === "yellow") {
@@ -501,12 +523,21 @@
           input.className = "tile-input";
           input.dataset.index = index;
           input.type = "text";
-          input.inputMode = "text";
+          input.inputMode = usesMobileKeyboard() ? "none" : "text";
           input.maxLength = 1;
           input.autocomplete = "off";
           input.spellcheck = false;
+          input.readOnly = usesMobileKeyboard();
           input.value = value;
           input.setAttribute("aria-label", `Letter at row ${row + 1}, column ${col + 1}`);
+          input.addEventListener("pointerdown", (event) => {
+            if (!usesMobileKeyboard()) {
+              return;
+            }
+
+            event.preventDefault();
+            focusEditCell(index);
+          });
           input.addEventListener("focus", () => {
             state.activeEditIndex = index;
           });
@@ -713,6 +744,12 @@
       state.activeEditIndex = 0;
       state.pendingFocusIndex = 0;
       clearDrag();
+    });
+
+    compactLayoutQuery.addEventListener("change", () => {
+      if (state.mode === "edit") {
+        render();
+      }
     });
 
     renderKeyboard();
