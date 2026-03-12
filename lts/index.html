@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Background</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background: #24495e;
+    }
+
+    body {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .layer {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .layer--fx {
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" id="background-scene" class="layer" viewBox="0 0 2200 1690" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="bg-base" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#2d93bf" />
+        <stop offset="35%" stop-color="#2f84ac" />
+        <stop offset="68%" stop-color="#2a6d8d" />
+        <stop offset="100%" stop-color="#203f52" />
+      </linearGradient>
+
+      <radialGradient id="top-glow" cx="50%" cy="14%" r="30%">
+        <stop offset="0%" stop-color="#9ed0ea" stop-opacity="0.11" />
+        <stop offset="55%" stop-color="#9ed0ea" stop-opacity="0.045" />
+        <stop offset="100%" stop-color="#9ed0ea" stop-opacity="0" />
+      </radialGradient>
+
+      <radialGradient id="bottom-glow" cx="0%" cy="100%" r="46%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.095" />
+        <stop offset="36%" stop-color="#d6edf7" stop-opacity="0.05" />
+        <stop offset="100%" stop-color="#d6edf7" stop-opacity="0" />
+      </radialGradient>
+
+      <linearGradient id="diagonal-band" x1="22%" y1="0%" x2="100%" y2="78%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+        <stop offset="35%" stop-color="#ffffff" stop-opacity="0.02" />
+        <stop offset="58%" stop-color="#ffffff" stop-opacity="0.045" />
+        <stop offset="82%" stop-color="#ffffff" stop-opacity="0.012" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      </linearGradient>
+
+      <linearGradient id="secondary-band" x1="0%" y1="52%" x2="84%" y2="0%">
+        <stop offset="0%" stop-color="#77c4e2" stop-opacity="0.018" />
+        <stop offset="50%" stop-color="#a6dbef" stop-opacity="0.01" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      </linearGradient>
+
+      <radialGradient id="edge-vignette" cx="58%" cy="48%" r="80%">
+        <stop offset="58%" stop-color="#000000" stop-opacity="0" />
+        <stop offset="100%" stop-color="#102431" stop-opacity="0.24" />
+      </radialGradient>
+
+      <filter id="logo-soften" x="-10%" y="-10%" width="120%" height="120%">
+        <feGaussianBlur stdDeviation="1.35" />
+      </filter>
+    </defs>
+
+    <rect width="2200" height="1690" fill="url(#bg-base)" />
+    <rect width="2200" height="1690" fill="url(#top-glow)" />
+    <rect width="2200" height="1690" fill="url(#bottom-glow)" />
+
+    <path
+      d="M760 0H2200V0V620L1080 1370L0 1690V980Z"
+      fill="url(#diagonal-band)"
+      opacity="0.42"
+    />
+    <path
+      d="M0 900L1180 120L2200 0V220L870 1120L0 1400Z"
+      fill="url(#secondary-band)"
+      opacity="0.25"
+    />
+
+    <rect width="2200" height="1690" fill="url(#edge-vignette)" />
+
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" id="logo-scene" class="layer" viewBox="0 0 2200 1690" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Abstract blue background with a translucent logo mark">
+    <defs>
+      <clipPath id="clip-left-large" clipPathUnits="userSpaceOnUse">
+        <path d="M-1000 1244.25H1769.9C1769.9 2192.7 2541.53 2964.31 3489.99 2964.31H-1000Z" />
+      </clipPath>
+      <filter id="logo-soften-overlay" x="-10%" y="-10%" width="120%" height="120%">
+        <feGaussianBlur stdDeviation="1.35" />
+      </filter>
+    </defs>
+
+    <g id="logo-mark" transform="translate(29 70) scale(5.45)" filter="url(#logo-soften-overlay)">
+      <g transform="translate(0 390.5059) scale(.1 -.1)">
+        <path
+          id="logo-left-small"
+          d="M890.02 1124.25C823.746 1124.25 770.02 1177.97 770.02 1244.25 770.02 1508.93 554.68 1724.26 289.984 1724.26 223.711 1724.26 169.984 1777.99 169.984 1844.26 169.984 1910.53 223.711 1964.26 289.984 1964.26 687.012 1964.26 1010.02 1641.27 1010.02 1244.25 1010.02 1177.97 956.293 1124.25 890.02 1124.25"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#d92f2f"
+          fill-opacity="0.115"
+        />
+        <path
+          id="logo-left-medium"
+          d="M1390.05 1124.25C1323.77 1124.25 1270.05 1177.97 1270.05 1244.25 1270.05 1784.64 830.395 2224.28 289.984 2224.28 223.711 2224.28 169.984 2278.01 169.984 2344.28 169.984 2410.56 223.711 2464.28 289.984 2464.28 962.73 2464.28 1510.05 1916.97 1510.05 1244.25 1510.05 1177.97 1456.32 1124.25 1390.05 1124.25"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#d92f2f"
+          fill-opacity="0.115"
+        />
+        <path
+          id="logo-left-large"
+          d="M1890.07 1124.25C1823.8 1124.25 1770.07 1177.97 1770.07 1244.25 1770.07 2060.35 1106.11 2724.31 289.984 2724.31 223.711 2724.31 169.984 2778.03 169.984 2844.31 169.984 2910.59 223.711 2964.31 289.984 2964.31 1238.44 2964.31 2010.07 2192.7 2010.07 1244.25 2010.07 1177.97 1956.35 1124.25 1890.07 1124.25"
+          clip-path="url(#clip-left-large)"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#d92f2f"
+          fill-opacity="0.115"
+        />
+        <path
+          id="logo-right-large"
+          d="M1889.9 1124.25C1823.62 1124.25 1769.9 1177.97 1769.9 1244.25 1769.9 2192.7 2541.53 2964.31 3489.99 2964.31 3556.25 2964.31 3609.99 2910.59 3609.99 2844.31 3609.99 2778.03 3556.25 2724.31 3489.99 2724.31 2673.86 2724.31 2009.9 2060.35 2009.9 1244.25 2009.9 1177.97 1956.18 1124.25 1889.9 1124.25"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#d92f2f"
+          fill-opacity="0.115"
+        />
+        <path
+          id="logo-right-medium"
+          d="M2389.93 1124.25C2323.65 1124.25 2269.93 1177.97 2269.93 1244.25 2269.93 1916.97 2817.24 2464.28 3489.99 2464.28 3556.25 2464.28 3609.99 2410.56 3609.99 2344.28 3609.99 2278.01 3556.25 2224.28 3489.99 2224.28 2949.58 2224.28 2509.93 1784.64 2509.93 1244.25 2509.93 1177.97 2456.2 1124.25 2389.93 1124.25"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#d92f2f"
+          fill-opacity="0.115"
+        />
+        <path
+          id="logo-right-small"
+          d="M2889.95 1124.25C2823.68 1124.25 2769.95 1177.97 2769.95 1244.25 2769.95 1641.27 3092.95 1964.26 3489.99 1964.26 3556.25 1964.26 3609.99 1910.53 3609.99 1844.26 3609.99 1777.99 3556.25 1724.26 3489.99 1724.26 3225.3 1724.26 3009.95 1508.93 3009.95 1244.25 3009.95 1177.97 2956.23 1124.25 2889.95 1124.25"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#d92f2f"
+          fill-opacity="0.115"
+        />
+        <path
+          id="logo-head"
+          d="M2436.74 3358.16C2436.74 3056.16 2191.95 2700.72 1889.87 2700.72 1587.84 2700.72 1342.99 3056.16 1342.99 3358.16 1342.99 3660.29 1587.84 3905.06 1889.87 3905.06 2191.95 3905.06 2436.74 3660.29 2436.74 3358.16"
+          data-base-fill="#b8d6e3"
+          data-base-opacity="0.115"
+          fill="#b8d6e3"
+          fill-opacity="0.115"
+        />
+      </g>
+    </g>
+  </svg>
+
+  <svg xmlns="http://www.w3.org/2000/svg" id="shimmer-scene" class="layer layer--fx" viewBox="0 0 2200 1690" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+    <defs>
+      <clipPath id="clip-left-large-shimmer" clipPathUnits="userSpaceOnUse">
+        <path d="M-1000 1244.25H1769.9C1769.9 2192.7 2541.53 2964.31 3489.99 2964.31H-1000Z" />
+      </clipPath>
+      <filter id="shimmer-blur" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="18" />
+      </filter>
+      <linearGradient id="shimmer-band-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+        <stop offset="24%" stop-color="#ffffff" stop-opacity="0.05" />
+        <stop offset="50%" stop-color="#ffffff" stop-opacity="0.34" />
+        <stop offset="76%" stop-color="#ffffff" stop-opacity="0.05" />
+        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      </linearGradient>
+      <mask id="logo-shimmer-mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
+        <rect width="2200" height="1690" fill="black" />
+        <g transform="translate(29 70) scale(5.45)">
+          <g transform="translate(0 390.5059) scale(.1 -.1)">
+            <path d="M890.02 1124.25C823.746 1124.25 770.02 1177.97 770.02 1244.25 770.02 1508.93 554.68 1724.26 289.984 1724.26 223.711 1724.26 169.984 1777.99 169.984 1844.26 169.984 1910.53 223.711 1964.26 289.984 1964.26 687.012 1964.26 1010.02 1641.27 1010.02 1244.25 1010.02 1177.97 956.293 1124.25 890.02 1124.25" fill="white" />
+            <path d="M1390.05 1124.25C1323.77 1124.25 1270.05 1177.97 1270.05 1244.25 1270.05 1784.64 830.395 2224.28 289.984 2224.28 223.711 2224.28 169.984 2278.01 169.984 2344.28 169.984 2410.56 223.711 2464.28 289.984 2464.28 962.73 2464.28 1510.05 1916.97 1510.05 1244.25 1510.05 1177.97 1456.32 1124.25 1390.05 1124.25" fill="white" />
+            <path d="M1890.07 1124.25C1823.8 1124.25 1770.07 1177.97 1770.07 1244.25 1770.07 2060.35 1106.11 2724.31 289.984 2724.31 223.711 2724.31 169.984 2778.03 169.984 2844.31 169.984 2910.59 223.711 2964.31 289.984 2964.31 1238.44 2964.31 2010.07 2192.7 2010.07 1244.25 2010.07 1177.97 1956.35 1124.25 1890.07 1124.25" clip-path="url(#clip-left-large-shimmer)" fill="white" />
+            <path d="M1889.9 1124.25C1823.62 1124.25 1769.9 1177.97 1769.9 1244.25 1769.9 2192.7 2541.53 2964.31 3489.99 2964.31 3556.25 2964.31 3609.99 2910.59 3609.99 2844.31 3609.99 2778.03 3556.25 2724.31 3489.99 2724.31 2673.86 2724.31 2009.9 2060.35 2009.9 1244.25 2009.9 1177.97 1956.18 1124.25 1889.9 1124.25" fill="white" />
+            <path d="M2389.93 1124.25C2323.65 1124.25 2269.93 1177.97 2269.93 1244.25 2269.93 1916.97 2817.24 2464.28 3489.99 2464.28 3556.25 2464.28 3609.99 2410.56 3609.99 2344.28 3609.99 2278.01 3556.25 2224.28 3489.99 2224.28 2949.58 2224.28 2509.93 1784.64 2509.93 1244.25 2509.93 1177.97 2456.2 1124.25 2389.93 1124.25" fill="white" />
+            <path d="M2889.95 1124.25C2823.68 1124.25 2769.95 1177.97 2769.95 1244.25 2769.95 1641.27 3092.95 1964.26 3489.99 1964.26 3556.25 1964.26 3609.99 1910.53 3609.99 1844.26 3609.99 1777.99 3556.25 1724.26 3489.99 1724.26 3225.3 1724.26 3009.95 1508.93 3009.95 1244.25 3009.95 1177.97 2956.23 1124.25 2889.95 1124.25" fill="white" />
+            <path d="M2436.74 3358.16C2436.74 3056.16 2191.95 2700.72 1889.87 2700.72 1587.84 2700.72 1342.99 3056.16 1342.99 3358.16 1342.99 3660.29 1587.84 3905.06 1889.87 3905.06 2191.95 3905.06 2436.74 3660.29 2436.74 3358.16" fill="white" />
+          </g>
+        </g>
+      </mask>
+    </defs>
+
+      <g id="logo-shimmer" mask="url(#logo-shimmer-mask)" opacity="0">
+      <g id="logo-shimmer-band" filter="url(#shimmer-blur)">
+        <rect x="640" y="-420" width="560" height="2600" rx="280" fill="url(#shimmer-band-gradient)" transform="rotate(-24 920 880)" />
+      </g>
+    </g>
+  </svg>
+
+  <script>
+    const logoParts = Object.freeze({
+      leftSmall: document.getElementById("logo-left-small"),
+      leftMedium: document.getElementById("logo-left-medium"),
+      leftLarge: document.getElementById("logo-left-large"),
+      rightLarge: document.getElementById("logo-right-large"),
+      rightMedium: document.getElementById("logo-right-medium"),
+      rightSmall: document.getElementById("logo-right-small"),
+      head: document.getElementById("logo-head")
+    });
+
+    const defaultColor = "#b8d6e3";
+    const defaultOpacity = 0.115;
+    const shimmerGroup = document.getElementById("logo-shimmer");
+    const shimmerBand = document.getElementById("logo-shimmer-band");
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const introPartNames = [
+      "leftSmall",
+      "rightSmall",
+      "leftMedium",
+      "rightMedium",
+      "leftLarge",
+      "rightLarge"
+    ];
+    const introColor = "#d92f2f";
+    const partDefaults = Object.freeze(
+      Object.fromEntries(
+        Object.entries(logoParts).map(([name, element]) => [
+          name,
+          {
+            fill: element.getAttribute("data-base-fill") || element.getAttribute("fill") || defaultColor,
+            opacity: element.getAttribute("data-base-opacity") || element.getAttribute("fill-opacity") || String(defaultOpacity)
+          }
+        ])
+      )
+    );
+    const shimmerState = {
+      sweepMs: 2000,
+      gapMs: 7000,
+      fromX: -1450,
+      toX: 1450,
+      rafId: 0,
+      paused: prefersReducedMotion.matches,
+      startedAt: performance.now()
+    };
+    const introState = {
+      intervalMs: 1000,
+      timeoutIds: []
+    };
+
+    function getPart(partName) {
+      return logoParts[partName] || document.getElementById(partName) || null;
+    }
+
+    function applyBaseStyle(partName) {
+      const part = getPart(partName);
+      const defaults = partDefaults[partName];
+      if (!part || !defaults) {
+        return false;
+      }
+
+      part.setAttribute("fill", defaults.fill);
+      part.setAttribute("fill-opacity", defaults.opacity);
+      return true;
+    }
+
+    function clearIntroTimers() {
+      introState.timeoutIds.forEach((timeoutId) => window.clearTimeout(timeoutId));
+      introState.timeoutIds = [];
+    }
+
+    function playIntroSequence() {
+      clearIntroTimers();
+
+      introPartNames.forEach((partName) => {
+        const part = getPart(partName);
+        if (!part) {
+          return;
+        }
+
+        part.setAttribute("fill", introColor);
+        part.setAttribute("fill-opacity", partDefaults[partName].opacity);
+      });
+
+      if (prefersReducedMotion.matches) {
+        introPartNames.forEach(applyBaseStyle);
+        return;
+      }
+
+      introPartNames.forEach((partName, index) => {
+        const timeoutId = window.setTimeout(() => {
+          applyBaseStyle(partName);
+        }, (index + 1) * introState.intervalMs);
+
+        introState.timeoutIds.push(timeoutId);
+      });
+    }
+
+    function setShimmerFrame(timestamp) {
+      const cycleMs = shimmerState.sweepMs + shimmerState.gapMs;
+      const elapsed = (timestamp - shimmerState.startedAt) % cycleMs;
+
+      if (elapsed <= shimmerState.sweepMs) {
+        const progress = elapsed / shimmerState.sweepMs;
+        const currentX = shimmerState.fromX + ((shimmerState.toX - shimmerState.fromX) * progress);
+        const intensity = Math.sin(progress * Math.PI);
+
+        shimmerGroup.setAttribute("opacity", String(0.12 + (intensity * 0.56)));
+        shimmerBand.setAttribute("transform", `translate(${currentX} 0)`);
+      } else {
+        shimmerGroup.setAttribute("opacity", "0");
+      }
+
+      if (!shimmerState.paused) {
+        shimmerState.rafId = window.requestAnimationFrame(setShimmerFrame);
+      }
+    }
+
+    function startShimmer() {
+      if (!shimmerState.paused) {
+        return;
+      }
+
+      shimmerState.paused = false;
+      shimmerState.startedAt = performance.now();
+      shimmerState.rafId = window.requestAnimationFrame(setShimmerFrame);
+    }
+
+    function pauseShimmer() {
+      shimmerState.paused = true;
+      shimmerGroup.setAttribute("opacity", "0");
+      window.cancelAnimationFrame(shimmerState.rafId);
+    }
+
+    function triggerShimmer() {
+      shimmerState.startedAt = performance.now();
+      if (shimmerState.paused) {
+        shimmerState.paused = false;
+      } else {
+        window.cancelAnimationFrame(shimmerState.rafId);
+      }
+
+      shimmerState.rafId = window.requestAnimationFrame(setShimmerFrame);
+    }
+
+    prefersReducedMotion.addEventListener("change", (event) => {
+      if (event.matches) {
+        pauseShimmer();
+        return;
+      }
+
+      shimmerState.startedAt = performance.now();
+      if (shimmerState.paused) {
+        shimmerState.paused = false;
+        shimmerState.rafId = window.requestAnimationFrame(setShimmerFrame);
+      }
+    });
+
+    window.logoArtwork = Object.freeze({
+      element: document.getElementById("logo-mark"),
+      elements: logoParts,
+      ids: Object.freeze(Object.values(logoParts).map((element) => element.id)),
+      setColor(partName, color) {
+        const part = getPart(partName);
+        if (!part) {
+          return false;
+        }
+
+        part.setAttribute("fill", color);
+        return true;
+      },
+      setOpacity(partName, opacity) {
+        const part = getPart(partName);
+        if (!part) {
+          return false;
+        }
+
+        part.setAttribute("fill-opacity", String(opacity));
+        return true;
+      },
+      setAllColors(color) {
+        Object.values(logoParts).forEach((part) => {
+          part.setAttribute("fill", color);
+        });
+      },
+      setAllOpacities(opacity) {
+        Object.values(logoParts).forEach((part) => {
+          part.setAttribute("fill-opacity", String(opacity));
+        });
+      },
+      reset() {
+        Object.values(logoParts).forEach((part) => {
+          const partName = Object.keys(logoParts).find((name) => logoParts[name] === part);
+          if (partName) {
+            applyBaseStyle(partName);
+          }
+        });
+      },
+      playIntro() {
+        playIntroSequence();
+      }
+    });
+
+    window.logoShimmer = Object.freeze({
+      play: startShimmer,
+      pause: pauseShimmer,
+      trigger: triggerShimmer,
+      setTiming({ sweepMs, gapMs } = {}) {
+        if (Number.isFinite(sweepMs) && sweepMs > 0) {
+          shimmerState.sweepMs = sweepMs;
+        }
+
+        if (Number.isFinite(gapMs) && gapMs >= 0) {
+          shimmerState.gapMs = gapMs;
+        }
+
+        shimmerState.startedAt = performance.now();
+      }
+    });
+
+    if (!shimmerState.paused) {
+      shimmerState.rafId = window.requestAnimationFrame(setShimmerFrame);
+    }
+
+    playIntroSequence();
+  </script>
+</body>
+</html>
