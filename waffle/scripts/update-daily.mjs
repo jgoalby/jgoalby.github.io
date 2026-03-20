@@ -20,25 +20,13 @@ function decodePayload(rawText) {
 
 function buildStoredPuzzle(payload) {
   const puzzle = String(payload.puzzle || "").replace(/[^A-Za-z]/g, "").toUpperCase();
-  const solution = String(payload.solution || "").replace(/[^A-Za-z]/g, "").toUpperCase();
 
   if (puzzle.length !== 21) {
     throw new Error(`Expected 21 puzzle letters, received ${puzzle.length}.`);
   }
 
-  if (solution.length !== 21) {
-    throw new Error(`Expected 21 solution letters, received ${solution.length}.`);
-  }
-
   return {
-    number: payload.number,
-    date: payload.date,
-    nextPuzzle: payload.nextPuzzle,
-    puzzle,
-    solution,
-    words: Array.isArray(payload.words) ? payload.words : [],
-    sourceUrl: SOURCE_URL,
-    fetchedAt: new Date().toISOString()
+    puzzle
   };
 }
 
