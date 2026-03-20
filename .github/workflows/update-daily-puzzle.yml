@@ -21,18 +21,18 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Refresh daily.json
+      - name: Refresh daily.js
         run: node waffle/scripts/update-daily.mjs
 
       - name: Commit Updated Puzzle
         run: |
-          if [ ! -f waffle/daily.json ]; then
-            echo "waffle/daily.json was not created"
+          if [ ! -f waffle/daily.js ]; then
+            echo "waffle/daily.js was not created"
             exit 1
           fi
     
-          if [ -z "$(git status --porcelain -- waffle/daily.json)" ]; then
-            echo "daily.json is already current"
+          if [ -z "$(git status --porcelain -- waffle/daily.js)" ]; then
+            echo "daily.js is already current"
             exit 0
           fi
     
