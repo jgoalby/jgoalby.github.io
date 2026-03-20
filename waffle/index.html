@@ -127,6 +127,53 @@
       user-select: none;
     }
 
+    .import-panel[hidden] {
+      display: none;
+    }
+
+    .import-panel {
+      margin: 0 0 20px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255, 247, 236, 0.96);
+      border: 1px solid rgba(120, 105, 84, 0.16);
+    }
+
+    .import-copy {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .import-input {
+      width: 100%;
+      min-height: 160px;
+      border: 1px solid var(--tile-border);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font: inherit;
+      line-height: 1.45;
+      color: var(--ink);
+      background: var(--tile);
+      resize: vertical;
+    }
+
+    .import-input:focus {
+      outline: 2px solid rgba(182, 99, 47, 0.26);
+      outline-offset: 2px;
+    }
+
+    .import-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .import-actions button {
+      flex: 1 1 180px;
+    }
+
     .cell {
       aspect-ratio: 1 / 1;
       position: relative;
@@ -293,6 +340,10 @@
         text-align: center;
       }
 
+      .toolbar > .toolbar-wide {
+        grid-column: span 2;
+      }
+
       .subtitle,
       .hint,
       .key-button {
@@ -345,12 +396,33 @@
     </p>
 
     <div class="toolbar">
+      <button id="dailyFetchButton" class="secondary" type="button">Load Daily</button>
       <button id="modeButton" class="primary" type="button">Switch To Solve Mode</button>
       <button id="clearButton" class="secondary" type="button">Clear Letters</button>
+      <button id="importToggleButton" class="secondary toolbar-wide" type="button">Set From Grid Ref</button>
     </div>
+
+    <section id="importPanel" class="import-panel" hidden>
+      <p class="import-copy">
+        Paste Waffle tile markup with <code>data-pos="x,y"</code> or plain lines like <code>0,0=A</code>.
+      </p>
+      <textarea
+        id="gridRefInput"
+        class="import-input"
+        spellcheck="false"
+        placeholder='data-pos="0,0">C
+data-pos="1,0">L
+0,2 = O'
+      ></textarea>
+      <div class="import-actions">
+        <button id="applyGridRefButton" class="primary" type="button">Apply Letters</button>
+        <button id="closeImportButton" class="secondary" type="button">Close</button>
+      </div>
+    </section>
 
     <section id="grid" class="grid" aria-label="Puzzle grid"></section>
     <section id="mobileKeyboard" class="mobile-keyboard" aria-label="Letter keyboard" hidden></section>
+    <p id="hintText" class="hint" role="status" aria-live="polite"></p>
   </main>
 
   <script>
@@ -391,11 +463,257 @@
 
     const grid = document.getElementById("grid");
     const mobileKeyboard = document.getElementById("mobileKeyboard");
+    const dailyFetchButton = document.getElementById("dailyFetchButton");
     const modeButton = document.getElementById("modeButton");
     const clearButton = document.getElementById("clearButton");
+    const importToggleButton = document.getElementById("importToggleButton");
+    const importPanel = document.getElementById("importPanel");
+    const gridRefInput = document.getElementById("gridRefInput");
+    const applyGridRefButton = document.getElementById("applyGridRefButton");
+    const closeImportButton = document.getElementById("closeImportButton");
+    const hintText = document.getElementById("hintText");
+    const playableIndices = letters
+      .map((value, index) => (value === null ? null : index))
+      .filter((index) => index !== null);
 
     function usesMobileKeyboard() {
       return compactLayoutQuery.matches;
+    }
+
+    function setHint(message) {
+      hintText.textContent = message;
+    }
+
+    function localDateStamp() {
+      const now = new Date();
+      const year = now.getFullYear();
+      const month = String(now.getMonth() + 1).padStart(2, "0");
+      const day = String(now.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function toggleImportPanel(forceOpen) {
+      const shouldOpen = typeof forceOpen === "boolean" ? forceOpen : importPanel.hidden;
+      importPanel.hidden = !shouldOpen;
+
+      if (shouldOpen) {
+        requestAnimationFrame(() => {
+          gridRefInput.focus();
+          gridRefInput.select();
+        });
+      }
+    }
+
+    function coordinateIndex(x, y) {
+      if (!Number.isInteger(x) || !Number.isInteger(y) || x < 0 || x > 4 || y < 0 || y > 4) {
+        return null;
+      }
+
+      if (!layout[y][x]) {
+        return -1;
+      }
+
+      return (y * 5) + x;
+    }
+
+    function registerGridReference(entries, issues, x, y, letter) {
+      const index = coordinateIndex(x, y);
+      const label = `${x},${y}`;
+      if (index === null) {
+        issues.push(`${label} is outside the 5x5 grid.`);
+        return;
+      }
+
+      if (index === -1) {
+        issues.push(`${label} points to a gap, not a letter tile.`);
+        return;
+      }
+
+      const previous = entries.get(index);
+      if (previous && previous !== letter) {
+        issues.push(`${label} was provided more than once. Using ${letter}.`);
+      }
+
+      entries.set(index, letter);
+    }
+
+    function parseGridReferences(rawValue) {
+      const entries = new Map();
+      const issues = [];
+      const documentFragment = new DOMParser().parseFromString(`<body>${rawValue}</body>`, "text/html");
+      documentFragment.querySelectorAll("[data-pos]").forEach((element) => {
+        const position = element.getAttribute("data-pos") || "";
+        const match = position.match(/^\s*(\d+)\s*,\s*(\d+)\s*$/);
+        const letter = (element.textContent || "").replace(/[^a-z]/gi, "").slice(0, 1).toUpperCase();
+        if (!match || !letter) {
+          return;
+        }
+
+        registerGridReference(entries, issues, Number(match[1]), Number(match[2]), letter);
+      });
+
+      const plainReferencePattern = /(^|[\n\r;])\s*(\d+)\s*,\s*(\d+)\s*(?:=|:|->)?\s*([A-Za-z])(?=\s*(?:$|[\n\r;]))/gm;
+      let plainMatch = plainReferencePattern.exec(rawValue);
+      while (plainMatch) {
+        registerGridReference(entries, issues, Number(plainMatch[2]), Number(plainMatch[3]), plainMatch[4].toUpperCase());
+        plainMatch = plainReferencePattern.exec(rawValue);
+      }
+
+      return { entries, issues };
+    }
+
+    function resetPlayableCells() {
+      letters.forEach((value, index) => {
+        if (value !== null) {
+          letters[index] = "";
+          cellColors[index] = "none";
+        }
+      });
+    }
+
+    function applyPlayableLetters(nextLetters) {
+      resetPlayableCells();
+
+      nextLetters.forEach((letter, offset) => {
+        letters[playableIndices[offset]] = letter;
+      });
+
+      if (allPlayableCellsFilled()) {
+        state.mode = "solve";
+        state.activeEditIndex = null;
+        state.pendingFocusIndex = null;
+      } else {
+        const nextIndex = findFirstOpenPlayableIndex();
+        state.mode = "edit";
+        state.activeEditIndex = nextIndex;
+        state.pendingFocusIndex = nextIndex;
+      }
+
+      clearDrag();
+    }
+
+    function applyGridReferences(rawValue) {
+      const { entries, issues } = parseGridReferences(rawValue);
+      if (!entries.size) {
+        setHint("No letters found. Paste data-pos tiles or lines like 0,0=A.");
+        return;
+      }
+
+      resetPlayableCells();
+
+      entries.forEach((letter, index) => {
+        letters[index] = letter;
+      });
+
+      if (allPlayableCellsFilled()) {
+        state.mode = "solve";
+        state.activeEditIndex = null;
+        state.pendingFocusIndex = null;
+      } else {
+        const nextIndex = findFirstOpenPlayableIndex();
+        state.mode = "edit";
+        state.activeEditIndex = nextIndex;
+        state.pendingFocusIndex = nextIndex;
+      }
+
+      toggleImportPanel(false);
+      clearDrag();
+
+      const issueSummary = issues.length ? ` ${issues.length} invalid reference${issues.length === 1 ? " was" : "s were"} ignored.` : "";
+      setHint(`Loaded ${entries.size} letter${entries.size === 1 ? "" : "s"} from grid references.${issueSummary}`);
+    }
+
+    function decodeUtf16Base64(encodedValue) {
+      const encoded = encodedValue.trim();
+      const binary = atob(encoded);
+      let decoded = "";
+
+      for (let index = 0; index < binary.length; index += 2) {
+        const lowByte = binary.charCodeAt(index);
+        const highByte = binary.charCodeAt(index + 1) || 0;
+        decoded += String.fromCharCode(lowByte | (highByte << 8));
+      }
+
+      return decoded;
+    }
+
+    function parseDailyPayload(rawValue) {
+      const trimmed = rawValue.trim();
+      if (!trimmed) {
+        throw new Error("The daily response was empty.");
+      }
+
+      if (trimmed.startsWith("<")) {
+        throw new Error("The daily endpoint returned HTML instead of puzzle data.");
+      }
+
+      const payloadText = trimmed.startsWith("{") ? trimmed : decodeUtf16Base64(trimmed.includes("`") ? trimmed.split("`")[1] : trimmed);
+      return JSON.parse(payloadText);
+    }
+
+    function buildDailySlotOrder() {
+      const utcDate = new Date().toISOString().split("T")[0];
+      const localDate = localDateStamp();
+      const localSlot = localDate < utcDate ? 0 : localDate > utcDate ? 2 : 1;
+      return [...new Set([1, localSlot, 0, 2])];
+    }
+
+    async function loadDailyPuzzle() {
+      dailyFetchButton.disabled = true;
+      setHint("Loading the current Waffle daily puzzle by direct browser fetch...");
+
+      let lastError = null;
+
+      try {
+        for (const slot of buildDailySlotOrder()) {
+          const url = `https://wafflegame.net/daily${slot}.txt`;
+
+          try {
+            const response = await fetch(url, {
+              cache: "no-store",
+              mode: "cors"
+            });
+
+            if (!response.ok) {
+              throw new Error(`${response.status} ${response.statusText}`.trim());
+            }
+
+            const dailyPuzzle = parseDailyPayload(await response.text());
+            const puzzleLetters = (dailyPuzzle.puzzle || "").replace(/[^A-Za-z]/g, "").toUpperCase().split("");
+
+            if (puzzleLetters.length !== playableIndices.length) {
+              throw new Error(`Expected ${playableIndices.length} letters, received ${puzzleLetters.length}.`);
+            }
+
+            applyPlayableLetters(puzzleLetters);
+
+            const puzzleDate = typeof dailyPuzzle.date === "string" ? dailyPuzzle.date.slice(0, 10) : "unknown date";
+            setHint(`Loaded Daily Waffle #${dailyPuzzle.number} for ${puzzleDate} from ${url}.`);
+            return;
+          } catch (error) {
+            lastError = error;
+          }
+        }
+
+        const response = await fetch("https://wafflegame.net/daily", {
+          cache: "no-store",
+          mode: "cors"
+        });
+        const html = await response.text();
+        const { entries } = parseGridReferences(html);
+        if (entries.size) {
+          applyGridReferences(html);
+          setHint("Loaded letters from the live daily page HTML.");
+          return;
+        }
+
+        throw lastError || new Error("No usable puzzle data was found.");
+      } catch (error) {
+        const details = error && error.message ? error.message : String(error);
+        setHint(`Direct browser fetch failed: ${details}`);
+      } finally {
+        dailyFetchButton.disabled = false;
+      }
     }
 
     function findNextPlayableIndex(currentIndex, direction = 1) {
@@ -734,16 +1052,40 @@
     });
 
     clearButton.addEventListener("click", () => {
-      letters.forEach((value, index) => {
-        if (value !== null) {
-          letters[index] = "";
-          cellColors[index] = "none";
-        }
-      });
+      resetPlayableCells();
       state.mode = "edit";
       state.activeEditIndex = 0;
       state.pendingFocusIndex = 0;
+      setHint("");
       clearDrag();
+    });
+
+    dailyFetchButton.addEventListener("click", () => {
+      loadDailyPuzzle();
+    });
+
+    importToggleButton.addEventListener("click", () => {
+      toggleImportPanel();
+    });
+
+    applyGridRefButton.addEventListener("click", () => {
+      applyGridReferences(gridRefInput.value);
+    });
+
+    closeImportButton.addEventListener("click", () => {
+      toggleImportPanel(false);
+    });
+
+    gridRefInput.addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+        event.preventDefault();
+        applyGridReferences(gridRefInput.value);
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        toggleImportPanel(false);
+      }
     });
 
     compactLayoutQuery.addEventListener("change", () => {
