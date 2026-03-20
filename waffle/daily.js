@@ -1,0 +1,3 @@
+window.DAILY_PUZZLE = {
+  "puzzle": "SRERWSSPEUUROSESGEICT"
+};
