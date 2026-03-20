@@ -22,16 +22,16 @@ jobs:
           node-version: "20"
 
       - name: Refresh daily.json
-        run: node scripts/update-daily.mjs
+        run: node waffle/scripts/update-daily.mjs
 
       - name: Commit Updated Puzzle
         run: |
-          if git diff --quiet -- daily.json; then
+          if git diff --quiet -- waffle/daily.json; then
             echo "daily.json is already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add daily.json
+          git add waffle/daily.json
           git commit -m "Update daily puzzle for $(date -u +%F)"
           git push
