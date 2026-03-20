@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 
 const SOURCE_URL = "https://wafflegame.net/daily1.txt";
-const OUTPUT_PATH = new URL("../daily.json", import.meta.url);
+const OUTPUT_PATH = new URL("../daily.js", import.meta.url);
 
 function decodePayload(rawText) {
   const trimmed = rawText.trim();
@@ -55,5 +55,6 @@ if (!response.ok) {
 const payload = decodePayload(await response.text());
 const storedPuzzle = buildStoredPuzzle(payload);
 
-await writeFile(OUTPUT_PATH, `${JSON.stringify(storedPuzzle, null, 2)}\n`, "utf8");
-console.log(`Wrote Daily Waffle #${storedPuzzle.number} to daily.json`);
+const output = `window.DAILY_PUZZLE = ${JSON.stringify(storedPuzzle, null, 2)};\n`;
+await writeFile(OUTPUT_PATH, output, "utf8");
+console.log(`Wrote Daily Waffle #${storedPuzzle.number} to daily.js`);
