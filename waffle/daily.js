@@ -1,3 +1,3 @@
 window.DAILY_PUZZLE = {
-  "puzzle": "BISEHSEPAMIPAMSRTTKSY"
+  "puzzle": "MVIEAEEEARWSNROGNAEEE"
 };
