@@ -1,3 +1,3 @@
 window.DAILY_PUZZLE = {
-  "puzzle": "VIOCLDIANEBEEIRIRAIAR"
+  "puzzle": "CALTDMUINEENLAIYCEVRE"
 };
