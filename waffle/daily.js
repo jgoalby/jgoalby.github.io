@@ -1,3 +1,0 @@
-window.DAILY_PUZZLE = {
-  "puzzle": "CNAHKACYNWORANEATOZGK"
-};
