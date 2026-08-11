@@ -12,11 +12,41 @@ John Goalby's portfolio and notebook, built with Jekyll and published through Gi
 - `_layouts/default.html` contains the shared page structure.
 - `assets/css/style.scss` contains the Night Workshop design.
 
+## Project commands
+
+This project includes a [`justfile`](./justfile) for the commands used most often. If you have [Just](https://github.com/casey/just) and [Gum](https://github.com/charmbracelet/gum) installed, run this in the repository folder:
+
+```sh
+just
+```
+
+That opens an interactive menu you can move through with the arrow keys. If Gum is not installed, `just` displays the available commands instead.
+
+The most useful commands are:
+
+```sh
+just install   # Install dependencies
+just serve     # Run locally with live reload
+just build     # Build the production site
+just check     # Validate front matter and build
+just status    # Show the Git status
+just review    # Review staged and unstaged changes
+just publish   # Check, confirm, commit, and push changes
+```
+
+Run `just help` at any time to see the complete list.
+
 ## Test locally
 
 ### First-time setup
 
 From the repository folder, install the local dependencies:
+
+```sh
+just install
+```
+
+The equivalent Bundler command is:
 
 ```sh
 BUNDLE_PATH=.bundle/vendor bundle install
@@ -25,6 +55,12 @@ BUNDLE_PATH=.bundle/vendor bundle install
 The `.bundle` directory is ignored by Git and should not be committed.
 
 ### Start the site
+
+```sh
+just serve
+```
+
+The equivalent Jekyll command is:
 
 ```sh
 BUNDLE_PATH=.bundle/vendor bundle exec jekyll serve --livereload
@@ -41,6 +77,12 @@ BUNDLE_PATH=.bundle/vendor bundle exec jekyll serve --livereload --port 4001
 Then open <http://localhost:4001>.
 
 ### Test a production build
+
+```sh
+just build
+```
+
+The equivalent Jekyll command is:
 
 ```sh
 BUNDLE_PATH=.bundle/vendor bundle exec jekyll build
@@ -70,6 +112,14 @@ To publish something new:
 4. Check desktop and narrow browser widths before committing.
 
 ## Update the Git repository
+
+When the site looks right locally, `just publish` runs a strict build check, shows the changed files, asks for confirmation, prompts for a commit message, and pushes the commit to GitHub:
+
+```sh
+just publish
+```
+
+You can also perform each Git step separately, either with the `just` menu or with Git directly.
 
 Start by incorporating changes that may already be on GitHub:
 
@@ -108,4 +158,3 @@ For this repository, check **Settings → Pages** and confirm:
 The root `CNAME` file must remain in the repository when publishing from a branch. No DNS changes should be needed for this redesign if the existing domain is already working.
 
 After pushing, the deployment result is available in the repository's **Actions** tab and under **Settings → Pages**.
-
