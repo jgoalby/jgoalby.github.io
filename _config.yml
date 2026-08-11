@@ -1,19 +1,62 @@
-title: John's Site
-remote_theme: pages-themes/cayman@v0.2.0
+title: John Goalby
+tagline: Practical software for messy, real-world problems
+description: Software engineer working across AI, automation, developer tooling, and web products.
+url: https://www.goalby.org
+lang: en-US
+image: /assets/og.png
+author:
+  name: John Goalby
+  url: https://www.goalby.org/about
+social:
+  name: John Goalby
+  links:
+    - https://github.com/jgoalby
+    - https://www.linkedin.com/in/jgoalby
+
 plugins:
   - jekyll-relative-links
-  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-feed
+  - jekyll-sitemap
+
 relative_links:
   enabled: true
   collections: true
-collections:
-  - articles
-  - thoughts
-  - projects
+
 collections:
   articles:
     output: true
+    permalink: /writing/:name/
   thoughts:
     output: true
+    permalink: /writing/:name/
   projects:
     output: true
+    permalink: /work/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: /assets/og.png
+  - scope:
+      path: ""
+      type: articles
+    values:
+      section: Writing
+  - scope:
+      path: ""
+      type: thoughts
+    values:
+      section: Writing
+  - scope:
+      path: ""
+      type: projects
+    values:
+      section: Work
+
+exclude:
+  - README.md
+  - package.json
+  - node_modules

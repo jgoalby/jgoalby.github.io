@@ -4,11 +4,11 @@ title: "Using VSCode on an iPad"
 date: 2023-10-09
 ---
 
-# GitHub.dev vs Codespaces
+## GitHub.dev vs Codespaces
 
 VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub.dev is lightweight and free and somewhat limited in features. Codespaces is more capable as it runs in a VM and costs money for compute and storage.
 
-## Codespaces features not available in GitHub.dev
+### Codespaces features not available in GitHub.dev
 
 - Debug and run code
 - Terminal
@@ -16,36 +16,36 @@ VScode can run on an iPad in 2 different ways. GitHub.dev and Codespaces. GitHub
 - Full intellisense
 - Can use linting based on install packages
 
-# Adding VSCode to your iPad homescreen
+## Adding VSCode to your iPad homescreen
 
 - Better keyboard support
 - Easier to run
 - Easier to navigate to in the list of running apps
 
-# Stage Manager and Display Zoom
+## Stage Manager and Display Zoom
 
 When using an iPad for development, you will likely want to multitask a lot and be able to see multiple apps at the same time. These settings will enhance that experience.
 
-## Stage Manager for multitasking
+### Stage Manager for multitasking
 
 Multitasking & Gestures -> Stage Manager
 
-## Display Zoom for more space
+### Display Zoom for more space
 
 Display & Brightness -> Display Zoom -> More Space
 
-# VSCode Keyboard Shortcuts on iPad
+## VSCode Keyboard Shortcuts on iPad
 
 Note: The keyboard functionality on the iPad is limited compared to the full VSCode experience.
 
-## Most useful ones to learn first
+### Most useful ones to learn first
 
 - CMD-SHIFT-P command palette (can also get to file selection if you backspace to remove >)
 - CMD-P file selection, and can keep pressing to go through list (can type > to get to command palette, : to get to go to line)
 - CTRL-G go to line in file
 - CMD-K-S lists all keyboard shortcuts
 
-## Sidebar
+### Sidebar
 
 - CMD-SHIFT-E explorer
 - CMD-SHIFT-F search / find
@@ -57,7 +57,7 @@ Note: The keyboard functionality on the iPad is limited compared to the full VSC
 - CMD-CTRL-I GitHub copilot
 - CMD-B toggle sidebar
 
-## Copilot
+### Copilot
 
 - CMD-SHIFT-I ask Copilot
     - type / to get a list of commands
@@ -82,7 +82,7 @@ Slash commands tailor the conversation to common tasks. Pick from the available 
 - Shortcuts I have made
     - CMD-CTRL-D /doc for Copilot to add a docstring to a function
 
-## Others
+### Others
 - Move code up and down using cursor keys
     - OPT-UP/DOWN
     - Works on selected text as well as current line
@@ -121,7 +121,7 @@ Slash commands tailor the conversation to common tasks. Pick from the available 
     - Set CMD-OPT-V to toggle vim mode on and off
         - CMD-K-S and search for toggle vim
 
-# iPad Key Reference
+## iPad Key Reference
 
 - Command (or Cmd) ⌘
 - Shift ⇧
@@ -129,7 +129,7 @@ Slash commands tailor the conversation to common tasks. Pick from the available 
 - Control (or Ctrl) ⌃
 - Caps Lock ⇪
 
-# User Settings
+## User Settings
 
 PyLint warnings you might want to disable:
 - W0311 - Bad Indentation

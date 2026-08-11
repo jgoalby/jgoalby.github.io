@@ -1,33 +1,78 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
+<!doctype html>
+<html lang="{{ site.lang | default: 'en-US' }}">
   <head>
-    <meta charset="UTF-8">
-
-{% seo %}
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style" type="text/css" crossorigin>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#157878">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#101a23">
+    <meta name="color-scheme" content="dark">
+    {% seo %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,600&family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
-    {% include head-custom.html %}
   </head>
-  <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
+  <body class="{% if page.url == '/' %}home-page{% elsif page.collection %}collection-page collection-{{ page.collection }}{% else %}standard-page{% endif %}">
+    <a class="skip-link" href="#content">Skip to content</a>
 
-    <header class="page-header-small" role="banner">
-      <a href="/" class="btn">Home</a>
-      <a href="/resume" class="btn">Résumé</a>
-      <a href="/about" class="btn">About</a>
-      <a href="/todo" class="btn">Todo</a>
+    <header class="site-header">
+      <a class="site-identity" href="{{ '/' | relative_url }}" aria-label="John Goalby, home">
+        <span class="monogram" aria-hidden="true">JG</span>
+        <span class="identity-text">
+          <strong>John Goalby</strong>
+          <small>software engineer · maker</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="{{ '/work/' | relative_url }}"{% if page.url contains '/work' %} aria-current="page"{% endif %}>Work</a>
+        <a href="{{ '/writing/' | relative_url }}"{% if page.url contains '/writing' %} aria-current="page"{% endif %}>Writing</a>
+        <a href="{{ '/about' | relative_url }}"{% if page.url == '/about' %} aria-current="page"{% endif %}>About</a>
+        <a class="resume-link" href="{{ '/resume' | relative_url }}"{% if page.url == '/resume' %} aria-current="page"{% endif %}>Résumé <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <details class="mobile-nav">
+        <summary aria-label="Open navigation">Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="{{ '/work/' | relative_url }}">Work</a>
+          <a href="{{ '/writing/' | relative_url }}">Writing</a>
+          <a href="{{ '/about' | relative_url }}">About</a>
+          <a href="{{ '/resume' | relative_url }}">Résumé</a>
+        </nav>
+      </details>
     </header>
 
-    <main id="content" class="main-content" role="main">
-      {{ content }}
-
-      <footer class="site-footer">
-        <span class="site-footer-credits">Copyright 2024</span>
-      </footer>
+    <main id="content" class="site-main">
+      {% if page.url == '/' %}
+        {{ content }}
+      {% else %}
+        <div class="page-frame">
+          <div class="page-notation" aria-hidden="true">
+            <span>{{ page.section | default: page.title | upcase }}</span>
+            {% if page.date %}<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%d %b %Y" | upcase }}</time>{% endif %}
+          </div>
+          <div>
+            {% if page.collection %}
+              <header class="entry-header">
+                <h1>{{ page.title }}</h1>
+                {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+              </header>
+            {% endif %}
+            <article class="prose">
+              {{ content }}
+            </article>
+          </div>
+        </div>
+      {% endif %}
     </main>
+
+    <footer class="site-footer">
+      <p><span>Currently:</span> improving log2div and building new experiments.</p>
+      <nav aria-label="Social links">
+        <a href="https://github.com/jgoalby">GitHub</a>
+        <a href="https://www.linkedin.com/in/jgoalby">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/jgoalby">Say hello <span aria-hidden="true">↗</span></a>
+      </nav>
+      <small>© {{ 'now' | date: "%Y" }} John Goalby</small>
+    </footer>
   </body>
 </html>

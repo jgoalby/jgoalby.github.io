@@ -4,7 +4,7 @@ title: "Why use an iPad for development?"
 date: 2023-10-22
 ---
 
-# Why use an iPad for development?
+## Why use an iPad for development?
 
 Who needs a laptop when you can squash bugs with a literal tap on the screen with the iPad? Here are some arguments for and against using an iPad for development:
 

@@ -4,7 +4,7 @@ title: "Logseq"
 date: 2023-11-12
 ---
 
-# What is Logseq?
+## What is Logseq?
 - Second brain
     - <https://www.buildingasecondbrain.com/>
 - Available on Windows, Mac, Linux, iOS, and Android
@@ -21,42 +21,42 @@ date: 2023-11-12
 - Supports plugins, and is programmable
     - Extensibility
 
-# Limitations on iOS
+## Limitations on iOS
 - Plugins are not supported on mobile, which is a shame as a lot of functionality is provided in plugins
     - There is a feature request that has 99 votes as of Nov 13th 2023
         - <https://discuss.logseq.com/t/plugin-support-for-ios-android-apps/10109>
     - Check out Obsidian if you want to try a similar solution that supports plugins on mobile
 
-# Keyboard Shortcuts
+## Keyboard Shortcuts
 If you click the 3 dots in the top right of the application, click settings, and then click keymap, you can see the keyboard shortcuts. You can also use the keyboard shortcut `g s` to see the shortcuts.
 
 {% include_relative logseq_shortcuts.md %}
 
-# Properties
+## Properties
 
 TODO
 
-# Queries
+## Queries
 
-#### Give me all blocks that have the tag daily, but not the tag page itself or my templates page
+##### Give me all blocks that have the tag daily, but not the tag page itself or my templates page
 {% raw %}
 {{query (and #daily (not (page "templates")) (not (page "daily"))) }}
 {% endraw %}
 
-#### How can I order the columns in the query results?
+##### How can I order the columns in the query results?
 The order of the columns within the table generated from the query is based on when the column was created. The simplest way to change the order of columns in the table is to unselect all properties and then reselect in the order you want them.
 
-# Task Management
+## Task Management
 
 TODO
 
-# Syncing using GitHub on iOS using WorkingCopy
+## Syncing using GitHub on iOS using WorkingCopy
 
 You could sync with iCloud, but there are numerous reports of issues with it being slow on the forums. There is also a native LogSeq sync although it is still in beta.
 
 Please note that you will have to do these steps for each iOS device you want to use LogSeq on. Also note that you will need to pay for the pro features of WorkingCopy to link folders.
 
-## Step 1, Set up the folder to sync
+### Step 1, Set up the folder to sync
 - Clone your repository
 - Tap the newly cloned repository
 - Tap on the "Repository" item
@@ -68,7 +68,7 @@ Please note that you will have to do these steps for each iOS device you want to
 - Tap Open to specify that folder as the linked folder
 - You should see a chain next to the repository name in the repository list
 
-## Step 2, Add graph to the folder
+### Step 2, Add graph to the folder
 - Open LogSeq
 - Tap Documents
 - Tap Add new graph
@@ -77,7 +77,7 @@ Please note that you will have to do these steps for each iOS device you want to
 - Uncheck iCloud sync
 - Select the folder you created in previous step and tap Open
 
-## Step 3a, Add automation for opening LogSeq to pull changes
+### Step 3a, Add automation for opening LogSeq to pull changes
 - Open ShortCuts > Automation Tab > Tap Plus to Create Personal Automation
 - Scroll down to App, and tap it
     - We define which app by tapping choose, and select LogSeq
@@ -90,7 +90,7 @@ Please note that you will have to do these steps for each iOS device you want to
             - Specify for Repository your Logseq repo
         - Tap Done
 
-## Step 3b, Add automation for opening LogSeq to pull changes
+### Step 3b, Add automation for opening LogSeq to pull changes
 - Open ShortCuts > Automation Tab > Tap Plus to Create Personal Automation
 - Scroll down to App, and tap it
     - We define which app by tapping choose, and select LogSeq
@@ -112,13 +112,13 @@ Please note that you will have to do these steps for each iOS device you want to
         - Add Push Repository action as second action under if action
             - Specify your repository as the Logseq repo
 
-## Step 4, Make sure it works
+### Step 4, Make sure it works
 - Open LogSeq and type something
 - Close LogSeq
 - See if your changes have been commited to GitHub
 - You need to make sure you lose focus on LogSeq after edits for shortcuts to run
 
-# Useful plugins
+## Useful plugins
 - copycode
     - adds button to the right of code blocks to copy the code
 - bulletthreading
@@ -127,21 +127,21 @@ Please note that you will have to do these steps for each iOS device you want to
 - chatgpt
 - mindmap (markmap?)
 
-# Themes
+## Themes
 - Bonofix
 
-# Programming LogSeq
+## Programming LogSeq
 
 - Instructions and a video on a graph that shows Javascript and Python execution
     - <https://github.com/adxsoft/logseq-code-execution-demo-graph>
 
-## Languages supported (not on iOS):
+### Languages supported (not on iOS):
 - Clojure
 - Javascript
 - Python
 - R
 
-# Resources
+## Resources
 - <https://logseq.com/>
 - <https://hub.logseq.com/>
 - <https://discuss.logseq.com/>
