@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Life Hacks that work for me"
-date: 2024-02-23
+date: 2026-07-23
 ---
 
 <img class="left" src="/assets/habitstacking.png" alt="Habit Stacking" width="400" style="padding: 15px 15px 0px 0px;">  
@@ -18,7 +18,7 @@ I leverage using ChatGPT while I write my daily journal. Image generation takes 
 Stacking habits is great if you already have a habit that you can stack against. When you don't it can be really helpful to create an arbitrary habit that you can stack other habits against. What works for me is setting a number of alarms throughout the day. This keeps me on track. The best one I have found is the nighttime alarm to remind me to go to bed. That positions me well to wake up at a good time and start my day off right. You can set other alarms throughout the day to remind you to do other things. For example, you can remind yourself to eat dinner at a regular time.
 
 ## Habit Tracker
-I wrote an article about this [here](https://www.goalby.org/thoughts/subscriptionhabit.html).
+I wrote an article about this [here](/writing/subscriptionhabit).
 
 ## Daily Reset
 Many people find January 1st to be a good time to start new habits. I would do that and find that sometime in February my motivation begins to wane. Obviously January 1st is arbitrary, and nothing is stopping you from resetting more often than once a year. I started resetting once a month and that has worked well for me. You can however do this as frequently as you like, even as often as each day. I have found that the more frequently I reset, the more likely I am to stick to my habits. There is a balance between doing it too often and not often enough. Find your sweet spot.
@@ -48,4 +48,4 @@ Over time I accrue lost of email subscriptions. This habit obviously flies in th
 I don't really write a lot in my journal, but I do find it a good anchor for other habits. I have started to write more on my website and on LinkedIn. I combine this writing with my journal and find that I am more consistent with my writing.
 
 ## Summary
-Take a look at these habits and explore any that sound interesting. I have found that these habits have helped me to be more productive and to make progress towards my goals. I hope that they can help you too. 
+Take a look at these habits and explore any that sound interesting. I have found that these habits have helped me to be more productive and to make progress towards my goals. I hope that they can help you too.
