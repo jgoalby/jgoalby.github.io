@@ -9,8 +9,6 @@ Use a habit tracking app to keep track of your subscriptions to know if you are 
 
 ## Effective Subscription Management
   
-<img class="left" src="/assets/habittracker.png" alt="Habit Tracker" width="400" style="padding: 15px 15px 0px 0px;">  
-
 ### Introduction
 Subscription are everywhere and managing them can be a challenge, leading to overspending and underutilization. I have discovered a simple way to determine if I should renew.
 
@@ -23,8 +21,6 @@ Many services these days are subscription based, from streaming services to soft
 - Some habit tracking apps will allow you to specify how often you want to use a habit.
 - Checking your daily habit will remind you of the subscriptions you have and will prompt you to make better use of them.
 - When renewal of the subsciption comes up, you can see how much you have used it and decide if you should renew it.
-
-<img class="right" src="/assets/habittracker2.png" alt="Habit Tracker" width="400" style="padding: 15px 15px 0px 0px;">  
 
 ### My Subscriptions
 I am tracking the following subscription habits. I am finding that I am not using Canva as much as I thought I would. Having the daily reminder to practice guitar with Youscician has been very helpful.
