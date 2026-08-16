@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Why journal?"
-date: 2023-11-14
+date: 2026-01-14
 ---
 
 ## TL;DR:
