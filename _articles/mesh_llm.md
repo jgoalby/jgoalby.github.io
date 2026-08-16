@@ -19,7 +19,7 @@ You can do some cool things with Buzz using Mesh LLM:
 
 Buzz is a really easy way to setup a local model and have it instantly usable.
 
-It looks like Buzz disables the Mesh LLM web console. The source is available if you want to enable the feature yourself.  Change `desktop/src-tauri/Cargo.toml` `mesh-llm-host-runtime` features to:
+It looks like Buzz disables the Mesh LLM web console. The [source](https://github.com/block/buzz) is available if you want to enable the feature yourself.  Change `desktop/src-tauri/Cargo.toml` `mesh-llm-host-runtime` features to:
 
 ```bash
 features = ["dynamic-native-runtime", "web-ui"]
@@ -27,7 +27,7 @@ features = ["dynamic-native-runtime", "web-ui"]
 
 However there are still 2 ports exposed by Buzz for REST requests.  There's port 9337 and port 3131.  Port 9337 is an OpenAI compatible port.  Port 3131 is the management API, and where the web console would normally be available.
 
-# Port 3131 Example Requests
+## Port 3131 Example Requests
 
 From the public API reference:
 
@@ -65,7 +65,7 @@ GET     /api/model-targets
 GET/POST/DELETE /mcp
 ```
 
-# Port 9337
+## Port 9337 OpenAI
 
 Documented OpenAI-compatible API  The official MeshLLM documentation gives the base URL as `http://localhost:9337/v1` and explicitly says a placeholder API key such as dummy is sufficient for clients that require one. To see what Buzz currently makes available through the mesh:
 
@@ -104,5 +104,5 @@ Streaming is supported through the same endpoint by setting "stream": true. Tool
 
 For reference:
 
-[MeshLLM OpenAI-Compatible API — models, chat completions, streaming, tool calling, etc.](https://meshllm.cloud/docs/pages/openai-compatible-api/)
-[MeshLLM API Reference — the 3131 management API.](https://meshllm.cloud/docs/pages/api-reference/)
+- [MeshLLM OpenAI-Compatible API — models, chat completions, streaming, tool calling, etc.](https://meshllm.cloud/docs/pages/openai-compatible-api/)
+- [MeshLLM API Reference — the 3131 management API.](https://meshllm.cloud/docs/pages/api-reference/)
