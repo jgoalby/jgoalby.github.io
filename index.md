@@ -32,29 +32,20 @@ permalink: /
     <a href="{{ '/work/' | relative_url }}">View all work <span aria-hidden="true">→</span></a>
   </header>
 
-  <article class="featured-project">
-    <div class="project-display" aria-label="A demonstration of log2div output">
-      <div class="console-window">
-        <div class="console-title"><i></i><i></i><i></i><span>log2div — mobile console</span></div>
-        <code><b>[INFO]</b> Console connected</code>
-        <code><b>[LOG]</b> Debug anywhere, even on iPad</code>
-        <code><strong>[WARN]</strong> Developer tools not detected</code>
-        <code><b>[LOG]</b> Sending output to page… <em>✓</em></code>
-        <span class="console-cursor" aria-hidden="true"></span>
-      </div>
-    </div>
-    <div class="project-summary">
-      <div class="project-tags"><span>OPEN SOURCE</span><span>JAVASCRIPT</span><span>TOOLING</span></div>
-      <h3>log2div</h3>
-      <p>A lightweight, no-build-step developer console for browsers with limited developer tools.</p>
-      <ul>
-        <li>Designed for mobile and tablet debugging</li>
-        <li>Single readable JavaScript file</li>
-        <li>Interactive logs, filtering, and copying</li>
-      </ul>
-      <a href="{{ '/work/log2div/' | relative_url }}">Open the case study <span aria-hidden="true">→</span></a>
-    </div>
-  </article>
+  <div class="project-card-list">
+    {% assign sorted_projects = site.projects | sort: 'date' | reverse %}
+    {% for project in sorted_projects %}
+      <a class="project-card" href="{{ project.url | relative_url }}">
+        <span class="project-card-number">0{{ forloop.index }}</span>
+        <span class="project-card-copy">
+          <strong>{{ project.title }}</strong>
+          <small>{{ project.description }}</small>
+        </span>
+        <time datetime="{{ project.date | date_to_xmlschema }}">{{ project.date | date: "%Y" }}</time>
+        <b aria-hidden="true">↗</b>
+      </a>
+    {% endfor %}
+  </div>
 </section>
 
 {% assign all_writing = site.articles | concat: site.thoughts | sort: 'date' | reverse %}
