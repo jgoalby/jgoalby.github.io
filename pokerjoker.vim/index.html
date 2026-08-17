@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A keyboard-only, Vim-inspired poker roguelike experiment.">
+  <title>Pocket Joker.vim — keyboard-only poker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="engine.js" defer></script>
+  <script src="game.js" defer></script>
+</head>
+<body tabindex="-1">
+  <main class="terminal" aria-label="Pocket Joker Vim game">
+    <header class="window-bar" aria-hidden="true">
+      <span class="lights"><i></i><i></i><i></i></span>
+      <span>pocket-joker.vim — 96×32</span>
+      <span>keyboard attached</span>
+    </header>
+
+    <div class="workspace">
+      <section class="buffer game-buffer" aria-label="Game buffer">
+        <div class="buffer-tabs" aria-hidden="true">
+          <span class="active">GAME</span>
+        </div>
+
+        <section class="objective" aria-label="Round progress">
+          <div>
+            <span>BLIND</span>
+            <strong>SMALL // 300</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true"><i data-progress></i></div>
+          <output><b data-score>0</b> / 300 CHIPS</output>
+        </section>
+
+        <section class="meters" aria-label="Round resources">
+          <div><span>HANDS</span><strong data-hands>4</strong></div>
+          <div><span>DISCARDS</span><strong data-discards>3</strong></div>
+          <div><span>DECK</span><strong data-deck>44</strong></div>
+          <div><span>SELECTED</span><strong><b data-selected>0</b>/5</strong></div>
+        </section>
+
+        <section class="calculation" aria-label="Selected hand score preview">
+          <div class="hand-label">
+            <span>HAND</span>
+            <strong data-hand-name>— NO SELECTION —</strong>
+          </div>
+          <div class="formula">
+            <span><b data-chips>0</b><small>CHIPS</small></span>
+            <i>×</i>
+            <span><b data-mult>0</b><small>MULT</small></span>
+            <i>=</i>
+            <span class="total"><b data-total>0</b><small>PREVIEW</small></span>
+          </div>
+          <p class="joker">JOKER REGISTER <kbd>J0</kbd> GREEDY SHELL <em>+4 MULT</em></p>
+        </section>
+
+        <section class="hand" aria-label="Cards in hand">
+          <div class="ruler" aria-hidden="true">0────1────2────3────4────5────6────7</div>
+          <div class="cards" data-cards role="list"></div>
+          <p class="position" data-position>card 1 of 8 · hearts queen</p>
+        </section>
+
+        <div class="message-line" aria-live="polite">
+          <span data-message-kind>INFO</span>
+          <p data-message>Press ? for the manual, or begin with h / l / Space.</p>
+        </div>
+      </section>
+
+      <aside class="buffer side-buffer" aria-label="Command reference">
+        <div class="buffer-tabs"><span class="active">COMMANDS</span></div>
+
+        <section class="context-panel">
+          <h2 data-context-title>NORMAL MODE</h2>
+          <p data-context-copy>Move, compose a hand, then play it. Commands appear here as you type.</p>
+          <div class="pending" data-pending>ready</div>
+        </section>
+
+        <section class="keymap" data-keymap>
+          <h2>CORE MOTIONS</h2>
+          <dl>
+            <div><dt>h l</dt><dd>move cursor</dd></div>
+            <div><dt>0 $</dt><dd>first / last</dd></div>
+            <div><dt>3l</dt><dd>move with count</dd></div>
+            <div><dt>Space</dt><dd>toggle card</dd></div>
+            <div><dt>v</dt><dd>visual range</dd></div>
+            <div><dt>c</dt><dd>clear selection</dd></div>
+          </dl>
+          <h2>OPERATORS</h2>
+          <dl>
+            <div><dt>s{target}</dt><dd>add group</dd></div>
+            <div><dt>S{target}</dt><dd>replace selection</dd></div>
+            <div><dt>d{target}</dt><dd>discard group</dd></div>
+            <div><dt>dd</dt><dd>discard selection</dd></div>
+            <div><dt>p / Enter</dt><dd>play selection</dd></div>
+          </dl>
+          <h2>TARGETS</h2>
+          <p class="targets"><kbd>h</kbd>♥ <kbd>d</kbd>♦ <kbd>c</kbd>♣ <kbd>s</kbd>♠ <kbd>f</kbd>faces <kbd>r</kbd>red <kbd>b</kbd>black <kbd>2…9</kbd>rank <kbd>0</kbd>tens <kbd>j q k a</kbd>rank <kbd>*</kbd>all</p>
+          <p>Because <kbd>dd</kbd> discards the selection, use <kbd>dD</kbd> to discard diamonds directly.</p>
+          <h2>EX COMMANDS</h2>
+          <p><kbd>:</kbd> opens command mode. Try <code>:select hearts</code>, <code>:discard faces</code>, or <code>:sort rank</code>.</p>
+        </section>
+
+        <section class="history-panel">
+          <h2>MESSAGE HISTORY</h2>
+          <ol data-history></ol>
+        </section>
+      </aside>
+    </div>
+
+    <footer class="status-area">
+      <div class="status-line">
+        <strong data-mode>-- NORMAL --</strong>
+        <span data-keystrokes>"game" 1L, 8C</span>
+        <span data-sort>SORT:RANK</span>
+        <span data-turn>HAND 1/4</span>
+        <span data-percent>0%</span>
+      </div>
+      <div class="command-line">
+        <span data-prompt>:</span><span data-command></span><i aria-hidden="true"></i>
+      </div>
+    </footer>
+  </main>
+
+  <section class="manual" data-manual hidden aria-label="Keyboard manual">
+    <div>
+      <p class="eyebrow">:help // POCKET-JOKER(1)</p>
+      <h1>Everything is a command.</h1>
+      <div class="manual-grid">
+        <article><b>01</b><h2>Move</h2><p><kbd>h</kbd> and <kbd>l</kbd> move the cursor. Counts work: <kbd>3l</kbd>. Jump with <kbd>0</kbd>, <kbd>$</kbd>, <kbd>gg</kbd>, or <kbd>G</kbd>.</p></article>
+        <article><b>02</b><h2>Compose</h2><p><kbd>Space</kbd> toggles one card. <kbd>v</kbd> starts a visual range; move, then use <kbd>Space</kbd> to keep it.</p></article>
+        <article><b>03</b><h2>Select groups</h2><p><kbd>sh</kbd> adds every heart. <kbd>S5</kbd> replaces the selection with every five. <kbd>sf</kbd> adds all face cards.</p></article>
+        <article><b>04</b><h2>Act</h2><p><kbd>p</kbd> plays selected cards. <kbd>dd</kbd> discards them. An operator plus target acts directly: <kbd>dh</kbd> discards every heart.</p></article>
+        <article><b>05</b><h2>Recover</h2><p><kbd>u</kbd> restores the previous selection. <kbd>c</kbd> clears it. <kbd>.</kbd> repeats the last action. <kbd>r</kbd> starts a new round.</p></article>
+        <article><b>06</b><h2>Command</h2><p><kbd>:</kbd> enters EX mode. Commands include select, add, discard, play, clear, sort, restart, help, and normal.</p></article>
+      </div>
+      <p class="dismiss">Press <kbd>?</kbd> or <kbd>Esc</kbd> to close the manual.</p>
+    </div>
+  </section>
+
+  <div class="sr-only" aria-live="assertive" data-announcer></div>
+  <noscript>This experiment requires JavaScript and a keyboard.</noscript>
+</body>
+</html>

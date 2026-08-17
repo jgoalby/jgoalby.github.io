@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pocket Joker v4 tests</title>
+  <style>
+    body{margin:0;padding:32px;background:#020604;color:#9cffbb;font:14px/1.6 monospace}main{max-width:760px;margin:auto}h1{font-weight:400}li{padding:5px 0;border-bottom:1px solid #274f35}.pass{color:#9cffbb}.fail{color:#ff8796}strong{color:#ffd978}
+  </style>
+  <script src="engine.js"></script>
+</head>
+<body>
+  <main><h1>:checkhealth pocket-joker</h1><p data-summary>running…</p><ol data-results></ol></main>
+  <script>
+    (function(){
+      var results=[];
+      function test(name,fn){try{fn();results.push([true,name]);}catch(error){results.push([false,name+" — "+error.message]);}}
+      function assert(value,message){if(!value)throw new Error(message||"assertion failed");}
+      function card(rank,suit){var order=["2","3","4","5","6","7","8","9","10","J","Q","K","A"];return{id:suit+"-"+rank,rank:rank,suit:suit,value:order.indexOf(rank)+2,mark:PJ4Engine.marks[suit]};}
+      function hand(spec){return spec.map(function(pair){return card(pair[0],pair[1]);});}
+      var H="hearts",D="diamonds",C="clubs",S="spades";
+      test("deck contains 52 unique cards",function(){var deck=PJ4Engine.deck(4);assert(deck.length===52);assert(new Set(deck.map(function(c){return c.id;})).size===52);});
+      test("shuffle is deterministic",function(){assert(PJ4Engine.deck(99).map(function(c){return c.id;}).join()===PJ4Engine.deck(99).map(function(c){return c.id;}).join());});
+      [
+        ["Straight Flush",[["10",H],["J",H],["Q",H],["K",H],["A",H]]],
+        ["Four of a Kind",[["7",H],["7",D],["7",C],["7",S],["2",H]]],
+        ["Full House",[["K",H],["K",D],["K",C],["2",S],["2",H]]],
+        ["Flush",[["2",S],["5",S],["8",S],["J",S],["A",S]]],
+        ["Straight",[["A",H],["2",D],["3",C],["4",S],["5",H]]],
+        ["Three of a Kind",[["9",H],["9",D],["9",C],["4",S],["2",H]]],
+        ["Two Pair",[["Q",H],["Q",D],["3",C],["3",S],["8",H]]],
+        ["Pair",[["6",H],["6",D],["4",C],["9",S],["A",H]]],
+        ["High Card",[["2",H],["5",D],["8",C],["J",S],["A",H]]]
+      ].forEach(function(entry){test("evaluates "+entry[0],function(){assert(PJ4Engine.evaluate(hand(entry[1])).name===entry[0]);});});
+      var failed=results.filter(function(result){return !result[0];}).length;
+      document.querySelector("[data-summary]").innerHTML="<strong>"+(results.length-failed)+"/"+results.length+" passed</strong>"+(failed?" · failures detected":" · all systems normal");
+      document.querySelector("[data-results]").innerHTML=results.map(function(result){return '<li class="'+(result[0]?"pass":"fail")+'">'+(result[0]?"PASS":"FAIL")+" · "+result[1]+"</li>";}).join("");
+    }());
+  </script>
+</body>
+</html>
