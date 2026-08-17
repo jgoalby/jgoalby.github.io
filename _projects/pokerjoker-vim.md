@@ -11,6 +11,11 @@ section: Project 003
 
 [Play pokerjoker.vim](https://www.goalby.org/pokerjoker.vim/)
 
+<figure class="project-screenshot">
+  <img src="{{ '/assets/pokerjoker-vim-screenshot.jpg' | relative_url }}" alt="Screenshot of pokerjoker.vim showing the terminal-style card game interface">
+  <figcaption>pokerjoker.vim running in the browser.</figcaption>
+</figure>
+
 ## The problem
 
 Most card games are built around pointing, clicking, and dragging. That works well, but it also hides an interesting design question: can a hand-management game feel fast and expressive if the player manipulates cards with composable keyboard commands?
