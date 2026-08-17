@@ -22,13 +22,10 @@ That last point is why this site includes both polished technical guides and les
 
 ## What I’m exploring now
 
-I’m improving [log2div](/work/log2div/), experimenting with practical applications of language models, and developing new projects that combine engineering with product thinking.
-
-I also remain unusually interested in making an iPad a viable development environment. Constraints can be frustrating, but they are excellent teachers.
+I’m experimenting with practical applications of language models, and developing new projects that combine engineering with product thinking.
 
 > Build something useful. Observe what happens. Improve the next version.
 
 ## Elsewhere
 
 You can find my code on [GitHub](https://github.com/jgoalby) and my professional history on [LinkedIn](https://www.linkedin.com/in/jgoalby).
-
