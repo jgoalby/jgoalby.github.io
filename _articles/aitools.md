@@ -24,3 +24,9 @@ date: 2026-08-17
 - Gemma 4 for local
 - Eleven Labs for voice
 - GPT Image 2 for images
+
+## Possible Future Tools
+
+### GitNexus
+
+GitNexus from YC https://www.akonlabs.com reduces the number of tokens sent to models by creating a knowledge graph of the source code.  Unfortunately I can see this becoming part of the agent harnesses as they look for ways to improve their tools.  I expect one of the bigger players will buy the company and add it to their product.
