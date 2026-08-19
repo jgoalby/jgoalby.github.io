@@ -35,6 +35,10 @@ Unsloth is an open-source framework for running and fine-tuning models locally w
 
 Diagram Design experiments with AI-native tools for user interface and product design.  I am interested in seeing whether it can speed up the process of turning rough ideas into useful visual designs.
 
+### omp
+
+omp https://omp.sh/ is an open-source terminal coding agent with built-in IDE features, browser control, debugging, and subagents.  I want to see how its extensible, multi-model harness compares with Codex and OpenCode.
+
 ### GitNexus
 
 GitNexus from YC https://www.akonlabs.com reduces the number of tokens sent to models by creating a knowledge graph of the source code.  Unfortunately I can see this becoming part of the agent harnesses as they look for ways to improve their tools.  I expect one of the bigger players will buy the company and add it to their product.
