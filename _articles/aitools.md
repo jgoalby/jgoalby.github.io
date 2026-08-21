@@ -29,10 +29,8 @@ Various AI tools that I am using which will change before I finish writing this.
 
 ## Skills
 
-- Matt Pocock
-  - (https://github.com/mattpocock/skills)
-- Cursor pstack
-  - (https://github.com/cursor/plugins/tree/main/pstack)
+- [Matt Pocock](https://github.com/mattpocock/skills)
+- [Cursor pstack](https://github.com/cursor/plugins/tree/main/pstack)
 
 ## Possible Future Investigations
 
