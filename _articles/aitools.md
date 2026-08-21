@@ -4,6 +4,8 @@ title: "AI Tools I am Using August 2026"
 date: 2026-08-17
 ---
 
+Various AI tools that I am using which will change before I finish writing this.
+
 ## AI Tools
 
 - Herdr
@@ -13,19 +15,26 @@ date: 2026-08-17
 - Buzz
 - OpenCode
 - T3Code
-- Sometimes Claude
+- ClaudeCode
 
 ## AI Models
 
 - GPT 5.6 Sol
-- Claude Fable 5 sometimes
+- Claude Fable 5
 - GLM 5.2
 - QWEN 3.8
 - Gemma 4 for local
-- Eleven Labs for voice
-- GPT Image 2 for images
+- Eleven Labs
+- GPT Image 2
 
-## Possible Future Tools
+## Skills
+
+- Matt Pocock
+  - [https://github.com/mattpocock/skills]
+- Cursor pstack
+  - [https://github.com/cursor/plugins/tree/main/pstack]
+
+## Possible Future Investigations
 
 ### Unsloth
 
