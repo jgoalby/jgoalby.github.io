@@ -37,7 +37,7 @@ Diagram Design experiments with AI-native tools for user interface and product d
 
 ### omp
 
-omp https://omp.sh/ is an open-source terminal coding agent with built-in IDE features, browser control, debugging, and subagents.  I want to see how its extensible, multi-model harness compares with Codex and OpenCode.
+[omp](https://omp.sh/) is an open-source terminal coding agent with built-in IDE features, browser control, debugging, and subagents.  I want to see how its extensible, multi-model harness compares with Codex and OpenCode.
 
 ### GitNexus
 
