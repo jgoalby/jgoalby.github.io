@@ -19,7 +19,7 @@ if [[ ! -x "$runtime/bin/symphony" ]]; then
   echo "Build Symphony in $runtime or set SYMPHONY_HOME to its elixir directory." >&2
   exit 1
 fi
-for tool in mise codex gh ruby bundle just; do
+for tool in mise codex gh python3 ruby bundle just; do
   command -v "$tool" >/dev/null || { echo "Missing command: $tool" >&2; exit 1; }
 done
 cd "$runtime"

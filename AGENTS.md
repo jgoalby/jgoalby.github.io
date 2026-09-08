@@ -11,8 +11,10 @@ Keep _site, .bundle, caches, and local secrets out of Git.
 
 The default branch is master. GitHub Pages publishes changes to that branch.
 Symphony work belongs on issue branches with draft PRs against master. Human
-review controls merging and publication; never run just publish in an agent
-session. Follow WORKFLOW.md for the Linear lifecycle.
+approval through the Linear Approved state authorizes the merge procedure in
+WORKFLOW.md for the recorded review commit and the resulting Pages publication.
+Never run just publish in an agent session. Follow WORKFLOW.md for the Linear
+lifecycle.
 
 Keep AGENTS.md, WORKFLOW.md, scripts, and docs in _config.yml's exclude list so
 operational files do not appear in the generated website.
