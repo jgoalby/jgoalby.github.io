@@ -158,3 +158,10 @@ For this repository, check **Settings → Pages** and confirm:
 The root `CNAME` file must remain in the repository when publishing from a branch. No DNS changes should be needed for this redesign if the existing domain is already working.
 
 After pushing, the deployment result is available in the repository's **Actions** tab and under **Settings → Pages**.
+
+## Work from Linear with Symphony
+
+See [docs/symphony.md](docs/symphony.md) for the Website project's issue workflow,
+manual startup, effort labels, and running it alongside Tanks. Start the website
+worker with `./scripts/symphony.sh`; its dashboard uses port 4001. Use port 4100
+for Jekyll previews when the Symphony dashboards are running.
