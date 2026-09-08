@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "AI Tools I am Using August 2026"
+description: "The AI tools and models I am using, plus tools I want to investigate."
 date: 2026-08-17
 ---
 
@@ -16,11 +17,13 @@ Various AI tools that I am using which will change before I finish writing this.
 - OpenCode
 - T3Code
 - ClaudeCode
+- Linear
+- OpenAI Symphony
 
 ## AI Models
 
-- GPT 5.6 Sol
-- Claude Fable 5
+- GPT 6 Astra
+- Claude Fable 5.1
 - GLM 5.2
 - QWEN 3.8
 - Gemma 4 for local
