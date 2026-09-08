@@ -60,3 +60,7 @@ exclude:
   - README.md
   - package.json
   - node_modules
+  - AGENTS.md
+  - WORKFLOW.md
+  - scripts
+  - docs

@@ -5,3 +5,8 @@ _site/
 .sass-cache/
 vendor/
 .DS_Store
+
+# Local credentials and environment configuration.
+.env
+.env.*
+!.env.example
