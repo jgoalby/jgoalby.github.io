@@ -19,7 +19,7 @@ to master or run just publish.
 Use two Symphony processes to watch both projects simultaneously. They share one
 runtime installation, Codex login, GitHub login, and saved Linear key.
 
-| Project | Dashboard | Workspace directory under ~/symphony/elixir/tmp |
+| Project | Dashboard | Workspace directory under ~/github/symphony/elixir/tmp |
 | --- | --- | --- |
 | Tanks | http://127.0.0.1:4000 | tanks-workspaces |
 | Website | http://127.0.0.1:4001 | website-workspaces |
@@ -34,11 +34,11 @@ cd ~/GitHub/jgoalby.github.io
 ./scripts/symphony.sh
 ```
 
-The launcher uses `~/symphony/elixir`, including the local runtime changes on
-branch `tanks-git-write-access`. That branch supplies scoped Git writes and
+The launcher uses `~/github/symphony/elixir`, including the local runtime changes on
+branch `main` in the private `jgoalby/symphony` repository. That branch supplies scoped Git writes and
 reasoning-effort labels for both repositories. Preserve it when updating Symphony.
 
-The existing Linear key is read from `~/symphony/elixir/.env.tanks`, the host-only
+The existing Linear key is read from `~/github/symphony/elixir/.env.tanks`, the host-only
 file created during Tanks setup. No second key is needed for these projects in
 the same Linear team. LINEAR_API_KEY overrides the file; SYMPHONY_ENV_FILE can
 select another file. Never save the key in this public website repository.
@@ -46,7 +46,7 @@ select another file. Never save the key in this public website repository.
 Prerequisites are mise, signed-in Codex and GitHub CLI, Ruby/Bundler compatible
 with Gemfile.lock, and Just. The workspace hook clones the repository and installs
 locked gems into `.bundle/vendor` inside that clone. Logs go under
-`~/symphony/elixir/log/website`. SYMPHONY_HOME can select another runtime installation.
+`~/github/symphony/elixir/log/website`. SYMPHONY_HOME can select another runtime installation.
 
 This starts a foreground process, not a login service. It includes Symphony's
 required engineering-preview acknowledgement and keeps the dashboard on localhost.

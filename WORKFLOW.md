@@ -15,7 +15,7 @@ tracker:
 polling:
   interval_ms: 30000
 workspace:
-  root: ~/symphony/elixir/tmp/website-workspaces
+  root: ~/github/symphony/elixir/tmp/website-workspaces
 hooks:
   timeout_ms: 300000
   after_create: |
