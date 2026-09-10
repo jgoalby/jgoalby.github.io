@@ -2,7 +2,7 @@
 set -euo pipefail
 
 repo_root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
-runtime=${SYMPHONY_HOME:-"$HOME/symphony/elixir"}
+runtime=${SYMPHONY_HOME:-"$HOME/github/symphony/elixir"}
 key_file=${SYMPHONY_ENV_FILE:-"$runtime/.env.tanks"}
 if [[ -z "${LINEAR_API_KEY:-}" && -f "$key_file" ]]; then
   while IFS='=' read -r name value; do
